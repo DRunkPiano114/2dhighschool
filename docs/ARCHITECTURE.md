@@ -75,7 +75,9 @@ For each scene in `data/schedule.json` (sequentially):
   1. Build agent context via `agent/context.py:prepare_context()` — assembles profile, relationships (filtered to present agents), today.md, last 3 days of recent.md, relevant key memories (by tag overlap), pending intentions, scene info, known events
   2. Render `dialogue_turn.j2` template with full context + conversation history
   3. LLM returns `TurnOutput`: `speech`, `directed_to`, `inner_thought`, `action`, `emotion`, `want_to_continue`
-  4. If `want_to_continue=false`, agent exits the conversation
+  4. `directed_to` is validated against present agent names; invalid targets are set to `null`
+  5. Repetition detection: compares speech against the speaker's own previous speeches and the last speaker's speech using `SequenceMatcher` (threshold 0.6). If repetitive, the turn is **discarded** (not recorded in conversation history or turn records) and the agent is silently removed from the conversation
+  6. If `want_to_continue=false`, agent exits the conversation
 - Speaker selection (`interaction/speaker_selection.py`): scoring formula = base_desire (extrovert 8 / introvert 3 / default 5) + addressed bonus (+20 if last turn was directed at them) + intention bonus (+3) + silent rounds bonus (min(rounds×1.5, 8)) + emotion modifier (±3) + energy modifier ((energy-50)/25) + teacher suppression (×0.6) + random noise ±2. Highest score speaks next.
 - Safety valve: max 50 rounds, regardless of `scene.max_rounds`.
 - Conversation summarization: after 15 rounds, older turns are replaced with a brief summary, keeping only the last 8 turns.
@@ -365,7 +367,7 @@ Context assembly for dialogue/solo templates (`agent/context.py:prepare_context(
 - Scene info (time, location, who's present)
 - Known events (gossip the agent knows about)
 - Exam countdown context
-- Conversation history (for dialogue turns)
+- Conversation history (for dialogue turns). The prompt reinforces present-agent names in both the constraint section and the `directed_to` field description to prevent agents from addressing absent characters
 
 Every LLM call is logged to `logs/day_NNN/scene_name/group_id/calltype_timestamp.json` with full input/output, latency, and token counts. Costs are appended to `logs/costs.jsonl`.
 

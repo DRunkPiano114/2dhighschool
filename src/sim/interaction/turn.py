@@ -132,8 +132,16 @@ async def run_group_dialogue(
                 is_repetitive = True
 
         if is_repetitive:
-            result.want_to_continue = False
             logger.info(f"  [repetition detected] {profiles[speaker].name} forced to exit")
+            active_agents.remove(speaker)
+            if len(active_agents) < 2:
+                break
+            speaker = pick_next_speaker(
+                active_agents, profiles, states,
+                speaker, last_directed_to,
+                silent_counts, scene.teacher_present, rng,
+            )
+            continue
 
         # Format and append
         formatted = _format_turn(profiles[speaker].name, result)
