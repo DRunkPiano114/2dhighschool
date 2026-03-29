@@ -13,7 +13,7 @@
     "name": "课间",
     "location": "教室",
     "density": "high",
-    "max_rounds": 12,
+    "max_rounds": 20,
     "trigger_probability": 1.0,
     "description": "上午第一个课间休息，同学们在教室里活动"
   },
@@ -31,7 +31,7 @@
     "name": "午饭",
     "location": "食堂",
     "density": "high",
-    "max_rounds": 18,
+    "max_rounds": 25,
     "trigger_probability": 1.0,
     "description": "午饭时间，同学们结伴去食堂吃饭"
   },
@@ -49,7 +49,7 @@
     "name": "课间",
     "location": "教室",
     "density": "high",
-    "max_rounds": 12,
+    "max_rounds": 20,
     "trigger_probability": 1.0,
     "description": "下午课间休息"
   },
