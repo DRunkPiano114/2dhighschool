@@ -7,7 +7,7 @@
   "dorm_id": "male_301",
   "position": null,
   "personality": ["温和", "善良", "有点懦弱"],
-  "speaking_style": "说话温柔，经常附和别人，习惯用'是吧''对对对'，不太会拒绝人",
+  "speaking_style": "语气温和，习惯顺着别人的话往下接。不太会拒绝人，被追问时会含糊带过。偶尔附和几句，但更多时候是认真听别人说",
   "academics": {
     "overall_rank": "中上",
     "strengths": ["语文", "生物"],

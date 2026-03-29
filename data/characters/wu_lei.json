@@ -7,7 +7,7 @@
   "dorm_id": "male_301",
   "position": "班长",
   "personality": ["直爽", "急躁", "正义感强"],
-  "speaking_style": "说话直来直去，语气有时候偏硬，习惯用'我觉得''不行'，认真的时候像在训话",
+  "speaking_style": "说话直来直去，不绕弯子。语气有时候偏硬，认真起来像在训话自己还意识不到。偶尔用命令式口吻，但本意不是在指挥别人",
   "academics": {
     "overall_rank": "中上",
     "strengths": ["数学", "物理"],

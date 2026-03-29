@@ -7,7 +7,7 @@
   "dorm_id": "male_301",
   "position": null,
   "personality": ["内向", "认真", "敏感"],
-  "speaking_style": "说话声音不大，措辞谨慎，紧张时会结巴，习惯用'嗯''那个'做开头",
+  "speaking_style": "声音不大，措辞谨慎，语速偏慢。紧张时容易卡壳或重复。不善主动表达，但被问到擅长的话题会逐渐打开",
   "academics": {
     "overall_rank": "上游",
     "strengths": ["数学", "物理"],
