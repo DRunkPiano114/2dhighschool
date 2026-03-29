@@ -1,0 +1,524 @@
+# Architecture & Technical Reference
+
+Multi-agent simulation of a Chinese high school class (中国高中班级模拟). Each agent (student/teacher) is an LLM-powered character that interacts through structured daily scenes, generating emergent narratives. Pure observation mode — no user intervention, text output only. The goal is to simulate a full three years of high school life and produce narrative content that could be edited into video.
+
+**Tech stack**: Python 3.12+, DeepSeek V3.2 via LiteLLM + Instructor (structured JSON output), Pydantic (data models + validation), Jinja2 (prompt templates), Loguru (logging), asyncio (concurrency). All state stored as JSON + Markdown files — no database.
+
+**Scale**: 10 students + 1 teacher (homeroom teacher). All character data, prompts, and narrative output are in Chinese.
+
+---
+
+## Architecture Overview
+
+Four-layer design, all source code in `src/sim/`:
+
+```
+┌──────────────────────────────────────────────────────────┐
+│  Interaction Layer  (interaction/)                        │
+│  Orchestrator, dialogue turns, scene-end analysis,       │
+│  result application, solo reflection                     │
+├──────────────────────────────────────────────────────────┤
+│  Agent Layer  (agent/)                                   │
+│  Profile/state storage, context assembly,                │
+│  daily plan generation, state update formulas            │
+├──────────────────────────────────────────────────────────┤
+│  World Layer  (world/)                                   │
+│  Schedule, scene generation, agent grouping,             │
+│  event queue, exam system, homeroom teacher              │
+├──────────────────────────────────────────────────────────┤
+│  LLM Layer  (llm/)                                       │
+│  Instructor+LiteLLM client, Jinja2 prompt rendering,     │
+│  per-call JSON logging with cost tracking                │
+├──────────────────────────────────────────────────────────┤
+│  Memory Layer  (memory/)                                 │
+│  Nightly compression, relevance-based retrieval,         │
+│  memory writer helpers                                   │
+├──────────────────────────────────────────────────────────┤
+│  Models  (models/)                                       │
+│  Pydantic data models for all domain objects             │
+└──────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Daily Simulation Loop (Orchestrator)
+
+`interaction/orchestrator.py` → `Orchestrator` class. Entry point: `Orchestrator.run(start_day, end_day)`.
+
+Each simulated day runs through three sequential phases:
+
+### Phase 1: Daily Plan Generation (`day_phase = "daily_plan"`)
+
+For each student (concurrently, up to `max_concurrent_llm_calls`):
+1. Load relationships, last 3 days of `recent.md`, and yesterday's unfulfilled intentions
+2. Call LLM with `daily_plan.j2` template → returns `DailyPlan` (1-3 `Intention` objects + `mood_forecast`)
+3. Save updated state with new plan
+
+`Intention` has: `target` (optional agent name), `goal`, `reason`, `fulfilled` (bool, starts false).
+
+### Phase 2: Scene Execution (`day_phase = "scenes"`)
+
+For each scene in `data/schedule.json` (sequentially):
+
+**Step 2a — Scene Generation** (`world/scene_generator.py`):
+- LOW density scenes roll against `trigger_probability` (default 15%). If they don't trigger, they're skipped entirely. If they trigger, density is upgraded to HIGH_LIGHT and a random classroom event is injected (e.g. "老师突然点名回答问题").
+- Teacher presence is probabilistic: 20% during 晚自习, 5% during 课间.
+- Present agents determined by location: 宿舍 → only dorm members; elsewhere → all students.
+
+**Step 2b — Grouping** (`world/grouping.py`):
+- First, identify solo agents (energy < 25, or introvert without close relationships at 50% chance, or sad + low energy at 60% chance).
+- For 宿舍 scenes: group by dorm assignment.
+- For other scenes: greedy affinity clustering (max group size 5). Affinity = bidirectional favorability + structural label bonus (室友 +20, 同桌 +15, 前后桌 +10) + same-gender bonus (+5, or +100 in dorms) + random noise ±10.
+
+**Step 2c — Group Interaction** (`interaction/turn.py`):
+- Multi-turn dialogue loop. Each turn:
+  1. Build agent context via `agent/context.py:prepare_context()` — assembles profile, relationships (filtered to present agents), today.md, last 3 days of recent.md, relevant key memories (by tag overlap), pending intentions, scene info, known events
+  2. Render `dialogue_turn.j2` template with full context + conversation history
+  3. LLM returns `TurnOutput`: `speech`, `directed_to`, `inner_thought`, `action`, `emotion`, `want_to_continue`
+  4. If `want_to_continue=false`, agent exits the conversation
+- Speaker selection (`interaction/speaker_selection.py`): scoring formula = base_desire (extrovert 8 / introvert 3 / default 5) + addressed bonus (+20 if last turn was directed at them) + intention bonus (+3) + silent rounds bonus (min(rounds×1.5, 8)) + emotion modifier (±3) + energy modifier ((energy-50)/25) + teacher suppression (×0.6) + random noise ±2. Highest score speaks next.
+- Safety valve: max 50 rounds, regardless of `scene.max_rounds`.
+- Conversation summarization: after 15 rounds, older turns are replaced with a brief summary, keeping only the last 8 turns.
+
+**Step 2c (solo)** — `interaction/solo.py`: If a group has `is_solo=true`, run `solo_reflection.j2` instead → returns `SoloReflection` with `inner_thought`, `emotion`, `activity`.
+
+**Step 2d — Scene-End Analysis** (`interaction/scene_end.py`):
+- Feed the complete conversation log to LLM with `scene_end_analysis.j2` (analytical temperature 0.3)
+- Returns `SceneEndAnalysis`:
+  - `key_moments`: list of significant events as one-line summaries
+  - `relationship_changes`: list of `RelationshipChange` (from_agent, to_agent, favorability/trust/understanding deltas). Scale: ±1-3 for normal chat, ±3-5 for meaningful interactions, ±10+ for extreme events
+  - `fulfilled_intentions`: list of "name:intention" strings
+  - `events_discussed`: event IDs that were actually mentioned (updates `known_by`)
+  - `memories`: `MemoryCandidate` with agent, text, emotion, importance (1-10), people, location, topics
+  - `new_events`: gossip/conflicts/decisions that may spread to other scenes
+  - `final_emotions`: map of agent name → emotion string
+
+**Step 2e — Apply Results** (`interaction/apply_results.py`):
+- For each agent in the group:
+  - Update emotion from `final_emotions`
+  - Append key moments to `today.md` (formatted as `## time scene @ location`)
+  - Save key memories with importance >= 7 to `key_memories.json`
+  - Apply relationship deltas using baseline snapshot (for idempotency): `new_value = baseline + delta`, clamped to valid range
+  - Mark fulfilled intentions in `daily_plan`
+- Update event queue: mark discussed events as known by all group members, add new events
+- Save result file to `logs/day_NNN/scene_name/group_N_result.json` with baseline snapshot
+
+### Phase 3: Nightly Compression (`day_phase = "compression"`)
+
+For each student (concurrently):
+1. Read `today.md` content
+2. Call LLM with `nightly_compress.j2` → returns `CompressionResult`:
+   - `daily_summary`: 1-2 sentence summary of the day
+   - `permanent_memories`: candidates with importance scores
+3. Append daily summary to `recent.md` as `# Day N` section
+4. Save memories with importance >= 7 to `key_memories.json`
+5. Clear `today.md`
+
+### End of Day
+
+- Reset all students' energy to 85 (sleep)
+- Expire events older than `event_expire_days` (default 3)
+- Decrement `next_exam_in_days`
+- Advance progress to next day
+
+---
+
+## Data Models (`models/`)
+
+### AgentProfile (`models/agent.py`) — Immutable
+
+```
+agent_id: str                    # e.g. "li_ming"
+name: str                        # e.g. "李明"
+gender: Gender                   # male | female
+role: Role                       # student | homeroom_teacher
+seat_number: int | None
+dorm_id: str | None              # e.g. "male_301"
+position: str | None             # e.g. "班长", "学习委员"
+personality: list[str]           # e.g. ["内向", "认真", "敏感"]
+speaking_style: str              # natural language description
+academics: Academics
+  overall_rank: OverallRank      # top | 上游 | 中上 | 中游 | 中下 | 下游
+  strengths: list[str]           # e.g. ["数学", "物理"]
+  weaknesses: list[str]          # e.g. ["英语"]
+  study_attitude: str            # e.g. "极其刻苦，课间也在刷题"
+  target: AcademicTarget         # 985 | 211 | 一本 | 二本 | 没想过
+  homework_habit: str
+family_background: FamilyBackground
+  pressure_level: PressureLevel  # 高 | 中 | 低
+  expectation: str
+  situation: str
+long_term_goals: list[str]
+backstory: str
+```
+
+### AgentState (`models/agent.py`) — Mutable, updated every scene
+
+```
+emotion: Emotion                 # 15 values: happy, sad, anxious, angry, excited, calm,
+                                 #   embarrassed, bored, neutral, jealous, proud, guilty,
+                                 #   frustrated, touched, curious
+energy: int (0-100)              # Default 85, sleep resets to 85
+academic_pressure: int (0-100)   # Based on family + exam proximity + rank changes
+location: str                    # e.g. "教室"
+daily_plan: DailyPlan
+  intentions: list[Intention]    # max 3, each has target/goal/reason/fulfilled
+  mood_forecast: Emotion
+day: int
+```
+
+### Relationship (`models/relationship.py`)
+
+```
+target_name: str
+target_id: str
+favorability: int (-100 to 100)  # How much you like them
+trust: int (-100 to 100)         # How much you trust them
+understanding: int (0 to 100)    # How well you know them
+label: str                       # 同学 | 室友 | 同桌 | 前后桌
+recent_interactions: list[str]   # Last few key interactions
+```
+
+`RelationshipChange`: `from_agent`, `to_agent`, `favorability`/`trust`/`understanding` (delta values).
+
+### Scene (`models/scene.py`)
+
+```
+scene_index: int
+day: int
+time: str                        # e.g. "08:45"
+name: str                        # e.g. "课间"
+location: str                    # 教室 | 食堂 | 宿舍
+density: SceneDensity            # high | high_light | low
+max_rounds: int                  # Default 12
+description: str
+agent_ids: list[str]
+groups: list[GroupAssignment]    # group_id, agent_ids, is_solo
+injected_events: list[str]      # Random events injected into LOW→HIGH_LIGHT scenes
+teacher_present: bool
+teacher_action: str | None
+```
+
+### Event (`models/event.py`)
+
+```
+id: str                          # e.g. "evt_1"
+source_scene: str
+source_day: int
+text: str                        # Natural language description
+category: str                    # gossip, conflict, achievement, teacher_talk, discipline, etc.
+witnesses: list[str]             # Agent IDs who saw it happen
+known_by: list[str]              # Agent IDs who know about it (starts = witnesses, grows via gossip)
+spread_probability: float (0-1)  # Chance of being shared when a knower meets a non-knower
+active: bool                     # False after event_expire_days
+```
+
+### Dialogue Models (`models/dialogue.py`)
+
+```
+TurnOutput:
+  speech: str                    # What the agent says
+  directed_to: str | None        # Name of who they're talking to (null = everyone)
+  inner_thought: str             # Private thought (can differ from speech)
+  action: str | None             # Physical action (e.g. "低头写作业")
+  emotion: Emotion
+  want_to_continue: bool         # False = agent leaves the conversation
+
+SceneEndAnalysis:
+  key_moments: list[str]
+  relationship_changes: list[RelationshipChange]
+  fulfilled_intentions: list[str]           # "name:intention" format
+  events_discussed: list[str]               # Event IDs
+  memories: list[MemoryCandidate]           # agent, text, emotion, importance, people, location, topics
+  new_events: list[NewEventCandidate]       # text, category, witnesses, spread_probability
+  final_emotions: dict[str, str]            # name → emotion
+
+SoloReflection:
+  inner_thought: str
+  emotion: Emotion
+  activity: str
+```
+
+### Progress (`models/progress.py`) — Checkpoint for crash recovery
+
+```
+current_day: int
+current_date: str
+day_phase: "daily_plan" | "scenes" | "compression" | "complete"
+current_scene_index: int
+scenes: list[SceneProgress]
+  scene_index: int
+  scene_id: str
+  phase: "grouping" | "interaction" | "scene_end" | "applying" | "complete"
+  groups: list[GroupCompletion]
+    group_index: int
+    status: "pending" | "llm_done" | "applied"
+next_exam_in_days: int           # Default 30, decremented daily
+total_days_simulated: int
+last_updated: str                # ISO timestamp
+```
+
+### Memory (`models/memory.py`)
+
+```
+KeyMemory:
+  date: str                      # e.g. "Day 3"
+  day: int
+  people: list[str]
+  location: str
+  emotion: str
+  importance: int (1-10)         # Only >= 7 gets persisted
+  topics: list[str]
+  text: str
+```
+
+---
+
+## Key Algorithms
+
+### Energy System (`agent/state_update.py`)
+
+Energy changes per scene type:
+| Scene | Delta |
+|-------|-------|
+| 上课 | -5 |
+| 早读 | -3 |
+| 晚自习 | -5 |
+| 课间 | +5 |
+| 午饭 | +15 |
+| 宿舍夜聊 | -5 |
+
+Sleep resets to 85. Clamped to 0-100.
+
+### Academic Pressure Formula (`agent/state_update.py`)
+
+```
+pressure = base + countdown_delta + exam_shock + recovery
+```
+- `base`: HIGH family → 50, MEDIUM → 30, LOW → 15
+- `countdown_delta`: exam in ≤3 days → +15, ≤7 → +8, ≤14 → +3, else 0
+- `exam_shock`: rank_drop × 2
+- `recovery`: exam day resets to base, then -2/day
+
+### Emotion Decay (`agent/state_update.py`)
+
+Extreme emotions (angry, excited, sad, embarrassed, jealous, guilty, frustrated, touched) decay to neutral with 50% probability after 2+ scenes since onset.
+
+### Exam Score Generation (`world/exam.py`)
+
+Not LLM-driven — pure formula:
+```
+score = base(overall_rank) + subject_mod(±5 for strengths/weaknesses)
+      + effort_mod(pressure/100 × attitude_coeff × 5) + gaussian_noise(0, variance)
+```
+- Base scores: top=88, 上游=78, 中上=70, 中游=62, 中下=54, 下游=45
+- Variance inversely correlated with rank: top=3.0, 下游=10.0 (stronger students more consistent)
+- Attitude coefficient maps `study_attitude` text → 0.0-1.2 multiplier
+- Post-exam effects: rank drop ≥5 → SAD, rank rise ≥5 → EXCITED, high-pressure family + rank>5 → ANXIOUS, energy -15
+
+### Gossip Propagation (`world/event_queue.py`)
+
+Before each group interaction:
+1. Find active events where at least one group member knows it and at least one doesn't
+2. Roll `spread_probability` — if success, inject event into knower's context
+3. LLM decides naturally whether to mention it
+4. Only events listed in `events_discussed` output actually update `known_by` (avoids false positives)
+
+### Memory Retrieval (`memory/retrieval.py`)
+
+Tag-overlap based (not embedding-based):
+1. Extract trigger tags from current scene: present agent names/IDs, location, scene name
+2. For each key memory, compute overlap = |memory_tags ∩ triggers| where memory_tags = people + topics + location
+3. Filter to memories with overlap > 0
+4. Sort by (importance DESC, overlap DESC), return top K (default 10)
+
+### Homeroom Teacher (`world/homeroom_teacher.py`)
+
+Rule-driven, not a full agent:
+- **Post-exam talks**: 70% chance of talking to students whose rank dropped by 3+. Creates a `teacher_talk` event with 0.7 spread probability.
+- **Patrol events**: 30% chance during 晚自习/早读 of generating discipline/patrol events. During 上课, generates random classroom events (点名, 传纸条被发现, etc.).
+- **Suppression effect**: When `teacher_present=true`, speaker selection multiplies desire by 0.6.
+
+---
+
+## LLM Calls
+
+All LLM calls go through `llm/client.py:structured_call()` which uses Instructor + LiteLLM to guarantee Pydantic model output. Each call has a dedicated Jinja2 template in `src/sim/templates/`.
+
+| Call Type | Template | Response Model | Temperature | Max Tokens |
+|-----------|----------|---------------|-------------|------------|
+| Daily plan | `daily_plan.j2` | `DailyPlan` | 0.7 | 500 |
+| Dialogue turn | `dialogue_turn.j2` | `TurnOutput` | 0.9 | 300 |
+| Solo reflection | `solo_reflection.j2` | `SoloReflection` | 0.9 | 300 |
+| Scene-end analysis | `scene_end_analysis.j2` | `SceneEndAnalysis` | 0.3 | 1500 |
+| Nightly compression | `nightly_compress.j2` | `CompressionResult` | 0.5 | 800 |
+
+All templates include `system_base.j2` (shared system prompt establishing the Chinese high school setting, natural dialogue requirements, and role consistency rules).
+
+Context assembly for dialogue/solo templates (`agent/context.py:prepare_context()`):
+- Profile summary (name, gender, personality, speaking style, academics, backstory)
+- Relationships filtered to agents present in the scene
+- Today's events so far (`today.md`)
+- Recent memory (last 3 days from `recent.md`)
+- Relevant key memories (tag-overlap retrieval, max 10)
+- Pending unfulfilled intentions
+- Scene info (time, location, who's present)
+- Known events (gossip the agent knows about)
+- Exam countdown context
+- Conversation history (for dialogue turns)
+
+Every LLM call is logged to `logs/day_NNN/scene_name/group_id/calltype_timestamp.json` with full input/output, latency, and token counts. Costs are appended to `logs/costs.jsonl`.
+
+---
+
+## File Layout
+
+```
+data/
+  characters/                    # 10 student + 1 teacher JSON profiles (immutable source of truth)
+    li_ming.json, wang_hong.json, zhang_qiang.json, liu_yang.json,
+    sun_hao.json, wu_lei.json, chen_xue.json, zhao_wei.json,
+    zhou_ting.json, wang_laoshi.json
+  schedule.json                  # 8 daily scenes: 07:00 早读 → 22:00 宿舍夜聊
+
+agents/                          # Runtime state (gitignored, created by init_world.py)
+  <agent_id>/
+    profile.json                 # Copy of character profile
+    state.json                   # Current emotion, energy, pressure, plan, day
+    relationships.json           # Sparse relationship map {target_id: Relationship}
+    key_memories.json            # Permanent memories (importance >= 7)
+    today.md                     # Raw events from current day (cleared nightly)
+    recent.md                    # Compressed daily summaries (rolling window)
+
+world/                           # Global state (gitignored, created by init_world.py)
+  progress.json                  # Simulation checkpoint
+  event_queue.json               # Active + expired events
+  exam_results/                  # Per-exam result files (day_NNN.json)
+
+logs/                            # Simulation logs (gitignored)
+  sim.log                        # Main log (10MB rotation)
+  costs.jsonl                    # Per-call cost tracking
+  day_NNN/                       # Per-day detailed logs
+    scene_name/
+      group_N_result.json        # Scene-end analysis results with baselines
+      group_id/
+        calltype_timestamp.json  # Individual LLM call logs
+
+scripts/
+  init_world.py                  # Initialize agents/ and world/ from data/characters/
+  inspect_state.py               # Debug tool to view current simulation state
+
+src/sim/
+  main.py                        # CLI entry point (argparse → Orchestrator.run)
+  config.py                      # Settings via pydantic-settings (SIM_ env prefix)
+  models/                        # Pydantic models (agent, dialogue, event, memory, progress, relationship, scene)
+  agent/                         # Agent-level logic
+    storage.py                   # AgentStorage + WorldStorage (file I/O, atomic writes)
+    context.py                   # prepare_context() — assembles full LLM context for an agent
+    daily_plan.py                # generate_daily_plan() — morning intention generation
+    state_update.py              # Energy, pressure, emotion formulas
+  world/                         # World-level logic
+    schedule.py                  # load_schedule() from data/schedule.json
+    scene_generator.py           # SceneGenerator — daily scene list + teacher presence + event injection
+    grouping.py                  # group_agents() — solo detection + affinity-based clustering
+    event_queue.py               # EventQueueManager — add, spread, expire events
+    exam.py                      # generate_exam_results(), apply_exam_effects(), format_exam_context()
+    homeroom_teacher.py          # HomeroomTeacher — rule-driven post-exam talks + patrol events
+  interaction/                   # Scene execution logic
+    orchestrator.py              # Orchestrator — main simulation loop
+    turn.py                      # run_turn() + run_group_dialogue() — multi-turn dialogue
+    speaker_selection.py         # compute_speaking_desire() + pick_first/next_speaker()
+    scene_end.py                 # run_scene_end_analysis() — post-dialogue LLM analysis
+    apply_results.py             # apply_scene_end_results() + apply_solo_result()
+    solo.py                      # run_solo_reflection() — solo agent inner monologue
+  llm/                           # LLM infrastructure
+    client.py                    # structured_call() via Instructor + LiteLLM
+    prompts.py                   # render() — Jinja2 template rendering
+    logger.py                    # log_llm_call() — per-call JSON logging + cost tracking
+  memory/                        # Memory management
+    compression.py               # nightly_compress() — summarize today → recent, extract key memories
+    retrieval.py                 # get_relevant_memories() — tag-overlap retrieval
+    writer.py                    # Helper wrappers for today.md and key_memory writes
+  templates/                     # Jinja2 prompt templates (all in Chinese)
+    system_base.j2               # Shared system prompt (high school setting + dialogue rules)
+    daily_plan.j2                # Morning plan generation
+    dialogue_turn.j2             # Per-turn dialogue (includes full context + conversation history)
+    solo_reflection.j2           # Solo inner monologue
+    scene_end_analysis.j2        # Post-dialogue analysis (relationship changes, events, memories)
+    nightly_compress.j2          # Daily summary + permanent memory extraction
+```
+
+---
+
+## Configuration (`config.py`)
+
+All settings via `pydantic-settings` `BaseSettings`, overridable with `SIM_` env prefix:
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `llm_model` | `deepseek/deepseek-chat` | LiteLLM model identifier |
+| `creative_temperature` | 0.9 | Dialogue turns, solo reflection |
+| `analytical_temperature` | 0.3 | Scene-end analysis |
+| `plan_temperature` | 0.7 | Daily plan generation |
+| `compression_temperature` | 0.5 | Nightly compression |
+| `max_tokens_per_turn` | 300 | Dialogue turn max tokens |
+| `max_tokens_scene_end` | 1500 | Scene-end analysis max tokens |
+| `max_tokens_daily_plan` | 500 | Daily plan max tokens |
+| `max_tokens_compression` | 800 | Nightly compression max tokens |
+| `max_tokens_solo` | 300 | Solo reflection max tokens |
+| `max_retries` | 3 | LLM call retries |
+| `max_concurrent_llm_calls` | 5 | Async semaphore limit |
+| `exam_interval_days` | 30 | Days between exams |
+| `event_expire_days` | 3 | Days before events become inactive |
+| `recent_md_max_weeks` | 4 | Rolling window for recent.md |
+| `max_key_memories` | 10 | Max key memories in context |
+| `solo_energy_threshold` | 25 | Energy below this → solo |
+
+---
+
+## Initialization (`scripts/init_world.py`)
+
+1. Wipes `agents/` and `world/` directories
+2. For each character in `data/characters/*.json`:
+   - Copies profile to `agents/<id>/profile.json`
+   - Creates initial state (energy=85, pressure based on family: 高→60, 中→35, 低→15, emotion=neutral)
+   - Creates relationships from preset pairs (defined in `PRESET_RELATIONSHIPS` — roommates, seatmates, desk neighbors with initial favorability/trust values)
+   - Creates empty `key_memories.json`, `today.md`, `recent.md`
+3. Creates `world/progress.json` (day 1, daily_plan phase, next_exam_in_days=30)
+4. Creates empty `world/event_queue.json`
+5. Creates `world/exam_results/` directory
+
+### Dorm Assignments (hardcoded in `world/scene_generator.py`)
+
+```
+male_301:   li_ming, zhang_qiang, liu_yang, wu_lei
+male_303:   sun_hao
+female_302: wang_hong, chen_xue, zhao_wei, zhou_ting
+```
+
+### Preset Relationships (from `scripts/init_world.py`)
+
+```
+li_ming ↔ wang_hong    同桌    fav: 10/5   trust: 5/5
+li_ming ↔ zhang_qiang  前后桌  fav: 5/10   trust: 0/5
+li_ming ↔ liu_yang     室友    fav: 15/15  trust: 10/10
+li_ming ↔ wu_lei       室友    fav: 10/10  trust: 5/5
+zhang_qiang ↔ liu_yang 室友    fav: 5/5    trust: 5/5
+zhang_qiang ↔ wu_lei   室友    fav: -5/0   trust: 0/0
+chen_xue ↔ zhao_wei    同桌    fav: 5/10   trust: 5/5
+zhao_wei ↔ zhou_ting   前后桌  fav: 20/20  trust: 15/15
+wang_hong ↔ zhou_ting  室友    fav: 15/15  trust: 10/10
+wang_hong ↔ chen_xue   室友    fav: 5/5    trust: 5/5
+wang_hong ↔ zhao_wei   室友    fav: 10/10  trust: 5/5
+```
+
+---
+
+## Key Engineering Patterns
+
+- **Atomic writes** (`agent/storage.py:atomic_write_json`): All JSON writes use temp file + `os.fsync` + `os.replace` to prevent corruption on crash.
+- **Checkpoint-based recovery**: Every phase transition saves progress. On restart, the orchestrator skips completed phases/scenes/groups. Group status tracks: `pending` → `llm_done` → `applied`.
+- **Idempotent result application**: Scene-end results are saved with baseline relationship snapshots. Deltas are applied to baselines, not current values, so re-applying the same result is safe.
+- **Structured LLM output**: All LLM calls use Instructor's `response_model` parameter to guarantee Pydantic model parsing. No free-form text parsing anywhere.
+- **Async concurrency**: Daily plans and nightly compression run all agents concurrently, throttled by `asyncio.Semaphore(max_concurrent_llm_calls)`. Scene execution is sequential (each scene depends on the previous scene's state changes).
+- **Name ↔ ID mapping**: LLM prompts use Chinese names (李明). Code uses snake_case IDs (li_ming). `name_to_id` mapping is built from profiles during result application.
