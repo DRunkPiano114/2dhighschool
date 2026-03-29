@@ -463,11 +463,11 @@ All settings via `pydantic-settings` `BaseSettings`, loaded from `.env` file, ov
 | `analytical_temperature` | 0.3 | Scene-end analysis |
 | `plan_temperature` | 0.7 | Daily plan generation |
 | `compression_temperature` | 0.5 | Nightly compression |
-| `max_tokens_per_turn` | 300 | Dialogue turn max tokens |
-| `max_tokens_scene_end` | 1500 | Scene-end analysis max tokens |
-| `max_tokens_daily_plan` | 500 | Daily plan max tokens |
-| `max_tokens_compression` | 800 | Nightly compression max tokens |
-| `max_tokens_solo` | 300 | Solo reflection max tokens |
+| `max_tokens_per_turn` | 32000 | Dialogue turn max tokens |
+| `max_tokens_scene_end` | 32000 | Scene-end analysis max tokens |
+| `max_tokens_daily_plan` | 32000 | Daily plan max tokens |
+| `max_tokens_compression` | 32000 | Nightly compression max tokens |
+| `max_tokens_solo` | 32000 | Solo reflection max tokens |
 | `max_retries` | 3 | LLM call retries |
 | `max_concurrent_llm_calls` | 5 | Async semaphore limit |
 | `exam_interval_days` | 30 | Days between exams |
