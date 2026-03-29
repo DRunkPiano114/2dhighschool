@@ -454,7 +454,7 @@ src/sim/
 
 ## Configuration (`config.py`)
 
-All settings via `pydantic-settings` `BaseSettings`, overridable with `SIM_` env prefix:
+All settings via `pydantic-settings` `BaseSettings`, loaded from `.env` file, overridable with `SIM_` env prefix:
 
 | Setting | Default | Description |
 |---------|---------|-------------|
