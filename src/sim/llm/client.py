@@ -5,12 +5,14 @@ from ..config import settings
 
 # Suppress litellm debug logs
 litellm.suppress_debug_info = True
+# Drop params unsupported by some providers (e.g. volcengine + response_format)
+litellm.drop_params = True
 
 
 def get_instructor_client() -> instructor.AsyncInstructor:
     return instructor.from_litellm(
         litellm.acompletion,
-        mode=instructor.Mode.JSON,
+        mode=instructor.Mode.MD_JSON,
     )
 
 

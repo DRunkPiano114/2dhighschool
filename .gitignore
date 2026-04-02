@@ -13,3 +13,6 @@ __pycache__/
 
 # uv
 uv.lock
+
+# development
+.reports/
