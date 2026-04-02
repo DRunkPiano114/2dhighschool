@@ -1,4 +1,4 @@
-from ..models.agent import AgentProfile, AgentState, Role
+from ..models.agent import AgentProfile, AgentState, Emotion, Role
 from ..models.event import Event
 from ..models.memory import KeyMemory
 from ..models.relationship import Relationship, RelationshipFile
@@ -51,6 +51,11 @@ def prepare_context(
     next_exam_in_days: int,
     max_key_memories: int = 10,
     exam_context: str = "",
+    # PDA tick loop params
+    latest_event: str = "",
+    scene_transcript: str = "",
+    private_history: list[str] | None = None,
+    emotion_override: Emotion | None = None,
 ) -> dict:
     rels = storage.load_relationships()
     today_events = storage.read_today_md()
@@ -68,6 +73,8 @@ def prepare_context(
 
     role_desc = "学生" if profile.role == Role.STUDENT else "班主任兼语文老师"
 
+    effective_emotion = emotion_override if emotion_override else state.emotion
+
     return {
         "role_description": role_desc,
         "profile_summary": _profile_summary(profile),
@@ -82,4 +89,9 @@ def prepare_context(
         "teacher_present": scene.teacher_present,
         "current_state": state,
         "exam_context": exam_context,
+        # PDA tick loop
+        "latest_event": latest_event,
+        "scene_transcript": scene_transcript,
+        "private_history": private_history or [],
+        "tick_emotion": effective_emotion.value,
     }

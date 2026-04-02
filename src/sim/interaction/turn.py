@@ -1,5 +1,7 @@
+from __future__ import annotations
+
+import asyncio
 import time
-from difflib import SequenceMatcher
 
 from loguru import logger
 
@@ -9,27 +11,15 @@ from ..config import settings
 from ..llm.client import structured_call
 from ..llm.logger import log_llm_call
 from ..llm.prompts import render
-from ..models.agent import AgentProfile, AgentState
-from ..models.dialogue import TurnOutput
+from ..models.agent import AgentProfile, AgentState, Emotion
+from ..models.dialogue import PerceptionOutput
 from ..models.event import Event
 from ..models.scene import Scene
-from .speaker_selection import pick_first_speaker, pick_next_speaker
-
-REPETITION_THRESHOLD = 0.6
-
-
-def _format_turn(name: str, turn: TurnOutput) -> str:
-    parts = [f"【{name}】"]
-    if turn.directed_to:
-        parts.append(f"（对{turn.directed_to}）")
-    parts.append(f"：{turn.speech}")
-    if turn.action:
-        parts.append(f"  [{turn.action}]")
-    return "".join(parts)
+from .narrative import format_agent_transcript, format_latest_event
+from .resolution import ResolutionState, resolve_tick
 
 
-async def run_turn(
-    agent_id: str,
+async def run_perception(
     storage: AgentStorage,
     profile: AgentProfile,
     state: AgentState,
@@ -37,25 +27,31 @@ async def run_turn(
     all_profiles: dict[str, AgentProfile],
     known_events: list[Event],
     next_exam_in_days: int,
-    conversation_history: list[str],
+    latest_event: str,
+    scene_transcript: str,
+    private_history: list[str],
+    tick_emotion: Emotion,
     day: int,
     exam_context: str = "",
-) -> TurnOutput:
+) -> PerceptionOutput:
     ctx = prepare_context(
         storage, profile, state, scene, all_profiles,
         known_events, next_exam_in_days, exam_context=exam_context,
+        latest_event=latest_event,
+        scene_transcript=scene_transcript,
+        private_history=private_history,
+        emotion_override=tick_emotion,
     )
-    ctx["conversation_history"] = conversation_history
 
-    system_msg = render("dialogue_turn.j2", **ctx)
+    system_msg = render("perception_decision.j2", **ctx)
     messages = [{"role": "user", "content": system_msg}]
 
     start = time.time()
     result = await structured_call(
-        TurnOutput,
+        PerceptionOutput,
         messages,
-        temperature=settings.creative_temperature,
-        max_tokens=settings.max_tokens_per_turn,
+        temperature=settings.perception_temperature,
+        max_tokens=settings.max_tokens_perception,
     )
     latency = (time.time() - start) * 1000
 
@@ -63,11 +59,11 @@ async def run_turn(
         day=day,
         scene_name=scene.name,
         group_id=scene.scene_index,
-        call_type="dialogue_turn",
+        call_type="perception",
         input_messages=messages,
         output=result,
         latency_ms=latency,
-        temperature=settings.creative_temperature,
+        temperature=settings.perception_temperature,
     )
 
     return result
@@ -83,98 +79,104 @@ async def run_group_dialogue(
     next_exam_in_days: int,
     day: int,
     rng,
+    semaphore: asyncio.Semaphore,
     exam_context: str = "",
 ) -> list[dict]:
-    """Run a full group dialogue, return list of turn records."""
-    conversation_history: list[str] = []
-    turn_records: list[dict] = []
-    silent_counts: dict[str, int] = {aid: 0 for aid in group_agent_ids}
-    active_agents = list(group_agent_ids)
+    """Run a full group dialogue using the PDA tick loop."""
+    tick_records: list[dict] = []
+    resolution_state = ResolutionState(
+        active_agents=set(group_agent_ids),
+    )
+    tick_emotions: dict[str, Emotion] = {
+        aid: states[aid].emotion for aid in group_agent_ids
+    }
+    # Tick 0: opening event from scene
+    latest_event = scene.opening_event or scene.description
+    last_resolved_speech = None
 
-    # Pick first speaker
-    speaker = pick_first_speaker(active_agents, profiles, states, rng)
-    last_directed_to: str | None = None
-
-    for round_num in range(scene.max_rounds):
+    for tick in range(settings.max_ticks_per_scene):
+        active_agents = list(resolution_state.active_agents)
         if len(active_agents) < 2:
             break
 
-        # Safety valve
-        if round_num >= 50:
-            logger.warning(f"Safety valve: 50 rounds reached for {scene.name}")
+        # Determine which agents need to perceive (skip queued agents)
+        perceiving = [
+            aid for aid in active_agents
+            if aid not in resolution_state.queued_agents
+        ]
+
+        # PERCEIVE: all non-queued agents concurrently
+        async def _perceive(aid: str) -> tuple[str, PerceptionOutput]:
+            transcript, priv = format_agent_transcript(tick_records, aid, profiles)
+            async with semaphore:
+                result = await run_perception(
+                    storages[aid], profiles[aid], states[aid],
+                    scene, profiles,
+                    known_events_by_agent.get(aid, []),
+                    next_exam_in_days,
+                    latest_event, transcript, priv,
+                    tick_emotions[aid], day, exam_context,
+                )
+            return aid, result
+
+        perception_results = await asyncio.gather(
+            *[_perceive(aid) for aid in perceiving]
+        )
+        outputs: dict[str, PerceptionOutput] = dict(perception_results)
+
+        # Update in-memory emotions
+        for aid, out in outputs.items():
+            tick_emotions[aid] = out.emotion
+
+        # RESOLVE
+        result = resolve_tick(
+            outputs, resolution_state, profiles, states,
+            last_resolved_speech, rng,
+        )
+        resolution_state = result.updated_state
+
+        # RECORD
+        tick_record = {
+            "tick": tick,
+            "agent_outputs": outputs,
+            "resolved_speech": result.resolved_speech,
+            "resolved_actions": result.resolved_actions,
+            "whisper_events": result.whisper_events,
+            "environmental_event": result.environmental_event,
+            "exits": result.exits,
+        }
+        tick_records.append(tick_record)
+
+        # Log
+        if result.resolved_speech:
+            aid, out = result.resolved_speech
+            target = f"→{out.action_target}" if out.action_target else ""
+            logger.info(f"  Tick {tick}: {profiles[aid].name}(说话{target}): {out.action_content}")
+            last_resolved_speech = result.resolved_speech
+        else:
+            logger.info(f"  Tick {tick}: (安静)")
+
+        for aid, out in result.resolved_actions:
+            logger.info(f"  Tick {tick}: {profiles[aid].name}(动作): {out.action_content}")
+
+        for from_id, to_id, _ in result.whisper_events:
+            logger.info(f"  Tick {tick}: {profiles[from_id].name}(悄悄话→{profiles[to_id].name})")
+
+        for aid in result.exits:
+            logger.info(f"  Tick {tick}: {profiles[aid].name} 离开了")
+
+        # Update latest_event for next tick
+        latest_event = format_latest_event(
+            result.resolved_speech,
+            result.resolved_actions,
+            result.whisper_events,
+            result.environmental_event,
+            result.exits,
+            profiles,
+        )
+
+        if result.scene_should_end:
+            logger.info(f"  Scene ends naturally at tick {tick}")
             break
 
-        # Run turn
-        result = await run_turn(
-            speaker, storages[speaker], profiles[speaker], states[speaker],
-            scene, profiles, known_events_by_agent.get(speaker, []),
-            next_exam_in_days, conversation_history, day, exam_context,
-        )
-
-        # Validate directed_to against present characters
-        present_names = {profiles[aid].name for aid in group_agent_ids}
-        if result.directed_to and result.directed_to not in present_names:
-            result.directed_to = None
-
-        # Repetition detection
-        is_repetitive = False
-        # Check against own previous speeches
-        for prev in turn_records:
-            if prev["speaker"] == speaker:
-                prev_speech = prev["output"]["speech"]
-                if SequenceMatcher(None, result.speech, prev_speech).ratio() > REPETITION_THRESHOLD:
-                    is_repetitive = True
-                    break
-        # Check against last speaker's speech (catch identity confusion)
-        if not is_repetitive and turn_records:
-            last_speech = turn_records[-1]["output"]["speech"]
-            if SequenceMatcher(None, result.speech, last_speech).ratio() > REPETITION_THRESHOLD:
-                is_repetitive = True
-
-        if is_repetitive:
-            logger.info(f"  [repetition detected] {profiles[speaker].name} forced to exit")
-            active_agents.remove(speaker)
-            if len(active_agents) < 2:
-                break
-            speaker = pick_next_speaker(
-                active_agents, profiles, states,
-                speaker, last_directed_to,
-                silent_counts, scene.teacher_present, rng,
-            )
-            continue
-
-        # Format and append
-        formatted = _format_turn(profiles[speaker].name, result)
-        conversation_history.append(formatted)
-        turn_records.append({
-            "round": round_num,
-            "speaker": speaker,
-            "speaker_name": profiles[speaker].name,
-            "output": result.model_dump(),
-        })
-
-        logger.info(f"  Round {round_num}: {formatted}")
-
-        # Update silent counts
-        for aid in active_agents:
-            if aid == speaker:
-                silent_counts[aid] = 0
-            else:
-                silent_counts[aid] = silent_counts.get(aid, 0) + 1
-
-        # Check want_to_continue
-        if not result.want_to_continue:
-            active_agents.remove(speaker)
-            if len(active_agents) < 2:
-                break
-
-        last_directed_to = result.directed_to
-
-        # Pick next speaker
-        speaker = pick_next_speaker(
-            active_agents, profiles, states,
-            speaker, last_directed_to,
-            silent_counts, scene.teacher_present, rng,
-        )
-
-    return turn_records
+    return tick_records

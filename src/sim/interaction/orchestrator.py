@@ -218,7 +218,7 @@ class Orchestrator:
                 turn_records = await run_group_dialogue(
                     group.agent_ids, scene, storages, self.profiles,
                     self.states, known_events, progress.next_exam_in_days,
-                    day, self.rng,
+                    day, self.rng, self.semaphore,
                 )
                 gc.status = "llm_done"
                 self._save_progress(progress)
