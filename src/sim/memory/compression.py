@@ -44,6 +44,10 @@ async def nightly_compress(
     ]
     if profile.role == Role.STUDENT:
         parts.append(f"成绩：{profile.academics.overall_rank.value}")
+        parts.append(f"目标：{profile.academics.target.value}")
+    parts.append(f"家庭情况：{profile.family_background.situation}")
+    if profile.long_term_goals:
+        parts.append(f"长期目标：{'；'.join(profile.long_term_goals)}")
     profile_summary = "\n".join(parts)
 
     prompt = render(

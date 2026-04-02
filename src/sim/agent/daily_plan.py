@@ -37,10 +37,19 @@ async def generate_daily_plan(
         f"姓名：{profile.name}",
         f"性格：{'、'.join(profile.personality)}",
         f"成绩：{profile.academics.overall_rank.value}",
-        f"目标：{profile.academics.target.value}",
     ]
+    if profile.academics.strengths:
+        parts.append(f"擅长科目：{'、'.join(profile.academics.strengths)}")
+    if profile.academics.weaknesses:
+        parts.append(f"弱势科目：{'、'.join(profile.academics.weaknesses)}")
+    parts.append(f"学习态度：{profile.academics.study_attitude}")
+    parts.append(f"目标：{profile.academics.target.value}")
     if profile.position:
         parts.append(f"职务：{profile.position}")
+    parts.append(f"家庭期望：{profile.family_background.expectation}")
+    parts.append(f"家庭情况：{profile.family_background.situation}")
+    if profile.long_term_goals:
+        parts.append(f"长期目标：{'；'.join(profile.long_term_goals)}")
     profile_summary = "\n".join(parts)
 
     prompt = render(

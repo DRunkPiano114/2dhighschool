@@ -422,7 +422,7 @@ All LLM calls go through `llm/client.py:structured_call()` which uses Instructor
 All templates include `system_base.j2` (shared system prompt establishing the Chinese high school setting, natural dialogue requirements, role consistency rules, and few-shot examples of natural Chinese teen speech patterns).
 
 Context assembly (`agent/context.py:prepare_context()`):
-- Profile summary (name, gender, personality, speaking style, academics, backstory)
+- Profile summary (name, gender, personality, speaking style, academic rank/strengths/weaknesses/study attitude/homework habit/target, position, family expectation/situation, long-term goals, backstory)
 - Relationships filtered to agents present in the scene
 - Today's events so far (`today.md`)
 - Recent memory (last 3 days from `recent.md`)

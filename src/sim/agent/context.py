@@ -16,9 +16,19 @@ def _profile_summary(profile: AgentProfile) -> str:
     ]
     if profile.role == Role.STUDENT:
         parts.append(f"成绩：{profile.academics.overall_rank.value}")
+        if profile.academics.strengths:
+            parts.append(f"擅长科目：{'、'.join(profile.academics.strengths)}")
+        if profile.academics.weaknesses:
+            parts.append(f"弱势科目：{'、'.join(profile.academics.weaknesses)}")
+        parts.append(f"学习态度：{profile.academics.study_attitude}")
+        parts.append(f"作业习惯：{profile.academics.homework_habit}")
         parts.append(f"目标：{profile.academics.target.value}")
         if profile.position:
             parts.append(f"职务：{profile.position}")
+    parts.append(f"家庭期望：{profile.family_background.expectation}")
+    parts.append(f"家庭情况：{profile.family_background.situation}")
+    if profile.long_term_goals:
+        parts.append(f"长期目标：{'；'.join(profile.long_term_goals)}")
     parts.append(f"背景：{profile.backstory}")
     return "\n".join(parts)
 
