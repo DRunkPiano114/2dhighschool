@@ -15,8 +15,8 @@ Four-layer design, all source code in `src/sim/`:
 ```
 ┌──────────────────────────────────────────────────────────┐
 │  Interaction Layer  (interaction/)                        │
-│  Orchestrator, dialogue turns, scene-end analysis,       │
-│  result application, solo reflection                     │
+│  Orchestrator, dialogue turns, tick resolution,          │
+│  scene-end analysis, result application, solo reflection │
 ├──────────────────────────────────────────────────────────┤
 │  Agent Layer  (agent/)                                   │
 │  Profile/state storage, context assembly,                │
@@ -70,22 +70,39 @@ For each scene in `data/schedule.json` (sequentially):
 - For 宿舍 scenes: group by dorm assignment.
 - For other scenes: greedy affinity clustering (max group size 5). Affinity = bidirectional favorability + structural label bonus (室友 +20, 同桌 +15, 前后桌 +10) + same-gender bonus (+5, or +100 in dorms) + random noise ±10.
 
-**Step 2c — Group Interaction** (`interaction/turn.py`):
-- Multi-turn dialogue loop. Each turn:
-  1. Build agent context via `agent/context.py:prepare_context()` — assembles profile, relationships (filtered to present agents), today.md, last 3 days of recent.md, relevant key memories (by tag overlap), pending intentions, scene info, known events
-  2. Render `dialogue_turn.j2` template with full context + conversation history
-  3. LLM returns `TurnOutput`: `speech`, `directed_to`, `inner_thought`, `action`, `emotion`, `want_to_continue`
-  4. `directed_to` is validated against present agent names; invalid targets are set to `null`
-  5. Repetition detection: compares speech against the speaker's own previous speeches and the last speaker's speech using `SequenceMatcher` (threshold 0.6). If repetitive, the turn is **discarded** (not recorded in conversation history or turn records) and the agent is silently removed from the conversation
-  6. If `want_to_continue=false`, agent exits the conversation
-- Speaker selection (`interaction/speaker_selection.py`): scoring formula = base_desire (extrovert 8 / introvert 3 / default 5) + addressed bonus (+20 if last turn was directed at them) + intention bonus (+3) + silent rounds bonus (min(rounds×1.5, 8)) + emotion modifier (±3) + energy modifier ((energy-50)/25) + teacher suppression (×0.6) + random noise ±2. Highest score speaks next.
-- Safety valve: max 50 rounds, regardless of `scene.max_rounds`.
-- Conversation summarization: after 15 rounds, older turns are replaced with a brief summary, keeping only the last 8 turns.
+**Step 2c — Group Interaction: PDA Tick Loop** (`interaction/turn.py`):
+
+Each tick, ALL agents in the group perceive the latest event, decide what to do, and a resolution step handles simultaneous actions. This replaces the old turn-based speaker selection system.
+
+Tick loop (`run_group_dialogue`):
+```
+for tick in range(max_ticks_per_scene):
+    1. PERCEIVE: all non-queued active agents concurrently (semaphore-throttled)
+       - Build per-agent context via prepare_context() with PDA params:
+         latest_event, scene_transcript, private_history, emotion_override
+       - Render perception_decision.j2 template
+       - LLM returns PerceptionOutput: observation, inner_thought, emotion,
+         action_type (speak/whisper/non_verbal/observe/exit),
+         action_content, action_target, urgency (1-10), is_disruptive
+    2. RESOLVE: resolve_tick() determines what happens (see PDA Tick Resolution)
+    3. RECORD: store tick_record with all agent outputs + resolved actions
+    4. UPDATE: latest_event for next tick from resolved actions
+    5. CHECK: scene ends if consecutive_all_observe >= 3 and tick_count >= 3
+```
+
+- Tick 0 starts with `scene.opening_event` as the latest event (randomly selected from `schedule.json:opening_events` per scene config)
+- Queued agents (losers from previous tick's speaker resolution) skip the PERCEIVE step and reuse their previous PerceptionOutput with +3 urgency per tick queued
+- Narrative formatting (`interaction/narrative.py`):
+  - `format_public_transcript()`: public events visible to all (speech, whisper notices, actions, exits). Mid-scene summarization after 12 ticks: ticks 1-6 are collapsed into a one-line summary
+  - `format_agent_transcript()`: public view + agent's own prior observations and inner thoughts as private history
+  - `format_latest_event()`: one-line summary of what just happened, used as the "latest event" for next tick's perception prompt
 
 **Step 2c (solo)** — `interaction/solo.py`: If a group has `is_solo=true`, run `solo_reflection.j2` instead → returns `SoloReflection` with `inner_thought`, `emotion`, `activity`.
 
 **Step 2d — Scene-End Analysis** (`interaction/scene_end.py`):
-- Feed the complete conversation log to LLM with `scene_end_analysis.j2` (analytical temperature 0.3)
+- Build conversation log from tick_records using `format_public_transcript()` (includes speech, whisper notices, non-verbal actions, exits). Inner thoughts and observations are NOT included — analysis only sees externally observable behavior.
+- `long_conversation` threshold: 12 ticks (was 20 turns)
+- Feed the conversation log to LLM with `scene_end_analysis.j2` (analytical temperature 0.3)
 - Returns `SceneEndAnalysis`:
   - `key_moments`: list of significant events as one-line summaries
   - `relationship_changes`: list of `RelationshipChange` (from_agent, to_agent, favorability/trust/understanding deltas). Scale: ±1-3 for normal chat, ±3-5 for meaningful interactions, ±10+ for extreme events
@@ -199,7 +216,10 @@ groups: list[GroupAssignment]    # group_id, agent_ids, is_solo
 injected_events: list[str]      # Random events injected into LOW→HIGH_LIGHT scenes
 teacher_present: bool
 teacher_action: str | None
+opening_event: str               # Randomly selected from schedule.json opening_events, used as tick 0 event
 ```
+
+`SceneConfig` also has `opening_events: list[str]` — pool of environment descriptions for the PDA loop's initial tick.
 
 ### Event (`models/event.py`)
 
@@ -218,13 +238,25 @@ active: bool                     # False after event_expire_days
 ### Dialogue Models (`models/dialogue.py`)
 
 ```
-TurnOutput:
-  speech: str                    # What the agent says
-  directed_to: str | None        # Name of who they're talking to (null = everyone)
-  inner_thought: str             # Private thought (can differ from speech)
-  action: str | None             # Physical action (e.g. "低头写作业")
+ActionType: speak | whisper | non_verbal | observe | exit
+
+PerceptionOutput:                  # PDA tick loop output per agent per tick
+  observation: str                 # What the agent noticed (1 sentence)
+  inner_thought: str               # What they're thinking (1-2 sentences)
+  emotion: Emotion                 # Updated emotion after perceiving
+  action_type: ActionType          # What they decide to do
+  action_content: str | None       # Speech/action text (null if observe)
+  action_target: str | None        # Who it's directed at (null if general)
+  urgency: int (1-10)             # How strongly they want to act
+  is_disruptive: bool             # For non_verbal: would this get everyone's attention?
+
+TurnOutput:                        # Legacy model (kept for reference, no longer used in PDA loop)
+  speech: str
+  directed_to: str | None
+  inner_thought: str
+  action: str | None
   emotion: Emotion
-  want_to_continue: bool         # False = agent leaves the conversation
+  want_to_continue: bool
 
 SceneEndAnalysis:
   key_moments: list[str]
@@ -318,6 +350,38 @@ score = base(overall_rank) + subject_mod(±5 for strengths/weaknesses)
 - Attitude coefficient maps `study_attitude` text → 0.0-1.2 multiplier
 - Post-exam effects: rank drop ≥5 → SAD, rank rise ≥5 → EXCITED, high-pressure family + rank>5 → ANXIOUS, energy -15
 
+### PDA Tick Resolution (`interaction/resolution.py`)
+
+Pure Python, no LLM calls. Resolves one tick of the Perception-Decision-Action loop.
+
+**State** (`ResolutionState`): tracks queued speakers (agent_id → PerceptionOutput + ticks_queued), consecutive all-observe count, tick count, and active agent set.
+
+**Speaker arbitration**: when multiple agents want to SPEAK in the same tick, a resolution score determines who speaks:
+```
+resolution_score = urgency + bonuses
+```
+Bonuses:
+- +5 if agent was addressed in the previous resolved speech (action_target matches agent name)
+- +3 if agent has an unfulfilled intention targeting someone present
+- +3 per tick queued (from previous ticks)
+
+**Urgency clustering fallback**: if variance of urgency values among this tick's speakers is ≤ 2 (everyone equally urgent), bonuses become the primary signal and urgency is demoted to a 0.1× tiebreaker. This prevents urgency from dominating when LLM outputs cluster.
+
+Ties broken randomly via the provided `rng`.
+
+**Queue management**: losers are queued with their PerceptionOutput. Queued agents whose action_target has exited are discarded. Queued outputs expire after 3 ticks.
+
+**Action resolution by type**:
+| ActionType | Resolution |
+|------------|-----------|
+| SPEAK | Competes for single speaker slot via scoring |
+| WHISPER | Goes to whisper_events as (from_id, to_id, content) |
+| NON_VERBAL | All resolve simultaneously into resolved_actions. If is_disruptive=True, generates environmental_event string: `【动作】{name}: {content}` |
+| OBSERVE | No action. Contributes to all-observe count |
+| EXIT | Agent removed from active set |
+
+**Scene termination**: scene ends when `consecutive_all_observe >= settings.consecutive_observe_to_end` (default 3) AND `tick_count >= settings.min_ticks_before_termination` (default 3). "All observe" requires all active agents chose OBSERVE and no queued speakers are waiting.
+
 ### Gossip Propagation (`world/event_queue.py`)
 
 Before each group interaction:
@@ -339,7 +403,7 @@ Tag-overlap based (not embedding-based):
 Rule-driven, not a full agent:
 - **Post-exam talks**: 70% chance of talking to students whose rank dropped by 3+. Creates a `teacher_talk` event with 0.7 spread probability.
 - **Patrol events**: 30% chance during 晚自习/早读 of generating discipline/patrol events. During 上课, generates random classroom events (点名, 传纸条被发现, etc.).
-- **Suppression effect**: When `teacher_present=true`, speaker selection multiplies desire by 0.6.
+- **Suppression effect**: When `teacher_present=true`, the perception template includes a warning ("班主任正在附近，说话注意点！") that naturally suppresses agent speech urgency.
 
 ---
 
@@ -349,15 +413,15 @@ All LLM calls go through `llm/client.py:structured_call()` which uses Instructor
 
 | Call Type | Template | Response Model | Temperature | Max Tokens |
 |-----------|----------|---------------|-------------|------------|
-| Daily plan | `daily_plan.j2` | `DailyPlan` | 0.7 | 500 |
-| Dialogue turn | `dialogue_turn.j2` | `TurnOutput` | 0.9 | 300 |
-| Solo reflection | `solo_reflection.j2` | `SoloReflection` | 0.9 | 300 |
-| Scene-end analysis | `scene_end_analysis.j2` | `SceneEndAnalysis` | 0.3 | 1500 |
-| Nightly compression | `nightly_compress.j2` | `CompressionResult` | 0.5 | 800 |
+| Perception (PDA) | `perception_decision.j2` | `PerceptionOutput` | 0.9 | 32000 |
+| Daily plan | `daily_plan.j2` | `DailyPlan` | 0.7 | 32000 |
+| Solo reflection | `solo_reflection.j2` | `SoloReflection` | 0.9 | 32000 |
+| Scene-end analysis | `scene_end_analysis.j2` | `SceneEndAnalysis` | 0.3 | 32000 |
+| Nightly compression | `nightly_compress.j2` | `CompressionResult` | 0.5 | 32000 |
 
-All templates include `system_base.j2` (shared system prompt establishing the Chinese high school setting, natural dialogue requirements, and role consistency rules).
+All templates include `system_base.j2` (shared system prompt establishing the Chinese high school setting, natural dialogue requirements, role consistency rules, and few-shot examples of natural Chinese teen speech patterns).
 
-Context assembly for dialogue/solo templates (`agent/context.py:prepare_context()`):
+Context assembly (`agent/context.py:prepare_context()`):
 - Profile summary (name, gender, personality, speaking style, academics, backstory)
 - Relationships filtered to agents present in the scene
 - Today's events so far (`today.md`)
@@ -367,7 +431,11 @@ Context assembly for dialogue/solo templates (`agent/context.py:prepare_context(
 - Scene info (time, location, who's present)
 - Known events (gossip the agent knows about)
 - Exam countdown context
-- Conversation history (for dialogue turns). The prompt reinforces present-agent names in both the constraint section and the `directed_to` field description to prevent agents from addressing absent characters
+- PDA tick loop params (used by `perception_decision.j2`):
+  - `latest_event`: what just happened (string)
+  - `scene_transcript`: formatted public events so far
+  - `private_history`: agent's own prior observations + inner thoughts
+  - `tick_emotion`: in-memory emotion override (updated each tick without persisting to state)
 
 Every LLM call is logged to `logs/day_NNN/scene_name/group_id/calltype_timestamp.json` with full input/output, latency, and token counts. Costs are appended to `logs/costs.jsonl`.
 
@@ -406,6 +474,11 @@ logs/                            # Simulation logs (gitignored)
       group_id/
         calltype_timestamp.json  # Individual LLM call logs
 
+tests/                           # Unit tests (pytest)
+  test_resolution.py             # PDA tick resolution logic (31 tests)
+  test_narrative.py              # Transcript formatting and summarization
+  test_models.py                 # Pydantic model validation (PerceptionOutput, ActionType)
+
 scripts/
   init_world.py                  # Initialize agents/ and world/ from data/characters/
   inspect_state.py               # Debug tool to view current simulation state
@@ -428,8 +501,9 @@ src/sim/
     homeroom_teacher.py          # HomeroomTeacher — rule-driven post-exam talks + patrol events
   interaction/                   # Scene execution logic
     orchestrator.py              # Orchestrator — main simulation loop
-    turn.py                      # run_turn() + run_group_dialogue() — multi-turn dialogue
-    speaker_selection.py         # compute_speaking_desire() + pick_first/next_speaker()
+    turn.py                      # run_perception() + run_group_dialogue() — PDA tick loop
+    resolution.py                # resolve_tick() — PDA tick resolution (speaker arbitration, queue, scene end)
+    narrative.py                 # format_public_transcript(), format_agent_transcript(), format_latest_event()
     scene_end.py                 # run_scene_end_analysis() — post-dialogue LLM analysis
     apply_results.py             # apply_scene_end_results() + apply_solo_result()
     solo.py                      # run_solo_reflection() — solo agent inner monologue
@@ -442,9 +516,10 @@ src/sim/
     retrieval.py                 # get_relevant_memories() — tag-overlap retrieval
     writer.py                    # Helper wrappers for today.md and key_memory writes
   templates/                     # Jinja2 prompt templates (all in Chinese)
-    system_base.j2               # Shared system prompt (high school setting + dialogue rules)
+    system_base.j2               # Shared system prompt (high school setting + dialogue rules + few-shot teen speech examples)
+    perception_decision.j2       # PDA tick loop perception prompt (replaces dialogue_turn.j2 for group dialogue)
+    dialogue_turn.j2             # Legacy per-turn dialogue (kept for A/B comparison reference)
     daily_plan.j2                # Morning plan generation
-    dialogue_turn.j2             # Per-turn dialogue (includes full context + conversation history)
     solo_reflection.j2           # Solo inner monologue
     scene_end_analysis.j2        # Post-dialogue analysis (relationship changes, events, memories)
     nightly_compress.j2          # Daily summary + permanent memory extraction
@@ -469,6 +544,11 @@ All settings via `pydantic-settings` `BaseSettings`, loaded from `.env` file, ov
 | `max_tokens_compression` | 32000 | Nightly compression max tokens |
 | `max_tokens_solo` | 32000 | Solo reflection max tokens |
 | `max_retries` | 3 | LLM call retries |
+| `max_ticks_per_scene` | 30 | Hard cap on ticks per PDA scene |
+| `min_ticks_before_termination` | 3 | Minimum ticks before scene can end |
+| `consecutive_observe_to_end` | 3 | Consecutive all-observe ticks to trigger scene end |
+| `perception_temperature` | 0.9 | PDA perception LLM call temperature |
+| `max_tokens_perception` | 32000 | PDA perception max tokens |
 | `max_concurrent_llm_calls` | 5 | Async semaphore limit |
 | `exam_interval_days` | 30 | Days between exams |
 | `event_expire_days` | 3 | Days before events become inactive |
