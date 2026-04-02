@@ -26,16 +26,16 @@ class HomeroomTeacher:
             rank_change = result.get("rank_change", 0)
             if rank_change <= -3 and self.rng.random() < 0.7:
                 name = result["name"]
-                action = f"王老师找{name}谈话，因为排名下滑了{abs(rank_change)}名"
+                action = f"何老师找{name}谈话，因为排名下滑了{abs(rank_change)}名"
                 actions.append(action)
 
                 # Create event
                 event_manager.add_event(
-                    text=f"王老师找{name}谈话了（月考退步）",
+                    text=f"何老师找{name}谈话了（月考退步）",
                     category="teacher_talk",
                     source_scene="办公室",
                     source_day=day,
-                    witnesses=[aid, "wang_laoshi"],
+                    witnesses=[aid, "he_min"],
                     spread_probability=0.7,
                 )
 
@@ -48,19 +48,19 @@ class HomeroomTeacher:
         if scene_name in ("晚自习", "早读"):
             if self.rng.random() < 0.3:
                 events = [
-                    ("王老师巡视时发现有人在聊天，严厉地看了一眼", "discipline"),
-                    ("王老师在教室后面站了一会儿，大家都安静了", "patrol"),
-                    ("王老师提醒大家要抓紧时间复习", "reminder"),
+                    ("何老师巡视时发现有人在聊天，严厉地看了一眼", "discipline"),
+                    ("何老师在教室后面站了一会儿，大家都安静了", "patrol"),
+                    ("何老师提醒大家要抓紧时间复习", "reminder"),
                 ]
                 text, category = self.rng.choice(events)
                 return {"text": text, "category": category}
 
         if scene_name == "上课":
             events = [
-                ("王老师突然点名提问", "classroom"),
-                ("有人上课传纸条被王老师发现", "discipline"),
-                ("王老师批评了一个走神的同学", "discipline"),
-                ("王老师讲了个冷笑话，全班都笑了", "humor"),
+                ("何老师突然点名提问", "classroom"),
+                ("有人上课传纸条被何老师发现", "discipline"),
+                ("何老师批评了一个走神的同学", "discipline"),
+                ("何老师讲了个冷笑话，全班都笑了", "humor"),
             ]
             text, category = self.rng.choice(events)
             return {"text": text, "category": category}

@@ -12,17 +12,17 @@ WORLD_DIR = ROOT / "world"
 # Preset relationships (Day 1)
 # Format: (agent_a, agent_b, label, a_fav, b_fav, a_trust, b_trust)
 PRESET_RELATIONSHIPS = [
-    ("li_ming", "wang_hong", "同桌", 10, 5, 5, 5),
-    ("li_ming", "zhang_qiang", "前后桌", 5, 10, 0, 5),
-    ("li_ming", "liu_yang", "室友", 15, 15, 10, 10),
-    ("li_ming", "wu_lei", "室友", 10, 10, 5, 5),
-    ("zhang_qiang", "liu_yang", "室友", 5, 5, 5, 5),
-    ("zhang_qiang", "wu_lei", "室友", -5, 0, 0, 0),
-    ("chen_xue", "zhao_wei", "同桌", 5, 10, 5, 5),
-    ("zhao_wei", "zhou_ting", "前后桌", 20, 20, 15, 15),
-    ("wang_hong", "zhou_ting", "室友", 15, 15, 10, 10),
-    ("wang_hong", "chen_xue", "室友", 5, 5, 5, 5),
-    ("wang_hong", "zhao_wei", "室友", 10, 10, 5, 5),
+    ("lin_zhaoyu", "tang_shihan", "同桌", 10, 5, 5, 5),
+    ("lin_zhaoyu", "jiang_haotian", "前后桌", 5, 10, 0, 5),
+    ("lin_zhaoyu", "lu_siyuan", "室友", 15, 15, 10, 10),
+    ("lin_zhaoyu", "shen_yifan", "室友", 10, 10, 5, 5),
+    ("jiang_haotian", "lu_siyuan", "室友", 5, 5, 5, 5),
+    ("jiang_haotian", "shen_yifan", "室友", -5, 0, 0, 0),
+    ("cheng_yutong", "su_nianyao", "同桌", 5, 10, 5, 5),
+    ("su_nianyao", "fang_yuchen", "前后桌", 20, 20, 15, 15),
+    ("tang_shihan", "fang_yuchen", "室友", 15, 15, 10, 10),
+    ("tang_shihan", "cheng_yutong", "室友", 5, 5, 5, 5),
+    ("tang_shihan", "su_nianyao", "室友", 10, 10, 5, 5),
 ]
 
 

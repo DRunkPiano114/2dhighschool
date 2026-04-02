@@ -6,9 +6,9 @@ from .schedule import load_schedule
 
 # Dorm assignments
 DORM_MEMBERS: dict[str, list[str]] = {
-    "male_301": ["li_ming", "zhang_qiang", "liu_yang", "wu_lei"],
-    "male_303": ["sun_hao"],
-    "female_302": ["wang_hong", "chen_xue", "zhao_wei", "zhou_ting"],
+    "male_301": ["lin_zhaoyu", "jiang_haotian", "lu_siyuan", "shen_yifan"],
+    "male_303": ["he_jiajun"],
+    "female_302": ["tang_shihan", "cheng_yutong", "su_nianyao", "fang_yuchen"],
 }
 
 
