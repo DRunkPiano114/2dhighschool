@@ -147,14 +147,14 @@ For each student (concurrently):
 ### AgentProfile (`models/agent.py`) — Immutable
 
 ```
-agent_id: str                    # e.g. "li_ming"
-name: str                        # e.g. "李明"
+agent_id: str                    # e.g. "lin_zhaoyu"
+name: str                        # e.g. "林昭宇"
 gender: Gender                   # male | female
 role: Role                       # student | homeroom_teacher
 seat_number: int | None
 dorm_id: str | None              # e.g. "male_301"
 position: str | None             # e.g. "班长", "学习委员"
-personality: list[str]           # e.g. ["内向", "认真", "敏感"]
+personality: list[str]           # e.g. ["内向", "认真", "敏感"] (林昭宇)
 speaking_style: str              # natural language description
 academics: Academics
   overall_rank: OverallRank      # top | 上游 | 中上 | 中游 | 中下 | 下游
@@ -446,9 +446,9 @@ Every LLM call is logged to `logs/day_NNN/scene_name/group_id/calltype_timestamp
 ```
 data/
   characters/                    # 10 student + 1 teacher JSON profiles (immutable source of truth)
-    li_ming.json, wang_hong.json, zhang_qiang.json, liu_yang.json,
-    sun_hao.json, wu_lei.json, chen_xue.json, zhao_wei.json,
-    zhou_ting.json, wang_laoshi.json
+    lin_zhaoyu.json, tang_shihan.json, jiang_haotian.json, lu_siyuan.json,
+    he_jiajun.json, shen_yifan.json, cheng_yutong.json, su_nianyao.json,
+    fang_yuchen.json, he_min.json
   schedule.json                  # 8 daily scenes: 07:00 早读 → 22:00 宿舍夜聊
 
 agents/                          # Runtime state (gitignored, created by init_world.py)
@@ -573,25 +573,25 @@ All settings via `pydantic-settings` `BaseSettings`, loaded from `.env` file, ov
 ### Dorm Assignments (hardcoded in `world/scene_generator.py`)
 
 ```
-male_301:   li_ming, zhang_qiang, liu_yang, wu_lei
-male_303:   sun_hao
-female_302: wang_hong, chen_xue, zhao_wei, zhou_ting
+male_301:   lin_zhaoyu, jiang_haotian, lu_siyuan, shen_yifan
+male_303:   he_jiajun
+female_302: tang_shihan, cheng_yutong, su_nianyao, fang_yuchen
 ```
 
 ### Preset Relationships (from `scripts/init_world.py`)
 
 ```
-li_ming ↔ wang_hong    同桌    fav: 10/5   trust: 5/5
-li_ming ↔ zhang_qiang  前后桌  fav: 5/10   trust: 0/5
-li_ming ↔ liu_yang     室友    fav: 15/15  trust: 10/10
-li_ming ↔ wu_lei       室友    fav: 10/10  trust: 5/5
-zhang_qiang ↔ liu_yang 室友    fav: 5/5    trust: 5/5
-zhang_qiang ↔ wu_lei   室友    fav: -5/0   trust: 0/0
-chen_xue ↔ zhao_wei    同桌    fav: 5/10   trust: 5/5
-zhao_wei ↔ zhou_ting   前后桌  fav: 20/20  trust: 15/15
-wang_hong ↔ zhou_ting  室友    fav: 15/15  trust: 10/10
-wang_hong ↔ chen_xue   室友    fav: 5/5    trust: 5/5
-wang_hong ↔ zhao_wei   室友    fav: 10/10  trust: 5/5
+lin_zhaoyu ↔ tang_shihan    同桌    fav: 10/5   trust: 5/5
+lin_zhaoyu ↔ jiang_haotian  前后桌  fav: 5/10   trust: 0/5
+lin_zhaoyu ↔ lu_siyuan      室友    fav: 15/15  trust: 10/10
+lin_zhaoyu ↔ shen_yifan     室友    fav: 10/10  trust: 5/5
+jiang_haotian ↔ lu_siyuan   室友    fav: 5/5    trust: 5/5
+jiang_haotian ↔ shen_yifan  室友    fav: -5/0   trust: 0/0
+cheng_yutong ↔ su_nianyao   同桌    fav: 5/10   trust: 5/5
+su_nianyao ↔ fang_yuchen    前后桌  fav: 20/20  trust: 15/15
+tang_shihan ↔ fang_yuchen   室友    fav: 15/15  trust: 10/10
+tang_shihan ↔ cheng_yutong  室友    fav: 5/5    trust: 5/5
+tang_shihan ↔ su_nianyao    室友    fav: 10/10  trust: 5/5
 ```
 
 ---
@@ -603,4 +603,4 @@ wang_hong ↔ zhao_wei   室友    fav: 10/10  trust: 5/5
 - **Idempotent result application**: Scene-end results are saved with baseline relationship snapshots. Deltas are applied to baselines, not current values, so re-applying the same result is safe.
 - **Structured LLM output**: All LLM calls use Instructor's `response_model` parameter to guarantee Pydantic model parsing. No free-form text parsing anywhere.
 - **Async concurrency**: Daily plans and nightly compression run all agents concurrently, throttled by `asyncio.Semaphore(max_concurrent_llm_calls)`. Scene execution is sequential (each scene depends on the previous scene's state changes).
-- **Name ↔ ID mapping**: LLM prompts use Chinese names (李明). Code uses snake_case IDs (li_ming). `name_to_id` mapping is built from profiles during result application.
+- **Name ↔ ID mapping**: LLM prompts use Chinese names (林昭宇). Code uses snake_case IDs (lin_zhaoyu). `name_to_id` mapping is built from profiles during result application.
