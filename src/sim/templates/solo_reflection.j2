@@ -28,9 +28,17 @@
 {% endfor %}
 {% endif %}
 
-{% if active_concerns %}
+{% set negative_concerns = active_concerns | rejectattr('positive') | list %}
+{% set positive_concerns = active_concerns | selectattr('positive') | list %}
+{% if negative_concerns %}
 ## 你最近心里挥之不去的事
-{% for concern in active_concerns %}
+{% for concern in negative_concerns %}
+- {{ concern.text }}（{{ concern.emotion }}，强度{{ concern.intensity }}/10）
+{% endfor %}
+{% endif %}
+{% if positive_concerns %}
+## 你最近心里期待的事
+{% for concern in positive_concerns %}
 - {{ concern.text }}（{{ concern.emotion }}，强度{{ concern.intensity }}/10）
 {% endfor %}
 {% endif %}

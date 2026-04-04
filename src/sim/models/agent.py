@@ -83,6 +83,7 @@ class AgentProfile(BaseModel):
     family_background: FamilyBackground
     long_term_goals: list[str] = Field(default_factory=list)
     backstory: str = ""
+    inner_conflicts: list[str] = Field(default_factory=list)
 
 
 class Intention(BaseModel):
@@ -100,6 +101,7 @@ class ActiveConcern(BaseModel):
     emotion: str = ""            # "羞耻"
     intensity: int = Field(default=5, ge=1, le=10)
     related_people: list[str] = Field(default_factory=list)
+    positive: bool = False
 
 
 class LocationPreference(BaseModel):
@@ -121,4 +123,4 @@ class AgentState(BaseModel):
     location: str = "教室"
     daily_plan: DailyPlan = Field(default_factory=DailyPlan)
     day: int = 1
-    active_concerns: list[ActiveConcern] = Field(default_factory=list)  # max 3
+    active_concerns: list[ActiveConcern] = Field(default_factory=list)  # max 4

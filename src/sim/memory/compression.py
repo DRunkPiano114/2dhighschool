@@ -27,6 +27,7 @@ class CompressionConcernCandidate(BaseModel):
     emotion: str = ""
     intensity: int = Field(default=5, ge=1, le=10)
     related_people: list[str] = Field(default_factory=list)
+    positive: bool = False
 
 
 class CompressionResult(BaseModel):
@@ -57,11 +58,19 @@ async def nightly_compress(
     parts.append(f"家庭情况：{profile.family_background.situation}")
     if profile.long_term_goals:
         parts.append(f"长期目标：{'；'.join(profile.long_term_goals)}")
+    if profile.inner_conflicts:
+        parts.append(f"内心矛盾：{'；'.join(profile.inner_conflicts)}")
     profile_summary = "\n".join(parts)
 
     # Load active concerns for context
     state = storage.load_state()
     active_concerns = state.active_concerns
+
+    unfulfilled_intentions = [
+        f"{i.goal}（{i.reason}）"
+        for i in state.daily_plan.intentions
+        if not i.fulfilled
+    ]
 
     prompt = render(
         "nightly_compress.j2",
@@ -69,6 +78,7 @@ async def nightly_compress(
         profile_summary=profile_summary,
         today_md_content=today_content,
         active_concerns=active_concerns,
+        unfulfilled_intentions=unfulfilled_intentions,
     )
 
     messages = [{"role": "user", "content": prompt}]
@@ -119,6 +129,7 @@ async def nightly_compress(
             text=cc.text, source_event=cc.source_event,
             source_scene="", source_day=day, emotion=cc.emotion,
             intensity=cc.intensity, related_people=cc.related_people,
+            positive=cc.positive,
         )
         # Structural dedup
         is_dup = False

@@ -50,6 +50,8 @@ async def generate_daily_plan(
     parts.append(f"家庭情况：{profile.family_background.situation}")
     if profile.long_term_goals:
         parts.append(f"长期目标：{'；'.join(profile.long_term_goals)}")
+    if profile.inner_conflicts:
+        parts.append(f"内心矛盾：{'；'.join(profile.inner_conflicts)}")
     profile_summary = "\n".join(parts)
 
     # Load concerns and self-narrative for context
@@ -67,6 +69,7 @@ async def generate_daily_plan(
         yesterday_unfulfilled=yesterday_unfulfilled,
         active_concerns=active_concerns,
         self_narrative=self_narrative,
+        inner_conflicts=profile.inner_conflicts,
     )
 
     messages = [{"role": "user", "content": prompt}]

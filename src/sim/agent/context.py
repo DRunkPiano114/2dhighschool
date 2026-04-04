@@ -30,6 +30,8 @@ def _profile_summary(profile: AgentProfile) -> str:
     if profile.long_term_goals:
         parts.append(f"长期目标：{'；'.join(profile.long_term_goals)}")
     parts.append(f"背景：{profile.backstory}")
+    if profile.inner_conflicts:
+        parts.append(f"内心矛盾：{'；'.join(profile.inner_conflicts)}")
     return "\n".join(parts)
 
 
@@ -66,6 +68,7 @@ def prepare_context(
     scene_transcript: str = "",
     private_history: list[str] | None = None,
     emotion_override: Emotion | None = None,
+    emotion_trace: list[str] | None = None,
 ) -> dict:
     rels = storage.load_relationships()
     today_events = storage.read_today_md()
@@ -107,4 +110,7 @@ def prepare_context(
         # Concerns + self-narrative
         "active_concerns": [c for c in state.active_concerns],
         "self_narrative": storage.read_self_narrative(),
+        # Emotion chain + inner conflicts
+        "emotion_trace": emotion_trace or [],
+        "inner_conflicts": profile.inner_conflicts,
     }

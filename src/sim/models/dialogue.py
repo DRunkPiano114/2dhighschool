@@ -115,6 +115,7 @@ class AgentConcernCandidate(BaseModel):
     emotion: str = ""
     intensity: int = Field(default=5, ge=1, le=10)
     related_people: list[str] = Field(default_factory=list)
+    positive: bool = False
 
 
 class AgentConcernUpdate(BaseModel):

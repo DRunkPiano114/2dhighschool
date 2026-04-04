@@ -35,6 +35,8 @@ async def generate_self_narrative(
     parts.append(f"家庭情况：{profile.family_background.situation}")
     if profile.long_term_goals:
         parts.append(f"长期目标：{'；'.join(profile.long_term_goals)}")
+    if profile.inner_conflicts:
+        parts.append(f"内心矛盾：{'；'.join(profile.inner_conflicts)}")
     profile_summary = "\n".join(parts)
 
     relationships = list(rels.relationships.values())

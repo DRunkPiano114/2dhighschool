@@ -62,7 +62,7 @@ class Settings(BaseSettings):
     max_tokens_narrative: int = 32000
 
     # Concerns
-    max_active_concerns: int = 3
+    max_active_concerns: int = 4
 
     # Concurrency
     max_concurrent_llm_calls: int = 5

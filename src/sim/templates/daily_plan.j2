@@ -28,10 +28,25 @@
 {% endfor %}
 {% endif %}
 
-{% if active_concerns %}
+{% set negative_concerns = active_concerns | rejectattr('positive') | list %}
+{% set positive_concerns = active_concerns | selectattr('positive') | list %}
+{% if negative_concerns %}
 ## 你最近心里挥之不去的事
-{% for concern in active_concerns %}
+{% for concern in negative_concerns %}
 - {{ concern.text }}（{{ concern.emotion }}，强度{{ concern.intensity }}/10）
+{% endfor %}
+{% endif %}
+{% if positive_concerns %}
+## 你最近心里期待的事
+{% for concern in positive_concerns %}
+- {{ concern.text }}（{{ concern.emotion }}，强度{{ concern.intensity }}/10）
+{% endfor %}
+{% endif %}
+
+{% if inner_conflicts %}
+## 你内心的矛盾
+{% for conflict in inner_conflicts %}
+- {{ conflict }}
 {% endfor %}
 {% endif %}
 
@@ -41,7 +56,9 @@
 {% endif %}
 
 ## 任务
-新的一天开始了。根据你的性格、当前状态和最近发生的事，想想今天你隐约想做的事情（最多3件）。这些不是必须完成的任务，只是你心里模糊的想法，看情况自然发展。
+新的一天开始了。先想想你最近缺什么——朋友的陪伴？学业上的成就感？安静的独处？一点点刺激和新鲜感？还是某种情感上的支持？
+
+然后根据你的性格、当前状态和最近发生的事，想想今天你隐约想做的事情（最多3件）。这些不是必须完成的任务，只是你心里模糊的想法，看情况自然发展。
 
 请输出你的每日计划：
 - intentions: 最多3个意图，每个包含 target（针对谁，可以为null）、goal（想做什么）、reason（为什么）

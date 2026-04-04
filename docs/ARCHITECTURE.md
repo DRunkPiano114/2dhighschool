@@ -61,8 +61,8 @@ On day 1 and every `self_narrative_interval_days` (default 3) days:
 ### Phase 1: Daily Plan Generation (`day_phase = "daily_plan"`)
 
 For each student (concurrently, up to `max_concurrent_llm_calls`):
-1. Load relationships, last 3 days of `recent.md`, yesterday's unfulfilled intentions, active concerns, and self-narrative
-2. Call LLM with `daily_plan.j2` template → returns `DailyPlan` (1-3 `Intention` objects + `mood_forecast` + `location_preferences`)
+1. Load relationships, last 3 days of `recent.md`, yesterday's unfulfilled intentions, active concerns, self-narrative, and inner conflicts
+2. Call LLM with `daily_plan.j2` template → returns `DailyPlan` (1-3 `Intention` objects + `mood_forecast` + `location_preferences`). The prompt first nudges the agent to reflect on unmet needs ("先想想你最近缺什么——朋友的陪伴？学业上的成就感？…") before generating intentions
 3. Validate location preferences against valid lists (invalid → default)
 4. Save updated state with new plan
 
@@ -103,7 +103,7 @@ Re-plan uses `replan.j2` template → `ReplanResult` (changed, new_location, rea
 **Step 2b — Grouping** (`world/grouping.py`):
 - First, identify solo agents (energy < 25, or introvert without close relationships at 50% chance, or sad + low energy at 60% chance).
 - For 宿舍 scenes: group by dorm assignment.
-- For other scenes: greedy affinity clustering (max group size 5). Affinity = bidirectional favorability + structural label bonus (室友 +20, 同桌 +15, 前后桌 +10) + same-gender bonus (+5, or +100 in dorms) + random noise ±10.
+- For other scenes: greedy affinity clustering (max group size 5). Affinity = bidirectional favorability + structural label bonus (室友 +20, 同桌 +15, 前后桌 +10) + same-gender bonus (+5, or +100 in dorms) + intention targeting bonus (+25 if either agent has an unfulfilled intention targeting the other by name) + random noise ±10.
 
 **Deterministic scene generation**: Scene generation uses a per-day deterministic RNG seeded with `hash((base_seed, "scenes", day))`, separate from the main simulation RNG. This ensures the same set of LOW density scenes trigger on resume as on the original run, keeping `scene_index` values stable.
 
@@ -118,8 +118,9 @@ Tick loop (`run_group_dialogue`):
 for tick in range(max_ticks_per_scene):
     1. PERCEIVE: all non-queued active agents concurrently (semaphore-throttled)
        - Build per-agent context via prepare_context() with PDA params:
-         latest_event, scene_transcript, private_history, emotion_override
-       - Render perception_decision.j2 template
+         latest_event, scene_transcript, private_history, emotion_override, emotion_trace
+       - emotion_trace: last 5 entries from per-agent emotion_history (tracked across ticks)
+       - Render perception_decision.j2 template (shows emotion chain as "好奇 → 惊讶 → ..." when trace has >1 entry)
        - LLM returns PerceptionOutput: observation, inner_thought, emotion,
          action_type (speak/whisper/non_verbal/observe/exit),
          action_content, action_target, urgency (1-10), is_disruptive
@@ -162,7 +163,7 @@ After the dialogue ends, two types of LLM calls run **concurrently**:
   - `emotion`: Emotion enum — agent's post-dialogue emotional state
   - `relationship_changes`: list of `AgentRelChange` (to_agent, favorability/trust/understanding deltas) — no from_agent needed since the reflection belongs to the focal agent
   - `memories`: list of `AgentMemoryCandidate` (text, emotion, importance, people, location, topics) — no agent field needed
-  - `new_concerns`: list of `AgentConcernCandidate` — persistent emotional preoccupations from the agent's perspective
+  - `new_concerns`: list of `AgentConcernCandidate` — persistent emotional preoccupations from the agent's perspective (can be positive or negative, flagged via `positive` field)
   - `concern_updates`: list of `AgentConcernUpdate` — intensity adjustments to the agent's existing concerns
 - Error handling: if an individual agent's reflection fails (LLM error, timeout), a default `AgentReflection()` is used (NEUTRAL emotion, no changes) so one failure doesn't block the group
 
@@ -175,7 +176,7 @@ This two-phase design enables **asymmetric perception**: the same conversation c
   - Save key memories with importance >= 7 from agent's own reflection to `key_memories.json`
   - Apply relationship deltas from agent's own reflection using baseline snapshot (for idempotency): `new_value = baseline + delta`, clamped to valid range
   - Mark fulfilled intentions from shared `NarrativeExtraction` in `daily_plan`
-  - Apply new concerns from agent's own reflection (structural dedup: same day + same scene + overlapping people = duplicate). Max 3 concerns; evicts lowest intensity if full.
+  - Apply new concerns from agent's own reflection (structural dedup: same day + same scene + overlapping people = duplicate). Max 4 concerns; evicts lowest intensity if full. Propagates `positive` flag from `AgentConcernCandidate`.
   - Apply concern intensity adjustments from agent's own reflection (substring matching on concern text). Remove concerns that reach intensity <= 0.
 - Update event queue from shared `NarrativeExtraction`: mark discussed events as known by all group members, add new events
 - Save result file to `logs/day_NNN/scene_name/group_N_result.json` with `{"narrative": ..., "reflections": {...}, "baselines": ...}`
@@ -183,11 +184,11 @@ This two-phase design enables **asymmetric perception**: the same conversation c
 ### Phase 3: Nightly Compression (`day_phase = "compression"`)
 
 For each student (concurrently):
-1. Read `today.md` content and active concerns
+1. Read `today.md` content, active concerns, and unfulfilled intentions from daily plan
 2. Call LLM with `nightly_compress.j2` → returns `CompressionResult`:
-   - `daily_summary`: 1-2 sentence summary of the day
+   - `daily_summary`: 1-2 sentence summary of the day. If there are unfulfilled intentions, the prompt asks the LLM to briefly note why (no opportunity? changed mind? interrupted?) — reflections enter `recent.md` with natural ~3 day half-life
    - `permanent_memories`: candidates with importance scores
-   - `new_concerns`: concerns surfaced by reviewing the whole day (safety net for scene-end misses)
+   - `new_concerns`: concerns surfaced by reviewing the whole day (safety net for scene-end misses). Can be positive (positive=true) — e.g. anticipation, warmth
 3. Append daily summary to `recent.md` as `# Day N` section
 4. Save memories with importance >= 7 to `key_memories.json`
 5. Apply new concerns (same structural dedup + eviction as scene-end, with `source_scene=""`)
@@ -231,6 +232,7 @@ family_background: FamilyBackground
   situation: str
 long_term_goals: list[str]
 backstory: str
+inner_conflicts: list[str]       # e.g. ["渴望友情但社交笨拙", "用AI查题后的负罪感和对成绩的执念在拉扯"]
 ```
 
 ### AgentState (`models/agent.py`) — Mutable, updated every scene
@@ -250,7 +252,7 @@ daily_plan: DailyPlan
     lunch: str                   # 午饭 12:00 destination (default "食堂")
     afternoon_break: str         # 课间 15:30 destination (default "教室")
 day: int
-active_concerns: list[ActiveConcern]  # max 3 persistent emotional preoccupations
+active_concerns: list[ActiveConcern]  # max 4 persistent emotional preoccupations
 ```
 
 ### ActiveConcern (`models/agent.py`)
@@ -263,9 +265,10 @@ source_day: int
 emotion: str                     # "羞耻"
 intensity: int (1-10)            # Decays by 1 per day, removed at 0
 related_people: list[str]
+positive: bool                   # False=negative (worry/hurt), True=positive (warmth/excitement/anticipation)
 ```
 
-Concerns are generated at two points: per-agent self-reflection (post-scene) and nightly compression. Structural dedup prevents duplicates (same day + same scene + overlapping people). Max 3 per agent; lowest intensity evicted when full. Self-reflection `concern_updates` can adjust intensity up or down based on events (e.g. being comforted → -2, being mocked again → +3).
+Concerns are generated at two points: per-agent self-reflection (post-scene) and nightly compression. Structural dedup prevents duplicates (same day + same scene + overlapping people). Max 4 per agent; lowest intensity evicted when full (positive and negative concerns compete equally on intensity). Self-reflection `concern_updates` can adjust intensity up or down based on events (e.g. being comforted → -2, being mocked again → +3). Templates display positive concerns separately under "你最近心里期待的事" and negative concerns under "你最近心里挥之不去的事".
 
 ### Relationship (`models/relationship.py`)
 
@@ -383,6 +386,7 @@ AgentConcernCandidate:                       # No agent field (belongs to focal 
   emotion: str
   intensity: int (1-10)
   related_people: list[str]
+  positive: bool                             # True for positive concerns (warmth, anticipation)
 
 AgentConcernUpdate:                          # No agent field (belongs to focal agent)
   concern_text: str
@@ -553,7 +557,7 @@ Narrative extraction + N self-reflections run concurrently after each group dial
 All templates include `system_base.j2` (shared system prompt establishing the Chinese high school setting, natural dialogue requirements, role consistency rules, few-shot examples of natural Chinese teen speech patterns, and inner_thought voice guidelines with bad/good examples to prevent self-analysis-report style thinking).
 
 Context assembly (`agent/context.py:prepare_context()`):
-- Profile summary (name, gender, personality, speaking style, academic rank/strengths/weaknesses/study attitude/homework habit/target, position, family expectation/situation, long-term goals, backstory)
+- Profile summary (name, gender, personality, speaking style, academic rank/strengths/weaknesses/study attitude/homework habit/target, position, family expectation/situation, long-term goals, backstory, inner_conflicts)
 - Relationships filtered to agents present in the scene
 - Today's events so far (`today.md`)
 - Recent memory (last 3 days from `recent.md`)
@@ -564,11 +568,13 @@ Context assembly (`agent/context.py:prepare_context()`):
 - Scene info (time, location, who's present)
 - Known events (gossip the agent knows about)
 - Exam countdown context
+- **Inner conflicts** — character's internal contradictions (e.g. "渴望友情但社交笨拙") from `inner_conflicts` field. Displayed in perception, daily plan, and self-narrative prompts as "你内心的矛盾" section
 - PDA tick loop params (used by `perception_decision.j2`):
   - `latest_event`: what just happened (string)
   - `scene_transcript`: formatted public events so far
   - `private_history`: agent's own prior observations + inner thoughts
   - `tick_emotion`: in-memory emotion override (updated each tick without persisting to state)
+  - `emotion_trace`: last 5 emotion values from the current scene's tick history (displayed as "你的情绪变化" chain when >1 entry)
 
 Every LLM call is logged to `logs/day_NNN/scene_name/group_id/calltype_timestamp.json` with full input/output, latency, and token counts. Costs are appended to `logs/costs.jsonl`.
 
@@ -661,12 +667,12 @@ src/sim/
     writer.py                    # Helper wrappers for today.md and key_memory writes
   templates/                     # Jinja2 prompt templates (all in Chinese)
     system_base.j2               # Shared system prompt (high school setting + dialogue rules + few-shot teen speech examples)
-    perception_decision.j2       # PDA tick loop perception prompt (+ concerns + self-narrative context)
+    perception_decision.j2       # PDA tick loop perception prompt (+ concerns split by positive/negative + inner conflicts + emotion trace + self-narrative context)
     dialogue_turn.j2             # Legacy per-turn dialogue (kept for A/B comparison reference)
-    daily_plan.j2                # Morning plan + location preference generation (+ concerns + self-narrative)
+    daily_plan.j2                # Morning plan + location preference generation (+ concerns split by positive/negative + inner conflicts + need-awareness prompt + self-narrative)
     solo_reflection.j2           # Solo inner monologue (+ concerns + self-narrative)
     scene_end_analysis.j2        # Post-dialogue analysis (+ concern generation + concern updates)
-    nightly_compress.j2          # Daily summary + permanent memory + concern extraction
+    nightly_compress.j2          # Daily summary (with failure reflection for unfulfilled intentions) + permanent memory + concern extraction (supports positive concerns)
     self_narrative.j2            # Periodic first-person self-reflection generation
     replan.j2                    # Reactive location re-planning between scenes
 ```
@@ -708,7 +714,7 @@ All settings via `pydantic-settings` `BaseSettings`, loaded from `.env` file, ov
 | `max_tokens_self_narrative` | 32000 | Self-narrative max tokens |
 | `replan_temperature` | 0.7 | Re-plan LLM temperature |
 | `max_tokens_replan` | 32000 | Re-plan max tokens |
-| `max_active_concerns` | 3 | Max concerns per agent |
+| `max_active_concerns` | 4 | Max concerns per agent |
 
 ---
 

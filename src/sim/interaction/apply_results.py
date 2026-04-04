@@ -121,6 +121,7 @@ def apply_scene_end_results(
                 text=cc.text, source_event=cc.source_event,
                 source_scene=scene.name, source_day=day, emotion=cc.emotion,
                 intensity=cc.intensity, related_people=cc.related_people,
+                positive=cc.positive,
             )
 
             if _is_duplicate_concern(new_concern, state.active_concerns):

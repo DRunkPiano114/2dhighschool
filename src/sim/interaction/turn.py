@@ -33,6 +33,7 @@ async def run_perception(
     tick_emotion: Emotion,
     day: int,
     exam_context: str = "",
+    emotion_trace: list[str] | None = None,
 ) -> PerceptionOutput:
     ctx = prepare_context(
         storage, profile, state, scene, all_profiles,
@@ -41,6 +42,7 @@ async def run_perception(
         scene_transcript=scene_transcript,
         private_history=private_history,
         emotion_override=tick_emotion,
+        emotion_trace=emotion_trace,
     )
 
     system_msg = render("perception_decision.j2", **ctx)
@@ -90,6 +92,9 @@ async def run_group_dialogue(
     tick_emotions: dict[str, Emotion] = {
         aid: states[aid].emotion for aid in group_agent_ids
     }
+    emotion_history: dict[str, list[str]] = {
+        aid: [states[aid].emotion.value] for aid in group_agent_ids
+    }
     # Tick 0: opening event from scene
     latest_event = scene.opening_event or scene.description
     last_resolved_speech = None
@@ -108,6 +113,7 @@ async def run_group_dialogue(
         # PERCEIVE: all non-queued agents concurrently
         async def _perceive(aid: str) -> tuple[str, PerceptionOutput]:
             transcript, priv = format_agent_transcript(tick_records, aid, profiles)
+            trace = emotion_history[aid][-5:]
             async with semaphore:
                 result = await run_perception(
                     storages[aid], profiles[aid], states[aid],
@@ -116,6 +122,7 @@ async def run_group_dialogue(
                     next_exam_in_days,
                     latest_event, transcript, priv,
                     tick_emotions[aid], day, exam_context,
+                    emotion_trace=trace,
                 )
             return aid, result
 
@@ -127,6 +134,7 @@ async def run_group_dialogue(
         # Update in-memory emotions
         for aid, out in outputs.items():
             tick_emotions[aid] = out.emotion
+            emotion_history[aid].append(out.emotion.value)
 
         # RESOLVE
         result = resolve_tick(

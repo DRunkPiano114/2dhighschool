@@ -15,6 +15,7 @@ def _compute_affinity(
     relationships: dict[str, RelationshipFile],
     scene: Scene,
     rng: random.Random,
+    states: dict[str, AgentState] | None = None,
 ) -> float:
     a_rels = relationships.get(a_id, RelationshipFile()).relationships
     b_rels = relationships.get(b_id, RelationshipFile()).relationships
@@ -37,6 +38,17 @@ def _compute_affinity(
     else:
         if a_gender == b_gender:
             score += 5
+
+    # Intention targeting bonus
+    if states:
+        for src_id, tgt_id in [(a_id, b_id), (b_id, a_id)]:
+            st = states.get(src_id)
+            if st:
+                target_name = profiles[tgt_id].name
+                for intent in st.daily_plan.intentions:
+                    if not intent.fulfilled and intent.target == target_name:
+                        score += 25
+                        break
 
     # Random noise
     score += rng.uniform(-10, 10)
@@ -142,7 +154,7 @@ def _greedy_cluster(
     pairs: list[tuple[float, str, str]] = []
     for i, a in enumerate(agent_ids):
         for b in agent_ids[i + 1:]:
-            aff = _compute_affinity(a, b, profiles, relationships, scene, rng)
+            aff = _compute_affinity(a, b, profiles, relationships, scene, rng, states=states)
             pairs.append((aff, a, b))
     pairs.sort(reverse=True)
 
@@ -184,7 +196,7 @@ def _greedy_cluster(
                     if len(members) >= max_group_size:
                         continue
                     avg_aff = sum(
-                        _compute_affinity(aid, m, profiles, relationships, scene, rng)
+                        _compute_affinity(aid, m, profiles, relationships, scene, rng, states=states)
                         for m in members
                     ) / len(members)
                     if avg_aff > best_aff:

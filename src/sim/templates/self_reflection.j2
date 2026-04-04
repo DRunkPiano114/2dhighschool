@@ -22,9 +22,17 @@
 {% endfor %}
 {% endif %}
 
-{% if active_concerns %}
+{% set negative_concerns = active_concerns | rejectattr('positive') | list %}
+{% set positive_concerns = active_concerns | selectattr('positive') | list %}
+{% if negative_concerns %}
 ## 你最近心里挥之不去的事
-{% for concern in active_concerns %}
+{% for concern in negative_concerns %}
+- {{ concern.text }}（{{ concern.emotion }}，强度{{ concern.intensity }}/10）
+{% endfor %}
+{% endif %}
+{% if positive_concerns %}
+## 你最近心里期待的事
+{% for concern in positive_concerns %}
 - {{ concern.text }}（{{ concern.emotion }}，强度{{ concern.intensity }}/10）
 {% endfor %}
 {% endif %}
@@ -62,7 +70,8 @@
 4. **new_concerns**: 这段对话是否让你产生了新的持续性"牵挂"？
    牵挂不是一时的情绪，而是会在接下来几天反复想起的心事。
    大部分日常闲聊不会产生任何牵挂。
-   每条包含 text、source_event（一句话）、emotion、intensity（1-10）、related_people
+   牵挂可以是负面的（被伤害、担忧）也可以是正面的（被温暖到、期待）。如果是正面的，标记 positive=true。
+   每条包含 text、source_event（一句话）、emotion、intensity（1-10）、related_people、positive
 
 5. **concern_updates**: 你现有的牵挂有没有因为这段对话而变化？
    每条包含 concern_text（已有牵挂的文本）、adjustment（正数=加剧，负数=缓解）
