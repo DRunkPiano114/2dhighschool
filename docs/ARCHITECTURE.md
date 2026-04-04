@@ -93,10 +93,10 @@ For **free period scenes** (`is_free_period=true` — 课间 08:45, 午饭 12:00
 Available locations: 课间 → 教室/走廊/操场/小卖部/图书馆/天台; 午饭 → 食堂/教室/操场/小卖部.
 
 **Step 2a.1 — Re-planning** (between configs):
-After all sub-scenes for a config complete, if the next config is a free period, "affected" agents may re-plan their location. An agent is affected if ANY of:
-- A new concern was generated for them in this scene's `new_concerns`
-- Their emotion changed to an extreme emotion (ANGRY, EXCITED, SAD, EMBARRASSED, JEALOUS, GUILTY, FRUSTRATED, TOUCHED)
-- A relationship change with absolute value >= 8 occurred
+After all sub-scenes for a config complete, if the next config is a free period, "affected" agents may re-plan their location. An agent is affected if ANY of (checked from their individual `AgentReflection`):
+- Their reflection produced any `new_concerns`
+- Their reflection emotion is an extreme emotion (ANGRY, EXCITED, SAD, EMBARRASSED, JEALOUS, GUILTY, FRUSTRATED, TOUCHED)
+- Any of their `relationship_changes` has |favorability| >= 8 or |trust| >= 8
 
 Re-plan uses `replan.j2` template → `ReplanResult` (changed, new_location, reason). If changed, updates `location_preferences` for the next slot.
 
@@ -138,33 +138,47 @@ for tick in range(max_ticks_per_scene):
 
 **Step 2c (solo)** — `interaction/solo.py`: If a group has `is_solo=true`, run `solo_reflection.j2` instead → returns `SoloReflection` with `inner_thought`, `emotion`, `activity`.
 
-**Step 2d — Scene-End Analysis** (`interaction/scene_end.py`):
-- Build conversation log from tick_records using `format_public_transcript()` (includes speech, whisper notices, non-verbal actions, exits). Inner thoughts and observations are NOT included — analysis only sees externally observable behavior.
-- `long_conversation` threshold: 12 ticks (was 20 turns)
-- Feed the conversation log to LLM with `scene_end_analysis.j2` (analytical temperature 0.3)
-- Receives `agent_concerns` dict (name → list of ActiveConcern) for in-scene agents
-- Returns `SceneEndAnalysis`:
+**Step 2d — Narrative Extraction + Per-Agent Self-Reflection** (two-phase post-dialogue):
+
+After the dialogue ends, two types of LLM calls run **concurrently**:
+
+**Phase 1: Narrative Extraction** (`interaction/scene_end.py`) — 1 LLM call:
+- Build conversation log from tick_records using `format_public_transcript()` (includes speech, whisper notices, non-verbal actions, exits). Inner thoughts and observations are NOT included — extraction only sees externally observable behavior.
+- `long_conversation` threshold: 12 ticks
+- Feed the conversation log to LLM with `scene_end_analysis.j2` (analytical temperature 0.3) as a purely objective recorder
+- Returns `NarrativeExtraction`:
   - `key_moments`: list of significant events as one-line summaries
-  - `relationship_changes`: list of `RelationshipChange` (from_agent, to_agent, favorability/trust/understanding deltas). Scale: ±1-3 for normal chat, ±3-5 for meaningful interactions, ±10+ for extreme events
   - `fulfilled_intentions`: list of "name:intention" strings
   - `events_discussed`: event IDs that were actually mentioned (updates `known_by`)
-  - `memories`: `MemoryCandidate` with agent, text, emotion, importance (1-10), people, location, topics
   - `new_events`: gossip/conflicts/decisions that may spread to other scenes
-  - `final_emotions`: map of agent name → emotion string
-  - `new_concerns`: list of `ConcernCandidate` — persistent emotional preoccupations generated from scene events
-  - `concern_updates`: list of `ConcernUpdate` — intensity adjustments to existing concerns (positive=worsened, negative=soothed)
+
+**Phase 2: Per-Agent Self-Reflection** (`interaction/self_reflection.py`) — N concurrent LLM calls:
+- For each agent in the group, build an agent-specific prompt with:
+  - Full agent context (profile, relationships, memories, concerns, self-narrative) via `prepare_context()`
+  - Agent-specific conversation log via `format_agent_transcript()` (includes whispers the agent heard)
+- Render `self_reflection.j2` template (reflection temperature 0.7)
+- Each agent independently evaluates the conversation from their own perspective
+- Returns `AgentReflection` per agent:
+  - `emotion`: Emotion enum — agent's post-dialogue emotional state
+  - `relationship_changes`: list of `AgentRelChange` (to_agent, favorability/trust/understanding deltas) — no from_agent needed since the reflection belongs to the focal agent
+  - `memories`: list of `AgentMemoryCandidate` (text, emotion, importance, people, location, topics) — no agent field needed
+  - `new_concerns`: list of `AgentConcernCandidate` — persistent emotional preoccupations from the agent's perspective
+  - `concern_updates`: list of `AgentConcernUpdate` — intensity adjustments to the agent's existing concerns
+- Error handling: if an individual agent's reflection fails (LLM error, timeout), a default `AgentReflection()` is used (NEUTRAL emotion, no changes) so one failure doesn't block the group
+
+This two-phase design enables **asymmetric perception**: the same conversation can produce different emotions, relationship changes, and memories for each participant, based on their personality, history, and existing concerns.
 
 **Step 2e — Apply Results** (`interaction/apply_results.py`):
-- For each agent in the group:
-  - Update emotion from `final_emotions`
-  - Append key moments to `today.md` (formatted as `## time scene @ location`)
-  - Save key memories with importance >= 7 to `key_memories.json`
-  - Apply relationship deltas using baseline snapshot (for idempotency): `new_value = baseline + delta`, clamped to valid range
-  - Mark fulfilled intentions in `daily_plan`
-- Update event queue: mark discussed events as known by all group members, add new events
-- Apply new concerns (structural dedup: same day + same scene + overlapping people = duplicate). Max 3 concerns; evicts lowest intensity if full.
-- Apply concern intensity adjustments from `concern_updates` (substring matching on concern text). Remove concerns that reach intensity <= 0.
-- Save result file to `logs/day_NNN/scene_name/group_N_result.json` with baseline snapshot
+- For each agent in the group (using their individual `AgentReflection`):
+  - Update emotion directly from reflection (Emotion enum, no try/except needed)
+  - Append key moments from shared `NarrativeExtraction` to `today.md` (formatted as `## time scene @ location`)
+  - Save key memories with importance >= 7 from agent's own reflection to `key_memories.json`
+  - Apply relationship deltas from agent's own reflection using baseline snapshot (for idempotency): `new_value = baseline + delta`, clamped to valid range
+  - Mark fulfilled intentions from shared `NarrativeExtraction` in `daily_plan`
+  - Apply new concerns from agent's own reflection (structural dedup: same day + same scene + overlapping people = duplicate). Max 3 concerns; evicts lowest intensity if full.
+  - Apply concern intensity adjustments from agent's own reflection (substring matching on concern text). Remove concerns that reach intensity <= 0.
+- Update event queue from shared `NarrativeExtraction`: mark discussed events as known by all group members, add new events
+- Save result file to `logs/day_NNN/scene_name/group_N_result.json` with `{"narrative": ..., "reflections": {...}, "baselines": ...}`
 
 ### Phase 3: Nightly Compression (`day_phase = "compression"`)
 
@@ -251,7 +265,7 @@ intensity: int (1-10)            # Decays by 1 per day, removed at 0
 related_people: list[str]
 ```
 
-Concerns are generated at two points: scene-end analysis and nightly compression. Structural dedup prevents duplicates (same day + same scene + overlapping people). Max 3 per agent; lowest intensity evicted when full. Scene-end `concern_updates` can adjust intensity up or down based on events (e.g. being comforted → -2, being mocked again → +3).
+Concerns are generated at two points: per-agent self-reflection (post-scene) and nightly compression. Structural dedup prevents duplicates (same day + same scene + overlapping people). Max 3 per agent; lowest intensity evicted when full. Self-reflection `concern_updates` can adjust intensity up or down based on events (e.g. being comforted → -2, being mocked again → +3).
 
 ### Relationship (`models/relationship.py`)
 
@@ -325,16 +339,54 @@ TurnOutput:                        # Legacy model (kept for reference, no longer
   emotion: Emotion
   want_to_continue: bool
 
-SceneEndAnalysis:
+SceneEndAnalysis:                            # Legacy model (kept for reference)
   key_moments: list[str]
   relationship_changes: list[RelationshipChange]
-  fulfilled_intentions: list[str]           # "name:intention" format
-  events_discussed: list[str]               # Event IDs
-  memories: list[MemoryCandidate]           # agent, text, emotion, importance, people, location, topics
-  new_events: list[NewEventCandidate]       # text, category, witnesses, spread_probability
-  final_emotions: dict[str, str]            # name → emotion
-  new_concerns: list[ConcernCandidate]      # agent, text, source_event, emotion, intensity, related_people
-  concern_updates: list[ConcernUpdate]      # agent, concern_text, adjustment (±int)
+  fulfilled_intentions: list[str]
+  events_discussed: list[str]
+  memories: list[MemoryCandidate]
+  new_events: list[NewEventCandidate]
+  final_emotions: dict[str, str]
+  new_concerns: list[ConcernCandidate]
+  concern_updates: list[ConcernUpdate]
+
+NarrativeExtraction:                         # Objective facts from dialogue (1 per group)
+  key_moments: list[str]                     # Significant events as one-line summaries
+  fulfilled_intentions: list[str]            # "name:intention" format
+  events_discussed: list[str]                # Event IDs
+  new_events: list[NewEventCandidate]        # Gossip/conflicts that may spread
+
+AgentReflection:                             # Per-agent subjective reflection (1 per agent per group)
+  emotion: Emotion                           # Post-dialogue emotional state
+  relationship_changes: list[AgentRelChange] # to_agent, favorability/trust/understanding deltas
+  memories: list[AgentMemoryCandidate]       # text, emotion, importance, people, location, topics
+  new_concerns: list[AgentConcernCandidate]  # text, source_event, emotion, intensity, related_people
+  concern_updates: list[AgentConcernUpdate]  # concern_text, adjustment (±int)
+
+AgentRelChange:                              # Single-direction, no from_agent (belongs to focal agent)
+  to_agent: str
+  favorability: int                          # Delta
+  trust: int                                 # Delta
+  understanding: int                         # Delta
+
+AgentMemoryCandidate:                        # No agent field (belongs to focal agent)
+  text: str
+  emotion: str
+  importance: int (1-10)
+  people: list[str]
+  location: str
+  topics: list[str]
+
+AgentConcernCandidate:                       # No agent field (belongs to focal agent)
+  text: str
+  source_event: str
+  emotion: str
+  intensity: int (1-10)
+  related_people: list[str]
+
+AgentConcernUpdate:                          # No agent field (belongs to focal agent)
+  concern_text: str
+  adjustment: int                            # Positive=worsened, negative=soothed
 
 SoloReflection:
   inner_thought: str
@@ -410,7 +462,7 @@ Extreme emotions (angry, excited, sad, embarrassed, jealous, guilty, frustrated,
 
 ### Concern Decay (`agent/state_update.py`)
 
-All active concern intensities decrease by 1 at end of day. Concerns reaching intensity 0 are removed. This is the baseline decay — scene-end `concern_updates` provide event-driven adjustments on top (concerns can be soothed faster by comforting interactions or intensified by triggering events).
+All active concern intensities decrease by 1 at end of day. Concerns reaching intensity 0 are removed. This is the baseline decay — per-agent self-reflection `concern_updates` provide event-driven adjustments on top (concerns can be soothed faster by comforting interactions or intensified by triggering events).
 
 ### Exam Score Generation (`world/exam.py`)
 
@@ -485,15 +537,18 @@ Rule-driven, not a full agent:
 
 All LLM calls go through `llm/client.py:structured_call()` which uses Instructor + LiteLLM to guarantee Pydantic model output. Each call has a dedicated Jinja2 template in `src/sim/templates/`.
 
-| Call Type | Template | Response Model | Temperature | Max Tokens |
-|-----------|----------|---------------|-------------|------------|
-| Perception (PDA) | `perception_decision.j2` | `PerceptionOutput` | 0.9 | 32000 |
-| Daily plan | `daily_plan.j2` | `DailyPlan` | 0.7 | 32000 |
-| Solo reflection | `solo_reflection.j2` | `SoloReflection` | 0.9 | 32000 |
-| Scene-end analysis | `scene_end_analysis.j2` | `SceneEndAnalysis` | 0.3 | 32000 |
-| Nightly compression | `nightly_compress.j2` | `CompressionResult` | 0.5 | 32000 |
-| Self-narrative | `self_narrative.j2` | `SelfNarrativeResult` | 0.7 | 32000 |
-| Re-plan | `replan.j2` | `ReplanResult` | 0.7 | 32000 |
+| Call Type | Template | Response Model | Temperature | Max Tokens | Per Scene |
+|-----------|----------|---------------|-------------|------------|-----------|
+| Perception (PDA) | `perception_decision.j2` | `PerceptionOutput` | 0.9 | 32000 | N × ticks |
+| Daily plan | `daily_plan.j2` | `DailyPlan` | 0.7 | 32000 | — |
+| Solo reflection | `solo_reflection.j2` | `SoloReflection` | 0.9 | 32000 | 1 per solo |
+| Narrative extraction | `scene_end_analysis.j2` | `NarrativeExtraction` | 0.3 | 32000 | 1 per group |
+| Self-reflection | `self_reflection.j2` | `AgentReflection` | 0.7 | 32000 | N per group |
+| Nightly compression | `nightly_compress.j2` | `CompressionResult` | 0.5 | 32000 | — |
+| Self-narrative | `self_narrative.j2` | `SelfNarrativeResult` | 0.7 | 32000 | — |
+| Re-plan | `replan.j2` | `ReplanResult` | 0.7 | 32000 | — |
+
+Narrative extraction + N self-reflections run concurrently after each group dialogue (replacing the single `SceneEndAnalysis` call). Effective latency ≈ 1 LLM call despite N+1 total calls.
 
 All templates include `system_base.j2` (shared system prompt establishing the Chinese high school setting, natural dialogue requirements, role consistency rules, few-shot examples of natural Chinese teen speech patterns, and inner_thought voice guidelines with bad/good examples to prevent self-analysis-report style thinking).
 
@@ -556,7 +611,7 @@ logs/                            # Simulation logs (gitignored)
   day_NNN/                       # Per-day detailed logs
     trajectory.json              # Per-agent location/emotion trajectory for frontend
     scene_name/
-      group_N_result.json        # Scene-end analysis results with baselines
+      group_N_result.json        # Narrative + per-agent reflections + baselines
       group_id/
         calltype_timestamp.json  # Individual LLM call logs
 
@@ -592,7 +647,8 @@ src/sim/
     turn.py                      # run_perception() + run_group_dialogue() — PDA tick loop
     resolution.py                # resolve_tick() — PDA tick resolution (speaker arbitration, queue, scene end)
     narrative.py                 # format_public_transcript(), format_agent_transcript(), format_latest_event()
-    scene_end.py                 # run_scene_end_analysis() — post-dialogue LLM analysis
+    scene_end.py                 # run_scene_end_analysis() — objective narrative extraction (post-dialogue)
+    self_reflection.py           # run_agent_reflection() + run_all_reflections() — per-agent subjective reflection
     apply_results.py             # apply_scene_end_results() + apply_solo_result()
     solo.py                      # run_solo_reflection() — solo agent inner monologue
   llm/                           # LLM infrastructure

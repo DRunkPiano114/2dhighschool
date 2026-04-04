@@ -26,6 +26,7 @@ from ..world.grouping import group_agents
 from ..world.scene_generator import SceneGenerator
 from .apply_results import apply_scene_end_results, apply_solo_result
 from .scene_end import run_scene_end_analysis
+from .self_reflection import run_all_reflections
 from .solo import run_solo_reflection
 from .turn import run_group_dialogue
 
@@ -329,47 +330,37 @@ class Orchestrator:
                 gc.status = "llm_done"
                 self._save_progress(progress)
 
-                # Scene-end analysis
-                agent_concerns = {
-                    self.profiles[aid].name: [c for c in self.states[aid].active_concerns]
-                    for aid in group.agent_ids
-                }
-                analysis = await run_scene_end_analysis(
+                # Narrative extraction + per-agent reflections (all concurrent)
+                narrative_coro = run_scene_end_analysis(
                     turn_records, group.agent_ids, self.profiles,
                     scene, day, gc.group_index,
-                    agent_concerns=agent_concerns,
+                )
+                reflections_coro = run_all_reflections(
+                    group.agent_ids, turn_records, storages,
+                    self.profiles, self.states, scene,
+                    day, gc.group_index, self.semaphore,
+                )
+                narrative, reflections = await asyncio.gather(
+                    narrative_coro, reflections_coro,
                 )
 
                 # Apply results (serial to avoid concurrent writes)
                 apply_scene_end_results(
-                    analysis, self.world, scene, group.agent_ids,
-                    day, gc.group_index, self.profiles, event_manager,
+                    narrative, reflections, self.world, scene,
+                    group.agent_ids, day, gc.group_index,
+                    self.profiles, event_manager,
                 )
                 gc.status = "applied"
                 self._save_progress(progress)
 
                 # Detect affected agents for re-planning
-                name_to_id = {self.profiles[a].name: a for a in group.agent_ids}
-                # New concerns generated
-                for cc in analysis.new_concerns:
-                    aid = name_to_id.get(cc.agent)
-                    if aid:
+                for aid, refl in reflections.items():
+                    if refl.new_concerns:
                         affected_agents.add(aid)
-                # Extreme emotion changes
-                for agent_name, emo_str in analysis.final_emotions.items():
-                    aid = name_to_id.get(agent_name)
-                    if aid:
-                        try:
-                            from ..models.agent import Emotion
-                            emo = Emotion(emo_str)
-                            if emo in EXTREME_EMOTIONS:
-                                affected_agents.add(aid)
-                        except ValueError:
-                            pass
-                # Large relationship changes (|delta| >= 8)
-                for rc in analysis.relationship_changes:
-                    aid = name_to_id.get(rc.from_agent)
-                    if aid and (abs(rc.favorability) >= 8 or abs(rc.trust) >= 8):
+                    if refl.emotion in EXTREME_EMOTIONS:
+                        affected_agents.add(aid)
+                    if any(abs(rc.favorability) >= 8 or abs(rc.trust) >= 8
+                           for rc in refl.relationship_changes):
                         affected_agents.add(aid)
 
             elif gc.status == "llm_done":

@@ -1,8 +1,8 @@
-你是一个客观的分析者，负责分析一段中国高中生的对话，提取关键信息。
+你是一个客观的记录者，负责从一段中国高中生的对话中提取客观事实。你不判断任何人的感受或关系变化。
 
 ## 在场人物
 {% for member in group_members %}
-- {{ member.name }}（{{ member.personality | join('、') }}）
+- {{ member.name }}
 {% endfor %}
 
 ## 场景信息
@@ -10,22 +10,10 @@
 - 地点：{{ scene_info.location }}
 - 场景：{{ scene_info.name }}
 
-{% if agent_concerns %}
-## 在场人物的当前牵挂
-{% for name, concerns in agent_concerns.items() %}
-{% if concerns %}
-{{ name }}：
-{% for c in concerns %}
-- {{ c.text }}（强度{{ c.intensity }}/10）
-{% endfor %}
-{% endif %}
-{% endfor %}
-{% endif %}
-
 ## 完整对话记录
 {{ full_conversation_log }}
 
-## 分析任务
+## 提取任务
 
 {% if long_conversation %}
 这是一段较长的互动（超过12个tick）。请先列出关键转折点，再做判断。
@@ -33,36 +21,12 @@
 
 注意：对话记录中可能包含说话、悄悄话（只有当事人听到内容，其他人只知道有人说了悄悄话）、动作（非语言行为）和离开等不同类型的互动。
 
-请分析这段对话，输出以下内容：
+请从这段对话中提取以下客观信息：
 
 1. **key_moments**: 对话中的关键时刻（重要的话、转折点、有意义的互动），每条用一句话概括
 
-2. **relationship_changes**: 这段对话对人物关系的影响。每条包含 from_agent, to_agent, favorability/trust/understanding 的变化值（delta）。
-   参考尺度：
-   - ±1: 普通闲聊，没什么特别影响
-   - ±3~5: 有实质性互动（帮忙、争吵、分享秘密等）
-   - ±10+: 极端事件（严重冲突、深度信任建立等）
-   注意：大部分日常对话的变化应该在 ±1~3 之间，不要过度估计
+2. **fulfilled_intentions**: 哪些人的日计划意图在这段对话中实现了？格式："姓名:意图描述"
 
-3. **fulfilled_intentions**: 哪些人的日计划意图在这段对话中实现了？格式："姓名:意图描述"
+3. **events_discussed**: 对话中讨论到的已知事件ID列表
 
-4. **events_discussed**: 对话中讨论到的已知事件ID列表
-
-5. **memories**: 值得记住的事情。每条包含 agent（这件事对谁重要）、text（事件描述）、emotion、importance（1-10，大部分日常是3-5，重要的7+）、people、location、topics
-
-6. **new_events**: 对话中产生的新事件（八卦、消息、决定等），可能被传播。包含 text、category、witnesses、spread_probability
-
-7. **final_emotions**: 对话结束后每个人的情绪状态。格式：{"姓名": "emotion"}
-
-8. **new_concerns**: 这段对话是否让某个角色产生了新的持续性"牵挂"？牵挂不是一时的情绪，而是会在接下来几天反复想起、影响行为的心事。例如：
-   - 发现好友可能在背后说自己坏话
-   - 被老师当众批评，担心同学看不起自己
-   - 考试排名大幅下滑
-   注意：大部分日常闲聊不会产生任何牵挂。只有真正触动人的事情才会。
-   每条包含 agent（谁产生了牵挂）、text（牵挂内容）、source_event（触发事件，一句话）、emotion、intensity（1-10）、related_people
-
-9. **concern_updates**: 如果在场人物有"当前牵挂"（见上方列表），判断这段对话是否影响了某个牵挂的强度。
-   例如：陆思远安慰了林昭宇 → 林昭宇"被嘲笑"的牵挂缓解了（adjustment: -2）
-   例如：江浩天又提起成绩的事 → 林昭宇"被嘲笑"的牵挂加剧了（adjustment: +3）
-   例如：牵挂完全被化解（adjustment: -10 或足以让强度降为0）
-   每条包含 agent、concern_text（已有牵挂的文本）、adjustment（正数=加剧，负数=缓解）
+4. **new_events**: 对话中产生的新事件（八卦、消息、决定等），可能被传播。包含 text、category、witnesses、spread_probability

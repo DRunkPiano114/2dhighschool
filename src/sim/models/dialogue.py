@@ -79,6 +79,59 @@ class SceneEndAnalysis(BaseModel):
     concern_updates: list[ConcernUpdate] = Field(default_factory=list)
 
 
+# --- Per-agent self-reflection models (replaces god's-eye SceneEndAnalysis) ---
+
+
+class NarrativeExtraction(BaseModel):
+    """客观叙事提取（不涉及任何 agent 的主观感受）"""
+    key_moments: list[str] = Field(default_factory=list)
+    fulfilled_intentions: list[str] = Field(default_factory=list)
+    events_discussed: list[str] = Field(default_factory=list)
+    new_events: list[NewEventCandidate] = Field(default_factory=list)
+
+
+class AgentRelChange(BaseModel):
+    """从 focal agent 视角出发的单向关系变化"""
+    to_agent: str
+    favorability: int = 0
+    trust: int = 0
+    understanding: int = 0
+
+
+class AgentMemoryCandidate(BaseModel):
+    """focal agent 认为值得记住的事"""
+    text: str
+    emotion: str = ""
+    importance: int = Field(default=5, ge=1, le=10)
+    people: list[str] = Field(default_factory=list)
+    location: str = ""
+    topics: list[str] = Field(default_factory=list)
+
+
+class AgentConcernCandidate(BaseModel):
+    """focal agent 产生的新牵挂"""
+    text: str
+    source_event: str = ""
+    emotion: str = ""
+    intensity: int = Field(default=5, ge=1, le=10)
+    related_people: list[str] = Field(default_factory=list)
+
+
+class AgentConcernUpdate(BaseModel):
+    """focal agent 已有牵挂的强度变化"""
+    concern_text: str
+    adjustment: int
+
+
+class AgentReflection(BaseModel):
+    """单个 agent 对一段对话的自我反思"""
+    emotion: Emotion = Emotion.NEUTRAL
+    relationship_changes: list[AgentRelChange] = Field(default_factory=list)
+    memories: list[AgentMemoryCandidate] = Field(default_factory=list)
+    new_concerns: list[AgentConcernCandidate] = Field(default_factory=list)
+    concern_updates: list[AgentConcernUpdate] = Field(default_factory=list)
+
+
 class SoloReflection(BaseModel):
     inner_thought: str = ""
     emotion: Emotion = Emotion.NEUTRAL

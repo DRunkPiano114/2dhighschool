@@ -56,6 +56,11 @@ class Settings(BaseSettings):
     replan_temperature: float = 0.7
     max_tokens_replan: int = 32000
 
+    # Self-reflection (post-scene per-agent)
+    reflection_temperature: float = 0.7
+    max_tokens_reflection: int = 32000
+    max_tokens_narrative: int = 32000
+
     # Concerns
     max_active_concerns: int = 3
 
