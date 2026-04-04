@@ -29,10 +29,18 @@ class Orchestrator:
         seed: int | None = None,
     ):
         self.world = world
-        self.rng = random.Random(seed)
+        self._cli_seed = seed
         self.profiles: dict[str, AgentProfile] = {}
         self.states: dict[str, AgentState] = {}
         self.semaphore = asyncio.Semaphore(settings.max_concurrent_llm_calls)
+
+    def _resolve_seed(self, progress: Progress) -> int:
+        """Resolve seed: CLI flag > saved in progress > generate new."""
+        if self._cli_seed is not None:
+            return self._cli_seed
+        if progress.seed is not None:
+            return progress.seed
+        return random.getrandbits(64)
 
     def _load_all_data(self) -> None:
         self.world.load_all_agents()
@@ -52,6 +60,14 @@ class Orchestrator:
     async def run(self, start_day: int, end_day: int) -> None:
         progress = self.world.load_progress()
 
+        # Resolve and persist seed for deterministic scene generation
+        self._seed = self._resolve_seed(progress)
+        self.rng = random.Random(self._seed)
+        if progress.seed != self._seed:
+            progress.seed = self._seed
+            self._save_progress(progress)
+        logger.info(f"Using seed: {self._seed}")
+
         for day in range(start_day, end_day + 1):
             if day < progress.current_day:
                 continue
@@ -62,6 +78,10 @@ class Orchestrator:
 
             progress.current_day = day
             self._load_all_data()
+
+            # Only clear snapshots when starting a fresh day, not on resume
+            if progress.day_phase == "daily_plan":
+                self.world.clear_all_snapshots()
 
             # 1. Generate daily plans
             if progress.day_phase == "daily_plan":
@@ -110,7 +130,9 @@ class Orchestrator:
         await asyncio.gather(*[_gen_plan(aid) for aid in student_ids])
 
     async def _run_scenes(self, day: int, progress: Progress) -> None:
-        gen = SceneGenerator(self.profiles, self.rng)
+        # Per-day deterministic RNG so scene list is stable across resume
+        scene_rng = random.Random(hash((self._seed, "scenes", day)))
+        gen = SceneGenerator(self.profiles, scene_rng)
         scenes = gen.generate_day(day)
 
         # Initialize scene progress if not already done
@@ -140,6 +162,20 @@ class Orchestrator:
             if sp.phase == "complete":
                 continue
 
+            # Restore snapshot if scene was interrupted mid-interaction
+            if sp.phase != "grouping":
+                restored = self.world.restore_agents_from_snapshot(scene.scene_index)
+                if restored:
+                    logger.info(f"  Restored snapshot for scene {scene.scene_index}, resetting to grouping")
+                    sp.phase = "grouping"
+                    sp.groups = []
+                    self._save_progress(progress)
+                elif not scene.groups:
+                    logger.warning(f"  Scene {scene.scene_index} has no snapshot and no groups, resetting to grouping")
+                    sp.phase = "grouping"
+                    sp.groups = []
+                    self._save_progress(progress)
+
             # Reload states (may have changed from previous scene)
             self.states = {
                 aid: self.world.get_agent(aid).load_state()
@@ -167,6 +203,7 @@ class Orchestrator:
                 ]
                 sp.phase = "interaction"
                 self._save_progress(progress)
+                self.world.snapshot_agents_for_scene(scene.scene_index, scene.agent_ids)
 
                 for g in groups:
                     names = [self.profiles[a].name for a in g.agent_ids]
@@ -178,6 +215,7 @@ class Orchestrator:
                 await self._run_scene_groups(day, scene, sp, progress)
                 sp.phase = "complete"
                 progress.current_scene_index = scene.scene_index + 1
+                self.world.clear_scene_snapshot(scene.scene_index)
                 self._save_progress(progress)
 
     async def _run_scene_groups(
@@ -260,6 +298,7 @@ class Orchestrator:
         await asyncio.gather(*[_compress(aid) for aid in student_ids])
 
     def _end_of_day(self, day: int, progress: Progress) -> None:
+        self.world.clear_all_snapshots()
         # Reset energy for sleep
         for aid in self._student_ids():
             storage = self.world.get_agent(aid)

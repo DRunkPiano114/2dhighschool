@@ -25,3 +25,4 @@ class Progress(BaseModel):
     next_exam_in_days: int = 30
     total_days_simulated: int = 0
     last_updated: str = ""
+    seed: int | None = None

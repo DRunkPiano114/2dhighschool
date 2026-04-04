@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CHARACTERS_DIR = ROOT / "data" / "characters"
 AGENTS_DIR = ROOT / "agents"
 WORLD_DIR = ROOT / "world"
+LOGS_DIR = ROOT / "logs"
 
 # Preset relationships (Day 1)
 # Format: (agent_a, agent_b, label, a_fav, b_fav, a_trust, b_trust)
@@ -135,6 +136,8 @@ def main() -> None:
         shutil.rmtree(AGENTS_DIR)
     if WORLD_DIR.exists():
         shutil.rmtree(WORLD_DIR)
+    if LOGS_DIR.exists():
+        shutil.rmtree(LOGS_DIR)
 
     names = load_character_names()
     rels = build_relationships(names)

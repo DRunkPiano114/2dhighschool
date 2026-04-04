@@ -70,6 +70,10 @@ For each scene in `data/schedule.json` (sequentially):
 - For 宿舍 scenes: group by dorm assignment.
 - For other scenes: greedy affinity clustering (max group size 5). Affinity = bidirectional favorability + structural label bonus (室友 +20, 同桌 +15, 前后桌 +10) + same-gender bonus (+5, or +100 in dorms) + random noise ±10.
 
+**Deterministic scene generation**: Scene generation uses a per-day deterministic RNG seeded with `hash((base_seed, "scenes", day))`, separate from the main simulation RNG. This ensures the same set of LOW density scenes trigger on resume as on the original run, keeping `scene_index` values stable.
+
+**Snapshot**: After grouping completes, mutable agent files (`state.json`, `relationships.json`, `key_memories.json`, `today.md`) are snapshotted to `world/snapshots/scene_N/<agent_id>/`. If the simulation is interrupted during the interaction phase and later resumed, the orchestrator detects the incomplete scene, restores agent files from the snapshot (reverting any partially-applied changes), resets the scene to the grouping phase, and re-runs it from scratch. A `.complete` marker ensures partially-written snapshots are discarded. Snapshots are cleared after each scene completes and at day boundaries (only when starting a fresh day, not on resume).
+
 **Step 2c — Group Interaction: PDA Tick Loop** (`interaction/turn.py`):
 
 Each tick, ALL agents in the group perceive the latest event, decide what to do, and a resolution step handles simultaneous actions. This replaces the old turn-based speaker selection system.
@@ -290,6 +294,7 @@ scenes: list[SceneProgress]
 next_exam_in_days: int           # Default 30, decremented daily
 total_days_simulated: int
 last_updated: str                # ISO timestamp
+seed: int | None                 # Persisted RNG seed for deterministic scene generation on resume
 ```
 
 ### Memory (`models/memory.py`)
@@ -464,6 +469,11 @@ world/                           # Global state (gitignored, created by init_wor
   progress.json                  # Simulation checkpoint
   event_queue.json               # Active + expired events
   exam_results/                  # Per-exam result files (day_NNN.json)
+  snapshots/                     # Pre-scene agent snapshots for crash recovery (transient)
+    scene_N/
+      .complete                  # Marker: snapshot fully written
+      <agent_id>/
+        state.json, relationships.json, key_memories.json, today.md
 
 logs/                            # Simulation logs (gitignored)
   sim.log                        # Main log (10MB rotation)
@@ -560,7 +570,7 @@ All settings via `pydantic-settings` `BaseSettings`, loaded from `.env` file, ov
 
 ## Initialization (`scripts/init_world.py`)
 
-1. Wipes `agents/` and `world/` directories
+1. Wipes `agents/`, `world/`, and `logs/` directories
 2. For each character in `data/characters/*.json`:
    - Copies profile to `agents/<id>/profile.json`
    - Creates initial state (energy=85, pressure based on family: 高→60, 中→35, 低→15, emotion=neutral)
@@ -600,6 +610,8 @@ tang_shihan ↔ su_nianyao    室友    fav: 10/10  trust: 5/5
 
 - **Atomic writes** (`agent/storage.py:atomic_write_json`): All JSON writes use temp file + `os.fsync` + `os.replace` to prevent corruption on crash.
 - **Checkpoint-based recovery**: Every phase transition saves progress. On restart, the orchestrator skips completed phases/scenes/groups. Group status tracks: `pending` → `llm_done` → `applied`.
+- **Pre-scene snapshot/restore**: Before interaction begins, agent files are snapshotted. If the scene is interrupted and resumed, the snapshot is restored, the scene resets to grouping, and re-runs from scratch. This prevents silent scene skips caused by lost in-memory group assignments and avoids double-applying partially-written state changes.
+- **Per-day deterministic scene generation**: Scene generation uses a separate RNG seeded with `hash((base_seed, "scenes", day))`, ensuring the scene list (which LOW density scenes triggered) is identical across resume. The base seed is persisted in `progress.json` on first run; resume always reloads it. CLI `--seed` overrides the saved seed. Without this, the main RNG's consumption history would differ on resume, causing scene indices to shift.
 - **Idempotent result application**: Scene-end results are saved with baseline relationship snapshots. Deltas are applied to baselines, not current values, so re-applying the same result is safe.
 - **Structured LLM output**: All LLM calls use Instructor's `response_model` parameter to guarantee Pydantic model parsing. No free-form text parsing anywhere.
 - **Async concurrency**: Daily plans and nightly compression run all agents concurrently, throttled by `asyncio.Semaphore(max_concurrent_llm_calls)`. Scene execution is sequential (each scene depends on the previous scene's state changes).

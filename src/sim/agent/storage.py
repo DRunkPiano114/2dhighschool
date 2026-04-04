@@ -1,5 +1,6 @@
 import json
 import os
+import shutil
 import tempfile
 from pathlib import Path
 
@@ -147,3 +148,48 @@ class WorldStorage:
 
     def save_event_queue(self, eq: EventQueue) -> None:
         atomic_write_json(self.world_dir / "event_queue.json", eq.model_dump())
+
+    # --- Pre-scene snapshot/restore for crash recovery ---
+
+    SNAPSHOT_FILES = ("state.json", "relationships.json", "key_memories.json", "today.md")
+
+    def snapshot_agents_for_scene(self, scene_index: int, agent_ids: list[str]) -> None:
+        snap_dir = self.world_dir / "snapshots" / f"scene_{scene_index}"
+        if snap_dir.exists():
+            shutil.rmtree(snap_dir)
+        for aid in agent_ids:
+            agent_dir = self.agents_dir / aid
+            dest = snap_dir / aid
+            dest.mkdir(parents=True, exist_ok=True)
+            for fname in self.SNAPSHOT_FILES:
+                src = agent_dir / fname
+                if src.exists():
+                    shutil.copy2(src, dest / fname)
+        (snap_dir / ".complete").touch()
+
+    def restore_agents_from_snapshot(self, scene_index: int) -> bool:
+        snap_dir = self.world_dir / "snapshots" / f"scene_{scene_index}"
+        if not snap_dir.exists():
+            return False
+        if not (snap_dir / ".complete").exists():
+            shutil.rmtree(snap_dir)
+            return False
+        for aid_dir in snap_dir.iterdir():
+            if not aid_dir.is_dir():
+                continue
+            agent_dir = self.agents_dir / aid_dir.name
+            for fname in self.SNAPSHOT_FILES:
+                src = aid_dir / fname
+                if src.exists():
+                    shutil.copy2(src, agent_dir / fname)
+        return True
+
+    def clear_scene_snapshot(self, scene_index: int) -> None:
+        snap_dir = self.world_dir / "snapshots" / f"scene_{scene_index}"
+        if snap_dir.exists():
+            shutil.rmtree(snap_dir)
+
+    def clear_all_snapshots(self) -> None:
+        snap_dir = self.world_dir / "snapshots"
+        if snap_dir.exists():
+            shutil.rmtree(snap_dir)
