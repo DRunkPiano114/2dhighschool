@@ -1,11 +1,25 @@
 import type { GameEvent } from '../../lib/types'
 
 const CATEGORY_COLORS: Record<string, string> = {
-  social: 'bg-purple-100 text-purple-700',
-  academic: 'bg-blue-100 text-blue-700',
-  conflict: 'bg-red-100 text-red-700',
-  romantic: 'bg-pink-100 text-pink-700',
-  rumor: 'bg-orange-100 text-orange-700',
+  // Chinese categories from simulation data
+  '八卦': 'bg-amber/15 text-amber',
+  '社交八卦': 'bg-amber/15 text-amber',
+  '校园轶事': 'bg-amber/15 text-amber',
+  '校园信息': 'bg-teal/15 text-teal',
+  '校园生活': 'bg-teal/15 text-teal',
+  '班级事务': 'bg-teal/15 text-teal',
+  '课程安排': 'bg-teal/15 text-teal',
+  '社交计划': 'bg-purple-100 text-purple-700',
+  'social_interaction': 'bg-purple-100 text-purple-700',
+  '日常动态': 'bg-blue-100 text-blue-700',
+  '日常行程': 'bg-blue-100 text-blue-700',
+  '个人行为': 'bg-blue-100 text-blue-700',
+  '学业成绩': 'bg-emerald-100 text-emerald-700',
+  '学业相关': 'bg-emerald-100 text-emerald-700',
+  '宿舍冲突': 'bg-red-100 text-red-700',
+  '意外事件': 'bg-red-100 text-red-700',
+  'gossip': 'bg-amber/15 text-amber',
+  'hobby': 'bg-purple-100 text-purple-700',
 }
 
 interface EventCardProps {
