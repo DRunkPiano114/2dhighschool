@@ -14,7 +14,7 @@ export function SceneTimeline({ schedule, scenes, dayId }: SceneTimelineProps) {
 
   return (
     <div className="mt-8">
-      <h2 className="text-sm font-medium text-ink-light mb-3">今日场景</h2>
+      <h2 className="text-base font-medium text-ink-light mb-3">今日场景</h2>
       <div className="flex gap-2 overflow-x-auto pb-2">
         {schedule.map((entry) => {
           const scene = scenesByTime.get(entry.time)

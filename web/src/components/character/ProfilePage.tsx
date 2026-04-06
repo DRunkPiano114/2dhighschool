@@ -81,7 +81,7 @@ export function ProfilePage() {
 
             {/* Personality */}
             <div>
-              <h2 className="text-sm font-medium text-ink-light mb-2">性格标签</h2>
+              <h2 className="text-base font-medium text-ink-light mb-2">性格标签</h2>
               <div className="flex flex-wrap gap-1.5">
                 {agent.personality.map((tag) => (
                   <span key={tag} className="px-2 py-1 rounded-md text-sm font-hand bg-teal/10 text-teal">
@@ -93,13 +93,13 @@ export function ProfilePage() {
 
             {/* Academics */}
             <div>
-              <h2 className="text-sm font-medium text-ink-light mb-2">学业</h2>
+              <h2 className="text-base font-medium text-ink-light mb-2">学业</h2>
               <AcademicsBadge academics={agent.academics} />
             </div>
 
             {/* Family */}
             <div>
-              <h2 className="text-sm font-medium text-ink-light mb-2">家庭</h2>
+              <h2 className="text-base font-medium text-ink-light mb-2">家庭</h2>
               <div className="p-3 bg-gray-50 rounded-lg text-sm space-y-2">
                 <p className="text-ink/80">{agent.family_background.expectation}</p>
                 <div className="flex items-center gap-2">
@@ -114,7 +114,7 @@ export function ProfilePage() {
 
             {/* Inner conflicts */}
             <div>
-              <h2 className="text-sm font-medium text-ink-light mb-2">内心矛盾</h2>
+              <h2 className="text-base font-medium text-ink-light mb-2">内心矛盾</h2>
               <ul className="space-y-1">
                 {agent.inner_conflicts.map((c, i) => (
                   <li key={i} className="text-sm text-ink/80 font-hand">• {c}</li>
@@ -128,7 +128,7 @@ export function ProfilePage() {
             {/* Active concerns as sticky notes */}
             {agent.state.active_concerns.length > 0 && (
               <div>
-                <h2 className="text-sm font-medium text-ink-light mb-3">当前关注</h2>
+                <h2 className="text-base font-medium text-ink-light mb-3">当前关注</h2>
                 <div className="grid grid-cols-2 gap-3">
                   {agent.state.active_concerns.map((concern, i) => (
                     <ConcernSticky key={i} concern={concern} index={i} />
@@ -140,7 +140,7 @@ export function ProfilePage() {
             {/* Self-narrative */}
             {agent.self_narrative && (
               <div>
-                <h2 className="text-sm font-medium text-ink-light mb-2">自我叙事</h2>
+                <h2 className="text-base font-medium text-ink-light mb-2">自我叙事</h2>
                 <div className="p-4 bg-amber/5 rounded-lg border border-amber/10">
                   <p className="text-sm font-hand leading-relaxed text-ink/80 whitespace-pre-line">
                     {agent.self_narrative}
@@ -152,7 +152,7 @@ export function ProfilePage() {
             {/* Relationships mini-map */}
             {sortedRels.length > 0 && (
               <div>
-                <h2 className="text-sm font-medium text-ink-light mb-3">人际关系</h2>
+                <h2 className="text-base font-medium text-ink-light mb-3">人际关系</h2>
                 <div className="space-y-2">
                   {sortedRels.map((rel) => (
                     <Link
