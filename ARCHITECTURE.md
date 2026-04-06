@@ -1,6 +1,6 @@
 # Architecture & Technical Reference
 
-Multi-agent simulation of a Chinese high school class (中国高中班级模拟). Each agent (student/teacher) is an LLM-powered character that interacts through structured daily scenes, generating emergent narratives. Pure observation mode — no user intervention, text output only. The goal is to explore whether multi-agent LLM simulation can produce agents that behave like real people — with authentic personalities, evolving relationships, and believable decision-making across three years of high school life.
+Multi-agent simulation of a Chinese high school class set at **上海市建宁中学** (a fictional Shanghai 市重点 high school). Each agent (student/teacher) is an LLM-powered character that interacts through structured daily scenes, generating emergent narratives. Pure observation mode — no user intervention, text output only. The goal is to explore whether multi-agent LLM simulation can produce agents that behave like real people — with authentic personalities, evolving relationships, and believable decision-making across three years of high school life.
 
 **Tech stack**: Python 3.12+, DeepSeek V3.2 via LiteLLM + Instructor (structured JSON output), Pydantic (data models + validation), Jinja2 (prompt templates), Loguru (logging), asyncio (concurrency). All state stored as JSON + Markdown files — no database.
 
@@ -616,7 +616,7 @@ He Min is a full LLM-driven agent, participating in scenes like any student. She
 | 宿舍夜聊 | Never | Not in dorm |
 
 **Role-aware prompt adaptations**:
-- `system_base.j2`: "中国高中老师" instead of "中国高中生" language guidance
+- `system_base.j2`: "上海高中老师" instead of "上海高中生" language guidance
 - `daily_plan.j2`: teacher-specific need prompts (student attention, parent calls, lesson prep). No location preferences section (teacher doesn't choose free-period locations). Academic fields (成绩/目标/学习态度) skipped.
 - `perception_decision.j2`: whisper option hidden in dorm scenes (safety net: whisper→speak conversion in `turn.py`)
 - Re-planning skipped for teacher (no location preferences)
@@ -645,7 +645,7 @@ All LLM calls go through `llm/client.py:structured_call()` which uses Instructor
 
 Narrative extraction + N self-reflections run concurrently after each group dialogue (replacing the single `SceneEndAnalysis` call). Effective latency ≈ 1 LLM call despite N+1 total calls.
 
-All templates include `system_base.j2` (shared system prompt establishing the Chinese high school setting, role-aware language guidance — "中国高中生" for students vs "中国高中老师" for teacher — natural dialogue requirements, role consistency rules, few-shot examples of natural Chinese teen speech patterns, and inner_thought voice guidelines with bad/good examples to prevent self-analysis-report style thinking).
+All templates include `system_base.j2` (shared system prompt establishing the Shanghai 建宁中学 setting as a 市重点 high school, role-aware language guidance — "上海高中生" for students vs "上海高中老师" for teacher — natural dialogue requirements, role consistency rules, few-shot examples of natural Chinese teen speech patterns, and inner_thought voice guidelines with bad/good examples to prevent self-analysis-report style thinking).
 
 Context assembly (`agent/context.py:prepare_context()`):
 - Profile summary (name, gender, personality, speaking style, academic rank/strengths/weaknesses/study attitude/homework habit/target, position, family expectation/situation, long-term goals, backstory, inner_conflicts)
