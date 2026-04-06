@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background-color: #faf6f0;
+  color: #2c2c2c;
+  margin: 0;
+}
+
+/* Paper grain texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image:
+    radial-gradient(circle at 20% 50%, #000 0.5px, transparent 0.5px),
+    radial-gradient(circle at 80% 20%, #000 0.5px, transparent 0.5px),
+    radial-gradient(circle at 50% 80%, #000 0.5px, transparent 0.5px);
+  background-size: 100px 100px, 150px 150px, 120px 120px;
+}
+
+/* Mind-reading mode overlay */
+.mind-reading-active {
+  background-color: #f8f2e6;
+}
+
+/* Thought bubble shape */
+.thought-cloud {
+  position: relative;
+  background: rgba(255, 248, 235, 0.95);
+  border: 1px solid #e8dcc8;
+  border-radius: 16px;
+  padding: 12px 16px;
+}
+
+/* Chalk text effect */
+.chalk-text {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 0.1),
+    0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+/* Ruled paper lines */
+.ruled-paper {
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 31px,
+    #e8dcc8 31px,
+    #e8dcc8 32px
+  );
+  background-position-y: 8px;
+}
+
+/* Sticky note rotation */
+.sticky-note {
+  transition: transform 0.2s ease;
+}
+.sticky-note:hover {
+  transform: scale(1.03) !important;
+  z-index: 10;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4c5a9;
+  border-radius: 3px;
+}

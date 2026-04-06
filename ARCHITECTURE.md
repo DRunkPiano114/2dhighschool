@@ -883,3 +883,102 @@ Collected during scene execution; each agent gets one slot per scene they partic
 - **Structured LLM output**: All LLM calls use Instructor's `response_model` parameter to guarantee Pydantic model parsing. No free-form text parsing anywhere.
 - **Async concurrency**: Daily plans and nightly compression run all agents concurrently, throttled by `asyncio.Semaphore(max_concurrent_llm_calls)`. Scene execution is sequential (each scene depends on the previous scene's state changes).
 - **Name ↔ ID mapping**: LLM prompts use Chinese names (林昭宇). Code uses snake_case IDs (lin_zhaoyu). `name_to_id` mapping is built from profiles during result application.
+
+---
+
+## Frontend — 读心教室 (Mind-Reading Classroom)
+
+Web-based visualization of simulation data. Core mechanic: a "mind-reading toggle" that reveals what characters were *thinking* vs what they *said*.
+
+**Tech stack**: Vite + React 19 + TypeScript, Tailwind CSS 3, Framer Motion (animations), Zustand (state), React Router 7, D3.js (relationship graph). Fonts: LXGW WenKai (handwriting for thoughts), Noto Sans SC (body).
+
+### Data Pipeline
+
+`scripts/export_frontend_data.py` copies/transforms simulation output → `web/public/data/`:
+
+```
+web/public/data/
+  meta.json                     # days list, agent map (id→name/role/seat/position), schedule, date, exam countdown
+  agents/{agent_id}.json        # merged: profile + state + relationships + self_narrative + key_memories
+  days/day_001/
+    scenes.json                 # scene index (from logs/day_001/scenes.json)
+    0700_早读.json              # scene files (copied from logs/day_001/)
+    trajectory.json             # per-agent per-scene emotions/activities
+  events.json                   # from world/event_queue.json
+```
+
+Run: `uv run python scripts/export_frontend_data.py`
+
+### File Structure
+
+```
+web/
+  src/
+    main.tsx                    # Entry, BrowserRouter
+    App.tsx                     # Routes: /, /day/:dayId/scene/:sceneFile, /character/:agentId, /relationships, /gossip, /timeline
+    index.css                   # Tailwind directives, paper grain texture, chalk text, ruled paper, thought cloud, scrollbar
+    stores/
+      useAppStore.ts            # Zustand: currentDay, currentSceneIndex, activeGroupIndex, mindReadingEnabled, focusedAgent
+    lib/
+      types.ts                  # TypeScript interfaces matching simulation Pydantic models
+      data.ts                   # fetch+cache: loadMeta(), loadAgent(), loadScenes(), loadSceneFile(), loadTrajectory(), loadEvents()
+      constants.ts              # SEAT_LAYOUT (5×4 grid), EMOTION_COLORS, EMOTION_LABELS, EMOTION_SENTIMENT, LOCATION_ICONS
+    components/
+      layout/
+        Header.tsx              # Sticky nav: 教室, 关系网, 八卦, 情绪线
+        PageShell.tsx            # Wrapper with mind-reading CSS class toggle
+      classroom/
+        SeatMap.tsx              # Landing page: blackboard + 5×4 seat grid + teacher + scene timeline
+        SeatCard.tsx             # Hover popup on seat
+        Blackboard.tsx           # 高三(2)班, date, exam countdown (chalk aesthetic)
+        SceneTimeline.tsx        # Horizontal strip of 8 daily scenes, links to scene viewer
+      dialogue/
+        SceneViewer.tsx          # Scene header + group tabs + tick list + narrative summary
+        TickBlock.tsx            # Single tick: speech → thoughts → actions → whispers → exits
+        SpeechBubble.tsx         # Character name + target + white rounded bubble
+        ThoughtBubble.tsx        # Framer Motion animated thought cloud, handwriting font, emotion badge
+        WhisperLine.tsx          # "[X 对 Y 说了悄悄话]" or revealed content in mind-reading mode
+        ActionLine.tsx           # Italicized non-verbal/exit stage directions
+        MindReadingToggle.tsx    # Floating bottom-right button, toggles mindReadingEnabled in store
+      character/
+        ProfilePage.tsx          # Notebook-style: info, personality, academics, family, concerns (sticky notes), self-narrative, relationships
+        EmotionBadge.tsx         # Colored dot + Chinese emotion label
+        ConcernSticky.tsx        # Yellow sticky notes with random rotation, intensity bars
+        AcademicsBadge.tsx       # Rank badge + strength/weakness chips
+      relationships/
+        ForceGraph.tsx           # D3 force-directed graph, zoom+drag, click edges for detail card
+        RelationshipCard.tsx     # Favorability/trust/understanding bars + recent interactions
+      gossip/
+        PropagationView.tsx      # Event list with expand-to-detail
+        EventCard.tsx            # Event text, category badge, spread probability bar, witness/known-by chips
+      timeline/
+        EmotionTimeline.tsx      # SVG emotion waveform, multi-agent overlay, per-point tooltip
+        DayNav.tsx               # Day selector tabs
+```
+
+### Design System
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `paper` | `#faf6f0` | Page background |
+| `ink` | `#2c2c2c` | Body text |
+| `ink-light` | `#666666` | Secondary text |
+| `amber` | `#d4a853` | Highlights, active states |
+| `teal` | `#5a8f7b` | Interactive elements, links |
+| `thought-bg` | `rgba(255,248,235,0.95)` | Thought bubble background |
+| `thought-border` | `#e8dcc8` | Thought bubble border |
+
+### Key Interactions
+
+- **Mind-reading toggle**: Floating button bottom-right. ON = thought bubbles appear with staggered Framer Motion animation (50ms delay per character), whisper content revealed, page background shifts warmer.
+- **Scene viewer**: Groups rendered as tabs within the page. Solo groups show diary-style card instead of tick timeline.
+- **Seat map hover**: Card popup with name, emotion badge, position, concern preview.
+- **Relationship graph**: D3 force simulation. Edges filtered by `|favorability|>5 ∨ trust>5`. Edge width = `|favorability|/8`, color = green/red by sign, dashed = low trust.
+
+### Running
+
+```bash
+uv run python scripts/export_frontend_data.py   # Generate frontend data
+cd web && pnpm dev                               # Dev server at localhost:5173
+cd web && pnpm build                             # Production build → web/dist/
+```

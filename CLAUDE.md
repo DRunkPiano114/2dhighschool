@@ -10,6 +10,10 @@ uv run python scripts/init_world.py              # Init world (wipes agents/ and
 uv run sim --days 5                              # Run simulation
 uv run sim --days 1 --start-day 3 --seed 42      # Resume from day 3, reproducible
 uv run python scripts/inspect_state.py           # Inspect state (--agent lin_zhaoyu / --world)
+uv run python scripts/export_frontend_data.py    # Export sim data → web/public/data/
+cd web && pnpm install                           # Install frontend dependencies
+cd web && pnpm dev                               # Dev server at localhost:5173
+cd web && pnpm build                             # Production build → web/dist/
 ```
 
 No tests or linting configured. Env: `cp .env.example .env` then set `DEEPSEEK_API_KEY`.

@@ -16,3 +16,8 @@ uv.lock
 
 # development
 docs/
+
+# web
+web/node_modules/
+web/dist/
+web/public/data/
