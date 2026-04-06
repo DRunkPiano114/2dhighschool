@@ -200,7 +200,7 @@ This two-phase design enables **asymmetric perception**: the same conversation c
   - Apply new concerns from agent's own reflection (structural dedup: same day + same scene + overlapping people = duplicate). Max 4 concerns; evicts lowest intensity if full. Propagates `positive` flag from `AgentConcernCandidate`.
   - Apply concern intensity adjustments from agent's own reflection (substring matching on concern text). Remove concerns that reach intensity <= 0.
 - Update event queue from shared `NarrativeExtraction`: mark discussed events as known by all group members, add new events
-- Save result file to `logs/day_NNN/scene_name/group_N_result.json` with `{"narrative": ..., "reflections": {...}, "baselines": ...}`
+- (File output moved to orchestrator — see "Scene File Output" below)
 
 ### Phase 3: Nightly Compression (`day_phase = "compression"`)
 
@@ -225,9 +225,48 @@ For all agents (students + teacher):
 
 Global end-of-day:
 - Save trajectory data to `logs/day_NNN/trajectory.json`
+- Write `logs/day_NNN/scenes.json` — scene index for frontend navigation (built from scene files written during the day)
 - Expire events older than `event_expire_days` (default 3)
 - Decrement `next_exam_in_days`
 - Advance progress to next day
+
+### Scene File Output
+
+After all groups in a scene complete, the orchestrator writes a single frontend-ready scene file: `logs/day_NNN/HHMM_scenename.json` (e.g. `0845_课间@教室.json`). `scene.name` already includes `@location` for free periods.
+
+**Format:**
+```json
+{
+  "scene": { "scene_index", "time", "name", "location", "description", "day" },
+  "participant_names": { "agent_id": "中文名" },
+  "groups": [
+    {
+      "group_index": 0, "participants": ["agent_id", ...],
+      "ticks": [
+        {
+          "tick": 0,
+          "public": { "speech", "actions", "whispers", "environmental_event", "exits" },
+          "minds": { "agent_id": { PerceptionOutput fields } }
+        }
+      ],
+      "narrative": { NarrativeExtraction fields },
+      "reflections": { "agent_id": { AgentReflection fields } }
+    },
+    {
+      "group_index": 1, "participants": ["agent_id"],
+      "is_solo": true,
+      "solo_reflection": { "inner_thought", "emotion", "activity" }
+    }
+  ]
+}
+```
+
+Key details:
+- `serialize_tick_records()` in `orchestrator.py` converts in-memory tick records to the `ticks` array; Chinese names in `action_target` are converted to `agent_id`
+- `write_scene_file()` in `apply_results.py` atomically writes the assembled data
+- `minds` only includes agents who ran perception that tick (due to perception gating)
+- Solo groups use `is_solo: true` + `solo_reflection` (no fake ticks/narrative)
+- No `baselines` in scene file — frontend uses `reflections.relationship_changes` (delta values)
 
 ---
 
@@ -629,7 +668,7 @@ Context assembly (`agent/context.py:prepare_context()`):
   - `tick_emotion`: in-memory emotion override (updated each tick without persisting to state)
   - `emotion_trace`: last 5 emotion values from the current scene's tick history (displayed as "你的情绪变化" chain when >1 entry)
 
-Every LLM call is logged to `logs/day_NNN/scene_name/group_id/calltype_timestamp.json` with full input/output, latency, and token counts. Costs are appended to `logs/costs.jsonl`.
+Every LLM call is logged to `logs/day_NNN/debug/scene_name/group_id/calltype_timestamp.json` with full input/output, latency, and token counts. Costs are appended to `logs/costs.jsonl`.
 
 ---
 
@@ -669,11 +708,13 @@ logs/                            # Simulation logs (gitignored)
   sim.log                        # Main log (10MB rotation)
   costs.jsonl                    # Per-call cost tracking
   day_NNN/                       # Per-day detailed logs
+    HHMM_scenename.json          # One file per scene, all groups inside (frontend-ready)
+    scenes.json                  # Scene index for frontend navigation
     trajectory.json              # Per-agent location/emotion trajectory for frontend
-    scene_name/
-      group_N_result.json        # Narrative + per-agent reflections + baselines
-      group_id/
-        calltype_timestamp.json  # Individual LLM call logs
+    debug/                       # Raw LLM call logs
+      scene_name/
+        group_id/
+          calltype_timestamp.json
 
 tests/                           # Unit tests (pytest)
   test_resolution.py             # PDA tick resolution logic (31 tests)
@@ -704,13 +745,13 @@ src/sim/
     exam.py                      # generate_exam_results(), apply_exam_effects(), format_exam_context()
     homeroom_teacher.py          # HomeroomTeacher — rule-driven post-exam talks + patrol events
   interaction/                   # Scene execution logic
-    orchestrator.py              # Orchestrator — main simulation loop
-    turn.py                      # run_perception() + run_group_dialogue() — PDA tick loop with perception gating
+    orchestrator.py              # Orchestrator — main loop, serialize_tick_records(), scene file + scenes.json output
+    turn.py                      # run_perception() + run_group_dialogue(group_index=) — PDA tick loop with perception gating
     resolution.py                # resolve_tick() — PDA tick resolution (speaker arbitration, queue, scene end)
     narrative.py                 # format_public_transcript(), format_agent_transcript(), format_latest_event()
     scene_end.py                 # run_scene_end_analysis() — objective narrative extraction (post-dialogue)
     self_reflection.py           # run_agent_reflection() + run_all_reflections() — per-agent subjective reflection
-    apply_results.py             # apply_scene_end_results() + apply_solo_result() + concern_match() helper
+    apply_results.py             # apply_scene_end_results() + apply_solo_result() + write_scene_file() + concern_match()
     solo.py                      # run_solo_reflection() — solo agent inner monologue
   llm/                           # LLM infrastructure
     client.py                    # structured_call() via Instructor + LiteLLM
@@ -834,7 +875,7 @@ Collected during scene execution; each agent gets one slot per scene they partic
 
 ## Key Engineering Patterns
 
-- **Atomic writes** (`agent/storage.py:atomic_write_json`): All JSON writes use temp file + `os.fsync` + `os.replace` to prevent corruption on crash.
+- **Atomic writes** (`agent/storage.py:atomic_write_json(path, data: dict | list)`): All JSON writes use temp file + `os.fsync` + `os.replace` to prevent corruption on crash.
 - **Checkpoint-based recovery**: Every phase transition saves progress. On restart, the orchestrator skips completed phases/scenes/groups. Group status tracks: `pending` → `llm_done` → `applied`.
 - **Pre-scene snapshot/restore**: Before interaction begins, agent files are snapshotted. If the scene is interrupted and resumed, the snapshot is restored, the scene resets to grouping, and re-runs from scratch. This prevents silent scene skips caused by lost in-memory group assignments and avoids double-applying partially-written state changes.
 - **Per-day deterministic scene generation**: Scene generation uses a separate RNG seeded with `hash((base_seed, "scenes", day))`, ensuring the scene list (which LOW density scenes triggered) is identical across resume. The base seed is persisted in `progress.json` on first run; resume always reloads it. CLI `--seed` overrides the saved seed. Without this, the main RNG's consumption history would differ on resume, causing scene indices to shift.

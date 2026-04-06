@@ -25,7 +25,7 @@ def log_llm_call(
     model: str = "",
     temperature: float = 0.0,
 ) -> None:
-    log_dir = settings.logs_dir / f"day_{day:03d}" / scene_name / str(group_id)
+    log_dir = settings.logs_dir / f"day_{day:03d}" / "debug" / scene_name / str(group_id)
     _ensure_dir(log_dir)
 
     timestamp = time.strftime("%Y%m%d_%H%M%S")

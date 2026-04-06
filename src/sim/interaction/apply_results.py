@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from loguru import logger
 
 from ..agent.storage import AgentStorage, WorldStorage, atomic_write_json
@@ -6,6 +8,29 @@ from ..models.agent import ActiveConcern, AgentProfile
 from ..models.dialogue import AgentReflection, NarrativeExtraction, SoloReflection
 from ..models.scene import Scene
 from ..world.event_queue import EventQueueManager
+
+
+def write_scene_file(
+    path: Path,
+    scene: Scene,
+    participant_names: dict[str, str],
+    groups_data: list[dict],
+) -> None:
+    """Write a complete scene file with all groups."""
+    data = {
+        "scene": {
+            "scene_index": scene.scene_index,
+            "time": scene.time,
+            "name": scene.name.split("@")[0],
+            "location": scene.location,
+            "description": scene.description,
+            "day": scene.day,
+        },
+        "participant_names": participant_names,
+        "groups": groups_data,
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    atomic_write_json(path, data)
 
 
 def _clamp(v: int, lo: int, hi: int) -> int:
@@ -40,11 +65,7 @@ def apply_scene_end_results(
     profiles: dict[str, AgentProfile],
     event_manager: EventQueueManager,
 ) -> None:
-    # 1. Save result file with baseline snapshot (for idempotency)
-    result_dir = settings.logs_dir / f"day_{day:03d}" / scene.name
-    result_dir.mkdir(parents=True, exist_ok=True)
-
-    # Snapshot baselines
+    # Snapshot baselines for idempotent relationship updates
     baselines: dict[str, dict] = {}
     for aid in group_agent_ids:
         storage = world.get_agent(aid)
@@ -53,14 +74,6 @@ def apply_scene_end_results(
             target_id: rel.model_dump()
             for target_id, rel in rels.relationships.items()
         }
-
-    result_data = {
-        "narrative": narrative.model_dump(),
-        "reflections": {aid: refl.model_dump() for aid, refl in reflections.items()},
-        "baselines": baselines,
-    }
-    result_file = result_dir / f"group_{group_id}_result.json"
-    atomic_write_json(result_file, result_data)
 
     # Name → agent_id mapping
     name_to_id = {p.name: aid for aid, p in profiles.items()}

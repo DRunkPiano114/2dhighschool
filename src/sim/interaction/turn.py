@@ -34,6 +34,7 @@ async def run_perception(
     day: int,
     exam_context: str = "",
     emotion_trace: list[str] | None = None,
+    group_index: int = 0,
 ) -> PerceptionOutput:
     ctx = prepare_context(
         storage, profile, state, scene, all_profiles,
@@ -61,7 +62,7 @@ async def run_perception(
     log_llm_call(
         day=day,
         scene_name=scene.name,
-        group_id=scene.scene_index,
+        group_id=group_index,
         call_type="perception",
         input_messages=messages,
         output=result,
@@ -146,6 +147,7 @@ async def run_group_dialogue(
     rng,
     semaphore: asyncio.Semaphore,
     exam_context: str = "",
+    group_index: int = 0,
 ) -> list[dict]:
     """Run a full group dialogue using the PDA tick loop."""
     tick_records: list[dict] = []
@@ -207,6 +209,7 @@ async def run_group_dialogue(
                     latest_event, transcript, priv,
                     tick_emotions[aid], day, exam_context,
                     emotion_trace=trace,
+                    group_index=group_index,
                 )
             return aid, result
 

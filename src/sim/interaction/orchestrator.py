@@ -2,6 +2,7 @@ import asyncio
 import random
 import time
 from datetime import datetime
+from pathlib import Path
 
 from loguru import logger
 
@@ -26,11 +27,74 @@ from ..models.trajectory import AgentSlot, DayTrajectory
 from ..world.event_queue import EventQueueManager
 from ..world.grouping import group_agents
 from ..world.scene_generator import SceneGenerator
-from .apply_results import apply_scene_end_results, apply_solo_result
+from .apply_results import apply_scene_end_results, apply_solo_result, write_scene_file
 from .scene_end import run_scene_end_analysis
 from .self_reflection import run_all_reflections
 from .solo import run_solo_reflection
 from .turn import run_group_dialogue
+
+
+def serialize_tick_records(
+    tick_records: list[dict],
+    profiles: dict[str, "AgentProfile"],
+) -> list[dict]:
+    """Convert in-memory tick_records → frontend-ready ticks array."""
+    name_to_id = {p.name: aid for aid, p in profiles.items()}
+
+    def _name_to_id(name: str | None) -> str | None:
+        if not name:
+            return None
+        return name_to_id.get(name, name)
+
+    ticks = []
+    for rec in tick_records:
+        # public.speech
+        speech = None
+        if rec["resolved_speech"]:
+            aid, out = rec["resolved_speech"]
+            speech = {
+                "agent": aid,
+                "target": _name_to_id(out.action_target),
+                "content": out.action_content,
+            }
+
+        # public.actions (non_verbal resolved actions)
+        actions = []
+        for aid, out in rec["resolved_actions"]:
+            actions.append({
+                "agent": aid,
+                "type": out.action_type.value,
+                "content": out.action_content,
+            })
+
+        # public.whispers
+        whispers = []
+        for from_id, to_id, content in rec["whisper_events"]:
+            whispers.append({"from": from_id, "to": to_id, "content": content})
+
+        # public.exits
+        exits = rec.get("exits", [])
+
+        # minds: only agents who had perception this tick
+        minds = {}
+        for aid, out in rec["agent_outputs"].items():
+            dump = out.model_dump()
+            # Convert action_target Chinese name → agent_id
+            dump["action_target"] = _name_to_id(dump.get("action_target"))
+            minds[aid] = dump
+
+        ticks.append({
+            "tick": rec["tick"],
+            "public": {
+                "speech": speech,
+                "actions": actions,
+                "whispers": whispers,
+                "environmental_event": rec.get("environmental_event"),
+                "exits": exits,
+            },
+            "minds": minds,
+        })
+    return ticks
 
 
 class Orchestrator:
@@ -45,6 +109,11 @@ class Orchestrator:
         self.states: dict[str, AgentState] = {}
         self.semaphore = asyncio.Semaphore(settings.max_concurrent_llm_calls)
         self._trajectory: DayTrajectory | None = None
+        self._scene_files: list[Path] = []  # track scene files written this day
+
+    def _scene_file_path(self, day: int, scene: Scene) -> Path:
+        time_prefix = scene.time.replace(":", "")  # "08:45" → "0845"
+        return settings.logs_dir / f"day_{day:03d}" / f"{time_prefix}_{scene.name}.json"
 
     def _resolve_seed(self, progress: Progress) -> int:
         """Resolve seed: CLI flag > saved in progress > generate new."""
@@ -87,6 +156,7 @@ class Orchestrator:
 
             progress.current_day = day
             self._load_all_data()
+            self._scene_files = []
 
             # Only clear snapshots when starting a fresh day, not on resume
             if progress.day_phase == "daily_plan":
@@ -294,6 +364,7 @@ class Orchestrator:
         event_manager = EventQueueManager(eq, self.rng)
         storages = {aid: self.world.get_agent(aid) for aid in scene.agent_ids}
         affected_agents: set[str] = set()
+        groups_data: list[dict] = []
 
         for gc in sp.groups:
             if gc.status == "applied":
@@ -319,6 +390,16 @@ class Orchestrator:
                     progress.next_exam_in_days, day,
                 )
                 apply_solo_result(reflection, storages[aid], self.profiles[aid], group_scene, day)
+                groups_data.append({
+                    "group_index": gc.group_index,
+                    "participants": group.agent_ids,
+                    "is_solo": True,
+                    "solo_reflection": {
+                        "inner_thought": reflection.inner_thought,
+                        "emotion": reflection.emotion.value,
+                        "activity": reflection.activity,
+                    },
+                })
                 gc.status = "applied"
                 self._save_progress(progress)
                 continue
@@ -333,9 +414,13 @@ class Orchestrator:
                     group.agent_ids, group_scene, storages, self.profiles,
                     self.states, known_events, progress.next_exam_in_days,
                     day, self.rng, self.semaphore,
+                    group_index=gc.group_index,
                 )
                 gc.status = "llm_done"
                 self._save_progress(progress)
+
+                # Serialize tick records for frontend output
+                serialized_ticks = serialize_tick_records(turn_records, self.profiles)
 
                 # Narrative extraction + per-agent reflections (all concurrent)
                 narrative_coro = run_scene_end_analysis(
@@ -357,6 +442,14 @@ class Orchestrator:
                     group.agent_ids, day, gc.group_index,
                     self.profiles, event_manager,
                 )
+
+                groups_data.append({
+                    "group_index": gc.group_index,
+                    "participants": group.agent_ids,
+                    "ticks": serialized_ticks,
+                    "narrative": narrative.model_dump(),
+                    "reflections": {aid: refl.model_dump() for aid, refl in reflections.items()},
+                })
                 gc.status = "applied"
                 self._save_progress(progress)
 
@@ -376,6 +469,13 @@ class Orchestrator:
                 logger.warning(f"  Recovering group {gc.group_index} from llm_done state")
                 gc.status = "applied"
                 self._save_progress(progress)
+
+        # Write complete scene file after all groups done
+        if groups_data:
+            participant_names = {aid: self.profiles[aid].name for aid in scene.agent_ids}
+            scene_path = self._scene_file_path(day, scene)
+            write_scene_file(scene_path, scene, participant_names, groups_data)
+            self._scene_files.append(scene_path)
 
         # Save updated event queue
         self.world.save_event_queue(event_manager.eq)
@@ -459,16 +559,41 @@ class Orchestrator:
             rels = regress_relationships(rels)
             storage.save_relationships(rels)
 
-        # Save trajectory
+        # Save trajectory + scenes index
+        from ..agent.storage import atomic_write_json
+        day_dir = settings.logs_dir / f"day_{day:03d}"
+        day_dir.mkdir(parents=True, exist_ok=True)
+
         if self._trajectory:
-            from ..agent.storage import atomic_write_json
-            traj_dir = settings.logs_dir / f"day_{day:03d}"
-            traj_dir.mkdir(parents=True, exist_ok=True)
             atomic_write_json(
-                traj_dir / "trajectory.json",
+                day_dir / "trajectory.json",
                 self._trajectory.model_dump(),
             )
             self._trajectory = None
+
+        # Build scenes.json from scene files written this day
+        import json
+        scenes_index = []
+        for scene_path in sorted(self._scene_files):
+            scene_data = json.loads(scene_path.read_text(encoding="utf-8"))
+            s = scene_data["scene"]
+            groups_summary = []
+            for g in scene_data["groups"]:
+                groups_summary.append({
+                    "group_index": g["group_index"],
+                    "participants": g["participants"],
+                    "is_solo": g.get("is_solo", False),
+                })
+            scenes_index.append({
+                "scene_index": s["scene_index"],
+                "time": s["time"],
+                "name": s["name"],
+                "location": s["location"],
+                "file": scene_path.name,
+                "groups": groups_summary,
+            })
+        if scenes_index:
+            atomic_write_json(day_dir / "scenes.json", scenes_index)
 
         # Expire old events
         eq = self.world.load_event_queue()
