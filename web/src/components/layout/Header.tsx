@@ -13,7 +13,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 bg-paper/80 backdrop-blur-sm border-b border-thought-border">
       <div className="max-w-6xl mx-auto px-4 h-12 flex items-center justify-between">
-        <Link to="/" className="font-hand text-xl text-ink hover:text-amber transition-colors">
+        <Link to="/" className="font-hand text-xl text-ink hover:text-amber transition-colors min-h-[44px] flex items-center">
           读心教室
         </Link>
         <nav className="flex gap-1">
@@ -25,7 +25,7 @@ export function Header() {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`px-3 py-1.5 rounded-md text-sm transition-colors ${
+                className={`px-4 py-2.5 min-h-[44px] flex items-center rounded-md text-sm transition-colors ${
                   active
                     ? 'bg-amber/15 text-amber font-medium'
                     : 'text-ink-light hover:text-ink hover:bg-black/5'
