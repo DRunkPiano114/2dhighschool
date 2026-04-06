@@ -104,7 +104,7 @@ export function EmotionTimeline() {
           <button
             key={id}
             onClick={() => toggleAgent(id)}
-            className={`px-2.5 py-1 rounded-full text-xs transition-colors ${
+            className={`px-3 py-2 min-h-[44px] flex items-center rounded-full text-xs transition-colors ${
               selectedAgents.includes(id)
                 ? 'bg-teal/15 text-teal font-medium'
                 : 'bg-gray-50 text-ink-light hover:bg-gray-100'
