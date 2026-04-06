@@ -1,3 +1,5 @@
+from dataclasses import dataclass
+
 import instructor
 import litellm
 
@@ -7,6 +9,14 @@ from ..config import settings
 litellm.suppress_debug_info = True
 # Drop params unsupported by some providers (e.g. volcengine + response_format)
 litellm.drop_params = True
+
+
+@dataclass
+class LLMResult:
+    data: object
+    tokens_prompt: int = 0
+    tokens_completion: int = 0
+    cost_usd: float = 0.0
 
 
 def get_instructor_client() -> instructor.AsyncInstructor:
@@ -21,13 +31,32 @@ async def structured_call(
     messages: list[dict],
     temperature: float | None = None,
     max_tokens: int | None = None,
-) -> object:
+) -> LLMResult:
     client = get_instructor_client()
-    return await client.chat.completions.create(
+    result, completion = await client.chat.completions.create_with_completion(
         model=settings.llm_model,
         messages=messages,
         response_model=response_model,
         temperature=temperature or settings.creative_temperature,
         max_tokens=max_tokens or settings.max_tokens_per_turn,
         max_retries=settings.max_retries,
+    )
+
+    usage = getattr(completion, "usage", None)
+    tokens_prompt = getattr(usage, "prompt_tokens", 0) or 0
+    tokens_completion = getattr(usage, "completion_tokens", 0) or 0
+
+    try:
+        cost = litellm.completion_cost(
+            completion_response=completion,
+            model=settings.llm_model,
+        )
+    except Exception:
+        cost = 0.0
+
+    return LLMResult(
+        data=result,
+        tokens_prompt=tokens_prompt,
+        tokens_completion=tokens_completion,
+        cost_usd=cost,
     )

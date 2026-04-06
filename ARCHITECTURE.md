@@ -591,7 +591,7 @@ He Min is a full LLM-driven agent, participating in scenes like any student. She
 
 ## LLM Calls
 
-All LLM calls go through `llm/client.py:structured_call()` which uses Instructor + LiteLLM to guarantee Pydantic model output. Each call has a dedicated Jinja2 template in `src/sim/templates/`.
+All LLM calls go through `llm/client.py:structured_call()` which uses Instructor + LiteLLM to guarantee Pydantic model output. `structured_call()` returns an `LLMResult` dataclass containing the parsed Pydantic model (`.data`), token counts (`.tokens_prompt`, `.tokens_completion`), and cost (`.cost_usd`). Token usage is extracted from the raw completion response via `create_with_completion()`, and cost is calculated using `litellm.completion_cost()`. Each call has a dedicated Jinja2 template in `src/sim/templates/`.
 
 | Call Type | Template | Response Model | Temperature | Max Tokens | Per Scene |
 |-----------|----------|---------------|-------------|------------|-----------|

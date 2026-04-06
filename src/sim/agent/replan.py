@@ -58,13 +58,14 @@ async def maybe_replan(
     messages = [{"role": "user", "content": prompt}]
 
     start = time.time()
-    result = await structured_call(
+    llm_result = await structured_call(
         ReplanResult,
         messages,
         temperature=settings.replan_temperature,
         max_tokens=settings.max_tokens_replan,
     )
     latency = (time.time() - start) * 1000
+    result = llm_result.data
 
     log_llm_call(
         day=day,
@@ -73,6 +74,9 @@ async def maybe_replan(
         call_type="replan",
         input_messages=messages,
         output=result,
+        tokens_prompt=llm_result.tokens_prompt,
+        tokens_completion=llm_result.tokens_completion,
+        cost_usd=llm_result.cost_usd,
         latency_ms=latency,
         temperature=settings.replan_temperature,
     )

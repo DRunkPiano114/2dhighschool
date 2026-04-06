@@ -108,13 +108,14 @@ async def generate_daily_plan(
     messages = [{"role": "user", "content": prompt}]
 
     start = time.time()
-    result = await structured_call(
+    llm_result = await structured_call(
         DailyPlan,
         messages,
         temperature=settings.plan_temperature,
         max_tokens=settings.max_tokens_daily_plan,
     )
     latency = (time.time() - start) * 1000
+    result = llm_result.data
 
     log_llm_call(
         day=day,
@@ -123,6 +124,9 @@ async def generate_daily_plan(
         call_type="daily_plan",
         input_messages=messages,
         output=result,
+        tokens_prompt=llm_result.tokens_prompt,
+        tokens_completion=llm_result.tokens_completion,
+        cost_usd=llm_result.cost_usd,
         latency_ms=latency,
         temperature=settings.plan_temperature,
     )

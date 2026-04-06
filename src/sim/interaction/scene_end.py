@@ -46,13 +46,14 @@ async def run_scene_end_analysis(
     messages = [{"role": "user", "content": prompt}]
 
     start = time.time()
-    result = await structured_call(
+    llm_result = await structured_call(
         NarrativeExtraction,
         messages,
         temperature=settings.analytical_temperature,
         max_tokens=settings.max_tokens_narrative,
     )
     latency = (time.time() - start) * 1000
+    result = llm_result.data
 
     log_llm_call(
         day=day,
@@ -61,6 +62,9 @@ async def run_scene_end_analysis(
         call_type="narrative_extraction",
         input_messages=messages,
         output=result,
+        tokens_prompt=llm_result.tokens_prompt,
+        tokens_completion=llm_result.tokens_completion,
+        cost_usd=llm_result.cost_usd,
         latency_ms=latency,
         temperature=settings.analytical_temperature,
     )
