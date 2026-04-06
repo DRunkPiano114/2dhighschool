@@ -289,3 +289,32 @@ export interface DayTrajectory {
   day: number
   agents: Record<string, AgentSlot[]>
 }
+
+// --- Pixel world types ---
+
+export type RoomId = '教室' | '走廊' | '食堂' | '宿舍' | '操场' | '图书馆' | '小卖部'
+
+export interface RoomZone {
+  id: string
+  x: number
+  y: number
+  capacity: number
+}
+
+export interface RoomLayout {
+  id: RoomId
+  label: string
+  cols: number
+  rows: number
+  zones: RoomZone[]
+}
+
+export interface CharacterPosition {
+  x: number
+  y: number
+  room: RoomId
+}
+
+export type ViewMode = 'explore' | 'broadcast'
+
+export type PlaybackSpeed = 1 | 2 | 4

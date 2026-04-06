@@ -886,99 +886,118 @@ Collected during scene execution; each agent gets one slot per scene they partic
 
 ---
 
-## Frontend — 读心教室 (Mind-Reading Classroom)
+## Frontend — 读心教室 Pixel World
 
-Web-based visualization of simulation data. Core mechanic: a "mind-reading toggle" that reveals what characters were *thinking* vs what they *said*.
+Pixel-art school world viewer (Stardew Valley aesthetic, top-down). Two modes: **Explore** (click around, scrub ticks) and **Broadcast** (auto-camera follows drama, danmu overlays). Core mechanic: mind-reading toggle reveals inner thoughts vs spoken words.
 
-**Tech stack**: Vite + React 19 + TypeScript, Tailwind CSS 3, Framer Motion (animations), Zustand (state), React Router 7, D3.js (relationship graph). Fonts: LXGW WenKai (handwriting for thoughts), Noto Sans SC (body).
+**Tech stack**: Vite + React 19 + TypeScript, PixiJS 8 + @pixi/react 8 (canvas rendering), Tailwind CSS 3, Framer Motion (panel animations), Zustand 5 (state), React Router 7, D3.js (Phase 2 graphs). Fonts: LXGW WenKai (thoughts), Noto Sans SC (body).
+
+**Architecture**: PixiJS owns the game canvas (rooms, sprites, camera). React owns UI chrome (TopBar, BottomBar, SidePanel, RoomNav) as absolute-positioned overlays. BubbleOverlay and DanmuLayer are imperative DOM layers synced to the PixiJS Ticker (same rAF frame). Camera state lives on the PixiJS Container transform, not in Zustand.
 
 ### Data Pipeline
 
-`scripts/export_frontend_data.py` copies/transforms simulation output → `web/public/data/`:
+`scripts/export_frontend_data.py` copies simulation output → `web/public/data/` (unchanged). Drama scores and character positions are computed in the frontend, not the export script.
 
 ```
 web/public/data/
-  meta.json                     # days list, agent map (id→name/role/seat/position), schedule, date, exam countdown
-  agents/{agent_id}.json        # merged: profile + state + relationships + self_narrative + key_memories
+  meta.json                     # days, agent map, schedule, date, exam countdown
+  agents/{agent_id}.json        # profile + state + relationships + self_narrative + key_memories
   days/day_001/
-    scenes.json                 # scene index (from logs/day_001/scenes.json)
-    0700_早读.json              # scene files (copied from logs/day_001/)
+    scenes.json                 # scene index
+    0845_课间@教室.json          # scene files with tick data
     trajectory.json             # per-agent per-scene emotions/activities
-  events.json                   # from world/event_queue.json
+  events.json                   # event queue
 ```
-
-Run: `uv run python scripts/export_frontend_data.py`
 
 ### File Structure
 
 ```
-web/
-  src/
-    main.tsx                    # Entry, BrowserRouter
-    App.tsx                     # Routes: /, /day/:dayId/scene/:sceneFile, /character/:agentId, /relationships, /gossip, /timeline
-    index.css                   # Tailwind directives, paper grain texture, chalk text, ruled paper, thought cloud, scrollbar
-    stores/
-      useAppStore.ts            # Zustand: currentDay, currentSceneIndex, activeGroupIndex, mindReadingEnabled, focusedAgent
-    lib/
-      types.ts                  # TypeScript interfaces matching simulation Pydantic models
-      data.ts                   # fetch+cache: loadMeta(), loadAgent(), loadScenes(), loadSceneFile(), loadTrajectory(), loadEvents()
-      constants.ts              # SEAT_LAYOUT (5×4 grid), EMOTION_COLORS, EMOTION_LABELS, EMOTION_SENTIMENT, LOCATION_ICONS
-    components/
-      layout/
-        Header.tsx              # Sticky nav: 教室, 关系网, 八卦, 情绪线
-        PageShell.tsx            # Wrapper with mind-reading CSS class toggle
-      classroom/
-        SeatMap.tsx              # Landing page: blackboard + 5×4 seat grid + teacher + scene timeline
-        SeatCard.tsx             # Hover popup on seat
-        Blackboard.tsx           # 高三(2)班, date, exam countdown (chalk aesthetic)
-        SceneTimeline.tsx        # Horizontal strip of 8 daily scenes, links to scene viewer
-      dialogue/
-        SceneViewer.tsx          # Scene header + group tabs + tick list + narrative summary
-        TickBlock.tsx            # Single tick: speech → thoughts → actions → whispers → exits
-        SpeechBubble.tsx         # Character name + target + white rounded bubble
-        ThoughtBubble.tsx        # Framer Motion animated thought cloud, handwriting font, emotion badge
-        WhisperLine.tsx          # "[X 对 Y 说了悄悄话]" or revealed content in mind-reading mode
-        ActionLine.tsx           # Italicized non-verbal/exit stage directions
-        MindReadingToggle.tsx    # Floating bottom-right button, toggles mindReadingEnabled in store
-      character/
-        ProfilePage.tsx          # Notebook-style: info, personality, academics, family, concerns (sticky notes), self-narrative, relationships
-        EmotionBadge.tsx         # Colored dot + Chinese emotion label
-        ConcernSticky.tsx        # Yellow sticky notes with random rotation, intensity bars
-        AcademicsBadge.tsx       # Rank badge + strength/weakness chips
-      relationships/
-        ForceGraph.tsx           # D3 force-directed graph, zoom+drag, click edges for detail card
-        RelationshipCard.tsx     # Favorability/trust/understanding bars + recent interactions
-      gossip/
-        PropagationView.tsx      # Event list with expand-to-detail
-        EventCard.tsx            # Event text, category badge, spread probability bar, witness/known-by chips
-      timeline/
-        EmotionTimeline.tsx      # SVG emotion waveform, multi-agent overlay, per-point tooltip
-        DayNav.tsx               # Day selector tabs
+web/src/
+  main.tsx                      # Entry, BrowserRouter
+  App.tsx                       # Routes: / (PixiCanvas), /relationships, /timeline
+  index.css                     # Tailwind directives + custom styles
+  stores/
+    useWorldStore.ts            # Zustand: day, scene, tick, group, room, mode, mindReading, focusedAgent, playback
+    useAppStore.ts              # Legacy store (used by Phase 2 views only)
+  lib/
+    types.ts                    # Data interfaces + RoomId, RoomZone, RoomLayout, ViewMode, PlaybackSpeed
+    data.ts                     # fetch+cache + prefetchDay() for current day (~650KB)
+    constants.ts                # SEAT_LAYOUT, EMOTION_COLORS, EMOTION_LABELS, LOCATION_ICONS
+    roomConfig.ts               # Room zone definitions (7 rooms), derivePositions() for character placement
+    drama.ts                    # scoreTick(), scoreGroup(), dramaThreshold(), isDramaPeak(), pickDanmu()
+    PlaybackController.ts       # Singleton. Two strategies: MANUAL (arrow keys / scrubber) + BROADCAST (auto-advance, drama-sorted groups). 3s/tick at 1x.
+  components/
+    world/                      # PixiJS rendering
+      PixiCanvas.tsx            # Main mount: Application, data loading, sprite management, camera, keyboard shortcuts. Composes Room + TopBar + BottomBar + SidePanel + RoomNav.
+      Room.tsx                  # Programmatic tilemap for each of 7 rooms. Draw functions: drawClassroom, drawHallway, drawCafeteria, drawDorm, drawPlayground, drawLibrary, drawConvenienceStore.
+      CharacterSprite.ts        # Colored circle + head + name label. Per-agent colors. updateSpriteState() for talking/dimming.
+      Camera.ts                 # Free-scroll (drag + wheel zoom) + auto-pan (lerp). State on PixiJS Container transform, updated via Ticker.
+      BubbleOverlay.ts          # Imperative DOM overlay. Speech (cream bg, solid border), thought (rose bg, dashed, italic), whisper notice. Positioned via sprite.toGlobal() each frame.
+      DanmuLayer.ts             # Floating text scrolling right-to-left. Fires from inner_thought of observers. CSS animation, 8s duration.
+    ui/                         # React overlays
+      TopBar.tsx                # Day nav, title, mode toggle (探索/放映), mind-reading button
+      BottomBar.tsx             # Scene info, group tabs, tick scrubber (bars colored by drama intensity), play/pause, speed (1x/2x/4x)
+      SidePanel.tsx             # Slide-out character detail: emotion, personality, academics, concerns, relationships, recent thoughts. Framer Motion animated.
+      RoomNav.tsx               # Vertical room tabs (left edge), only rooms with scenes shown
+    layout/                     # Legacy (Phase 2 analytical views)
+      Header.tsx                # Nav bar for /relationships, /timeline
+      PageShell.tsx             # Wrapper for legacy views
+    relationships/
+      ForceGraph.tsx            # D3 force graph (Phase 2)
+      RelationshipCard.tsx      # Relationship detail
+    timeline/
+      EmotionTimeline.tsx       # SVG emotion waveform (Phase 2)
 ```
 
-### Design System
+### Room System
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `paper` | `#faf6f0` | Page background |
-| `ink` | `#2c2c2c` | Body text |
-| `ink-light` | `#666666` | Secondary text |
-| `amber` | `#d4a853` | Highlights, active states |
-| `teal` | `#5a8f7b` | Interactive elements, links |
-| `thought-bg` | `rgba(255,248,235,0.95)` | Thought bubble background |
-| `thought-border` | `#e8dcc8` | Thought bubble border |
+7 rooms, each with a programmatic tilemap and named zones for character positioning:
+
+| Room | Dimensions | Zones | Visual features |
+|------|-----------|-------|-----------------|
+| 教室 | 24×18 | 20 seat zones + teacher | Blackboard, 5×4 desks, windows |
+| 走廊 | 28×10 | left, center, right | Lockers, notice board, windows |
+| 食堂 | 28×20 | 6 table zones | Food counter, 6 dining tables |
+| 宿舍 | 24×16 | 3 beds + desk area | Bunk beds, shared desk, window |
+| 操场 | 30×20 | court, 2 benches, track | Basketball court, running track |
+| 图书馆 | 24×18 | 4 tables + shelves | Bookshelves (colored spines), reading tables |
+| 小卖部 | 16×14 | counter, 2 aisles | Counter with register, product shelves |
+
+Classroom uses seat-based positioning from agent metadata. Other rooms spread participants in circular patterns within assigned zones.
+
+### Playback Model
+
+```
+PlaybackController (singleton)
+├── Mode: MANUAL (explore)
+│   ├── Scrubber click → setTick(n)
+│   ├── Arrow keys → advance/retreat tick
+│   └── Play button → auto-advance at speed, pause on interaction
+├── Mode: BROADCAST
+│   ├── Auto-advance ticks at 3s/tick × (1/speed)
+│   ├── End of group → cut to next group (sorted by drama)
+│   ├── End of scene → next scene in time slot
+│   ├── Skip solo scenes by default
+│   └── End of day → stop
+└── Shared: speed 1x|2x|4x, tick duration 3s base
+```
+
+Drama score per tick: `whisper×4 + speak×1 + disruptive×5 + max_urgency×0.5 + exit×2`. Top 20% are peaks that trigger camera zooms and danmu.
 
 ### Key Interactions
 
-- **Mind-reading toggle**: Floating button bottom-right. ON = thought bubbles appear with staggered Framer Motion animation (50ms delay per character), whisper content revealed, page background shifts warmer.
-- **Scene viewer**: Groups rendered as tabs within the page. Solo groups show diary-style card instead of tick timeline.
-- **Seat map hover**: Card popup with name, emotion badge, position, concern preview.
-- **Relationship graph**: D3 force simulation. Edges filtered by `|favorability|>5 ∨ trust>5`. Edge width = `|favorability|/8`, color = green/red by sign, dashed = low trust.
+- **Mind-reading toggle** (M key or TopBar button): thought bubbles appear for all characters. Speech = cream solid bubble, thought = rose dashed italic bubble.
+- **Click character**: SidePanel slides open with full profile. Other characters dim to 40%.
+- **Tick scrubber**: visual drama intensity bars. Click to jump, arrow keys to step.
+- **Room nav**: click room tab to jump to first scene in that location.
+- **Camera**: drag to pan, scroll to zoom (explore mode). Auto-follows speaker in broadcast mode.
+- **Danmu**: inner thoughts of observers float across the top in broadcast mode.
+- **Keyboard**: Space = play/pause, ←→ = tick step, M = mind-reading.
 
 ### Running
 
 ```bash
 uv run python scripts/export_frontend_data.py   # Generate frontend data
-cd web && pnpm dev                               # Dev server at localhost:5173
+cd web && pnpm dev                               # Dev server
 cd web && pnpm build                             # Production build → web/dist/
 ```

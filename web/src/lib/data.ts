@@ -35,3 +35,9 @@ export function loadTrajectory(day: string): Promise<DayTrajectory> {
 export function loadEvents(): Promise<GameEvent[]> {
   return fetchJson<GameEvent[]>('/data/events.json')
 }
+
+/** Prefetch all scene files for a day (~650KB). Fire-and-forget. */
+export async function prefetchDay(day: string): Promise<void> {
+  const scenes = await loadScenes(day)
+  await Promise.all(scenes.map(s => loadSceneFile(day, s.file)))
+}
