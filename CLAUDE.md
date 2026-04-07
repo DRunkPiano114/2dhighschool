@@ -1,25 +1,5 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-## Commands
-
-```bash
-uv sync                                          # Install dependencies
-uv run python scripts/init_world.py              # Init world (wipes agents/ and world/)
-uv run sim --days 5                              # Run simulation
-uv run sim --days 1 --start-day 3 --seed 42      # Resume from day 3, reproducible
-uv run python scripts/inspect_state.py           # Inspect state (--agent lin_zhaoyu / --world)
-uv run python scripts/export_frontend_data.py    # Export sim data → web/public/data/
-cd web && pnpm install                           # Install frontend dependencies
-cd web && pnpm dev                               # Dev server at localhost:5173
-cd web && pnpm build                             # Production build → web/dist/
-uv run python -m pytest                         # Run all tests
-uv run python -m pytest tests/test_foo.py -v    # Run one test file, verbose
-uv run python -m pytest -k "test_name"          # Run tests matching a name
-```
-
-
 ## Test Sync Rule
 
 Tests live in `tests/`. **When you modify logic in `src/sim/`, you MUST also update or add corresponding tests.** A task is not complete until tests pass.
