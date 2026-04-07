@@ -59,7 +59,7 @@ On day 1 and every `self_narrative_interval_days` (default 3) days:
   - `self_concept`: up to 4 bullets ("我是一个 ___ 的人"), slow-changing (prompt instructs: change at most 1 bullet per update unless major event)
   - `current_tensions`: up to 3 bullets, what the agent is struggling with this week (can change fully each update)
 - Saved to `agents/<id>/self_narrative.json` (canonical) + `self_narrative.md` (human-readable mirror). Legacy md-only data is auto-migrated on read.
-- `self_concept` + `current_tensions` are injected into daily_plan, self_reflection, and solo_reflection templates. `perception_decision.j2` only gets `current_tensions` (kept lean since it runs per-tick).
+- `self_concept` + `current_tensions` are injected into daily_plan, self_reflection, and solo_reflection templates. `perception_static.j2` only gets `current_tensions` (kept lean since it runs per-tick).
 - `inner_conflicts` (from profile, immutable) displayed as "你内心的永恒矛盾" vs `current_tensions` displayed as "你最近在和这些搏斗" — both coexist, representing permanent personality traits vs transient struggles.
 
 ### Phase 1: Daily Plan Generation (`day_phase = "daily_plan"`)
@@ -124,7 +124,7 @@ Each tick, ALL agents in the group perceive the latest event, decide what to do,
 
 Tick loop (`run_group_dialogue`):
 ```
-for tick in range(max_ticks_per_scene):
+for tick in range(scene.max_rounds):  # per-scene cap from schedule.json
     1. GATE: for each non-queued active agent, decide if fresh perception is needed
        Trigger rules (any one → perceive):
        a. Tick 0 (no previous output to reuse)
@@ -618,7 +618,7 @@ He Min is a full LLM-driven agent, participating in scenes like any student. She
 **Role-aware prompt adaptations**:
 - `system_base.j2`: "上海高中老师" instead of "上海高中生" language guidance
 - `daily_plan.j2`: teacher-specific need prompts (student attention, parent calls, lesson prep). No location preferences section (teacher doesn't choose free-period locations). Academic fields (成绩/目标/学习态度) skipped.
-- `perception_decision.j2`: whisper option hidden in dorm scenes (safety net: whisper→speak conversion in `turn.py`)
+- `perception_static.j2` + `perception_dynamic.j2`: whisper option hidden in dorm scenes (safety net: whisper→speak conversion in `turn.py`)
 - Re-planning skipped for teacher (no location preferences)
 - **Suppression effect**: When `teacher_present=true`, the perception template includes a warning ("班主任正在附近，说话注意点！") that naturally suppresses student speech urgency
 
@@ -634,7 +634,7 @@ All LLM calls go through `llm/client.py:structured_call()` which uses Instructor
 
 | Call Type | Template | Response Model | Temperature | Max Tokens | Per Scene |
 |-----------|----------|---------------|-------------|------------|-----------|
-| Perception (PDA) | `perception_decision.j2` | `PerceptionOutput` | 0.9 | 32000 | N × ticks |
+| Perception (PDA) | `perception_static.j2` (system) + `perception_dynamic.j2` (user) | `PerceptionOutput` | 0.9 | 32000 | N × ticks |
 | Daily plan | `daily_plan.j2` | `DailyPlan` | 0.7 | 32000 | — |
 | Solo reflection | `solo_reflection.j2` | `SoloReflection` | 0.9 | 32000 | 1 per solo |
 | Narrative extraction | `scene_end_analysis.j2` | `NarrativeExtraction` | 0.3 | 32000 | 1 per group |
@@ -661,7 +661,7 @@ Context assembly (`agent/context.py:prepare_context()`):
 - Known events (gossip the agent knows about)
 - Exam countdown context
 - **Inner conflicts** — character's permanent internal contradictions. Displayed as "你内心的永恒矛盾" to distinguish from `current_tensions` ("你最近在和这些搏斗")
-- PDA tick loop params (used by `perception_decision.j2`):
+- PDA tick loop params (used by `perception_static.j2` + `perception_dynamic.j2`):
   - `latest_event`: what just happened (string)
   - `scene_transcript`: formatted public events so far
   - `private_history`: agent's own prior observations + inner thoughts
@@ -763,7 +763,8 @@ src/sim/
     writer.py                    # Helper wrappers for today.md and key_memory writes
   templates/                     # Jinja2 prompt templates (all in Chinese)
     system_base.j2               # Shared system prompt (high school setting + dialogue rules + few-shot teen speech examples)
-    perception_decision.j2       # PDA tick perception (qualitative labels, concern linkage, current_tensions only — no self_concept/self_narrative to stay lean)
+    perception_static.j2         # PDA perception system message — agent identity, relationships, memories, scene info (stable within a scene; enables DeepSeek prefix caching)
+    perception_dynamic.j2        # PDA perception user message — transcript, latest_event, emotion trace, output format instructions (changes per tick)
     dialogue_turn.j2             # Legacy per-turn dialogue (kept for A/B comparison reference)
     daily_plan.j2                # Morning plan with concern linkage (satisfies_concern), yesterday intentions display, self_concept + current_tensions
     solo_reflection.j2           # Solo inner monologue (qualitative labels, self_concept + current_tensions)
@@ -793,7 +794,6 @@ All settings via `pydantic-settings` `BaseSettings`, loaded from `.env` file, ov
 | `max_tokens_compression` | 32000 | Nightly compression max tokens |
 | `max_tokens_solo` | 32000 | Solo reflection max tokens |
 | `max_retries` | 3 | LLM call retries |
-| `max_ticks_per_scene` | 30 | Hard cap on ticks per PDA scene |
 | `min_ticks_before_termination` | 3 | Minimum ticks before scene can end |
 | `consecutive_observe_to_end` | 3 | Consecutive all-observe ticks to trigger scene end |
 | `perception_temperature` | 0.9 | PDA perception LLM call temperature |

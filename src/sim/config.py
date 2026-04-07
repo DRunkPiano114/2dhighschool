@@ -30,7 +30,6 @@ class Settings(BaseSettings):
     max_retries: int = 3
 
     # PDA tick loop
-    max_ticks_per_scene: int = 30
     min_ticks_before_termination: int = 3
     consecutive_observe_to_end: int = 3
     perception_temperature: float = 0.9

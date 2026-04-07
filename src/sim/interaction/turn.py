@@ -46,8 +46,12 @@ async def run_perception(
         emotion_trace=emotion_trace,
     )
 
-    system_msg = render("perception_decision.j2", **ctx)
-    messages = [{"role": "user", "content": system_msg}]
+    static_msg = render("perception_static.j2", **ctx)
+    dynamic_msg = render("perception_dynamic.j2", **ctx)
+    messages = [
+        {"role": "system", "content": static_msg},
+        {"role": "user", "content": dynamic_msg},
+    ]
 
     start = time.time()
     llm_result = await structured_call(
@@ -170,7 +174,7 @@ async def run_group_dialogue(
     # Track the environmental_event from previous tick for gating decisions
     prev_environmental_event: str | None = None
 
-    for tick in range(settings.max_ticks_per_scene):
+    for tick in range(scene.max_rounds):
         active_agents = list(resolution_state.active_agents)
         if len(active_agents) < 2:
             break
