@@ -182,7 +182,7 @@ export class BubbleOverlay {
         color: 'rgba(255,255,255,0.6)',
         background: 'rgba(0,0,0,0.25)',
         whiteSpace: 'pre-wrap',
-        wordBreak: 'break-all',
+        overflowWrap: 'break-word',
         pointerEvents: 'none',
         opacity: '0',
         transition: 'opacity 0.3s',
@@ -202,7 +202,7 @@ export class BubbleOverlay {
           ? '"LXGW WenKai", serif'
           : '"Noto Sans SC", sans-serif',
         whiteSpace: 'pre-wrap',
-        wordBreak: 'break-all',
+        overflowWrap: 'break-word',
         overflow: 'visible',
         pointerEvents: 'auto',
         cursor: 'pointer',
