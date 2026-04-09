@@ -946,7 +946,7 @@ Collected during scene execution; each agent gets one slot per scene they partic
 
 ---
 
-## Frontend — Sim班 Pixel World
+## Frontend — SimClass Pixel World
 
 Pixel-art school world viewer (Stardew Valley aesthetic, top-down). Two modes: **Explore** (click around, scrub ticks) and **Broadcast** (auto-camera follows drama, danmu overlays). Core mechanic: mind-reading toggle reveals inner thoughts vs spoken words.
 
