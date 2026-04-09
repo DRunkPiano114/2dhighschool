@@ -982,7 +982,7 @@ web/src/
   lib/
     types.ts                    # Data interfaces + RoomId, RoomZone, RoomLayout, ViewMode, PlaybackSpeed
     data.ts                     # fetch+cache + prefetchDay() for current day (~650KB)
-    constants.ts                # SEAT_LAYOUT, EMOTION_COLORS, EMOTION_LABELS, LOCATION_ICONS
+    constants.ts                # SEAT_LAYOUT, EMOTION_COLORS, EMOTION_LABELS, EMOTION_EMOJIS, LOCATION_ICONS
     roomConfig.ts               # Room zone definitions (7 rooms), derivePositions() for character placement
     drama.ts                    # scoreTick(), scoreGroup(), dramaThreshold(), isDramaPeak(), pickDanmu()
     PlaybackController.ts       # Singleton. Two strategies: MANUAL (arrow keys / scrubber) + BROADCAST (auto-advance, drama-sorted groups). 3s/tick at 1x.
@@ -992,7 +992,8 @@ web/src/
       Room.tsx                  # Programmatic tilemap for each of 7 rooms. Draw functions: drawClassroom, drawHallway, drawCafeteria, drawDorm, drawPlayground, drawLibrary, drawConvenienceStore.
       CharacterSprite.ts        # Colored circle + head + name label. Per-agent colors. updateSpriteState() for talking/dimming.
       Camera.ts                 # Free-scroll (drag + wheel zoom) + auto-pan (lerp). State on PixiJS Container transform, updated via Ticker.
-      BubbleOverlay.ts          # Imperative DOM overlay. Speech (cream bg, solid border), thought (rose bg, dashed, italic), whisper notice. Positioned via sprite.toGlobal() each frame.
+      BubbleOverlay.ts          # Imperative DOM overlay. 5 bubble types: speech (cream bg, optional inline inner_thought in mind-reading), thought (rose dashed, solo only), whisper_notice (gray dashed), emoji (emotion indicator for observers in mind-reading, title tooltip shows inner_thought), action (small italic for non_verbal). Viewport-clamped positioning via sprite.toGlobal() each frame with overlap push-apart. Pointer triangle on speech/thought/whisper. Click forwarding via onBubbleClick callback → setFocusedAgent. Fade-in via opacity transition (no transform transition to avoid fly-in). Recreates DOM element on type change.
+      ErrorBoundary.tsx         # Minimal React Error Boundary. Catches render errors, logs to console, renders nothing on crash (prevents blank page).
       DanmuLayer.ts             # Floating text scrolling right-to-left. Fires from inner_thought of observers. CSS animation, 8s duration.
     ui/                         # React overlays
       TopBar.tsx                # Day nav, title, mode toggle (探索/放映), mind-reading button

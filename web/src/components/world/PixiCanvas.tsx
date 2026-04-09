@@ -9,11 +9,13 @@ import { Camera } from './Camera'
 import { BubbleOverlay, type BubbleData } from './BubbleOverlay'
 import { DanmuLayer } from './DanmuLayer'
 import { pickDanmu } from '../../lib/drama'
+import { EMOTION_EMOJIS } from '../../lib/constants'
 import { Room } from './Room'
 import { TopBar } from '../ui/TopBar'
 import { BottomBar } from '../ui/BottomBar'
 import { RoomNav } from '../ui/RoomNav'
 import { SidePanel } from '../ui/SidePanel'
+import { ErrorBoundary } from '../ui/ErrorBoundary'
 import { GodModeChat } from '../ui/GodModeChat'
 import { RolePlayChat } from '../ui/RolePlayChat'
 import { playbackController } from '../../lib/PlaybackController'
@@ -96,7 +98,9 @@ function WorldScene() {
       wrapper.appendChild(canvas)
     }
 
-    bubbleRef.current = new BubbleOverlay(wrapper)
+    bubbleRef.current = new BubbleOverlay(wrapper, (agentId) => {
+      useWorldStore.getState().setFocusedAgent(agentId)
+    })
     danmuRef.current = new DanmuLayer(wrapper)
 
     return () => {
@@ -217,15 +221,17 @@ function WorldScene() {
     // Build bubbles
     const bubbles: BubbleData[] = []
 
-    // Speech bubble
+    // Speech bubble (+ inline inner thought in mind-reading mode)
     if (tick.public.speech) {
       const s = tick.public.speech
+      const mind = tick.minds[s.agent]
       bubbles.push({
         agentId: s.agent,
         displayName: sceneFile.participant_names[s.agent] ?? '',
         text: s.content,
         type: 'speech',
         target: s.target ?? undefined,
+        subtext: mindReading && mind ? mind.inner_thought : undefined,
       })
     }
 
@@ -239,20 +245,33 @@ function WorldScene() {
         text: mindReading ? w.content : `${fromName}对${toName}说了悄悄话`,
         type: mindReading ? 'speech' : 'whisper_notice',
         target: w.to,
+        subtext: mindReading ? tick.minds[w.from]?.inner_thought : undefined,
       })
     }
 
-    // Thought bubbles (mind reading)
-    if (mindReading) {
-      for (const [agentId, mind] of Object.entries(tick.minds)) {
-        // Don't duplicate speaker's bubble
-        if (tick.public.speech?.agent === agentId) continue
-        if (tick.public.whispers.some(w => w.from === agentId)) continue
+    // Non-verbal actions (always shown for agents without a bubble)
+    for (const [agentId, mind] of Object.entries(tick.minds)) {
+      if (bubbles.some(b => b.agentId === agentId)) continue
+      if (mind.action_type === 'non_verbal' && mind.action_content) {
         bubbles.push({
           agentId,
-          displayName: sceneFile.participant_names[agentId] ?? '',
-          text: mind.inner_thought,
-          type: 'thought',
+          displayName: '',
+          text: mind.action_content,
+          type: 'action',
+        })
+      }
+    }
+
+    // Mind-reading: emoji indicators for remaining observers
+    if (mindReading) {
+      for (const [agentId, mind] of Object.entries(tick.minds)) {
+        if (bubbles.some(b => b.agentId === agentId)) continue
+        bubbles.push({
+          agentId,
+          displayName: '',
+          text: EMOTION_EMOJIS[mind.emotion] ?? '😐',
+          subtext: mind.inner_thought,
+          type: 'emoji',
         })
       }
     }
@@ -366,7 +385,7 @@ export function PixiCanvas() {
       <TopBar />
       <BottomBar />
       <RoomNav />
-      <SidePanel />
+      <ErrorBoundary><SidePanel /></ErrorBoundary>
       <GodModeChat />
       <RolePlayChat />
     </div>

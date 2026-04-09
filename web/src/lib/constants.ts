@@ -53,6 +53,21 @@ export const EMOTION_SENTIMENT: Record<Emotion, number> = {
   jealous: -0.5,
 } as Record<Emotion, number>
 
+export const EMOTION_EMOJIS: Record<string, string> = {
+  happy: '😊',
+  sad: '😢',
+  anxious: '😰',
+  angry: '😤',
+  excited: '🤩',
+  calm: '😌',
+  embarrassed: '😳',
+  bored: '😑',
+  neutral: '😐',
+  jealous: '😒',
+  proud: '😏',
+  curious: '🤔',
+}
+
 export const LOCATION_ICONS: Record<string, string> = {
   '教室': '🏫',
   '食堂': '🍜',
