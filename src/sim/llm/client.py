@@ -1,3 +1,4 @@
+from collections.abc import AsyncGenerator
 from dataclasses import dataclass
 
 import instructor
@@ -37,8 +38,8 @@ async def structured_call(
         model=settings.llm_model,
         messages=messages,
         response_model=response_model,
-        temperature=temperature or settings.creative_temperature,
-        max_tokens=max_tokens or settings.max_tokens_per_turn,
+        temperature=temperature if temperature is not None else settings.creative_temperature,
+        max_tokens=max_tokens if max_tokens is not None else settings.max_tokens_per_turn,
         max_retries=settings.max_retries,
     )
 
@@ -60,3 +61,22 @@ async def structured_call(
         tokens_completion=tokens_completion,
         cost_usd=cost,
     )
+
+
+async def streaming_text_call(
+    messages: list[dict],
+    temperature: float | None = None,
+    max_tokens: int | None = None,
+) -> AsyncGenerator[str, None]:
+    """Stream raw text tokens (no structured output). For God Mode chat."""
+    response = await litellm.acompletion(
+        model=settings.llm_model,
+        messages=messages,
+        temperature=temperature if temperature is not None else settings.creative_temperature,
+        max_tokens=max_tokens if max_tokens is not None else 1024,
+        stream=True,
+    )
+    async for chunk in response:
+        delta = chunk.choices[0].delta.content
+        if delta:
+            yield delta

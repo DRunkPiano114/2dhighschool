@@ -1,5 +1,8 @@
 import { create } from 'zustand'
 import type { ViewMode, PlaybackSpeed, RoomId, SceneIndexEntry, SceneFile, Meta } from '../lib/types'
+import type { ChatMessage, AgentReaction } from '../lib/chat'
+
+export type ChatMode = 'off' | 'god' | 'roleplay'
 
 interface WorldState {
   // --- data ---
@@ -24,6 +27,15 @@ interface WorldState {
   focusedAgent: string | null
   sidePanelOpen: boolean
 
+  // --- chat ---
+  chatMode: ChatMode
+  chatMessages: ChatMessage[]
+  chatStreaming: boolean
+  chatStreamBuffer: string
+  rolePlayUserAgent: string | null
+  rolePlayTargetAgents: string[]
+  rolePlayReactions: AgentReaction[]
+
   // --- actions ---
   setMeta: (meta: Meta) => void
   setScenes: (scenes: SceneIndexEntry[]) => void
@@ -41,6 +53,16 @@ interface WorldState {
   setSidePanelOpen: (open: boolean) => void
   advanceTick: () => void
   retreatTick: () => void
+
+  // --- chat actions ---
+  openGodModeChat: (agentId: string) => void
+  openRolePlayChat: (userAgentId: string, targets: string[]) => void
+  closeChat: () => void
+  appendChatMessage: (msg: ChatMessage) => void
+  setChatStreaming: (streaming: boolean) => void
+  appendStreamToken: (token: string) => void
+  flushStreamBuffer: () => void
+  appendAgentReaction: (reaction: AgentReaction) => void
 }
 
 export const useWorldStore = create<WorldState>((set, get) => ({
@@ -61,6 +83,14 @@ export const useWorldStore = create<WorldState>((set, get) => ({
 
   focusedAgent: null,
   sidePanelOpen: false,
+
+  chatMode: 'off',
+  chatMessages: [],
+  chatStreaming: false,
+  chatStreamBuffer: '',
+  rolePlayUserAgent: null,
+  rolePlayTargetAgents: [],
+  rolePlayReactions: [],
 
   setMeta: (meta) => set({ meta }),
   setScenes: (scenes) => set({ scenes }),
@@ -119,4 +149,66 @@ export const useWorldStore = create<WorldState>((set, get) => ({
       set({ currentTick: currentTick - 1 })
     }
   },
+
+  // --- chat actions ---
+  openGodModeChat: (agentId) => set({
+    chatMode: 'god',
+    chatMessages: [],
+    chatStreaming: false,
+    chatStreamBuffer: '',
+    focusedAgent: agentId,
+    sidePanelOpen: false,
+    rolePlayReactions: [],
+  }),
+
+  openRolePlayChat: (userAgentId, targets) => set({
+    chatMode: 'roleplay',
+    chatMessages: [],
+    chatStreaming: false,
+    chatStreamBuffer: '',
+    rolePlayUserAgent: userAgentId,
+    rolePlayTargetAgents: targets,
+    rolePlayReactions: [],
+  }),
+
+  closeChat: () => set({
+    chatMode: 'off',
+    chatMessages: [],
+    chatStreaming: false,
+    chatStreamBuffer: '',
+    rolePlayUserAgent: null,
+    rolePlayTargetAgents: [],
+    rolePlayReactions: [],
+  }),
+
+  appendChatMessage: (msg) => set((s) => ({
+    chatMessages: [...s.chatMessages, msg],
+  })),
+
+  setChatStreaming: (streaming) => set({ chatStreaming: streaming }),
+
+  appendStreamToken: (token) => set((s) => ({
+    chatStreamBuffer: s.chatStreamBuffer + token,
+  })),
+
+  flushStreamBuffer: () => {
+    const { chatStreamBuffer } = get()
+    if (!chatStreamBuffer) return
+    set((s) => ({
+      chatMessages: [...s.chatMessages, {
+        role: 'assistant',
+        content: chatStreamBuffer,
+      }],
+      chatStreamBuffer: '',
+    }))
+  },
+
+  appendAgentReaction: (reaction) => set((s) => ({
+    rolePlayReactions: [...s.rolePlayReactions, reaction],
+    chatMessages: [...s.chatMessages, {
+      role: reaction.agent_id,
+      content: reaction.content,
+      agent_name: reaction.agent_name,
+    }],
+  })),
 }))

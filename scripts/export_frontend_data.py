@@ -127,6 +127,55 @@ def export_events() -> None:
         print("  events.json (empty)")
 
 
+def backfill_snapshots() -> None:
+    """Create agent_snapshots for already-simulated days that lack them.
+
+    For each day_NNN directory, if agent_snapshots/ is missing, copy current
+    agent files as the snapshot. This is a one-time migration: future runs
+    create snapshots automatically via the orchestrator.
+    """
+    if not LOGS.exists():
+        print("  No logs/ directory — skipping snapshot backfill")
+        return
+
+    snapshot_files = ("state.json", "relationships.json", "self_narrative.json")
+    agent_ids = [d.name for d in sorted(AGENTS.iterdir()) if d.is_dir() and (d / "profile.json").exists()]
+
+    # Day 0 initial state (if not exists)
+    day0 = LOGS / "day_000" / "agent_snapshots"
+    if not day0.exists():
+        for aid in agent_ids:
+            dest = day0 / aid
+            dest.mkdir(parents=True, exist_ok=True)
+            for fname in snapshot_files:
+                src = AGENTS / aid / fname
+                if src.exists():
+                    shutil.copy2(src, dest / fname)
+        print(f"  Created Day 0 snapshot ({len(agent_ids)} agents)")
+
+    # Backfill any day_NNN dirs missing agent_snapshots
+    count = 0
+    for day_dir in sorted(LOGS.iterdir()):
+        if not day_dir.is_dir() or not day_dir.name.startswith("day_"):
+            continue
+        if day_dir.name == "day_000":
+            continue
+        snap_dir = day_dir / "agent_snapshots"
+        if snap_dir.exists():
+            continue
+        # Use current agent files as best-available snapshot
+        for aid in agent_ids:
+            dest = snap_dir / aid
+            dest.mkdir(parents=True, exist_ok=True)
+            for fname in snapshot_files:
+                src = AGENTS / aid / fname
+                if src.exists():
+                    shutil.copy2(src, dest / fname)
+        count += 1
+    if count:
+        print(f"  Backfilled snapshots for {count} days")
+
+
 def main() -> None:
     # Clean output
     if OUT.exists():
@@ -134,6 +183,7 @@ def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
 
     print("Exporting frontend data...")
+    backfill_snapshots()
     export_meta()
     export_agents()
     export_days()

@@ -9,7 +9,9 @@ import type { Agent, Emotion } from '../../lib/types'
 export function SidePanel() {
   const agentId = useWorldStore(s => s.focusedAgent)
   const isOpen = useWorldStore(s => s.sidePanelOpen)
+  const chatMode = useWorldStore(s => s.chatMode)
   const close = useWorldStore(s => s.setSidePanelOpen)
+  const openGodMode = useWorldStore(s => s.openGodModeChat)
   const [agent, setAgent] = useState<Agent | null>(null)
 
   useEffect(() => {
@@ -19,7 +21,7 @@ export function SidePanel() {
 
   return (
     <AnimatePresence>
-      {isOpen && agent && (
+      {isOpen && agent && chatMode === 'off' && (
         <motion.div
           initial={{ x: 320, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
@@ -37,12 +39,20 @@ export function SidePanel() {
               <span className="text-white font-medium">{agent.name}</span>
               <span className="text-white/40 text-xs">{agent.role === 'homeroom_teacher' ? '班主任' : '学生'}</span>
             </div>
-            <button
-              onClick={() => close(false)}
-              className="text-white/40 hover:text-white/70 text-sm"
-            >
-              ✕
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => agentId && openGodMode(agentId)}
+                className="text-xs px-2 py-1 bg-rose-600/60 hover:bg-rose-500/80 text-white rounded transition-colors"
+              >
+                内心
+              </button>
+              <button
+                onClick={() => close(false)}
+                className="text-white/40 hover:text-white/70 text-sm"
+              >
+                ✕
+              </button>
+            </div>
           </div>
 
           <div className="px-4 py-3 space-y-4">

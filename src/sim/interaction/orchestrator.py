@@ -1,5 +1,6 @@
 import asyncio
 import random
+import shutil
 import time
 from datetime import datetime
 from pathlib import Path
@@ -217,6 +218,9 @@ class Orchestrator:
             if progress.day_phase == "daily_plan":
                 self.world.clear_all_snapshots()
 
+            # Save Day 0 initial state snapshot (idempotent — only if not exists)
+            self._save_day0_snapshot_if_needed()
+
             # 1. Generate daily plans
             if progress.day_phase == "daily_plan":
                 await self._run_daily_plans(day, progress)
@@ -232,6 +236,7 @@ class Orchestrator:
             # 3. Nightly compression
             if progress.day_phase == "compression":
                 await self._run_compression(day, progress)
+                self._save_daily_snapshots(day)
                 progress.day_phase = "complete"
                 self._save_progress(progress)
 
@@ -602,6 +607,37 @@ class Orchestrator:
                 await nightly_compress(storage, profile, day)
 
         await asyncio.gather(*[_compress(aid) for aid in student_ids])
+
+    DAILY_SNAPSHOT_FILES = ("state.json", "relationships.json", "self_narrative.json")
+
+    def _save_daily_snapshots(self, day: int) -> None:
+        """Save per-agent state snapshots to logs/day_{N}/agent_snapshots/."""
+        day_dir = settings.logs_dir / f"day_{day:03d}" / "agent_snapshots"
+        for aid in self._active_agent_ids():
+            agent_dir = self.world.agents_dir / aid
+            dest = day_dir / aid
+            dest.mkdir(parents=True, exist_ok=True)
+            for fname in self.DAILY_SNAPSHOT_FILES:
+                src = agent_dir / fname
+                if src.exists():
+                    shutil.copy2(src, dest / fname)
+        logger.info(f"  Saved daily snapshots → logs/day_{day:03d}/agent_snapshots/")
+
+    def _save_day0_snapshot_if_needed(self) -> None:
+        """Save Day 0 initial state snapshot (pristine state before any simulation).
+        Idempotent: only creates if day_000 doesn't exist yet."""
+        day0_dir = settings.logs_dir / "day_000" / "agent_snapshots"
+        if day0_dir.exists():
+            return
+        for aid in self._active_agent_ids():
+            agent_dir = self.world.agents_dir / aid
+            dest = day0_dir / aid
+            dest.mkdir(parents=True, exist_ok=True)
+            for fname in self.DAILY_SNAPSHOT_FILES:
+                src = agent_dir / fname
+                if src.exists():
+                    shutil.copy2(src, dest / fname)
+        logger.info("  Saved Day 0 initial state snapshot → logs/day_000/agent_snapshots/")
 
     def _end_of_day(self, day: int, progress: Progress) -> None:
         self.world.clear_all_snapshots()

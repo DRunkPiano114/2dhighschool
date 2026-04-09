@@ -10,10 +10,14 @@ dependencies = [
     "jinja2>=3.1",
     "loguru>=0.7",
     "python-dotenv>=1.2.2",
+    "fastapi>=0.115",
+    "uvicorn>=0.34",
+    "sse-starlette>=2.0",
 ]
 
 [project.scripts]
 sim = "sim.main:main"
+api = "sim.api.server:run"
 
 [build-system]
 requires = ["hatchling"]

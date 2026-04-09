@@ -1,5 +1,6 @@
 import json
 import os
+import re
 import shutil
 import tempfile
 from pathlib import Path
@@ -120,11 +121,22 @@ class AgentStorage:
         path = self._md_path("recent")
         path.write_text(content, encoding="utf-8")
 
-    def read_recent_md_last_n_days(self, n: int) -> str:
+    def read_recent_md_last_n_days(self, n: int, max_day: int | None = None) -> str:
         content = self.read_recent_md()
         if not content:
             return ""
         sections = content.split("\n# Day ")
+        if max_day is not None:
+            filtered = []
+            for i, s in enumerate(sections):
+                # First section keeps "# Day " prefix; others start with "N\n..."
+                m = re.match(r"#?\s*Day\s+(\d+)", s.strip()) if i == 0 else re.match(r"(\d+)", s)
+                if m:
+                    if int(m.group(1)) <= max_day:
+                        filtered.append(s)
+                else:
+                    filtered.append(s)
+            sections = filtered
         recent = sections[-n:] if len(sections) > n else sections
         if recent and not recent[0].startswith("# Day "):
             recent[0] = recent[0]

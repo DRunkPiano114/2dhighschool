@@ -14,6 +14,8 @@ import { TopBar } from '../ui/TopBar'
 import { BottomBar } from '../ui/BottomBar'
 import { RoomNav } from '../ui/RoomNav'
 import { SidePanel } from '../ui/SidePanel'
+import { GodModeChat } from '../ui/GodModeChat'
+import { RolePlayChat } from '../ui/RolePlayChat'
 import { playbackController } from '../../lib/PlaybackController'
 import type { SceneGroup } from '../../lib/types'
 
@@ -365,6 +367,8 @@ export function PixiCanvas() {
       <BottomBar />
       <RoomNav />
       <SidePanel />
+      <GodModeChat />
+      <RolePlayChat />
     </div>
   )
 }

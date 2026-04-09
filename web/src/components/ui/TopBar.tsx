@@ -1,4 +1,7 @@
+import { useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import { useWorldStore } from '../../stores/useWorldStore'
+import { RolePlaySetup } from './RolePlaySetup'
 import type { ViewMode } from '../../lib/types'
 
 export function TopBar() {
@@ -9,6 +12,7 @@ export function TopBar() {
   const currentDay = useWorldStore(s => s.currentDay)
   const meta = useWorldStore(s => s.meta)
   const setCurrentDay = useWorldStore(s => s.setCurrentDay)
+  const [showRolePlaySetup, setShowRolePlaySetup] = useState(false)
 
   const dayNum = currentDay.replace('day_', '')
   const days = meta?.days ?? [currentDay]
@@ -66,6 +70,14 @@ export function TopBar() {
           ))}
         </div>
 
+        {/* Role Play button */}
+        <button
+          onClick={() => setShowRolePlaySetup(true)}
+          className="px-3 py-1 rounded-full text-xs font-medium bg-purple-600/60 hover:bg-purple-500/80 text-white transition-colors"
+        >
+          角色扮演
+        </button>
+
         {/* Mind-reading toggle */}
         <button
           onClick={toggleMindReading}
@@ -79,6 +91,13 @@ export function TopBar() {
           读心
         </button>
       </div>
+
+      {/* Role Play setup modal */}
+      <AnimatePresence>
+        {showRolePlaySetup && (
+          <RolePlaySetup onClose={() => setShowRolePlaySetup(false)} />
+        )}
+      </AnimatePresence>
     </div>
   )
 }
