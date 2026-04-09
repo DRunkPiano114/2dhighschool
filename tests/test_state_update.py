@@ -3,7 +3,6 @@
 from random import Random
 
 from sim.agent.state_update import (
-    ENERGY_DELTA,
     EXTREME_EMOTIONS,
     clamp,
     decay_concerns,
@@ -74,12 +73,25 @@ def test_update_energy_clamps_at_hundred():
     assert state.energy == 100  # 95 + 15 → clamped to 100
 
 
-def test_all_energy_deltas_covered():
-    """Verify every scene type in ENERGY_DELTA works."""
-    for scene_name, delta in ENERGY_DELTA.items():
-        state = AgentState(energy=50)
-        update_energy(state, scene_name)
-        assert state.energy == clamp(50 + delta, 0, 100)
+def test_update_energy_morning_reading():
+    """Morning reading (早读) costs 3 energy."""
+    state = AgentState(energy=50)
+    update_energy(state, "早读")
+    assert state.energy == 47
+
+
+def test_update_energy_evening_study():
+    """Evening study (晚自习) costs 5 energy."""
+    state = AgentState(energy=50)
+    update_energy(state, "晚自习")
+    assert state.energy == 45
+
+
+def test_update_energy_dorm_chat():
+    """Dorm chat (宿舍夜聊) costs 5 energy."""
+    state = AgentState(energy=50)
+    update_energy(state, "宿舍夜聊")
+    assert state.energy == 45
 
 
 # --- reset_energy_for_sleep ---
@@ -284,3 +296,36 @@ def test_regress_multiple_relationships():
     assert rels.relationships["b"].trust == -2
     assert rels.relationships["c"].favorability == 0
     assert rels.relationships["c"].trust == 0
+
+
+# --- Edge cases ---
+
+def test_regress_at_one_reaches_zero():
+    """Values at ±1 should reach 0, not overshoot."""
+    rels = RelationshipFile(relationships={
+        "b": Relationship(target_name="B", target_id="b", favorability=1, trust=-1),
+    })
+    regress_relationships(rels)
+    assert rels.relationships["b"].favorability == 0
+    assert rels.relationships["b"].trust == 0
+
+
+def test_pressure_recovery_clamps_to_zero():
+    """Heavy post-exam recovery should not push pressure below 0."""
+    state = AgentState(academic_pressure=80)
+    # days_since_exam=30 → recovery = -60, base(15) + 0 + (-60) = -45 → clamped to 0
+    update_academic_pressure(state, PressureLevel.LOW, next_exam_in_days=30, days_since_exam=30)
+    assert state.academic_pressure == 0
+
+
+def test_emotion_decay_probabilistic():
+    """Extreme emotion decay at ≥2 scenes is probabilistic (≈50%)."""
+    decayed = 0
+    total = 200
+    for seed in range(total):
+        state = AgentState(emotion=Emotion.ANGRY)
+        maybe_decay_emotion(state, scenes_since_extreme=2, rng=Random(seed))
+        if state.emotion == Emotion.NEUTRAL:
+            decayed += 1
+    # Expect roughly 50% decay rate (allow wide margin for randomness)
+    assert 60 < decayed < 140

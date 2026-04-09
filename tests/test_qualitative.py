@@ -132,3 +132,38 @@ def test_exam_two_weeks():
 def test_exam_far():
     assert next_exam_label(15) == "月考还远"
     assert next_exam_label(30) == "月考还远"
+
+
+# --- Edge cases: out-of-range inputs ---
+
+def test_energy_label_negative():
+    """Negative energy should still map to the lowest tier."""
+    assert energy_label(-10) == "精疲力尽"
+
+
+def test_energy_label_above_100():
+    """Energy above 100 should map to the highest tier."""
+    assert energy_label(120) == "精神充沛"
+
+
+def test_pressure_label_negative():
+    assert pressure_label(-5) == "轻松"
+
+
+def test_pressure_label_above_100():
+    assert pressure_label(110) == "几乎扛不住"
+
+
+def test_intensity_label_zero():
+    """Intensity of 0 (below normal range) should map to the lowest tier."""
+    assert intensity_label(0) == "轻微"
+
+
+def test_relationship_label_extreme_positive():
+    """Very high favorability + trust → 亲近."""
+    assert relationship_label(100, 100) == "亲近"
+
+
+def test_relationship_label_extreme_negative():
+    """Very low favorability + trust → 不对付."""
+    assert relationship_label(-100, -100) == "不对付"

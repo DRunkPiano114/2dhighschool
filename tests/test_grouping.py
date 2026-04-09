@@ -9,7 +9,6 @@ from sim.models.agent import (
 from sim.models.relationship import Relationship, RelationshipFile
 from sim.models.scene import Scene, SceneDensity
 from sim.world.grouping import (
-    LABEL_BONUS,
     _compute_affinity,
     _should_be_solo,
     group_agents,
@@ -58,11 +57,11 @@ def test_affinity_bidirectional_favorability():
 
 
 def test_affinity_label_bonus():
+    """Roommates get a 20-point affinity bonus over regular classmates."""
     profiles = {
         "a": _make_profile("a", "张伟"),
         "b": _make_profile("b", "李明"),
     }
-    # Roommate label
     rels_roommate = {
         "a": RelationshipFile(relationships={
             "b": Relationship(target_name="李明", target_id="b", label="室友"),
@@ -79,7 +78,7 @@ def test_affinity_label_bonus():
     rng2 = Random(99)
     score_roommate = _compute_affinity("a", "b", profiles, rels_roommate, _make_scene(), rng1)
     score_classmate = _compute_affinity("a", "b", profiles, rels_classmate, _make_scene(), rng2)
-    assert score_roommate - score_classmate == LABEL_BONUS["室友"] - LABEL_BONUS["同学"]
+    assert score_roommate - score_classmate == 20
 
 
 def test_affinity_dorm_gender_bonus():
@@ -193,6 +192,20 @@ def test_solo_sad_high_energy():
     profile = _make_profile("a", "张伟")
     state = AgentState(energy=60, emotion=Emotion.SAD)
     assert _should_be_solo("a", profile, state, {}, Random(42)) is False
+
+
+def test_solo_energy_at_threshold():
+    """Energy exactly at 25 (threshold) → not solo (threshold is < 25)."""
+    profile = _make_profile("a", "张伟")
+    state = AgentState(energy=25)
+    assert _should_be_solo("a", profile, state, {}, Random(42)) is False
+
+
+def test_solo_energy_just_below_threshold():
+    """Energy at 24 (just below threshold) → solo."""
+    profile = _make_profile("a", "张伟")
+    state = AgentState(energy=24)
+    assert _should_be_solo("a", profile, state, {}, Random(42)) is True
 
 
 # --- group_agents ---

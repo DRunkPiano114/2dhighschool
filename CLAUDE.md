@@ -11,6 +11,8 @@ What triggers a test update:
 - Add/remove/rename fields on models used in tested functions
 - Change memory retrieval, event queue, or narrative formatting logic
 
+Write tests based on what a function is **supposed to do** (its design intent), not by mirroring its current implementation. Testing against the code as-is can cement bugs into passing tests.
+
 Run `uv run python -m pytest` before considering any code change complete.
 
 ## Documentation Sync Rule
