@@ -998,7 +998,7 @@ web/src/
       TopBar.tsx                # Day nav, title, mode toggle (探索/放映), mind-reading button
       BottomBar.tsx             # Scene info, group tabs, tick scrubber (bars colored by drama intensity), play/pause, speed (1x/2x/4x)
       SidePanel.tsx             # Slide-out character detail: emotion, personality, academics, concerns, relationships, recent thoughts. Framer Motion animated.
-      RoomNav.tsx               # Vertical room tabs (left edge), only rooms with scenes shown
+      RoomNav.tsx               # Timeline nav (left edge). Groups scenes by time slot via groupScenesByTimeSlot(). Multi-scene slots: non-clickable header (time + name) with indented location children. Single-scene slots: one clickable line. Active scene bg-white/20, active slot header amber. Auto-scrolls into view on change. max-h-[70vh] with overflow scroll.
     layout/                     # Legacy (Phase 2 analytical views)
       Header.tsx                # Nav bar for /relationships, /timeline
       PageShell.tsx             # Wrapper for legacy views
