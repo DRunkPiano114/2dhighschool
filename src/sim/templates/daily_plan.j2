@@ -85,16 +85,16 @@
 - intentions: 最多3个意图，每个包含 target、goal、reason、satisfies_concern
 - mood_forecast: 预测今天的整体心情
 
-{% if is_student %}
+{% if is_student and free_period_configs %}
 ## 自由时段地点选择
-今天有三个可以自由活动的时段。根据你的心情和想法选择去哪里：
+今天有 {{ free_period_configs | length }} 个可以自由活动的时段，根据你的心情和想法选择去哪里：
 
-上午课间（08:45）可选：教室、走廊、操场、小卖部、图书馆、天台
-午饭时间（12:00）可选：食堂、教室、操场、小卖部
-下午课间（15:30）可选：教室、走廊、操场、小卖部、图书馆、天台
+{% for cfg in free_period_configs %}
+- {{ cfg.time }} {{ cfg.name }}：{{ cfg.valid_locations | join('、') }}
+{% endfor %}
 
 请在 location_preferences 中输出：
-- morning_break: 上午课间去哪
-- lunch: 午饭去哪
-- afternoon_break: 下午课间去哪
+{% for cfg in free_period_configs %}
+- {{ cfg.pref_field }}: {{ cfg.time }} {{ cfg.name }}去哪
+{% endfor %}
 {% endif %}

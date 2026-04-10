@@ -29,6 +29,7 @@ from ..models.trajectory import AgentSlot, DayTrajectory
 from ..world.event_queue import EventQueueManager
 from ..world.grouping import group_agents
 from ..world.scene_generator import SceneGenerator
+from ..world.schedule import load_schedule
 from .apply_results import apply_scene_end_results, apply_solo_result, write_scene_file
 from .scene_end import run_scene_end_analysis
 from .self_reflection import run_all_reflections
@@ -116,6 +117,7 @@ class Orchestrator:
         self._trajectory: DayTrajectory | None = None
         self._scene_files: list[Path] = []  # track scene files written this day
         self._exam_results: dict | None = None
+        self._schedule = load_schedule()
 
     def _scene_file_path(self, day: int, scene: Scene) -> Path:
         time_prefix = scene.time.replace(":", "")  # "08:45" → "0845"
@@ -264,6 +266,7 @@ class Orchestrator:
 
         logger.info("Generating daily plans...")
         student_ids = self._active_agent_ids()
+        free_period_configs = [c for c in self._schedule if c.is_free_period]
 
         async def _gen_plan(aid: str) -> None:
             async with self.semaphore:
@@ -274,6 +277,7 @@ class Orchestrator:
                     aid, storage, profile, state,
                     progress.next_exam_in_days, day,
                     all_profiles=self.profiles,
+                    free_period_configs=free_period_configs,
                 )
                 state.daily_plan = plan
                 state.day = day
@@ -287,11 +291,10 @@ class Orchestrator:
 
         # Per-day deterministic RNG so scene list is stable across resume
         scene_rng = random.Random(hash((self._seed, "scenes", day)))
-        gen = SceneGenerator(self.profiles, self.states, scene_rng)
-        schedule = gen.schedule
+        gen = SceneGenerator(self.profiles, self.states, self._schedule, rng=scene_rng)
         scene_index = 0
 
-        for config in schedule:
+        for config in self._schedule:
             # Reload states (may have changed from previous scene or re-planning)
             self.states = {
                 aid: self.world.get_agent(aid).load_state()
@@ -317,7 +320,7 @@ class Orchestrator:
             # After all sub-scenes for this config, check for re-planning
             if affected_agents:
                 await self._maybe_replan_agents(
-                    day, config, schedule, affected_agents, progress,
+                    day, config, affected_agents, progress,
                 )
 
     async def _run_single_scene(
@@ -540,28 +543,22 @@ class Orchestrator:
         return affected_agents
 
     async def _maybe_replan_agents(
-        self, day: int, current_config, schedule: list, affected_agents: set[str],
+        self, day: int, current_config, affected_agents: set[str],
         progress: Progress,
     ) -> None:
         """Re-plan affected agents if next config is a free period."""
         # Find next config in schedule
-        config_idx = schedule.index(current_config)
-        if config_idx + 1 >= len(schedule):
+        config_idx = self._schedule.index(current_config)
+        if config_idx + 1 >= len(self._schedule):
             return
-        next_config = schedule[config_idx + 1]
+        next_config = self._schedule[config_idx + 1]
         if not next_config.is_free_period:
             return
 
-        # Determine which pref field and available locations for next slot
-        from ..world.scene_generator import _TIME_TO_PREF_FIELD
-        next_pref_field = _TIME_TO_PREF_FIELD.get(next_config.time)
-        if not next_pref_field:
-            return
-
-        if next_config.name == "午饭":
-            available_locations = settings.lunch_locations
-        else:
-            available_locations = settings.free_period_locations
+        # Free period invariants enforced by SceneConfig validator
+        next_pref_field = next_config.pref_field
+        assert next_pref_field is not None
+        available_locations = next_config.valid_locations
 
         # Build a brief scene summary from the current config
         scene_summary = f"{current_config.time} {current_config.name}刚结束"

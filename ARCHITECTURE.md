@@ -92,7 +92,7 @@ For each agent (concurrently, up to `max_concurrent_llm_calls`):
 
 `Intention` has: `target` (optional agent name), `goal`, `reason`, `fulfilled` (bool), `abandoned` (bool), `satisfies_concern` (first 15 chars of linked concern text, or null), `origin_day` (first day this intention appeared), `pursued_days` (consecutive days in plan).
 
-`LocationPreference` has: `morning_break` (课间 08:45), `lunch` (午饭 12:00), `afternoon_break` (课间 15:30). Agents choose from configured location lists.
+`LocationPreference` has: `morning_break` (课间 08:45), `lunch` (午饭 12:00), `afternoon_break` (课间 15:30). Each field's allowed values come from the corresponding free-period entry's `valid_locations` in `schedule.json`. The daily plan template renders the per-slot option list dynamically from the orchestrator's cached schedule, and `daily_plan.py` validates the LLM's output against each slot's `valid_locations` (falling back to the slot's `location` default if invalid).
 
 ### Phase 2: Scene Execution (`day_phase = "scenes"`)
 
@@ -111,14 +111,14 @@ For **normal scenes** (`is_free_period=false`):
 For **group interaction**, each group gets a scoped scene copy (`group_scene`) with `agent_ids` set to only that group's members. This ensures dorm scenes show correct participant lists (boys-only / girls-only) and the `teacher_present` flag is set correctly per-group (`scene.teacher_present OR "he_min" in group.agent_ids`).
 
 For **free period scenes** (`is_free_period=true` — 课间 08:45, 午饭 12:00, 课间 15:30):
-1. Map config time to `LocationPreference` field (`"08:45"→morning_break`, `"12:00"→lunch`, `"15:30"→afternoon_break`)
-2. Group students by their chosen location from daily plan
-3. Teacher occasionally appears during free periods: 30% at 午饭 (in 食堂), 10% at 课间 (in 教室). When she appears, she joins the location group as a full agent participant.
+1. Read `pref_field` from the `SceneConfig` (declared in `schedule.json`) — maps the slot to the corresponding `LocationPreference` field (`morning_break`, `lunch`, or `afternoon_break`).
+2. Group students by their chosen location from daily plan; if a student's preference falls outside `config.valid_locations`, fall back to `config.location` (the slot's default).
+3. Teacher occasionally appears during free periods: 30% at 午饭, 10% at 课间. When she appears, she joins the slot's `default_location` (= `config.location`) group as a full agent participant.
 4. Create one Scene per occupied location with location-specific opening events from `data/location_events.json`
 5. Scene name becomes `f"{config.name}@{location}"` (e.g. "课间@走廊", "午饭@食堂")
 6. Sequential scene indices assigned starting from current index
 
-Available locations: 课间 → 教室/走廊/操场/小卖部/图书馆/天台; 午饭 → 食堂/教室/操场/小卖部.
+Available locations come from `schedule.json:valid_locations` per slot — currently 课间 → 教室/走廊/操场/小卖部/图书馆/天台; 午饭 → 食堂/教室/操场/小卖部. Editing the JSON is the only place to change these.
 
 **Step 2a.1 — Re-planning** (between configs):
 After all sub-scenes for a config complete, if the next config is a free period, "affected" agents may re-plan their location. An agent is affected if ANY of (checked from their individual `AgentReflection`):
@@ -126,7 +126,7 @@ After all sub-scenes for a config complete, if the next config is a free period,
 - Their reflection emotion is an extreme emotion (ANGRY, EXCITED, SAD, EMBARRASSED, JEALOUS, GUILTY, FRUSTRATED, TOUCHED)
 - Any of their `relationship_changes` has |favorability| >= 8 or |trust| >= 8
 
-Re-plan uses `replan.j2` template → `ReplanResult` (changed, new_location, reason). If changed, updates `location_preferences` for the next slot. Only students are re-planned (teacher is excluded — she has no location preferences).
+Re-plan uses `replan.j2` template → `ReplanResult` (changed, new_location, reason). The next slot's `pref_field` and `valid_locations` are read directly from its `SceneConfig`. If changed, updates `location_preferences` for the next slot. Only students are re-planned (teacher is excluded — she has no location preferences).
 
 **Step 2b — Grouping** (`world/grouping.py`):
 - First, identify solo agents: non-students (teacher) are never solo. For students: energy < 25, or introvert without close relationships at 50% chance, or sad + low energy at 60% chance.
@@ -409,7 +409,13 @@ teacher_action: str | None
 opening_event: str               # Randomly selected from schedule.json opening_events, used as tick 0 event
 ```
 
-`SceneConfig` also has `opening_events: list[str]` — pool of environment descriptions for the PDA loop's initial tick, and `is_free_period: bool` — marks 课间/午饭 for location-split scene generation.
+`SceneConfig` (loaded from `schedule.json`) has these additional fields:
+- `opening_events: list[str]` — pool of environment descriptions for the PDA loop's initial tick
+- `is_free_period: bool` — marks 课间/午饭 for location-split scene generation
+- `valid_locations: list[str]` — allowed locations for free periods (only used when `is_free_period=true`)
+- `pref_field: Literal["morning_break", "lunch", "afternoon_break"] | None` — which `LocationPreference` field this slot maps to (only used when `is_free_period=true`)
+
+A `model_validator` enforces that any `is_free_period=true` entry has a non-empty `pref_field` and `valid_locations`, and that `location` (the slot's default) is itself in `valid_locations`. This makes typos and missing fields fail immediately at `load_schedule()` time. Schedule data is the single source of truth — `scene_generator.py`, `daily_plan.py`, and `replan` all read directly from `SceneConfig`.
 
 ### Event (`models/event.py`)
 
@@ -863,8 +869,6 @@ All settings via `pydantic-settings` `BaseSettings`, loaded from `.env` file, ov
 | `recent_md_max_weeks` | 4 | Rolling window for recent.md |
 | `max_key_memories` | 10 | Max key memories in context |
 | `solo_energy_threshold` | 25 | Energy below this → solo |
-| `free_period_locations` | 教室,走廊,操场,小卖部,图书馆,天台 | Valid locations for 课间 |
-| `lunch_locations` | 食堂,教室,操场,小卖部 | Valid locations for 午饭 |
 | `self_narrative_interval_days` | 3 | Days between self-narrative regeneration |
 | `self_narrative_temperature` | 0.7 | Self-narrative LLM temperature |
 | `max_tokens_self_narrative` | 32000 | Self-narrative max tokens |

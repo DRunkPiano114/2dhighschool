@@ -27,7 +27,9 @@
       "下课了，几个人立马凑到一起",
       "铃声响了，有人伸懒腰有人往外冲"
     ],
-    "is_free_period": true
+    "is_free_period": true,
+    "valid_locations": ["教室", "走廊", "操场", "小卖部", "图书馆", "天台"],
+    "pref_field": "morning_break"
   },
   {
     "time": "10:30",
@@ -57,7 +59,9 @@
       "今天食堂出了新菜，排队的人特别多",
       "几个人占了个角落的位子，开始吃饭"
     ],
-    "is_free_period": true
+    "is_free_period": true,
+    "valid_locations": ["食堂", "教室", "操场", "小卖部"],
+    "pref_field": "lunch"
   },
   {
     "time": "14:00",
@@ -87,7 +91,9 @@
       "有人趴在桌上不想动，有人已经跑出去了",
       "课间操刚结束，大家陆续回教室"
     ],
-    "is_free_period": true
+    "is_free_period": true,
+    "valid_locations": ["教室", "走廊", "操场", "小卖部", "图书馆", "天台"],
+    "pref_field": "afternoon_break"
   },
   {
     "time": "18:30",

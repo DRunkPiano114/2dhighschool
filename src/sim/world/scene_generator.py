@@ -5,7 +5,6 @@ from collections import defaultdict
 from ..config import settings
 from ..models.agent import AgentProfile, AgentState, Role
 from ..models.scene import GroupAssignment, Scene, SceneConfig, SceneDensity
-from .schedule import load_schedule
 
 # Dorm assignments
 DORM_MEMBERS: dict[str, list[str]] = {
@@ -14,25 +13,19 @@ DORM_MEMBERS: dict[str, list[str]] = {
     "female_302": ["tang_shihan", "cheng_yutong", "su_nianyao", "fang_yuchen"],
 }
 
-# Map config time -> LocationPreference field name
-_TIME_TO_PREF_FIELD = {
-    "08:45": "morning_break",
-    "12:00": "lunch",
-    "15:30": "afternoon_break",
-}
-
 
 class SceneGenerator:
     def __init__(
         self,
         profiles: dict[str, AgentProfile],
         states: dict[str, AgentState],
+        schedule: list[SceneConfig],
         rng: random.Random | None = None,
     ):
         self.profiles = profiles
         self.states = states
         self.rng = rng or random.Random()
-        self.schedule = load_schedule()
+        self.schedule = schedule
         self._location_events = self._load_location_events()
 
     def _load_location_events(self) -> dict:
@@ -136,19 +129,12 @@ class SceneGenerator:
             aid for aid, p in self.profiles.items() if p.role == Role.STUDENT
         ]
 
-        # Determine which pref field to use
-        pref_field = _TIME_TO_PREF_FIELD.get(config.time)
-        if not pref_field:
-            # Fallback: treat as normal scene
-            return self._generate_normal_scene(config, day, start_index)
-
-        # Determine valid locations for this slot
-        if config.name == "午饭":
-            valid_locations = set(settings.lunch_locations)
-            default_location = "食堂"
-        else:
-            valid_locations = set(settings.free_period_locations)
-            default_location = "教室"
+        # Invariants enforced by SceneConfig validator: pref_field, valid_locations,
+        # and a default `location` that lives inside valid_locations are all guaranteed.
+        pref_field = config.pref_field
+        assert pref_field is not None
+        valid_locations = set(config.valid_locations)
+        default_location = config.location
 
         # Group students by their chosen location
         location_groups: dict[str, list[str]] = defaultdict(list)
@@ -163,12 +149,14 @@ class SceneGenerator:
                 loc = default_location
             location_groups[loc].append(aid)
 
-        # Teacher occasionally appears during free periods
+        # Teacher occasionally appears during free periods. Probability is keyed
+        # on scene name (not data-driven via SceneConfig like valid_locations)
+        # because this is narrator-side behavior, not agent-facing slot data —
+        # students can't see or influence it, so it stays in code.
         if "he_min" in self.profiles:
             teacher_prob = 0.30 if config.name == "午饭" else 0.10
             if self.rng.random() < teacher_prob:
-                teacher_loc = "食堂" if config.name == "午饭" else "教室"
-                location_groups[teacher_loc].append("he_min")
+                location_groups[default_location].append("he_min")
 
         # Create one Scene per occupied location
         scenes: list[Scene] = []

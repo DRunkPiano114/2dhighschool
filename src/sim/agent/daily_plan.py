@@ -7,6 +7,7 @@ from ..llm.client import structured_call
 from ..llm.logger import log_llm_call
 from ..llm.prompts import render
 from ..models.agent import AgentProfile, AgentState, DailyPlan, Intention, Role
+from ..models.scene import SceneConfig
 from .qualitative import (
     energy_label,
     intensity_label,
@@ -36,7 +37,9 @@ async def generate_daily_plan(
     next_exam_in_days: int,
     day: int,
     all_profiles: dict[str, AgentProfile] | None = None,
+    free_period_configs: list[SceneConfig] | None = None,
 ) -> DailyPlan:
+    free_period_configs = free_period_configs or []
     rels = storage.load_relationships()
     recent_days = storage.read_recent_md_last_n_days(3)
 
@@ -103,6 +106,7 @@ async def generate_daily_plan(
         current_tensions=narr.current_tensions,
         inner_conflicts=profile.inner_conflicts,
         is_student=is_student,
+        free_period_configs=free_period_configs,
     )
 
     messages = [{"role": "user", "content": prompt}]
@@ -131,16 +135,16 @@ async def generate_daily_plan(
         temperature=settings.plan_temperature,
     )
 
-    # Validate location preferences
-    valid_break = set(settings.free_period_locations)
-    valid_lunch = set(settings.lunch_locations)
+    # Validate location preferences against this slot's valid_locations.
+    # SceneConfig validator guarantees pref_field is set on free periods; the
+    # local binding narrows Literal[...] | None → Literal[...] for type checkers.
     prefs = result.location_preferences
-    if prefs.morning_break not in valid_break:
-        prefs.morning_break = "教室"
-    if prefs.lunch not in valid_lunch:
-        prefs.lunch = "食堂"
-    if prefs.afternoon_break not in valid_break:
-        prefs.afternoon_break = "教室"
+    for cfg in free_period_configs:
+        pref_field = cfg.pref_field
+        assert pref_field is not None
+        val = getattr(prefs, pref_field, None)
+        if val not in set(cfg.valid_locations):
+            setattr(prefs, pref_field, cfg.location)
 
     # Carry-forward: match new intentions to yesterday's for lifecycle tracking
     for intent in result.intentions:
