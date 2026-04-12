@@ -45,49 +45,6 @@ def is_trivial_scene(turn_records: list[dict]) -> bool:
     return False
 
 
-def _extract_tick_content(tick_record: dict) -> str:
-    """Concatenate all source text from a tick record (speech / actions / env)
-    for bigram-overlap grounding."""
-    parts: list[str] = []
-    if tick_record.get("resolved_speech"):
-        _, out = tick_record["resolved_speech"]
-        if out.action_content:
-            parts.append(out.action_content)
-    for _, out in tick_record.get("resolved_actions", []):
-        if out.action_content:
-            parts.append(out.action_content)
-    if tick_record.get("environmental_event"):
-        parts.append(tick_record["environmental_event"])
-    return " ".join(parts)
-
-
-def _bigrams(text: str) -> set[str]:
-    """Generate character bigrams from Chinese text, ignoring whitespace."""
-    text = text.replace(" ", "").replace("\n", "")
-    return {text[i:i + 2] for i in range(len(text) - 1)}
-
-
-def _bigram_ratios(event_text: str, cited_content: str) -> tuple[float, float, int]:
-    """Return (event_ratio, min_ratio, overlap_count) for telemetry.
-
-    event_ratio = |overlap| / |event_bigrams| is the primary grounding
-    signal. Using event as denominator means longer / more elaborated
-    event text must overlap more with the cited content, catching the
-    "expansion" failure mode where the LLM cites one short tick but
-    writes a long elaborated event description.
-
-    min_ratio = |overlap| / min(|event_bigrams|, |cited_bigrams|) is kept
-    alongside for threshold tuning.
-    """
-    event_bg = _bigrams(event_text)
-    cited_bg = _bigrams(cited_content)
-    if not event_bg or not cited_bg:
-        return 0.0, 0.0, 0
-    overlap = event_bg & cited_bg
-    event_ratio = len(overlap) / len(event_bg)
-    min_ratio = len(overlap) / min(len(event_bg), len(cited_bg))
-    return event_ratio, min_ratio, len(overlap)
-
 
 def apply_trivial_scene_result(
     group_agent_ids: list[str],
@@ -480,21 +437,9 @@ def apply_scene_end_results(
     for event_id in narrative.events_discussed:
         event_manager.mark_discussed(event_id, group_agent_ids)
 
-    # 3-layer cite_ticks validation for new_events.
-    # Keys are tick+1 to match the 1-indexed [Tick N] labels shown to the LLM
-    # in narrative.py. The mid-scene summarized prefix is excluded:
-    # narrative.py collapses ticks 0~5 (0-indexed) into one summary line when
-    # len(tick_records) > 12, so the LLM never sees those ticks' raw content
-    # and any cite into that range cannot be bigram-validated.
-    valid_ticks: dict[int, dict] = {}
-    if tick_records:
-        summarize_cutoff = 6 if len(tick_records) > 12 else 0
-        valid_ticks = {
-            t["tick"] + 1: t
-            for t in tick_records
-            if t["tick"] >= summarize_cutoff
-        }
-    threshold = 0.3
+    # cite_ticks validation for new_events.
+    # Keys are tick+1 to match the 1-indexed [Tick N] labels shown to the LLM.
+    valid_ticks: set[int] = {t["tick"] + 1 for t in tick_records} if tick_records else set()
 
     for new_evt in narrative.new_events:
         # Layer 1: cite_ticks must be non-empty
@@ -503,26 +448,11 @@ def apply_scene_end_results(
                 f"  [scene_end] drop (no cite_ticks): {new_evt.text[:50]}"
             )
             continue
-        # Layer 2: every cited tick must exist in tick_records (1-indexed
-        # space) AND not fall inside the summarized prefix.
+        # Layer 2: every cited tick must exist in tick_records
         if not valid_ticks or not all(t in valid_ticks for t in new_evt.cite_ticks):
             logger.warning(
                 f"  [scene_end] drop (invalid cite_ticks {new_evt.cite_ticks}): "
                 f"{new_evt.text[:50]}"
-            )
-            continue
-        # Layer 3: bigram overlap between event text and cited tick content
-        cited_content = " ".join(
-            _extract_tick_content(valid_ticks[t]) for t in new_evt.cite_ticks
-        )
-        event_ratio, min_ratio, overlap_count = _bigram_ratios(
-            new_evt.text, cited_content,
-        )
-        if event_ratio < threshold:
-            logger.warning(
-                f"  [scene_end] drop (bigram overlap={overlap_count} "
-                f"event_ratio={event_ratio:.1%} min_ratio={min_ratio:.1%} "
-                f"< {threshold:.0%}): {new_evt.text[:50]}"
             )
             continue
 

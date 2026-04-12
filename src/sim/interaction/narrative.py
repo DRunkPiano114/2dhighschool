@@ -18,38 +18,13 @@ def _format_exit(name: str, output: PerceptionOutput) -> str:
     return f"  {name}(离开): {content}"
 
 
-def _summarize_ticks(tick_records: list[dict], start: int, end: int, profiles: dict[str, AgentProfile]) -> str:
-    speakers = set()
-    topics = []
-    for rec in tick_records[start:end]:
-        if rec.get("resolved_speech"):
-            aid, output = rec["resolved_speech"]
-            speakers.add(profiles[aid].name)
-            if output.action_content and len(topics) < 3:
-                # Take first ~10 chars as topic hint
-                topics.append(output.action_content[:15] + "...")
-    speaker_str = "、".join(speakers) if speakers else "无人"
-    return f"  [Tick {start + 1}-{end}: {speaker_str}聊了几句]"
-
-
 def format_public_transcript(
     tick_records: list[dict],
     profiles: dict[str, AgentProfile],
 ) -> str:
     lines: list[str] = []
-    total = len(tick_records)
 
-    # Mid-scene summarization: after tick 12, summarize ticks 1-6
-    summarize_cutoff = 0
-    if total > 12:
-        summarize_cutoff = 6
-        lines.append(_summarize_ticks(tick_records, 0, summarize_cutoff, profiles))
-        lines.append("")
-
-    for i, rec in enumerate(tick_records):
-        if i < summarize_cutoff:
-            continue
-
+    for rec in tick_records:
         tick_num = rec["tick"]
         tick_lines = [f"[Tick {tick_num + 1}]"]
 
@@ -83,28 +58,13 @@ def format_agent_transcript(
     """Returns (public_transcript, private_history) for a specific agent."""
     public_lines: list[str] = []
     private_history: list[str] = []
-    total = len(tick_records)
 
-    summarize_cutoff = 0
-    if total > 12:
-        summarize_cutoff = 6
-        public_lines.append(_summarize_ticks(tick_records, 0, summarize_cutoff, profiles))
-        public_lines.append("")
-
-    for i, rec in enumerate(tick_records):
+    for rec in tick_records:
         # PDA gating: skip the agent's own private_history entry for ticks
         # where they were gated. Their perception was reused verbatim from
         # a prior fresh tick, so re-rendering it just produces duplicate
         # observation/inner_thought lines and confuses downstream prompts.
         is_self_gated = agent_id in set(rec.get("gated_agents", []))
-
-        if i < summarize_cutoff:
-            # Still collect private history from summarized ticks
-            agent_out = rec["agent_outputs"].get(agent_id)
-            if agent_out and not is_self_gated:
-                private_history.append(f"[Tick {rec['tick'] + 1}] {agent_out.observation}")
-                private_history.append(f"  (内心) {agent_out.inner_thought}")
-            continue
 
         tick_num = rec["tick"]
         tick_lines = [f"[Tick {tick_num + 1}]"]

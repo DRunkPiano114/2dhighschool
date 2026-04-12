@@ -67,8 +67,8 @@ def test_agent_transcript_includes_private():
     assert len(private) >= 1  # observation + inner thought
 
 
-def test_mid_scene_summarization():
-    """After 12 ticks, first 6 are summarized."""
+def test_all_ticks_preserved_in_long_scene():
+    """All ticks are fully preserved regardless of scene length."""
     records = []
     for i in range(14):
         records.append({
@@ -82,11 +82,9 @@ def test_mid_scene_summarization():
             "exits": [],
         })
     result = format_public_transcript(records, PROFILES)
-    # Should see summary line for early ticks
-    assert "Tick 1-6" in result
-    # Should NOT see individual early tick content
-    assert "话0" not in result
-    # Should see later ticks
+    # All ticks should be present, including early ones
+    assert "话0" in result
+    assert "话6" in result
     assert "话13" in result
 
 
