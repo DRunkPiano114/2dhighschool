@@ -102,7 +102,7 @@ def _reconstruct_today_so_far(agent_id: str, day: int, time_period: str) -> tupl
                 continue
 
             # Extract key moments from narrative
-            narrative = group.get("narrative", {})
+            narrative = group.get("narrative") or {}
             key_moments = narrative.get("key_moments", [])
             if key_moments:
                 location = scene_data.get("scene", {}).get("location", "未知地点")
