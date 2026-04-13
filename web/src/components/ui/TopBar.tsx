@@ -57,7 +57,7 @@ export function TopBar() {
   }, [sceneMenuOpen, dayMenuOpen])
 
   return (
-    <div className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-4 py-2 bg-gradient-to-b from-black/60 to-transparent pointer-events-none">
+    <div className="relative z-30 flex items-center justify-between px-4 py-2 bg-gray-900/85 backdrop-blur flex-shrink-0 border-b border-white/10 pointer-events-none">
       {/* Left: day + scene dropdown */}
       <div className="flex items-center gap-3 pointer-events-auto">
         <div ref={dayMenuRef} className="relative">
@@ -156,9 +156,6 @@ export function TopBar() {
           )}
         </div>
 
-        <span className="text-white/40 text-xs">
-          {meta?.current_date ?? ''}
-        </span>
       </div>
 
       {/* Center: title */}
@@ -167,25 +164,22 @@ export function TopBar() {
         <span className="text-amber-400/80">第{dayNum}天</span>
       </div>
 
-      {/* Right: Role Play only */}
+      {/* Right: Role Play seal — vermillion stamp, intentionally offbeat */}
       <div className="flex items-center gap-3 pointer-events-auto">
         <button
           onClick={() => apiOnline && setShowRolePlaySetup(true)}
           disabled={apiOnline !== true}
+          aria-label="入戏 — 扮演一名角色与同班同学对话"
           title={
             apiOnline === null
               ? '正在检查 API…'
               : apiOnline
-                ? ''
+                ? '入戏 — 扮演一名角色与同班同学对话'
                 : '启动 API 服务后可用（uv run api）'
           }
-          className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-            apiOnline === true
-              ? 'bg-purple-600/60 hover:bg-purple-500/80 text-white'
-              : 'bg-gray-700/50 text-gray-500 cursor-not-allowed'
-          }`}
+          className={`seal-btn${apiOnline !== true ? ' seal-btn-disabled' : ''}`}
         >
-          角色扮演
+          <span className="seal-btn-text">入戏</span>
         </button>
       </div>
 

@@ -14,13 +14,15 @@ import { SidePanel } from '../ui/SidePanel'
 import { ErrorBoundary } from '../ui/ErrorBoundary'
 import { GodModeChat } from '../ui/GodModeChat'
 import { RolePlayChat } from '../ui/RolePlayChat'
-import { NarrativePanel } from '../narrative/NarrativePanel'
+// import { NarrativePanel } from '../narrative/NarrativePanel'
+// import { ScriptScene } from '../narrative/ScriptScene'
+import { GroupGrid } from '../narrative/GroupGrid'
 import type { SceneGroup } from '../../lib/types'
 
 extend({ Container, Graphics })
 
-// TopBar ~48px. NarrativePanel lives outside the stage flex cell.
-const UI_INSET = { top: 48, bottom: 8, left: 8, right: 0 }
+// TopBar is a flex sibling (not overlay). Side panel lives to the right.
+const UI_INSET = { top: 8, bottom: 8, left: 8, right: 8 }
 
 // --- data loading ---
 
@@ -233,6 +235,42 @@ function WorldScene() {
     cam.fitToRoom(room.cols * TILE, room.rows * TILE, UI_INSET)
   }, [currentRoom])
 
+  // Zoom + pan camera to frame the active group's seats. Uses the same
+  // derivePositions logic as sprite placement so the bbox is exact.
+  useEffect(() => {
+    const cam = cameraRef.current
+    if (!cam || !sceneFile) return
+    const group = sceneFile.groups[groupIdx]
+    if (!group) return
+
+    const positions = derivePositions(
+      currentRoom,
+      group.participants,
+      groupIdx,
+      meta?.agents as Record<string, { seat_number: number | null }>,
+    )
+    const coords = Object.values(positions)
+    if (coords.length === 0) return
+
+    const xs = coords.map(p => p.x)
+    const ys = coords.map(p => p.y)
+    const minX = Math.min(...xs)
+    const maxX = Math.max(...xs)
+    const minY = Math.min(...ys)
+    const maxY = Math.max(...ys)
+
+    // Pad bbox so sprites aren't flush against the viewport edge, and
+    // enforce a minimum size so a single sprite doesn't zoom in absurdly far.
+    const PAD = TILE * 3
+    const MIN_BBOX = TILE * 6
+    const bboxW = Math.max(maxX - minX, MIN_BBOX) + PAD * 2
+    const bboxH = Math.max(maxY - minY, MIN_BBOX) + PAD * 2
+    const cx = (minX + maxX) / 2
+    const cy = (minY + maxY) / 2
+
+    cam.panToBox(cx, cy, bboxW, bboxH, UI_INSET)
+  }, [sceneFile, groupIdx, currentRoom, meta])
+
   useEffect(() => {
     const cam = cameraRef.current
     const canvas = app.canvas as HTMLCanvasElement
@@ -289,8 +327,24 @@ function WorldScene() {
       const tag = (e.target as HTMLElement | null)?.tagName
       if (tag === 'INPUT' || tag === 'TEXTAREA') return
       const store = useWorldStore.getState()
-      if (e.key === 'ArrowRight') store.goNext()
-      else if (e.key === 'ArrowLeft') store.goPrev()
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault()
+        store.goNext()
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault()
+        store.goPrev()
+      } else if (e.key === ']') {
+        e.preventDefault()
+        const file = store.currentSceneFile
+        if (file && store.activeGroupIndex < file.groups.length - 1) {
+          store.setActiveGroupIndex(store.activeGroupIndex + 1)
+        }
+      } else if (e.key === '[') {
+        e.preventDefault()
+        if (store.activeGroupIndex > 0) {
+          store.setActiveGroupIndex(store.activeGroupIndex - 1)
+        }
+      }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
@@ -312,21 +366,24 @@ export function PixiCanvas() {
 
   return (
     <div className="w-screen h-screen bg-[#0d0d1a] overflow-hidden relative flex flex-col">
-      <div ref={setStageEl} className="flex-1 min-h-0 relative bg-[#1a1a2e]">
-        {stageEl && (
-          <Application
-            resizeTo={stageEl}
-            background={0x1a1a2e}
-            antialias={false}
-            resolution={1}
-          >
-            <WorldScene />
-          </Application>
-        )}
-        <TopBar />
+      <TopBar />
+      <div className="flex-1 min-h-0 flex flex-row">
+        <div ref={setStageEl} className="flex-1 min-h-0 relative bg-[#1a1a2e]">
+          {stageEl && (
+            <Application
+              resizeTo={stageEl}
+              background={0x1a1a2e}
+              antialias={false}
+              resolution={1}
+            >
+              <WorldScene />
+            </Application>
+          )}
+        </div>
+        <div className="w-[40%] min-w-[420px] flex-shrink-0 border-l border-white/5 min-h-0">
+          <GroupGrid />
+        </div>
       </div>
-
-      <NarrativePanel />
 
       <ErrorBoundary><SidePanel /></ErrorBoundary>
       <GodModeChat />

@@ -73,3 +73,648 @@ body {
   background: #d4c5a9;
   border-radius: 3px;
 }
+
+/* ============================================================
+   Script scene — literary surface for narrative reading.
+   Cream paper, LXGW WenKai body, Noto Serif SC headings.
+   ============================================================ */
+
+.script-stage {
+  height: 100%;
+  background: #f4ebd8;
+  color: #2a2620;
+  overflow-y: auto;
+}
+
+.script-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 36px 24px 64px;
+  font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+  line-height: 1.95;
+}
+
+.script-scene-head {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.script-scene-head h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  color: #2a2620;
+  margin: 0 0 10px;
+}
+.script-scene-subtitle {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #6b6356;
+  margin: 0 0 4px;
+  letter-spacing: 0.04em;
+}
+.script-scene-group {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: #8a7a5e;
+  margin: 0;
+  letter-spacing: 0.08em;
+}
+
+.script-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.script-tick {
+  margin-bottom: 10px;
+}
+
+.script-line {
+  display: grid;
+  grid-template-columns: 5em 1fr;
+  column-gap: 14px;
+  align-items: baseline;
+  padding: 1px 0;
+}
+
+.script-name-col {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: flex-end;
+  color: #3a3530;
+  font-size: 14.5px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.script-content-col {
+  font-size: 16px;
+  color: #2a2620;
+}
+
+.script-emotion-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.script-line-action .script-content-col {
+  color: #6b6356;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.script-line-thought .script-content-col {
+  color: #8a7a5e;
+  font-style: italic;
+  font-size: 14.5px;
+}
+
+.script-line-speech .script-content-col {
+  color: #2a2620;
+}
+
+.script-env {
+  text-align: center;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12.5px;
+  color: #6b6356;
+  margin: 18px 0;
+  padding: 6px 0;
+  border-top: 1px solid #d8cdb5;
+  border-bottom: 1px solid #d8cdb5;
+  letter-spacing: 0.06em;
+}
+
+.script-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif SC', serif;
+  color: #8a7a5e;
+  font-size: 14px;
+}
+
+/* ============================================================
+   Group grid — per-group 2D card layout where each participant
+   gets their own card. Speaker is visually emphasized.
+   ============================================================ */
+
+.grid-stage {
+  height: 100%;
+  background: #f4ebd8;
+  color: #2a2620;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.grid-loading {
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif SC', serif;
+  color: #8a7a5e;
+  font-size: 14px;
+}
+
+.grid-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 20px 8px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ---- Group pills (tabs across the top of the panel) ---- */
+
+.group-pills {
+  display: flex;
+  gap: 6px;
+  padding: 0 0 10px;
+  overflow-x: auto;
+  flex-shrink: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.group-pill {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 4px 10px;
+  background: #ede0c5;
+  border: 1px solid #d8cdb5;
+  border-radius: 14px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11.5px;
+  color: #6b6356;
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+  max-width: 280px;
+}
+.group-pill:hover {
+  background: #e3d4b2;
+  color: #3a3530;
+}
+.group-pill-active {
+  background: #fef3d6;
+  border-color: #d4a853;
+  color: #8a5e1c;
+}
+
+.group-pill-prefix {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: inherit;
+  opacity: 0.85;
+}
+.group-pill-names {
+  font-family: 'LXGW WenKai', serif;
+  font-size: 13px;
+  color: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---- Fixed-position adaptive grid ----
+   Each participant owns a stable cell that doesn't move per tick.
+   Grid shape is determined by participant count. */
+
+.grid-cards {
+  flex: 1;
+  display: grid;
+  gap: 8px;
+  padding: 2px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.grid-empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif SC', serif;
+  color: #b0a890;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.grid-cards-n1 {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+.grid-cards-n2 {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.grid-cards-n3 {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+.grid-cards-n4 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.grid-cards-n6 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+.grid-cards-n9 {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+/* ---- Character cards ---- */
+
+.char-card {
+  position: relative;
+  background: #fbf6e8;
+  border: 1px solid #e0d4b8;
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 0;
+  min-width: 0;
+  transition: background 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+/* Emotion color strip — 3px accent on the left edge tied to EMOTION_COLORS.
+   Gives an instant emotional read across a whole group at once. */
+.char-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--emotion-color, #e0d4b8);
+  opacity: 0.85;
+  pointer-events: none;
+}
+.char-card-speaker {
+  background: #fef3d6;
+  border-color: #d4a853;
+  box-shadow: 0 0 0 2px rgba(212, 168, 83, 0.15);
+}
+
+/* Horizontal: avatar left, meta + body right (n ≤ 3) */
+.char-card-horizontal {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  padding: 8px 12px;
+}
+.char-card-horizontal > .avatar {
+  align-self: flex-start;
+}
+.char-card-horizontal .char-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  min-height: 0;
+}
+.char-card-horizontal .char-card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Vertical: head row on top, body below (n ≥ 4) */
+.char-card-vertical {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 10px 4px;
+  gap: 4px;
+}
+.char-card-vertical .char-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.char-card-vertical .char-card-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+.char-card-vertical .avatar {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+.char-card-vertical .avatar-initials {
+  font-size: 13px;
+}
+
+.char-card-name {
+  font-family: 'LXGW WenKai', serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #2a2620;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.char-card-name:hover { text-decoration: underline; }
+
+.char-card-emotion {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 10.5px;
+  color: #8a7a5e;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.char-card-speak-label {
+  margin-left: auto;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: #8a5e1c;
+  background: #faecc4;
+  border: 1px solid #d4a853;
+  padding: 1px 9px;
+  border-radius: 12px;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+/* Body — the part that scrolls inside the card when content overflows.
+   Fade mask at the bottom hints that more content is below. */
+.char-card-body {
+  flex: 1;
+  min-height: 0;
+  font-family: 'LXGW WenKai', serif;
+  line-height: 1.65;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+  padding-bottom: 10px;
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 14px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 14px), transparent 100%);
+  scrollbar-width: thin;
+  scrollbar-color: #c4b894 transparent;
+}
+.char-card-body::-webkit-scrollbar { width: 4px; }
+.char-card-body::-webkit-scrollbar-thumb { background: #c4b894; border-radius: 2px; }
+.char-card-body::-webkit-scrollbar-track { background: transparent; }
+
+.char-card-speech {
+  font-size: 15px;
+  color: #2a2620;
+}
+/* Thought bubble — soft lavender container. Meant to feel like a visible
+   instance of "thinking" rather than just italicized text. */
+.char-card-thought {
+  font-size: 13.5px;
+  color: #5e6b8a;
+  font-style: italic;
+  background: #f0ecf5;
+  border-left: 3px solid #b8a8c8;
+  padding: 5px 10px;
+  border-radius: 0 4px 4px 0;
+}
+/* Footer = "内部 + 物理层" zone pinned to the card bottom. Holds the thought
+   bubble on top and the action line below. Body has flex: 1 above, so this
+   naturally hugs the card bottom. The -sep modifier adds a subtle 1px divider
+   when speech is present above — splits the card visually into
+   "外说" / "内省 + 外做". */
+.char-card-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+.char-card-footer-sep {
+  padding-top: 8px;
+  border-top: 1px solid #e8dcc8;
+}
+
+.char-card-action-line {
+  font-family: 'LXGW WenKai', serif;
+  font-size: 12.5px;
+  color: #7a5e30;
+  font-style: italic;
+  line-height: 1.5;
+}
+.char-card-action-dot {
+  margin-right: 6px;
+  color: #c9a868;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Content-type tag (心) — matches the 说 pill family. Lavender-slate to
+   echo the thought bubble container. */
+.char-card-tag {
+  display: inline-block;
+  vertical-align: 1px;
+  margin-right: 8px;
+  font-family: 'Noto Serif SC', serif;
+  font-style: normal;
+  font-size: 10.5px;
+  padding: 0 7px;
+  border-radius: 10px;
+  letter-spacing: 0.1em;
+  line-height: 1.7;
+  flex-shrink: 0;
+}
+.tag-thought {
+  background: #e0d6ec;
+  color: #5e4a78;
+  border: 1px solid #b8a8c8;
+}
+
+/* Compact sizing for tighter grids */
+.grid-cards-n3 .char-card-horizontal {
+  padding: 6px 10px;
+  gap: 8px;
+}
+.grid-cards-n3 .avatar {
+  width: 36px;
+  height: 36px;
+}
+.grid-cards-n3 .avatar-initials {
+  font-size: 14px;
+}
+.grid-cards-n3 .char-card-body {
+  line-height: 1.55;
+}
+
+/* ---- Avatar (mirrors Pixi sprite: colored circle + initial) ---- */
+
+.avatar {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+.avatar-body {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+}
+.avatar-initials {
+  color: #ffffff;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+.avatar-tint {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  opacity: 0.22;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  transition: background 250ms ease;
+}
+.avatar-talking { animation: avatar-pulse 1.4s ease-in-out infinite; }
+
+@keyframes avatar-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.08); }
+}
+
+/* ---- Tick nav ---- */
+
+.grid-tick-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0 4px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: #6b6356;
+  flex-shrink: 0;
+}
+.grid-tick-nav button {
+  background: none;
+  border: 1px solid #d8cdb5;
+  border-radius: 4px;
+  padding: 3px 12px;
+  color: #6b6356;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+}
+.grid-tick-nav button:hover { background: #ede0c5; }
+
+/* ============================================================
+   Seal button — vermillion stamp for the role-play CTA.
+   Square 印章 with inner cream border, slight rotation, ink
+   distress via radial gradients. Stays distinctive on both the
+   dark TopBar and any future cream surface.
+   ============================================================ */
+
+.seal-btn {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-3deg);
+  transition: transform 180ms ease, filter 180ms ease;
+  /* Drop shadow simulates the slight lift of a freshly stamped seal. */
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+}
+
+/* The stamp body — drawn with background, not border, so the inner
+   cream rule can be a separate inset layer. The two radial gradients
+   add subtle ink unevenness without looking like a texture overlay. */
+.seal-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 3px;
+  background:
+    radial-gradient(ellipse at 28% 22%, rgba(0, 0, 0, 0.22), transparent 55%),
+    radial-gradient(ellipse at 78% 78%, rgba(247, 232, 200, 0.18), transparent 50%),
+    #b8231d;
+}
+
+/* Inner cream rule — the carved border found on real 方印. */
+.seal-btn::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1.5px solid rgba(247, 232, 200, 0.88);
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+.seal-btn-text {
+  position: relative;
+  z-index: 1;
+  font-family: 'Noto Serif SC', 'LXGW WenKai', serif;
+  font-weight: 700;
+  font-size: 17px;
+  color: #f7e8c8;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  /* Subtle ink-bleed shadow */
+  text-shadow: 0 0 1px rgba(247, 232, 200, 0.4);
+}
+
+.seal-btn:hover:not(.seal-btn-disabled) {
+  transform: rotate(-3deg) scale(1.06);
+  filter: drop-shadow(0 2px 5px rgba(184, 35, 29, 0.45));
+}
+
+.seal-btn:active:not(.seal-btn-disabled) {
+  transform: rotate(-3deg) scale(0.97);
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
+}
+
+.seal-btn:focus-visible {
+  outline: none;
+}
+.seal-btn:focus-visible::after {
+  border-color: #fff8e8;
+  box-shadow: 0 0 0 2px rgba(247, 232, 200, 0.35);
+}
+
+/* Disabled = ink dried out: desaturated, no glow, no rotation snap on hover */
+.seal-btn-disabled {
+  cursor: not-allowed;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.25));
+}
+.seal-btn-disabled::before {
+  background:
+    radial-gradient(ellipse at 28% 22%, rgba(0, 0, 0, 0.18), transparent 55%),
+    #6b5550;
+}
+.seal-btn-disabled .seal-btn-text {
+  color: rgba(247, 232, 200, 0.45);
+  text-shadow: none;
+}

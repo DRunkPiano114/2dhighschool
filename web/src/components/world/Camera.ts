@@ -63,6 +63,24 @@ export class Camera {
     this.apply(this.targetX, this.targetY, zoom)
   }
 
+  /** Smoothly pan + zoom to frame a bounding box, accounting for UI inset. */
+  panToBox(
+    centerX: number,
+    centerY: number,
+    bboxW: number,
+    bboxH: number,
+    inset: { top: number; bottom: number; left: number; right: number },
+  ) {
+    const viewW = this.canvasWidth - inset.left - inset.right
+    const viewH = this.canvasHeight - inset.top - inset.bottom
+    const zoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, Math.min(viewW / bboxW, viewH / bboxH)))
+    this.targetZoom = zoom
+    const offsetX = (inset.left - inset.right) / 2 / zoom
+    const offsetY = (inset.top - inset.bottom) / 2 / zoom
+    this.targetX = centerX - offsetX
+    this.targetY = centerY - offsetY
+  }
+
   /** Call every frame (from PixiJS Ticker). */
   update() {
     if (this.isDragging) return

@@ -49,28 +49,31 @@ export function createCharacterSprite(
   head.circle(0, -SPRITE_R * 1.1, SPRITE_R * 0.55).stroke({ color: color, width: 2 })
   container.addChild(head)
 
-  // Name label
+  // Name label — full name, placed below the body so a 3-char name doesn't
+  // get clipped by the sprite circle.
   const label = new Text({
-    text: displayName.slice(0, 2), // first 2 chars (surname)
+    text: displayName,
     style: new TextStyle({
       fontFamily: '"Noto Sans SC", sans-serif',
       fontSize: 11,
       fill: 0xffffff,
       fontWeight: 'bold',
+      stroke: { color: 0x000000, width: 3, alpha: 0.7 },
       dropShadow: {
         color: 0x000000,
         blur: 2,
         distance: 1,
-        alpha: 0.5,
+        alpha: 0.6,
       },
     }),
   })
   label.anchor.set(0.5, 0)
-  label.y = SPRITE_R * 0.5
+  label.y = SPRITE_R * 1.4
   container.addChild(label)
 
-  // Expanded hit area keeps clicks reliable when the stage shrinks to ~55vh.
-  container.hitArea = new Rectangle(-20, -30, 40, 50)
+  // Expanded hit area keeps clicks reliable when the stage shrinks to ~40vh.
+  // Extended downward to cover the name label under the body.
+  container.hitArea = new Rectangle(-22, -28, 44, 58)
 
   return container
 }
