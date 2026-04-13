@@ -1,98 +1,194 @@
-import { useState } from 'react'
+import { useMemo, useState, useRef, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { useWorldStore } from '../../stores/useWorldStore'
 import { RolePlaySetup } from './RolePlaySetup'
-import type { ViewMode } from '../../lib/types'
+import { LOCATION_ICONS } from '../../lib/constants'
+import { groupScenesByTimeSlot } from '../../lib/sceneGroup'
 
 export function TopBar() {
-  const mode = useWorldStore(s => s.mode)
-  const setMode = useWorldStore(s => s.setMode)
-  const mindReading = useWorldStore(s => s.mindReadingEnabled)
-  const toggleMindReading = useWorldStore(s => s.toggleMindReading)
   const currentDay = useWorldStore(s => s.currentDay)
   const meta = useWorldStore(s => s.meta)
   const setCurrentDay = useWorldStore(s => s.setCurrentDay)
-  const [showRolePlaySetup, setShowRolePlaySetup] = useState(false)
+  const scenes = useWorldStore(s => s.scenes)
+  const sceneIdx = useWorldStore(s => s.currentSceneIndex)
+  const setSceneIndex = useWorldStore(s => s.setCurrentSceneIndex)
 
-  const dayNum = currentDay.replace('day_', '')
+  const [showRolePlaySetup, setShowRolePlaySetup] = useState(false)
+  const [sceneMenuOpen, setSceneMenuOpen] = useState(false)
+  const [dayMenuOpen, setDayMenuOpen] = useState(false)
+  const [apiOnline, setApiOnline] = useState<boolean | null>(null)
+  const menuRef = useRef<HTMLDivElement>(null)
+  const dayMenuRef = useRef<HTMLDivElement>(null)
+
   const days = meta?.days ?? [currentDay]
+  const dayNum = currentDay.replace('day_', '')
+
+  const slots = useMemo(() => groupScenesByTimeSlot(scenes), [scenes])
+  // scenes.json entries carry a semantic `scene_index` from the backend, but
+  // the export filter drops trivial scenes without renumbering — so that
+  // field no longer equals array position. Navigation uses array position
+  // everywhere else (store + data loader), so we map scene → array index here.
+  const sceneArrayIndex = useMemo(() => new Map(scenes.map((s, i) => [s, i])), [scenes])
+  const currentScene = scenes[sceneIdx]
+
+  useEffect(() => {
+    const ctl = new AbortController()
+    const timer = setTimeout(() => ctl.abort(), 1500)
+    fetch('/api/health', { signal: ctl.signal })
+      .then(r => setApiOnline(r.ok))
+      .catch(() => setApiOnline(false))
+      .finally(() => clearTimeout(timer))
+    return () => { ctl.abort(); clearTimeout(timer) }
+  }, [])
+
+  useEffect(() => {
+    if (!sceneMenuOpen && !dayMenuOpen) return
+    const onClick = (e: MouseEvent) => {
+      const target = e.target as Node
+      if (sceneMenuOpen && menuRef.current && !menuRef.current.contains(target)) {
+        setSceneMenuOpen(false)
+      }
+      if (dayMenuOpen && dayMenuRef.current && !dayMenuRef.current.contains(target)) {
+        setDayMenuOpen(false)
+      }
+    }
+    window.addEventListener('mousedown', onClick)
+    return () => window.removeEventListener('mousedown', onClick)
+  }, [sceneMenuOpen, dayMenuOpen])
 
   return (
     <div className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-4 py-2 bg-gradient-to-b from-black/60 to-transparent pointer-events-none">
-      {/* Left: day nav */}
-      <div className="flex items-center gap-2 pointer-events-auto">
-        <span className="text-white/70 text-sm font-medium">Day</span>
-        <div className="flex gap-1">
-          {days.map(d => {
-            const n = d.replace('day_', '')
-            return (
-              <button
-                key={d}
-                onClick={() => setCurrentDay(d)}
-                className={`px-2 py-0.5 rounded text-xs font-medium transition-colors ${
-                  d === currentDay
-                    ? 'bg-amber-500 text-white'
-                    : 'bg-white/10 text-white/60 hover:bg-white/20 hover:text-white'
-                }`}
-              >
-                {n}
-              </button>
-            )
-          })}
+      {/* Left: day + scene dropdown */}
+      <div className="flex items-center gap-3 pointer-events-auto">
+        <div ref={dayMenuRef} className="relative">
+          <button
+            onClick={() => setDayMenuOpen(o => !o)}
+            className="flex items-center gap-1.5 px-3 py-1 rounded bg-white/10 hover:bg-white/20 text-xs text-white/80"
+          >
+            <span className="text-white/60">Day</span>
+            <span className="font-mono font-medium">{dayNum}</span>
+            <span className="text-white/40">▾</span>
+          </button>
+          {dayMenuOpen && (
+            <div className="absolute top-full left-0 mt-1 bg-gray-900/95 backdrop-blur border border-white/10 rounded-lg shadow-xl max-h-[60vh] overflow-y-auto min-w-[120px] py-1">
+              {days.map(d => {
+                const n = d.replace('day_', '')
+                const isActive = d === currentDay
+                return (
+                  <button
+                    key={d}
+                    onClick={() => { setCurrentDay(d); setDayMenuOpen(false) }}
+                    className={`w-full text-left flex items-center gap-2 px-3 py-1.5 text-xs font-mono ${
+                      isActive ? 'bg-white/15 text-white' : 'text-white/60 hover:bg-white/10 hover:text-white'
+                    }`}
+                  >
+                    <span className="text-white/40">Day</span>
+                    <span>{n}</span>
+                  </button>
+                )
+              })}
+            </div>
+          )}
         </div>
-        <span className="text-white/40 text-xs ml-2">
+
+        <div ref={menuRef} className="relative">
+          <button
+            onClick={() => setSceneMenuOpen(o => !o)}
+            className="flex items-center gap-1.5 px-3 py-1 rounded bg-white/10 hover:bg-white/20 text-xs text-white/80"
+          >
+            {currentScene && (
+              <>
+                <span className="text-white/40">{currentScene.time}</span>
+                <span>{LOCATION_ICONS[currentScene.location] ?? '📍'}</span>
+                <span>{currentScene.name}@{currentScene.location}</span>
+              </>
+            )}
+            <span className="text-white/40">▾</span>
+          </button>
+          {sceneMenuOpen && (
+            <div className="absolute top-full left-0 mt-1 bg-gray-900/95 backdrop-blur border border-white/10 rounded-lg shadow-xl max-h-[60vh] overflow-y-auto min-w-[280px] py-1">
+              {slots.map(slot => {
+                const slotActive = slot.scenes.some(s => sceneArrayIndex.get(s) === sceneIdx)
+                if (slot.scenes.length === 1) {
+                  const scene = slot.scenes[0]
+                  const arrIdx = sceneArrayIndex.get(scene)!
+                  const isActive = arrIdx === sceneIdx
+                  return (
+                    <button
+                      key={slot.key}
+                      onClick={() => { setSceneIndex(arrIdx); setSceneMenuOpen(false) }}
+                      className={`w-full text-left flex items-center gap-2 px-3 py-1.5 text-xs ${
+                        isActive ? 'bg-white/15 text-white' : 'text-white/60 hover:bg-white/10 hover:text-white'
+                      }`}
+                    >
+                      <span className="text-white/40 w-10 shrink-0">{scene.time}</span>
+                      <span>{LOCATION_ICONS[scene.location] ?? '📍'}</span>
+                      <span>{scene.name}</span>
+                      <span className="text-white/40 ml-auto">{scene.location}</span>
+                    </button>
+                  )
+                }
+                return (
+                  <div key={slot.key}>
+                    <div className={`px-3 py-1 text-[10px] uppercase tracking-wider ${slotActive ? 'text-amber-400/80' : 'text-white/30'}`}>
+                      {slot.time} · {slot.name}
+                    </div>
+                    {slot.scenes.map(scene => {
+                      const arrIdx = sceneArrayIndex.get(scene)!
+                      const isActive = arrIdx === sceneIdx
+                      return (
+                        <button
+                          key={arrIdx}
+                          onClick={() => { setSceneIndex(arrIdx); setSceneMenuOpen(false) }}
+                          className={`w-full text-left flex items-center gap-2 pl-8 pr-3 py-1.5 text-xs ${
+                            isActive ? 'bg-white/15 text-white' : 'text-white/60 hover:bg-white/10 hover:text-white'
+                          }`}
+                        >
+                          <span>{LOCATION_ICONS[scene.location] ?? '📍'}</span>
+                          <span>{scene.location}</span>
+                        </button>
+                      )
+                    })}
+                  </div>
+                )
+              })}
+            </div>
+          )}
+        </div>
+
+        <span className="text-white/40 text-xs">
           {meta?.current_date ?? ''}
         </span>
       </div>
 
       {/* Center: title */}
-      <div className="text-white/90 text-sm font-medium tracking-wide">
+      <div className="text-white/90 text-sm font-medium tracking-wide pointer-events-none">
         SimClass <span className="text-white/40">—</span>{' '}
         <span className="text-amber-400/80">第{dayNum}天</span>
       </div>
 
-      {/* Right: controls */}
+      {/* Right: Role Play only */}
       <div className="flex items-center gap-3 pointer-events-auto">
-        {/* Mode toggle */}
-        <div className="flex bg-white/10 rounded-full p-0.5">
-          {(['explore', 'broadcast'] as ViewMode[]).map(m => (
-            <button
-              key={m}
-              onClick={() => setMode(m)}
-              className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-                mode === m
-                  ? 'bg-white/20 text-white'
-                  : 'text-white/50 hover:text-white/70'
-              }`}
-            >
-              {m === 'explore' ? '探索' : '放映'}
-            </button>
-          ))}
-        </div>
-
-        {/* Role Play button */}
         <button
-          onClick={() => setShowRolePlaySetup(true)}
-          className="px-3 py-1 rounded-full text-xs font-medium bg-purple-600/60 hover:bg-purple-500/80 text-white transition-colors"
+          onClick={() => apiOnline && setShowRolePlaySetup(true)}
+          disabled={apiOnline !== true}
+          title={
+            apiOnline === null
+              ? '正在检查 API…'
+              : apiOnline
+                ? ''
+                : '启动 API 服务后可用（uv run api）'
+          }
+          className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+            apiOnline === true
+              ? 'bg-purple-600/60 hover:bg-purple-500/80 text-white'
+              : 'bg-gray-700/50 text-gray-500 cursor-not-allowed'
+          }`}
         >
           角色扮演
         </button>
-
-        {/* Mind-reading toggle */}
-        <button
-          onClick={toggleMindReading}
-          className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all ${
-            mindReading
-              ? 'bg-rose-500/80 text-white shadow-lg shadow-rose-500/30'
-              : 'bg-white/10 text-white/60 hover:bg-white/20'
-          }`}
-        >
-          <span className="text-sm">{mindReading ? '🧠' : '👁️'}</span>
-          读心
-        </button>
       </div>
 
-      {/* Role Play setup modal */}
       <AnimatePresence>
         {showRolePlaySetup && (
           <RolePlaySetup onClose={() => setShowRolePlaySetup(false)} />

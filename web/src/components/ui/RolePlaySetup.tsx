@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import { motion } from 'framer-motion'
 import { useWorldStore } from '../../stores/useWorldStore'
 import { getAgentColor } from '../world/CharacterSprite'
@@ -54,17 +55,19 @@ export function RolePlaySetup({ onClose }: RolePlaySetupProps) {
     onClose()
   }
 
-  return (
+  return createPortal(
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      onClick={onClose}
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
     >
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
+        onClick={e => e.stopPropagation()}
         className="bg-gray-900/95 border border-white/10 rounded-xl p-6 max-w-lg w-full mx-4 max-h-[80vh] overflow-y-auto"
       >
         <div className="flex items-center justify-between mb-4">
@@ -123,6 +126,7 @@ export function RolePlaySetup({ onClose }: RolePlaySetupProps) {
           开始对话
         </button>
       </motion.div>
-    </motion.div>
+    </motion.div>,
+    document.body,
   )
 }

@@ -1,30 +1,26 @@
 import { Application, extend, useApplication, useTick } from '@pixi/react'
 import { Container, Graphics } from 'pixi.js'
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useWorldStore } from '../../stores/useWorldStore'
 import { loadMeta, loadScenes, loadSceneFile, prefetchDay } from '../../lib/data'
 import { ROOMS, TILE, derivePositions } from '../../lib/roomConfig'
 import { createCharacterSprite, updateSpriteState } from './CharacterSprite'
 import { Camera } from './Camera'
 import { BubbleOverlay, type BubbleData } from './BubbleOverlay'
-import { DanmuLayer } from './DanmuLayer'
-import { pickDanmu } from '../../lib/drama'
 import { EMOTION_EMOJIS } from '../../lib/constants'
 import { Room } from './Room'
 import { TopBar } from '../ui/TopBar'
-import { BottomBar } from '../ui/BottomBar'
-import { RoomNav } from '../ui/RoomNav'
 import { SidePanel } from '../ui/SidePanel'
 import { ErrorBoundary } from '../ui/ErrorBoundary'
 import { GodModeChat } from '../ui/GodModeChat'
 import { RolePlayChat } from '../ui/RolePlayChat'
-import { playbackController } from '../../lib/PlaybackController'
+import { NarrativePanel } from '../narrative/NarrativePanel'
 import type { SceneGroup } from '../../lib/types'
 
 extend({ Container, Graphics })
 
-// TopBar ~48px, BottomBar ~72px, RoomNav ~180px
-const UI_INSET = { top: 48, bottom: 72, left: 180, right: 0 }
+// TopBar ~48px. NarrativePanel lives outside the stage flex cell.
+const UI_INSET = { top: 48, bottom: 8, left: 8, right: 0 }
 
 // --- data loading ---
 
@@ -37,27 +33,33 @@ function useDataLoader() {
   const sceneIdx = useWorldStore(s => s.currentSceneIndex)
   const scenes = useWorldStore(s => s.scenes)
 
-  // Load meta once
+  // One generation token shared across both async layers so that rapid
+  // Day1→Day2→Day1 clicks can't drop a stale scene list or scene file into
+  // the store.
+  const genRef = useRef(0)
+
   useEffect(() => {
-    loadMeta().then(m => {
-      setMeta(m)
-    })
+    loadMeta().then(setMeta)
   }, [setMeta])
 
-  // Load scenes when day changes
   useEffect(() => {
+    const myGen = ++genRef.current
     loadScenes(currentDay).then(s => {
+      if (myGen !== genRef.current) return
       setScenes(s)
       if (s.length > 0) setSceneIdx(0)
     })
     prefetchDay(currentDay).catch(() => {})
   }, [currentDay, setScenes, setSceneIdx])
 
-  // Load scene file when scene index changes
   useEffect(() => {
     const entry = scenes[sceneIdx]
     if (!entry) return
-    loadSceneFile(currentDay, entry.file).then(setSceneFile)
+    const myGen = ++genRef.current
+    loadSceneFile(currentDay, entry.file).then(file => {
+      if (myGen !== genRef.current) return
+      setSceneFile(file)
+    })
   }, [currentDay, sceneIdx, scenes, setSceneFile])
 }
 
@@ -69,25 +71,19 @@ function WorldScene() {
   const sceneFile = useWorldStore(s => s.currentSceneFile)
   const groupIdx = useWorldStore(s => s.activeGroupIndex)
   const currentTick = useWorldStore(s => s.currentTick)
-  const mindReading = useWorldStore(s => s.mindReadingEnabled)
   const focusedAgent = useWorldStore(s => s.focusedAgent)
-  const mode = useWorldStore(s => s.mode)
   const meta = useWorldStore(s => s.meta)
 
   const worldRef = useRef<Container | null>(null)
   const cameraRef = useRef<Camera | null>(null)
   const spritesRef = useRef(new Map<string, Container>())
   const bubbleRef = useRef<BubbleOverlay | null>(null)
-  const danmuRef = useRef<DanmuLayer | null>(null)
-  const prevTickRef = useRef(-1)
 
-  // Init camera, bubble overlay, danmu layer
   useEffect(() => {
     const canvas = app.canvas as HTMLCanvasElement
     const parent = canvas.parentElement
     if (!parent) return
 
-    // Wrap canvas in relative container for overlays
     let wrapper = parent.querySelector('.pixi-wrapper') as HTMLDivElement | null
     if (!wrapper) {
       wrapper = document.createElement('div')
@@ -104,15 +100,12 @@ function WorldScene() {
     bubbleRef.current = new BubbleOverlay(wrapper, (agentId) => {
       useWorldStore.getState().setFocusedAgent(agentId)
     })
-    danmuRef.current = new DanmuLayer(wrapper)
 
     return () => {
       bubbleRef.current?.destroy()
-      danmuRef.current?.destroy()
     }
   }, [app])
 
-  // Setup world container with camera (only depends on app, not room)
   const worldContainerRef = useCallback((node: Container | null) => {
     worldRef.current = node
     if (node && app.canvas) {
@@ -123,12 +116,10 @@ function WorldScene() {
     }
   }, [app])
 
-  // Manage character sprites
   useEffect(() => {
     const world = worldRef.current
     if (!world || !sceneFile) return
 
-    // Clear old sprites
     for (const s of spritesRef.current.values()) s.destroy({ children: true })
     spritesRef.current.clear()
 
@@ -159,7 +150,6 @@ function WorldScene() {
       spritesRef.current.set(agentId, sprite)
     }
 
-    // Also add other groups' characters (dimmed)
     for (let gi = 0; gi < sceneFile.groups.length; gi++) {
       if (gi === groupIdx) continue
       const otherGroup = sceneFile.groups[gi]
@@ -187,30 +177,31 @@ function WorldScene() {
     }
   }, [sceneFile, groupIdx, currentRoom, meta])
 
-  // Update sprites + bubbles per tick
   useEffect(() => {
     if (!sceneFile) return
     const group = sceneFile.groups[groupIdx]
-    if (!group || group.is_solo) {
+
+    if (!group) {
       bubbleRef.current?.setBubbles([])
-      // Solo: show thought bubble
-      if (group?.is_solo) {
-        const solo = group
-        const name = sceneFile.participant_names[solo.participants[0]] ?? ''
-        bubbleRef.current?.setBubbles([{
-          agentId: solo.participants[0],
-          displayName: name,
-          text: solo.solo_reflection.inner_thought,
-          type: 'thought',
-        }])
-      }
+      return
+    }
+
+    // Solo: single emoji bubble over the solo agent; narrative panel owns text.
+    if (group.is_solo) {
+      const soloId = group.participants[0]
+      const emoji = EMOTION_EMOJIS[group.solo_reflection.emotion] ?? '😐'
+      bubbleRef.current?.setBubbles([{
+        agentId: soloId,
+        displayName: '',
+        text: emoji,
+        type: 'emoji',
+      }])
       return
     }
 
     const tick = (group as SceneGroup).ticks[currentTick]
-    if (!tick) return
+    if (!tick) { bubbleRef.current?.setBubbles([]); return }
 
-    // Update sprite states
     for (const [agentId, sprite] of spritesRef.current) {
       const mind = tick.minds[agentId]
       const isActiveGroup = group.participants.includes(agentId)
@@ -219,61 +210,22 @@ function WorldScene() {
       updateSpriteState(sprite, state as 'idle' | 'talking', !isActiveGroup || !isFocused)
     }
 
-    // Build bubbles
+    // Only the speaker gets a bubble. All other emotional signal lives in
+    // ObserverRow below; the stage is just "space + who's talking".
     const bubbles: BubbleData[] = []
-
-    // Speech bubble (+ inline inner thought in mind-reading mode)
     if (tick.public.speech) {
       const s = tick.public.speech
-      const mind = tick.minds[s.agent]
       bubbles.push({
         agentId: s.agent,
         displayName: sceneFile.participant_names[s.agent] ?? '',
         text: s.content,
         type: 'speech',
         target: s.target ?? undefined,
-        subtext: mindReading && mind ? mind.inner_thought : undefined,
       })
     }
-
-    // Non-verbal actions (always shown for agents without a bubble)
-    for (const [agentId, mind] of Object.entries(tick.minds)) {
-      if (bubbles.some(b => b.agentId === agentId)) continue
-      if (mind.action_type === 'non_verbal' && mind.action_content) {
-        bubbles.push({
-          agentId,
-          displayName: '',
-          text: mind.action_content,
-          type: 'action',
-        })
-      }
-    }
-
-    // Mind-reading: emoji indicators for remaining observers
-    if (mindReading) {
-      for (const [agentId, mind] of Object.entries(tick.minds)) {
-        if (bubbles.some(b => b.agentId === agentId)) continue
-        bubbles.push({
-          agentId,
-          displayName: '',
-          text: EMOTION_EMOJIS[mind.emotion] ?? '😐',
-          subtext: mind.inner_thought,
-          type: 'emoji',
-        })
-      }
-    }
-
     bubbleRef.current?.setBubbles(bubbles)
+  }, [sceneFile, groupIdx, currentTick, focusedAgent])
 
-    // Danmu in broadcast mode
-    if (mode === 'broadcast' && prevTickRef.current !== currentTick) {
-      const danmuTexts = pickDanmu(tick)
-      if (danmuTexts.length > 0) danmuRef.current?.fire(danmuTexts)
-    }
-    prevTickRef.current = currentTick
-  }, [sceneFile, groupIdx, currentTick, mindReading, focusedAgent, mode])
-
-  // Camera: fit to room when room changes
   useEffect(() => {
     const room = ROOMS[currentRoom]
     const cam = cameraRef.current
@@ -281,7 +233,6 @@ function WorldScene() {
     cam.fitToRoom(room.cols * TILE, room.rows * TILE, UI_INSET)
   }, [currentRoom])
 
-  // ResizeObserver: keep canvas + camera in sync with viewport
   useEffect(() => {
     const cam = cameraRef.current
     const canvas = app.canvas as HTMLCanvasElement
@@ -302,7 +253,6 @@ function WorldScene() {
     return () => ro.disconnect()
   }, [app, currentRoom])
 
-  // Ticker: update camera + bubble positions
   useTick(() => {
     cameraRef.current?.update()
     if (worldRef.current) {
@@ -310,11 +260,10 @@ function WorldScene() {
     }
   })
 
-  // Mouse handlers for explore mode camera
   useEffect(() => {
     const canvas = app.canvas as HTMLCanvasElement
     const cam = cameraRef.current
-    if (!cam || mode !== 'explore') return
+    if (!cam) return
 
     const onDown = (e: PointerEvent) => cam.onPointerDown(e.clientX, e.clientY)
     const onMove = (e: PointerEvent) => cam.onPointerMove(e.clientX, e.clientY)
@@ -332,16 +281,16 @@ function WorldScene() {
       window.removeEventListener('pointerup', onUp)
       canvas.removeEventListener('wheel', onWheel)
     }
-  }, [app, mode])
+  }, [app])
 
-  // Keyboard controls
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      // Skip when typing into inputs (RolePlay chat etc.)
+      const tag = (e.target as HTMLElement | null)?.tagName
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return
       const store = useWorldStore.getState()
-      if (e.key === 'ArrowRight') store.advanceTick()
-      else if (e.key === 'ArrowLeft') store.retreatTick()
-      else if (e.key === ' ') { e.preventDefault(); store.setIsPlaying(!store.isPlaying) }
-      else if (e.key === 'm' || e.key === 'M') store.toggleMindReading()
+      if (e.key === 'ArrowRight') store.goNext()
+      else if (e.key === 'ArrowLeft') store.goPrev()
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
@@ -358,30 +307,27 @@ function WorldScene() {
 
 export function PixiCanvas() {
   useDataLoader()
+  const [stageEl, setStageEl] = useState<HTMLDivElement | null>(null)
 
-  useEffect(() => {
-    playbackController.start()
-    return () => playbackController.stop()
-  }, [])
 
   return (
-    <div className="w-screen h-screen bg-[#1a1a2e] overflow-hidden relative">
-      <div className="w-full h-full">
-        <Application
-          width={window.innerWidth}
-          height={window.innerHeight}
-          background={0x1a1a2e}
-          antialias={false}
-          resolution={1}
-        >
-          <WorldScene />
-        </Application>
+    <div className="w-screen h-screen bg-[#0d0d1a] overflow-hidden relative flex flex-col">
+      <div ref={setStageEl} className="flex-1 min-h-0 relative bg-[#1a1a2e]">
+        {stageEl && (
+          <Application
+            resizeTo={stageEl}
+            background={0x1a1a2e}
+            antialias={false}
+            resolution={1}
+          >
+            <WorldScene />
+          </Application>
+        )}
+        <TopBar />
       </div>
 
-      {/* React UI overlays */}
-      <TopBar />
-      <BottomBar />
-      <RoomNav />
+      <NarrativePanel />
+
       <ErrorBoundary><SidePanel /></ErrorBoundary>
       <GodModeChat />
       <RolePlayChat />

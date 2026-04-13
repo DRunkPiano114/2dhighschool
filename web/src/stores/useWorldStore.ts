@@ -1,6 +1,7 @@
 import { create } from 'zustand'
-import type { ViewMode, PlaybackSpeed, RoomId, SceneIndexEntry, SceneFile, Meta } from '../lib/types'
+import type { RoomId, SceneIndexEntry, SceneFile, Meta, SceneGroup } from '../lib/types'
 import type { ChatMessage, AgentReaction } from '../lib/chat'
+import { findFirstSpeechTick } from '../components/narrative/focal'
 
 export type ChatMode = 'off' | 'god' | 'roleplay'
 
@@ -16,12 +17,6 @@ interface WorldState {
   activeGroupIndex: number
   currentTick: number
   currentRoom: RoomId
-
-  // --- mode ---
-  mode: ViewMode
-  mindReadingEnabled: boolean
-  playbackSpeed: PlaybackSpeed
-  isPlaying: boolean
 
   // --- focus ---
   focusedAgent: string | null
@@ -45,14 +40,12 @@ interface WorldState {
   setActiveGroupIndex: (index: number) => void
   setCurrentTick: (tick: number) => void
   setCurrentRoom: (room: RoomId) => void
-  setMode: (mode: ViewMode) => void
-  toggleMindReading: () => void
-  setPlaybackSpeed: (speed: PlaybackSpeed) => void
-  setIsPlaying: (playing: boolean) => void
   setFocusedAgent: (agentId: string | null) => void
   setSidePanelOpen: (open: boolean) => void
   advanceTick: () => void
   retreatTick: () => void
+  goNext: () => void
+  goPrev: () => void
 
   // --- chat actions ---
   openGodModeChat: (agentId: string) => void
@@ -76,11 +69,6 @@ export const useWorldStore = create<WorldState>((set, get) => ({
   currentTick: 0,
   currentRoom: '教室',
 
-  mode: 'explore',
-  mindReadingEnabled: false,
-  playbackSpeed: 1,
-  isPlaying: false,
-
   focusedAgent: null,
   sidePanelOpen: false,
 
@@ -94,7 +82,18 @@ export const useWorldStore = create<WorldState>((set, get) => ({
 
   setMeta: (meta) => set({ meta }),
   setScenes: (scenes) => set({ scenes }),
-  setCurrentSceneFile: (file) => set({ currentSceneFile: file }),
+
+  setCurrentSceneFile: (file) => {
+    if (file) {
+      const firstGroup = file.groups[0]
+      set({
+        currentSceneFile: file,
+        currentTick: findFirstSpeechTick(firstGroup),
+      })
+    } else {
+      set({ currentSceneFile: null, currentTick: 0 })
+    }
+  },
 
   setCurrentDay: (day) => set({
     currentDay: day,
@@ -114,13 +113,17 @@ export const useWorldStore = create<WorldState>((set, get) => ({
     })
   },
 
-  setActiveGroupIndex: (index) => set({ activeGroupIndex: index, currentTick: 0 }),
+  setActiveGroupIndex: (index) => {
+    const file = get().currentSceneFile
+    const group = file?.groups[index]
+    set({
+      activeGroupIndex: index,
+      currentTick: findFirstSpeechTick(group),
+    })
+  },
+
   setCurrentTick: (tick) => set({ currentTick: tick }),
   setCurrentRoom: (room) => set({ currentRoom: room }),
-  setMode: (mode) => set({ mode, isPlaying: mode === 'broadcast' }),
-  toggleMindReading: () => set((s) => ({ mindReadingEnabled: !s.mindReadingEnabled })),
-  setPlaybackSpeed: (speed) => set({ playbackSpeed: speed }),
-  setIsPlaying: (playing) => set({ isPlaying: playing }),
 
   setFocusedAgent: (agentId) => set({
     focusedAgent: agentId,
@@ -147,6 +150,45 @@ export const useWorldStore = create<WorldState>((set, get) => ({
     const { currentTick } = get()
     if (currentTick > 0) {
       set({ currentTick: currentTick - 1 })
+    }
+  },
+
+  // Cross-group / cross-scene navigation. At a tick boundary, jumps to the
+  // adjacent group (first speech tick) or scene (group 0, first speech tick),
+  // so ←/→ never gets stuck mid-conversation.
+  goNext: () => {
+    const { currentTick, currentSceneFile, activeGroupIndex, scenes, currentSceneIndex } = get()
+    if (!currentSceneFile) return
+    const group = currentSceneFile.groups[activeGroupIndex]
+    const ticks = group && !group.is_solo ? (group as SceneGroup).ticks : []
+    if (ticks.length > 0 && currentTick < ticks.length - 1) {
+      set({ currentTick: currentTick + 1 })
+      return
+    }
+    if (activeGroupIndex < currentSceneFile.groups.length - 1) {
+      const next = currentSceneFile.groups[activeGroupIndex + 1]
+      set({ activeGroupIndex: activeGroupIndex + 1, currentTick: findFirstSpeechTick(next) })
+      return
+    }
+    if (currentSceneIndex < scenes.length - 1) {
+      get().setCurrentSceneIndex(currentSceneIndex + 1)
+    }
+  },
+
+  goPrev: () => {
+    const { currentTick, currentSceneFile, activeGroupIndex, currentSceneIndex } = get()
+    if (!currentSceneFile) return
+    if (currentTick > 0) {
+      set({ currentTick: currentTick - 1 })
+      return
+    }
+    if (activeGroupIndex > 0) {
+      const prev = currentSceneFile.groups[activeGroupIndex - 1]
+      set({ activeGroupIndex: activeGroupIndex - 1, currentTick: findFirstSpeechTick(prev) })
+      return
+    }
+    if (currentSceneIndex > 0) {
+      get().setCurrentSceneIndex(currentSceneIndex - 1)
     }
   },
 

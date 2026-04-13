@@ -3,6 +3,7 @@
 import json
 import shutil
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
 LOGS = ROOT / "logs"
@@ -12,7 +13,7 @@ DATA = ROOT / "data"
 OUT = ROOT / "web" / "public" / "data"
 
 
-def _read_json(p: Path) -> dict | list:
+def _read_json(p: Path) -> Any:
     return json.loads(p.read_text(encoding="utf-8"))
 
 
@@ -21,7 +22,49 @@ def _write_json(p: Path, obj: object) -> None:
     p.write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def export_meta() -> None:
+def _is_group_display_worthy(group: dict) -> bool:
+    """A group is worth showing in the UI if it has real content.
+
+    Multi-agent: at least one tick (backend marks trivial scenes as ticks=[]).
+    Solo: solo_reflection exists with non-empty inner_thought or activity.
+    """
+    if group.get("is_solo"):
+        sr = group.get("solo_reflection") or {}
+        return bool((sr.get("inner_thought") or "").strip() or (sr.get("activity") or "").strip())
+    return len(group.get("ticks") or []) > 0
+
+
+def _is_scene_display_worthy(scene_file: dict) -> bool:
+    return any(_is_group_display_worthy(g) for g in scene_file.get("groups", []))
+
+
+def _display_worthy_days() -> list[str]:
+    """Days whose scenes.json has at least one display-worthy scene."""
+    if not LOGS.exists():
+        return []
+    result: list[str] = []
+    for day_dir in sorted(LOGS.iterdir()):
+        if not (day_dir.is_dir() and day_dir.name.startswith("day_")):
+            continue
+        scenes_path = day_dir / "scenes.json"
+        if not scenes_path.exists():
+            continue
+        scenes = _read_json(scenes_path)
+        has_content = False
+        for scene in scenes:
+            file_path = day_dir / scene.get("file", "")
+            if not file_path.exists():
+                continue
+            scene_file = _read_json(file_path)
+            if _is_scene_display_worthy(scene_file):
+                has_content = True
+                break
+        if has_content:
+            result.append(day_dir.name)
+    return result
+
+
+def export_meta(days: list[str]) -> None:
     """Build meta.json with days list, agent IDs/names, schedule."""
     schedule = _read_json(DATA / "schedule.json")
     progress = _read_json(WORLD / "progress.json")
@@ -37,8 +80,6 @@ def export_meta() -> None:
             "position": c.get("position"),
             "dorm_id": c.get("dorm_id"),
         }
-
-    days = sorted(d.name for d in LOGS.iterdir() if d.is_dir() and d.name.startswith("day_")) if LOGS.exists() else []
 
     meta = {
         "days": days,
@@ -80,23 +121,40 @@ def export_agents() -> None:
     print(f"  agents/ ({len(list((OUT / 'agents').iterdir()))} agents)")
 
 
-def export_days() -> None:
-    """Copy scene files, scenes.json, trajectory.json for each day."""
+def export_days(days: list[str]) -> None:
+    """Copy scene files + filtered scenes.json + trajectory.json for each day.
+
+    Only scenes with at least one display-worthy group are written to
+    scenes.json; original scene files are still copied verbatim so the raw
+    archive is preserved, but the dropdown won't surface empty shells.
+    """
     if not LOGS.exists():
         print("  No logs/ directory — skipping days export")
         return
 
     count = 0
-    for day_dir in sorted(LOGS.iterdir()):
-        if not day_dir.is_dir() or not day_dir.name.startswith("day_"):
+    filtered_out = 0
+    for day_name in days:
+        day_dir = LOGS / day_name
+        if not day_dir.is_dir():
             continue
-        out_day = OUT / "days" / day_dir.name
+        out_day = OUT / "days" / day_name
         out_day.mkdir(parents=True, exist_ok=True)
 
-        # Copy scenes.json
+        # Filter scenes.json by display-worthiness
         scenes_path = day_dir / "scenes.json"
         if scenes_path.exists():
-            shutil.copy2(scenes_path, out_day / "scenes.json")
+            scenes = _read_json(scenes_path)
+            kept = []
+            for scene in scenes:
+                file_path = day_dir / scene.get("file", "")
+                if not file_path.exists():
+                    continue
+                if _is_scene_display_worthy(_read_json(file_path)):
+                    kept.append(scene)
+                else:
+                    filtered_out += 1
+            _write_json(out_day / "scenes.json", kept)
 
         # Copy trajectory.json
         traj_path = day_dir / "trajectory.json"
@@ -112,7 +170,7 @@ def export_days() -> None:
             shutil.copy2(f, out_day / f.name)
 
         count += 1
-    print(f"  days/ ({count} days)")
+    print(f"  days/ ({count} days, {filtered_out} empty scenes filtered from dropdowns)")
 
 
 def export_events() -> None:
@@ -184,9 +242,12 @@ def main() -> None:
 
     print("Exporting frontend data...")
     backfill_snapshots()
-    export_meta()
+    # Compute day list once — only days with at least one display-worthy scene.
+    # This drops the day_000 init placeholder and any future empty days.
+    days = _display_worthy_days()
+    export_meta(days)
     export_agents()
-    export_days()
+    export_days(days)
     export_events()
     print(f"\nDone → {OUT}")
 

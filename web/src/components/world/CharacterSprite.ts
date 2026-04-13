@@ -1,4 +1,4 @@
-import { Graphics, Text, TextStyle, Container } from 'pixi.js'
+import { Graphics, Text, TextStyle, Container, Rectangle } from 'pixi.js'
 
 const TILE = 32
 const SPRITE_R = TILE * 0.4
@@ -68,6 +68,9 @@ export function createCharacterSprite(
   label.anchor.set(0.5, 0)
   label.y = SPRITE_R * 0.5
   container.addChild(label)
+
+  // Expanded hit area keeps clicks reliable when the stage shrinks to ~55vh.
+  container.hitArea = new Rectangle(-20, -30, 40, 50)
 
   return container
 }

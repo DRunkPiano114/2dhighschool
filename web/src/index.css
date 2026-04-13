@@ -4,29 +4,9 @@
 
 body {
   font-family: 'Noto Sans SC', sans-serif;
-  background-color: #faf6f0;
-  color: #2c2c2c;
+  background-color: #0d0d1a;
+  color: #e8e6f0;
   margin: 0;
-}
-
-/* Paper grain texture */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.03;
-  background-image:
-    radial-gradient(circle at 20% 50%, #000 0.5px, transparent 0.5px),
-    radial-gradient(circle at 80% 20%, #000 0.5px, transparent 0.5px),
-    radial-gradient(circle at 50% 80%, #000 0.5px, transparent 0.5px);
-  background-size: 100px 100px, 150px 150px, 120px 120px;
-}
-
-/* Mind-reading mode overlay */
-.mind-reading-active {
-  background-color: #f8f2e6;
 }
 
 /* Thought bubble shape */

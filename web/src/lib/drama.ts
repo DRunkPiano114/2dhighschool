@@ -1,4 +1,4 @@
-import type { Tick, SceneGroup, GroupData, SceneIndexEntry } from './types'
+import type { Tick, SceneIndexEntry } from './types'
 
 /**
  * Drama score for a single tick.
@@ -21,12 +21,6 @@ export function scoreTick(tick: Tick): number {
     maxUrgency * 0.5 +
     exitCount * 2
   )
-}
-
-/** Drama score for an entire group (sum of tick scores). */
-export function scoreGroup(group: GroupData): number {
-  if (group.is_solo) return 0
-  return (group as SceneGroup).ticks.reduce((sum, t) => sum + scoreTick(t), 0)
 }
 
 /** Top 20% drama threshold for a list of tick scores. */
@@ -52,29 +46,12 @@ export function sortScenesByDrama(
   sceneScores: Map<string, number>,
 ): SceneIndexEntry[] {
   return [...scenes].sort((a, b) => {
-    // Same time slot: sort by drama
     if (a.time === b.time) {
       const aAllSolo = a.groups.every(g => g.is_solo)
       const bAllSolo = b.groups.every(g => g.is_solo)
       if (aAllSolo !== bAllSolo) return aAllSolo ? 1 : -1
       return (sceneScores.get(b.file) ?? 0) - (sceneScores.get(a.file) ?? 0)
     }
-    // Different time: chronological
     return a.time.localeCompare(b.time)
   })
-}
-
-/**
- * Pick up to 2 danmu candidates from tick's minds.
- * Selects inner_thought from characters who chose action_type "observe",
- * truncated to 20 chars.
- */
-export function pickDanmu(tick: Tick): string[] {
-  const observers = Object.entries(tick.minds)
-    .filter(([, m]) => m.action_type === 'observe' || m.action_type === 'non_verbal')
-    .map(([, m]) => m.inner_thought)
-
-  return observers
-    .slice(0, 2)
-    .map(t => t.length > 20 ? t.slice(0, 19) + '…' : t)
 }

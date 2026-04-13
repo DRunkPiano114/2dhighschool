@@ -43,9 +43,10 @@ cd web && pnpm build                             # production build → web/dist
 ## Tests
 
 ```bash
-uv run python -m pytest                         # run all tests
+uv run python -m pytest                         # run all Python tests
 uv run python -m pytest tests/test_foo.py -v    # run one test file, verbose
 uv run python -m pytest -k "test_name"          # run tests matching a name
+cd web && pnpm vitest run                       # run frontend unit tests
 ```
 
 ## Documentation

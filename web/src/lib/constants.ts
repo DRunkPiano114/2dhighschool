@@ -21,6 +21,10 @@ export const EMOTION_COLORS: Record<Emotion, string> = {
   neutral: '#B8B8B8',
   jealous: '#8B6FB0',
   proud: '#E8C547',
+  guilty: '#8A7BC8',
+  frustrated: '#B44D4D',
+  touched: '#E8A0B0',
+  curious: '#8BC6EC',
 }
 
 export const EMOTION_LABELS: Record<Emotion, string> = {
@@ -35,6 +39,10 @@ export const EMOTION_LABELS: Record<Emotion, string> = {
   neutral: '平常',
   jealous: '嫉妒',
   proud: '自豪',
+  guilty: '愧疚',
+  frustrated: '挫败',
+  touched: '感动',
+  curious: '好奇',
 }
 
 // Emotion sentiment score for timeline (positive = up, negative = down)
@@ -51,9 +59,12 @@ export const EMOTION_SENTIMENT: Record<Emotion, number> = {
   angry: -0.8,
   embarrassed: -0.4,
   jealous: -0.5,
-} as Record<Emotion, number>
+  guilty: -0.5,
+  frustrated: -0.6,
+  touched: 0.6,
+}
 
-export const EMOTION_EMOJIS: Record<string, string> = {
+export const EMOTION_EMOJIS: Record<Emotion, string> = {
   happy: '😊',
   sad: '😢',
   anxious: '😰',
@@ -65,6 +76,9 @@ export const EMOTION_EMOJIS: Record<string, string> = {
   neutral: '😐',
   jealous: '😒',
   proud: '😏',
+  guilty: '😔',
+  frustrated: '😣',
+  touched: '🥹',
   curious: '🤔',
 }
 

@@ -10,6 +10,9 @@ export default {
         'ink-light': '#666666',
         amber: '#d4a853',
         teal: '#5a8f7b',
+        'bg-base': '#0d0d1a',
+        'bg-stage': '#1a1a2e',
+        'bg-narrative': '#141422',
         thought: {
           bg: 'rgba(255, 248, 235, 0.95)',
           border: '#e8dcc8',

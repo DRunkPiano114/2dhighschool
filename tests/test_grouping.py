@@ -265,12 +265,29 @@ def test_group_agents_all_assigned():
 
 
 def test_group_agents_single_agent():
+    """A lone agent (even one who wouldn't trigger _should_be_solo) gets
+    promoted to is_solo=True. Multi-agent orchestrator can't produce dialogue
+    from 1 person, so the right pipeline is run_solo_reflection."""
     profiles = {"a": _make_profile("a", "张伟")}
     states = {"a": AgentState(energy=80)}
     scene = _make_scene()
     groups = group_agents(["a"], profiles, states, {}, scene, Random(42))
     assert len(groups) == 1
     assert groups[0].agent_ids == ["a"]
+    assert groups[0].is_solo is True
+
+
+def test_group_agents_dorm_singleton_promoted_to_solo():
+    """Dorm scene with only one occupant from a given dorm: that agent must
+    still be assigned to a solo group, not silently dropped. he_jiajun is the
+    sole member of male_303 in DORM_MEMBERS."""
+    profiles = {"he_jiajun": _make_profile("he_jiajun", "何家骏")}
+    states = {"he_jiajun": AgentState(energy=80)}
+    scene = _make_scene(location="宿舍")
+    groups = group_agents(["he_jiajun"], profiles, states, {}, scene, Random(42))
+    assert len(groups) == 1
+    assert groups[0].agent_ids == ["he_jiajun"]
+    assert groups[0].is_solo is True
 
 
 def test_group_agents_empty():

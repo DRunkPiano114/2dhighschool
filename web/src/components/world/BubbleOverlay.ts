@@ -4,10 +4,8 @@ export interface BubbleData {
   agentId: string
   displayName: string
   text: string
-  type: 'speech' | 'thought' | 'emoji' | 'action'
+  type: 'speech' | 'emoji' | 'action'
   target?: string
-  /** Inline inner thought shown below speech content (mind-reading mode) */
-  subtext?: string
 }
 
 /**
@@ -32,9 +30,7 @@ export class BubbleOverlay {
     parentEl.appendChild(this.container)
   }
 
-  /** Set which bubbles to show. Call when tick changes. */
   setBubbles(bubbles: BubbleData[]) {
-    // Remove stale
     const activeIds = new Set(bubbles.map(b => b.agentId))
     for (const [id, el] of this.elements) {
       if (!activeIds.has(id)) {
@@ -43,7 +39,6 @@ export class BubbleOverlay {
       }
     }
 
-    // Create or update (recreate if type changed)
     for (const b of bubbles) {
       let el = this.elements.get(b.agentId)
       if (el && el.dataset.bubbleType !== b.type) {
@@ -60,11 +55,6 @@ export class BubbleOverlay {
     }
   }
 
-  /**
-   * Update positions. Called from PixiJS Ticker (same rAF frame as render).
-   * Projects character world positions to screen coordinates.
-   * Clamps bubbles to stay within the container viewport.
-   */
   updatePositions(
     sprites: Map<string, Container>,
     worldContainer: Container,
@@ -72,7 +62,6 @@ export class BubbleOverlay {
     const cw = this.container.offsetWidth
     const ch = this.container.offsetHeight
 
-    // Batch reads (dimensions), then batch writes (transforms)
     const updates: Array<{ el: HTMLDivElement; x: number; y: number; w: number; h: number }> = []
     for (const [agentId, el] of this.elements) {
       const sprite = sprites.get(agentId)
@@ -91,7 +80,6 @@ export class BubbleOverlay {
       })
     }
 
-    // Compute clamped positions
     const rects = updates.map(({ x, y, w, h }) => ({
       left: Math.max(4, Math.min(x - w / 2, cw - w - 4)),
       top: Math.max(4, Math.min(y - h, ch - h - 4)),
@@ -99,14 +87,12 @@ export class BubbleOverlay {
       h,
     }))
 
-    // Push overlapping bubbles apart vertically (single pass, O(n²) but n≤8)
     for (let i = 0; i < rects.length; i++) {
       for (let j = i + 1; j < rects.length; j++) {
         const a = rects[i], b = rects[j]
         const overlapX = a.left < b.left + b.w && a.left + a.w > b.left
         const overlapY = a.top < b.top + b.h && a.top + a.h > b.top
         if (overlapX && overlapY) {
-          // Push the higher one (smaller top) further up
           if (a.top <= b.top) {
             a.top = Math.max(4, b.top - a.h - 4)
           } else {
@@ -116,7 +102,6 @@ export class BubbleOverlay {
       }
     }
 
-    // Batch writes
     for (let i = 0; i < updates.length; i++) {
       const { el, x: spriteX } = updates[i]
       const { left, top, w } = rects[i]
@@ -124,7 +109,6 @@ export class BubbleOverlay {
       el.style.transform = `translate(${left}px, ${top}px)`
       el.style.opacity = '1'
 
-      // Dynamic arrow: point at the character's actual screen X
       const arrow = el.querySelector('.bubble-arrow') as HTMLDivElement | null
       if (arrow) {
         const arrowX = Math.max(10, Math.min(spriteX - left, w - 10))
@@ -193,14 +177,12 @@ export class BubbleOverlay {
         position: 'absolute',
         left: '0',
         top: '0',
-        maxWidth: '200px',
+        maxWidth: '220px',
         padding: '6px 10px',
         borderRadius: '8px',
         fontSize: '13px',
         lineHeight: '1.4',
-        fontFamily: b.type === 'thought'
-          ? '"LXGW WenKai", serif'
-          : '"Noto Sans SC", sans-serif',
+        fontFamily: '"Noto Sans SC", sans-serif',
         whiteSpace: 'pre-wrap',
         overflowWrap: 'break-word',
         overflow: 'visible',
@@ -212,7 +194,6 @@ export class BubbleOverlay {
       })
     }
 
-    // Forward clicks to focusAgent (same as clicking the PixiJS sprite)
     if (interactive && this.onBubbleClick) {
       const cb = this.onBubbleClick
       el.addEventListener('click', (e) => {
@@ -228,7 +209,6 @@ export class BubbleOverlay {
   private updateBubbleContent(el: HTMLDivElement, b: BubbleData) {
     if (b.type === 'emoji') {
       el.textContent = b.text
-      if (b.subtext) el.title = b.subtext
       return
     }
 
@@ -237,31 +217,18 @@ export class BubbleOverlay {
       return
     }
 
-    const isThought = b.type === 'thought'
-
     Object.assign(el.style, {
-      background: isThought ? 'rgba(255,235,240,0.92)' : '#faf3e0',
-      border: isThought ? '1.5px dashed rgba(233,69,96,0.5)' : '1.5px solid #e0d5c0',
-      fontStyle: isThought ? 'italic' : 'normal',
-      color: isThought ? '#c0475a' : '#2c2c2c',
+      background: '#faf3e0',
+      border: '1.5px solid #e0d5c0',
+      color: '#2c2c2c',
     })
 
     const nameHtml = `<span style="font-weight:600;font-size:11px;opacity:0.7">${b.displayName}</span><br/>`
+    el.innerHTML = `${nameHtml}${b.text}`
 
-    let html = `${nameHtml}${b.text}`
-
-    // Inline inner thought below speech content (mind-reading mode)
-    if (b.subtext && b.type === 'speech') {
-      html += `<div style="margin-top:3px;padding-top:3px;border-top:1px dashed rgba(233,69,96,0.3);font-style:italic;font-size:11px;color:#c0475a;font-family:'LXGW WenKai',serif">${b.subtext}</div>`
-    }
-
-    el.innerHTML = html
-
-    // Pointer triangle pointing down toward the character
     const arrow = el.querySelector('.bubble-arrow') as HTMLDivElement | null
         ?? document.createElement('div')
     arrow.className = 'bubble-arrow'
-    const arrowColor = isThought ? 'rgba(255,235,240,0.92)' : '#faf3e0'
     Object.assign(arrow.style, {
       position: 'absolute',
       left: '50%',
@@ -271,7 +238,7 @@ export class BubbleOverlay {
       height: '0',
       borderLeft: '6px solid transparent',
       borderRight: '6px solid transparent',
-      borderTop: `6px solid ${arrowColor}`,
+      borderTop: '6px solid #faf3e0',
     })
     el.appendChild(arrow)
   }

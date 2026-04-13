@@ -105,17 +105,22 @@ def group_agents(
 
     # Handle dorm scenes: group by dorm
     if scene.location == "宿舍":
-        groups = _group_by_dorm(social_ids, profiles, scene, rng)
+        groups = _group_by_dorm(social_ids)
     else:
         groups = _greedy_cluster(social_ids, profiles, states, relationships, scene, rng)
 
-    # Assign group IDs
+    # Promote any 1-member social group to solo. Reason: multi-agent orchestrator
+    # needs ≥2 people to produce dialogue; a single agent there yields 0 ticks
+    # and a trivial empty shell. The right pipeline for a lone agent is
+    # run_solo_reflection, regardless of whether _should_be_solo fired.
+    multi_groups = [g for g in groups if len(g) >= 2]
+    singleton_ids = [g[0] for g in groups if len(g) == 1]
+
     result: list[GroupAssignment] = []
-    for i, group_members in enumerate(groups):
+    for i, group_members in enumerate(multi_groups):
         result.append(GroupAssignment(group_id=i, agent_ids=group_members))
 
-    # Add solo agents
-    for aid in solo_ids:
+    for aid in solo_ids + singleton_ids:
         result.append(GroupAssignment(
             group_id=len(result), agent_ids=[aid], is_solo=True,
         ))
@@ -123,22 +128,16 @@ def group_agents(
     return result
 
 
-def _group_by_dorm(
-    agent_ids: list[str],
-    profiles: dict[str, AgentProfile],
-    scene: Scene,
-    rng: random.Random,
-) -> list[list[str]]:
+def _group_by_dorm(agent_ids: list[str]) -> list[list[str]]:
     from .scene_generator import DORM_MEMBERS
 
     groups: list[list[str]] = []
-    for dorm_id, members in DORM_MEMBERS.items():
+    for members in DORM_MEMBERS.values():
         dorm_group = [aid for aid in agent_ids if aid in members]
-        if len(dorm_group) >= 2:
+        if dorm_group:
+            # Singletons are kept as 1-member groups; group_agents() promotes
+            # them to solo afterwards (shared code path for all singletons).
             groups.append(dorm_group)
-        elif len(dorm_group) == 1:
-            # Single person in dorm → solo (handled separately)
-            pass
     return groups
 
 

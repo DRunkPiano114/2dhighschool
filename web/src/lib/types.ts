@@ -3,11 +3,11 @@
 export type Emotion =
   | 'happy' | 'sad' | 'anxious' | 'angry' | 'excited'
   | 'calm' | 'embarrassed' | 'bored' | 'neutral' | 'jealous' | 'proud'
+  | 'guilty' | 'frustrated' | 'touched' | 'curious'
 
 // --- Scene file (top-level) ---
 
 export interface SceneInfo {
-  scene_index: number
   time: string
   name: string
   location: string
@@ -131,7 +131,6 @@ export interface SceneFile {
 // --- Scenes index ---
 
 export interface SceneIndexEntry {
-  scene_index: number
   time: string
   name: string
   location: string
@@ -330,6 +329,3 @@ export interface CharacterPosition {
   room: RoomId
 }
 
-export type ViewMode = 'explore' | 'broadcast'
-
-export type PlaybackSpeed = 1 | 2 | 4

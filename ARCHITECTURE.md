@@ -141,8 +141,9 @@ Re-plan uses `replan.j2` template → `ReplanResult` (changed, new_location, rea
 
 **Step 2b — Grouping** (`world/grouping.py`):
 - First, identify solo agents: non-students (teacher) are never solo. For students: energy < `solo_energy_threshold` (default 20), or introvert without close relationships at 50% chance, or sad + low energy at 60% chance.
-- For 宿舍 scenes: group by dorm assignment.
+- For 宿舍 scenes: group by dorm assignment (single-dorm occupants are kept as 1-member groups, not silently dropped).
 - For other scenes: greedy affinity clustering (max group size 5). Affinity = bidirectional favorability + structural label bonus (室友 +20, 同桌 +15, 前后桌 +10) + same-gender bonus (+5, or +100 in dorms) + intention targeting bonus (+25 if either agent has an unfulfilled intention targeting the other by name) + random noise ±10.
+- **Singleton promotion**: after clustering, any 1-member social group is promoted to `is_solo=True`. The multi-agent orchestrator can't produce dialogue from one person — it would yield zero ticks and a trivial empty shell. The right pipeline for any lone agent (whether `_should_be_solo` fired or not) is `run_solo_reflection`.
 
 **Deterministic scene generation**: Scene generation uses a per-day deterministic RNG seeded with `hash((base_seed, "scenes", day))`, separate from the main simulation RNG. This ensures the same set of LOW density scenes trigger on resume as on the original run, keeping `scene_index` values stable.
 
@@ -1080,15 +1081,17 @@ Collected during scene execution; each agent gets one slot per scene they partic
 
 ## Frontend — SimClass Pixel World
 
-Pixel-art school world viewer (Stardew Valley aesthetic, top-down). Two modes: **Explore** (click around, scrub ticks) and **Broadcast** (auto-camera follows drama, danmu overlays). Core mechanic: mind-reading toggle reveals inner thoughts vs spoken words.
+Split-pane "AI social reality show + read-the-mind" viewer. Top half (~55vh) is the pixel-art stage (rooms, sprites, speech bubble over the speaker only). Bottom half (~45vh) is the **NarrativePanel** — a persistent reading column that surfaces `public.speech` and every agent's inner monologue side-by-side. Mind-reading is always on; there is no toggle.
 
-**Tech stack**: Vite + React 19 + TypeScript, PixiJS 8 + @pixi/react 8 (canvas rendering), Tailwind CSS 3, Framer Motion (panel animations), Zustand 5 (state), React Router 7, D3.js (Phase 2 graphs). Fonts: LXGW WenKai (thoughts), Noto Sans SC (body).
+**Tech stack**: Vite + React 19 + TypeScript, PixiJS 8 + @pixi/react 8 (canvas rendering), Tailwind CSS 3, Framer Motion (panel animations), Zustand 5 (state), React Router 7, D3.js (Phase 2 graphs), Vitest (narrative unit tests). Fonts: LXGW WenKai (thoughts), Noto Sans SC (body).
 
-**Architecture**: PixiJS owns the game canvas (rooms, sprites, camera). React owns UI chrome (TopBar, BottomBar, SidePanel, RoomNav) as absolute-positioned overlays. BubbleOverlay and DanmuLayer are imperative DOM layers synced to the PixiJS Ticker (same rAF frame). Camera state lives on the PixiJS Container transform, not in Zustand.
+**Architecture**: Outer layout is a flex-column (stage area `flex-1 min-h-0` over NarrativePanel `h-[45vh]` / mobile `h-[60vh]`). PixiJS owns the stage (rooms, sprites, camera). React owns the NarrativePanel, TopBar (absolute-positioned over the stage), SidePanel (slide-out overlay), and chat modals. BubbleOverlay is an imperative DOM layer synced to the PixiJS Ticker. Camera state lives on the PixiJS Container transform, not in Zustand.
 
 ### Data Pipeline
 
-`scripts/export_frontend_data.py` copies simulation output → `web/public/data/` (unchanged). Drama scores and character positions are computed in the frontend, not the export script.
+`scripts/export_frontend_data.py` copies simulation output → `web/public/data/`. Drama scores and character positions are computed in the frontend, not the export script.
+
+**Display-worthy filter**: a scene is included in `meta.days[]` and the per-day `scenes.json` only if at least one of its groups has real content. A multi-agent group qualifies when `ticks` is non-empty (the backend's `is_trivial_scene` marks empty/no-action scenes as `ticks: []`). A solo group qualifies when `solo_reflection.inner_thought` or `activity` is non-empty. Days with zero qualifying scenes (notably the `day_000` initialization placeholder) are skipped from `meta.days[]` entirely. Raw scene files are still copied verbatim into `days/day_NNN/` so the archive is preserved; only the dropdown index shrinks.
 
 ```
 web/public/data/
@@ -1107,31 +1110,39 @@ web/public/data/
 web/src/
   main.tsx                      # Entry, BrowserRouter
   App.tsx                       # Routes: / (PixiCanvas), /relationships, /timeline
-  index.css                     # Tailwind directives + custom styles
+  index.css                     # Tailwind directives + custom styles (dark theme: bg #0d0d1a, text #e8e6f0)
   stores/
-    useWorldStore.ts            # Zustand: day, scene, tick, group, room, mode, mindReading, focusedAgent, playback
+    useWorldStore.ts            # Zustand: day, scene, tick, group, room, focusedAgent. setCurrentSceneFile/setActiveGroupIndex auto-seek to findFirstSpeechTick. goNext/goPrev cross group + scene boundaries automatically.
     useAppStore.ts              # Legacy store (used by Phase 2 views only)
   lib/
-    types.ts                    # Data interfaces + RoomId, RoomZone, RoomLayout, ViewMode, PlaybackSpeed
+    types.ts                    # Data interfaces + RoomId, RoomZone, RoomLayout. Emotion is 15 values (adds guilty/frustrated/touched/curious).
     data.ts                     # fetch+cache + prefetchDay() for current day (~650KB)
-    constants.ts                # SEAT_LAYOUT, EMOTION_COLORS, EMOTION_LABELS, EMOTION_EMOJIS, LOCATION_ICONS
+    constants.ts                # SEAT_LAYOUT, EMOTION_COLORS/LABELS/EMOJIS/SENTIMENT (all 15 emotions), LOCATION_ICONS
+    sceneGroup.ts               # groupScenesByTimeSlot() — merges consecutive scenes sharing time+name for the TopBar dropdown
     roomConfig.ts               # Room zone definitions (7 rooms), derivePositions() for character placement
-    drama.ts                    # scoreTick(), scoreGroup(), dramaThreshold(), isDramaPeak(), pickDanmu()
-    PlaybackController.ts       # Singleton. Two strategies: MANUAL (arrow keys / scrubber) + BROADCAST (auto-advance, drama-sorted groups). 3s/tick at 1x.
+    drama.ts                    # scoreTick(), dramaThreshold(), isDramaPeak(), sortScenesByDrama()
   components/
+    narrative/                  # Bottom-panel reading column (the product's core value surface)
+      NarrativePanel.tsx        # Top-level assembly. Subscribes to sceneFile/activeGroup/currentTick. Renders EnvironmentalBanner + GroupPills + FocalCard + ObserverRow + TickNav. Branches: solo → SoloCard; trivial/empty → "(平静的时刻)"; null file → animate-pulse skeleton.
+      EnvironmentalBanner.tsx   # Derived from ticks ≤ currentTick: most-recent non-empty environmental_event + unresolved public.exits since that event (persist until next event overrides). No internal state — switching scene/group implicitly resets.
+      GroupPills.tsx            # Horizontal pills when sceneFile.groups.length > 1. Solo groups show 🧘 name. Click → setActiveGroupIndex (which auto-seeks to first speech tick).
+      FocalCard.tsx             # The one tick-focused speaker / actor / observer. Three visual variants by Focal.kind: 说 / 动作 / 观察 badge. Inner thought shown under speech/non_verbal. First mount uses 400ms intro fade + translate-y; subsequent tick swaps use 200ms — keeps manual nav snappy without losing the entrance. (hasMountedRef guards this since key=tickIdx+agentId forces remount.)
+      SoloCard.tsx              # Standalone card for solo groups (is_solo). activity + inner_thought + emotion emoji + top-1~2 active_concerns (lazy-fetched via loadAgent for psychological texture). TickNav hidden.
+      ObserverRow.tsx           # Non-focal minds from current tick, sorted is_disruptive DESC → urgency DESC (see partitionObservers). All rows visually uniform — 12-13px, opacity 0.7, no accent bar / size diff / badge — drama surfaces via spatial top-row primacy, not visual weight. Container has max-h-full overflow-y-auto. Empty observer list → entire block does not render.
+      TickNav.tsx               # Manual ←/→ buttons + tick progress bars (drama-intensity heights, click to jump within group) + scene stepper (◀场▶). The arrow buttons call store.goPrev/goNext which cross group and scene boundaries; keyboard ←/→ wired in PixiCanvas does the same. No play/pause, no speed selector — viewer paces themselves.
+      focal.ts                  # Pure helpers: pickFocal(tick, group), partitionObservers(tick, focalAgentId), findFirstSpeechTick(group). Focal priority: speech > is_disruptive > highest-urgency non_verbal > highest-urgency observation > first participant fallback.
+      focal.test.ts             # Vitest coverage for pickFocal, partitionObservers sort/stability, findFirstSpeechTick fallback (11 cases).
     world/                      # PixiJS rendering
-      PixiCanvas.tsx            # Main mount: Application, data loading, sprite management, camera, keyboard shortcuts. Composes Room + TopBar + BottomBar + SidePanel + RoomNav.
+      PixiCanvas.tsx            # Outer flex-col: stage (flex-1 min-h-0) + NarrativePanel. PixiJS Application resizeTo the stage div. Data loading uses a shared generation token (useRef) across loadScenes+loadSceneFile so rapid Day1→Day2→Day1 clicks drop stale responses. UI_INSET top=48 for TopBar. Non-solo: only the speaker gets a bubble. Solo: only the solo agent gets one emoji bubble. Emotion signal for everyone else lives in ObserverRow.
       Room.tsx                  # Programmatic tilemap for each of 7 rooms. Draw functions: drawClassroom, drawHallway, drawCafeteria, drawDorm, drawPlayground, drawLibrary, drawConvenienceStore.
-      CharacterSprite.ts        # Colored circle + head + name label. Per-agent colors. updateSpriteState() for talking/dimming.
+      CharacterSprite.ts        # Colored circle + head + name label. Per-agent colors. Expanded hitArea rectangle so clicks stay reliable at the smaller ~55vh stage. updateSpriteState() for talking/dimming.
       Camera.ts                 # Free-scroll (drag + wheel zoom) + auto-pan (lerp). State on PixiJS Container transform, updated via Ticker.
-      BubbleOverlay.ts          # Imperative DOM overlay. 4 bubble types: speech (cream bg, optional inline inner_thought in mind-reading), thought (rose dashed, solo only), emoji (emotion indicator for observers in mind-reading, title tooltip shows inner_thought), action (small italic for non_verbal). Viewport-clamped positioning via sprite.toGlobal() each frame with overlap push-apart. Pointer triangle on speech/thought. Click forwarding via onBubbleClick callback → setFocusedAgent. Fade-in via opacity transition (no transform transition to avoid fly-in). Recreates DOM element on type change.
+      BubbleOverlay.ts          # Imperative DOM overlay. 3 bubble types: speech (cream bg — only speakers get this), emoji (solo-only single indicator), action (small italic for non_verbal, currently unused by PixiCanvas but kept as a reusable type). Viewport-clamped positioning via sprite.toGlobal() each frame with overlap push-apart. Click forwarding via onBubbleClick → setFocusedAgent. Fade-in via opacity transition. Recreates DOM element on type change.
       ErrorBoundary.tsx         # Minimal React Error Boundary. Catches render errors, logs to console, renders nothing on crash (prevents blank page).
-      DanmuLayer.ts             # Floating text scrolling right-to-left. Fires from inner_thought of observers. CSS animation, 8s duration.
     ui/                         # React overlays
-      TopBar.tsx                # Day nav, title, mode toggle (探索/放映), mind-reading button
-      BottomBar.tsx             # Scene info, group tabs, tick scrubber (bars colored by drama intensity), play/pause, speed (1x/2x/4x)
+      TopBar.tsx                # Day dropdown (Day NNN ▾) + scene dropdown (click-away-close menu that reuses groupScenesByTimeSlot for hierarchical time-slot grouping) + 角色扮演 button. On mount pings /api/health with 1.5s timeout; if API is offline the 角色扮演 button is disabled with a tooltip pointing at `uv run api`. No mind-reading toggle, no mode switch, no playback controls.
+      RolePlaySetup.tsx         # Modal for picking your character + targets. Rendered via createPortal to document.body so it escapes TopBar's pointer-events-none container — without the portal, child clicks would silently fail in most browsers.
       SidePanel.tsx             # Slide-out character detail: emotion, personality, academics, concerns, relationships, recent thoughts. Framer Motion animated.
-      RoomNav.tsx               # Timeline nav (left edge). Groups scenes by time slot via groupScenesByTimeSlot(). Multi-scene slots: non-clickable header (time + name) with indented location children. Single-scene slots: one clickable line. Active scene bg-white/20, active slot header amber. Auto-scrolls into view on change. max-h-[70vh] with overflow scroll.
     layout/                     # Legacy (Phase 2 analytical views)
       Header.tsx                # Nav bar for /relationships, /timeline
       PageShell.tsx             # Wrapper for legacy views
@@ -1158,34 +1169,37 @@ web/src/
 
 Classroom uses seat-based positioning from agent metadata. Other rooms spread participants in circular patterns within assigned zones.
 
-### Playback Model
+### Navigation Model
 
-```
-PlaybackController (singleton)
-├── Mode: MANUAL (explore)
-│   ├── Scrubber click → setTick(n)
-│   ├── Arrow keys → advance/retreat tick
-│   └── Play button → auto-advance at speed, pause on interaction
-├── Mode: BROADCAST
-│   ├── Auto-advance ticks at 3s/tick × (1/speed)
-│   ├── End of group → cut to next group (sorted by drama)
-│   ├── End of scene → next scene in time slot
-│   ├── Skip solo scenes by default
-│   └── End of day → stop
-└── Shared: speed 1x|2x|4x, tick duration 3s base
-```
+Manual only — there is no auto-playback. The viewer paces themselves like reading a novel.
 
-Drama score per tick: `speak×1 + disruptive×5 + max_urgency×0.5 + exit×2`. Top 20% are peaks that trigger camera zooms and danmu.
+- **store.goNext / goPrev**: tick-level step that crosses group and scene boundaries. At the last tick of a group, advances to the next group's `findFirstSpeechTick`; at the last tick of the last group, advances to the next scene; symmetric for backward.
+- **TickNav** (bottom of NarrativePanel): ←/→ buttons (call goPrev/goNext), drama-intensity bars (click to jump within current group), scene stepper ◀场▶ (jumps whole scenes ignoring tick context).
+- **Keyboard**: ←/→ wired in `PixiCanvas` calls goPrev/goNext (skipped while focus is in INPUT/TEXTAREA so RolePlay chat input still works).
+- **Drama score** per tick (`drama.ts:scoreTick`): `speak×1 + disruptive×5 + max_urgency×0.5 + exit×2` — used to size/color the TickNav bars so viewers can spot peaks at a glance.
+
+### Focal Selection
+
+`pickFocal(tick, group)` chooses the FocalCard subject, priority order:
+
+1. `public.speech` present → **speaker** (speaker fixed; speech has authoritative clarity)
+2. Any `is_disruptive` mind → **non_verbal** (dramatic interruption)
+3. Highest-urgency `action_type === 'non_verbal'` with `action_content` → **non_verbal**
+4. Highest-urgency observation → **observation**
+5. Fallback → `group.participants[0]`
+
+`partitionObservers(tick, focalAgentId)` returns all remaining minds sorted `is_disruptive DESC → urgency DESC`. Gated agents are already filtered by the backend serializer (never in `tick.minds`), so no second filter needed. The ObserverRow renders every remaining mind — no top-N cap, no visual weighting. Reading order does the job of "most dramatic first."
 
 ### Key Interactions
 
-- **Mind-reading toggle** (M key or TopBar button): thought bubbles appear for all characters. Speech = cream solid bubble, thought = rose dashed italic bubble.
+- **Narrative panel** is always-on. Top of page shows the pixel stage (where everyone stands, who is talking), bottom shows the reading column (speech + all minds).
 - **Click character**: SidePanel slides open with full profile. Other characters dim to 40%.
-- **Tick scrubber**: visual drama intensity bars. Click to jump, arrow keys to step.
-- **Room nav**: click room tab to jump to first scene in that location.
-- **Camera**: drag to pan, scroll to zoom (explore mode). Auto-follows speaker in broadcast mode.
-- **Danmu**: inner thoughts of observers float across the top in broadcast mode.
-- **Keyboard**: Space = play/pause, ←→ = tick step, M = mind-reading.
+- **Click character name in NarrativePanel**: same as clicking the sprite — opens SidePanel.
+- **TickNav**: visual drama intensity bars. Click to jump within group; ←/→ buttons (or keyboard) to step across groups and scenes.
+- **Scene dropdown** (TopBar): consecutive same-time scenes collapse into a single "08:45 课间" header with location sub-items.
+- **Day dropdown** (TopBar): a single "Day NNN ▾" button instead of a row of buttons — scales to ~1000 days over three school years.
+- **Camera**: drag to pan, scroll to zoom.
+- **Keyboard**: ←/→ = navigate (cross-scene aware). Disabled when focus is in INPUT/TEXTAREA.
 
 ### Running
 
@@ -1284,9 +1298,9 @@ Room floors use tileset textures via `TilingSprite` for repeating fills. Each ro
 
 **Tilesets used**: `room_builder_16x16.png` (floors/walls), `classroom_library.png`, `bedroom.png`, `kitchen.png`, `grocery_store.png`, `gym_sport.png`, `exteriors_16x16.png`.
 
-### Emote Bubbles (`BubbleOverlay.ts`)
+### Stage Bubbles (`BubbleOverlay.ts`)
 
-Emotion indicator icons from the 32×32 emote balloon spritesheet appear above character sprites when agents have non-neutral emotions. Each SimClass emotion maps to a (col, row) position in the spritesheet via `EMOTION_EMOTE`. Emotes auto-fade after 2.5 seconds.
+On the stage, only the speaker gets a cream speech bubble (non-speakers have nothing over their head — their emotion signal lives in ObserverRow). Solo groups are the one exception: the solo agent gets a single emoji bubble tied to their `solo_reflection.emotion`. This keeps the stage visually quiet so 11 characters in one room don't become an emoji soup at 55vh.
 
 ### Asset Pipeline
 
@@ -1309,8 +1323,9 @@ Slide-in panel from right (same position as SidePanel, using Framer Motion). Ent
 
 ### Role Play Chat (`RolePlaySetup.tsx`, `RolePlayChat.tsx`)
 
-- **Setup**: Modal with agent portrait grid. Step 1: pick your character. Step 2: pick 1-4 conversation partners.
-- **Chat view**: Full-screen replacement of the PixiCanvas. Participant portraits in header, messages from all participants with sprite avatars, "正在思考..." indicator while agents process. Entry: "角色扮演" button in TopBar.
+- **Setup**: Modal with agent portrait grid. Step 1: pick your character. Step 2: pick 1-4 conversation partners. Modal is rendered via `createPortal(..., document.body)` so it escapes TopBar's `pointer-events-none` ancestor — without the portal, child clicks (✕, agent portraits, 开始对话) silently fail in most browsers.
+- **Chat view**: Full-screen replacement of the PixiCanvas. Participant portraits in header, messages from all participants with sprite avatars, "正在思考..." indicator while agents process.
+- **Entry**: "角色扮演" button in TopBar. The TopBar pings `/api/health` on mount (1.5s timeout); when the API is unreachable the button is disabled with a tooltip pointing at `uv run api`, so users get clear feedback instead of an inert modal.
 
 ### Store Extensions (`useWorldStore.ts`)
 
