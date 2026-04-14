@@ -67,6 +67,13 @@ class Settings(BaseSettings):
     concern_stale_days: int = 5               # days without reinforcement → evict
     concern_autogen_max_intensity: int = 6    # cap for reflection-generated concerns
 
+    # Daily plan audit retry (PR8). Flag-off default: PR6 prompt changes
+    # may already absorb most of the "high-intensity concern not hooked"
+    # signal. Observe a week of audit-warning volume before flipping on.
+    daily_plan_audit_retry: bool = False
+    daily_plan_audit_max_retries_per_call: int = 1
+    daily_plan_audit_max_retries_per_day_per_agent: int = 1
+
     # Ambient events (Fix 12)
     ambient_event_probability: float = 0.3
     ambient_events_file: Path = Path("data/scene_ambient_events.json")

@@ -1,0 +1,22 @@
+{
+  "_doc": [
+    "Hand-maintained alias table. Keys are informal/alternative names (the way",
+    "LLM narrative tends to write them); values are the canonical form used",
+    "for comparison. Original text shown to readers is NEVER rewritten — only",
+    "compared-against strings go through normalize().",
+    "",
+    "To add new aliases (class nicknames, personal monikers, etc.): append via",
+    "PR. No automatic learning — changes should be reviewed. Seed covers",
+    "family appellations only.",
+    "",
+    "NOTE: `_doc` is metadata, ignored by the loader (prefix-filtered)."
+  ],
+  "aliases": {
+    "爸爸": "父亲",
+    "老爸": "父亲",
+    "爹": "父亲",
+    "妈妈": "母亲",
+    "老妈": "母亲",
+    "娘": "母亲"
+  }
+}

@@ -33,13 +33,13 @@
 {% if negative_concerns %}
 ## 你最近心里挥之不去的事
 {% for concern in negative_concerns %}
-- {{ concern.text }}（{{ concern.emotion }}，{{ concern.intensity_label }}）
+- {{ concern.text }}（{{ concern.emotion }}，{{ concern.intensity_label }}）[ref: {{ concern.id }}]
 {% endfor %}
 {% endif %}
 {% if positive_concerns %}
 ## 你最近心里期待的事
 {% for concern in positive_concerns %}
-- {{ concern.text }}（{{ concern.emotion }}，{{ concern.intensity_label }}）
+- {{ concern.text }}（{{ concern.emotion }}，{{ concern.intensity_label }}）[ref: {{ concern.id }}]
 {% endfor %}
 {% endif %}
 

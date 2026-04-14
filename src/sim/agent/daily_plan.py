@@ -6,7 +6,7 @@ from ..config import settings
 from ..llm.client import structured_call
 from ..llm.logger import log_llm_call
 from ..llm.prompts import render
-from ..models.agent import AgentProfile, AgentState, DailyPlan, Intention, Role
+from ..models.agent import AgentProfile, ActiveConcern, AgentState, DailyPlan, Intention, Role
 from ..models.scene import SceneConfig
 from .qualitative import (
     energy_label,
@@ -15,17 +15,73 @@ from .qualitative import (
     pressure_label,
     relationship_label,
 )
-from ..interaction.apply_results import concern_match
+from ..interaction.apply_results import concern_lookup, concern_match
 from .storage import AgentStorage
 
 
-def _match_old_intention(new_intent: Intention, old_intentions: list[Intention]) -> Intention | None:
-    """Fuzzy match: same target + goal has substring overlap → continuation. Skip abandoned."""
+# PR8: per-day retry budget tracked at module scope. The orchestrator creates
+# a fresh process per simulation run, so an in-memory dict is sufficient for
+# "one retry per agent per day". Keyed by (day, agent_id); cleared implicitly
+# when day advances (old entries accrue but never exceed
+# O(agents × days_in_run)). Reset helper provided for tests.
+_audit_retry_budget: dict[tuple[int, str], int] = {}
+
+
+def _reset_audit_budget() -> None:
+    """Test hook — clear the per-day retry budget."""
+    _audit_retry_budget.clear()
+
+
+def _unhooked_addressable_concerns(
+    state: AgentState,
+    intentions: list[Intention],
+    known_names: set[str],
+) -> list[ActiveConcern]:
+    """Return high-intensity concerns (>=7) that are addressable (some
+    related person is in profile names) and have no hooked intention."""
+    out: list[ActiveConcern] = []
+    for c in state.active_concerns:
+        if c.intensity < 7:
+            continue
+        if not any(rp in known_names for rp in c.related_people):
+            continue
+        hooked = any(
+            concern_lookup(state, i.satisfies_concern) is c
+            for i in intentions
+        )
+        if not hooked:
+            out.append(c)
+    return out
+
+
+def _match_old_intention(
+    new_intent: Intention,
+    old_intentions: list[Intention],
+    state: AgentState | None = None,
+) -> Intention | None:
+    """Two-signal continuation match, skipping abandoned:
+
+    1. Same target + goal substring overlap → continuation (the original
+       path, still load-bearing when LLM paraphrases satisfies_concern).
+    2. Both sides reference the same concern (by id or id_history, via
+       concern_lookup) → continuation even if the goal text shifts.
+    """
     for old in old_intentions:
         if old.abandoned:
             continue
+        # Signal 1: target + goal substring
         if new_intent.target == old.target and concern_match(new_intent.goal, old.goal):
             return old
+        # Signal 2: shared concern reference
+        if (
+            state is not None
+            and new_intent.satisfies_concern
+            and old.satisfies_concern
+        ):
+            new_c = concern_lookup(state, new_intent.satisfies_concern)
+            old_c = concern_lookup(state, old.satisfies_concern)
+            if new_c is not None and new_c is old_c:
+                return old
     return None
 
 
@@ -150,7 +206,7 @@ async def generate_daily_plan(
 
     # Carry-forward: match new intentions to yesterday's for lifecycle tracking
     for intent in result.intentions:
-        matched = _match_old_intention(intent, yesterday_intentions)
+        matched = _match_old_intention(intent, yesterday_intentions, state)
         if matched:
             intent.origin_day = matched.origin_day or day
             intent.pursued_days = matched.pursued_days + 1
@@ -158,16 +214,89 @@ async def generate_daily_plan(
             intent.origin_day = day
             intent.pursued_days = 1
 
-    # Audit: high-intensity addressable concerns without matching intention
+    # Audit: high-intensity addressable concerns without matching intention.
+    # PR6: threshold aligned to >=7 so audit and prompt speak the same
+    # language. intensity==6 is "较强" which the new prompt allows to go
+    # un-hooked; >=7 ("强烈") must be hooked or explicitly avoided with a
+    # concrete reason.
     if all_profiles:
         known_names = {p.name for p in all_profiles.values()}
-        addressable = [
-            c for c in state.active_concerns
-            if c.intensity >= 6 and any(rp in known_names for rp in c.related_people)
-        ]
-        for c in addressable:
-            if not any(concern_match(c.text, i.satisfies_concern) for i in result.intentions):
-                logger.warning(f"  {profile.name}: 高强度牵挂 '{c.text[:20]}...' 没有被挂钩")
+        unhooked = _unhooked_addressable_concerns(
+            state, result.intentions, known_names,
+        )
+
+        if unhooked and settings.daily_plan_audit_retry:
+            # PR8: feature-flagged retry path. Each (day, agent) has a small
+            # budget — usually 1. If we've already spent it, fall through
+            # to the warn-only path.
+            budget_key = (day, agent_id)
+            spent = _audit_retry_budget.get(budget_key, 0)
+            cap = settings.daily_plan_audit_max_retries_per_day_per_agent
+            if spent < cap:
+                _audit_retry_budget[budget_key] = spent + 1
+                feedback = (
+                    "## 审计反馈\n以下强烈牵挂没有被任何 intention 挂钩：\n"
+                    + "\n".join(
+                        f"- [ref: {c.id}] {c.text}" for c in unhooked
+                    )
+                    + "\n请重新生成 intentions，为每条挂钩（或在 reason 里"
+                    "具体说明为何今天还不面对）。"
+                )
+                retry_messages = messages + [
+                    {"role": "user", "content": feedback},
+                ]
+                retry_start = time.time()
+                retry_llm = await structured_call(
+                    DailyPlan,
+                    retry_messages,
+                    temperature=settings.plan_temperature,
+                    max_tokens=settings.max_tokens_daily_plan,
+                )
+                retry_latency = (time.time() - retry_start) * 1000
+                log_llm_call(
+                    day=day,
+                    scene_name="daily_plan_audit_retry",
+                    group_id=agent_id,
+                    call_type="daily_plan_audit_retry",
+                    input_messages=retry_messages,
+                    output=retry_llm.data,
+                    tokens_prompt=retry_llm.tokens_prompt,
+                    tokens_completion=retry_llm.tokens_completion,
+                    cost_usd=retry_llm.cost_usd,
+                    latency_ms=retry_latency,
+                    temperature=settings.plan_temperature,
+                )
+                # Replace result; re-run location preference + carry-forward
+                # so the retry plan goes through the same validation path
+                # as the original plan.
+                result = retry_llm.data
+                prefs = result.location_preferences
+                for cfg in free_period_configs:
+                    pref_field = cfg.pref_field
+                    assert pref_field is not None
+                    val = getattr(prefs, pref_field, None)
+                    if val not in set(cfg.valid_locations):
+                        setattr(prefs, pref_field, cfg.location)
+                for intent in result.intentions:
+                    matched = _match_old_intention(
+                        intent, yesterday_intentions, state,
+                    )
+                    if matched:
+                        intent.origin_day = matched.origin_day or day
+                        intent.pursued_days = matched.pursued_days + 1
+                    else:
+                        intent.origin_day = day
+                        intent.pursued_days = 1
+                # Re-audit after retry; per-call budget is 1, so a second
+                # failure just warns.
+                unhooked = _unhooked_addressable_concerns(
+                    state, result.intentions, known_names,
+                )
+
+        for c in unhooked:
+            logger.warning(
+                f"  {profile.name}: 高强度牵挂 '{c.text[:20]}...' 没有被挂钩"
+            )
 
     logger.info(
         f"  {profile.name} plan: {len(result.intentions)} intentions, "

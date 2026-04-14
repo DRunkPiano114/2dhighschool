@@ -153,7 +153,9 @@ def apply_exam_effects(
                 positive=False,
                 topic="学业焦虑",
             )
-            add_concern(state, shock, today=today, skip_cap=True)
+            add_concern(
+                state, shock, today=today, source="shock", skip_cap=True,
+            )
 
         # Emotion effects
         if rank_change >= 5:

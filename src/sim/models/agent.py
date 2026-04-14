@@ -1,3 +1,4 @@
+import secrets
 from enum import Enum
 from typing import Literal
 
@@ -124,6 +125,9 @@ class Intention(BaseModel):
 
 
 class ActiveConcern(BaseModel):
+    # 6-hex ID (3 bytes → 16.7M space). Agent holds ≤ 4 concerns at a time so
+    # collision is ~10⁻⁶; cheaper prompt budget than UUID.
+    id: str = Field(default_factory=lambda: secrets.token_hex(3))
     text: str                    # "被江浩天当众嘲笑数学成绩"
     source_event: str = ""       # Brief trigger description
     source_scene: str = ""       # e.g. "课间" — used for structural dedup
@@ -134,7 +138,17 @@ class ActiveConcern(BaseModel):
     positive: bool = False
     topic: ConcernTopic = "其他"            # bucket key for topic-based dedup
     last_reinforced_day: int = 0             # day this concern was last touched
+    # last_new_info_day: drives the TTL "stale" check — distinct from
+    # last_reinforced_day which also bumps on pure emotion reinforcement.
+    last_new_info_day: int = 0
+    # reinforcement_count: how many times this concern has been reinforced
+    # (merge or concern_updates positive adjustment). Drives "stuck topic"
+    # backstops independently of TTL.
+    reinforcement_count: int = 0
     text_history: list[str] = Field(default_factory=list, max_length=3)
+    # id_history: previous IDs of concerns that were merged into this one.
+    # Lets downstream [ref: xxx] references survive a merge.
+    id_history: list[str] = Field(default_factory=list, max_length=5)
 
 
 class LocationPreference(BaseModel):

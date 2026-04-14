@@ -132,7 +132,10 @@ class AgentConcernUpdate(BaseModel):
 class IntentionOutcome(BaseModel):
     """Agent 对自己一条 intention 的自评"""
     goal: str
-    status: Literal["fulfilled", "attempted", "frustrated", "abandoned", "pending"] = "pending"
+    status: Literal[
+        "fulfilled", "attempted", "frustrated", "abandoned", "pending",
+        "missed_opportunity",
+    ] = "pending"
     brief_reason: str = ""
 
 

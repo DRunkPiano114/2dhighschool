@@ -27,13 +27,14 @@
 {% if negative_concerns %}
 ## 你最近心里挥之不去的事
 {% for concern in negative_concerns %}
-- {{ concern.text }}（{{ concern.emotion }}，{{ concern.intensity_label }}）
+- {{ concern.text }}（{{ concern.emotion }}，{{ concern.intensity_label }}）[ref: {{ concern.id }}]
+  {% if concern.source_event %}最近触发：{{ (concern.source_event.split('；') | reject('equalto', '') | list)[-3:] | join('；') }}{% endif %}
 {% endfor %}
 {% endif %}
 {% if positive_concerns %}
 ## 你最近心里期待的事
 {% for concern in positive_concerns %}
-- {{ concern.text }}（{{ concern.emotion }}，{{ concern.intensity_label }}）
+- {{ concern.text }}（{{ concern.emotion }}，{{ concern.intensity_label }}）[ref: {{ concern.id }}]
 {% endfor %}
 {% endif %}
 
@@ -100,13 +101,17 @@
    牵挂不是一时的情绪，而是会在接下来几天反复想起的心事。
    大部分日常闲聊不会产生任何牵挂。
    牵挂可以是负面的（被伤害、担忧）也可以是正面的（被温暖到、期待）。如果是正面的，标记 positive=true。
+
+   **重要：如果刚才这件事只是加深了你已经有的某个牵挂（上面"挥之不去的事"里已经列出来的），不要用 new_concerns，用下面的 concern_updates 引用对应的 6 位 ref。**只有当这件事带来了之前完全没有的新心事时，才 emit new_concerns。
+
    每条包含 text、source_event（一句话）、emotion、intensity（这份牵挂在心里的分量）、related_people、positive、topic
    - topic：从 [学业焦虑, 家庭压力, 人际矛盾, 恋爱, 自我认同, 未来规划, 健康, 兴趣爱好, 期待的事, 其他] 中选一个。
      正面 concern（期待、喜欢、向往）应优先选 "兴趣爱好" 或 "期待的事"，不要丢给 "其他"。
      选 "其他" 的门槛：只有当这个牵挂明确不属于前 9 类时才选。不要因为懒选 "其他"。
+   - related_people 尽量具体：自我焦虑写 "自己"，家庭相关写 "父亲"/"母亲"（不要写 "爸爸"/"妈妈"，用规范名），学业焦虑可写 "自己" 或相关老师/同学名字。**空列表只用于真正无对象的泛化情绪**。
 
 5. **concern_updates**: 你现有的牵挂有没有因为这段对话而变化？
-   每条包含 concern_text（已有牵挂的文本）、adjustment（正数=加剧，负数=缓解）
+   每条包含 concern_text（**填对应牵挂的 6 位 ref，如 'a7f9b2'，不要带 `[ref:]` 包裹，不要填文本**）、adjustment（正数=加剧，负数=缓解）
 
 6. **intention_outcomes**: 回想一下你今天想做的事，在这段对话里做到了吗？
 {% if pending_intentions %}
@@ -120,6 +125,7 @@
 - **attempted**: 试了，有一定进展但没完全做到
 - **frustrated**: 想做但被阻止、被打断、没机会
 - **abandoned**: 对话中你改主意了，不再想做这个了
+- **missed_opportunity**: 想找这个人说话，TA 也在现场，但我最后没有和 TA 交流
 
 {% if is_teacher %}
 每条包含 goal（意图内容）、status、brief_reason（一句话说明）。评估你作为班主任的意图完成情况，包括对学生行为的观察和引导。

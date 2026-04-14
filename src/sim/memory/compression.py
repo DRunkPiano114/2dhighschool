@@ -239,6 +239,10 @@ async def nightly_compress(
             storage.append_key_memory(km)
 
     # Deferred import — apply_results lives in the interaction layer.
+    # nightly_compress extracts new worries from today.md; semantically
+    # this is "reflection-originated", not "consolidation". _apply_consolidation
+    # is the real consolidation path and mutates state directly (does not go
+    # through add_concern).
     from ..interaction.apply_results import add_concern
     for cc in result.new_concerns:
         new_concern = ActiveConcern(
@@ -247,7 +251,7 @@ async def nightly_compress(
             intensity=cc.intensity, related_people=cc.related_people,
             positive=cc.positive, topic=cc.topic,
         )
-        add_concern(state, new_concern, today=day)
+        add_concern(state, new_concern, today=day, source="reflection")
     storage.save_state(state)
 
     # Per-day top-N cap on key_memories. Both apply_scene_end_results and
@@ -342,15 +346,27 @@ def _apply_consolidation(
         cluster = clusters[mg.cluster_id - 1]
         items = cluster.entries
 
-        # Anchor validation: check source_text_prefixes match
+        # Anchor validation: check source_text_prefixes match.
+        # PR5: bidirectional startswith fallback. The prior strict `[:15]
+        # == [:15]` check silently discarded merges when the LLM returned
+        # the full text or a short prefix (< 15 chars). The new rule:
+        #   - If the LLM prefix is a prefix of the actual text, accept.
+        #   - If the actual 15-char prefix is a prefix of the LLM string
+        #     (LLM returned more, up to the whole entry), accept.
+        #   - Otherwise (LLM rewrote the opening), reject.
         valid = True
         for i, idx in enumerate(mg.source_indices):
             if idx < 1 or idx > len(items):
                 valid = False
                 break
             if i < len(mg.source_text_prefixes):
-                actual_prefix = items[idx - 1]["text"][:15]
-                if mg.source_text_prefixes[i] != actual_prefix:
+                actual_text = items[idx - 1]["text"]
+                actual_prefix = actual_text[:15]
+                llm_prefix = mg.source_text_prefixes[i][:15]
+                if mg.source_text_prefixes[i] != actual_prefix and not (
+                    actual_text.startswith(llm_prefix)
+                    or llm_prefix.startswith(actual_prefix)
+                ):
                     logger.warning(
                         f"  consolidation: prefix mismatch at idx {idx}: "
                         f"'{mg.source_text_prefixes[i]}' vs '{actual_prefix}', "
@@ -420,6 +436,13 @@ def _apply_consolidation(
                     else:
                         merged_se = merged_item["source_event"]
                     kept_concern.source_event = merged_se[-500:]
+                # PR5: preserve merged concern ids so downstream `[ref: id]`
+                # references from old daily plans still resolve via
+                # concern_lookup's id_history path.
+                merged_id = merged_item.get("id")
+                if merged_id and merged_id not in kept_concern.id_history:
+                    kept_concern.id_history.append(merged_id)
+                    kept_concern.id_history = kept_concern.id_history[-5:]
 
             kept_concern.intensity = mg.final_intensity_or_importance
 

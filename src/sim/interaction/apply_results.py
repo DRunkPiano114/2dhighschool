@@ -1,7 +1,9 @@
 from pathlib import Path
+from typing import Literal
 
 from loguru import logger
 
+from ..agent.name_aliases import normalize as normalize_name
 from ..agent.storage import AgentStorage, WorldStorage, atomic_write_json
 from ..config import settings
 from ..models.agent import ActiveConcern, AgentProfile, AgentState, Role
@@ -147,19 +149,24 @@ def _find_existing_concern(
 
     For other (categorized) topics, any non-empty people overlap merges;
     empty-people collisions stay as separate entries.
+
+    People comparison uses name_aliases.normalize, so "爸爸" and "父亲"
+    collide into the same bucket.
     """
+    new_people = {normalize_name(p) for p in new_concern.related_people}
     for c in state.active_concerns:
         if c.topic != new_concern.topic:
             continue
+        c_people = {normalize_name(p) for p in c.related_people}
         if new_concern.topic == "其他":
             # Frankenstein guard: refuse to merge when either side has no people
-            if not new_concern.related_people or not c.related_people:
+            if not new_people or not c_people:
                 continue
-            if set(c.related_people) == set(new_concern.related_people):
+            if c_people == new_people:
                 return c
         else:
             # Permissive: any non-empty people overlap merges
-            if set(c.related_people) & set(new_concern.related_people):
+            if c_people & new_people:
                 return c
     return None
 
@@ -168,9 +175,23 @@ def add_concern(
     state: AgentState,
     new_concern: ActiveConcern,
     today: int,
+    *,
+    source: Literal["reflection", "shock"] = "reflection",
     skip_cap: bool = False,
 ) -> None:
     """Add a concern with topic-based dedup.
+
+    `source`:
+      - `"reflection"`: self_reflection's `new_concerns` and nightly_compress
+        extractions. These are LLM-discovered new worries, so they advance
+        `last_new_info_day` (→ TTL counter resets).
+      - `"shock"`: exam shock (`skip_cap=True`). Also advances
+        `last_new_info_day`; a major external event is by definition new
+        information.
+
+    Both sources currently advance `last_new_info_day` but the Literal is
+    kept open because a future `"consolidation"` caller (re-emit after merge,
+    not yet wired) would want to leave the TTL untouched.
 
     `skip_cap=True` bypasses `concern_autogen_max_intensity` and lets the
     new concern land at its full claimed intensity. It's reserved for
@@ -179,13 +200,15 @@ def add_concern(
 
     Merge path: if a same-topic, people-matching concern exists, the new
     one is folded in — text and source_event refresh, last_reinforced_day
-    updates, and intensity grows. Without skip_cap the merge bumps the
-    existing intensity by 1 regardless of the new claim, so reinforcement
-    cannot jump past the cap via the merge path. With skip_cap, intensity
-    becomes max(existing, new) + 1 so a follow-up shock can drive the
-    floor up.
+    and reinforcement_count advance, last_new_info_day advances for both
+    reflection and shock sources, and intensity grows. Without skip_cap
+    the merge bumps the existing intensity by 1 regardless of the new
+    claim, so reinforcement cannot jump past the cap via the merge path.
+    With skip_cap, intensity becomes max(existing, new) + 1 so a follow-up
+    shock can drive the floor up.
 
-    No-match path: cap the new intensity (unless skip_cap), then either
+    No-match path: cap the new intensity (unless skip_cap), seed the TTL
+    fields on the new concern (so day-0 isn't already-stale), then either
     append or evict the lowest-intensity active concern.
     """
     existing = _find_existing_concern(state, new_concern)
@@ -211,13 +234,24 @@ def add_concern(
         # discarding every subsequent reinforcement once the buffer filled.
         existing.source_event = merged_source[-500:]
         existing.last_reinforced_day = today
+        existing.reinforcement_count += 1
+        # Both "reflection" and "shock" callers reach this branch when the
+        # LLM re-emitted an already-tracked concern; advancing the TTL
+        # counter reflects "there IS new info" on this day.
+        if source in ("reflection", "shock"):
+            existing.last_new_info_day = today
         return
 
     if not skip_cap:
         new_concern.intensity = min(
             new_concern.intensity, settings.concern_autogen_max_intensity,
         )
+    # Seed TTL fields so a freshly-minted concern doesn't look stale on
+    # day 0. Without this, decay_concerns would immediately evict any
+    # concern whose last_new_info_day default of 0 is >= concern_stale_days
+    # below `today`.
     new_concern.last_reinforced_day = today
+    new_concern.last_new_info_day = today
 
     if len(state.active_concerns) >= settings.max_active_concerns:
         state.active_concerns.sort(key=lambda c: c.intensity)
@@ -233,6 +267,68 @@ def concern_match(text_a: str, text_b: str | None) -> bool:
     if not text_b:
         return False
     return text_b in text_a or text_a in text_b
+
+
+_REF_PREFIXES = ("ref:", "REF:", "Ref:")
+
+
+def concern_lookup(
+    state: AgentState,
+    id_or_text: str | None,
+) -> ActiveConcern | None:
+    """Find an active concern by 6-hex id first, id_history second, text
+    substring fallback last. Returns None if nothing matches.
+
+    Input is normalized so LLM-side variants all resolve:
+    - `[ref: a7f9b2]` → strip brackets
+    - `ref: a7f9b2`   → strip prefix
+    - `A7F9B2`        → lowercase
+    Whitespace is also stripped. The substring fallback runs on the
+    original id_or_text (unnormalized) to stay permissive for paraphrased
+    goal text from old intentions during the migration window.
+
+    Telemetry: a debug log records which path hit (`by_id`, `by_id_history`,
+    `by_substring`, `miss`) so we can track substring fallback use and
+    decide when to delete it.
+    """
+    if not id_or_text:
+        logger.debug(f"concern_lookup hit_path=miss input=empty")
+        return None
+
+    cleaned = id_or_text.strip()
+    if cleaned.startswith("[") and cleaned.endswith("]"):
+        cleaned = cleaned[1:-1].strip()
+    for prefix in _REF_PREFIXES:
+        cleaned = cleaned.removeprefix(prefix).strip()
+    cleaned_lower = cleaned.lower()
+
+    # Exact id match (id is stored lowercase hex)
+    for c in state.active_concerns:
+        if c.id.lower() == cleaned_lower:
+            logger.debug(f"concern_lookup hit_path=by_id ref={cleaned_lower}")
+            return c
+
+    # id_history match (for merged-away ids still referenced by old plans)
+    for c in state.active_concerns:
+        if any(h.lower() == cleaned_lower for h in c.id_history):
+            logger.debug(
+                f"concern_lookup hit_path=by_id_history ref={cleaned_lower}"
+            )
+            return c
+
+    # Substring fallback on original input (paraphrased goals, legacy refs)
+    for c in state.active_concerns:
+        if concern_match(c.text, id_or_text):
+            logger.debug(
+                f"concern_lookup hit_path=by_substring "
+                f"input={id_or_text[:30]!r}"
+            )
+            return c
+
+    logger.debug(
+        f"concern_lookup hit_path=miss input={id_or_text[:30]!r}"
+    )
+    return None
 
 
 def apply_scene_end_results(
@@ -387,31 +483,55 @@ def apply_scene_end_results(
                         -settings.max_recent_interactions:
                     ]
 
+        # PR7: track which intentions the LLM already evaluated so the
+        # silence-synthesis pass below doesn't double-count. Identity-based
+        # (`id(intent)`) because goal-text fuzziness is the very thing we
+        # can't rely on for dedup — LLM legitimately paraphrases.
+        processed_intent_ids: set[int] = set()
+
         # Mark intention outcomes from agent's own reflection
         for outcome in refl.intention_outcomes:
             for intent in state.daily_plan.intentions:
-                if not intent.fulfilled and concern_match(intent.goal, outcome.goal):
-                    if outcome.status == "fulfilled":
-                        intent.fulfilled = True
-                        # Concern decay on fulfillment
-                        if intent.satisfies_concern:
-                            for c in state.active_concerns:
-                                if concern_match(c.text, intent.satisfies_concern):
-                                    c.intensity = max(0, c.intensity - 2)
-                                    break
-                    elif outcome.status == "frustrated":
-                        # Frustration can intensify the linked concern
-                        if intent.satisfies_concern:
-                            for c in state.active_concerns:
-                                if concern_match(c.text, intent.satisfies_concern):
-                                    c.intensity = min(10, c.intensity + 1)
-                                    # Extra +1 for chronic frustration (4+ days)
-                                    if intent.pursued_days >= 4:
-                                        c.intensity = min(10, c.intensity + 1)
-                                    break
-                    elif outcome.status == "abandoned":
-                        intent.abandoned = True
-                    break  # one outcome matches at most one intent
+                if intent.fulfilled or intent.abandoned:
+                    continue
+                if not concern_match(intent.goal, outcome.goal):
+                    continue
+                if outcome.status == "fulfilled":
+                    intent.fulfilled = True
+                    # Concern decay on fulfillment. Also slash
+                    # reinforcement_count by 3 (more than a single day's
+                    # natural -1) as a reward — the concern was actually
+                    # addressed, so it shouldn't stay in "stuck topic"
+                    # territory.
+                    if intent.satisfies_concern:
+                        c = concern_lookup(state, intent.satisfies_concern)
+                        if c:
+                            c.intensity = max(0, c.intensity - 2)
+                            c.reinforcement_count = max(
+                                0, c.reinforcement_count - 3,
+                            )
+                elif outcome.status == "frustrated":
+                    # Frustration can intensify the linked concern
+                    if intent.satisfies_concern:
+                        c = concern_lookup(state, intent.satisfies_concern)
+                        if c:
+                            c.intensity = min(10, c.intensity + 1)
+                            # Extra +1 for chronic frustration (4+ days)
+                            if intent.pursued_days >= 4:
+                                c.intensity = min(10, c.intensity + 1)
+                elif outcome.status == "abandoned":
+                    intent.abandoned = True
+                elif outcome.status == "missed_opportunity":
+                    # PR7: LLM self-reported a silent missed chance.
+                    # Bump the linked concern's intensity the same as a
+                    # coded synthesis would, so the double-reporting case
+                    # is a no-op net-net.
+                    if intent.satisfies_concern:
+                        c = concern_lookup(state, intent.satisfies_concern)
+                        if c:
+                            c.intensity = min(10, c.intensity + 1)
+                processed_intent_ids.add(id(intent))
+                break  # one outcome matches at most one intent
 
         # Apply new concerns from agent's own reflection
         for cc in refl.new_concerns:
@@ -421,13 +541,52 @@ def apply_scene_end_results(
                 intensity=cc.intensity, related_people=cc.related_people,
                 positive=cc.positive, topic=cc.topic,
             )
-            add_concern(state, new_concern, today=day)
+            add_concern(state, new_concern, today=day, source="reflection")
 
-        # Apply concern intensity adjustments from agent's own reflection
+        # Apply concern intensity adjustments from agent's own reflection.
+        # Positive adjustment → reinforcement (bump count + last_reinforced,
+        # but do NOT touch last_new_info_day: concern_updates means "LLM
+        # says this got worse", which is emotion delta, not new info).
+        # Non-positive adjustment → emotion relief; touch nothing else.
         for cu in refl.concern_updates:
-            for c in state.active_concerns:
-                if cu.concern_text in c.text or c.text in cu.concern_text:
-                    c.intensity = max(0, min(10, c.intensity + cu.adjustment))
+            target = concern_lookup(state, cu.concern_text)
+            if target:
+                target.intensity = max(
+                    0, min(10, target.intensity + cu.adjustment),
+                )
+                if cu.adjustment > 0:
+                    target.last_reinforced_day = day
+                    target.reinforcement_count += 1
+
+        # PR7: silence synthesis for unaddressed targets who were in the
+        # same group as this agent. If the LLM did NOT report on an intent
+        # (processed_intent_ids guard) AND the target was present but
+        # `aid` didn't actually interact with them (direct_set check),
+        # synthesize a missed_opportunity — equivalent effect to the LLM
+        # emitting that status directly: +1 intensity on the linked concern.
+        #
+        # We scope to `group_agent_ids` (same group), NOT `scene.agent_ids`
+        # (whole scene). Multi-group scenes like dorm night could otherwise
+        # punish an agent for "not talking to" someone in a different group.
+        direct_set = _build_direct_interaction_set(aid, tick_records or [], profiles)
+        group_names = {profiles[gid].name for gid in group_agent_ids if gid != aid}
+        for intent in state.daily_plan.intentions:
+            if intent.fulfilled or intent.abandoned:
+                continue
+            if id(intent) in processed_intent_ids:
+                continue  # LLM already evaluated — respect that entirely
+            if not intent.target or intent.target not in group_names:
+                continue  # target not in same group → no opportunity to miss
+            target_id = next(
+                (pid for pid, p in profiles.items() if p.name == intent.target),
+                None,
+            )
+            if target_id and target_id not in direct_set:
+                if intent.satisfies_concern:
+                    c = concern_lookup(state, intent.satisfies_concern)
+                    if c:
+                        c.intensity = min(10, c.intensity + 1)
+
         state.active_concerns = [c for c in state.active_concerns if c.intensity > 0]
 
         storage.save_state(state)

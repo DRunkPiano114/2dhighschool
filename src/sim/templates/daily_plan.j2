@@ -31,14 +31,14 @@
 {% if negative_concerns %}
 ## 你最近心里挥之不去的事
 {% for concern in negative_concerns %}
-- {{ concern.text }}（{{ concern.emotion }}，{{ concern.intensity_label }}）{% if concern.text_history %}
+- {{ concern.text }}（{{ concern.emotion }}，{{ concern.intensity_label }}）[ref: {{ concern.id }}]{% if concern.text_history %}
   （之前的想法："{{ concern.text_history[-1] }}"）{% endif %}
 {% endfor %}
 {% endif %}
 {% if positive_concerns %}
 ## 你最近心里期待的事
 {% for concern in positive_concerns %}
-- {{ concern.text }}（{{ concern.emotion }}，{{ concern.intensity_label }}）{% if concern.text_history %}
+- {{ concern.text }}（{{ concern.emotion }}，{{ concern.intensity_label }}）[ref: {{ concern.id }}]{% if concern.text_history %}
   （之前的想法："{{ concern.text_history[-1] }}"）{% endif %}
 {% endfor %}
 {% endif %}
@@ -86,12 +86,12 @@
 
 ## 重要：意图要和牵挂挂钩
 
-你上面列出的牵挂是你心里真正挥之不去的事。你今天的每个意图都应该显式回答："这是为了处理哪个牵挂？"
+你上面列出的牵挂是你心里真正挥之不去的事。每个牵挂后面跟着一个 6 位的编号，形如 `[ref: a7f9b2]`。你今天的每个意图都应该显式回答："这是为了处理哪个牵挂？"
 
-- 如果某个意图是为了处理某个牵挂，把 satisfies_concern 填成那个牵挂的前 15 个字
+- 如果某个意图是为了处理某个牵挂，把 satisfies_concern 字段填成那个牵挂的 6 位编号（例如 `'a7f9b2'`，不要带 `[ref:]` 包裹，也不要填文本）
 - 如果某个意图和任何牵挂都无关（纯粹的日常小事），把 satisfies_concern 填 null
-- 如果你有高强度的牵挂（"较强"或"强烈"）却在今天的意图里完全不处理它，说明你今天选择逃避——这是合理的，但请在那些逃避的意图的 reason 里说明为什么不面对
-- 如果昨天有些事没做成但你还想做，你可以继续把它列为今天的意图（goal 可以微调表述，但核心指向同一件事）
+- intensity 为"强烈"（≥7）的牵挂必须至少挂钩一个 intention。如果今天确实还不准备好面对它，satisfies_concern 填 null，并在 reason 里具体写明"我今天为什么还没准备好面对 X"——不是泛泛的"今天累了"，是具体的原因（比如"得先跟陆思远打听一下上次那事到底怎么回事，不然直接找爸爸谈会翻车"）
+- 如果昨天有些事没做成但你还想做，你可以继续把它列为今天的意图（goal 可以微调表述，但核心指向同一件事，satisfies_concern 仍填对应的 6 位 ref）
 
 请输出你的每日计划：
 - intentions: 最多3个意图，每个包含 target、goal、reason、satisfies_concern

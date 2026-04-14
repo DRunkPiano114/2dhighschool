@@ -16,7 +16,7 @@
 {% for cluster in concern_clusters %}
 ### Concern Cluster {{ loop.index }}：topic={{ cluster.topic }}, people={{ cluster.people | join("、") or "无" }}
 {% for c in cluster.entries %}
-- [{{ loop.index }}] [Day {{ c.source_day }}, intensity {{ c.intensity }}] {{ c.text }}
+- [{{ loop.index }}] [Day {{ c.source_day }}, intensity {{ c.intensity }}] {{ c.text }} [ref: {{ c.id }}]
 {% endfor %}
 {% endfor %}
 {% endif %}

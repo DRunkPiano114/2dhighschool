@@ -178,8 +178,14 @@ def test_pressure_clamped_to_100():
 def test_decay_concerns_reduces_intensity():
     """Concerns reinforced today decay by `concern_decay_per_day`."""
     state = AgentState(active_concerns=[
-        ActiveConcern(text="test", intensity=5, last_reinforced_day=1),
-        ActiveConcern(text="test2", intensity=3, last_reinforced_day=1),
+        ActiveConcern(
+            text="test", intensity=5,
+            last_reinforced_day=1, last_new_info_day=1,
+        ),
+        ActiveConcern(
+            text="test2", intensity=3,
+            last_reinforced_day=1, last_new_info_day=1,
+        ),
     ])
     decay_concerns(state, today=1)
     assert state.active_concerns[0].intensity == 3  # 5 - 2
@@ -189,8 +195,14 @@ def test_decay_concerns_reduces_intensity():
 def test_decay_concerns_removes_at_zero():
     """A concern that hits intensity 0 after decay is dropped."""
     state = AgentState(active_concerns=[
-        ActiveConcern(text="will_survive", intensity=4, last_reinforced_day=1),
-        ActiveConcern(text="will_die", intensity=2, last_reinforced_day=1),
+        ActiveConcern(
+            text="will_survive", intensity=4,
+            last_reinforced_day=1, last_new_info_day=1,
+        ),
+        ActiveConcern(
+            text="will_die", intensity=2,
+            last_reinforced_day=1, last_new_info_day=1,
+        ),
     ])
     decay_concerns(state, today=1)
     assert len(state.active_concerns) == 1
@@ -208,27 +220,40 @@ def test_concern_decay_minus_two_per_day():
     High-intensity (>=6) concerns decay at half rate (1/day)."""
     # High-intensity: decays by 1 (half rate)
     state = AgentState(active_concerns=[
-        ActiveConcern(text="high", intensity=10, last_reinforced_day=2),
+        ActiveConcern(
+            text="high", intensity=10,
+            last_reinforced_day=2, last_new_info_day=2,
+        ),
     ])
     decay_concerns(state, today=2)
     assert state.active_concerns[0].intensity == 9  # 10 - 1 (high-intensity half rate)
 
     # Low-intensity: decays by 2 (normal rate)
     state2 = AgentState(active_concerns=[
-        ActiveConcern(text="low", intensity=4, last_reinforced_day=2),
+        ActiveConcern(
+            text="low", intensity=4,
+            last_reinforced_day=2, last_new_info_day=2,
+        ),
     ])
     decay_concerns(state2, today=2)
     assert state2.active_concerns[0].intensity == 2  # 4 - 2 (normal rate)
 
 
 def test_concern_stale_eviction_after_5_days():
-    """A concern not reinforced for ≥`concern_stale_days` is evicted
-    regardless of remaining intensity."""
+    """A concern with no new info for ≥`concern_stale_days` is evicted
+    regardless of remaining intensity. PR3: TTL is driven by
+    `last_new_info_day`, not `last_reinforced_day`."""
     state = AgentState(active_concerns=[
-        ActiveConcern(text="ancient", intensity=8, last_reinforced_day=1),
-        ActiveConcern(text="fresh", intensity=4, last_reinforced_day=5),
+        ActiveConcern(
+            text="ancient", intensity=8,
+            last_reinforced_day=1, last_new_info_day=1,
+        ),
+        ActiveConcern(
+            text="fresh", intensity=4,
+            last_reinforced_day=5, last_new_info_day=5,
+        ),
     ])
-    # day 6: ancient is 5 days old → stale, fresh is 1 day old → kept
+    # day 6: ancient is 5 days stale → evicted, fresh is 1 day stale → kept
     decay_concerns(state, today=6)
     survivors = [c.text for c in state.active_concerns]
     assert "ancient" not in survivors
@@ -433,3 +458,118 @@ def test_emotion_decay_probabilistic():
             decayed += 1
     # Expect roughly 50% decay rate (allow wide margin for randomness)
     assert 60 < decayed < 140
+
+
+# --- PR3: TTL split + stuck-topic backstops + decay ordering ---
+
+
+def test_reinforcement_count_10_forces_faster_decay_regardless_of_ttl():
+    """Backstop A: count >= 10 forces decay=2 even on a high-intensity
+    negative concern, regardless of fresh TTL. Without the backstop,
+    intensity 8 would decay by only 1."""
+    c = ActiveConcern(
+        text="卡死话题", intensity=8, positive=False,
+        last_reinforced_day=5, last_new_info_day=5,
+        reinforcement_count=10,
+    )
+    state = AgentState(active_concerns=[c])
+    decay_concerns(state, today=5)
+    # Backstop A applied (decay=2), then count decremented from 10 → 9
+    assert state.active_concerns[0].intensity == 6
+    assert state.active_concerns[0].reinforcement_count == 9
+
+
+def test_reinforcement_count_15_force_evicts_regardless_of_ttl():
+    """Backstop B: count >= 15 hard-evicts even when TTL is fresh and
+    intensity is high."""
+    c = ActiveConcern(
+        text="deep stuck", intensity=9, positive=False,
+        last_reinforced_day=5, last_new_info_day=5,
+        reinforcement_count=15,
+    )
+    state = AgentState(active_concerns=[c])
+    decay_concerns(state, today=5)
+    assert state.active_concerns == []
+
+
+def test_positive_concern_immune_to_backstop_a():
+    """喜欢陆思远 reinforced daily: count climbs but positive concern is
+    not slammed by backstop A."""
+    c = ActiveConcern(
+        text="喜欢陆思远", intensity=8, positive=True,
+        last_reinforced_day=5, last_new_info_day=5,
+        reinforcement_count=12,
+    )
+    state = AgentState(active_concerns=[c])
+    decay_concerns(state, today=5)
+    # Positive concern: stuck-topic guard disabled. High-intensity decay=1,
+    # then count decrements 12 → 11.
+    assert state.active_concerns[0].intensity == 7
+    assert state.active_concerns[0].reinforcement_count == 11
+
+
+def test_positive_concern_immune_to_backstop_b():
+    """Positive concern at count >= 15 should still survive (love and
+    positive obsession aren't "stuck topics" we want to treat)."""
+    c = ActiveConcern(
+        text="喜欢陆思远", intensity=8, positive=True,
+        last_reinforced_day=5, last_new_info_day=5,
+        reinforcement_count=15,
+    )
+    state = AgentState(active_concerns=[c])
+    decay_concerns(state, today=5)
+    assert len(state.active_concerns) == 1
+
+
+def test_daily_count_decay_minus_one():
+    """Every surviving concern has reinforcement_count decremented by 1 each
+    day (natural forgetting). Prevents long-run systematic eviction of all
+    negative concerns once they've ever been reinforced."""
+    c = ActiveConcern(
+        text="x", intensity=5, positive=False,
+        last_reinforced_day=3, last_new_info_day=3,
+        reinforcement_count=5,
+    )
+    state = AgentState(active_concerns=[c])
+    decay_concerns(state, today=3)
+    assert state.active_concerns[0].reinforcement_count == 4
+
+
+def test_count_decay_clamps_at_zero():
+    c = ActiveConcern(
+        text="x", intensity=5, positive=False,
+        last_reinforced_day=3, last_new_info_day=3,
+        reinforcement_count=0,
+    )
+    state = AgentState(active_concerns=[c])
+    decay_concerns(state, today=3)
+    assert state.active_concerns[0].reinforcement_count == 0
+
+
+def test_concern_evicted_on_stale_new_info_not_reinforcement_day():
+    """PR3: TTL drives off `last_new_info_day`. Pure emotion reinforcement
+    (concern_updates path) bumps last_reinforced_day but leaves
+    last_new_info_day cold → concern stays eligible for TTL eviction."""
+    c = ActiveConcern(
+        text="reinforced emotionally only", intensity=7, positive=False,
+        last_reinforced_day=5,    # recently bumped
+        last_new_info_day=0,       # never got new info
+        reinforcement_count=2,
+    )
+    state = AgentState(active_concerns=[c])
+    decay_concerns(state, today=5)  # 5 - 0 = 5 stale days ≥ concern_stale_days (5)
+    assert state.active_concerns == []
+
+
+def test_decay_order_threshold_15_exact():
+    """Count = 15 must be caught by backstop B (eviction). If we decremented
+    count first ("-= 1"), runtime would see 14 and miss the threshold — the
+    plan's ≥15 language would effectively mean ≥16."""
+    c = ActiveConcern(
+        text="x", intensity=5, positive=False,
+        last_reinforced_day=5, last_new_info_day=5,
+        reinforcement_count=15,
+    )
+    state = AgentState(active_concerns=[c])
+    decay_concerns(state, today=5)
+    assert state.active_concerns == []

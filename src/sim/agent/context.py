@@ -92,6 +92,18 @@ def prepare_context(
         i for i in state.daily_plan.intentions if not i.fulfilled
     ]
 
+    # PR7: flag any intended target who's physically in the scene right now,
+    # so perception_dynamic can nudge the agent to actually engage. Silent
+    # days where a target was present but never addressed were the
+    # pre-PR7 failure mode.
+    scene_names = {
+        all_profiles[aid].name for aid in scene.agent_ids if aid in all_profiles
+    }
+    intended_targets_present = [
+        i.target for i in pending_intentions
+        if i.target and i.target in scene_names
+    ]
+
     role_desc = "学生" if profile.role == Role.STUDENT else "班主任兼语文老师"
 
     effective_emotion = emotion_override if emotion_override else state.emotion
@@ -118,6 +130,7 @@ def prepare_context(
         "recent_summary": recent_summary,
         "key_memories": key_memories,
         "pending_intentions": pending_intentions,
+        "intended_targets_present": intended_targets_present,
         "scene_info": _scene_info(scene, all_profiles),
         "known_events": known_events,
         "next_exam_in_days": next_exam_in_days,

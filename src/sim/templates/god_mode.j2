@@ -40,7 +40,7 @@
 {% if active_concerns %}
 ## 你心里惦记的事
 {% for c in active_concerns %}
-- {{ c.text }}（{{ c.emotion }}，{{ c.intensity_label }}）
+- {{ c.text }}（{{ c.emotion }}，{{ c.intensity_label }}）[ref: {{ c.id }}]
 {% endfor %}
 {% endif %}
 

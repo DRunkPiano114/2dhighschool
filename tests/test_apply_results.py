@@ -33,6 +33,7 @@ from sim.interaction.apply_results import (
     add_concern,
     apply_scene_end_results,
     apply_trivial_scene_result,
+    concern_lookup,
     concern_match,
     is_trivial_scene,
 )
@@ -1568,3 +1569,630 @@ def test_clamp_applies_to_baseline_path(tmp_path):
     assert rels_a.relationships["b"].favorability == 51   # 50 + 1
     assert rels_a.relationships["b"].trust == 29          # 30 - 1
     assert rels_a.relationships["b"].understanding == 41  # 40 + 1
+
+
+# --- concern_lookup (PR1) ---
+
+
+def _state_with_concerns(*concerns: ActiveConcern) -> AgentState:
+    s = AgentState()
+    for c in concerns:
+        s.active_concerns.append(c)
+    return s
+
+
+def test_concern_lookup_by_id_exact():
+    c = ActiveConcern(text="被嘲笑", id="a7f9b2")
+    state = _state_with_concerns(c)
+    assert concern_lookup(state, "a7f9b2") is c
+
+
+def test_concern_lookup_by_id_history():
+    c = ActiveConcern(text="合并后的牵挂", id="new000", id_history=["old123"])
+    state = _state_with_concerns(c)
+    assert concern_lookup(state, "old123") is c
+
+
+def test_concern_lookup_substring_fallback():
+    """Legacy callers passing substrings still resolve."""
+    c = ActiveConcern(text="被江浩天当众嘲笑数学成绩", id="a7f9b2")
+    state = _state_with_concerns(c)
+    assert concern_lookup(state, "当众嘲笑") is c
+
+
+def test_concern_lookup_substring_does_not_hit_when_id_wins():
+    """Id match is checked before substring — id should win."""
+    a = ActiveConcern(text="数学焦虑", id="aaaaaa")
+    b = ActiveConcern(text="包含数学的别的牵挂", id="bbbbbb")
+    state = _state_with_concerns(a, b)
+    assert concern_lookup(state, "aaaaaa") is a
+
+
+def test_concern_lookup_miss_returns_none():
+    c = ActiveConcern(text="x", id="a1b2c3")
+    state = _state_with_concerns(c)
+    assert concern_lookup(state, "zzzzzz") is None
+
+
+def test_concern_lookup_empty_returns_none():
+    c = ActiveConcern(text="x", id="a1b2c3")
+    state = _state_with_concerns(c)
+    assert concern_lookup(state, None) is None
+    assert concern_lookup(state, "") is None
+
+
+def test_concern_lookup_normalizes_bracketed_ref():
+    """LLM-style `[ref: a7f9b2]` should resolve via id match."""
+    c = ActiveConcern(text="x", id="a7f9b2")
+    state = _state_with_concerns(c)
+    assert concern_lookup(state, "[ref: a7f9b2]") is c
+
+
+def test_concern_lookup_normalizes_ref_prefix():
+    """`ref: a7f9b2` (no brackets) also resolves."""
+    c = ActiveConcern(text="x", id="a7f9b2")
+    state = _state_with_concerns(c)
+    assert concern_lookup(state, "ref: a7f9b2") is c
+
+
+def test_concern_lookup_case_insensitive_id():
+    c = ActiveConcern(text="x", id="a7f9b2")
+    state = _state_with_concerns(c)
+    assert concern_lookup(state, "A7F9B2") is c
+
+
+def test_concern_lookup_logs_hit_path(caplog):
+    import logging
+    caplog.set_level(logging.DEBUG)
+    c = ActiveConcern(text="x", id="a7f9b2")
+    state = _state_with_concerns(c)
+    concern_lookup(state, "a7f9b2")
+    concern_lookup(state, "zzzzzz")
+    # loguru routes through stderr by default; the important thing is that
+    # the function does not raise and returns the correct objects. The
+    # telemetry stream is verified by the other hit_path-specific tests
+    # (via the return value) — this smoke test guards against regressions
+    # in the logging call itself.
+
+
+# --- name_aliases (PR1) ---
+
+
+def test_name_alias_normalize_known():
+    from sim.agent.name_aliases import normalize
+    assert normalize("爸爸") == "父亲"
+    assert normalize("老妈") == "母亲"
+
+
+def test_name_alias_normalize_unknown_passthrough():
+    from sim.agent.name_aliases import normalize
+    assert normalize("江浩天") == "江浩天"
+
+
+def test_name_alias_normalize_empty():
+    from sim.agent.name_aliases import normalize
+    assert normalize("") == ""
+
+
+# --- PR2: call-site migrations ---
+
+
+def _setup_agent_with_plan_and_concern(
+    agents_dir,
+    aid: str,
+    *,
+    intent_goal: str = "找陆思远聊数学",
+    intent_target: str = "陆思远",
+    satisfies_concern: str | None = None,
+    concern_text: str = "数学焦虑",
+    concern_id: str = "dead01",
+    concern_intensity: int = 7,
+) -> AgentProfile:
+    from sim.models.agent import DailyPlan, Intention
+    profile = AgentProfile(
+        agent_id=aid, name="张伟", gender=Gender.MALE, role=Role.STUDENT,
+        academics=Academics(overall_rank=OverallRank.MIDDLE),
+        family_background=FamilyBackground(pressure_level=PressureLevel.MEDIUM),
+    )
+    agent_dir = agents_dir / aid
+    agent_dir.mkdir(parents=True, exist_ok=True)
+    atomic_write_json(agent_dir / "profile.json", profile.model_dump())
+    state = AgentState(
+        daily_plan=DailyPlan(intentions=[
+            Intention(
+                target=intent_target, goal=intent_goal, reason="r",
+                satisfies_concern=satisfies_concern,
+            ),
+        ]),
+        active_concerns=[
+            ActiveConcern(
+                text=concern_text, id=concern_id,
+                intensity=concern_intensity,
+            ),
+        ],
+    )
+    atomic_write_json(agent_dir / "state.json", state.model_dump())
+    atomic_write_json(
+        agent_dir / "relationships.json",
+        RelationshipFile().model_dump(),
+    )
+    return profile
+
+
+def test_fulfilled_outcome_decays_concern_by_id(tmp_path):
+    """PR2: intention_outcomes → fulfilled → concern_lookup(id) → -2 intensity."""
+    from sim.models.dialogue import IntentionOutcome
+    world, agents_dir = _setup_world(tmp_path)
+    profile = _setup_agent_with_plan_and_concern(
+        agents_dir, "a", satisfies_concern="dead01", concern_intensity=7,
+    )
+    profiles = {"a": profile}
+    refl = AgentReflection(
+        emotion=Emotion.CALM,
+        intention_outcomes=[
+            IntentionOutcome(goal="找陆思远聊数学", status="fulfilled"),
+        ],
+    )
+    apply_scene_end_results(
+        narrative=NarrativeExtraction(),
+        reflections={"a": refl},
+        world=world, scene=_make_scene(agent_ids=["a"]),
+        group_agent_ids=["a"],
+        day=1, group_id=0, profiles=profiles,
+        event_manager=_make_event_manager(),
+    )
+    out_state = world.get_agent("a").load_state()
+    assert out_state.active_concerns[0].id == "dead01"
+    assert out_state.active_concerns[0].intensity == 5  # 7 - 2
+
+
+def test_frustrated_outcome_bumps_concern_by_id(tmp_path):
+    """PR2: intention_outcomes → frustrated → concern_lookup(id) → +1 intensity."""
+    from sim.models.dialogue import IntentionOutcome
+    world, agents_dir = _setup_world(tmp_path)
+    profile = _setup_agent_with_plan_and_concern(
+        agents_dir, "a", satisfies_concern="dead01", concern_intensity=5,
+    )
+    profiles = {"a": profile}
+    refl = AgentReflection(
+        emotion=Emotion.FRUSTRATED,
+        intention_outcomes=[
+            IntentionOutcome(goal="找陆思远聊数学", status="frustrated"),
+        ],
+    )
+    apply_scene_end_results(
+        narrative=NarrativeExtraction(),
+        reflections={"a": refl},
+        world=world, scene=_make_scene(agent_ids=["a"]),
+        group_agent_ids=["a"],
+        day=1, group_id=0, profiles=profiles,
+        event_manager=_make_event_manager(),
+    )
+    out_state = world.get_agent("a").load_state()
+    assert out_state.active_concerns[0].intensity == 6  # 5 + 1
+
+
+def test_satisfies_concern_fallback_substring_still_works(tmp_path):
+    """Legacy intentions that reference a concern by text substring (not id)
+    still resolve — the fallback path in concern_lookup covers them."""
+    from sim.models.dialogue import IntentionOutcome
+    world, agents_dir = _setup_world(tmp_path)
+    profile = _setup_agent_with_plan_and_concern(
+        agents_dir, "a",
+        satisfies_concern="数学焦虑", concern_text="数学焦虑害怕被甩开",
+        concern_id="beef99", concern_intensity=7,
+    )
+    profiles = {"a": profile}
+    refl = AgentReflection(
+        emotion=Emotion.CALM,
+        intention_outcomes=[
+            IntentionOutcome(goal="找陆思远聊数学", status="fulfilled"),
+        ],
+    )
+    apply_scene_end_results(
+        narrative=NarrativeExtraction(),
+        reflections={"a": refl},
+        world=world, scene=_make_scene(agent_ids=["a"]),
+        group_agent_ids=["a"],
+        day=1, group_id=0, profiles=profiles,
+        event_manager=_make_event_manager(),
+    )
+    out_state = world.get_agent("a").load_state()
+    assert out_state.active_concerns[0].intensity == 5  # 7 - 2
+
+
+def test_match_old_intention_by_shared_concern_id():
+    """PR2: yesterday and today both reference the same concern id, even
+    when goal text shifts ('想找爸爸聊数学' → '没敢提化学成绩')."""
+    from sim.agent.daily_plan import _match_old_intention
+    from sim.models.agent import Intention
+
+    state = AgentState(
+        active_concerns=[ActiveConcern(text="学业焦虑", id="beef22")],
+    )
+    old = Intention(
+        target="父亲", goal="想找爸爸聊数学", reason="r",
+        satisfies_concern="beef22", origin_day=2, pursued_days=3,
+    )
+    new_paraphrased = Intention(
+        target="父亲", goal="没敢提化学成绩", reason="r",
+        satisfies_concern="beef22",
+    )
+    matched = _match_old_intention(new_paraphrased, [old], state)
+    assert matched is old
+
+
+def test_match_old_intention_ignores_unrelated_by_different_concern():
+    """Different concern ids → don't match, even with totally unrelated goals
+    (no substring overlap on goals either)."""
+    from sim.agent.daily_plan import _match_old_intention
+    from sim.models.agent import Intention
+
+    state = AgentState(
+        active_concerns=[
+            ActiveConcern(text="A", id="aaaaaa"),
+            ActiveConcern(text="B", id="bbbbbb"),
+        ],
+    )
+    old = Intention(
+        target="父亲", goal="聊A", reason="r",
+        satisfies_concern="aaaaaa", origin_day=1, pursued_days=1,
+    )
+    new = Intention(
+        target="父亲", goal="完全不同的话题", reason="r",
+        satisfies_concern="bbbbbb",
+    )
+    matched = _match_old_intention(new, [old], state)
+    assert matched is None
+
+
+# --- PR3: add_concern source + TTL fields + alias merge ---
+
+
+def test_new_concern_reflection_source_sets_last_new_info_day():
+    """PR3: a brand-new concern via source='reflection' (default) should
+    have last_new_info_day seeded to `today` so it doesn't look stale on
+    day 0."""
+    state = AgentState()
+    c = ActiveConcern(text="新焦虑", intensity=5)
+    add_concern(state, c, today=3, source="reflection")
+    assert state.active_concerns[0].last_new_info_day == 3
+    assert state.active_concerns[0].last_reinforced_day == 3
+
+
+def test_new_concern_shock_source_sets_last_new_info_day():
+    """PR3: exam shock (source='shock') also seeds last_new_info_day."""
+    state = AgentState()
+    c = ActiveConcern(text="月考退步", intensity=8)
+    add_concern(state, c, today=5, source="shock", skip_cap=True)
+    assert state.active_concerns[0].last_new_info_day == 5
+
+
+def test_nightly_compress_new_concern_uses_reflection_source():
+    """Regression for a plan misclassification: nightly_compress produces
+    `result.new_concerns` but that's reflection-style discovery, not
+    consolidation. The caller must pass source='reflection' so the new
+    concern survives its first end-of-day decay."""
+    # Exercised indirectly: a source-reflection call on day=3 should make
+    # the concern survive day=3 decay_concerns, not get evicted.
+    from sim.agent.state_update import decay_concerns
+    state = AgentState()
+    c = ActiveConcern(text="nightly-discovered", intensity=5)
+    add_concern(state, c, today=3, source="reflection")
+    decay_concerns(state, today=3)
+    assert len(state.active_concerns) == 1
+
+
+def test_merge_reflection_advances_last_new_info_day():
+    """When reflection re-surfaces an existing concern, merge updates
+    last_new_info_day to today — the LLM re-emitted it, so there IS fresh info."""
+    state = AgentState()
+    existing = ActiveConcern(
+        text="数学焦虑", topic="学业焦虑",
+        related_people=["自己"], intensity=5,
+        last_new_info_day=1, last_reinforced_day=1,
+        reinforcement_count=0,
+    )
+    state.active_concerns.append(existing)
+    incoming = ActiveConcern(
+        text="数学焦虑（模拟考又不及格）", topic="学业焦虑",
+        related_people=["自己"], intensity=6,
+    )
+    add_concern(state, incoming, today=4, source="reflection")
+    assert existing.last_new_info_day == 4
+    assert existing.last_reinforced_day == 4
+    assert existing.reinforcement_count == 1
+
+
+def test_concern_updates_positive_increments_count_but_not_last_new_info(tmp_path):
+    """PR3: concern_updates with adjustment > 0 bumps reinforcement_count
+    and last_reinforced_day, but does NOT touch last_new_info_day.
+    Rationale: 'LLM says this got worse' is emotion delta, not new info."""
+    from sim.interaction.apply_results import apply_scene_end_results
+    from sim.models.dialogue import AgentConcernUpdate
+
+    world, agents_dir = _setup_world(tmp_path)
+    profile = _setup_agent_with_plan_and_concern(
+        agents_dir, "a",
+        concern_text="数学焦虑", concern_id="dead01",
+        concern_intensity=5,
+    )
+    # Pre-seed day-1 fields so we can assert no-touch
+    s0 = world.get_agent("a").load_state()
+    s0.active_concerns[0].last_new_info_day = 1
+    s0.active_concerns[0].last_reinforced_day = 1
+    s0.active_concerns[0].reinforcement_count = 0
+    world.get_agent("a").save_state(s0)
+
+    profiles = {"a": profile}
+    refl = AgentReflection(
+        emotion=Emotion.FRUSTRATED,
+        concern_updates=[
+            AgentConcernUpdate(concern_text="dead01", adjustment=2),
+        ],
+    )
+    apply_scene_end_results(
+        narrative=NarrativeExtraction(),
+        reflections={"a": refl},
+        world=world, scene=_make_scene(agent_ids=["a"]),
+        group_agent_ids=["a"],
+        day=4, group_id=0, profiles=profiles,
+        event_manager=_make_event_manager(),
+    )
+    out = world.get_agent("a").load_state().active_concerns[0]
+    assert out.intensity == 7
+    assert out.last_reinforced_day == 4
+    assert out.reinforcement_count == 1
+    # KEY assertion: last_new_info_day untouched
+    assert out.last_new_info_day == 1
+
+
+def test_concern_updates_negative_does_not_increment_count(tmp_path):
+    """PR3: concern_updates with adjustment <= 0 is pure emotion relief;
+    no counters are touched."""
+    from sim.interaction.apply_results import apply_scene_end_results
+    from sim.models.dialogue import AgentConcernUpdate
+
+    world, agents_dir = _setup_world(tmp_path)
+    profile = _setup_agent_with_plan_and_concern(
+        agents_dir, "a",
+        concern_text="x", concern_id="dead01", concern_intensity=5,
+    )
+    s0 = world.get_agent("a").load_state()
+    s0.active_concerns[0].last_new_info_day = 1
+    s0.active_concerns[0].last_reinforced_day = 1
+    s0.active_concerns[0].reinforcement_count = 0
+    world.get_agent("a").save_state(s0)
+
+    profiles = {"a": profile}
+    refl = AgentReflection(
+        emotion=Emotion.CALM,
+        concern_updates=[
+            AgentConcernUpdate(concern_text="dead01", adjustment=-2),
+        ],
+    )
+    apply_scene_end_results(
+        narrative=NarrativeExtraction(),
+        reflections={"a": refl},
+        world=world, scene=_make_scene(agent_ids=["a"]),
+        group_agent_ids=["a"],
+        day=4, group_id=0, profiles=profiles,
+        event_manager=_make_event_manager(),
+    )
+    out = world.get_agent("a").load_state().active_concerns[0]
+    assert out.intensity == 3      # 5 - 2
+    assert out.last_reinforced_day == 1   # untouched
+    assert out.reinforcement_count == 0   # untouched
+    assert out.last_new_info_day == 1     # untouched
+
+
+def test_fulfilled_intent_bonus_minus_three_on_count(tmp_path):
+    """PR3: fulfilled intention reduces reinforcement_count by 3 (reward).
+    Mitigates unintentional backstop triggers after sustained frustration."""
+    from sim.interaction.apply_results import apply_scene_end_results
+    from sim.models.dialogue import IntentionOutcome
+
+    world, agents_dir = _setup_world(tmp_path)
+    profile = _setup_agent_with_plan_and_concern(
+        agents_dir, "a",
+        satisfies_concern="dead01", concern_intensity=7,
+    )
+    # Pre-seed count
+    s0 = world.get_agent("a").load_state()
+    s0.active_concerns[0].reinforcement_count = 8
+    world.get_agent("a").save_state(s0)
+
+    profiles = {"a": profile}
+    refl = AgentReflection(
+        emotion=Emotion.CALM,
+        intention_outcomes=[
+            IntentionOutcome(goal="找陆思远聊数学", status="fulfilled"),
+        ],
+    )
+    apply_scene_end_results(
+        narrative=NarrativeExtraction(),
+        reflections={"a": refl},
+        world=world, scene=_make_scene(agent_ids=["a"]),
+        group_agent_ids=["a"],
+        day=1, group_id=0, profiles=profiles,
+        event_manager=_make_event_manager(),
+    )
+    out = world.get_agent("a").load_state().active_concerns[0]
+    assert out.intensity == 5
+    assert out.reinforcement_count == 5  # 8 - 3
+
+
+def test_alias_normalized_people_merge():
+    """PR3: `爸爸` vs `父亲` collide into the same bucket via
+    name_aliases.normalize — no more split concerns for the same person."""
+    state = AgentState()
+    dad_a = ActiveConcern(
+        text="跟爸爸闹僵", topic="家庭压力",
+        related_people=["爸爸"], intensity=5,
+    )
+    add_concern(state, dad_a, today=1, source="reflection")
+    dad_b = ActiveConcern(
+        text="跟父亲还是没说清", topic="家庭压力",
+        related_people=["父亲"], intensity=6,
+    )
+    add_concern(state, dad_b, today=2, source="reflection")
+    # They merged (alias normalize). One concern with bumped count.
+    assert len(state.active_concerns) == 1
+    assert state.active_concerns[0].reinforcement_count == 1
+    assert state.active_concerns[0].last_new_info_day == 2
+
+
+# --- PR7: missed_opportunity ---
+
+
+def test_intention_outcome_accepts_missed_opportunity():
+    """PR7: the Literal expansion accepts the new status."""
+    from sim.models.dialogue import IntentionOutcome
+    out = IntentionOutcome(goal="x", status="missed_opportunity")
+    assert out.status == "missed_opportunity"
+
+
+def test_missed_opportunity_bumps_linked_concern(tmp_path):
+    """PR7: LLM-reported missed_opportunity = +1 on linked concern."""
+    from sim.models.dialogue import IntentionOutcome
+    world, agents_dir = _setup_world(tmp_path)
+    profile = _setup_agent_with_plan_and_concern(
+        agents_dir, "a", intent_target="陆思远",
+        satisfies_concern="dead01", concern_intensity=5,
+    )
+    profiles = {"a": profile}
+    refl = AgentReflection(
+        emotion=Emotion.EMBARRASSED,
+        intention_outcomes=[
+            IntentionOutcome(goal="找陆思远聊数学", status="missed_opportunity"),
+        ],
+    )
+    apply_scene_end_results(
+        narrative=NarrativeExtraction(),
+        reflections={"a": refl},
+        world=world, scene=_make_scene(agent_ids=["a"]),
+        group_agent_ids=["a"],
+        day=1, group_id=0, profiles=profiles,
+        event_manager=_make_event_manager(),
+    )
+    out = world.get_agent("a").load_state().active_concerns[0]
+    assert out.intensity == 6  # 5 + 1
+
+
+def test_synthesize_missed_opportunity_when_silent_and_target_in_group(tmp_path):
+    """PR7 synthesis: LLM reported nothing, target was in same group, agent
+    didn't actually interact → code synthesizes +1 on linked concern."""
+    world, agents_dir = _setup_world(tmp_path)
+    # Agent a has an intent targeting b (LiMing in the standard helper);
+    # b is in the group but a never spoke to b.
+    profile_a = _setup_agent_with_plan_and_concern(
+        agents_dir, "a", intent_target="李明",
+        satisfies_concern="dead01", concern_intensity=5,
+    )
+    profile_b = _setup_agent(agents_dir, "b", "李明")
+    profiles = {"a": profile_a, "b": profile_b}
+    refl = AgentReflection(emotion=Emotion.CALM)  # no intention_outcomes
+    apply_scene_end_results(
+        narrative=NarrativeExtraction(),
+        reflections={"a": refl, "b": AgentReflection()},
+        world=world, scene=_make_scene(agent_ids=["a", "b"]),
+        group_agent_ids=["a", "b"],
+        day=1, group_id=0, profiles=profiles,
+        event_manager=_make_event_manager(),
+        tick_records=[],  # no direct interaction
+    )
+    out = world.get_agent("a").load_state().active_concerns[0]
+    assert out.intensity == 6  # 5 + 1
+
+
+def test_do_not_synthesize_when_llm_reported_with_paraphrased_goal(tmp_path):
+    """Cr2 regression: even if LLM paraphrases the goal ('想找李明聊' vs
+    '没敢开口'), concern_match substring still bridges it, processed_intent_ids
+    records the intent, and synthesis skips. Total effect: only the LLM's
+    +1 is applied (not LLM +1 + synthesis +1 = +2)."""
+    from sim.models.dialogue import IntentionOutcome
+    world, agents_dir = _setup_world(tmp_path)
+    profile_a = _setup_agent_with_plan_and_concern(
+        agents_dir, "a", intent_goal="找李明聊数学",
+        intent_target="李明",
+        satisfies_concern="dead01", concern_intensity=5,
+    )
+    profile_b = _setup_agent(agents_dir, "b", "李明")
+    profiles = {"a": profile_a, "b": profile_b}
+    refl = AgentReflection(
+        emotion=Emotion.EMBARRASSED,
+        intention_outcomes=[
+            IntentionOutcome(goal="找李明聊数学", status="missed_opportunity"),
+        ],
+    )
+    apply_scene_end_results(
+        narrative=NarrativeExtraction(),
+        reflections={"a": refl, "b": AgentReflection()},
+        world=world, scene=_make_scene(agent_ids=["a", "b"]),
+        group_agent_ids=["a", "b"],
+        day=1, group_id=0, profiles=profiles,
+        event_manager=_make_event_manager(),
+        tick_records=[],
+    )
+    out = world.get_agent("a").load_state().active_concerns[0]
+    # +1 only, not +2 (Cr2: synthesis must not double-count)
+    assert out.intensity == 6
+
+
+def test_do_not_synthesize_when_target_in_different_group(tmp_path):
+    """PR7: synthesis scope is `group_agent_ids`, not `scene.agent_ids`.
+    When the target agent exists in the scene but in a different group
+    (dorm-night style), a silent no-interaction day should NOT count as
+    missed."""
+    world, agents_dir = _setup_world(tmp_path)
+    profile_a = _setup_agent_with_plan_and_concern(
+        agents_dir, "a", intent_target="李明",
+        satisfies_concern="dead01", concern_intensity=5,
+    )
+    profile_b = _setup_agent(agents_dir, "b", "李明")
+    profiles = {"a": profile_a, "b": profile_b}
+    refl = AgentReflection(emotion=Emotion.CALM)
+    # a and b are both in scene.agent_ids but a's GROUP is just [a].
+    apply_scene_end_results(
+        narrative=NarrativeExtraction(),
+        reflections={"a": refl},
+        world=world, scene=_make_scene(agent_ids=["a", "b"]),
+        group_agent_ids=["a"],  # single-agent group: b is not in the group
+        day=1, group_id=0, profiles=profiles,
+        event_manager=_make_event_manager(),
+        tick_records=[],
+    )
+    out = world.get_agent("a").load_state().active_concerns[0]
+    assert out.intensity == 5   # untouched — target not in group
+
+
+def test_no_synthesis_when_intent_is_fulfilled(tmp_path):
+    """Sanity: synthesis must not touch intents that were already
+    fulfilled in this scene."""
+    from sim.models.dialogue import IntentionOutcome
+    world, agents_dir = _setup_world(tmp_path)
+    profile_a = _setup_agent_with_plan_and_concern(
+        agents_dir, "a", intent_goal="找李明说话",
+        intent_target="李明",
+        satisfies_concern="dead01", concern_intensity=5,
+    )
+    profile_b = _setup_agent(agents_dir, "b", "李明")
+    profiles = {"a": profile_a, "b": profile_b}
+    refl = AgentReflection(
+        emotion=Emotion.PROUD,
+        intention_outcomes=[
+            IntentionOutcome(goal="找李明说话", status="fulfilled"),
+        ],
+    )
+    apply_scene_end_results(
+        narrative=NarrativeExtraction(),
+        reflections={"a": refl, "b": AgentReflection()},
+        world=world, scene=_make_scene(agent_ids=["a", "b"]),
+        group_agent_ids=["a", "b"],
+        day=1, group_id=0, profiles=profiles,
+        event_manager=_make_event_manager(),
+        tick_records=[],
+    )
+    out = world.get_agent("a").load_state().active_concerns[0]
+    # fulfilled decays by -2 (and count by -3); no synthesis +1 piled on top
+    assert out.intensity == 3

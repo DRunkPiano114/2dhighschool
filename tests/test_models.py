@@ -181,3 +181,51 @@ def test_agent_rel_change_direct_interaction_default_false():
 def test_agent_rel_change_direct_interaction_explicit_true():
     change = AgentRelChange(to_agent="张伟", direct_interaction=True)
     assert change.direct_interaction is True
+
+
+# --- ActiveConcern: id + new fields (PR1) ---
+
+
+def test_active_concern_auto_generates_id():
+    c = ActiveConcern(text="x")
+    assert isinstance(c.id, str)
+    assert len(c.id) == 6  # 3 bytes → 6 hex chars
+    # lower-case hex
+    assert all(ch in "0123456789abcdef" for ch in c.id)
+
+
+def test_active_concern_distinct_default_ids():
+    a = ActiveConcern(text="x")
+    b = ActiveConcern(text="x")
+    assert a.id != b.id  # factory runs per instance
+
+
+def test_active_concern_id_persists_across_load():
+    c = ActiveConcern(text="x")
+    original = c.id
+    roundtrip = ActiveConcern.model_validate(c.model_dump())
+    assert roundtrip.id == original
+
+
+def test_active_concern_load_legacy_missing_id():
+    """A serialized concern without an id (pre-migration payload) should
+    load cleanly and auto-generate one on demand."""
+    legacy = {"text": "旧牵挂"}
+    c = ActiveConcern.model_validate(legacy)
+    assert c.id and len(c.id) == 6
+    assert c.id_history == []
+    assert c.last_new_info_day == 0
+    assert c.reinforcement_count == 0
+
+
+def test_active_concern_new_fields_defaults():
+    c = ActiveConcern(text="x")
+    assert c.id_history == []
+    assert c.last_new_info_day == 0
+    assert c.reinforcement_count == 0
+
+
+def test_active_concern_id_history_max_length():
+    """id_history caps at 5 entries."""
+    with pytest.raises(ValidationError):
+        ActiveConcern(text="x", id_history=["a", "b", "c", "d", "e", "f"])

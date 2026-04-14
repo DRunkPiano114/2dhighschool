@@ -89,18 +89,57 @@ def update_academic_pressure(
 def decay_concerns(state: AgentState, today: int) -> AgentState:
     """Decay concerns at end-of-day, dropping stale and zero-intensity ones.
 
-    A concern is stale when no scene has reinforced it within
-    `settings.concern_stale_days`. High-intensity concerns (>=6) decay
-    at half rate to let them linger at mid-intensity longer. The stale
-    eviction remains as a hard safety valve.
+    Three-layer eviction, each with a specific failure mode it guards:
+
+    1. **TTL stale** (`last_new_info_day`). A concern with no genuinely new
+       information in `settings.concern_stale_days` gets dropped. The TTL
+       counter is `last_new_info_day` — distinct from `last_reinforced_day`
+       so pure emotion reinforcement (concern_updates path) does not keep
+       a zombie concern alive forever.
+
+    2. **Backstop A** (`reinforcement_count >= 10`). If the LLM keeps
+       re-emitting the same concern as `new_concerns` (ruminating), the TTL
+       above gets polluted — `last_new_info_day` keeps refreshing. Forcing
+       a faster decay rate on high-count concerns catches the rumination
+       case regardless of TTL. Positive concerns are immune (falling in love
+       reinforced daily shouldn't get suppressed).
+
+    3. **Backstop B** (`reinforcement_count >= 15`). Hard eviction for
+       the same reason as A, but stronger: even max-intensity positive-
+       feedback-loop concerns eventually get kicked. Positive immune
+       for the same reason.
+
+    Decay ordering matters: the threshold checks must come BEFORE the
+    `count -= 1` step at the bottom of the loop. Otherwise `>=15` effectively
+    becomes `>=16` (pre-decrement), and test names / plan docs drift one
+    off from runtime behavior.
     """
     surviving = []
     for c in state.active_concerns:
-        if (today - c.last_reinforced_day) >= settings.concern_stale_days:
-            continue  # hard eviction — no exceptions, prevents zombies
-        # High-intensity concerns are emotionally sticky: decay at half rate
-        decay = 1 if c.intensity >= 6 else settings.concern_decay_per_day
+        # Layer 1: TTL stale eviction (drives by last_new_info_day)
+        if (today - c.last_new_info_day) >= settings.concern_stale_days:
+            continue
+
+        # Layer 2 (backstop A): stuck topic forced faster decay.
+        # Positive concerns are immune so naturally-recurring positive
+        # emotions ("喜欢陆思远" reinforced daily) don't get suppressed.
+        if not c.positive and c.reinforcement_count >= 10:
+            decay = 2  # forced normal rate even for high-intensity
+        else:
+            decay = 1 if c.intensity >= 6 else settings.concern_decay_per_day
         c.intensity = max(0, c.intensity - decay)
+
+        # Layer 3 (backstop B): hard eviction on very high count,
+        # regardless of TTL or intensity. Positive concerns immune.
+        if not c.positive and c.reinforcement_count >= 15:
+            continue
+
+        # Natural decrement of reinforcement_count every day prevents
+        # long (30+ day) simulations from systematically killing every
+        # surviving negative concern. Must come AFTER threshold checks
+        # so `>= 10` / `>= 15` mean exactly that, not `>= 11` / `>= 16`.
+        c.reinforcement_count = max(0, c.reinforcement_count - 1)
+
         if c.intensity > 0:
             surviving.append(c)
     state.active_concerns = surviving

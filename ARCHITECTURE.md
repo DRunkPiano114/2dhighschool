@@ -84,26 +84,26 @@ On day 1 and every `self_narrative_interval_days` (default 3) days:
 
 For each agent (concurrently, up to `max_concurrent_llm_calls`):
 1. Load relationships (with qualitative labels), last 3 days of `recent.md`, yesterday's intentions (full lifecycle state), active concerns (with intensity labels), structured self-narrative (narrative + self_concept + current_tensions), and inner conflicts
-2. Call LLM with `daily_plan.j2` template → returns `DailyPlan` (1-3 `Intention` objects + `mood_forecast` + `location_preferences`). The prompt shows yesterday's intentions with fulfillment status using **tiered urgency language** based on `pursued_days`: ≥5 days triggers escalated language ("拖了N天了…今天不面对，什么时候面对？"), ≥3 days triggers moderate urgency ("已经N天了，心里越来越不舒服"), default shows "没做成（已经连续想了N天了）". The prompt also shows concern `text_history` (the previous version of evolved concerns, rendered as "之前的想法"). It instructs the agent to link each new intention to a concern via `satisfies_concern`. A `joy_sources` section ("能让你开心的小事") is rendered from `profile.joy_sources` when available, passed via `daily_plan.py`. For students, the prompt nudges reflection on unmet needs. For the teacher, it nudges teacher-specific priorities. Qualitative labels replace raw numbers (energy/pressure shown as descriptive text, not "73/100").
+2. Call LLM with `daily_plan.j2` template → returns `DailyPlan` (1-3 `Intention` objects + `mood_forecast` + `location_preferences`). The prompt shows each concern with its `[ref: <id>]` suffix and instructs the agent to fill `satisfies_concern` with the 6-hex ref (not the text). **Strict high-intensity rule** (PR6): intensity ≥ 7 ("强烈") concerns must be hooked to some intention, OR the agent must fill `satisfies_concern=null` AND write a concrete reason in `reason`. The earlier "allowed to avoid" language is gone. Yesterday's intentions appear with fulfillment status using **tiered urgency language** based on `pursued_days`: ≥5 days triggers escalated language ("拖了N天了…今天不面对，什么时候面对？"), ≥3 days triggers moderate urgency. Concern `text_history` still renders as "之前的想法". `joy_sources` section ("能让你开心的小事") is rendered from `profile.joy_sources` when available. Qualitative labels replace raw numbers.
 3. Validate location preferences against valid lists (invalid → default)
-4. **Carry-forward**: after LLM returns, each new intention is fuzzy-matched against yesterday's intentions (same target + goal substring overlap, skipping abandoned). Matched intentions inherit `origin_day` and increment `pursued_days`. Unmatched intentions get `origin_day=today, pursued_days=1`.
-5. **Audit log**: warnings for high-intensity (>=6) addressable concerns with no matching intention
+4. **Carry-forward** (`_match_old_intention`): each new intention is matched against yesterday's intentions via two signals, skipping abandoned. (a) Same target + goal substring overlap (the original path, handles LLM paraphrasing the goal). (b) Both sides reference the same concern resolvable via `concern_lookup` (handles the case where the goal text shifts significantly — "想找爸爸聊数学" → "没敢提化学成绩" — but both tie to the same concern id). Matched → inherit `origin_day` and `pursued_days + 1`. Unmatched → `origin_day=today, pursued_days=1`.
+5. **Audit + optional retry**: scan concerns with `intensity >= 7` (PR6: aligned to prompt threshold) whose `related_people` intersect known profile names. For each unhooked addressable concern, a warning is logged. If `settings.daily_plan_audit_retry` is True (PR8 feature flag, default False) AND the per-day per-agent budget isn't exhausted (`daily_plan_audit_max_retries_per_day_per_agent`, default 1), a second LLM call is made with a feedback message listing the unhooked concerns by `[ref: <id>]` and asking the agent to either hook them or explain the avoidance concretely. The retry plan goes through the same location validation + carry-forward, and a second audit runs on the retry output — at most one retry per call (`max_retries_per_call`, default 1), remaining unhooked concerns after retry just warn. Budget is tracked in the module-level `_audit_retry_budget` keyed by `(day, agent_id)` and **resets implicitly each day** (Sig9 regression: pre-PR8 streak design would permanently lock out chronically unhooked concerns). Retry is logged with `call_type="daily_plan_audit_retry"` for cost monitoring.
 6. Save updated state with new plan
 
-`Intention` has: `target` (optional agent name), `goal`, `reason`, `fulfilled` (bool), `abandoned` (bool), `satisfies_concern` (first 15 chars of linked concern text, or null), `origin_day` (first day this intention appeared), `pursued_days` (consecutive days in plan).
+`Intention` has: `target` (optional agent name), `goal`, `reason`, `fulfilled` (bool), `abandoned` (bool), `satisfies_concern` (6-hex concern id, or null; substring fallback still works during migration), `origin_day` (first day this intention appeared), `pursued_days` (consecutive days in plan).
 
 `LocationPreference` has: `morning_break` (课间 08:45), `lunch` (午饭 12:00), `afternoon_break` (课间 15:30). Each field's allowed values come from the corresponding free-period entry's `valid_locations` in `schedule.json`. The daily plan template renders the per-slot option list dynamically from the orchestrator's cached schedule, and `daily_plan.py` validates the LLM's output against each slot's `valid_locations` (falling back to the slot's `location` default if invalid).
 
 ### Phase 2: Scene Execution (`day_phase = "scenes"`)
 
-**Catalyst Event Injection** (before scenes): at the start of `_run_scenes()`, the orchestrator loads `data/catalyst_events.json` and runs `CatalystChecker.check_and_inject()` once per day. The checker iterates over trigger definitions and checks agent state against trigger conditions:
+**Catalyst Event Injection** (before scenes): at the start of `_run_scenes()`, the orchestrator loads `data/catalyst_events.json` and runs `CatalystChecker.check_and_inject()` once per day. `_check_trigger` is a **generator** — it yields every agent (or pair) that satisfies a trigger's condition, not just the first. The outer loop in `check_and_inject` iterates over every match and checks cooldown per match, so one isolation trigger can fire for three students on the same day.
 
-- `concern_stalled`: a concern with matching `topic` has been unreinforced for `min_stale_days`
+- `concern_stalled`: a concern with matching `topic` and `today - last_new_info_day >= min_stale_days` (PR3: drives off `last_new_info_day`, not `last_reinforced_day`, so pure emotion reinforcement never masks a truly stalled concern). Entries in `catalyst_events.json` carry either `require_related_people: true` (→ only matches concerns with non-empty `related_people`, template uses `{related_person}`) or `require_empty_related_people: true` (→ only matches empty-people concerns, template has no `{related_person}` token). The two are mutually exclusive so a single concern can't fire both.
 - `isolation`: a student has `<= max_active_relationships` relationships with `days_since_interaction <= 3`
-- `relationship_threshold`: any student pair where `favorability >= favorability_gte`
-- `intention_stalled`: an unfulfilled, non-abandoned intention with `pursued_days >= min_pursued_days`
+- `relationship_threshold`: any student pair where `favorability >= favorability_gte` (dedup via a seen-pair set inside the generator so each pair yields at most once per day)
+- `intention_stalled`: an unfulfilled, non-abandoned intention with `pursued_days >= min_pursued_days` (break after first match per agent so a student with multiple stalled intentions isn't spammed)
 
-Matching triggers fill a random template with agent names and inject the event via `EventQueueManager.add_event()` with `category="catalyst"`. Per-trigger cooldowns are persisted to `world/catalyst_cooldowns.json`. The `cooldown_scope` can be `"per_pair"` for relationship-based triggers (cooldown is keyed on the specific agent pair). After injection, the event queue is saved back to disk before scenes begin.
+Matching triggers fill a random template with agent names and inject the event via `EventQueueManager.add_event()` with `category="catalyst"`. **Cooldowns are always scoped** (per-agent or per-pair), keyed by `"<trigger_type>:<params_json>:<sorted_witnesses>"`. A global scope would starve every agent after the first match per day; the pre-PR4 `cooldown_scope == "per_pair"` conditional is gone — witness count drives scope automatically. Legacy cooldown keys (pre-PR4 format, no witness suffix after the params JSON) are filtered on load by `_load_cooldown_state` — expected to cause a small one-day catalyst burst on the upgrade-day as cleared-cooldown concerns fire (documented in PR4 changelog). Cooldowns persist to `world/catalyst_cooldowns.json`. After injection, the event queue is saved back to disk before scenes begin.
 
 For each scene in `data/schedule.json` (sequentially):
 
@@ -232,13 +232,15 @@ This two-phase design enables **asymmetric perception**: the same conversation c
   - Apply relationship deltas from agent's own reflection using baseline snapshot (for idempotency): `new_value = baseline + clamped_delta`, clamped to valid range. **Auto-insertion** (Fix 4): if the change targets an in-profiles agent that has no entry in this agent's `relationships.json` yet, a zero-state `Relationship` is created on the fly and the delta is applied on top. The `label` is picked from **both** source and target roles: HOMEROOM_TEACHER → student auto-inserts as `"学生"`, any agent → HOMEROOM_TEACHER as `"老师"`, otherwise `"同学"`. (Prior bug: label was picked from target role only, so a teacher auto-inserting a student fell through to `"同学"`.) Hallucinated names that don't resolve to any profile are dropped with a warning. Previously, missing targets were silently dropped — leading to permanently empty relationship maps for low-interaction agents.
   - **Bystander vs Direct Interaction Clamp (Fix 5)**: each `AgentRelChange` now carries a `direct_interaction: bool` field (LLM self-label). Python applies a **double-gate** before accepting deltas > ±1: (1) LLM must have set `direct_interaction=True`, AND (2) `_build_direct_interaction_set(aid, tick_records, profiles)` must confirm that the agent actually interacted with the target in the tick records (speech with `action_target`, non-verbal action targeting, or being targeted by another agent). Only when both gates pass is `max_delta=3` allowed; otherwise `max_delta=1`. This prevents a bystander from inflating relationship scores via "far observation" while still allowing observers to accumulate small signals over time (±1 per scene). The `self_reflection.j2` template explicitly instructs the LLM that bystander relationship changes are valid and expected.
   - **recent_interactions log**: whenever any relationship_change has a non-zero delta, append the tag `"Day {day} {mark}{scene.name}"` to `rel.recent_interactions`, where `mark` is a one-character valence prefix derived from the signed `favorability + trust` delta of that row: `+` for net-positive (warm interaction), `−` (U+2212) for net-negative (friction), `·` (U+00B7) for net-zero but still interacting (e.g. understanding-only change where fav/trust cancel). Understanding is excluded from the valence sum because it measures "how well I know them", not affect. Dedup is keyed on the full tag (day + mark + scene name), so two rows with the same sign in the same scene collapse but a mixed scene where one row is `+` and another is `−` legitimately records both events — rare but possible across multi-target or multi-tick reflections. The list is capped at `settings.max_recent_interactions` (default 10, FIFO eviction). Downstream prompts (`perception_static.j2`, `self_reflection.j2`, etc.) render the log as an interaction timeline so the LLM can distinguish "Day 3 +课间@走廊" (warm) from "Day 4 −宿舍夜聊" (friction) at a glance without having to re-infer valence from the current absolute relationship scores. Lays the groundwork for Phase 2+ relationship-strength signals.
-  - **Mark intention outcomes** from agent's own `intention_outcomes` (replaces old `narrative.fulfilled_intentions` substring matching):
-    - `fulfilled` → mark intent as fulfilled; if `satisfies_concern` is set, decay linked concern intensity by 2
-    - `frustrated` → if `satisfies_concern` is set, intensify linked concern by 1; **chronic frustration bonus**: if `pursued_days >= 4`, an extra +1 intensity is applied (total +2), accelerating concern escalation for long-stalled intentions
+  - **Mark intention outcomes** from agent's own `intention_outcomes` (replaces old `narrative.fulfilled_intentions` substring matching). Each matched intent is recorded in a per-agent `processed_intent_ids: set[int]` (identity via `id(intent)`) so the PR7 silence-synthesis pass below doesn't double-count:
+    - `fulfilled` → mark intent as fulfilled; if `satisfies_concern` is set, `concern_lookup` resolves the concern and intensity decays by 2. `reinforcement_count` also decreases by 3 (explicit reward — a fulfilled concern should leave "stuck topic" territory even if it had high reinforcement history)
+    - `frustrated` → if `satisfies_concern` is set, `concern_lookup` resolves and intensity rises by 1; **chronic frustration bonus**: if `pursued_days >= 4`, an extra +1 intensity is applied (total +2)
     - `abandoned` → mark intent as abandoned (excluded from carry-forward)
-    - Matching uses bidirectional substring (`concern_match` helper)
-  - Apply new concerns from agent's own reflection via `add_concern` (Fix 2 — topic-based dedup). Propagates `positive` flag and the chosen `topic` from `AgentConcernCandidate`. See **Concern Topic Bucketing & Dedup**.
-  - Apply concern intensity adjustments from agent's own reflection (substring matching on concern text). Remove concerns that reach intensity <= 0.
+    - `missed_opportunity` (PR7) → if `satisfies_concern` is set, intensity rises by 1 (same net effect as the synthesis pass below)
+    - Matching between outcome goal and intent goal still uses bidirectional substring (`concern_match`) — LLM paraphrase of goal is expected
+  - **Silence synthesis** (PR7): after processing LLM-reported outcomes, scan remaining unfulfilled/un-abandoned intents. If `id(intent) in processed_intent_ids`, skip entirely (Cr2 regression: respect LLM judgment even for paraphrased goals). Otherwise, if `intent.target` is a name in the same group (`group_agent_ids`, NOT full scene — avoids punishing a dorm-night agent for not addressing someone in a different group) AND that agent is not in `_build_direct_interaction_set(aid, tick_records, profiles)`, synthesize a `missed_opportunity`: +1 intensity on the linked concern. Equivalent net effect to the LLM self-reporting, so double-reporting is safe.
+  - Apply new concerns from agent's own reflection via `add_concern` with `source="reflection"` (topic-based dedup; alias-normalized people sets). Propagates `positive` flag and chosen `topic` from `AgentConcernCandidate`. See **Concern Topic Bucketing & Dedup**.
+  - Apply concern intensity adjustments from `concern_updates` via `concern_lookup`. Adjustment > 0 additionally bumps `last_reinforced_day` and `reinforcement_count` (pure emotion reinforcement — advances count for backstop tracking but NOT `last_new_info_day`, because concern_updates is "LLM says this got worse", not "new event happened"). Non-positive adjustment is pure relief: intensity moves, nothing else. Remove concerns that reach intensity <= 0.
 - Update event queue from shared `NarrativeExtraction`: mark discussed events as known by all group members; **for new events, run Fix 13's 3-layer cite_ticks grounding** before saving.
 
 **Fix 13 — `new_events` grounding** (`apply_results.py`): each `NewEventCandidate` carries `cite_ticks: list[int]` (1-indexed `[Tick N]` numbers as the LLM saw them). Before adding to the event queue, three layers run:
@@ -404,22 +406,38 @@ active_concerns: list[ActiveConcern]  # max 4 persistent emotional preoccupation
 ### ActiveConcern (`models/agent.py`)
 
 ```
+id: str (6-hex)                  # Stable id (secrets.token_hex(3)); auto-generated per instance.
+                                 # Rendered in prompts as `[ref: <id>]`; LLM references via satisfies_concern / concern_updates.
 text: str                        # "被江浩天当众嘲笑数学成绩"
-source_event: str                # Brief trigger description
+source_event: str                # Brief trigger description (merged tail-biased, capped 500 chars)
 source_scene: str                # e.g. "课间" — legacy structural-dedup field
 source_day: int
 emotion: str                     # "羞耻"
-intensity: int (1-10)            # Decays by `concern_decay_per_day` (=2) at end of day; 0 → removed
-related_people: list[str]
+intensity: int (1-10)            # Decays at end of day; 0 → removed
+related_people: list[str]        # Compared after alias-normalize (爸爸 → 父亲)
 positive: bool                   # False=negative (worry/hurt), True=positive (warmth/excitement/anticipation)
-topic: ConcernTopic              # Fix 2: 10-value Literal enum used for dedup bucket
-last_reinforced_day: int         # Fix 2: stale-eviction timestamp; updated by `add_concern`
+                                 # Positive concerns are immune to the "stuck topic" backstops.
+topic: ConcernTopic              # 10-value Literal enum used for dedup bucket
+last_reinforced_day: int         # Bumps on BOTH merge AND pure emotion reinforcement (concern_updates)
+last_new_info_day: int           # TTL counter — drives stale eviction. Only bumps when new information
+                                 # arrives (merge via add_concern, or source="reflection"/"shock").
+                                 # concern_updates (pure emotion delta) does NOT advance this.
+reinforcement_count: int         # Counts every reinforcement. Used for backstops that catch the
+                                 # "LLM keeps emitting as new_concerns" rumination case.
 text_history: list[str] (max 3)  # Previous versions of concern text preserved on merge/evolution
+id_history: list[str] (max 5)    # Previous ids of concerns merged into this one. `concern_lookup`
+                                 # checks this so old `[ref: id]` references still resolve after merge.
 ```
 
-Concerns are generated at two points: per-agent self-reflection (post-scene) and nightly compression. Both go through `add_concern` which performs **topic-based dedup** (Fix 2 — see Concern Topic Bucketing & Dedup section): same topic + overlapping `related_people` merges and bumps intensity, with a Frankenstein guard for the `其他` bucket that refuses to merge empty-people pairs. Max 4 per agent; lowest intensity evicted when full (positive and negative concerns compete equally on intensity). Self-reflection `concern_updates` can adjust intensity up or down based on events (e.g. being comforted → -2, being mocked again → +3). Templates display positive concerns separately under "你最近心里期待的事" and negative concerns under "你最近心里挥之不去的事".
+Concerns are generated at three points: per-agent self-reflection (post-scene, `source="reflection"`), nightly compression (`source="reflection"` — the compress step extracts new worries, which semantically is reflection, not consolidation), and exam shock (`source="shock"`). All three go through `add_concern`. Per-scene concern intensity adjustments (no `add_concern` call) come from `concern_updates` which references concerns by `[ref: <id>]` and only moves intensity + reinforcement_count — never `last_new_info_day`.
 
-`ConcernTopic` is a `Literal[10]` enum (`models/agent.py`): `学业焦虑 / 家庭压力 / 人际矛盾 / 恋爱 / 自我认同 / 未来规划 / 健康 / 兴趣爱好 / 期待的事 / 其他`. Both positive buckets (`兴趣爱好`, `期待的事`) ensure positive concerns aren't pushed into `其他` and outcompeted by negative ones.
+**Lookup — `concern_lookup(state, id_or_text)`** (`interaction/apply_results.py`): the single entry point for resolving an LLM reference to a concern. Normalizes input (strips `[`, `]`, `ref:` prefix; lowercases) then tries, in order: exact id match, id_history match, text-substring fallback. A debug log records which path hit (`by_id` / `by_id_history` / `by_substring` / `miss`) for monitoring the fallback's usage, with the intent of removing it once substring hits are < 1% for a week. Call sites: `apply_results.py` intention_outcomes + concern_updates + fulfilled/frustrated, `interaction/resolution.py` priority scoring, `agent/daily_plan.py` audit and old-intention match.
+
+**TTL + backstops** (`agent/state_update.decay_concerns`): three-layer eviction runs end-of-day. Layer 1 — TTL stale (`today - last_new_info_day >= concern_stale_days`, default 5): evict. Layer 2 — stuck-topic forced decay: `reinforcement_count >= 10` on a negative concern forces `decay=2` even for high-intensity (defeats the "high-intensity stickiness" that would otherwise freeze a stuck topic). Layer 3 — hard eviction: `reinforcement_count >= 15` on a negative concern drops it regardless of TTL. After thresholds, `reinforcement_count` decays `-1` per day (natural forgetting; prevents long-run systematic eviction). `intent.fulfilled` with a linked concern also deducts 3 from count — explicit reward that pushes a fulfilled concern out of stuck territory. Positive concerns are immune to both backstops so natural recurrence ("喜欢陆思远") is never suppressed.
+
+**Merge via `add_concern`** performs topic-based dedup with alias-normalized `related_people` sets (`agent/name_aliases.normalize` sourced from `data/name_aliases.json`). For `其他` topic: exact people-set match required (Frankenstein guard still refuses to merge empty-people pairs). For other topics: any non-empty people intersection merges. Merge always bumps `reinforcement_count`, `last_reinforced_day`, and `last_new_info_day` (to `today`). New (non-merge) paths seed `last_reinforced_day` and `last_new_info_day` to `today` so day-0 concerns don't immediately look stale.
+
+Max 4 concerns per agent; lowest intensity evicted when full. `ConcernTopic` is a `Literal[10]` enum (`models/agent.py`): `学业焦虑 / 家庭压力 / 人际矛盾 / 恋爱 / 自我认同 / 未来规划 / 健康 / 兴趣爱好 / 期待的事 / 其他`. Both positive buckets (`兴趣爱好`, `期待的事`) ensure positive concerns aren't pushed into `其他` and outcompeted by negative ones.
 
 ### Relationship (`models/relationship.py`)
 
@@ -530,7 +548,12 @@ NewEventCandidate:                           # Fix 13: each new event must cite 
 
 IntentionOutcome:                            # Agent self-eval of one intention
   goal: str                                  # LLM's restatement of the intention goal
-  status: Literal["fulfilled","attempted","frustrated","abandoned","pending"]
+  status: Literal["fulfilled","attempted","frustrated","abandoned","pending","missed_opportunity"]
+                                              # missed_opportunity (PR7): target was present but
+                                              # the agent never engaged. Synthesized by the code
+                                              # path in apply_scene_end_results when the LLM
+                                              # silently drops an intent whose target is in the
+                                              # same group but not in the direct-interaction set.
   brief_reason: str                          # One-sentence explanation
 
 AgentReflection:                             # Per-agent subjective reflection (1 per agent per group)
@@ -674,21 +697,37 @@ The `days_since_interaction` counter (on `Relationship` model, default 0) increm
 
 ### Concern Decay (`agent/state_update.py`)
 
-`decay_concerns(state, today)` runs at end of day. Active concerns lose `settings.concern_decay_per_day` (=2) intensity per day; reaching 0 removes them. **Half-rate decay for high-intensity concerns**: concerns with `intensity >= 6` decay at rate 1/day instead of the normal 2/day, letting emotionally sticky issues linger at mid-intensity longer before fading. **Stale eviction (Fix 2)**: any concern whose `last_reinforced_day` is `>= settings.concern_stale_days` (=5) days behind `today` is removed entirely, regardless of remaining intensity — this acts as a hard safety valve even for high-intensity concerns. Per-agent self-reflection `concern_updates` provide event-driven adjustments on top (concerns can be soothed faster by comforting interactions or intensified by triggering events). The accelerated decay + stale eviction prevents concern lists from monotonically growing into a depressive backdrop.
+`decay_concerns(state, today)` runs at end of day. Three-layer eviction:
 
-### Concern Topic Bucketing & Dedup (Fix 2)
+1. **TTL stale** (`today - last_new_info_day >= settings.concern_stale_days`, default 5): evict outright. PR3: TTL drives off `last_new_info_day` (not `last_reinforced_day`) so pure emotion reinforcement via `concern_updates` doesn't keep a zombie concern alive. `last_new_info_day` only advances when a genuinely new event arrives (via `add_concern` merge with `source="reflection"`/`"shock"`, or a fresh non-merge path).
+2. **Backstop A — stuck-topic forced decay**: on a non-positive concern with `reinforcement_count >= 10`, force `decay=2` regardless of intensity. This defeats the "high-intensity stickiness" (decay=1 at intensity≥6) that would otherwise freeze a stuck topic for days. Purpose: catch the rumination failure mode where the LLM keeps re-emitting the same concern as `new_concerns` — TTL stays fresh but count accrues.
+3. **Backstop B — hard stuck-topic eviction**: on a non-positive concern with `reinforcement_count >= 15`, drop regardless of TTL or intensity.
+
+Positive concerns (`positive=True`) are **immune** to both backstops so "喜欢陆思远" reinforced daily doesn't get suppressed after 10-15 days (positive emotional obsession isn't a failure mode we're treating).
+
+After the threshold checks, every surviving concern has `reinforcement_count` decayed by 1 (clamped to 0). Natural forgetting — prevents long-run (30+ day) simulations from systematically killing every negative concern that's ever been reinforced. **Ordering matters**: threshold checks run BEFORE the `-= 1` decrement, so `>= 15` / `>= 10` mean exactly that in runtime rather than `>= 16` / `>= 11`.
+
+The companion reward: `apply_results.py` intention_outcomes path, on `fulfilled` with a linked concern, deducts 3 from `reinforcement_count` in addition to the usual -2 intensity. Fulfilling a concern is strong evidence that it's no longer stuck and should exit backstop territory.
+
+### Concern Topic Bucketing & Dedup
 
 `ActiveConcern.topic` is a `Literal[10]` enum (`ConcernTopic` in `models/agent.py`): `学业焦虑 / 家庭压力 / 人际矛盾 / 恋爱 / 自我认同 / 未来规划 / 健康 / 兴趣爱好 / 期待的事 / 其他`. The two positive buckets (`兴趣爱好`, `期待的事`) give positive concerns a habitat so they don't get pushed into `其他` and evicted by negative ones. The Pydantic `Literal` is enforced by Instructor on every LLM call so drift like `英语焦虑` vs `学业焦虑` cannot create parallel buckets.
 
-`add_concern(state, new, today, skip_cap=False)` (in `interaction/apply_results.py`) is the single entry point for new concerns from both `apply_scene_end_results` and `nightly_compress`. Logic:
+`add_concern(state, new, today, *, source="reflection"|"shock", skip_cap=False)` (in `interaction/apply_results.py`) is the single entry point for new concerns from all three callers (`apply_scene_end_results` self-reflection, `nightly_compress`, `exam.apply_exam_effects`). The `source` kwarg is currently always `"reflection"` (both scene-end and nightly) or `"shock"` (exam) — both advance `last_new_info_day`; the Literal is kept open for a future `"consolidation"` path that would leave the TTL alone, though today `_apply_consolidation` mutates state directly without going through `add_concern`. Logic:
 
-1. **Find existing match** via `_find_existing_concern`:
-   - For categorized topics (everything except `其他`): same topic + any non-empty `related_people` overlap → merge.
-   - For `其他`: same topic + EXACT `related_people` set match → merge. If either side has empty people, NEVER merge (Frankenstein guard — empty-people `其他` buckets are almost always unrelated and merging produces a useless meta-concern).
-2. **Merge**: bump intensity by 1 (clamped to 10), preserve the old `text` in `text_history` (max 3 entries, FIFO) before overwriting with the new text, append the new `source_event` to the existing one with `；` as a delimiter, update `last_reinforced_day` to `today`. The merged `source_event` is capped at 500 chars by slicing `[-500:]` (keep tail, drop the oldest prefix) — intent is that readers care about "what set this concern off lately", so when many reinforcements fill the buffer the oldest triggers are evicted first while the most recent are fully preserved. Chronological order (oldest → newest, left → right) is maintained; `[:500]` (keep head) would silently discard every reinforcement after the buffer first filled.
-3. **No match**: cap intensity at `settings.concern_autogen_max_intensity` (=6) unless `skip_cap=True` (reserved for high-priority sources like exam shock that should land at full intensity), set `last_reinforced_day=today`, then either append or evict the lowest-intensity concern when at `max_active_concerns` (=4).
+1. **Find existing match** via `_find_existing_concern` with alias-normalized `related_people` (so `爸爸` and `父亲` collide into one bucket):
+   - For categorized topics (everything except `其他`): same topic + any non-empty people overlap → merge.
+   - For `其他`: same topic + EXACT people set match → merge. If either side has empty people, NEVER merge (Frankenstein guard — empty-people `其他` buckets are almost always unrelated).
+2. **Merge**: bump intensity by 1 (clamped to 10), preserve the old `text` in `text_history` (max 3 entries, FIFO) before overwriting, append the new `source_event` with `；` as a delimiter (capped `[-500:]` — tail-biased for recency). Unconditionally update `last_reinforced_day = today`, `reinforcement_count += 1`, and — when `source in ("reflection", "shock")` — `last_new_info_day = today`.
+3. **No match** (new concern path): cap intensity at `settings.concern_autogen_max_intensity` (=6) unless `skip_cap=True`, **seed `last_reinforced_day = today` AND `last_new_info_day = today`** (critical — without seeding the latter, a brand-new concern on day 0 would satisfy `today - last_new_info_day == today >= concern_stale_days` and be immediately evicted by `decay_concerns` later the same day). Then either append or evict the lowest-intensity concern when at `max_active_concerns` (=4).
 
-The only production caller of `skip_cap=True` today is `apply_exam_effects` (`world/exam.py`): when a student's `rank_change <= -3` after an exam, an `ActiveConcern(topic="学业焦虑", intensity=min(10, 5 + magnitude))` is constructed (8/9/10 ladder for -3/-4/-5+) and pushed through `add_concern(skip_cap=True, today=day)`. Without `skip_cap` the cap of 6 would erase the difference between a routine worry and a real shock.
+The only production caller of `skip_cap=True` today is `apply_exam_effects` (`world/exam.py`): when a student's `rank_change <= -3` after an exam, an `ActiveConcern(topic="学业焦虑", intensity=min(10, 5 + magnitude))` (8/9/10 ladder) is pushed via `add_concern(skip_cap=True, source="shock", today=day)`.
+
+**Name aliases** (`agent/name_aliases.py`, `data/name_aliases.json`): a hand-maintained mapping from informal appellations to canonical form (爸爸 → 父亲, 妈妈 → 母亲, etc.). Only applied inside `_find_existing_concern`'s comparison — rendered prompts, narrative, and concern.text all keep whatever spelling the LLM used. New aliases (class nicknames, etc.) are added via PR; no automatic learning.
+
+**Concern id + lookup**: every concern has a stable 6-hex `id` (auto-generated). `id_history` preserves ids of concerns that were merged away (populated by `_apply_consolidation`'s merge branch). All LLM prompts render `[ref: <id>]` on each concern, and callers use `concern_lookup` to resolve references — see the ActiveConcern section above for details.
+
+**Backfill migration** (`scripts/backfill_concern_ids.py`): one-shot script for pre-PR1 state.json files. Assigns a deterministic `id` (blake2b of `source_day:source_scene:text[:30]:idx`), seeds `last_new_info_day = max(source_day, last_reinforced_day)`, initializes `id_history = []` and `reinforcement_count = 0`. Idempotent: re-running on a fully migrated file is a no-op. The script fails fast if two concerns in the same file hash to the same id — expected to never fire since the `idx` (list position) tiebreaker handles same-day same-prefix collisions. Run manually via `uv run python scripts/backfill_concern_ids.py` before the first simulation run on a PR1+ codebase.
 
 ### Exam Score Generation (`world/exam.py`)
 
@@ -852,7 +891,8 @@ data/
   schedule.json                  # 8 daily scenes: 07:00 早读 → 22:00 宿舍夜聊 (3 with is_free_period=true)
   location_events.json           # Location-specific opening events for free period scenes
   scene_ambient_events.json      # Fix 12: per-location ambient events — mixed plain strings and dicts with `text` + `cooldown_days` fields
-  catalyst_events.json           # Conditional trigger definitions (5 types: concern_stalled, isolation, relationship_threshold, intention_stalled)
+  catalyst_events.json           # Conditional trigger definitions. PR4: `concern_stalled` 人际矛盾 and 学业焦虑 each split into `-relational` (require_related_people) and `-generic` (require_empty_related_people) entries — mutex on related_people presence
+  name_aliases.json              # PR1: hand-maintained informal→canonical name mapping (爸爸→父亲 etc). Nested under `aliases` key; `_doc` prefix is metadata. Loader: `agent/name_aliases.py`
 
 agents/                          # Runtime state (gitignored, created by init_world.py)
   <agent_id>/
@@ -899,6 +939,7 @@ scripts/
   inspect_state.py               # Debug tool to view current simulation state
   export_frontend_data.py        # Copy simulation output → web/public/data/
   generate_behavioral_anchors.py # Fix 5: one-shot LLM generation of behavioral_anchors for each character
+  backfill_concern_ids.py        # PR1 migration: seed id / id_history / last_new_info_day / reinforcement_count on legacy state.json files
   sanity_check/                  # Phase 1+1.5 milestone scripts (M1-M6)
     m1_ungrounded_events.py      # Fix 13: count events with missing or invalid cite_ticks
     m2_per_day_memory_cap.py     # Fix 14: assert per-day key_memories ≤ per_day_memory_cap
@@ -914,12 +955,13 @@ src/sim/
   models/                        # Pydantic models (agent, dialogue, event, memory, progress, relationship, scene, trajectory)
   agent/                         # Agent-level logic
     storage.py                   # AgentStorage + WorldStorage (file I/O, atomic writes, structured self_narrative load/save)
-    context.py                   # prepare_context() — assembles full LLM context with qualitative labels
-    daily_plan.py                # generate_daily_plan() — intention generation with concern linkage + carry-forward
+    context.py                   # prepare_context() — assembles full LLM context; also computes `intended_targets_present` (PR7) for perception_dynamic
+    daily_plan.py                # generate_daily_plan() — intention generation with concern linkage + carry-forward; PR8 audit-retry with per-day/per-agent budget
     self_narrative.py            # generate_self_narrative() — periodic identity reflection (structured: narrative + self_concept + current_tensions)
     qualitative.py               # Numeric → qualitative label helpers (energy, pressure, intensity, relationship, exam)
+    name_aliases.py              # normalize() — hand-maintained informal→canonical name mapping (爸爸 → 父亲); used only in concern comparison, never in rendered prompts
     replan.py                    # maybe_replan() — reactive location changes between scenes
-    state_update.py              # Energy, pressure, emotion, concern decay formulas
+    state_update.py              # Energy, pressure, emotion, concern decay formulas (PR3: three-layer decay + backstops)
   world/                         # World-level logic
     schedule.py                  # load_schedule() from data/schedule.json
     scene_generator.py           # SceneGenerator — lazy per-config scene generation, free period location splitting, ambient event cooldowns
@@ -935,7 +977,7 @@ src/sim/
     narrative.py                 # format_public_transcript(), format_agent_transcript(), format_latest_event()
     scene_end.py                 # run_scene_end_analysis() — objective narrative extraction (post-dialogue)
     self_reflection.py           # run_agent_reflection() + run_all_reflections() — per-agent subjective reflection
-    apply_results.py             # apply_scene_end_results() + apply_solo_result() + write_scene_file() + concern_match()
+    apply_results.py             # apply_scene_end_results() + apply_solo_result() + write_scene_file() + concern_match() + concern_lookup() + add_concern(source=..., skip_cap=...); PR7 missed_opportunity synthesis
     solo.py                      # run_solo_reflection() — solo agent inner monologue
   llm/                           # LLM infrastructure
     client.py                    # structured_call() via Instructor + LiteLLM; auto-fallback to llm_fallback_model on failure
@@ -1002,7 +1044,10 @@ All settings via `pydantic-settings` `BaseSettings`, loaded from `.env` file, ov
 | `max_active_concerns` | 4 | Max concerns per agent |
 | `concern_decay_per_day` | 2 | Fix 2: end-of-day intensity decay (was effectively 1) |
 | `concern_stale_days` | 5 | Fix 2: days without reinforcement → evict regardless of intensity |
-| `concern_autogen_max_intensity` | 6 | Fix 2: cap for reflection/compression-generated concerns; bypassed via `skip_cap=True` |
+| `concern_autogen_max_intensity` | 6 | Cap for reflection/compression-generated concerns; bypassed via `skip_cap=True` |
+| `daily_plan_audit_retry` | False | PR8: enable retry when high-intensity addressable concerns are unhooked. Default off — observe one week of audit warning volume before flipping on |
+| `daily_plan_audit_max_retries_per_call` | 1 | PR8: retries per single `generate_daily_plan` call |
+| `daily_plan_audit_max_retries_per_day_per_agent` | 1 | PR8: retries per (day, agent_id) — budget resets implicitly each day |
 | `relationship_positive_stale_days` | 5 | Days without interaction before positive favorability/trust decay starts |
 | `max_recent_interactions` | 10 | Per-relationship FIFO cap on `recent_interactions` tag log (populated on any non-zero relationship_change) |
 

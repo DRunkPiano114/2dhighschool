@@ -6,7 +6,7 @@
 {% if active_concerns %}
 ## 目前已有的牵挂
 {% for c in active_concerns %}
-- {{ c.text }}（{{ c.intensity_label }}）
+- {{ c.text }}（{{ c.intensity_label }}）[ref: {{ c.id }}]
 {% endfor %}
 {% endif %}
 

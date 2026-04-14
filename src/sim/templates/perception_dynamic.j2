@@ -26,6 +26,11 @@
 {{ tick_emotion }}
 {% endif %}
 
+{% if intended_targets_present %}
+## 注意
+你今天想找的人里，现在就在场：{{ intended_targets_present | join('、') }}
+{% endif %}
+
 ## 你的反应
 观察一下刚才发生的事。你注意到了什么？你心里怎么想的？
 然后决定你想做什么：

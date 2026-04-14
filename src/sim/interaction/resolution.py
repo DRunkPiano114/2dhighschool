@@ -7,7 +7,7 @@ from statistics import variance
 from ..config import settings
 from ..models.agent import AgentProfile, AgentState
 from ..models.dialogue import ActionType, PerceptionOutput
-from .apply_results import concern_match
+from .apply_results import concern_lookup
 
 QUEUE_EXPIRY_TICKS = 3
 
@@ -58,10 +58,9 @@ def _compute_resolution_score(
             if not intention.fulfilled and intention.target and intention.target in active_names:
                 base = 3
                 if intention.satisfies_concern:
-                    for c in state.active_concerns:
-                        if concern_match(c.text, intention.satisfies_concern):
-                            base = 3 * max(1.0, c.intensity / 5.0)
-                            break
+                    c = concern_lookup(state, intention.satisfies_concern)
+                    if c:
+                        base = 3 * max(1.0, c.intensity / 5.0)
                 best_intent_bonus = max(best_intent_bonus, base)
         bonus += int(best_intent_bonus)
 

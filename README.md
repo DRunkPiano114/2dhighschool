@@ -17,6 +17,47 @@ uv run sim --days 5                              # run simulation
 uv run sim --days 1 --start-day 3 --seed 42      # resume from day 3, reproducible
 ```
 
+## Customize Your Class
+
+The default cast is a Chinese high school class — 10 students and 1 homeroom
+teacher (`he_min`). To run the simulation with your own characters, edit
+`data/characters/*.json` (one file per character).
+
+**Important constraint**: don't add, remove, or rename `agent_id` slots. The
+10 student slots + `he_min` are hardcoded in `scripts/init_world.py`,
+`src/sim/world/scene_generator.py`, `src/sim/interaction/orchestrator.py`, and
+`web/src/components/world/CharacterSprite.ts`. Replace the *content* of each
+slot, not the slot itself.
+
+### For humans (manual editing)
+
+1. Open a file under `data/characters/` and modify the fields. Schema is
+   defined in `src/sim/models/agent.py` (`AgentProfile`).
+2. Validate after editing:
+   ```bash
+   python -m json.tool data/characters/<id>.json > /dev/null
+   uv run python -c "from src.sim.models.agent import AgentProfile; AgentProfile.model_validate_json(open('data/characters/<id>.json').read())"
+   ```
+3. Rebuild the world (this **wipes** `agents/` and `world/`, including all
+   previous runs):
+   ```bash
+   uv run python scripts/init_world.py
+   uv run sim --days 5
+   ```
+
+If you change relationships between characters, also edit
+`PRESET_RELATIONSHIPS` in `scripts/init_world.py`.
+
+### For coding agents (Claude Code, Cursor, Codex, …)
+
+Paste this to your agent:
+
+> I want to use this project to simulate my own class. Please follow the workflow in `skills/build-cast.md` to guide me through editing the characters.
+
+The agent will read the schema, walk you through fields batch-by-batch,
+validate the JSON, update relationship presets if needed, and tell you what
+to run next.
+
 ## Inspect & Export
 
 ```bash
