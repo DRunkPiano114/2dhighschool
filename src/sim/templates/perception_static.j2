@@ -61,6 +61,11 @@
 {% endfor %}
 {% endif %}
 
+{% if sampled_joy_source %}
+## 今天你心里惦记着的一件小事
+{{ sampled_joy_source }}
+{% endif %}
+
 ## 当前场景
 - 时间：{{ scene_info.time }}
 - 地点：{{ scene_info.location }}

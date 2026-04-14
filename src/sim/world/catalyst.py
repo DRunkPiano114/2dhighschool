@@ -222,6 +222,31 @@ class CatalystChecker:
                         "witnesses": [aid, other_id],
                     }
 
+        elif trigger_type == "positive_concern_stalled":
+            # P2.B.4: keep positive concerns alive when nothing in the
+            # world has reinforced them for a few days. Without this,
+            # positive concerns silently decay (-1/day, no reinforcement
+            # path other than LLM emit) and the system loses the bright
+            # spots almost as soon as they form. Topic-scoped so we can
+            # write template copies that fit the bucket (期待的事 vs 兴趣
+            # 爱好).
+            for aid, (profile, state) in agents.items():
+                if profile.role != Role.STUDENT:
+                    continue
+                for c in state.active_concerns:
+                    if not c.positive:
+                        continue
+                    if c.topic != params["topic"]:
+                        continue
+                    stale_days = day - c.last_new_info_day
+                    if stale_days < params["min_stale_days"]:
+                        continue
+                    yield {
+                        "agent": profile.name,
+                        "agent_id": aid,
+                        "witnesses": [aid],
+                    }
+
         elif trigger_type == "intention_stalled":
             for aid, (profile, state) in agents.items():
                 if profile.role != Role.STUDENT:

@@ -19,6 +19,7 @@ uv.lock
 
 # development
 docs/
+.claude/
 
 # web
 web/node_modules/

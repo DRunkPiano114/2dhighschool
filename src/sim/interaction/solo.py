@@ -29,6 +29,7 @@ async def run_solo_reflection(
     ctx = prepare_context(
         storage, profile, state, scene, all_profiles,
         known_events, next_exam_in_days, exam_context=exam_context,
+        day=day,
     )
 
     prompt = render("solo_reflection.j2", **ctx)

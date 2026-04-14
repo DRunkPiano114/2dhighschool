@@ -63,6 +63,7 @@ async def run_perception(
         emotion_override=tick_emotion,
         emotion_trace=emotion_trace,
         scene_pacing_label=scene_pacing_label,
+        day=day,
     )
 
     static_msg = render("perception_static.j2", **ctx)

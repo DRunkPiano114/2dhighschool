@@ -33,6 +33,7 @@ from sim.interaction.apply_results import (
     add_concern,
     apply_scene_end_results,
     apply_trivial_scene_result,
+    bump_concern_intensity,
     concern_lookup,
     concern_match,
     is_trivial_scene,
@@ -2196,3 +2197,272 @@ def test_no_synthesis_when_intent_is_fulfilled(tmp_path):
     out = world.get_agent("a").load_state().active_concerns[0]
     # fulfilled decays by -2 (and count by -3); no synthesis +1 piled on top
     assert out.intensity == 3
+
+
+# --- P1.1: pending/attempted no-op semantics ---
+
+
+def test_pending_outcome_does_not_change_concern_or_intent(tmp_path):
+    """`pending` is a legitimate 'still in progress' verdict — concern
+    intensity must not move and the intent must stay open."""
+    from sim.models.dialogue import IntentionOutcome
+    world, agents_dir = _setup_world(tmp_path)
+    profile = _setup_agent_with_plan_and_concern(
+        agents_dir, "a", satisfies_concern="dead01", concern_intensity=5,
+    )
+    profiles = {"a": profile}
+    refl = AgentReflection(
+        emotion=Emotion.CALM,
+        intention_outcomes=[
+            IntentionOutcome(goal="找陆思远聊数学", status="pending"),
+        ],
+    )
+    apply_scene_end_results(
+        narrative=NarrativeExtraction(),
+        reflections={"a": refl},
+        world=world, scene=_make_scene(agent_ids=["a"]),
+        group_agent_ids=["a"],
+        day=1, group_id=0, profiles=profiles,
+        event_manager=_make_event_manager(),
+    )
+    out = world.get_agent("a").load_state()
+    assert out.active_concerns[0].intensity == 5  # untouched
+    assert out.daily_plan.intentions[0].fulfilled is False
+    assert out.daily_plan.intentions[0].abandoned is False
+
+
+def test_attempted_outcome_does_not_change_concern_or_intent(tmp_path):
+    """`attempted` is also still-in-progress; identical semantics."""
+    from sim.models.dialogue import IntentionOutcome
+    world, agents_dir = _setup_world(tmp_path)
+    profile = _setup_agent_with_plan_and_concern(
+        agents_dir, "a", satisfies_concern="dead01", concern_intensity=5,
+    )
+    profiles = {"a": profile}
+    refl = AgentReflection(
+        emotion=Emotion.CALM,
+        intention_outcomes=[
+            IntentionOutcome(goal="找陆思远聊数学", status="attempted"),
+        ],
+    )
+    apply_scene_end_results(
+        narrative=NarrativeExtraction(),
+        reflections={"a": refl},
+        world=world, scene=_make_scene(agent_ids=["a"]),
+        group_agent_ids=["a"],
+        day=1, group_id=0, profiles=profiles,
+        event_manager=_make_event_manager(),
+    )
+    out = world.get_agent("a").load_state()
+    assert out.active_concerns[0].intensity == 5
+    assert out.daily_plan.intentions[0].fulfilled is False
+    assert out.daily_plan.intentions[0].abandoned is False
+
+
+def test_pending_prevents_silence_synthesis(tmp_path):
+    """If the LLM said `pending` for an intent whose target is in the
+    same group but wasn't engaged, silence synthesis must NOT fire — the
+    LLM already adjudicated this intent and rejected the missed-opp
+    interpretation."""
+    from sim.models.dialogue import IntentionOutcome
+    world, agents_dir = _setup_world(tmp_path)
+    profile_a = _setup_agent_with_plan_and_concern(
+        agents_dir, "a", intent_target="李明", intent_goal="找李明聊数学",
+        satisfies_concern="dead01", concern_intensity=5,
+    )
+    profile_b = _setup_agent(agents_dir, "b", "李明")
+    profiles = {"a": profile_a, "b": profile_b}
+    refl = AgentReflection(
+        emotion=Emotion.CALM,
+        intention_outcomes=[
+            IntentionOutcome(goal="找李明聊数学", status="pending"),
+        ],
+    )
+    apply_scene_end_results(
+        narrative=NarrativeExtraction(),
+        reflections={"a": refl, "b": AgentReflection()},
+        world=world, scene=_make_scene(agent_ids=["a", "b"]),
+        group_agent_ids=["a", "b"],
+        day=1, group_id=0, profiles=profiles,
+        event_manager=_make_event_manager(),
+        tick_records=[],  # no direct interaction
+    )
+    out = world.get_agent("a").load_state().active_concerns[0]
+    # No synthesis bump: intensity stays 5 (would have been 6 without
+    # processed_intent_ids guard).
+    assert out.intensity == 5
+
+
+# --- P1.3: frustrated has no extra +1 for long pursuit ---
+
+
+def test_frustrated_no_extra_bump_for_long_pursuit(tmp_path):
+    """Removing the `pursued_days >= 4` extra +1: a 5-day pursuit that
+    ends in frustration should bump exactly +1, not +2."""
+    from sim.agent.storage import atomic_write_json
+    from sim.models.agent import DailyPlan, Intention
+    from sim.models.dialogue import IntentionOutcome
+
+    world, agents_dir = _setup_world(tmp_path)
+    profile = AgentProfile(
+        agent_id="a", name="张伟", gender=Gender.MALE, role=Role.STUDENT,
+        academics=Academics(overall_rank=OverallRank.MIDDLE),
+        family_background=FamilyBackground(pressure_level=PressureLevel.MEDIUM),
+    )
+    agent_dir = agents_dir / "a"
+    agent_dir.mkdir(parents=True, exist_ok=True)
+    atomic_write_json(agent_dir / "profile.json", profile.model_dump())
+    state = AgentState(
+        daily_plan=DailyPlan(intentions=[
+            Intention(
+                target="陆思远", goal="找陆思远聊数学", reason="r",
+                satisfies_concern="dead01", pursued_days=5,
+            ),
+        ]),
+        active_concerns=[
+            ActiveConcern(text="数学焦虑", id="dead01", intensity=5),
+        ],
+    )
+    atomic_write_json(agent_dir / "state.json", state.model_dump())
+    atomic_write_json(
+        agent_dir / "relationships.json", RelationshipFile().model_dump(),
+    )
+    profiles = {"a": profile}
+    refl = AgentReflection(
+        emotion=Emotion.FRUSTRATED,
+        intention_outcomes=[
+            IntentionOutcome(goal="找陆思远聊数学", status="frustrated"),
+        ],
+    )
+    apply_scene_end_results(
+        narrative=NarrativeExtraction(),
+        reflections={"a": refl},
+        world=world, scene=_make_scene(agent_ids=["a"]),
+        group_agent_ids=["a"],
+        day=1, group_id=0, profiles=profiles,
+        event_manager=_make_event_manager(),
+    )
+    out = world.get_agent("a").load_state().active_concerns[0]
+    assert out.intensity == 6  # 5 + 1 only (was 5 + 2 before P1.3)
+
+
+# --- P1.4: bump_concern_intensity helper + per-day cap ---
+
+
+def test_bump_concern_intensity_caps_at_daily_limit():
+    """Three +1 bumps on the same day → only the first two land; the
+    third is capped to 0."""
+    c = ActiveConcern(text="t", intensity=5)
+    assert bump_concern_intensity(c, day=3, delta=1) == 1
+    assert bump_concern_intensity(c, day=3, delta=1) == 1
+    assert bump_concern_intensity(c, day=3, delta=1) == 0
+    assert c.intensity == 7
+    assert c.bumps_today == 2
+
+
+def test_bump_concern_intensity_resets_next_day():
+    """When `day` advances, the per-day budget resets lazily."""
+    c = ActiveConcern(text="t", intensity=5)
+    bump_concern_intensity(c, day=1, delta=1)
+    bump_concern_intensity(c, day=1, delta=1)
+    assert bump_concern_intensity(c, day=1, delta=1) == 0
+    # New day → budget refreshed
+    assert bump_concern_intensity(c, day=2, delta=1) == 1
+    assert c.intensity == 8
+    assert c.bumps_today == 1
+    assert c.last_bump_day == 2
+
+
+def test_bump_concern_intensity_ignores_negative_delta():
+    """Drains bypass the cap entirely — fulfilled -2 must always land
+    even after a busy day of intensify bumps."""
+    c = ActiveConcern(text="t", intensity=8, bumps_today=2, last_bump_day=1)
+    assert bump_concern_intensity(c, day=1, delta=-2) == -2
+    assert c.intensity == 6
+    # bumps_today untouched (drain doesn't consume budget)
+    assert c.bumps_today == 2
+
+
+def test_bump_concern_intensity_skip_cap_bypasses_limit():
+    """Shock-source merges (skip_cap=True) ignore the daily cap so a
+    major external event can drive the floor up even after the
+    reflection cap is spent."""
+    c = ActiveConcern(text="t", intensity=5, bumps_today=2, last_bump_day=1)
+    assert bump_concern_intensity(c, day=1, delta=1, skip_cap=True) == 1
+    assert c.intensity == 6
+
+
+def test_bump_concern_intensity_capped_at_intensity_ceiling():
+    """The cap caps daily DELTA, but the intensity ceiling at 10 still
+    applies and clamps a too-large bump."""
+    c = ActiveConcern(text="t", intensity=9)
+    # daily_cap=2 lets +2 through, but intensity ceiling at 10 clamps.
+    applied = bump_concern_intensity(c, day=1, delta=2)
+    assert applied == 2
+    assert c.intensity == 10
+
+
+def test_same_concern_hit_by_multiple_paths_single_day(tmp_path):
+    """Realistic scenario: silence-synth + concern_updates +2 +
+    frustrated all hit the same concern in one reflection cycle. The
+    P1.4 cap means net intensity rises by 2, not 4."""
+    from sim.models.dialogue import AgentConcernUpdate, IntentionOutcome
+    world, agents_dir = _setup_world(tmp_path)
+    profile_a = _setup_agent_with_plan_and_concern(
+        agents_dir, "a", intent_target="李明", intent_goal="找李明聊数学",
+        satisfies_concern="dead01", concern_intensity=4,
+    )
+    profile_b = _setup_agent(agents_dir, "b", "李明")
+    profiles = {"a": profile_a, "b": profile_b}
+    refl = AgentReflection(
+        emotion=Emotion.FRUSTRATED,
+        intention_outcomes=[
+            IntentionOutcome(goal="找李明聊数学", status="frustrated"),
+        ],
+        concern_updates=[
+            AgentConcernUpdate(concern_text="dead01", adjustment=2),
+        ],
+    )
+    apply_scene_end_results(
+        narrative=NarrativeExtraction(),
+        reflections={"a": refl, "b": AgentReflection()},
+        world=world, scene=_make_scene(agent_ids=["a", "b"]),
+        group_agent_ids=["a", "b"],
+        day=1, group_id=0, profiles=profiles,
+        event_manager=_make_event_manager(),
+        tick_records=[],
+    )
+    out = world.get_agent("a").load_state().active_concerns[0]
+    # frustrated path lands its +1 first (uses 1 of 2). concern_updates
+    # +2 then asks for 2 but only 1 remains in budget. Net: +2, not +3.
+    # Silence synth never runs because frustrated already populated
+    # processed_intent_ids for this intent.
+    assert out.intensity == 6
+
+
+# --- P2.B.2: silence synth ≥7 immune ---
+
+
+def test_silence_synthesis_skips_high_intensity_concern(tmp_path):
+    """When the linked concern is already at intensity ≥7, silence
+    synthesis must not fire — running an already-loud concern up to 10
+    via 'didn't talk to them today' adds no signal."""
+    world, agents_dir = _setup_world(tmp_path)
+    profile_a = _setup_agent_with_plan_and_concern(
+        agents_dir, "a", intent_target="李明", intent_goal="找李明聊数学",
+        satisfies_concern="dead01", concern_intensity=8,
+    )
+    profile_b = _setup_agent(agents_dir, "b", "李明")
+    profiles = {"a": profile_a, "b": profile_b}
+    refl = AgentReflection(emotion=Emotion.CALM)  # no intention_outcomes
+    apply_scene_end_results(
+        narrative=NarrativeExtraction(),
+        reflections={"a": refl, "b": AgentReflection()},
+        world=world, scene=_make_scene(agent_ids=["a", "b"]),
+        group_agent_ids=["a", "b"],
+        day=1, group_id=0, profiles=profiles,
+        event_manager=_make_event_manager(),
+        tick_records=[],
+    )
+    out = world.get_agent("a").load_state().active_concerns[0]
+    assert out.intensity == 8  # unchanged — the ≥7 immune gate held

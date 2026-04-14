@@ -68,6 +68,11 @@
 - 场景：{{ scene_info.name }}
 - 你一个人待着
 
+{% if sampled_joy_source %}
+## 今天你心里惦记着的一件小事
+{{ sampled_joy_source }}
+{% endif %}
+
 ## 任务
 你现在一个人，没有和别人交流。根据你的性格和当前状态，描述你的内心活动。
 

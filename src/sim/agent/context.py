@@ -1,3 +1,6 @@
+import hashlib
+import random
+
 from ..models.agent import AgentProfile, AgentState, Emotion, Role
 from ..models.event import Event
 from ..models.memory import KeyMemory
@@ -42,6 +45,27 @@ def _profile_summary(profile: AgentProfile) -> str:
     return "\n".join(parts)
 
 
+def _sample_joy_source(
+    profile: AgentProfile,
+    day: int,
+    scene: Scene,
+) -> str | None:
+    """Pick one joy_source deterministically for this (day, scene, agent).
+
+    Uses hashlib.sha1 because PYTHONHASHSEED randomizes Python's builtin
+    `hash()` on strings across processes. Snapshot resume + parallel
+    workers must see the same joy_source for the same (day, scene, agent)
+    triple, so a stable hash is required. Returns None when the profile
+    has no joy_sources configured.
+    """
+    if not profile.joy_sources:
+        return None
+    key = f"{day}:{scene.time}:{scene.location}:{profile.agent_id}".encode()
+    seed = int(hashlib.sha1(key).hexdigest()[:16], 16)
+    rng = random.Random(seed)
+    return rng.choice(profile.joy_sources)
+
+
 def _filter_relationships(
     rels: RelationshipFile,
     present_ids: list[str],
@@ -77,6 +101,7 @@ def prepare_context(
     emotion_override: Emotion | None = None,
     emotion_trace: list[str] | None = None,
     scene_pacing_label: str = "",
+    day: int = 0,
 ) -> dict:
     rels = storage.load_relationships()
     today_events = storage.read_today_md()
@@ -157,4 +182,8 @@ def prepare_context(
         "inner_conflicts": profile.inner_conflicts,
         # Character anchoring (Fix 5)
         "behavioral_anchors": profile.behavioral_anchors,
+        # Per-(day, scene, agent) deterministic joy_source sample, rendered
+        # by perception_static.j2 and solo_reflection.j2 to inject a small
+        # positive hook into otherwise tense or numb scenes.
+        "sampled_joy_source": _sample_joy_source(profile, day, scene),
     }

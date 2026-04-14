@@ -34,7 +34,7 @@ async def run_agent_reflection(
     # Build agent context (reuse existing context assembly)
     ctx = prepare_context(
         storage, profile, state, scene, all_profiles,
-        known_events=[], next_exam_in_days=0,
+        known_events=[], next_exam_in_days=0, day=day,
     )
 
     prompt = render(

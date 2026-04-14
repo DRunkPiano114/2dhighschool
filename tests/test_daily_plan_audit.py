@@ -206,6 +206,52 @@ def test_audit_per_day_budget_resets_next_day(monkeypatch):
     assert call_count == 4
 
 
+def test_audit_retry_cites_only_top_intensity_concern(monkeypatch):
+    """P2.B.3: when multiple unhooked >=7 concerns exist, the retry
+    feedback message must cite only the single highest-intensity one
+    (by id ref). Listing all unhooked concerns made the LLM treat the
+    retry as a coverage drill; pointing at the loudest focuses the
+    revision."""
+    _reset_audit_budget()
+    monkeypatch.setattr(settings, "daily_plan_audit_retry", True)
+
+    # Two unhooked, intensity 7 and 9. Retry feedback should mention
+    # only the intensity=9 concern's id.
+    state = AgentState(active_concerns=[
+        ActiveConcern(
+            text="较强焦虑", id="aaa777",
+            topic="家庭压力", related_people=["父亲"], intensity=7,
+            last_new_info_day=3, last_reinforced_day=3,
+        ),
+        ActiveConcern(
+            text="最强焦虑", id="bbb999",
+            topic="家庭压力", related_people=["父亲"], intensity=9,
+            last_new_info_day=3, last_reinforced_day=3,
+        ),
+    ])
+
+    seen_retry_feedback: list[str] = []
+
+    async def fake_call(model_cls, messages, **kwargs):
+        # Second call has the appended audit feedback as the last message
+        if len(messages) > 1:
+            seen_retry_feedback.append(messages[-1]["content"])
+        return _plan_result(_unhooked_intentions())
+
+    with patch("sim.agent.daily_plan.structured_call", side_effect=fake_call), \
+         patch("sim.agent.daily_plan.log_llm_call"):
+        asyncio.run(generate_daily_plan(
+            "a", _storage_mock(), _student("a", "张伟"), state,
+            next_exam_in_days=20, day=1,
+            all_profiles=_all_profiles(),
+        ))
+
+    assert len(seen_retry_feedback) == 1
+    feedback = seen_retry_feedback[0]
+    assert "bbb999" in feedback
+    assert "aaa777" not in feedback
+
+
 def test_intensity_6_not_audited(monkeypatch):
     """PR6: threshold is >=7. An intensity-6 concern should not trigger
     audit / retry."""

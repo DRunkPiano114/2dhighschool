@@ -171,6 +171,42 @@ def _find_existing_concern(
     return None
 
 
+def bump_concern_intensity(
+    c: ActiveConcern,
+    day: int,
+    delta: int,
+    *,
+    daily_cap: int = 2,
+    skip_cap: bool = False,
+) -> int:
+    """Apply an intensity bump with a per-concern single-day cap.
+
+    The cap throttles the "same concern hammered by 4-5 independent paths
+    on one day → +4~+7" anti-pattern (silence synth + frustrated +
+    concern_updates + add_concern merge etc.). Drains and explicitly-shock
+    callers bypass the cap.
+
+    - `delta <= 0` (drain) → applied immediately, no cap accounting.
+    - `skip_cap=True` → also bypasses the cap (used for shock add_concern
+      merges that represent strong singular external signals).
+    - Otherwise the cap is `daily_cap` per concern per day. Returns the
+      actual delta applied (may be 0 if cap reached).
+    """
+    if delta <= 0 or skip_cap:
+        c.intensity = max(0, min(10, c.intensity + delta))
+        return delta
+    if c.last_bump_day != day:
+        c.last_bump_day = day
+        c.bumps_today = 0
+    remaining = daily_cap - c.bumps_today
+    if remaining <= 0:
+        return 0
+    applied = min(delta, remaining)
+    c.intensity = min(10, c.intensity + applied)
+    c.bumps_today += applied
+    return applied
+
+
 def add_concern(
     state: AgentState,
     new_concern: ActiveConcern,
@@ -214,9 +250,15 @@ def add_concern(
     existing = _find_existing_concern(state, new_concern)
     if existing:
         if skip_cap:
-            existing.intensity = min(10, max(existing.intensity, new_concern.intensity) + 1)
+            # Shock merge can drive the floor up: anchor on max(existing,
+            # incoming) before the +1, and bypass the daily cap.
+            existing.intensity = min(
+                10, max(existing.intensity, new_concern.intensity),
+            )
+            bump_concern_intensity(existing, today, 1, skip_cap=True)
         else:
-            existing.intensity = min(10, existing.intensity + 1)
+            # Reflection merge respects the per-day cap.
+            bump_concern_intensity(existing, today, 1)
         # Preserve old text in history before overwriting
         if existing.text != new_concern.text and existing.text not in existing.text_history:
             existing.text_history.append(existing.text)
@@ -511,14 +553,14 @@ def apply_scene_end_results(
                                 0, c.reinforcement_count - 3,
                             )
                 elif outcome.status == "frustrated":
-                    # Frustration can intensify the linked concern
+                    # Frustration can intensify the linked concern. The
+                    # `pursued_days >= 4` extra +1 was removed alongside
+                    # P1.1's pending/attempted legalization: long pursuit
+                    # is no longer auto-failure, so it shouldn't compound.
                     if intent.satisfies_concern:
                         c = concern_lookup(state, intent.satisfies_concern)
                         if c:
-                            c.intensity = min(10, c.intensity + 1)
-                            # Extra +1 for chronic frustration (4+ days)
-                            if intent.pursued_days >= 4:
-                                c.intensity = min(10, c.intensity + 1)
+                            bump_concern_intensity(c, day, 1)
                 elif outcome.status == "abandoned":
                     intent.abandoned = True
                 elif outcome.status == "missed_opportunity":
@@ -529,7 +571,24 @@ def apply_scene_end_results(
                     if intent.satisfies_concern:
                         c = concern_lookup(state, intent.satisfies_concern)
                         if c:
-                            c.intensity = min(10, c.intensity + 1)
+                            bump_concern_intensity(c, day, 1)
+                elif outcome.status in ("attempted", "pending"):
+                    # Legitimate "still in progress" — do NOT touch
+                    # intent.fulfilled/abandoned and do NOT change concern
+                    # intensity. The intent stays open; pursued_days
+                    # carries forward via _match_old_intention. Adding
+                    # id(intent) to processed_intent_ids below prevents
+                    # the silence-synthesis pass from second-guessing the
+                    # LLM's "still working on it" verdict.
+                    pass
+                else:
+                    logger.warning(
+                        f"  Unhandled outcome.status={outcome.status!r} "
+                        f"for {profiles[aid].name} intent "
+                        f"{outcome.goal[:30]!r} — skipped silently. "
+                        f"Extend the IntentionOutcome Literal or add a "
+                        f"handler in apply_results.py."
+                    )
                 processed_intent_ids.add(id(intent))
                 break  # one outcome matches at most one intent
 
@@ -551,10 +610,15 @@ def apply_scene_end_results(
         for cu in refl.concern_updates:
             target = concern_lookup(state, cu.concern_text)
             if target:
-                target.intensity = max(
-                    0, min(10, target.intensity + cu.adjustment),
+                applied = bump_concern_intensity(
+                    target, day, cu.adjustment,
                 )
-                if cu.adjustment > 0:
+                # Only count it as a reinforcement when the cap actually
+                # let some positive delta through. A capped (applied=0)
+                # update is a silent no-op for both intensity AND
+                # reinforcement bookkeeping — otherwise we'd inflate
+                # backstop counters from updates the system rejected.
+                if cu.adjustment > 0 and applied > 0:
                     target.last_reinforced_day = day
                     target.reinforcement_count += 1
 
@@ -584,8 +648,13 @@ def apply_scene_end_results(
             if target_id and target_id not in direct_set:
                 if intent.satisfies_concern:
                     c = concern_lookup(state, intent.satisfies_concern)
-                    if c:
-                        c.intensity = min(10, c.intensity + 1)
+                    # P2.B.2: ≥7 ("强烈") concerns are immune to silence
+                    # synthesis. Once a concern is already loud, "didn't
+                    # talk to them again today" stops carrying any new
+                    # information — it just runs the intensity to 10
+                    # against a stuck topic.
+                    if c and c.intensity < 7:
+                        bump_concern_intensity(c, day, 1)
 
         state.active_concerns = [c for c in state.active_concerns if c.intensity > 0]
 

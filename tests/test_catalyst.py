@@ -240,6 +240,86 @@ def test_legacy_cooldown_keys_dropped_on_load(tmp_path, monkeypatch):
     assert 'isolation:{"max_active_relationships": 2}:agent_a' in checker.cooldown_state
 
 
+def test_positive_concern_stalled_fires_for_positive_only(tmp_path, monkeypatch):
+    """P2.B.4: positive_concern_stalled must fire when a positive concern
+    has gone stale (no new info for >= min_stale_days), and must NOT fire
+    on a same-topic NEGATIVE concern."""
+    monkeypatch.setattr(settings, "world_dir", tmp_path)
+    cat_file = _write_catalyst_file(tmp_path, {
+        "catalyst_events": [
+            {
+                "trigger_type": "positive_concern_stalled",
+                "trigger_params": {"min_stale_days": 4, "topic": "期待的事"},
+                "templates": ["{agent}收到了一条相关消息"],
+                "cooldown_days": 5,
+            },
+        ],
+    })
+    checker = CatalystChecker(cat_file, random.Random(0))
+
+    # Positive, stale 5 days → should fire
+    state_pos = AgentState(active_concerns=[
+        ActiveConcern(
+            text="那首歌她也听", topic="期待的事",
+            related_people=["苏念瑶"], intensity=4,
+            positive=True, last_new_info_day=0,
+        ),
+    ])
+    agents_pos = {"a": (_profile("a", "小明"), state_pos)}
+    fired_pos = checker.check_and_inject(
+        day=5, agents=agents_pos,
+        relationships={"a": RelationshipFile()}, event_manager=_em(),
+    )
+    assert len(fired_pos) == 1
+
+    # Same topic, NEGATIVE concern, same staleness → must NOT fire
+    checker2 = CatalystChecker(cat_file, random.Random(0))
+    state_neg = AgentState(active_concerns=[
+        ActiveConcern(
+            text="那次约定没做到", topic="期待的事",
+            related_people=["苏念瑶"], intensity=4,
+            positive=False, last_new_info_day=0,
+        ),
+    ])
+    agents_neg = {"a": (_profile("a", "小明"), state_neg)}
+    fired_neg = checker2.check_and_inject(
+        day=5, agents=agents_neg,
+        relationships={"a": RelationshipFile()}, event_manager=_em(),
+    )
+    assert len(fired_neg) == 0
+
+
+def test_positive_concern_stalled_respects_min_stale_days(tmp_path, monkeypatch):
+    """P2.B.4: a positive concern that's still fresh (stale_days <
+    min_stale_days) must not fire."""
+    monkeypatch.setattr(settings, "world_dir", tmp_path)
+    cat_file = _write_catalyst_file(tmp_path, {
+        "catalyst_events": [
+            {
+                "trigger_type": "positive_concern_stalled",
+                "trigger_params": {"min_stale_days": 4, "topic": "期待的事"},
+                "templates": ["{agent}收到一条相关消息"],
+                "cooldown_days": 5,
+            },
+        ],
+    })
+    checker = CatalystChecker(cat_file, random.Random(0))
+    # Only 2 days stale on day=2 (last_new_info_day=0)
+    state = AgentState(active_concerns=[
+        ActiveConcern(
+            text="期待周末出去玩", topic="期待的事",
+            related_people=[], intensity=5,
+            positive=True, last_new_info_day=0,
+        ),
+    ])
+    agents = {"a": (_profile("a", "小明"), state)}
+    fired = checker.check_and_inject(
+        day=2, agents=agents,
+        relationships={"a": RelationshipFile()}, event_manager=_em(),
+    )
+    assert len(fired) == 0
+
+
 def test_intention_stalled_per_agent_not_spammed(tmp_path, monkeypatch):
     """Multiple stalled intentions on the same agent → at most one firing per
     agent per day for this trigger."""

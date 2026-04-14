@@ -77,6 +77,24 @@
         "一个偶然的机会让{agent}不得不面对一直拖延的事情"
       ],
       "cooldown_days": 7
+    },
+    {
+      "trigger_type": "positive_concern_stalled",
+      "trigger_params": {"min_stale_days": 4, "topic": "期待的事"},
+      "templates": [
+        "{agent}收到一条和期待的事有关的消息",
+        "{agent}偶然看到之前期待的那件事有了新进展"
+      ],
+      "cooldown_days": 5
+    },
+    {
+      "trigger_type": "positive_concern_stalled",
+      "trigger_params": {"min_stale_days": 4, "topic": "兴趣爱好"},
+      "templates": [
+        "{agent}路过时听到有人在聊自己感兴趣的话题",
+        "{agent}刷到一条相关的推送让自己来了精神"
+      ],
+      "cooldown_days": 5
     }
   ]
 }

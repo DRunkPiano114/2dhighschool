@@ -234,13 +234,18 @@ async def generate_daily_plan(
             cap = settings.daily_plan_audit_max_retries_per_day_per_agent
             if spent < cap:
                 _audit_retry_budget[budget_key] = spent + 1
+                # P2.B.3: cite only the single highest-intensity unhooked
+                # concern. Listing all unhooked >=7 concerns produced
+                # plans that mechanically hooked every one and lost
+                # natural variety; the LLM tends to treat a multi-item
+                # list as a checklist. Pointing at the loudest one
+                # focuses the retry without forcing a coverage drill.
+                top = max(unhooked, key=lambda c: c.intensity)
                 feedback = (
-                    "## 审计反馈\n以下强烈牵挂没有被任何 intention 挂钩：\n"
-                    + "\n".join(
-                        f"- [ref: {c.id}] {c.text}" for c in unhooked
-                    )
-                    + "\n请重新生成 intentions，为每条挂钩（或在 reason 里"
-                    "具体说明为何今天还不面对）。"
+                    "## 审计反馈\n这条强烈牵挂需要被挂钩"
+                    "（或在 reason 里具体说明为何今天还不面对）：\n"
+                    f"- [ref: {top.id}] {top.text}\n"
+                    "其它未挂钩的 ≥7 牵挂今天允许搁置。"
                 )
                 retry_messages = messages + [
                     {"role": "user", "content": feedback},

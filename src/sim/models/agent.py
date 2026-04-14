@@ -149,6 +149,12 @@ class ActiveConcern(BaseModel):
     # id_history: previous IDs of concerns that were merged into this one.
     # Lets downstream [ref: xxx] references survive a merge.
     id_history: list[str] = Field(default_factory=list, max_length=5)
+    # Single-day intensity-bump throttling. bumps_today resets lazily inside
+    # bump_concern_intensity when day changes; callers don't need to clear
+    # them. Pre-existing state.json entries deserialize cleanly (defaults
+    # are 0).
+    last_bump_day: int = 0
+    bumps_today: int = 0
 
 
 class LocationPreference(BaseModel):

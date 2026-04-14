@@ -46,6 +46,7 @@ def _profile() -> AgentProfile:
         academics=Academics(overall_rank=OverallRank.MIDDLE),
         family_background=FamilyBackground(pressure_level=PressureLevel.MEDIUM),
         behavioral_anchors=BehavioralAnchors(),
+        joy_sources=["听许嵩新歌", "和陆思远开一把王者"],
     )
 
 
@@ -199,3 +200,135 @@ def test_perception_target_highlight_renders():
 def test_perception_target_highlight_absent_when_no_targets():
     out = _render_perception_dynamic(intended_targets_present=[])
     assert "你今天想找的人里" not in out
+
+
+# --- P2.A / P2.C: joy_source injection ---
+
+
+def _render_perception_static(sampled_joy_source: str | None) -> str:
+    return render(
+        "perception_static.j2",
+        role_description="学生",
+        profile_summary="小明",
+        relationships=[],
+        today_events="",
+        recent_summary="",
+        key_memories=[],
+        pending_intentions=[],
+        active_concerns=[],
+        inner_conflicts=[],
+        behavioral_anchors=BehavioralAnchors(),
+        current_tensions=[],
+        scene_info={
+            "time": "08:45", "location": "教室",
+            "name": "课间", "description": "刚下数学课",
+            "present_names": ["小明"],
+        },
+        known_events=[],
+        exam_context="",
+        sampled_joy_source=sampled_joy_source,
+    )
+
+
+def _render_solo_reflection(sampled_joy_source: str | None) -> str:
+    state = AgentState()
+    return render(
+        "solo_reflection.j2",
+        role_description="学生",
+        profile_summary="小明",
+        current_state=state,
+        energy_label="平均",
+        pressure_label="中",
+        next_exam_in_days=30,
+        exam_label="月考快来了",
+        today_events="",
+        recent_summary="",
+        key_memories=[],
+        pending_intentions=[],
+        active_concerns=[],
+        self_narrative="",
+        self_concept=[],
+        current_tensions=[],
+        scene_info={
+            "time": "12:30", "location": "宿舍",
+            "name": "午休", "present_names": ["小明"],
+        },
+        sampled_joy_source=sampled_joy_source,
+    )
+
+
+def test_joy_source_renders_in_perception_static():
+    """Plan P2.A.4: perception_static.j2 must render the joy_source block
+    when one is sampled."""
+    out = _render_perception_static("听许嵩新歌")
+    assert "今天你心里惦记着的一件小事" in out
+    assert "听许嵩新歌" in out
+
+
+def test_joy_source_renders_in_solo_reflection():
+    """Plan P2.A.5: solo_reflection.j2 must render the same block (solo
+    scenes are where focused negative rumination happens, so the positive
+    hook matters most here)."""
+    out = _render_solo_reflection("和陆思远开一把王者")
+    assert "今天你心里惦记着的一件小事" in out
+    assert "和陆思远开一把王者" in out
+
+
+def test_joy_source_absent_when_none():
+    """Both templates must skip the section entirely when no joy_source
+    was sampled (e.g. profile.joy_sources is empty)."""
+    out_p = _render_perception_static(None)
+    out_s = _render_solo_reflection(None)
+    assert "今天你心里惦记着的一件小事" not in out_p
+    assert "今天你心里惦记着的一件小事" not in out_s
+
+
+def test_sample_joy_source_deterministic():
+    """Same (profile, day, scene) triple must always pick the same
+    joy_source. Snapshot resume + parallel workers depend on this."""
+    from sim.agent.context import _sample_joy_source
+    from sim.models.scene import Scene, SceneDensity
+    profile = _profile()
+    scene = Scene(
+        scene_index=0, day=1, time="08:45", name="课间",
+        location="教室", density=SceneDensity.LOW, agent_ids=["a"],
+    )
+    a = _sample_joy_source(profile, day=3, scene=scene)
+    b = _sample_joy_source(profile, day=3, scene=scene)
+    assert a == b
+    assert a in profile.joy_sources
+
+
+def test_sample_joy_source_returns_none_when_no_joy_sources():
+    """Profiles with no joy_sources must produce None (template then
+    omits the block via {% if sampled_joy_source %} guard)."""
+    from sim.agent.context import _sample_joy_source
+    from sim.models.scene import Scene, SceneDensity
+    bare = AgentProfile(
+        agent_id="a", name="小明", gender=Gender.MALE, role=Role.STUDENT,
+        personality=["内向"], speaking_style="直接",
+        academics=Academics(overall_rank=OverallRank.MIDDLE),
+        family_background=FamilyBackground(pressure_level=PressureLevel.MEDIUM),
+        joy_sources=[],
+    )
+    scene = Scene(
+        scene_index=0, day=1, time="08:45", name="课间",
+        location="教室", density=SceneDensity.LOW, agent_ids=["a"],
+    )
+    assert _sample_joy_source(bare, day=3, scene=scene) is None
+
+
+def test_sample_joy_source_stable_across_processes():
+    """Pin the exact output for a known input. Guards against accidental
+    refactor that swaps hashlib.sha1 for the builtin hash() — which is
+    PYTHONHASHSEED-randomized on strings and would silently break
+    snapshot-resume determinism."""
+    from sim.agent.context import _sample_joy_source
+    from sim.models.scene import Scene, SceneDensity
+    profile = _profile()
+    scene = Scene(
+        scene_index=0, day=1, time="08:45", name="课间",
+        location="教室", density=SceneDensity.LOW, agent_ids=["a"],
+    )
+    # Computed offline: sha1("3:08:45:教室:a") prefix → '听许嵩新歌'
+    assert _sample_joy_source(profile, day=3, scene=scene) == "听许嵩新歌"
