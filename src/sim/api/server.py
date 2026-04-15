@@ -1,15 +1,21 @@
-"""FastAPI server for God Mode and Role Play chat."""
+"""FastAPI server for God Mode, Role Play chat, and share-card rendering."""
 
 import asyncio
 import json
+from urllib.parse import quote
 
 from litellm.exceptions import ContextWindowExceededError  # pyright: ignore[reportPrivateImportUsage]
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import Response
 from sse_starlette.sse import EventSourceResponse
 
 from ..agent.storage import WorldStorage
+from ..cards import aggregations as card_agg
+from ..cards import cache as card_cache
+from ..cards import captions as card_captions
+from ..cards import agent_card, daily_card, scene_card
 from ..llm.client import streaming_text_call, structured_call
 from ..llm.prompts import render
 from .context import build_context_at_timepoint
@@ -166,6 +172,185 @@ async def role_play_chat(req: RolePlayRequest):
         yield {"data": json.dumps({"done": True})}
 
     return EventSourceResponse(event_generator())
+
+
+# --- Share cards ------------------------------------------------------------
+
+
+def _cd_header(filename_cjk: str) -> str:
+    """RFC 5987 Content-Disposition for CJK filenames.
+
+    Safari + some older Chrome builds mojibake raw UTF-8 in the `filename=`
+    token; the `filename*=UTF-8''...` form is the only portable way to carry a
+    Chinese filename through. The ASCII fallback is for ancient UAs that
+    ignore `filename*`.
+    """
+    ascii_fallback = "simclass_card.png"
+    return (
+        f'attachment; filename="{ascii_fallback}"; '
+        f"filename*=UTF-8''{quote(filename_cjk, safe='')}"
+    )
+
+
+def _scene_meta(day: int, scene_idx: int) -> dict:
+    """Compute caption/hashtags/filename from the scene LayoutSpec.
+
+    Raises 404 HTTPException if the scene has no multi-agent group.
+    """
+    scene_data = scene_card.load_scene_by_array_index(day, scene_idx)
+    group_index = scene_card.select_featured_group(scene_data)
+    if group_index is None:
+        raise HTTPException(
+            status_code=404,
+            detail="该场景无对话，不生成场景卡",
+        )
+    spec = scene_card.scene_to_layout_spec(scene_data, group_index)
+    # Motif emoji from the strongest speaker, if we found one.
+    motif_emoji = ""
+    if spec.bubbles:
+        from ..cards.assets import load_visual_bible  # local import, avoid cycle
+        bible = load_visual_bible()
+        motif_emoji = bible.get(spec.bubbles[0].agent_id, {}).get("motif_emoji", "")
+    payload = card_captions.scene_caption(
+        day=spec.day,
+        scene_name=spec.scene_name,
+        location=spec.location,
+        time=spec.time,
+        featured_quote=spec.featured_quote,
+        featured_speaker=spec.featured_speaker_name,
+        motif_emoji=motif_emoji,
+    )
+    payload["group_index"] = group_index
+    return payload
+
+
+@app.get("/api/card/scene/{day}/{scene_idx}.png")
+async def card_scene_png(day: int, scene_idx: int) -> Response:
+    try:
+        scene_data = scene_card.load_scene_by_array_index(day, scene_idx)
+    except (FileNotFoundError, IndexError) as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    group_index = scene_card.select_featured_group(scene_data)
+    if group_index is None:
+        raise HTTPException(
+            status_code=404,
+            detail="该场景无对话，不生成场景卡",
+        )
+    key = f"scene_{day:03d}_{scene_idx}"
+
+    def _render():
+        spec = scene_card.scene_to_layout_spec(scene_data, group_index)
+        return scene_card._render_card(spec)
+
+    path = card_cache.get_or_render(key, _render)
+    meta = _scene_meta(day, scene_idx)
+    return Response(
+        content=path.read_bytes(),
+        media_type="image/png",
+        headers={
+            "Content-Disposition": _cd_header(meta["filename"]),
+            "Cache-Control": "public, max-age=86400",
+        },
+    )
+
+
+@app.get("/api/card/scene/{day}/{scene_idx}.json")
+async def card_scene_meta(day: int, scene_idx: int) -> dict:
+    try:
+        return _scene_meta(day, scene_idx)
+    except FileNotFoundError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except IndexError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+
+def _daily_meta_and_caption(day: int) -> tuple[card_agg.DailySummary, dict]:
+    try:
+        summary = card_agg.build_daily_summary(day)
+    except FileNotFoundError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+    headline = summary.headline
+    cp = summary.cp
+    caption = card_captions.daily_caption(
+        day=day,
+        headline_quote=headline.thought if headline else None,
+        headline_speaker=(headline.thought_name or headline.speaker_name) if headline else None,
+        cp_pair=(cp.a_name, cp.b_name) if cp else None,
+    )
+    return summary, caption
+
+
+@app.get("/api/card/daily/{day}.png")
+async def card_daily_png(day: int) -> Response:
+    summary, caption = _daily_meta_and_caption(day)
+    key = f"daily_{day:03d}"
+
+    def _render():
+        return daily_card._render_card(summary)
+
+    path = card_cache.get_or_render(key, _render)
+    return Response(
+        content=path.read_bytes(),
+        media_type="image/png",
+        headers={
+            "Content-Disposition": _cd_header(caption["filename"]),
+            "Cache-Control": "public, max-age=86400",
+        },
+    )
+
+
+@app.get("/api/card/daily/{day}.json")
+async def card_daily_meta(day: int) -> dict:
+    summary, caption = _daily_meta_and_caption(day)
+    return {
+        **card_agg.summary_to_dict(summary),
+        "caption_payload": caption,
+    }
+
+
+def _build_agent_spec_and_caption(agent_id: str, day: int):
+    world = _get_world()
+    if agent_id not in world.agents:
+        raise HTTPException(status_code=404, detail=f"unknown agent: {agent_id}")
+    try:
+        spec = agent_card.build_agent_spec(agent_id, day, world)
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=f"unknown agent: {e}")
+    caption = card_captions.agent_caption(
+        day=day,
+        agent_name_cn=spec.name_cn,
+        motif_emoji=spec.motif_emoji,
+        motif_tag=spec.motif_tag,
+        emotion_label=spec.emotion_label,
+        featured_quote=spec.featured_quote,
+    )
+    return spec, caption
+
+
+@app.get("/api/card/agent/{agent_id}/{day}.png")
+async def card_agent_png(agent_id: str, day: int) -> Response:
+    spec, caption = _build_agent_spec_and_caption(agent_id, day)
+    key = f"agent_{agent_id}_{day:03d}"
+
+    def _render():
+        return agent_card._render_card(spec)
+
+    path = card_cache.get_or_render(key, _render)
+    return Response(
+        content=path.read_bytes(),
+        media_type="image/png",
+        headers={
+            "Content-Disposition": _cd_header(caption["filename"]),
+            "Cache-Control": "public, max-age=86400",
+        },
+    )
+
+
+@app.get("/api/card/agent/{agent_id}/{day}.json")
+async def card_agent_meta(agent_id: str, day: int) -> dict:
+    spec, caption = _build_agent_spec_and_caption(agent_id, day)
+    return {**agent_card.spec_to_dict(spec), "caption_payload": caption}
 
 
 def run():

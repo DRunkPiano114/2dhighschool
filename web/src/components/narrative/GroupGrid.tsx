@@ -1,6 +1,7 @@
 import { useWorldStore } from '../../stores/useWorldStore'
 import { EMOTION_COLORS, EMOTION_LABELS } from '../../lib/constants'
 import { getAgentColor } from '../world/CharacterSprite'
+import { ShareButtons } from './ShareButtons'
 import type { Tick, Emotion, MindState, GroupData } from '../../lib/types'
 
 const URGENCY_THRESHOLD = 2
@@ -9,6 +10,8 @@ export function GroupGrid() {
   const sceneFile = useWorldStore(s => s.currentSceneFile)
   const groupIdx = useWorldStore(s => s.activeGroupIndex)
   const currentTick = useWorldStore(s => s.currentTick)
+  const currentDay = useWorldStore(s => s.currentDay)
+  const currentSceneIndex = useWorldStore(s => s.currentSceneIndex)
 
   if (!sceneFile) {
     return <div className="grid-stage grid-loading">…</div>
@@ -17,11 +20,16 @@ export function GroupGrid() {
   const group = sceneFile.groups[groupIdx]
   const names = sceneFile.participant_names
 
+  // day_001 → 1; the API uses a bare integer.
+  const dayNum = parseInt(currentDay.replace('day_', ''), 10)
+  const cardEndpoint = `/api/card/scene/${dayNum}/${currentSceneIndex}`
+
   return (
     <div className="grid-stage">
       <div className="grid-page">
         <GroupPills groups={sceneFile.groups} activeIdx={groupIdx} names={names} />
         <GroupBody group={group} currentTick={currentTick} names={names} />
+        <ShareButtons cardEndpoint={cardEndpoint} cardLabel="场景卡" />
       </div>
     </div>
   )

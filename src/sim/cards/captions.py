@@ -98,3 +98,63 @@ def scene_caption(
         "hashtags": pick_hashtags(location=location, time=time),
         "filename": scene_filename(day, scene_name, location),
     }
+
+
+def daily_filename(day: int) -> str:
+    return f"simclass_班级日报_第{day:03d}天.png"
+
+
+def daily_caption(
+    *,
+    day: int,
+    headline_quote: str | None,
+    headline_speaker: str | None,
+    cp_pair: tuple[str, str] | None,
+) -> dict[str, Any]:
+    """Build the caption payload for the 班级日报 daily card."""
+    title = f"📰 第{day:03d}天 班级日报"
+    body = [title, ""]
+    if headline_quote and headline_speaker:
+        body.append(f"今日头条 · 「{headline_speaker}」{headline_quote}")
+    if cp_pair:
+        body.append(f"今日 CP：{cp_pair[0]} × {cp_pair[1]}")
+    body.append("")
+    body.append("SimClass · AI 班级模拟器 · 每天都在上演")
+    tags = list(BASE_HASHTAGS) + ["#班级日报"]
+    return {
+        "caption": "\n".join(body).strip(),
+        "hashtags": tags[:5],
+        "filename": daily_filename(day),
+    }
+
+
+def agent_filename(day: int, agent_name_cn: str) -> str:
+    safe = _sanitize_filename_component(agent_name_cn)
+    return f"simclass_{safe}_档案_第{day:03d}天.png"
+
+
+def agent_caption(
+    *,
+    day: int,
+    agent_name_cn: str,
+    motif_emoji: str,
+    motif_tag: str,
+    emotion_label: str,
+    featured_quote: str | None,
+) -> dict[str, Any]:
+    """Caption for a per-agent daily archive card."""
+    title = f"{motif_emoji} {agent_name_cn} · 第{day:03d}天 档案".strip()
+    body = [title, ""]
+    body.append(f"标签：{motif_tag}")
+    body.append(f"此刻心情：{emotion_label}")
+    if featured_quote:
+        body.append("")
+        body.append(f"「{featured_quote}」")
+    body.append("")
+    body.append("SimClass · AI 班级模拟器 · 每天都在上演")
+    tags = list(BASE_HASHTAGS) + ["#人物志"]
+    return {
+        "caption": "\n".join(body).strip(),
+        "hashtags": tags[:5],
+        "filename": agent_filename(day, agent_name_cn),
+    }

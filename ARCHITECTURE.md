@@ -1413,3 +1413,90 @@ Frontend SSE streaming client using `fetch()` + `ReadableStream` reader. Two asy
 ### Vite Proxy
 
 `vite.config.ts` proxies `/api` requests to `http://localhost:8000` for development.
+
+## Share-Card Generation (`src/sim/cards/`)
+
+Phase 0–3 of the 小红书传播 initiative: server-side rendered PNGs that users save + post to 小红书 / Twitter / Reddit. All rendering is Pillow on the FastAPI server — the frontend never does HTML→PNG conversion. Card bytes are cached on disk at `.cache/cards/` (gitignored); cache invalidation is manual (`rm -rf .cache/cards/` after a sim rerun).
+
+### Rendering Foundation
+
+- `base.py` — Canvas constants (`CANVAS_W=1080`, `CANVAS_H=1440` — 3:4 for 小红书), palette (`PAPER_CREAM`, `INK_BLACK`, `INK_GRAY`, `CINNABAR_RED`), font loaders (`font_wen`/`font_serif`/`font_sans` via `lru_cache`), `paper_background()` (procedural cream with ruled lines + red margin).
+- `assets.py` — Paths (`FONTS_DIR`, `PORTRAITS_DIR`, `SPRITE_SHEETS_DIR`, `CACHE_DIR`, `VISUAL_BIBLE_PATH`), `load_visual_bible()` (cached JSON load), `get_agent_visual(agent_id)`, `portrait_path(agent_id)`.
+- `cache.py` — `get_or_render(key, render_fn)` returns cached PNG path, rendering + writing if missing. `clear()` wipes the dir.
+- `captions.py` — Pure caption/filename/hashtag builders. Three entry points: `scene_caption()`, `daily_caption()`, `agent_caption()`. Each returns `{caption, hashtags, filename}`. CJK filenames are sanitized of filesystem-unsafe characters.
+- `elements/` — Compositional primitives: `portrait.py` (loads pre-generated pixel-art portraits with NEAREST resampling), `seal.py` (cinnabar rounded-square with reversed-out text — brand mark 「班」 and date stamps), `balloon.py` (CJK-wrapped speech + thought bubbles), `banner.py` (dashed dividers), `paper.py` (re-exports `paper_background`).
+
+### Data Model (`data/visual_bible.json`)
+
+Per-agent visual config: `name_cn`, `sprite_source` (LimeZu premade sheet), `crop` (x/y/w/h for the portrait frame), `main_color` (seeded from `CharacterSprite.ts::AGENT_COLORS` — do not change without syncing), `accent_color`, `motif_emoji`, `motif_tag`, `archetype_keywords`, and `is_teacher` flag for teacher-specific rendering paths. `scripts/generate_portraits.py` reads this and writes `data/portraits/{agent_id}.png` — rerun after any `sprite_source` or `crop` change.
+
+### Scene Card (`scene_card.py`, Phase 1)
+
+Most dramatic multi-agent group in a scene, rendered 1080×1440.
+
+Three-layer design for testability:
+1. **Selection** (`select_featured_group(scene_data)`) — pure. Ranks multi-agent groups by `sum(tick.urgency) + sum(len(inner_thought))`. Returns `None` if every group is solo (scene card skipped; API returns 404). Solo reflections belong on the agent card.
+2. **LayoutSpec** (`scene_to_layout_spec(scene_data, group_index)`) — frozen `@dataclass`. Ordered portraits (speaker, target, top witness, capped at 3), bubbles (speech + key thoughts), `featured_quote` for caption.
+3. **Render** (`_render_card(spec)`) — Pillow only. Header with 「第N天」 seal + title, portraits row with name + motif, speech/thought bubbles (`br`/`bl` tails alternate), 「班」 brand footer.
+
+Scene loading: `load_scene_by_array_index(day, scene_idx)` — `scene_idx` is the **array position in `scenes.json`**, not the semantic `scene_index` field (which becomes non-sequential after the export filter drops trivial scenes; the frontend already navigates by array position).
+
+**Tests** — Three files, all pure:
+- `tests/test_cards_logic.py` — selection heuristics, caption format, hashtag rules.
+- `tests/test_cards_layout.py` — scene_data → LayoutSpec projection.
+- `tests/test_cards_render.py` — smoke tests (render doesn't raise, output is valid PNG at correct dimensions). No pixel-level golden image diff: Pillow output is not byte-deterministic across libfreetype + font-hinting versions.
+
+### Daily Card + Report (`daily_card.py`, `aggregations.py`, Phase 2)
+
+The daily PNG summarizes a whole day. The same aggregation also drives the landing-page `DailyReport.tsx` — the frontend consumes `/api/card/daily/{day}.json` and renders the structured sections in HTML (faster + linkable), with a "save PNG" button for the shareable version.
+
+**Aggregations** (`aggregations.py`): pure functions over `load_day_scenes(day)` (reads every `web/public/data/days/day_NNN/*.json`).
+- `pick_headline(scenes)` — highest-rank beat by `rich_thought_flag (len ≥ 15) + urgency × 4 + thought_len`.
+- `pick_secondaries(scenes, exclude, limit=3)` — next 3 beats, one per scene, excluding the headline's scene file.
+- `compute_mood_map(scenes)` — per-agent `Counter` of emotions across ticks; returns dominant emotion in visual-bible order.
+- `pick_cp(scenes)` — sums `(fav + trust + understanding)` deltas across both directions of each pair; returns the strongest positive pair. Resolves `to_agent` display-name back to `agent_id` via `_build_name_to_id` (participant_names map + visual bible fallback).
+- `pick_golden_quote(scenes, exclude_text=None)` — most tweetable inner thought by `urgency × 5 + len`; accepts `exclude_text` so it doesn't duplicate the headline.
+- `scene_thumbs(scenes)` — lightweight thumbnail list for the landing-page scene strip.
+- `build_daily_summary(day)` — assembles `DailySummary` dataclass (frozen) from all of the above.
+- `summary_to_dict(summary)` — JSON-friendly shape for the API; enriches `mood_map` entries with `main_color` + `motif_emoji` from the visual bible.
+
+**Daily card render** (`daily_card._render_card`) places: 「第N天 · 班级日报」 header, headline (meta + speech + thought bubbles), golden quote (balloon), mood chip strip (one dot per agent tinted by `main_color`), CP block (two portraits + ♥ + delta labels), brand footer.
+
+**Tests** — `tests/test_cards_daily.py` covers selection dedup, CP summing across both directions, mood dominance, `summary_to_dict` JSON-safety.
+
+### Agent Archive Card (`agent_card.py`, Phase 3)
+
+Cumulative growth: Day N card reflects state at end of Day N. Reuses `sim.api.context.build_context_at_timepoint(agent_id, day, "22:00", world)` — same snapshot-loading + today-so-far reconstruction as the chat/role-play endpoints. The fixed `"22:00"` time period corresponds to end-of-day state.
+
+- `EMOTION_LABELS_CN` — local mapping from the `Emotion` enum's raw English values to Chinese display labels. Kept in sync with `web/src/lib/constants.ts::EMOTION_LABELS`.
+- `_featured_quote_for(agent_id, day)` — scans the day's scenes for the agent's strongest `(urgency × 5 + len)` inner thought (fallback to `solo_reflection.inner_thought` for solo groups).
+- `context_to_agent_spec()` — pure: chat-context dict → `AgentLayoutSpec` (portrait, name, state pills, featured quote, top-3 relationships by favorability, top-2 memories by importance, strongest active concern). Teacher cards skip the relationships block (teacher `is_teacher=True` in the visual bible).
+- `_render_card(spec)` — header strip tinted by `main_color`, big portrait, 3-pill state row (情绪 · 精力 · 压力), featured quote balloon, relationships list. Footer identical to other cards.
+- `spec_to_dict(spec)` — JSON serializer for the API.
+
+### API Endpoints (`src/sim/api/server.py`)
+
+All card routes share `_get_world()` — the same `WorldStorage` singleton used by role-play chat. Creating a fresh instance per request would re-load all agents + snapshots (seconds-scale latency).
+
+- `GET /api/card/scene/{day}/{scene_idx}.png` — scene card PNG; `scene_idx` is the array position in `scenes.json`. Returns 404 when every group in the scene is solo. `Content-Disposition` uses **RFC 5987** `filename*=UTF-8''...` via `urllib.parse.quote` so CJK filenames survive Safari and older Chrome.
+- `GET /api/card/scene/{day}/{scene_idx}.json` — caption payload + `group_index` for the featured group.
+- `GET /api/card/daily/{day}.(png|json)` — daily card + structured summary. The JSON includes `caption_payload` (caption + hashtags + filename) so the frontend copy-button reuses it.
+- `GET /api/card/agent/{agent_id}/{day}.(png|json)` — agent archive card.
+
+All PNG responses set `Cache-Control: public, max-age=86400`. The server-side disk cache (`cache.py`) makes repeat renders a file-read.
+
+### Frontend Share UI
+
+- `web/src/components/narrative/ShareButtons.tsx` — Generic share UI (📥 保存图 + 📋 复制文案). Takes `cardEndpoint` prop (e.g., `/api/card/scene/1/0`); appends `.png`/`.json`. Probes `/api/health` + the endpoint on mount; grays out with appropriate tooltips when unavailable (four states: `unknown` / `online` / `not_available` / `offline`). Save path is progressively enhanced — tries Web Share API with `File` first (mobile native share sheet), falls back to blob download (`<a download={filename}>`).
+- Integrated into `GroupGrid.tsx` (scene cards), `DailyReport.tsx` (daily cards), `CharacterArchive.tsx` (agent cards).
+- `web/src/components/daily/DailyReport.tsx` — Landing page at `/day/:dayId`. `/` routes to `DailyReportHome`, which fetches `meta.days` and redirects to the latest day. Renders headline (with "进入现场 →" link to PixiCanvas scene), golden quote block, secondaries (clickable scene links), mood map grid, CP tracker, scene thumbnail strip, gallery link. Gracefully handles offline API with a fallback link into PixiCanvas.
+- `web/src/components/gallery/CharacterGallery.tsx` + `CharacterArchive.tsx` — `/characters` (and `/characters/day/:dayId`) show a 2×5 grid of portraits. Teacher card gets a visually distinct tile. Drill-in at `/characters/:agentId?day=day_NNN` renders the full archive, reuses the share buttons, and offers a "与 TA 聊聊 →" shortcut into the role-play chat via `openRolePlayChat`.
+
+### Routing Changes (`web/src/App.tsx`)
+
+- `/` → `DailyReportHome` (redirects to `/day/:latest`).
+- `/day/:dayId` → `DailyReport` (landing).
+- `/day/:dayId/scene/:sceneFile` → `PixiCanvas` (scene deep-dive; linked from DailyReport).
+- `/characters`, `/characters/day/:dayId` → `CharacterGallery`.
+- `/characters/:agentId` → `CharacterArchivePage` (reads `?day=` query param).
+- Legacy `/relationships`, `/timeline` preserved.
