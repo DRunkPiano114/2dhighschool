@@ -65,6 +65,36 @@ uv run python scripts/inspect_state.py           # inspect state (--agent lin_zh
 uv run python scripts/export_frontend_data.py    # export sim data → web/public/data/
 ```
 
+## 素材配置 (Art Assets)
+
+Share-card rendering needs the LimeZu Modern Interiors premade sprite sheets
+and a few UI theme packs. These are **commercial assets** and are not in git.
+Place them locally before running anything under `src/sim/cards/`:
+
+```bash
+cp -r /path/to/your/assets ./assets
+# ./assets/moderninteriors-win/... and ./assets/Complete_UI_Essential_Pack_v2.4/...
+```
+
+`./assets/` is gitignored. The **derived** 10 character portrait PNGs under
+`data/portraits/` *are* checked in so freshly cloned workspaces can render cards
+without re-running the generator.
+
+**Convention:** after editing `data/visual_bible.json` (sprite_source or crop
+fields), re-run the portrait generator or the PNGs will drift from the config:
+
+```bash
+uv run python scripts/generate_portraits.py     # regenerate data/portraits/*.png
+uv run python -m sim.cards.self_test            # sanity-check + produce prototype_scene_card.png
+```
+
+The share-card render cache lives in `.cache/cards/` (gitignored). After a sim
+rerun, clear it so cards reflect the new data:
+
+```bash
+rm -rf .cache/cards
+```
+
 ## API Server
 
 ```bash

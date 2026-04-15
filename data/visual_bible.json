@@ -1,0 +1,224 @@
+{
+  "_comment": "Visual bible for SimClass share cards. main_color seeded from web/src/components/world/CharacterSprite.ts::AGENT_COLORS — do not change without syncing there. crop coordinates index into LimeZu premade character sheets — each character frame is 32x64 (the top-left front-facing idle). Re-run scripts/generate_portraits.py after any change here.",
+  "fang_yuchen": {
+    "name_cn": "方语晨",
+    "sprite_source": "Premade_Character_32x32_14.png",
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 64
+    },
+    "main_color": "#B06AB3",
+    "accent_color": "#7A4A7D",
+    "motif_emoji": "☀️",
+    "motif_tag": "小太阳",
+    "font_stack": [
+      "LXGWWenKai"
+    ],
+    "archetype_keywords": [
+      "活泼",
+      "八卦",
+      "讲义气"
+    ]
+  },
+  "su_nianyao": {
+    "name_cn": "苏念瑶",
+    "sprite_source": "Premade_Character_32x32_03.png",
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 64
+    },
+    "main_color": "#D4748B",
+    "accent_color": "#9C4F62",
+    "motif_emoji": "🌸",
+    "motif_tag": "玻璃心诗人",
+    "font_stack": [
+      "LXGWWenKai"
+    ],
+    "archetype_keywords": [
+      "敏感",
+      "文艺",
+      "话多"
+    ]
+  },
+  "tang_shihan": {
+    "name_cn": "唐诗涵",
+    "sprite_source": "Premade_Character_32x32_07.png",
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 64
+    },
+    "main_color": "#4AC4A8",
+    "accent_color": "#2E8A76",
+    "motif_emoji": "🌿",
+    "motif_tag": "大大咧咧学委",
+    "font_stack": [
+      "LXGWWenKai"
+    ],
+    "archetype_keywords": [
+      "外向",
+      "热心",
+      "粗线条"
+    ]
+  },
+  "cheng_yutong": {
+    "name_cn": "程雨桐",
+    "sprite_source": "Premade_Character_32x32_02.png",
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 64
+    },
+    "main_color": "#E8A838",
+    "accent_color": "#A87420",
+    "motif_emoji": "📚",
+    "motif_tag": "沉默第二名",
+    "font_stack": [
+      "NotoSerifSC"
+    ],
+    "archetype_keywords": [
+      "安静",
+      "认真",
+      "好胜"
+    ]
+  },
+  "lin_zhaoyu": {
+    "name_cn": "林昭宇",
+    "sprite_source": "Premade_Character_32x32_05.png",
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 64
+    },
+    "main_color": "#4A7BC4",
+    "accent_color": "#2F5288",
+    "motif_emoji": "🌧️",
+    "motif_tag": "书呆子",
+    "font_stack": [
+      "NotoSerifSC"
+    ],
+    "archetype_keywords": [
+      "内向",
+      "认真",
+      "敏感"
+    ]
+  },
+  "lu_siyuan": {
+    "name_cn": "陆思远",
+    "sprite_source": "Premade_Character_32x32_06.png",
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 64
+    },
+    "main_color": "#5BAA5B",
+    "accent_color": "#3A743A",
+    "motif_emoji": "🌱",
+    "motif_tag": "好好先生",
+    "font_stack": [
+      "LXGWWenKai"
+    ],
+    "archetype_keywords": [
+      "温和",
+      "善良",
+      "懦弱"
+    ]
+  },
+  "shen_yifan": {
+    "name_cn": "沈逸凡",
+    "sprite_source": "Premade_Character_32x32_09.png",
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 64
+    },
+    "main_color": "#C4524A",
+    "accent_color": "#8C3830",
+    "motif_emoji": "🔥",
+    "motif_tag": "正义班长",
+    "font_stack": [
+      "NotoSansSC"
+    ],
+    "archetype_keywords": [
+      "直爽",
+      "急躁",
+      "正义感强"
+    ]
+  },
+  "jiang_haotian": {
+    "name_cn": "姜皓天",
+    "sprite_source": "Premade_Character_32x32_11.png",
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 64
+    },
+    "main_color": "#E87B42",
+    "accent_color": "#A8542A",
+    "motif_emoji": "⚽",
+    "motif_tag": "运动健将",
+    "font_stack": [
+      "NotoSansSC"
+    ],
+    "archetype_keywords": [
+      "外向",
+      "幽默",
+      "随意"
+    ]
+  },
+  "he_jiajun": {
+    "name_cn": "何家骏",
+    "sprite_source": "Premade_Character_32x32_04.png",
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 64
+    },
+    "main_color": "#7B8FA8",
+    "accent_color": "#526074",
+    "motif_emoji": "🌫️",
+    "motif_tag": "寡言少年",
+    "font_stack": [
+      "NotoSerifSC"
+    ],
+    "archetype_keywords": [
+      "内向",
+      "倔强",
+      "自尊心强"
+    ]
+  },
+  "he_min": {
+    "name_cn": "何老师",
+    "sprite_source": "Premade_Character_32x32_17.png",
+    "crop": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 64
+    },
+    "main_color": "#8B6E4E",
+    "accent_color": "#5A4630",
+    "motif_emoji": "📐",
+    "motif_tag": "班主任",
+    "font_stack": [
+      "NotoSerifSC"
+    ],
+    "archetype_keywords": [
+      "严厉",
+      "负责",
+      "偶尔幽默"
+    ],
+    "is_teacher": true
+  }
+}
