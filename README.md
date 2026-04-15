@@ -122,6 +122,3 @@ uv run python -m pytest -k "test_name"          # run tests matching a name
 cd web && pnpm vitest run                       # run frontend unit tests
 ```
 
-## Documentation
-
-- [`ARCHITECTURE.md`](ARCHITECTURE.md) — full technical deep-dive (data models, simulation loop, LLM integration, algorithms)
