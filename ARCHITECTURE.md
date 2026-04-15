@@ -262,13 +262,20 @@ For each agent (concurrently):
 1. Read `today.md` content, active concerns, and unfulfilled intentions from daily plan
 2. Call LLM with `nightly_compress.j2` → returns `CompressionResult`:
    - `daily_summary`: 1-2 sentence summary of the day. The prompt requires neutral 中性记录式 phrasing (no 似乎/仿佛/暗流涌动 — see Fix 1). If there are unfulfilled intentions, the prompt asks the LLM to briefly note why (no opportunity? changed mind? interrupted?) — reflections enter `recent.md` with natural ~3 day half-life
+   - `daily_highlight`: ≤120-char "single most important moment of the day" anchor line rendered as `高光：...` in `recent.md`. Validated by `_validate_daily_highlight` (below) before persistence.
    - `permanent_memories`: candidates with importance scores (subject to the same intensity scale anchor from Fix 1)
    - `new_concerns`: concerns surfaced by reviewing the whole day (safety net for scene-end misses). Can be positive (positive=true) — e.g. anticipation, warmth
-3. Append daily summary to `recent.md` as `# Day N` section
+3. Append daily summary + validated highlight to `recent.md` as `# Day N` section (both entries used by the next day's `daily_plan.j2` via `recent_days`)
 4. Save memories with importance ≥ `settings.key_memory_write_threshold` (=3, Fix 14) to `key_memories.json`
 5. Apply new concerns via `add_concern` (Fix 2 — topic-based dedup), with `source_scene=""`
 6. **Fix 14 per-day cap post-pass**: `cap_today_memories(storage, day, profile_name)` keeps at most `settings.per_day_memory_cap` (=2) of today's memories, dropping the lowest-importance excess. Both scene-end reflections and the compression call feed into the same key_memories file at threshold ≥3, so a single busy day could otherwise blow out an agent's memory list. Older days are untouched.
 7. Clear `today.md`
+
+**`_validate_daily_highlight`** (`memory/compression.py`): three base checks (non-empty, length ≥10, no >50% bigram overlap with any of the last 3 days' highlights) plus a **grounding check** — the LLM's highlight must share ≥30% of its bigrams with `today.md`, otherwise it's presumed fabricated. Grounding is the main filter: LLM frequently dramatizes the highlight into a catchy-but-fictional phrase (e.g. "在走廊上确认了沈逸凡翻墙的真相" when the actual scene was her spreading that rumor, not confirming it). Bigram overlap is a deliberately crude code-level check that catches "vocabulary from today's content pasted into an invented framing" without an extra LLM call.
+
+**Two-tier fallback on grounding failure** (P2-followup): when the highlight fails the 30% threshold, `_try_summary_fallback` applies the same grounding check to the same round's `daily_summary`. If summary passes, it is truncated to `SUMMARY_FALLBACK_MAX_LEN` (100 chars) and returned with source tag `fallback:summary`. Rationale: `daily_summary`'s prompt demands neutral 记录式 style, so it hallucinates less than the highlight even when the LLM is otherwise cooperating poorly, and reusing it is zero-cost (same LLM round). Only if the summary is also ungrounded, empty, or too short does the system fall through to the generic `DAILY_HIGHLIGHT_FALLBACK_POOL` (`"今天没什么戏"`, `"日常的一天"`, …) with tag `fallback:ungrounded`. This prevents the pathological case where an eventful day produces a grounding-rejected highlight and `recent.md` ends up asserting "today was uneventful", which then poisons tomorrow's `daily_plan` context. Telemetry tags distinguish the three paths (`llm` / `fallback:summary` / `fallback:ungrounded`) so post-run analysis can measure how often each tier carries the load.
+
+Hard char truncation is used instead of sentence-aware splitting because LLM summary terminators are inconsistent (`...`, `，`, missing `。`), and a mid-phrase cut is strictly more informative than `"今天没什么戏"`. Other failure tags (`fallback:empty`, `fallback:short`, `fallback:repetitive`) skip the summary fallback and go straight to the generic pool — an empty/fragmented highlight is a structural LLM failure rather than a dramatization problem, and a repetitive highlight means today's content blurred with a recent day's, which summary wouldn't fix either.
 
 ### Phase 3.5: Daily Snapshots (after compression)
 

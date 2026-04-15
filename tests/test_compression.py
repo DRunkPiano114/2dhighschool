@@ -4,9 +4,12 @@ from pathlib import Path
 
 from sim.memory.compression import (
     ConsolidationResult,
+    DAILY_HIGHLIGHT_FALLBACK_POOL,
     MergeGroup,
+    SUMMARY_FALLBACK_MAX_LEN,
     _apply_consolidation,
     _cluster_concerns_by_topic_and_people,
+    _validate_daily_highlight,
 )
 from sim.models.agent import ActiveConcern, AgentState
 from sim.models.memory import KeyMemory, KeyMemoryFile
@@ -117,6 +120,105 @@ def test_consolidation_prefix_rejects_rewritten_opening():
     )
     # Rewritten opening → merge rejected → both concerns survive
     assert len(s.state.active_concerns) == 2
+
+
+# --- daily_highlight two-tier fallback ---
+
+
+def test_highlight_grounded_returns_llm_source():
+    """Baseline: well-grounded highlight survives all three checks with
+    source_tag='llm' (existing behavior preserved)."""
+    today_md = (
+        "方语晨在走廊上跟苏念瑶八卦了沈逸凡的事情，"
+        "还提到了他手机背景那只猫。"
+    )
+    highlight = "跟苏念瑶在走廊上聊了沈逸凡的八卦"
+    out, tag = _validate_daily_highlight(
+        highlight, today_md, recent_md="", day=1,
+    )
+    assert out == highlight
+    assert tag == "llm"
+
+
+def test_highlight_ungrounded_summary_grounded_uses_summary():
+    """The main motivating case — 方语晨 scenario. LLM wrote a
+    narrator-style highlight that fails grounding (0% overlap); summary
+    is grounded. We return summary with tag 'fallback:summary' instead
+    of polluting recent.md with '今天没什么戏'."""
+    today_md = (
+        "方语晨在走廊上跟苏念瑶八卦了沈逸凡的事情，"
+        "还提到了他手机背景那只猫。"
+    )
+    highlight = "冬日午后望着窗外的树梢心绪万千"  # pure narrator prose
+    summary = "方语晨跟苏念瑶八卦沈逸凡事情"
+    out, tag = _validate_daily_highlight(
+        highlight, today_md, recent_md="", day=1,
+        daily_summary=summary,
+    )
+    assert tag == "fallback:summary"
+    # Under SUMMARY_FALLBACK_MAX_LEN so no truncation
+    assert out == summary
+
+
+def test_highlight_and_summary_both_ungrounded_uses_generic_pool():
+    """Worst case — both hallucinated. Fall through to the generic
+    pool (existing behavior preserved). This is the final safety net."""
+    today_md = "方语晨跟苏念瑶八卦沈逸凡"
+    highlight = "冬日午后望着窗外的树梢心绪万千"
+    summary = "某个遥远的地方发生了一些模糊的事情"
+    out, tag = _validate_daily_highlight(
+        highlight, today_md, recent_md="", day=1,
+        daily_summary=summary,
+    )
+    assert tag == "fallback:ungrounded"
+    assert out in DAILY_HIGHLIGHT_FALLBACK_POOL
+
+
+def test_summary_longer_than_max_len_is_truncated():
+    """A grounded summary longer than SUMMARY_FALLBACK_MAX_LEN is
+    hard-truncated. We accept ugly mid-phrase cuts as the cost of keeping
+    fallback content strictly more informative than '今天没什么戏' — a
+    sentence-aware split on 。 is unreliable given LLM terminator noise
+    ('...', ','), and the generic pool remains available as fallback."""
+    today_md = "方语晨跟苏念瑶八卦沈逸凡" * 3
+    highlight = "冬日午后望着窗外的树梢心绪万千"
+    # 120 chars, well-grounded (same bigrams as today_md × 10)
+    summary = "方语晨跟苏念瑶八卦沈逸凡" * 10
+    assert len(summary) > SUMMARY_FALLBACK_MAX_LEN
+    out, tag = _validate_daily_highlight(
+        highlight, today_md, recent_md="", day=1,
+        daily_summary=summary,
+    )
+    assert tag == "fallback:summary"
+    assert len(out) == SUMMARY_FALLBACK_MAX_LEN
+
+
+def test_empty_summary_falls_through_to_generic():
+    """Missing / empty daily_summary skips the second tier entirely
+    and uses the generic pool as before. Protects against LLM returning
+    summary="" on a partial failure."""
+    today_md = "方语晨跟苏念瑶八卦沈逸凡"
+    highlight = "冬日午后望着窗外的树梢心绪万千"
+    out, tag = _validate_daily_highlight(
+        highlight, today_md, recent_md="", day=1,
+        daily_summary="",
+    )
+    assert tag == "fallback:ungrounded"
+    assert out in DAILY_HIGHLIGHT_FALLBACK_POOL
+
+
+def test_short_summary_below_min_length_skipped():
+    """Summary shorter than 10 chars (same sanity threshold highlight
+    uses) is skipped. LLM occasionally returns fragment strings; a
+    fragment isn't a valid highlight."""
+    today_md = "方语晨跟苏念瑶八卦沈逸凡"
+    highlight = "冬日午后望着窗外的树梢心绪万千"
+    out, tag = _validate_daily_highlight(
+        highlight, today_md, recent_md="", day=1,
+        daily_summary="太短了",
+    )
+    assert tag == "fallback:ungrounded"
+    assert out in DAILY_HIGHLIGHT_FALLBACK_POOL
 
 
 def test_consolidation_concern_merge_preserves_id_history():

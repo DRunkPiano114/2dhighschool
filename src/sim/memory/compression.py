@@ -69,14 +69,61 @@ def _extract_recent_highlights(recent_md: str, last_n: int = 3) -> list[str]:
     return lines[-last_n:]
 
 
+SUMMARY_FALLBACK_MAX_LEN = 100
+GROUNDING_MIN_RATIO = 0.3
+
+
+def _try_summary_fallback(
+    daily_summary: str,
+    t_bg: set[str],
+) -> str | None:
+    """Second-tier fallback: if the LLM's daily_summary also grounds in
+    today.md at the same threshold, truncate it as a stand-in highlight.
+
+    Why summary makes a decent highlight: its prompt asks for neutral
+    recording style (not dramatic catch-phrase), so it hallucinates
+    less. Reusing it is free (same LLM round) and agent-scoped. The
+    downside — an ungrounded summary landing in recent.md — is guarded
+    by running the exact same bigram check we just failed the highlight
+    with; if both hallucinated, we fall through to the generic pool.
+    """
+    if not daily_summary or len(daily_summary) < 10:
+        return None
+    s_bg = _bigrams(daily_summary)
+    if not s_bg or not t_bg:
+        return None
+    ratio = len(s_bg & t_bg) / len(s_bg)
+    if ratio < GROUNDING_MIN_RATIO:
+        logger.debug(
+            f"  summary also ungrounded (ratio={ratio:.0%}), "
+            f"using generic fallback"
+        )
+        return None
+    logger.info(f"  daily_highlight fell back to summary (ratio={ratio:.0%})")
+    # Hard char truncate. A sentence-aware split on 。 is tempting but
+    # LLM output terminators are inconsistent ("..."、"，" 收尾 etc.);
+    # truncation mid-phrase is visually uglier than a generic句 but
+    # strictly more informative for downstream prompt context.
+    return daily_summary[:SUMMARY_FALLBACK_MAX_LEN]
+
+
 def _validate_daily_highlight(
     highlight: str,
     today_md: str,
     recent_md: str,
     day: int,
+    daily_summary: str = "",
 ) -> tuple[str, str]:
     """3-layer validation: length, grounding, cross-day similarity.
-    Returns (final_highlight, source_tag)."""
+    Returns (final_highlight, source_tag).
+
+    On grounding failure: tries `daily_summary` (same LLM round) against
+    the same grounding threshold before falling through to the generic
+    pool. Summary is less prone to hallucination because its prompt
+    explicitly demands neutral recording style; reusing it avoids the
+    "今天没什么戏" anti-pattern polluting future memory on eventful days
+    that just had a dramatized highlight.
+    """
     if not highlight or not highlight.strip():
         return _pick_fallback(day), "fallback:empty"
     if len(highlight) < 10:
@@ -87,11 +134,14 @@ def _validate_daily_highlight(
     if not h_bg or not t_bg:
         return _pick_fallback(day), "fallback:ungrounded"
     grounding_ratio = len(h_bg & t_bg) / len(h_bg)
-    if grounding_ratio < 0.3:
+    if grounding_ratio < GROUNDING_MIN_RATIO:
         logger.warning(
             f"  daily_highlight ungrounded (ratio={grounding_ratio:.0%}): "
             f"{highlight[:40]} -> fallback"
         )
+        summary_fallback = _try_summary_fallback(daily_summary, t_bg)
+        if summary_fallback is not None:
+            return summary_fallback, "fallback:summary"
         return _pick_fallback(day), "fallback:ungrounded"
 
     for prev in _extract_recent_highlights(recent_md, last_n=3):
@@ -210,11 +260,19 @@ async def nightly_compress(
         temperature=settings.compression_temperature,
     )
 
-    # Validate daily_highlight
+    # Validate daily_highlight. Passes result.daily_summary so that a
+    # grounding-failed highlight can fall back to the LLM's own summary
+    # (same round, agent-scoped, prompt-enforced neutral style) before
+    # degrading to the generic pool — keeps recent.md truthful on days
+    # when the LLM dramatized the highlight but summary stayed grounded.
     today_content_for_check = storage.read_today_md()
     recent_for_check = storage.read_recent_md()
     highlight, source_tag = _validate_daily_highlight(
-        result.daily_highlight, today_content_for_check, recent_for_check, day,
+        result.daily_highlight,
+        today_content_for_check,
+        recent_for_check,
+        day,
+        daily_summary=result.daily_summary,
     )
     logger.info(f"  {profile.name}: daily_highlight source={source_tag}")
 
