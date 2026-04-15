@@ -1,0 +1,168 @@
+{
+  "memories": [
+    {
+      "date": "Day 1",
+      "day": 1,
+      "people": [
+        "姜皓天"
+      ],
+      "location": "宿舍",
+      "emotion": "frustrated",
+      "importance": 6,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "姜皓天大半夜还在宿舍吵闹，根本不把班规和休息当回事。",
+      "source_days": [
+        2
+      ],
+      "text_history": [
+        "姜皓天在操场上当着面玩手机还嘲讽我，完全没把纪律当回事。"
+      ]
+    },
+    {
+      "date": "Day 1",
+      "day": 1,
+      "people": [
+        "姜皓天",
+        "方语晨"
+      ],
+      "location": "教室",
+      "emotion": "frustrated",
+      "importance": 5,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "姜皓天又在课间带头起哄，还把方语晨也扯进来，简直没法沟通。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 2",
+      "day": 2,
+      "people": [
+        "姜皓天",
+        "何家骏"
+      ],
+      "location": "食堂",
+      "emotion": "frustrated",
+      "importance": 6,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "姜皓天在食堂当众喊人开黑，还带坏了何家骏，简直完全不把我这个班长放在眼里。",
+      "source_days": [
+        5,
+        6
+      ],
+      "text_history": [
+        "姜皓天在课上又带头闹腾，还想拉家骏去打球，完全没把班长的提醒当回事。",
+        "姜皓天在食堂带头扰乱秩序，还拉走何家骏，完全不把班规当回事。"
+      ]
+    },
+    {
+      "date": "Day 3",
+      "day": 3,
+      "people": [
+        "姜皓天",
+        "陆思远"
+      ],
+      "location": "食堂",
+      "emotion": "frustrated",
+      "importance": 6,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "姜皓天当众嘲讽我，还带走陆思远，完全没把班长的提醒当回事。",
+      "source_days": [
+        3
+      ],
+      "text_history": [
+        "姜皓天在熄灯后还在挑衅，甚至把陆思远也拉下水，完全不顾班规。"
+      ]
+    },
+    {
+      "date": "Day 4",
+      "day": 4,
+      "people": [
+        "姜皓天"
+      ],
+      "location": "操场",
+      "emotion": "angry",
+      "importance": 8,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "姜皓天在操场当众挑衅，还用肩膀撞我，简直无法无天。",
+      "source_days": [
+        4,
+        5,
+        6,
+        8
+      ],
+      "text_history": [
+        "姜皓天在操场上还是那副死猪不怕开水烫的样子，根本没把纪律当回事。",
+        "姜皓天在课上晃桌子挑衅，完全无视纪律。",
+        "姜皓天在操场当众挑衅，不仅无视班规还大声哼歌羞辱，完全没有悔改之意。"
+      ]
+    },
+    {
+      "date": "Day 7",
+      "day": 7,
+      "people": [
+        "姜皓天"
+      ],
+      "location": "宿舍",
+      "emotion": "frustrated",
+      "importance": 6,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "在宿舍里再次警告姜皓天收手机，但他根本没当回事，还在那故意弄出响动挑衅。",
+      "source_days": [
+        7
+      ],
+      "text_history": [
+        "在宿舍夜聊时与姜皓天发生直接言语冲突，对方踢床板表达不满。"
+      ]
+    },
+    {
+      "date": "Day 8",
+      "day": 8,
+      "people": [
+        "何家骏"
+      ],
+      "location": "教室",
+      "emotion": "angry",
+      "importance": 6,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "何家骏在眼皮子底下玩手机，简直不知悔改，这种人迟早要出事。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 9",
+      "day": 9,
+      "people": [
+        "姜皓天",
+        "林昭宇",
+        "陆思远"
+      ],
+      "location": "宿舍",
+      "emotion": "frustrated",
+      "importance": 6,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "宿舍里又因为姜皓天闹腾，林昭宇和陆思远躲着不吱声，这班长当得真累。",
+      "source_days": [
+        9
+      ],
+      "text_history": [
+        "在宿舍熄灯前成功制止了姜皓天的喧哗，虽然宿舍恢复了安静，但与室友间的距离感依然让我感到压抑。"
+      ]
+    }
+  ]
+}

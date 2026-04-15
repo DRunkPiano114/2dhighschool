@@ -36,7 +36,7 @@ class SceneGenerator:
         self._cooldown_state: dict[str, int] = self._load_cooldown_state()
 
     def _load_location_events(self) -> dict:
-        path = settings.data_dir / "location_events.json"
+        path = settings.worldbook_dir / "location_events.json"
         if path.exists():
             return json.loads(path.read_text("utf-8"))
         return {}

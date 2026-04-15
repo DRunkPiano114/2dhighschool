@@ -1,6 +1,6 @@
 """One-shot LLM generation of behavioral_anchors for each character.
 
-Reads each data/characters/*.json, builds a prompt from personality +
+Reads each canon/cast/profiles/*.json, builds a prompt from personality +
 speaking_style + backstory + inner_conflicts, calls the LLM, writes back
 the behavioral_anchors field. Idempotent: re-running overwrites.
 
@@ -95,7 +95,7 @@ async def main() -> None:
     parser.add_argument("--dry-run", action="store_true", help="Print only, don't write")
     args = parser.parse_args()
 
-    char_dir = settings.data_dir / "characters"
+    char_dir = settings.cast_dir / "profiles"
     char_files = sorted(char_dir.glob("*.json"))
     if not char_files:
         print(f"No character files found in {char_dir}")

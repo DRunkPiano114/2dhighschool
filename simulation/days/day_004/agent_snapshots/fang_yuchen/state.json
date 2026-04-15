@@ -1,0 +1,112 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "苏念瑶",
+        "goal": "旁敲侧击问清楚沈逸凡周末去图书馆到底是不是去约会",
+        "reason": "心里的八卦之火烧得难受，必须找念瑶确认一下细节。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "756877",
+        "origin_day": 3,
+        "pursued_days": 2
+      },
+      {
+        "target": "姜皓天",
+        "goal": "找机会再试探一下他手机里的秘密",
+        "reason": "那天他反应太奇怪了，这种谜语人行为真的让人抓心挠肝！",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "13a135",
+        "origin_day": 4,
+        "pursued_days": 1
+      },
+      {
+        "target": null,
+        "goal": "偷偷刷一会儿微短剧",
+        "reason": "昨晚没看成，今天必须补上，不然感觉生活都没动力了。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 3,
+        "pursued_days": 2
+      }
+    ],
+    "mood_forecast": "frustrated",
+    "location_preferences": {
+      "morning_break": "走廊",
+      "lunch": "食堂",
+      "afternoon_break": "教室"
+    }
+  },
+  "day": 4,
+  "active_concerns": [
+    {
+      "id": "756877",
+      "text": "沈逸凡周末去图书馆到底是不是去约会的？好想知道！",
+      "source_event": "课间听到沈逸凡说周末去图书馆",
+      "source_scene": "课间@教室",
+      "source_day": 2,
+      "emotion": "curious",
+      "intensity": 5,
+      "related_people": [
+        "沈逸凡"
+      ],
+      "positive": true,
+      "topic": "恋爱",
+      "last_reinforced_day": 3,
+      "last_new_info_day": 2,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 4,
+      "bumps_today": 2
+    },
+    {
+      "id": "13a135",
+      "text": "姜皓天手机里到底藏着什么秘密？当时他那个反应太奇怪了，一定要找机会再试探一下。",
+      "source_event": "15:30 课间@走廊",
+      "source_scene": "",
+      "source_day": 3,
+      "emotion": "curious",
+      "intensity": 4,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": false,
+      "topic": "其他",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 3,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 4,
+      "bumps_today": 2
+    },
+    {
+      "id": "5cf0ef",
+      "text": "程雨桐在教室里对我的八卦提问表现得非常冷漠，甚至戴上耳机拒绝交流，这让我觉得有点没趣。",
+      "source_event": "15:30 课间教室对话",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "bored",
+      "intensity": 3,
+      "related_people": [
+        "程雨桐"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 4,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

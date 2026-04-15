@@ -1,0 +1,93 @@
+{
+  "emotion": "calm",
+  "energy": 85,
+  "academic_pressure": 50,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "智学网",
+        "goal": "确认月考排名",
+        "reason": "排名一直不出，这种不确定的悬念严重干扰了我的复习节奏。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 5,
+        "pursued_days": 2
+      },
+      {
+        "target": "宿舍被窝",
+        "goal": "阅读《仙路独行》",
+        "reason": "连续两天没看成，需要通过修仙小说缓解现实压力。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 6,
+        "pursued_days": 1
+      },
+      {
+        "target": "物理笔记",
+        "goal": "整理错题逻辑",
+        "reason": "月考排名没出，先通过巩固物理知识来维持秩序感。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 6,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "anxious",
+    "location_preferences": {
+      "morning_break": "图书馆",
+      "lunch": "教室",
+      "afternoon_break": "操场"
+    }
+  },
+  "day": 6,
+  "active_concerns": [
+    {
+      "id": "998933",
+      "text": "月考排名尚未公布，对成绩的悬念导致持续的焦虑感。",
+      "source_event": "午饭时演算物理题；智学网后台持续刷新无结果；全天多次查看智学网无果",
+      "source_scene": "",
+      "source_day": 1,
+      "emotion": "anxious",
+      "intensity": 10,
+      "related_people": [],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 6,
+      "last_new_info_day": 1,
+      "reinforcement_count": 5,
+      "text_history": [
+        "月考排名迟迟未公布，这种不确定性导致复习计划的调整受阻。",
+        "月考排名迟迟未公布，这种不确定性导致无法及时复盘并调整后续学习重心。"
+      ],
+      "id_history": [
+        "eb3d29",
+        "621c16"
+      ],
+      "last_bump_day": 6,
+      "bumps_today": 2
+    },
+    {
+      "id": "f5f334",
+      "text": "每晚熄灯后阅读《仙路独行》的私密时间被白天的琐事和晚上的宿舍喧闹挤压，难以获得心理逃避。",
+      "source_event": "22:00 宿舍夜聊",
+      "source_scene": "",
+      "source_day": 5,
+      "emotion": "frustrated",
+      "intensity": 7,
+      "related_people": [],
+      "positive": false,
+      "topic": "兴趣爱好",
+      "last_reinforced_day": 6,
+      "last_new_info_day": 5,
+      "reinforcement_count": 2,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 6,
+      "bumps_today": 2
+    }
+  ]
+}

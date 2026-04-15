@@ -1,0 +1,68 @@
+{
+  "emotion": "calm",
+  "energy": 85,
+  "academic_pressure": 60,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "智学网",
+        "goal": "确认月考排名",
+        "reason": "只有看到第一名才能缓解那种胃里翻腾的焦虑感。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "7b2e91",
+        "origin_day": 1,
+        "pursued_days": 1
+      },
+      {
+        "target": "物理竞赛题集",
+        "goal": "独立完成三道压轴难题",
+        "reason": "通过高难度的逻辑推演来获得掌控感，暂时屏蔽父母的期待。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "4d1a55",
+        "origin_day": 1,
+        "pursued_days": 1
+      },
+      {
+        "target": "被窝",
+        "goal": "阅读《仙路独行》最新章节",
+        "reason": "这是我唯一能逃离现实重压的出口，必须保证这半小时的阅读时间。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "9c8f22",
+        "origin_day": 1,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "教室",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 1,
+  "active_concerns": [
+    {
+      "id": "998933",
+      "text": "月考排名尚未公布，对成绩的悬念导致持续的焦虑感。",
+      "source_event": "午饭时演算物理题",
+      "source_scene": "",
+      "source_day": 1,
+      "emotion": "anxious",
+      "intensity": 6,
+      "related_people": [],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

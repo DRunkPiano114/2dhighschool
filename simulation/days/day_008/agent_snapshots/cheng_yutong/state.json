@@ -1,0 +1,87 @@
+{
+  "emotion": "calm",
+  "energy": 85,
+  "academic_pressure": 50,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "智学网后台",
+        "goal": "确认月考排名",
+        "reason": "排名迟迟不出，这种不确定性极大地干扰了我对后续复习强度的预判，必须尽快拿到结果以调整学习节奏。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "f5f334",
+        "origin_day": 5,
+        "pursued_days": 4
+      },
+      {
+        "target": "物理笔记",
+        "goal": "整理错题逻辑",
+        "reason": "月考中物理部分有逻辑漏洞，必须在复习计划中将其彻底闭环，否则下次考试仍有丢分风险。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 6,
+        "pursued_days": 3
+      },
+      {
+        "target": "被窝",
+        "goal": "阅读《仙路独行》",
+        "reason": "白天被嘈杂环境和高压学习挤压，这是我唯一能维持心理平衡的私人时间。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "f5f334",
+        "origin_day": 5,
+        "pursued_days": 4
+      }
+    ],
+    "mood_forecast": "calm",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "教室",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 8,
+  "active_concerns": [
+    {
+      "id": "f5f334",
+      "text": "每晚熄灯后阅读《仙路独行》的私密时间被白天的琐事和晚上的宿舍喧闹挤压，难以获得心理逃避。",
+      "source_event": "22:00 宿舍夜聊",
+      "source_scene": "",
+      "source_day": 5,
+      "emotion": "frustrated",
+      "intensity": 2,
+      "related_people": [],
+      "positive": false,
+      "topic": "兴趣爱好",
+      "last_reinforced_day": 8,
+      "last_new_info_day": 5,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 8,
+      "bumps_today": 2
+    },
+    {
+      "id": "ae385e",
+      "text": "月考排名迟迟未发布，无法根据结果评估物理学科的逻辑漏洞，导致复习节奏被打乱。",
+      "source_event": "课间反复刷新智学网界面",
+      "source_scene": "",
+      "source_day": 8,
+      "emotion": "frustrated",
+      "intensity": 6,
+      "related_people": [],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 8,
+      "last_new_info_day": 8,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

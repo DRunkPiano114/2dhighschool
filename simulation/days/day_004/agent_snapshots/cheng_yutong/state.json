@@ -1,0 +1,77 @@
+{
+  "emotion": "calm",
+  "energy": 85,
+  "academic_pressure": 50,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "智学网",
+        "goal": "确认月考最终排名",
+        "reason": "月考排名迟迟未出，这种不确定性极大地干扰了我的学习规划节奏，必须尽快确认以调整后续策略。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "998933",
+        "origin_day": 3,
+        "pursued_days": 2
+      },
+      {
+        "target": null,
+        "goal": "阅读《仙路独行》最新更新章节",
+        "reason": "高强度的学习压力下，这是我目前维系心理平衡、逃避现实压力的唯一出口。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 4,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "anxious",
+    "location_preferences": {
+      "morning_break": "图书馆",
+      "lunch": "教室",
+      "afternoon_break": "教室"
+    }
+  },
+  "day": 4,
+  "active_concerns": [
+    {
+      "id": "998933",
+      "text": "月考排名尚未公布，对成绩的悬念导致持续的焦虑感。",
+      "source_event": "午饭时演算物理题",
+      "source_scene": "",
+      "source_day": 1,
+      "emotion": "anxious",
+      "intensity": 9,
+      "related_people": [],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 1,
+      "reinforcement_count": 3,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 4,
+      "bumps_today": 2
+    },
+    {
+      "id": "eb3d29",
+      "text": "月考排名迟迟未公布，这种不确定性导致复习计划的调整受阻。",
+      "source_event": "智学网后台持续刷新无结果",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "anxious",
+      "intensity": 6,
+      "related_people": [],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 4,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

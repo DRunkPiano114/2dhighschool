@@ -1,0 +1,91 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 15,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "何家骏",
+        "goal": "拉他去操场投篮",
+        "reason": "看他那闷葫芦样就心烦，带他打球顺便找回点场子，省得想家里那些破事。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 1,
+        "pursued_days": 1
+      },
+      {
+        "target": "沈逸凡",
+        "goal": "故意在他面前晃悠玩手机",
+        "reason": "看他那一脸正经却又拿我没办法的样子就想笑，解压。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 1,
+        "pursued_days": 1
+      },
+      {
+        "target": "陆思远",
+        "goal": "打听一下大家对以后就业的看法",
+        "reason": "家里厂子订单少，想旁敲侧击问问别人怎么看，但今天还不想直接问爸妈，怕露馅。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 1,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "happy",
+    "location_preferences": {
+      "morning_break": "操场",
+      "lunch": "食堂",
+      "afternoon_break": "教室"
+    }
+  },
+  "day": 1,
+  "active_concerns": [
+    {
+      "id": "168376",
+      "text": "何家骏这小子倒是能陪我打球，希望他别被这破学校压傻了。",
+      "source_event": "邀请何家骏去操场打球",
+      "source_scene": "课间@教室",
+      "source_day": 1,
+      "emotion": "calm",
+      "intensity": 3,
+      "related_people": [
+        "何家骏"
+      ],
+      "positive": true,
+      "topic": "其他",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "9e32b7",
+      "text": "家里工厂订单减少，想打听别人对未来就业的看法，但一直没找到合适的机会深入询问。",
+      "source_event": "与陆思远关于毕业后打算的简短对话",
+      "source_scene": "",
+      "source_day": 1,
+      "emotion": "anxious",
+      "intensity": 6,
+      "related_people": [
+        "陆思远"
+      ],
+      "positive": false,
+      "topic": "家庭压力",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

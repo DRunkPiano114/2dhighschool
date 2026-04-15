@@ -32,4 +32,4 @@ The goal: a stranger should be able to fully understand this project's technical
 
 ## JSON Quoting Rule
 
-JSON files under `data/` contain Chinese text. Use ASCII `"` (U+0022) for all JSON structural quotes (field names, string delimiters). Chinese curly quotes `""` (U+201C/201D) may only appear **inside** string content. After editing any JSON file, validate with `python -m json.tool`.
+JSON files under `canon/` contain Chinese text (the 5 worldbook JSONs under `canon/worldbook/` and the character profiles under `canon/cast/profiles/`). Use ASCII `"` (U+0022) for all JSON structural quotes (field names, string delimiters). Chinese curly quotes `""` (U+201C/201D) may only appear **inside** string content. After editing any JSON file, validate with `python -m json.tool`.

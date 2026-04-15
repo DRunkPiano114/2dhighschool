@@ -28,9 +28,9 @@ THRESHOLD = 0.25
 
 def _scene_files() -> list:
     files: list = []
-    if not settings.logs_dir.exists():
+    if not settings.days_dir.exists():
         return files
-    for day_dir in sorted(settings.logs_dir.iterdir()):
+    for day_dir in sorted(settings.days_dir.iterdir()):
         if not day_dir.is_dir() or not day_dir.name.startswith("day_"):
             continue
         for p in sorted(day_dir.glob("*.json")):

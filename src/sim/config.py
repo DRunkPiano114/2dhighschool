@@ -11,10 +11,12 @@ class Settings(BaseSettings):
 
     # Paths
     project_root: Path = Path(".")
-    data_dir: Path = Path("data")
-    agents_dir: Path = Path("agents")
-    world_dir: Path = Path("world")
-    logs_dir: Path = Path("logs")
+    cast_dir: Path = Path("canon/cast")
+    worldbook_dir: Path = Path("canon/worldbook")
+    simulation_dir: Path = Path("simulation")
+    days_dir: Path = Path("simulation/days")
+    agents_dir: Path = Path("simulation/state")
+    world_dir: Path = Path("simulation/world")
 
     # LLM
     llm_model: str = "deepseek/deepseek-chat"
@@ -76,7 +78,7 @@ class Settings(BaseSettings):
 
     # Ambient events (Fix 12)
     ambient_event_probability: float = 0.3
-    ambient_events_file: Path = Path("data/scene_ambient_events.json")
+    ambient_events_file: Path = Path("canon/worldbook/scene_ambient_events.json")
 
     # Consolidation (Fix 15)
     consolidation_interval_days: int = 3

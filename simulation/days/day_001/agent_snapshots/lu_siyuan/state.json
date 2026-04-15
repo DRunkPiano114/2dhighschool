@@ -1,0 +1,89 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 35,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "林昭宇",
+        "goal": "去图书馆和林昭宇一起自习",
+        "reason": "最近复习物理压力太大，想和林昭宇待在一起，感觉会安心一些。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 1,
+        "pursued_days": 1
+      },
+      {
+        "target": "公众号",
+        "goal": "把草稿箱里的一篇感悟稍微改改，但还是不敢发",
+        "reason": "写出来心里会舒服点，虽然没人看，但算是一种情绪宣泄。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 1,
+        "pursued_days": 1
+      },
+      {
+        "target": "姜皓天",
+        "goal": "帮姜皓天把物理作业抄完",
+        "reason": "他又要我帮忙，我不太敢拒绝，怕拒绝了之后班里气氛尴尬。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 1,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 1,
+  "active_concerns": [
+    {
+      "id": "c1797a",
+      "text": "晚上去图书馆能帮林昭宇把题弄懂吗？",
+      "source_event": "林昭宇问我电磁感应的题",
+      "source_scene": "课间@教室",
+      "source_day": 1,
+      "emotion": "anxious",
+      "intensity": 2,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "e59812",
+      "text": "公众号草稿箱里写好的感悟，想发却始终不敢点击发布。",
+      "source_event": "独处时的自我反思",
+      "source_scene": "",
+      "source_day": 1,
+      "emotion": "anxious",
+      "intensity": 4,
+      "related_people": [],
+      "positive": false,
+      "topic": "自我认同",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

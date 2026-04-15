@@ -1,0 +1,119 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "姜皓天",
+        "goal": "找个机会跟他好好谈谈，把纪律红线说清楚，不能再让他这么没完没了地挑衅了。",
+        "reason": "即使再烦，也不能让他在班里继续这么无法无天，我得把话摊开来说。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "42fa81",
+        "origin_day": 5,
+        "pursued_days": 4
+      },
+      {
+        "target": "林昭宇",
+        "goal": "语气放软点，跟他说说宿舍卫生的事，别搞得大家见面都尴尬。",
+        "reason": "宿舍气氛太僵，还是得找机会缓和一下，毕竟以后还要一起住。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "de8422",
+        "origin_day": 7,
+        "pursued_days": 2
+      },
+      {
+        "target": null,
+        "goal": "去操场跑个步，出一身汗。",
+        "reason": "这几天心火太旺，跑完步说不定能冷静点，把那些烂事儿先放一放。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 7,
+        "pursued_days": 2
+      }
+    ],
+    "mood_forecast": "anxious",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "操场"
+    }
+  },
+  "day": 8,
+  "active_concerns": [
+    {
+      "id": "42fa81",
+      "text": "宿舍里的沟通氛围越来越僵硬，我是否应该在处理值日表和纪律问题时采取更柔和的方式，以免进一步疏远室友？",
+      "source_event": "宿舍熄灯后的纪律警告；看到何家骏在食堂顺从姜皓天并约着晚上打游戏；宿舍夜聊；宿舍夜聊；操场冲突；12:00 午饭@食堂；宿舍夜聊",
+      "source_scene": "",
+      "source_day": 1,
+      "emotion": "frustrated",
+      "intensity": 10,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 8,
+      "last_new_info_day": 8,
+      "reinforcement_count": 7,
+      "text_history": [
+        "在宿舍管理上，我与姜皓天的矛盾不断升级，必须找机会进行一次正式谈话，彻底明确纪律底线，不再让这种拉锯战影响我的情绪。",
+        "姜皓天的挑衅行为已经越界，这种敌对关系如果不通过强硬手段或老师介入解决，将持续破坏班级纪律和我的心理状态。",
+        "在食堂对姜皓天的公开警告虽然维护了纪律，但这种强硬的对抗方式是否会引发更激烈的报复，让我感到不安。"
+      ],
+      "id_history": [],
+      "last_bump_day": 8,
+      "bumps_today": 2
+    },
+    {
+      "id": "1da105",
+      "text": "课间频繁地干预同学行为，导致方语晨等人的疏离，我需要反思这种管理方式是否过于刻板。",
+      "source_event": "08:45 课间@操场",
+      "source_scene": "",
+      "source_day": 6,
+      "emotion": "embarrassed",
+      "intensity": 3,
+      "related_people": [
+        "方语晨"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 7,
+      "last_new_info_day": 6,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 7,
+      "bumps_today": 2
+    },
+    {
+      "id": "de8422",
+      "text": "为什么我说的话他们听不进去，反而觉得我在找麻烦？",
+      "source_event": "22:00 宿舍夜聊；食堂排队时林昭宇和陆思远刻意避开我的反应",
+      "source_scene": "",
+      "source_day": 7,
+      "emotion": "frustrated",
+      "intensity": 7,
+      "related_people": [
+        "林昭宇",
+        "陆思远"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 8,
+      "last_new_info_day": 8,
+      "reinforcement_count": 2,
+      "text_history": [
+        "宿舍内部因管理产生的隔阂感加剧，担心与林昭宇、陆思远的室友关系进一步恶化。"
+      ],
+      "id_history": [],
+      "last_bump_day": 8,
+      "bumps_today": 2
+    }
+  ]
+}

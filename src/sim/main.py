@@ -4,6 +4,7 @@ import sys
 from loguru import logger
 
 from .agent.storage import WorldStorage
+from .config import settings
 from .interaction.orchestrator import Orchestrator
 
 
@@ -20,7 +21,7 @@ def main() -> None:
     # Configure logging
     logger.remove()
     logger.add(sys.stderr, level=args.log_level)
-    logger.add("logs/sim.log", rotation="10 MB", level="DEBUG")
+    logger.add(str(settings.simulation_dir / "sim.log"), rotation="10 MB", level="DEBUG")
 
     world = WorldStorage()
     world.load_all_agents()

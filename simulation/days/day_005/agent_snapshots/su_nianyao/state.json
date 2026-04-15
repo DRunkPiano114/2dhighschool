@@ -1,0 +1,133 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "随笔",
+        "goal": "在午休时写一段关于冬天的随笔",
+        "reason": "已经连续两天没写了，心里总觉得空落落的，想把那种冷清又安静的感觉记下来。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 5,
+        "pursued_days": 1
+      },
+      {
+        "target": "林昭宇",
+        "goal": "假装去接水，路过林昭宇的座位确认他今天在干嘛",
+        "reason": "上次被发现偷看太尴尬了，这次得表现得自然一点，不然真的会原地社死。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "015860",
+        "origin_day": 5,
+        "pursued_days": 1
+      },
+      {
+        "target": "网购",
+        "goal": "在午休时间刷刷手机，把周末剧本杀要穿的丝绒裙子下单了",
+        "reason": "再不买就来不及了，要是到时候裙子不好看，我会郁闷一整天的。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "1a6e9b",
+        "origin_day": 5,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "frustrated",
+    "location_preferences": {
+      "morning_break": "图书馆",
+      "lunch": "小卖部",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 5,
+  "active_concerns": [
+    {
+      "id": "015860",
+      "text": "被她们发现我在偷看林昭宇了，好尴尬，以后得更小心点。",
+      "source_event": "唐诗涵和方语晨在晚自习当众讨论我的眼神动向",
+      "source_scene": "晚自习",
+      "source_day": 4,
+      "emotion": "embarrassed",
+      "intensity": 2,
+      "related_people": [
+        "林昭宇",
+        "方语晨",
+        "唐诗涵"
+      ],
+      "positive": false,
+      "topic": "其他",
+      "last_reinforced_day": 5,
+      "last_new_info_day": 4,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 5,
+      "bumps_today": 2
+    },
+    {
+      "id": "1a6e9b",
+      "text": "周末剧本杀活动的丝绒裙子还没买，担心到时候穿搭效果不好。",
+      "source_event": "食堂与方语晨讨论剧本杀服装",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "frustrated",
+      "intensity": 1,
+      "related_people": [
+        "方语晨"
+      ],
+      "positive": true,
+      "topic": "期待的事",
+      "last_reinforced_day": 5,
+      "last_new_info_day": 4,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 5,
+      "bumps_today": 2
+    },
+    {
+      "id": "354e18",
+      "text": "连续两天没写随笔了，心里总觉得空落落的，想把那种冷清又安静的感觉记下来。",
+      "source_event": "图书馆独处时间",
+      "source_scene": "",
+      "source_day": 5,
+      "emotion": "frustrated",
+      "intensity": 4,
+      "related_people": [],
+      "positive": false,
+      "topic": "兴趣爱好",
+      "last_reinforced_day": 5,
+      "last_new_info_day": 5,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "ed11f7",
+      "text": "想假装接水路过林昭宇的座位确认他在干嘛，但因为上次被发现而不敢行动。",
+      "source_event": "课间活动",
+      "source_scene": "",
+      "source_day": 5,
+      "emotion": "frustrated",
+      "intensity": 4,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "恋爱",
+      "last_reinforced_day": 5,
+      "last_new_info_day": 5,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

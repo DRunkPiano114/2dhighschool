@@ -1,0 +1,48 @@
+{
+  "emotion": "calm",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "公众号",
+        "goal": "精简掉那些过于矫情的自我剖析，试着把文章发出去",
+        "reason": "老是写了又删，总觉得心里堵得慌，想看看发出去会不会好受点",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "4c1d08",
+        "origin_day": 8,
+        "pursued_days": 2
+      },
+      {
+        "target": "林昭宇",
+        "goal": "和他在图书馆安静地待一会儿，讨论一下生物难题",
+        "reason": "最近心累，只有跟他待着的时候才觉得能喘口气",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 9,
+        "pursued_days": 1
+      },
+      {
+        "target": "姜皓天",
+        "goal": "如果他又要我帮忙，我想试着委婉地推脱掉",
+        "reason": "一直帮忙真的太累了，虽然怕得罪他，但总得有个限度",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "b17425",
+        "origin_day": 9,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 9,
+  "active_concerns": []
+}

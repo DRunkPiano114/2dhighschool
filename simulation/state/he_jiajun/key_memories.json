@@ -1,0 +1,240 @@
+{
+  "memories": [
+    {
+      "date": "Day 1",
+      "day": 1,
+      "people": [
+        "陆思远",
+        "姜皓天"
+      ],
+      "location": "图书馆",
+      "emotion": "bored",
+      "importance": 4,
+      "topics": [
+        "人际矛盾",
+        "学业焦虑"
+      ],
+      "text": "在图书馆看到陆思远在誊抄姜皓天的物理卷子，意识到自己和他们的圈子距离很远。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 1",
+      "day": 1,
+      "people": [
+        "林昭宇",
+        "唐诗涵"
+      ],
+      "location": "教室",
+      "emotion": "bored",
+      "importance": 3,
+      "topics": [
+        "学业焦虑"
+      ],
+      "text": "林昭宇和唐诗涵为了物理题在那边磨叽，烦死了。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 2",
+      "day": 2,
+      "people": [
+        "姜皓天"
+      ],
+      "location": "食堂",
+      "emotion": "touched",
+      "importance": 6,
+      "topics": [
+        "人际矛盾",
+        "期待的事"
+      ],
+      "text": "姜皓天在食堂主动叫我一起吃饭，还说下午带我练投篮。",
+      "source_days": [
+        4,
+        9
+      ],
+      "text_history": [
+        "姜皓天在食堂催我吃饭，还说下午打球别客气",
+        "姜皓天叫我去打球，还说别管那物理题了，他好像没觉得我烦。"
+      ]
+    },
+    {
+      "date": "Day 2",
+      "day": 2,
+      "people": [
+        "姜皓天",
+        "陆思远"
+      ],
+      "location": "食堂",
+      "emotion": "touched",
+      "importance": 6,
+      "topics": [
+        "人际矛盾",
+        "兴趣爱好"
+      ],
+      "text": "姜皓天在食堂主动邀请我一起用餐，并约我下午去操场打球。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 3",
+      "day": 3,
+      "people": [
+        "沈逸凡"
+      ],
+      "location": "教室",
+      "emotion": "embarrassed",
+      "importance": 6,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "沈逸凡当众说我动静太大，吵到他们了，脸好烫。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 3",
+      "day": 3,
+      "people": [
+        "何老师"
+      ],
+      "location": "食堂",
+      "emotion": "anxious",
+      "importance": 6,
+      "topics": [
+        "学业焦虑"
+      ],
+      "text": "何老师在食堂盯着我，非要我下午把错题本补好，躲都躲不掉。",
+      "source_days": [
+        7
+      ],
+      "text_history": [
+        "何老师在食堂盯着我，还要我吃完饭去教学楼入口找他，躲不掉。"
+      ]
+    },
+    {
+      "date": "Day 4",
+      "day": 4,
+      "people": [
+        "姜皓天",
+        "沈逸凡"
+      ],
+      "location": "操场",
+      "emotion": "embarrassed",
+      "importance": 6,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "姜皓天和沈逸凡在操场吵架，沈逸凡盯着我看，感觉很不好。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 5",
+      "day": 5,
+      "people": [
+        "沈逸凡"
+      ],
+      "location": "教室",
+      "emotion": "embarrassed",
+      "importance": 6,
+      "topics": [
+        "人际矛盾",
+        "学业焦虑"
+      ],
+      "text": "沈逸凡当众问我错题本进度，心里又烦又丢脸。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 5",
+      "day": 5,
+      "people": [
+        "沈逸凡"
+      ],
+      "location": "教室",
+      "emotion": "embarrassed",
+      "importance": 6,
+      "topics": [
+        "学业焦虑",
+        "人际矛盾"
+      ],
+      "text": "沈逸凡又来催我订正，烦死了，盯着他那样子心里又堵又丢脸。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 6",
+      "day": 6,
+      "people": [
+        "姜皓天"
+      ],
+      "location": "教室",
+      "emotion": "excited",
+      "importance": 6,
+      "topics": [
+        "兴趣爱好",
+        "期待的事"
+      ],
+      "text": "姜皓天说晚上带我打王者，还说要带我躺赢。",
+      "source_days": [
+        8
+      ],
+      "text_history": [
+        "姜皓天说晚上带我打王者躺赢，还约我下午去操场打球。",
+        "姜皓天在晚自习时跟我约好晚上打游戏，还让我别看物理了。"
+      ]
+    },
+    {
+      "date": "Day 6",
+      "day": 6,
+      "people": [
+        "沈逸凡"
+      ],
+      "location": "操场",
+      "emotion": "embarrassed",
+      "importance": 6,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "沈逸凡又在操场上说我，烦死了。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 7",
+      "day": 7,
+      "people": [
+        "姜皓天",
+        "何老师"
+      ],
+      "location": "教室",
+      "emotion": "anxious",
+      "importance": 6,
+      "topics": [
+        "学业焦虑",
+        "人际矛盾"
+      ],
+      "text": "因为担心物理错题本被老师发现抄袭，全天都处于焦虑中，拒绝了姜皓天的打球邀请，感觉自己越来越边缘化。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 9",
+      "day": 9,
+      "people": [
+        "方语晨",
+        "唐诗涵"
+      ],
+      "location": "教室",
+      "emotion": "embarrassed",
+      "importance": 6,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "方语晨和唐诗涵盯着我的错题本看，被她们发现了，真的很烦。",
+      "source_days": [],
+      "text_history": []
+    }
+  ]
+}

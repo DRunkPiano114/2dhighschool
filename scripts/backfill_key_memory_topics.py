@@ -35,7 +35,7 @@ def classify_topic(text: str) -> str:
 def main() -> None:
     agents_dir = settings.agents_dir
     if not agents_dir.exists():
-        print(f"agents/ directory not found at {agents_dir}")
+        print(f"simulation/state/ directory not found at {agents_dir}")
         return
 
     total_backfilled = 0

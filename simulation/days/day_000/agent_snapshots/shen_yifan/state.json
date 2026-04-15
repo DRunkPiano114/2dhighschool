@@ -1,0 +1,12 @@
+{
+  "emotion": "neutral",
+  "energy": 85,
+  "academic_pressure": 35,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [],
+    "mood_forecast": "neutral"
+  },
+  "day": 1,
+  "active_concerns": []
+}

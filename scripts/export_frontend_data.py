@@ -6,10 +6,11 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
-LOGS = ROOT / "logs"
-AGENTS = ROOT / "agents"
-WORLD = ROOT / "world"
-DATA = ROOT / "data"
+DAYS = ROOT / "simulation" / "days"
+AGENTS = ROOT / "simulation" / "state"
+WORLD = ROOT / "simulation" / "world"
+CAST = ROOT / "canon" / "cast"
+WORLDBOOK = ROOT / "canon" / "worldbook"
 OUT = ROOT / "web" / "public" / "data"
 
 
@@ -40,10 +41,10 @@ def _is_scene_display_worthy(scene_file: dict) -> bool:
 
 def _display_worthy_days() -> list[str]:
     """Days whose scenes.json has at least one display-worthy scene."""
-    if not LOGS.exists():
+    if not DAYS.exists():
         return []
     result: list[str] = []
-    for day_dir in sorted(LOGS.iterdir()):
+    for day_dir in sorted(DAYS.iterdir()):
         if not (day_dir.is_dir() and day_dir.name.startswith("day_")):
             continue
         scenes_path = day_dir / "scenes.json"
@@ -66,11 +67,11 @@ def _display_worthy_days() -> list[str]:
 
 def export_meta(days: list[str]) -> None:
     """Build meta.json with days list, agent IDs/names, schedule."""
-    schedule = _read_json(DATA / "schedule.json")
+    schedule = _read_json(WORLDBOOK / "schedule.json")
     progress = _read_json(WORLD / "progress.json")
 
     agents = {}
-    for p in sorted((DATA / "characters").glob("*.json")):
+    for p in sorted((CAST / "profiles").glob("*.json")):
         c = _read_json(p)
         agents[c["agent_id"]] = {
             "name": c["name"],
@@ -128,14 +129,14 @@ def export_days(days: list[str]) -> None:
     scenes.json; original scene files are still copied verbatim so the raw
     archive is preserved, but the dropdown won't surface empty shells.
     """
-    if not LOGS.exists():
-        print("  No logs/ directory — skipping days export")
+    if not DAYS.exists():
+        print("  No simulation/days/ directory — skipping days export")
         return
 
     count = 0
     filtered_out = 0
     for day_name in days:
-        day_dir = LOGS / day_name
+        day_dir = DAYS / day_name
         if not day_dir.is_dir():
             continue
         out_day = OUT / "days" / day_name
@@ -192,15 +193,15 @@ def backfill_snapshots() -> None:
     agent files as the snapshot. This is a one-time migration: future runs
     create snapshots automatically via the orchestrator.
     """
-    if not LOGS.exists():
-        print("  No logs/ directory — skipping snapshot backfill")
+    if not DAYS.exists():
+        print("  No simulation/days/ directory — skipping snapshot backfill")
         return
 
     snapshot_files = ("state.json", "relationships.json", "self_narrative.json")
     agent_ids = [d.name for d in sorted(AGENTS.iterdir()) if d.is_dir() and (d / "profile.json").exists()]
 
     # Day 0 initial state (if not exists)
-    day0 = LOGS / "day_000" / "agent_snapshots"
+    day0 = DAYS / "day_000" / "agent_snapshots"
     if not day0.exists():
         for aid in agent_ids:
             dest = day0 / aid
@@ -213,7 +214,7 @@ def backfill_snapshots() -> None:
 
     # Backfill any day_NNN dirs missing agent_snapshots
     count = 0
-    for day_dir in sorted(LOGS.iterdir()):
+    for day_dir in sorted(DAYS.iterdir()):
         if not day_dir.is_dir() or not day_dir.name.startswith("day_"):
             continue
         if day_dir.name == "day_000":
@@ -234,6 +235,20 @@ def backfill_snapshots() -> None:
         print(f"  Backfilled snapshots for {count} days")
 
 
+def export_portraits() -> None:
+    """Copy agent portraits into web/public/data/portraits/ for the gallery."""
+    src = CAST / "portraits"
+    dst = OUT / "portraits"
+    if dst.exists():
+        shutil.rmtree(dst)
+    if not src.exists():
+        print("  No canon/cast/portraits/ — skipping portrait export")
+        return
+    shutil.copytree(src, dst)
+    n = len(list(dst.glob("*.png")))
+    print(f"  portraits/ ({n} files)")
+
+
 def main() -> None:
     # Clean output
     if OUT.exists():
@@ -249,6 +264,7 @@ def main() -> None:
     export_agents()
     export_days(days)
     export_events()
+    export_portraits()
     print(f"\nDone → {OUT}")
 
 

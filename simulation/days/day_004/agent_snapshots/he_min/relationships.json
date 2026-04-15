@@ -1,0 +1,17 @@
+{
+  "relationships": {
+    "he_jiajun": {
+      "target_name": "何家骏",
+      "target_id": "he_jiajun",
+      "favorability": 3,
+      "trust": 0,
+      "understanding": 4,
+      "label": "学生",
+      "recent_interactions": [
+        "Day 2 +课间@教室",
+        "Day 3 +午饭@食堂"
+      ],
+      "days_since_interaction": 1
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "emotion": "anxious",
+  "energy": 85,
+  "academic_pressure": 15,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "姜皓天",
+        "goal": "课间去操场假装路过跟他打个招呼",
+        "reason": "老是想跟他搭话，再不开口就更没机会了。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "a74ad1",
+        "origin_day": 2,
+        "pursued_days": 1
+      },
+      {
+        "target": null,
+        "goal": "中午去食堂买最便宜的套餐",
+        "reason": "想攒钱买双新鞋，不想总穿着这双破鞋。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 2,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "bored",
+    "location_preferences": {
+      "morning_break": "操场",
+      "lunch": "食堂",
+      "afternoon_break": "教室"
+    }
+  },
+  "day": 2,
+  "active_concerns": [
+    {
+      "id": "c8a7d3",
+      "text": "确认加入姜皓天晚上的游戏活动，希望能顺利融入。",
+      "source_event": "姜皓天约下午练投篮；中午食堂的对话",
+      "source_scene": "午饭@食堂",
+      "source_day": 2,
+      "emotion": "excited",
+      "intensity": 6,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": true,
+      "topic": "期待的事",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 2,
+      "reinforcement_count": 1,
+      "text_history": [
+        "下午体育课练投篮，希望别出丑。"
+      ],
+      "id_history": [],
+      "last_bump_day": 2,
+      "bumps_today": 1
+    },
+    {
+      "id": "b577f9",
+      "text": "何老师要求周五前整理好错题本并去办公室讲解，担心自己无法应付。",
+      "source_event": "何老师要求周五整理错题本并去办公室讲解；下午课间何老师的谈话",
+      "source_scene": "课间@教室",
+      "source_day": 2,
+      "emotion": "anxious",
+      "intensity": 7,
+      "related_people": [
+        "何老师",
+        "自己"
+      ],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 2,
+      "reinforcement_count": 1,
+      "text_history": [
+        "周五要把错题本给何老师看，要是还是什么都不会怎么办。"
+      ],
+      "id_history": [],
+      "last_bump_day": 2,
+      "bumps_today": 1
+    }
+  ]
+}

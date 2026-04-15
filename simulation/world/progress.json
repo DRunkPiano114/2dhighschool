@@ -1,0 +1,12 @@
+{
+  "current_day": 10,
+  "current_date": "2025-09-01",
+  "day_phase": "daily_plan",
+  "current_scene_index": 0,
+  "scenes": [],
+  "next_exam_in_days": 21,
+  "last_exam_day": null,
+  "total_days_simulated": 9,
+  "last_updated": "2026-04-15T00:36:48.083811",
+  "seed": 6650806124698773195
+}

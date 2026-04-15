@@ -1,0 +1,41 @@
+{
+  "relationships": {
+    "lin_zhaoyu": {
+      "target_name": "林昭宇",
+      "target_id": "lin_zhaoyu",
+      "favorability": -1,
+      "trust": 0,
+      "understanding": 2,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 1 −课间@教室",
+        "Day 1 ·课间@图书馆"
+      ],
+      "days_since_interaction": 0
+    },
+    "tang_shihan": {
+      "target_name": "唐诗涵",
+      "target_id": "tang_shihan",
+      "favorability": 0,
+      "trust": 0,
+      "understanding": 1,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 1 ·课间@教室"
+      ],
+      "days_since_interaction": 0
+    },
+    "lu_siyuan": {
+      "target_name": "陆思远",
+      "target_id": "lu_siyuan",
+      "favorability": 0,
+      "trust": 0,
+      "understanding": 1,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 1 ·课间@图书馆"
+      ],
+      "days_since_interaction": 0
+    }
+  }
+}

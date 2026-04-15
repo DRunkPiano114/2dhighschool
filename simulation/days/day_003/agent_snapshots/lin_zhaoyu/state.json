@@ -1,0 +1,68 @@
+{
+  "emotion": "calm",
+  "energy": 85,
+  "academic_pressure": 50,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "英语试卷",
+        "goal": "完成那几篇阅读理解错题的订正",
+        "reason": "老是不订正心里一直悬着，怕妈看到成绩又要打电话来问。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "9b432b",
+        "origin_day": 2,
+        "pursued_days": 2
+      },
+      {
+        "target": "网易云音乐",
+        "goal": "听一下许嵩的新歌",
+        "reason": "最近压力太大了，想稍微放松一下心情，听歌能让我静下来。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 3,
+        "pursued_days": 1
+      },
+      {
+        "target": "陆思远",
+        "goal": "确认周五晚上能不能一起打王者",
+        "reason": "这算是我一周里最期待的事了，想提前确认一下，有个盼头。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 3,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "anxious",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 3,
+  "active_concerns": [
+    {
+      "id": "0a6c8f",
+      "text": "最近压力太大，本想听听许嵩的新歌放松一下，但因为学习任务没能实现。",
+      "source_event": "全天学习安排",
+      "source_scene": "",
+      "source_day": 3,
+      "emotion": "anxious",
+      "intensity": 3,
+      "related_people": [],
+      "positive": false,
+      "topic": "兴趣爱好",
+      "last_reinforced_day": 3,
+      "last_new_info_day": 3,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

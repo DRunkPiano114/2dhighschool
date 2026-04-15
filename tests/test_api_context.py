@@ -25,8 +25,8 @@ def tmp_world(tmp_path):
     """Create a temp world with one agent and snapshot directories."""
     agents_dir = tmp_path / "agents"
     world_dir = tmp_path / "world"
-    logs_dir = tmp_path / "logs"
-    for d in [agents_dir, world_dir, logs_dir]:
+    days_dir = tmp_path / "days"
+    for d in [agents_dir, world_dir, days_dir]:
         d.mkdir()
 
     # Create agent profile + state
@@ -58,10 +58,10 @@ def tmp_world(tmp_path):
     # Monkey-patch settings for test
     old_agents = settings.agents_dir
     old_world = settings.world_dir
-    old_logs = settings.logs_dir
+    old_days = settings.days_dir
     settings.agents_dir = agents_dir
     settings.world_dir = world_dir
-    settings.logs_dir = logs_dir
+    settings.days_dir = days_dir
 
     # Create WorldStorage
     world = WorldStorage(agents_dir=agents_dir, world_dir=world_dir)
@@ -71,14 +71,14 @@ def tmp_world(tmp_path):
         "world": world,
         "agent_id": agent_id,
         "agents_dir": agents_dir,
-        "logs_dir": logs_dir,
+        "days_dir": days_dir,
         "profile": profile,
         "state": state,
     }
 
     settings.agents_dir = old_agents
     settings.world_dir = old_world
-    settings.logs_dir = old_logs
+    settings.days_dir = old_days
 
 
 class TestSnapshotLoading:
@@ -91,7 +91,7 @@ class TestSnapshotLoading:
 
     def test_load_snapshot_state_exists(self, tmp_world):
         """Loads state from snapshot directory."""
-        snap_dir = tmp_world["logs_dir"] / "day_000" / "agent_snapshots" / tmp_world["agent_id"]
+        snap_dir = tmp_world["days_dir"] / "day_000" / "agent_snapshots" / tmp_world["agent_id"]
         snap_dir.mkdir(parents=True)
         state = AgentState(emotion=Emotion.HAPPY, energy=90, academic_pressure=20)
         atomic_write_json(snap_dir / "state.json", state.model_dump())
@@ -131,7 +131,7 @@ class TestTimeTravel:
 
     def test_build_context_with_day0_snapshot(self, tmp_world):
         """Uses Day 0 snapshot as baseline for Day 1."""
-        snap_dir = tmp_world["logs_dir"] / "day_000" / "agent_snapshots" / tmp_world["agent_id"]
+        snap_dir = tmp_world["days_dir"] / "day_000" / "agent_snapshots" / tmp_world["agent_id"]
         snap_dir.mkdir(parents=True)
         state = AgentState(emotion=Emotion.EXCITED, energy=95, academic_pressure=10)
         atomic_write_json(snap_dir / "state.json", state.model_dump())
@@ -177,7 +177,7 @@ class TestTodaySoFar:
 
     def test_scenes_index_loading(self, tmp_world):
         """Loads scenes.json correctly."""
-        day_dir = tmp_world["logs_dir"] / "day_001"
+        day_dir = tmp_world["days_dir"] / "day_001"
         day_dir.mkdir(parents=True)
         atomic_write_json(day_dir / "scenes.json", [
             {"scene_index": 0, "time": "08:45", "name": "课间", "location": "教室", "file": "0845_课间.json", "groups": []},

@@ -1,0 +1,114 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "沈逸凡",
+        "goal": "假装借看笔记，趁他不注意瞄一眼手机屏保",
+        "reason": "那只猫猫背景图实在太可疑了，我一定要搞清楚是谁拍的，不然我课都听不进去！",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 8,
+        "pursued_days": 1
+      },
+      {
+        "target": "苏念瑶",
+        "goal": "午饭时试探她和林昭宇的进度",
+        "reason": "看她俩最近怪怪的，我这八卦雷达响个不停，必须问出来。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 8,
+        "pursued_days": 1
+      },
+      {
+        "target": "姜皓天",
+        "goal": "问他奶茶拼单的事，顺便观察他手机",
+        "reason": "他最近神神秘秘的，感觉手机里肯定藏着大瓜。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 8,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "anxious",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "走廊"
+    }
+  },
+  "day": 8,
+  "active_concerns": [
+    {
+      "id": "2eaff3",
+      "text": "周末恐怖本一定要穿那套丝绒裙，绝对不能输给别人！",
+      "source_event": "和唐诗涵讨论奶茶时提到了周末活动",
+      "source_scene": "课间@教室",
+      "source_day": 5,
+      "emotion": "excited",
+      "intensity": 2,
+      "related_people": [
+        "唐诗涵",
+        "苏念瑶"
+      ],
+      "positive": true,
+      "topic": "期待的事",
+      "last_reinforced_day": 7,
+      "last_new_info_day": 5,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 7,
+      "bumps_today": 1
+    },
+    {
+      "id": "e88a6c",
+      "text": "姜皓天到底有没有转奶茶钱，而且他最近手机神神秘秘的，一定要找机会看一眼他屏保是不是那个猫猫图。",
+      "source_event": "课间寻找姜皓天未果",
+      "source_scene": "",
+      "source_day": 8,
+      "emotion": "frustrated",
+      "intensity": 4,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": false,
+      "topic": "其他",
+      "last_reinforced_day": 8,
+      "last_new_info_day": 8,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "b93fe3",
+      "text": "苏念瑶和林昭宇到底是什么情况，总觉得她瞒着我什么，下次一定要问清楚。",
+      "source_event": "宿舍夜聊提到林昭宇",
+      "source_scene": "",
+      "source_day": 8,
+      "emotion": "curious",
+      "intensity": 5,
+      "related_people": [
+        "苏念瑶",
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "恋爱",
+      "last_reinforced_day": 8,
+      "last_new_info_day": 8,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

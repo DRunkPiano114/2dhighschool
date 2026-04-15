@@ -1,6 +1,6 @@
 """M1: Ungrounded events.
 
-Counts LLM-grounded events in `world/event_queue.json` whose `cite_ticks`
+Counts LLM-grounded events in `simulation/world/event_queue.json` whose `cite_ticks`
 are missing or do not resolve to any tick visible to the LLM in the
 specific group the event came out of. The 3-layer validation in
 `apply_scene_end_results` should make this 0 on a clean run.
@@ -31,7 +31,7 @@ from sim.config import settings  # noqa: E402
 
 
 def _scene_files_for_day(day: int) -> list[Path]:
-    day_dir = settings.logs_dir / f"day_{day:03d}"
+    day_dir = settings.days_dir / f"day_{day:03d}"
     if not day_dir.exists():
         return []
     return sorted(p for p in day_dir.glob("*.json") if not p.name.startswith("scenes"))

@@ -1,0 +1,150 @@
+{
+  "scene": {
+    "scene_index": 8,
+    "time": "15:30",
+    "name": "课间",
+    "location": "图书馆",
+    "description": "下午课间休息",
+    "day": 6
+  },
+  "participant_names": {
+    "lu_siyuan": "陆思远",
+    "su_nianyao": "苏念瑶"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "lu_siyuan",
+        "su_nianyao"
+      ],
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "su_nianyao",
+                "type": "non_verbal",
+                "content": "从书包里摸出那本牛皮纸日记本，犹豫了一下又重新塞了回去。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "陆思远坐在那里看书，图书馆安静得像那种快要凝固的琥珀。",
+              "inner_thought": "随笔还没动笔，这鬼心情简直像被塞了一团揉皱的纸。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "从书包里摸出那本牛皮纸日记本，犹豫了一下又重新塞了回去。",
+              "action_target": null,
+              "urgency": 3,
+              "is_disruptive": false
+            },
+            "lu_siyuan": {
+              "observation": "苏念瑶在旁边的书桌坐着，正翻着那本厚厚的《现代物理基础》，图书馆安静得只能听到翻书声。",
+              "inner_thought": "好安静啊，总觉得这时候说话会打扰到别人，还是算了，继续看书吧。",
+              "emotion": "calm",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "su_nianyao",
+                "type": "non_verbal",
+                "content": "叹了口气，把下巴抵在翻开的语文课本边缘发呆。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "陆思远坐在书桌前，似乎正在阅读关于逻辑方法的笔记，周围安静得有些压抑。",
+              "inner_thought": "那种冷清的感觉还没捕捉到，再写不出来真的要EMO了。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "叹了口气，把下巴抵在翻开的语文课本边缘发呆。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": [
+            "lu_siyuan"
+          ]
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "su_nianyao",
+                "type": "non_verbal",
+                "content": "随手拿起一支笔在草稿纸边缘画了一串毫无意义的乱线，笔尖划过纸张发出轻微的沙沙声。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "陆思远坐在对面专注于书本，图书馆里的空气干燥得像是快要烧起来的纸页。",
+              "inner_thought": "他怎么这么坐得住，真羡慕这种能把心思全放书里的人。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "随手拿起一支笔在草稿纸边缘画了一串毫无意义的乱线，笔尖划过纸张发出轻微的沙沙声。",
+              "action_target": null,
+              "urgency": 3,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": [
+            "lu_siyuan"
+          ]
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": null,
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "陆思远把那几页逻辑笔记倒扣在桌面上，似乎准备起身离开了。",
+              "inner_thought": "他要走了？正好，等他走远了我去他那个位置看看，没准能发现点关于林昭宇的线索。",
+              "emotion": "frustrated",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": [
+            "lu_siyuan"
+          ]
+        }
+      ],
+      "narrative": null,
+      "reflections": {},
+      "trivial": true
+    }
+  ]
+}

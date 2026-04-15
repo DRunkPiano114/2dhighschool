@@ -1,0 +1,72 @@
+{
+  "emotion": "calm",
+  "energy": 85,
+  "academic_pressure": 50,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "智学网后台",
+        "goal": "确认月考排名",
+        "reason": "排名迟迟不公布，复习节奏受干扰，必须拿到数据才能调整物理复习计划。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "ae385e",
+        "origin_day": 5,
+        "pursued_days": 5
+      },
+      {
+        "target": "物理错题本",
+        "goal": "完成逻辑闭环整理",
+        "reason": "月考后的知识漏洞必须在下次考试前修补，这是保持领先的必要手段。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 9,
+        "pursued_days": 1
+      },
+      {
+        "target": "被窝",
+        "goal": "阅读《仙路独行》",
+        "reason": "需要从高强度的学习和宿舍噪音中抽离，通过阅读缓解心理压力。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 5,
+        "pursued_days": 5
+      }
+    ],
+    "mood_forecast": "calm",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "操场",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 9,
+  "active_concerns": [
+    {
+      "id": "ae385e",
+      "text": "月考排名迟迟未发布，无法根据结果评估物理学科的逻辑漏洞，导致复习节奏被打乱。",
+      "source_event": "课间反复刷新智学网界面；日常复习与月考等待",
+      "source_scene": "",
+      "source_day": 8,
+      "emotion": "frustrated",
+      "intensity": 6,
+      "related_people": [],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 9,
+      "last_new_info_day": 8,
+      "reinforcement_count": 2,
+      "text_history": [
+        "月考排名迟迟未公布，无法根据具体丢分点调整物理复习逻辑。"
+      ],
+      "id_history": [
+        "1bc21a"
+      ],
+      "last_bump_day": 9,
+      "bumps_today": 2
+    }
+  ]
+}

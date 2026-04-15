@@ -1,0 +1,94 @@
+{
+  "emotion": "calm",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "林昭宇",
+        "goal": "去接水时路过他的座位，顺便看一眼他在干嘛",
+        "reason": "昨天没能成行，今天想确认一下他是不是还在听那首歌",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 3,
+        "pursued_days": 1
+      },
+      {
+        "target": "方语晨",
+        "goal": "在午休时和方语晨聊聊周末恐怖本的组队情况",
+        "reason": "有点担心被队友坑，先通个气比较安心",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "2ebd9e",
+        "origin_day": 3,
+        "pursued_days": 1
+      },
+      {
+        "target": null,
+        "goal": "在LOFTER上更新一小段关于秋天的随笔",
+        "reason": "写出满意的句子能让我心情变好，缓解一点学习压力",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 3,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "calm",
+    "location_preferences": {
+      "morning_break": "走廊",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 3,
+  "active_concerns": [
+    {
+      "id": "2ebd9e",
+      "text": "周末和朋友们去玩恐怖本，希望能顺利通关并享受过程。",
+      "source_event": "和方语晨、唐诗涵约定周末去玩恐怖本；食堂午饭时关于《深渊录》的讨论",
+      "source_scene": "午饭@食堂",
+      "source_day": 2,
+      "emotion": "anxious",
+      "intensity": 2,
+      "related_people": [
+        "方语晨",
+        "唐诗涵"
+      ],
+      "positive": false,
+      "topic": "期待的事",
+      "last_reinforced_day": 3,
+      "last_new_info_day": 2,
+      "reinforcement_count": 1,
+      "text_history": [
+        "周末去玩恐怖本，千万别被那两个坑了。"
+      ],
+      "id_history": [],
+      "last_bump_day": 3,
+      "bumps_today": 1
+    },
+    {
+      "id": "7d8a16",
+      "text": "想路过林昭宇的座位看他是否还在听那首歌，但今天没能找到合适的机会。",
+      "source_event": "路过座位观察",
+      "source_scene": "",
+      "source_day": 3,
+      "emotion": "curious",
+      "intensity": 4,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": true,
+      "topic": "恋爱",
+      "last_reinforced_day": 3,
+      "last_new_info_day": 3,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

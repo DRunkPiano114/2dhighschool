@@ -1,0 +1,70 @@
+{
+  "emotion": "bored",
+  "energy": 85,
+  "academic_pressure": 15,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "姜皓天",
+        "goal": "在课间休息时假装路过跟他打个招呼",
+        "reason": "想试着融入他们，但怕被嫌弃，还是先打个招呼看看反应。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 1,
+        "pursued_days": 1
+      },
+      {
+        "target": null,
+        "goal": "去图书馆找本讲物理基础的书看看",
+        "reason": "物理课完全听不懂太难受了，虽然不知道能不能看进去，但总得翻翻。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 1,
+        "pursued_days": 1
+      },
+      {
+        "target": null,
+        "goal": "中午去食堂买个最便宜的套餐，省点钱攒球鞋",
+        "reason": "现在的鞋底快磨平了，想攒钱买双新的。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 1,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 1,
+  "active_concerns": [
+    {
+      "id": "a74ad1",
+      "text": "想找机会和姜皓天打个招呼试着融入，但又怕被嫌弃，最终还是没敢开口。",
+      "source_event": "课间在教室和食堂的观察",
+      "source_scene": "",
+      "source_day": 1,
+      "emotion": "anxious",
+      "intensity": 4,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

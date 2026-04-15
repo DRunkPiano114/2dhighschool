@@ -1,0 +1,252 @@
+{
+  "memories": [
+    {
+      "date": "Day 1",
+      "day": 1,
+      "people": [
+        "姜皓天",
+        "程雨桐"
+      ],
+      "location": "图书馆",
+      "emotion": "frustrated",
+      "importance": 5,
+      "topics": [
+        "人际矛盾",
+        "学业焦虑"
+      ],
+      "text": "在图书馆帮姜皓天誊抄物理作业，内心感到一阵委屈和无奈。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 1",
+      "day": 1,
+      "people": [
+        "林昭宇"
+      ],
+      "location": "教室",
+      "emotion": "calm",
+      "importance": 4,
+      "topics": [
+        "学业焦虑"
+      ],
+      "text": "和林昭宇约好晚上去图书馆一起看那几道物理怪题",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 2",
+      "day": 2,
+      "people": [
+        "姜皓天",
+        "沈逸凡"
+      ],
+      "location": "宿舍",
+      "emotion": "anxious",
+      "importance": 5,
+      "topics": [
+        "未来规划",
+        "人际矛盾"
+      ],
+      "text": "姜皓天在熄灯后还追问我的未来规划，搞得沈逸凡很不高兴。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 2",
+      "day": 2,
+      "people": [
+        "林昭宇"
+      ],
+      "location": "教室",
+      "emotion": "calm",
+      "importance": 4,
+      "topics": [
+        "学业焦虑"
+      ],
+      "text": "和林昭宇讨论物理受力分析的投影问题，虽然有点卡壳，但思路慢慢理顺了。",
+      "source_days": [
+        3
+      ],
+      "text_history": [
+        "和昭宇讨论受力分析的投影，他教的方法确实比我用的快"
+      ]
+    },
+    {
+      "date": "Day 3",
+      "day": 3,
+      "people": [
+        "姜皓天"
+      ],
+      "location": "食堂",
+      "emotion": "calm",
+      "importance": 5,
+      "topics": [
+        "学业焦虑"
+      ],
+      "text": "终于从姜皓天那里拿回了数学笔记，虽然他说话还是那么难听，但笔记总算回来了。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 4",
+      "day": 4,
+      "people": [
+        "林昭宇",
+        "沈逸凡"
+      ],
+      "location": "教室",
+      "emotion": "bored",
+      "importance": 4,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "沈逸凡非要跟来图书馆，林昭宇脸色不太好，我还是别多问了。",
+      "source_days": [
+        4,
+        5
+      ],
+      "text_history": [
+        "沈逸凡非要挤过来一起坐，林昭宇脸色难看，我也吃得不舒服。",
+        "沈逸凡又要跟去图书馆，林昭宇脸色不太好看，我也觉得挺别扭的。"
+      ]
+    },
+    {
+      "date": "Day 5",
+      "day": 5,
+      "people": [
+        "林昭宇"
+      ],
+      "location": "教室",
+      "emotion": "calm",
+      "importance": 4,
+      "topics": [
+        "学业焦虑"
+      ],
+      "text": "下课后和林昭宇约好了一起去图书馆，心里踏实多了。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 6",
+      "day": 6,
+      "people": [
+        "林昭宇"
+      ],
+      "location": "教室",
+      "emotion": "calm",
+      "importance": 5,
+      "topics": [
+        "学业焦虑"
+      ],
+      "text": "林昭宇在课上把英语难题写在草稿纸上递给我，还是和他交流最舒服。",
+      "source_days": [
+        7
+      ],
+      "text_history": [
+        "课间和林昭宇凑在一起拆解英语长难句，这种交流的感觉很舒服。"
+      ]
+    },
+    {
+      "date": "Day 6",
+      "day": 6,
+      "people": [
+        "林昭宇"
+      ],
+      "location": "教室",
+      "emotion": "calm",
+      "importance": 4,
+      "topics": [
+        "学业焦虑"
+      ],
+      "text": "早读时偷偷帮林昭宇讲解英语阅读逻辑，那种像地下接头一样的感觉挺刺激的。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 7",
+      "day": 7,
+      "people": [
+        "沈逸凡"
+      ],
+      "location": "教室",
+      "emotion": "embarrassed",
+      "importance": 6,
+      "topics": [
+        "自我认同"
+      ],
+      "text": "上课偷偷改公众号草稿被沈逸凡当众点名，太丢人了。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 8",
+      "day": 8,
+      "people": [
+        "沈逸凡",
+        "林昭宇"
+      ],
+      "location": "食堂",
+      "emotion": "anxious",
+      "importance": 5,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "在食堂排队时沈逸凡又在找林昭宇麻烦，我只能缩在旁边，心里很难受。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 8",
+      "day": 8,
+      "people": [
+        "林昭宇",
+        "唐诗涵"
+      ],
+      "location": "图书馆",
+      "emotion": "anxious",
+      "importance": 5,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "林昭宇在图书馆被唐诗涵追问时显得很心慌，我帮他挡了挡草稿纸。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 9",
+      "day": 9,
+      "people": [
+        "姜皓天",
+        "林昭宇"
+      ],
+      "location": "食堂",
+      "emotion": "anxious",
+      "importance": 5,
+      "topics": [
+        "人际矛盾",
+        "未来规划"
+      ],
+      "text": "姜皓天在食堂一直追问未来，烦得我只想赶紧带林昭宇走。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 9",
+      "day": 9,
+      "people": [
+        "林昭宇",
+        "程雨桐"
+      ],
+      "location": "图书馆",
+      "emotion": "calm",
+      "importance": 5,
+      "topics": [
+        "学业焦虑"
+      ],
+      "text": "和林昭宇在图书馆一起把那道难搞的物理题算出来了，虽然中途程雨桐插了一嘴，但最后还是和他一起松了口气。",
+      "source_days": [],
+      "text_history": []
+    }
+  ]
+}

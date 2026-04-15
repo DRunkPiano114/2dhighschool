@@ -1,0 +1,79 @@
+{
+  "emotion": "bored",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "公众号",
+        "goal": "给公众号草稿想个标题并检查排版，起码发出一篇",
+        "reason": "一直拖着也不是办法，想试着把心里的东西写出来，哪怕没人看。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "3c5cd8",
+        "origin_day": 4,
+        "pursued_days": 1
+      },
+      {
+        "target": "林昭宇",
+        "goal": "约林昭宇一起去图书馆自习",
+        "reason": "和他在一起最放松，也能静下心来学点东西。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 2,
+        "pursued_days": 3
+      }
+    ],
+    "mood_forecast": "calm",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 4,
+  "active_concerns": [
+    {
+      "id": "24ee3e",
+      "text": "公众号草稿箱里积攒了十几篇内容，总觉得写得不够好或者没人看，迟迟不敢发布。",
+      "source_event": "今天再次因为琐事打断，没能完成公众号内容的排版和发布。",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "anxious",
+      "intensity": 4,
+      "related_people": [],
+      "positive": false,
+      "topic": "自我认同",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 4,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "2510f4",
+      "text": "姜皓天在晚自习和宿舍的干扰行为让我感到无奈，但我选择了忍让。",
+      "source_event": "晚自习被踢凳子，宿舍被追问升学打算。",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "bored",
+      "intensity": 4,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 4,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

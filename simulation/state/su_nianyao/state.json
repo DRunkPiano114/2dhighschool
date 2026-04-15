@@ -1,0 +1,73 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "程雨桐",
+        "goal": "尝试和程雨桐随便聊两句，看能不能缓和气氛",
+        "reason": "老感觉她讨厌我，这样坐着太压抑了，想看看到底是不是我想多了",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "6bad6e",
+        "origin_day": 9,
+        "pursued_days": 1
+      },
+      {
+        "target": "方语晨",
+        "goal": "拉着方语晨去操场散步，顺便吐槽数学课",
+        "reason": "最近心总是静不下来，需要和语晨聊聊八卦转移下注意力，顺便避开关于林昭宇的话题",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "458934",
+        "origin_day": 9,
+        "pursued_days": 1
+      },
+      {
+        "target": "林昭宇",
+        "goal": "路过他座位时确认一下他在不在看书",
+        "reason": "就是好奇他在看什么书，虽然被语晨点破很尴尬，但还是忍不住想看一眼",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 8,
+        "pursued_days": 2
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "走廊",
+      "lunch": "操场",
+      "afternoon_break": "操场"
+    }
+  },
+  "day": 9,
+  "active_concerns": [
+    {
+      "id": "6bad6e",
+      "text": "程雨桐戴着降噪耳机拒绝沟通，这种冷淡的态度让我更加怀疑她是否真的很讨厌我。",
+      "source_event": "程雨桐在课堂上冷脸挪位置，动作很大。；宿舍里因为林昭宇的话题引发了程雨桐的强烈反感和冷暴力。；10:30 上课 @ 教室",
+      "source_scene": "上课",
+      "source_day": 7,
+      "emotion": "anxious",
+      "intensity": 7,
+      "related_people": [
+        "程雨桐"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 9,
+      "last_new_info_day": 9,
+      "reinforcement_count": 1,
+      "text_history": [
+        "程雨桐是不是对我有什么意见，搞得这么尴尬。",
+        "程雨桐是不是真的特别讨厌我，感觉连呼吸都让她烦。"
+      ],
+      "id_history": [],
+      "last_bump_day": 9,
+      "bumps_today": 2
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "relationships": {
+    "cheng_yutong": {
+      "target_name": "程雨桐",
+      "target_id": "cheng_yutong",
+      "favorability": 7,
+      "trust": 6,
+      "understanding": 12,
+      "label": "同桌",
+      "recent_interactions": [
+        "Day 1 −宿舍夜聊",
+        "Day 2 −课间@图书馆",
+        "Day 2 −宿舍夜聊",
+        "Day 3 +课间@图书馆"
+      ],
+      "days_since_interaction": 0
+    },
+    "fang_yuchen": {
+      "target_name": "方语晨",
+      "target_id": "fang_yuchen",
+      "favorability": 24,
+      "trust": 18,
+      "understanding": 16,
+      "label": "前后桌",
+      "recent_interactions": [
+        "Day 1 +午饭@食堂",
+        "Day 2 +课间@走廊",
+        "Day 2 +午饭@食堂",
+        "Day 2 +宿舍夜聊",
+        "Day 3 −午饭@食堂",
+        "Day 3 −宿舍夜聊"
+      ],
+      "days_since_interaction": 0
+    },
+    "tang_shihan": {
+      "target_name": "唐诗涵",
+      "target_id": "tang_shihan",
+      "favorability": 12,
+      "trust": 6,
+      "understanding": 14,
+      "label": "室友",
+      "recent_interactions": [
+        "Day 1 ·课间@教室",
+        "Day 1 +午饭@食堂",
+        "Day 2 +午饭@食堂",
+        "Day 3 ·午饭@食堂"
+      ],
+      "days_since_interaction": 0
+    },
+    "shen_yifan": {
+      "target_name": "沈逸凡",
+      "target_id": "shen_yifan",
+      "favorability": 0,
+      "trust": 0,
+      "understanding": 1,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 2 ·课间@走廊"
+      ],
+      "days_since_interaction": 1
+    }
+  }
+}

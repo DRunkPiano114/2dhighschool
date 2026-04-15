@@ -1,0 +1,74 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 15,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "陆思远",
+        "goal": "在午休时找机会问问他毕业后打算去哪混，看能不能探出点靠谱的路子",
+        "reason": "沈逸凡盯得太紧，心里没底，得找个兄弟聊聊以后的出路，不然总觉得心慌。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "df3acc",
+        "origin_day": 5,
+        "pursued_days": 2
+      },
+      {
+        "target": "何家骏",
+        "goal": "带他去操场投几个三分球，顺便带他上分",
+        "reason": "看他每天死读书怪可怜的，带他动动，顺便自己也能放松一下，何家骏这哥们挺不容易的。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 5,
+        "pursued_days": 2
+      },
+      {
+        "target": "沈逸凡",
+        "goal": "故意在他面前哼新出的说唱，看他那种想管又管不了的表情",
+        "reason": "这小子天天管这管那，烦死人，逗逗他看他吃瘪我就爽。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 5,
+        "pursued_days": 2
+      }
+    ],
+    "mood_forecast": "frustrated",
+    "location_preferences": {
+      "morning_break": "走廊",
+      "lunch": "食堂",
+      "afternoon_break": "走廊"
+    }
+  },
+  "day": 6,
+  "active_concerns": [
+    {
+      "id": "df3acc",
+      "text": "沈逸凡在学校里管得太宽，导致我完全没机会和陆思远聊聊毕业后的出路，心里越来越没底。",
+      "source_event": "宿舍夜聊；全天被沈逸凡限制活动；全天被沈逸凡监控",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "frustrated",
+      "intensity": 4,
+      "related_people": [
+        "陆思远",
+        "沈逸凡"
+      ],
+      "positive": false,
+      "topic": "未来规划",
+      "last_reinforced_day": 6,
+      "last_new_info_day": 6,
+      "reinforcement_count": 4,
+      "text_history": [
+        "想找陆思远聊聊毕业后的打算，但沈逸凡总是盯着不放，完全找不到机会。",
+        "沈逸凡盯得太紧，完全没法和陆思远聊毕业后的打算，心里越来越没底。"
+      ],
+      "id_history": [],
+      "last_bump_day": 6,
+      "bumps_today": 2
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "relationships": {
+    "cheng_yutong": {
+      "target_name": "程雨桐",
+      "target_id": "cheng_yutong",
+      "favorability": 10,
+      "trust": 5,
+      "understanding": 10,
+      "label": "同桌",
+      "recent_interactions": []
+    },
+    "fang_yuchen": {
+      "target_name": "方语晨",
+      "target_id": "fang_yuchen",
+      "favorability": 20,
+      "trust": 15,
+      "understanding": 10,
+      "label": "前后桌",
+      "recent_interactions": []
+    },
+    "tang_shihan": {
+      "target_name": "唐诗涵",
+      "target_id": "tang_shihan",
+      "favorability": 10,
+      "trust": 5,
+      "understanding": 10,
+      "label": "室友",
+      "recent_interactions": []
+    }
+  }
+}

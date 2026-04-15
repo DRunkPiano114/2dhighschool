@@ -1,0 +1,94 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 15,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "陆思远",
+        "goal": "在午休时找机会问问他毕业后打算去哪混，看能不能探出点靠谱的路子",
+        "reason": "一直想找人聊聊未来，心里总是不踏实，得先找兄弟通个气",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "df3acc",
+        "origin_day": 5,
+        "pursued_days": 1
+      },
+      {
+        "target": "何家骏",
+        "goal": "带他去操场投几个三分球，顺便带他上分",
+        "reason": "看他闷在教室就烦，带他动动大家心情都好点，顺便缓解下自己的焦虑",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 5,
+        "pursued_days": 1
+      },
+      {
+        "target": "沈逸凡",
+        "goal": "故意在他面前哼新出的说唱，看他那种想管又管不了的表情",
+        "reason": "这家伙天天盯着我，我就要逗逗他，给自己找点乐子",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 5,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "走廊",
+      "lunch": "操场",
+      "afternoon_break": "操场"
+    }
+  },
+  "day": 5,
+  "active_concerns": [
+    {
+      "id": "9e32b7",
+      "text": "家里工厂订单减少，想打听别人对未来就业的看法，但一直没找到合适的机会深入询问。",
+      "source_event": "与陆思远关于毕业后打算的简短对话",
+      "source_scene": "",
+      "source_day": 1,
+      "emotion": "anxious",
+      "intensity": 2,
+      "related_people": [
+        "陆思远"
+      ],
+      "positive": false,
+      "topic": "家庭压力",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 4,
+      "bumps_today": 2
+    },
+    {
+      "id": "df3acc",
+      "text": "沈逸凡盯得太紧，完全没法和陆思远聊毕业后的打算，心里越来越没底。",
+      "source_event": "宿舍夜聊；全天被沈逸凡限制活动",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "frustrated",
+      "intensity": 5,
+      "related_people": [
+        "陆思远",
+        "沈逸凡"
+      ],
+      "positive": false,
+      "topic": "未来规划",
+      "last_reinforced_day": 5,
+      "last_new_info_day": 5,
+      "reinforcement_count": 2,
+      "text_history": [
+        "想找陆思远聊聊毕业后的打算，但沈逸凡总是盯着不放，完全找不到机会。"
+      ],
+      "id_history": [],
+      "last_bump_day": 5,
+      "bumps_today": 2
+    }
+  ]
+}

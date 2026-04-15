@@ -1,0 +1,91 @@
+{
+  "emotion": "calm",
+  "energy": 85,
+  "academic_pressure": 35,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "林昭宇",
+        "goal": "课间找他聊聊，观察他的精神状态",
+        "reason": "这孩子最近绷得太紧，月考后看他红了眼眶，怕他心态崩了。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "7b3c91",
+        "origin_day": 1,
+        "pursued_days": 2
+      },
+      {
+        "target": "何家骏",
+        "goal": "检查他的作业进度，了解家庭情况",
+        "reason": "他底子薄，家里没人管，必须得拉他一把，不能让他掉队。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "4d2a8e",
+        "origin_day": 1,
+        "pursued_days": 2
+      },
+      {
+        "target": "自己",
+        "goal": "去学校门口买杯热咖啡",
+        "reason": "昨天没买成，今天课多，得靠咖啡提提神。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 2,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "教室",
+      "afternoon_break": "教室"
+    }
+  },
+  "day": 2,
+  "active_concerns": [
+    {
+      "id": "fca093",
+      "text": "何家骏的学习态度和家庭支持缺失问题，需要通过后续的错题讲解进一步跟进。",
+      "source_event": "课间检查数学作业",
+      "source_scene": "",
+      "source_day": 2,
+      "emotion": "concerned",
+      "intensity": 5,
+      "related_people": [
+        "何家骏"
+      ],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 2,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "eeb8c6",
+      "text": "林昭宇近期的心理状态依然令人担忧，需要找机会进行谈话。",
+      "source_event": "日常观察",
+      "source_scene": "",
+      "source_day": 2,
+      "emotion": "worry",
+      "intensity": 6,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 2,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

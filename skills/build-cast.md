@@ -24,7 +24,7 @@ who wants to customize the cast without touching code.
    asks to add/remove agents or rename ids, decline and tell them it requires
    coordinated edits across the files above — out of scope for this skill.
 
-2. **Touch only files under `data/`.** No source code edits.
+2. **Touch only files under `canon/`.** No source code edits.
 
 3. **Schema source of truth is `src/sim/models/agent.py`.** Re-read it every
    time this skill runs. Never hardcode field lists in this file — they will
@@ -72,8 +72,8 @@ Read these files and tell the user what you found in one sentence each:
 - `src/sim/models/agent.py` — extract every field of `AgentProfile`,
   `Academics`, `FamilyBackground`, `BehavioralAnchors`; list the closed Enum
   values (`Gender`, `Role`, `OverallRank`, `AcademicTarget`, `PressureLevel`).
-- `data/characters/he_min.json` — example: teacher
-- `data/characters/jiang_haotian.json` — example: extroverted student
+- `canon/cast/profiles/he_min.json` — example: teacher
+- `canon/cast/profiles/jiang_haotian.json` — example: extroverted student
 
 Then say: *"Schema loaded. Ready to start. Which mode?"*
 
@@ -94,7 +94,7 @@ offer to checkpoint after each character.
 
 ## Phase 2 — Identify the slot
 
-- List existing slots: `ls data/characters/*.json`
+- List existing slots: `ls canon/cast/profiles/*.json`
 - For "edit one" / "replace one": ask which slot
 - For "replace all": work in this order — `he_min` first (teacher sets the
   classroom tone), then students by current `seat_number` ascending
@@ -184,12 +184,12 @@ After each character's draft is complete, before saving:
 
 1. **JSON structural check** (project hard rule from `CLAUDE.md`):
    ```bash
-   python -m json.tool data/characters/<agent_id>.json > /dev/null
+   python -m json.tool canon/cast/profiles/<agent_id>.json > /dev/null
    ```
 
 2. **Pydantic round-trip** (must succeed):
    ```bash
-   uv run python -c "from src.sim.models.agent import AgentProfile; AgentProfile.model_validate_json(open('data/characters/<agent_id>.json').read())"
+   uv run python -c "from src.sim.models.agent import AgentProfile; AgentProfile.model_validate_json(open('canon/cast/profiles/<agent_id>.json').read())"
    ```
 
 3. **Soft warnings** (report, don't block):
@@ -206,11 +206,11 @@ If validation fails, fix and re-validate. Don't move on with a broken file.
 After characters are saved, ask the user:
 
 - *"Backstory 里出现了非中文的家庭称呼吗？比如 papa / mama / 外婆昵称？"*
-  → If yes, update `data/name_aliases.json` (`alias` → canonical form like
+  → If yes, update `canon/worldbook/name_aliases.json` (`alias` → canonical form like
   `父亲` / `母亲`). Otherwise skip.
 
 - *"想自定义剧情触发模板吗？"* → If yes, walk through
-  `data/catalyst_events.json`. Otherwise skip — the defaults are
+  `canon/worldbook/catalyst_events.json`. Otherwise skip — the defaults are
   class-agnostic.
 
 **Do not touch**: `schedule.json`, `location_events.json`,

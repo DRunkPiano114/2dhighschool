@@ -1,0 +1,70 @@
+{
+  "emotion": "anxious",
+  "energy": 85,
+  "academic_pressure": 60,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "英语作业",
+        "goal": "把英语阅读理解的错题订正好",
+        "reason": "英语成绩太差了，再不追上来肯定要拖后腿，怕妈又打电话来念叨。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "7b2c9e",
+        "origin_day": 1,
+        "pursued_days": 1
+      },
+      {
+        "target": "陆思远",
+        "goal": "找机会问问他物理竞赛题的思路",
+        "reason": "想弄懂题目，但又怕直接问会被发现我偷偷用AI查过，还是旁敲侧击比较好。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "f4a1d8",
+        "origin_day": 1,
+        "pursued_days": 1
+      },
+      {
+        "target": null,
+        "goal": "去图书馆背会儿单词",
+        "reason": "教室里太吵了，想找个安静点的地方待着，顺便避开那些不想理的社交。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 1,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 1,
+  "active_concerns": [
+    {
+      "id": "9b432b",
+      "text": "英语阅读理解错题未订正，担心成绩拖后腿导致母亲再次施压。",
+      "source_event": "全天学习计划未完成",
+      "source_scene": "",
+      "source_day": 1,
+      "emotion": "anxious",
+      "intensity": 6,
+      "related_people": [
+        "母亲"
+      ],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

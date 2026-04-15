@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """One-shot migration: backfill concern ids, last_new_info_day.
 
-Reads every `agents/*/state.json`, inspects each active concern, and:
+Reads every `simulation/state/*/state.json`, inspects each active concern, and:
 - assigns a deterministic 6-hex id if missing (blake2b of
   source_day:source_scene:text[:30]:idx). `idx` is the concern's position
   in state.active_concerns, used as a tiebreaker so that two concerns with
@@ -17,7 +17,7 @@ are populated. Safe to re-run after rollback + restore.
 
 Usage:
     uv run python scripts/backfill_concern_ids.py
-    uv run python scripts/backfill_concern_ids.py --agents-dir agents
+    uv run python scripts/backfill_concern_ids.py --agents-dir simulation/state
 """
 
 from __future__ import annotations

@@ -1,0 +1,91 @@
+{
+  "emotion": "anxious",
+  "energy": 85,
+  "academic_pressure": 35,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "林昭宇",
+        "goal": "找个课间把林昭宇叫到办公室，观察下他的精神状态，顺便聊聊最近的压力。",
+        "reason": "这孩子最近绷得太紧，红眼眶的样子我看了心疼，必须得跟他谈谈。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "eeb8c6",
+        "origin_day": 3,
+        "pursued_days": 1
+      },
+      {
+        "target": "何家骏",
+        "goal": "课后检查何家骏的错题本整理情况，进一步跟进他的学习漏洞。",
+        "reason": "他底子薄，家里没人管，全靠我在学校盯着，必须帮他把基础夯实。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "fca093",
+        "origin_day": 3,
+        "pursued_days": 1
+      },
+      {
+        "target": "自己",
+        "goal": "去学校门口买杯热咖啡。",
+        "reason": "昨天忙得连口热乎的都没喝上，今天无论如何得奖励自己一下，不然下午没精神。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 2,
+        "pursued_days": 2
+      }
+    ],
+    "mood_forecast": "calm",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "教室"
+    }
+  },
+  "day": 3,
+  "active_concerns": [
+    {
+      "id": "fca093",
+      "text": "何家骏的学习态度和家庭支持缺失问题，需要通过后续的错题讲解进一步跟进。",
+      "source_event": "课间检查数学作业",
+      "source_scene": "",
+      "source_day": 2,
+      "emotion": "concerned",
+      "intensity": 4,
+      "related_people": [
+        "何家骏"
+      ],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 3,
+      "last_new_info_day": 2,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 3,
+      "bumps_today": 1
+    },
+    {
+      "id": "eeb8c6",
+      "text": "林昭宇近期的心理状态依然令人担忧，需要找机会进行谈话。",
+      "source_event": "日常观察",
+      "source_scene": "",
+      "source_day": 2,
+      "emotion": "worry",
+      "intensity": 5,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 2,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

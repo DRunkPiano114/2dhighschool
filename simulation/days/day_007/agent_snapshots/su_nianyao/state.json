@@ -1,0 +1,113 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "笔记本",
+        "goal": "在午休时找个安静角落把那篇关于冬天的随笔写完",
+        "reason": "这篇随笔卡了几天了，总觉得写出来心里会顺畅点，不然写不出来真的EMO。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "354e18",
+        "origin_day": 7,
+        "pursued_days": 1
+      },
+      {
+        "target": "林昭宇",
+        "goal": "找机会看一眼他在做什么，但一定要装作只是刚好路过",
+        "reason": "虽然昨天看过了，但只要他在教室，我还是忍不住想确认他的状态，那种感觉很微妙。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "ed11f7",
+        "origin_day": 7,
+        "pursued_days": 1
+      },
+      {
+        "target": "方语晨",
+        "goal": "拉着方语晨吐槽一下最近的数学课，顺便打听点八卦",
+        "reason": "最近压力大，找闺蜜聊聊能让我心情好点，而且听别人八卦能转移注意力。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 7,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "calm",
+    "location_preferences": {
+      "morning_break": "走廊",
+      "lunch": "食堂",
+      "afternoon_break": "天台"
+    }
+  },
+  "day": 7,
+  "active_concerns": [
+    {
+      "id": "6bad6e",
+      "text": "程雨桐是不是真的特别讨厌我，感觉连呼吸都让她烦。",
+      "source_event": "程雨桐在课堂上冷脸挪位置，动作很大。；宿舍里因为林昭宇的话题引发了程雨桐的强烈反感和冷暴力。",
+      "source_scene": "上课",
+      "source_day": 7,
+      "emotion": "anxious",
+      "intensity": 6,
+      "related_people": [
+        "程雨桐"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 7,
+      "last_new_info_day": 7,
+      "reinforcement_count": 2,
+      "text_history": [
+        "程雨桐是不是对我有什么意见，搞得这么尴尬。"
+      ],
+      "id_history": [],
+      "last_bump_day": 7,
+      "bumps_today": 2
+    },
+    {
+      "id": "458934",
+      "text": "林昭宇在食堂用餐时被方语晨点破，担心自己的心思被旁人察觉。",
+      "source_event": "午饭时方语晨提到林昭宇",
+      "source_scene": "",
+      "source_day": 7,
+      "emotion": "embarrassed",
+      "intensity": 4,
+      "related_people": [
+        "林昭宇",
+        "方语晨"
+      ],
+      "positive": false,
+      "topic": "恋爱",
+      "last_reinforced_day": 7,
+      "last_new_info_day": 7,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "4f5fdb",
+      "text": "随笔开头迟迟写不出，感到有些焦虑，希望能尽快完成以缓解情绪。",
+      "source_event": "课间发呆时想到随笔",
+      "source_scene": "",
+      "source_day": 7,
+      "emotion": "frustrated",
+      "intensity": 3,
+      "related_people": [],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 7,
+      "last_new_info_day": 7,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

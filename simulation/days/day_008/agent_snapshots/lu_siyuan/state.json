@@ -1,0 +1,77 @@
+{
+  "emotion": "anxious",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "公众号",
+        "goal": "删掉太矫情的部分，试着发布那篇关于人际压力的文章",
+        "reason": "老是写了又删，心里总觉得不踏实，想看看发出去会怎么样。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "4c1d08",
+        "origin_day": 8,
+        "pursued_days": 1
+      },
+      {
+        "target": "林昭宇",
+        "goal": "约林昭宇下午去图书馆讨论生物难题",
+        "reason": "和他待在一起讨论问题最放松，不想一个人待着。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 8,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "calm",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 8,
+  "active_concerns": [
+    {
+      "id": "4c1d08",
+      "text": "公众号里关于被利用感的感悟写了又删，始终不敢发布，担心被别人看到后引起不必要的麻烦。",
+      "source_event": "15:30 课间图书馆删除草稿",
+      "source_scene": "",
+      "source_day": 7,
+      "emotion": "anxious",
+      "intensity": 5,
+      "related_people": [],
+      "positive": false,
+      "topic": "自我认同",
+      "last_reinforced_day": 8,
+      "last_new_info_day": 7,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 8,
+      "bumps_today": 2
+    },
+    {
+      "id": "b17425",
+      "text": "公众号里关于被利用感的感悟写了又删，始终不敢发布，担心被别人看到后引起不必要的麻烦。",
+      "source_event": "全天多次产生想发布文章的念头但最终放弃",
+      "source_scene": "",
+      "source_day": 8,
+      "emotion": "anxious",
+      "intensity": 5,
+      "related_people": [],
+      "positive": false,
+      "topic": "自我认同",
+      "last_reinforced_day": 8,
+      "last_new_info_day": 8,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 15,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "陆思远",
+        "goal": "找机会问问他毕业后打算干嘛，探探口风",
+        "reason": "老是憋着心里没底，想看看别人怎么打算的，能不能避开沈逸凡的眼线",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "9e32b7",
+        "origin_day": 3,
+        "pursued_days": 2
+      },
+      {
+        "target": "何家骏",
+        "goal": "带他去操场投几个篮，让他别在教室闷坏了",
+        "reason": "这哥们太孤僻了，带他打球顺便自己也能放松一下",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "8b8220",
+        "origin_day": 4,
+        "pursued_days": 1
+      },
+      {
+        "target": "沈逸凡",
+        "goal": "故意在他面前晃悠，逗逗他",
+        "reason": "最近被他管得太烦了，不找点乐子逗逗他我心里不爽",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "d85c7f",
+        "origin_day": 2,
+        "pursued_days": 3
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "走廊",
+      "lunch": "食堂",
+      "afternoon_break": "操场"
+    }
+  },
+  "day": 4,
+  "active_concerns": [
+    {
+      "id": "9e32b7",
+      "text": "家里工厂订单减少，想打听别人对未来就业的看法，但一直没找到合适的机会深入询问。",
+      "source_event": "与陆思远关于毕业后打算的简短对话",
+      "source_scene": "",
+      "source_day": 1,
+      "emotion": "anxious",
+      "intensity": 4,
+      "related_people": [
+        "陆思远"
+      ],
+      "positive": false,
+      "topic": "家庭压力",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 4,
+      "bumps_today": 2
+    },
+    {
+      "id": "d85c7f",
+      "text": "沈逸凡管得越来越严，想找陆思远聊聊未来或者带何家骏打球的机会都被他搅和了，这种被处处限制的感觉很烦。",
+      "source_event": "食堂与宿舍的冲突",
+      "source_scene": "",
+      "source_day": 3,
+      "emotion": "frustrated",
+      "intensity": 2,
+      "related_people": [
+        "沈逸凡",
+        "陆思远",
+        "何家骏"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 3,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 4,
+      "bumps_today": 2
+    },
+    {
+      "id": "df3acc",
+      "text": "想找陆思远聊聊毕业后的打算，但沈逸凡总是盯着不放，完全找不到机会。",
+      "source_event": "宿舍夜聊",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "frustrated",
+      "intensity": 6,
+      "related_people": [
+        "陆思远",
+        "沈逸凡"
+      ],
+      "positive": false,
+      "topic": "未来规划",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 4,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

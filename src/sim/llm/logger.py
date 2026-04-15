@@ -25,7 +25,7 @@ def log_llm_call(
     model: str = "",
     temperature: float = 0.0,
 ) -> None:
-    log_dir = settings.logs_dir / f"day_{day:03d}" / "debug" / scene_name / str(group_id)
+    log_dir = settings.days_dir / f"day_{day:03d}" / "debug" / scene_name / str(group_id)
     _ensure_dir(log_dir)
 
     timestamp = time.strftime("%Y%m%d_%H%M%S")
@@ -55,7 +55,7 @@ def log_llm_call(
         "tokens_completion": tokens_completion,
         "cost_usd": cost_usd,
     }
-    costs_file = settings.logs_dir / "costs.jsonl"
+    costs_file = settings.simulation_dir / "costs.jsonl"
     _ensure_dir(costs_file.parent)
     with open(costs_file, "a", encoding="utf-8") as f:
         f.write(json.dumps(cost_line, ensure_ascii=False) + "\n")

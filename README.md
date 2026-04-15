@@ -12,7 +12,7 @@ Multi-agent LLM simulation of a Chinese high school class. AI-powered students a
 
 ```bash
 uv sync                                          # install dependencies
-uv run python scripts/init_world.py              # init world (wipes agents/ and world/)
+uv run python scripts/init_world.py              # init world (wipes simulation/state/, simulation/world/, simulation/days/)
 uv run sim --days 5                              # run simulation
 uv run sim --days 1 --start-day 3 --seed 42      # resume from day 3, reproducible
 ```
@@ -21,7 +21,7 @@ uv run sim --days 1 --start-day 3 --seed 42      # resume from day 3, reproducib
 
 The default cast is a Chinese high school class — 10 students and 1 homeroom
 teacher (`he_min`). To run the simulation with your own characters, edit
-`data/characters/*.json` (one file per character).
+`canon/cast/profiles/*.json` (one file per character).
 
 **Important constraint**: don't add, remove, or rename `agent_id` slots. The
 10 student slots + `he_min` are hardcoded in `scripts/init_world.py`,
@@ -31,15 +31,15 @@ slot, not the slot itself.
 
 ### For humans (manual editing)
 
-1. Open a file under `data/characters/` and modify the fields. Schema is
+1. Open a file under `canon/cast/profiles/` and modify the fields. Schema is
    defined in `src/sim/models/agent.py` (`AgentProfile`).
 2. Validate after editing:
    ```bash
-   python -m json.tool data/characters/<id>.json > /dev/null
-   uv run python -c "from src.sim.models.agent import AgentProfile; AgentProfile.model_validate_json(open('data/characters/<id>.json').read())"
+   python -m json.tool canon/cast/profiles/<id>.json > /dev/null
+   uv run python -c "from src.sim.models.agent import AgentProfile; AgentProfile.model_validate_json(open('canon/cast/profiles/<id>.json').read())"
    ```
-3. Rebuild the world (this **wipes** `agents/` and `world/`, including all
-   previous runs):
+3. Rebuild the world (this **wipes** `simulation/state/`, `simulation/world/`,
+   and `simulation/days/`, including all previous runs):
    ```bash
    uv run python scripts/init_world.py
    uv run sim --days 5
@@ -72,20 +72,22 @@ and a few UI theme packs. These are **commercial assets** and are not in git.
 Place them locally before running anything under `src/sim/cards/`:
 
 ```bash
-cp -r /path/to/your/assets ./assets
+cp -r /path/to/your/assets/* ./assets/
 # ./assets/moderninteriors-win/... and ./assets/Complete_UI_Essential_Pack_v2.4/...
 ```
 
-`./assets/` is gitignored. The **derived** 10 character portrait PNGs under
-`data/portraits/` *are* checked in so freshly cloned workspaces can render cards
-without re-running the generator.
+Contents of `./assets/` are gitignored by default; only `./assets/fonts/`
+(OFL-licensed Chinese fonts) is whitelisted and tracked. The **derived** 10
+character portrait PNGs under `canon/cast/portraits/` *are* checked in so
+freshly cloned workspaces can render cards without re-running the generator.
 
-**Convention:** after editing `data/visual_bible.json` (sprite_source or crop
-fields), re-run the portrait generator or the PNGs will drift from the config:
+**Convention:** after editing `canon/cast/visual_bible.json` (sprite_source or
+crop fields), re-run the portrait generator or the PNGs will drift from the
+config:
 
 ```bash
-uv run python scripts/generate_portraits.py     # regenerate data/portraits/*.png
-uv run python -m sim.cards.self_test            # sanity-check + produce prototype_scene_card.png
+uv run python scripts/generate_portraits.py     # regenerate canon/cast/portraits/*.png
+uv run python -m sim.cards.self_test            # sanity-check → .cache/self_test/
 ```
 
 The share-card render cache lives in `.cache/cards/` (gitignored). After a sim

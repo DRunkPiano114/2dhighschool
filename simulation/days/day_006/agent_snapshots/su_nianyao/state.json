@@ -1,0 +1,91 @@
+{
+  "emotion": "calm",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "笔记本",
+        "goal": "在午休时写一段关于冬天的随笔",
+        "reason": "这几天一直没动笔，心里总觉得空落落的，想把那种冷清又安静的感觉记下来。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "354e18",
+        "origin_day": 6,
+        "pursued_days": 1
+      },
+      {
+        "target": "林昭宇",
+        "goal": "假装去接水，路过他的座位确认他在干嘛",
+        "reason": "总是忍不住想看他一眼，但又怕被发现，纠结死了。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "ed11f7",
+        "origin_day": 6,
+        "pursued_days": 1
+      },
+      {
+        "target": "方语晨",
+        "goal": "找方语晨吐槽一下最近的学习压力",
+        "reason": "跟她聊聊八卦或者抱怨一下数学题，心情会好很多。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 6,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "anxious",
+    "location_preferences": {
+      "morning_break": "走廊",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 6,
+  "active_concerns": [
+    {
+      "id": "354e18",
+      "text": "连续两天没写随笔了，心里总觉得空落落的，想把那种冷清又安静的感觉记下来。",
+      "source_event": "图书馆独处时间",
+      "source_scene": "",
+      "source_day": 5,
+      "emotion": "frustrated",
+      "intensity": 1,
+      "related_people": [],
+      "positive": false,
+      "topic": "兴趣爱好",
+      "last_reinforced_day": 6,
+      "last_new_info_day": 5,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 6,
+      "bumps_today": 2
+    },
+    {
+      "id": "ed11f7",
+      "text": "因为方语晨的追问，开始在意自己对林昭宇的关注是否过于明显。",
+      "source_event": "课间活动；晚自习被方语晨询问与林昭宇的关系",
+      "source_scene": "",
+      "source_day": 5,
+      "emotion": "frustrated",
+      "intensity": 1,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "恋爱",
+      "last_reinforced_day": 6,
+      "last_new_info_day": 6,
+      "reinforcement_count": 1,
+      "text_history": [
+        "想假装接水路过林昭宇的座位确认他在干嘛，但因为上次被发现而不敢行动。"
+      ],
+      "id_history": [],
+      "last_bump_day": 6,
+      "bumps_today": 2
+    }
+  ]
+}

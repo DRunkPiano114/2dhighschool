@@ -1,7 +1,7 @@
 """Generate per-agent portrait PNGs from LimeZu premade sprite sheets.
 
-Idempotent: produces byte-identical output on re-runs. Reads `data/visual_bible.json`
-and writes one `data/portraits/{agent_id}.png` per agent.
+Idempotent: produces byte-identical output on re-runs. Reads `canon/cast/visual_bible.json`
+and writes one `canon/cast/portraits/{agent_id}.png` per agent.
 
 Portrait composition (per agent):
   1. Crop the premade sprite sheet at `crop` coordinates (32x48 head+torso).

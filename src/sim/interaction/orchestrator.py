@@ -138,7 +138,7 @@ class Orchestrator:
 
     def _scene_file_path(self, day: int, scene: Scene) -> Path:
         time_prefix = scene.time.replace(":", "")  # "08:45" → "0845"
-        return settings.logs_dir / f"day_{day:03d}" / f"{time_prefix}_{scene.name}.json"
+        return settings.days_dir / f"day_{day:03d}" / f"{time_prefix}_{scene.name}.json"
 
     def _resolve_seed(self, progress: Progress) -> int:
         """Resolve seed: CLI flag > saved in progress > generate new."""
@@ -307,7 +307,7 @@ class Orchestrator:
         self._trajectory = DayTrajectory(day=day)
 
         # Catalyst events: check agent state and inject events before scenes
-        catalyst_file = settings.data_dir / "catalyst_events.json"
+        catalyst_file = settings.worldbook_dir / "catalyst_events.json"
         if catalyst_file.exists():
             catalyst_rng = random.Random(hash((self._seed, "catalyst", day)))
             checker = CatalystChecker(catalyst_file, catalyst_rng)
@@ -670,8 +670,8 @@ class Orchestrator:
     DAILY_SNAPSHOT_FILES = ("state.json", "relationships.json", "self_narrative.json")
 
     def _save_daily_snapshots(self, day: int) -> None:
-        """Save per-agent state snapshots to logs/day_{N}/agent_snapshots/."""
-        day_dir = settings.logs_dir / f"day_{day:03d}" / "agent_snapshots"
+        """Save per-agent state snapshots to simulation/days/day_{N}/agent_snapshots/."""
+        day_dir = settings.days_dir / f"day_{day:03d}" / "agent_snapshots"
         for aid in self._active_agent_ids():
             agent_dir = self.world.agents_dir / aid
             dest = day_dir / aid
@@ -680,12 +680,12 @@ class Orchestrator:
                 src = agent_dir / fname
                 if src.exists():
                     shutil.copy2(src, dest / fname)
-        logger.info(f"  Saved daily snapshots → logs/day_{day:03d}/agent_snapshots/")
+        logger.info(f"  Saved daily snapshots → simulation/days/day_{day:03d}/agent_snapshots/")
 
     def _save_day0_snapshot_if_needed(self) -> None:
         """Save Day 0 initial state snapshot (pristine state before any simulation).
         Idempotent: only creates if day_000 doesn't exist yet."""
-        day0_dir = settings.logs_dir / "day_000" / "agent_snapshots"
+        day0_dir = settings.days_dir / "day_000" / "agent_snapshots"
         if day0_dir.exists():
             return
         for aid in self._active_agent_ids():
@@ -696,7 +696,7 @@ class Orchestrator:
                 src = agent_dir / fname
                 if src.exists():
                     shutil.copy2(src, dest / fname)
-        logger.info("  Saved Day 0 initial state snapshot → logs/day_000/agent_snapshots/")
+        logger.info("  Saved Day 0 initial state snapshot → simulation/days/day_000/agent_snapshots/")
 
     def _end_of_day(self, day: int, progress: Progress) -> None:
         self.world.clear_all_snapshots()
@@ -722,7 +722,7 @@ class Orchestrator:
 
         # Save trajectory + scenes index
         from ..agent.storage import atomic_write_json
-        day_dir = settings.logs_dir / f"day_{day:03d}"
+        day_dir = settings.days_dir / f"day_{day:03d}"
         day_dir.mkdir(parents=True, exist_ok=True)
 
         if self._trajectory:

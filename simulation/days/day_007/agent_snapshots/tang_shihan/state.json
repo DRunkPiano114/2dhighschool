@@ -1,0 +1,74 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "林昭宇",
+        "goal": "假装借文具顺便问他物理题，看看他什么反应",
+        "reason": "老是看他和苏念瑶在那边神神秘秘的，我心里毛毛的，得找机会探探口风。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "450fb6",
+        "origin_day": 7,
+        "pursued_days": 1
+      },
+      {
+        "target": "蛋仔",
+        "goal": "给蛋仔买新娃衣并拍照片发小红书",
+        "reason": "这几天烦心事太多了，买点可爱的回回血，不然我要疯了。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 7,
+        "pursued_days": 1
+      },
+      {
+        "target": "方语晨",
+        "goal": "午饭时套话，搞清楚她和苏念瑶到底瞒着什么",
+        "reason": "昨天看她们俩那样子，感觉完全被排挤了，必须问清楚，不然以后怎么一起玩。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "450fb6",
+        "origin_day": 7,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "anxious",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "走廊"
+    }
+  },
+  "day": 7,
+  "active_concerns": [
+    {
+      "id": "450fb6",
+      "text": "方语晨和苏念瑶在宿舍里谈论周末恐怖本，却对我隐瞒了关于林昭宇的相关互动，这种被排挤感让我非常在意。",
+      "source_event": "苏念瑶在课堂上买裙子并对我和方语晨的询问表现得极其冷淡。；22:00 宿舍夜聊；晚自习苏念瑶路过林昭宇座位时的侧头举动；22:00 宿舍夜聊",
+      "source_scene": "上课",
+      "source_day": 5,
+      "emotion": "curious",
+      "intensity": 7,
+      "related_people": [
+        "苏念瑶"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 7,
+      "last_new_info_day": 7,
+      "reinforcement_count": 3,
+      "text_history": [
+        "苏念瑶到底在瞒着我们什么秘密？",
+        "苏念瑶和方语晨之间到底在瞒着我什么秘密？这种被排除在小圈子之外的感觉很不舒服。",
+        "苏念瑶和林昭宇之间似乎有我不知道的互动，这让我非常在意。"
+      ],
+      "id_history": [],
+      "last_bump_day": 7,
+      "bumps_today": 2
+    }
+  ]
+}

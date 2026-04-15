@@ -1,0 +1,70 @@
+{
+  "emotion": "neutral",
+  "energy": 85,
+  "academic_pressure": 35,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "林昭宇",
+        "goal": "找个课间把他叫到办公室，观察状态并谈谈压力",
+        "reason": "这孩子最近状态实在让人放心不下，必须得找个机会聊聊，不能再拖了。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "eeb8c6",
+        "origin_day": 3,
+        "pursued_days": 3
+      },
+      {
+        "target": "何家骏",
+        "goal": "检查他的错题本，辅导薄弱环节",
+        "reason": "这孩子底子薄，得趁他还有点进步劲头的时候多推一把。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "fca093",
+        "origin_day": 3,
+        "pursued_days": 3
+      },
+      {
+        "target": null,
+        "goal": "去学校门口买杯热咖啡",
+        "reason": "这几天忙得头昏脑涨，再不喝口咖啡提提神，我这把老骨头真的要撑不住了。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 5,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "教室"
+    }
+  },
+  "day": 5,
+  "active_concerns": [
+    {
+      "id": "eeb8c6",
+      "text": "林昭宇近期的心理状态依然令人担忧，需要找机会进行谈话。",
+      "source_event": "日常观察",
+      "source_scene": "",
+      "source_day": 2,
+      "emotion": "worry",
+      "intensity": 1,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 2,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

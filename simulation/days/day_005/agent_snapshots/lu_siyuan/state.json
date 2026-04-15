@@ -1,0 +1,98 @@
+{
+  "emotion": "calm",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "公众号",
+        "goal": "给积攒的草稿起个标题，尝试删减字数后发布一篇",
+        "reason": "老是存着也不行，总得迈出第一步，不然心里一直惦记着。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "24ee3e",
+        "origin_day": 5,
+        "pursued_days": 1
+      },
+      {
+        "target": "林昭宇",
+        "goal": "约林昭宇下午去图书馆安静地自习",
+        "reason": "最近有点累，和他待在一起能让我稍微放松一点，也能避开姜皓天。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 5,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 5,
+  "active_concerns": [
+    {
+      "id": "24ee3e",
+      "text": "公众号草稿箱里积攒了十几篇内容，总觉得写得不够好或者没人看，迟迟不敢发布。",
+      "source_event": "今天再次因为琐事打断，没能完成公众号内容的排版和发布。",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "anxious",
+      "intensity": 1,
+      "related_people": [],
+      "positive": false,
+      "topic": "自我认同",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 4,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 5,
+      "bumps_today": 2
+    },
+    {
+      "id": "2510f4",
+      "text": "姜皓天在晚自习和宿舍的干扰行为让我感到无奈，但我选择了忍让。",
+      "source_event": "晚自习被踢凳子，宿舍被追问升学打算。",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "bored",
+      "intensity": 4,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 5,
+      "last_new_info_day": 4,
+      "reinforcement_count": 2,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 5,
+      "bumps_today": 2
+    },
+    {
+      "id": "b6f36e",
+      "text": "公众号草稿箱里积攒的文章一直没有发布，总觉得还没准备好，但又很想迈出第一步。",
+      "source_event": "全天复习间隙",
+      "source_scene": "",
+      "source_day": 5,
+      "emotion": "anxious",
+      "intensity": 4,
+      "related_people": [],
+      "positive": false,
+      "topic": "自我认同",
+      "last_reinforced_day": 5,
+      "last_new_info_day": 5,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-"""Sanity guard on data/schedule.json: long-form scene max_rounds caps."""
+"""Sanity guard on canon/worldbook/schedule.json: long-form scene max_rounds caps."""
 
 import json
 from pathlib import Path
@@ -11,7 +11,7 @@ def test_schedule_max_rounds_sane():
     fully recover from. The caps below are upper bounds; lowering further
     is fine, raising is a regression.
     """
-    schedule_path = Path(__file__).resolve().parents[1] / "data" / "schedule.json"
+    schedule_path = Path(__file__).resolve().parents[1] / "canon" / "worldbook" / "schedule.json"
     scenes = json.loads(schedule_path.read_text(encoding="utf-8"))
 
     caps = {

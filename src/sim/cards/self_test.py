@@ -2,7 +2,9 @@
 
   1. test_portraits.png      — 2×5 grid of all 10 agent portraits
   2. prototype_scene_card.png — real 1080×1440 scene card rendered from
-                                day_001/2200_宿舍夜聊.json tick 3
+                                simulation/days/day_001/2200_宿舍夜聊.json tick 3
+
+Output is written to .cache/self_test/ (gitignored).
 
 Run: `uv run python -m sim.cards.self_test`
 """
@@ -32,7 +34,7 @@ from .elements.balloon import render_balloon
 from .elements.portrait import load_portrait, scaled_portrait
 from .elements.seal import render_seal
 
-OUT_DIR = PROJECT_ROOT
+OUT_DIR = PROJECT_ROOT / ".cache" / "self_test"
 
 # --- test_portraits grid ---------------------------------------------------
 
@@ -90,9 +92,9 @@ def render_portrait_grid() -> Image.Image:
 SCENE_FIXTURE_PATH = (
     PROJECT_ROOT / "web" / "public" / "data" / "days" / "day_001" / "2200_宿舍夜聊.json"
 )
-# Fallback if web/public/data is not yet exported: try the raw logs path.
+# Fallback if web/public/data is not yet exported: try the raw sim output.
 SCENE_FIXTURE_FALLBACK = (
-    PROJECT_ROOT / "logs" / "day_001" / "2200_宿舍夜聊.json"
+    PROJECT_ROOT / "simulation" / "days" / "day_001" / "2200_宿舍夜聊.json"
 )
 
 
@@ -252,6 +254,7 @@ def render_prototype_scene_card() -> Image.Image:
 
 
 def main() -> int:
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
     print("rendering test_portraits.png...")
     grid = render_portrait_grid()
     save_png(grid, OUT_DIR / "test_portraits.png")

@@ -1,0 +1,94 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 50,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "陆思远",
+        "goal": "请教他如何利用碎片时间提升英语阅读速度，减少焦虑感。",
+        "reason": "英语成绩一直没起色，想听听成绩好的他有什么高效的办法，不然总担心拖后腿。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "ed4070",
+        "origin_day": 8,
+        "pursued_days": 1
+      },
+      {
+        "target": "沈逸凡",
+        "goal": "尽快把寝室值日表的问题确认下来并排好。",
+        "reason": "不想再被他催了，这种琐事一直压着心底很烦，早点弄完能省心。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "01fc36",
+        "origin_day": 8,
+        "pursued_days": 1
+      },
+      {
+        "target": "苏念瑶",
+        "goal": "找机会看一眼她是不是在看我。",
+        "reason": "这个念头一直都在，哪怕只是看一眼确认一下也好。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "376b5c",
+        "origin_day": 7,
+        "pursued_days": 2
+      }
+    ],
+    "mood_forecast": "anxious",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 8,
+  "active_concerns": [
+    {
+      "id": "3247a4",
+      "text": "宿舍环境太吵闹，姜皓天的行为让人无法静心休息，影响了晚上的状态。",
+      "source_event": "晚自习和宿舍夜聊期间姜皓天的干扰行为。",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "frustrated",
+      "intensity": 3,
+      "related_people": [
+        "姜皓天",
+        "陆思远"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 8,
+      "last_new_info_day": 4,
+      "reinforcement_count": 3,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 8,
+      "bumps_today": 1
+    },
+    {
+      "id": "376b5c",
+      "text": "今天在图书馆和晚自习都没能找到机会确认唐诗涵是否在关注我。",
+      "source_event": "日常校园生活；图书馆与晚自习期间",
+      "source_scene": "",
+      "source_day": 7,
+      "emotion": "curious",
+      "intensity": 3,
+      "related_people": [
+        "唐诗涵"
+      ],
+      "positive": true,
+      "topic": "恋爱",
+      "last_reinforced_day": 8,
+      "last_new_info_day": 8,
+      "reinforcement_count": 1,
+      "text_history": [
+        "想找机会确认唐诗涵是否在关注我，这个念头一直挥之不去。"
+      ],
+      "id_history": [],
+      "last_bump_day": 8,
+      "bumps_today": 2
+    }
+  ]
+}

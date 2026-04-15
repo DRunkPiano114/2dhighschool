@@ -1,0 +1,30 @@
+{
+  "relationships": {
+    "he_jiajun": {
+      "target_name": "何家骏",
+      "target_id": "he_jiajun",
+      "favorability": 4,
+      "trust": 0,
+      "understanding": 6,
+      "label": "学生",
+      "recent_interactions": [
+        "Day 2 +课间@教室",
+        "Day 3 +午饭@食堂",
+        "Day 7 +午饭@食堂"
+      ],
+      "days_since_interaction": 0
+    },
+    "jiang_haotian": {
+      "target_name": "姜皓天",
+      "target_id": "jiang_haotian",
+      "favorability": -2,
+      "trust": 0,
+      "understanding": 1,
+      "label": "学生",
+      "recent_interactions": [
+        "Day 7 −午饭@食堂"
+      ],
+      "days_since_interaction": 0
+    }
+  }
+}

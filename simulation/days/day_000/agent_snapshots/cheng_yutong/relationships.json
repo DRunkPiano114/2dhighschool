@@ -1,0 +1,22 @@
+{
+  "relationships": {
+    "su_nianyao": {
+      "target_name": "苏念瑶",
+      "target_id": "su_nianyao",
+      "favorability": 5,
+      "trust": 5,
+      "understanding": 10,
+      "label": "同桌",
+      "recent_interactions": []
+    },
+    "tang_shihan": {
+      "target_name": "唐诗涵",
+      "target_id": "tang_shihan",
+      "favorability": 5,
+      "trust": 5,
+      "understanding": 10,
+      "label": "室友",
+      "recent_interactions": []
+    }
+  }
+}

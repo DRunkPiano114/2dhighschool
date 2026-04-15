@@ -1,0 +1,96 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 15,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "陆思远",
+        "goal": "在午休时找机会问他的未来打算",
+        "reason": "这几天沈逸凡盯得太死，一直没机会聊，心里没底，想听听他怎么看的。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "df3acc",
+        "origin_day": 5,
+        "pursued_days": 4
+      },
+      {
+        "target": "何家骏",
+        "goal": "课间拉他去操场投几个三分球",
+        "reason": "这哥们整天刷题太紧绷了，想带他出来透透气，顺便聊聊天。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "907820",
+        "origin_day": 8,
+        "pursued_days": 1
+      },
+      {
+        "target": "沈逸凡",
+        "goal": "故意在他面前哼新出的说唱",
+        "reason": "就是看他不爽，想逗逗他看他那副想管又管不了的表情，找点乐子。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 7,
+        "pursued_days": 2
+      }
+    ],
+    "mood_forecast": "frustrated",
+    "location_preferences": {
+      "morning_break": "走廊",
+      "lunch": "食堂",
+      "afternoon_break": "操场"
+    }
+  },
+  "day": 8,
+  "active_concerns": [
+    {
+      "id": "df3acc",
+      "text": "沈逸凡在宿舍盯得太死，一直没机会找陆思远聊聊毕业后的出路，心里越来越没底。",
+      "source_event": "宿舍夜聊；全天被沈逸凡限制活动；全天被沈逸凡监控；22:00 宿舍夜聊",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "frustrated",
+      "intensity": 3,
+      "related_people": [
+        "陆思远",
+        "沈逸凡"
+      ],
+      "positive": false,
+      "topic": "未来规划",
+      "last_reinforced_day": 8,
+      "last_new_info_day": 8,
+      "reinforcement_count": 6,
+      "text_history": [
+        "想找陆思远聊聊毕业后的打算，但沈逸凡总是盯着不放，完全找不到机会。",
+        "沈逸凡盯得太紧，完全没法和陆思远聊毕业后的打算，心里越来越没底。",
+        "沈逸凡在学校里管得太宽，导致我完全没机会和陆思远聊聊毕业后的出路，心里越来越没底。"
+      ],
+      "id_history": [],
+      "last_bump_day": 8,
+      "bumps_today": 2
+    },
+    {
+      "id": "e6cb52",
+      "text": "沈逸凡这小子真要告状？烦死了。",
+      "source_event": "沈逸凡威胁要向陈老师汇报我课间晃荡的事",
+      "source_scene": "课间@操场",
+      "source_day": 8,
+      "emotion": "anxious",
+      "intensity": 7,
+      "related_people": [
+        "沈逸凡"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 8,
+      "last_new_info_day": 8,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 8,
+      "bumps_today": 1
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "emotion": "calm",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "公众号",
+        "goal": "删减掉文章里那些太矫情的句子，尝试发布出去",
+        "reason": "老是放在草稿箱也不是个事，总得迈出这一步，不然心里一直挂着不舒服。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "b6f36e",
+        "origin_day": 6,
+        "pursued_days": 2
+      },
+      {
+        "target": "林昭宇",
+        "goal": "约林昭宇下午去图书馆自习",
+        "reason": "和他在一起学习比较能静下心，而且不用应付姜皓天那些乱七八糟的干扰。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 7,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 7,
+  "active_concerns": [
+    {
+      "id": "4c1d08",
+      "text": "公众号里关于被利用感的感悟写了又删，始终不敢发布，担心被别人看到后引起不必要的麻烦。",
+      "source_event": "15:30 课间图书馆删除草稿",
+      "source_scene": "",
+      "source_day": 7,
+      "emotion": "anxious",
+      "intensity": 6,
+      "related_people": [],
+      "positive": false,
+      "topic": "自我认同",
+      "last_reinforced_day": 7,
+      "last_new_info_day": 7,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

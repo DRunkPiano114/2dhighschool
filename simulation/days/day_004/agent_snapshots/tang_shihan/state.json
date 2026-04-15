@@ -1,0 +1,116 @@
+{
+  "emotion": "bored",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "林昭宇",
+        "goal": "假装找他借支笔，顺便问一道物理题，看看他什么反应",
+        "reason": "老是纠结他到底烦不烦我，不能再怂了，必须得试探一下。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "04e80d",
+        "origin_day": 4,
+        "pursued_days": 1
+      },
+      {
+        "target": "自己",
+        "goal": "给蛋仔配一套新娃衣，拍几张那种超可爱的照片发小红书",
+        "reason": "最近学习压力有点大，搞点可爱的小东西能回回血，心情会好很多。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "225f25",
+        "origin_day": 4,
+        "pursued_days": 1
+      },
+      {
+        "target": "方语晨",
+        "goal": "拉着她去小卖部买那家限定奶茶，还要在那边刷一下八卦",
+        "reason": "今天就想喝那一口，而且跟朋友一起吐槽八卦最开心了。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "6434ad",
+        "origin_day": 4,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "excited",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "小卖部"
+    }
+  },
+  "day": 4,
+  "active_concerns": [
+    {
+      "id": "04e80d",
+      "text": "一定要找个机会在图书馆或者自习时再次试探林昭宇，看看他到底是真的忙还是在委婉拒绝我。",
+      "source_event": "林昭宇连续两次推脱我的物理题求助；课间询问物理题未果；15:30 课间在小卖部排队时对林昭宇态度的纠结；课间借笔被推迟",
+      "source_scene": "课间@教室",
+      "source_day": 1,
+      "emotion": "anxious",
+      "intensity": 5,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 4,
+      "reinforcement_count": 2,
+      "text_history": [
+        "林昭宇是不是烦我了，以后还是别老去打扰他吧。",
+        "想找机会问林昭宇物理题来确认他是否反感我，但因为怕被无视而退缩了。",
+        "一定要找个机会假装借文具顺便问林昭宇一道物理题，直接试探一下他到底烦不烦我，不能再拖了。"
+      ],
+      "id_history": [],
+      "last_bump_day": 4,
+      "bumps_today": 2
+    },
+    {
+      "id": "6434ad",
+      "text": "周末一定要去买那家限定奶茶，还要拉上朋友一起去，这可是社交货币。",
+      "source_event": "和方语晨商量去买限定奶茶；午饭时提到奶茶",
+      "source_scene": "午饭@食堂",
+      "source_day": 2,
+      "emotion": "excited",
+      "intensity": 3,
+      "related_people": [
+        "方语晨"
+      ],
+      "positive": true,
+      "topic": "期待的事",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 4,
+      "reinforcement_count": 2,
+      "text_history": [
+        "这周末一定要去把那家店的限定款奶茶抢到手，不能空手而归！"
+      ],
+      "id_history": [],
+      "last_bump_day": 4,
+      "bumps_today": 2
+    },
+    {
+      "id": "225f25",
+      "text": "周末一定要给蛋仔挑一套超级好看的娃衣，最近压力大，搞点可爱的小东西心情会好很多。",
+      "source_event": "全天对蛋仔玩偶的喜爱",
+      "source_scene": "",
+      "source_day": 3,
+      "emotion": "excited",
+      "intensity": 1,
+      "related_people": [],
+      "positive": true,
+      "topic": "兴趣爱好",
+      "last_reinforced_day": 3,
+      "last_new_info_day": 3,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

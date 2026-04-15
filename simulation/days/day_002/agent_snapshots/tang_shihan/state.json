@@ -1,0 +1,135 @@
+{
+  "emotion": "calm",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "林昭宇",
+        "goal": "尝试再问他一道物理题，看看他反应",
+        "reason": "老是想他是不是烦我了，不问清楚心里悬着难受，但我今天还是有点怂，怕他直接无视我。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "04e80d",
+        "origin_day": 2,
+        "pursued_days": 1
+      },
+      {
+        "target": "自己",
+        "goal": "拍一张校园日常发小红书",
+        "reason": "昨天没发成，今天得补上，希望能多几个赞让我开心一下。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 2,
+        "pursued_days": 1
+      },
+      {
+        "target": "宿舍室友",
+        "goal": "买点零食回寝室，调节一下气氛",
+        "reason": "昨天程雨桐和苏念瑶吵架了，寝室气氛好压抑，我得带头破冰，不然晚上睡觉太尴尬了。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "01b45a",
+        "origin_day": 2,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "calm",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "小卖部"
+    }
+  },
+  "day": 2,
+  "active_concerns": [
+    {
+      "id": "d123bb",
+      "text": "想找机会和林昭宇一起玩王者荣耀，感觉他玩游戏应该很厉害。",
+      "source_event": "15:30 课间@小卖部",
+      "source_scene": "",
+      "source_day": 1,
+      "emotion": "excited",
+      "intensity": 2,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": true,
+      "topic": "兴趣爱好",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "7a8fcc",
+      "text": "给我的蛋仔配一套超级好看的娃衣",
+      "source_event": "看到方语晨的娃衣觉得太萌了",
+      "source_scene": "午饭@食堂",
+      "source_day": 1,
+      "emotion": "excited",
+      "intensity": 3,
+      "related_people": [
+        "方语晨"
+      ],
+      "positive": true,
+      "topic": "兴趣爱好",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 1,
+      "bumps_today": 1
+    },
+    {
+      "id": "04e80d",
+      "text": "想找机会问林昭宇物理题来确认他是否反感我，但因为怕被无视而退缩了。",
+      "source_event": "林昭宇连续两次推脱我的物理题求助；课间询问物理题未果",
+      "source_scene": "课间@教室",
+      "source_day": 1,
+      "emotion": "anxious",
+      "intensity": 6,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 2,
+      "reinforcement_count": 2,
+      "text_history": [
+        "林昭宇是不是烦我了，以后还是别老去打扰他吧。"
+      ],
+      "id_history": [],
+      "last_bump_day": 2,
+      "bumps_today": 2
+    },
+    {
+      "id": "6434ad",
+      "text": "这周末一定要去把那家店的限定款奶茶抢到手，不能空手而归！",
+      "source_event": "和方语晨商量去买限定奶茶",
+      "source_scene": "午饭@食堂",
+      "source_day": 2,
+      "emotion": "excited",
+      "intensity": 4,
+      "related_people": [
+        "方语晨"
+      ],
+      "positive": true,
+      "topic": "期待的事",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 2,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

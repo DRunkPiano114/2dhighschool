@@ -57,7 +57,7 @@ Each simulated day runs through four sequential phases (plus an exam trigger bef
 
 Before daily plans, if `progress.next_exam_in_days <= 0`, the exam fires via `Orchestrator._run_exam()`:
 
-1. Load previous exam results (most recent `world/exam_results/day_NNN.json`) for rank comparison
+1. Load previous exam results (most recent `simulation/world/exam_results/day_NNN.json`) for rank comparison
 2. Generate exam scores (see Exam Score Generation below)
 3. Apply exam effects — emotion changes + energy drain + pressure shock, written directly to disk
 4. Reload all agent states from disk (to pick up the effects)
@@ -76,7 +76,7 @@ On day 1 and every `self_narrative_interval_days` (default 3) days:
   - `narrative`: first-person self-reflection (teacher: 100-200 chars; student: 50-100 chars in 碎碎念 style — short sentences like thoughts drifting through the mind, not essay prose)
   - `self_concept`: up to 4 bullets ("我是一个 ___ 的人"), slow-changing (prompt instructs: change at most 1 bullet per update unless major event)
   - `current_tensions`: up to 3 bullets, what the agent is struggling with this week (can change fully each update)
-- Saved to `agents/<id>/self_narrative.json` (canonical) + `self_narrative.md` (human-readable mirror). Legacy md-only data is auto-migrated on read.
+- Saved to `simulation/state/<id>/self_narrative.json` (canonical) + `self_narrative.md` (human-readable mirror). Legacy md-only data is auto-migrated on read.
 - `self_concept` + `current_tensions` are injected into daily_plan, self_reflection, and solo_reflection templates. `perception_static.j2` only gets `current_tensions` (kept lean since it runs per-tick).
 - `inner_conflicts` (from profile, immutable) displayed as "你内心的永恒矛盾" vs `current_tensions` displayed as "你最近在和这些搏斗" — both coexist, representing permanent personality traits vs transient struggles.
 
@@ -96,7 +96,7 @@ For each agent (concurrently, up to `max_concurrent_llm_calls`):
 
 ### Phase 2: Scene Execution (`day_phase = "scenes"`)
 
-**Catalyst Event Injection** (before scenes): at the start of `_run_scenes()`, the orchestrator loads `data/catalyst_events.json` and runs `CatalystChecker.check_and_inject()` once per day. `_check_trigger` is a **generator** — it yields every agent (or pair) that satisfies a trigger's condition, not just the first. The outer loop in `check_and_inject` iterates over every match and checks cooldown per match, so one isolation trigger can fire for three students on the same day.
+**Catalyst Event Injection** (before scenes): at the start of `_run_scenes()`, the orchestrator loads `canon/worldbook/catalyst_events.json` and runs `CatalystChecker.check_and_inject()` once per day. `_check_trigger` is a **generator** — it yields every agent (or pair) that satisfies a trigger's condition, not just the first. The outer loop in `check_and_inject` iterates over every match and checks cooldown per match, so one isolation trigger can fire for three students on the same day.
 
 - `concern_stalled`: a concern with matching `topic` and `today - last_new_info_day >= min_stale_days` (PR3: drives off `last_new_info_day`, not `last_reinforced_day`, so pure emotion reinforcement never masks a truly stalled concern). Entries in `catalyst_events.json` carry either `require_related_people: true` (→ only matches concerns with non-empty `related_people`, template uses `{related_person}`) or `require_empty_related_people: true` (→ only matches empty-people concerns, template has no `{related_person}` token). The two are mutually exclusive so a single concern can't fire both.
 - `positive_concern_stalled` (P2.B.4): same staleness logic as `concern_stalled` but scoped to `positive=True` concerns and parametrized by `topic` (currently `期待的事` and `兴趣爱好`, the two positive buckets in `ConcernTopic`). Without this trigger, positive concerns silently die — there's no reinforcement path other than LLM-emitted `concern_updates`, and a 2-day decay defeats most of them inside a week. Templates are deliberately vague-but-positive ("收到一条相关消息", "刷到一条相关的推送") so the LLM has room to ground the catalyst in whatever joy_source the concern originally tied to.
@@ -106,11 +106,11 @@ For each agent (concurrently, up to `max_concurrent_llm_calls`):
 
 Matching triggers fill a random template with agent names and inject the event via `EventQueueManager.add_event()` with `category="catalyst"`. **Cooldowns are always scoped** (per-agent or per-pair), keyed by `"<trigger_type>:<params_json>:<sorted_witnesses>"`. A global scope would starve every agent after the first match per day; the pre-PR4 `cooldown_scope == "per_pair"` conditional is gone — witness count drives scope automatically. Legacy cooldown keys (pre-PR4 format, no witness suffix after the params JSON) are filtered on load by `_load_cooldown_state` — expected to cause a small one-day catalyst burst on the upgrade-day as cleared-cooldown concerns fire (documented in PR4 changelog). Cooldowns persist to `world/catalyst_cooldowns.json`. After injection, the event queue is saved back to disk before scenes begin.
 
-For each scene in `data/schedule.json` (sequentially):
+For each scene in `canon/worldbook/schedule.json` (sequentially):
 
 **Step 2a — Scene Generation** (`world/scene_generator.py`):
 
-Scene generation is now **lazy per-config**: the orchestrator iterates over `schedule.json` entries and generates scene(s) for each config, reloading agent states between configs (to reflect re-planning changes). `SceneGenerator.__init__` takes `current_day` parameter and loads `_cooldown_state` from `world/ambient_cooldowns.json` for ambient event cooldown tracking.
+Scene generation is now **lazy per-config**: the orchestrator iterates over `schedule.json` entries and generates scene(s) for each config, reloading agent states between configs (to reflect re-planning changes). `SceneGenerator.__init__` takes `current_day` parameter and loads `_cooldown_state` from `simulation/world/ambient_cooldowns.json` for ambient event cooldown tracking.
 
 For **normal scenes** (`is_free_period=false`):
 - LOW density scenes roll against `trigger_probability` (default 15%). If they don't trigger, they're skipped entirely. If they trigger, density is upgraded to HIGH_LIGHT and a random classroom event is injected (balanced across negative/neutral/positive events).
@@ -124,7 +124,7 @@ For **free period scenes** (`is_free_period=true` — 课间 08:45, 午饭 12:00
 1. Read `pref_field` from the `SceneConfig` (declared in `schedule.json`) — maps the slot to the corresponding `LocationPreference` field (`morning_break`, `lunch`, or `afternoon_break`).
 2. Group students by their chosen location from daily plan; if a student's preference falls outside `config.valid_locations`, fall back to `config.location` (the slot's default).
 3. Teacher occasionally appears during free periods: 30% at 午饭, 10% at 课间. When she appears, she joins the slot's `default_location` (= `config.location`) group as a full agent participant.
-4. Create one Scene per occupied location with location-specific opening events from `data/location_events.json`
+4. Create one Scene per occupied location with location-specific opening events from `canon/worldbook/location_events.json`
 5. Scene name becomes `f"{config.name}@{location}"` (e.g. "课间@走廊", "午饭@食堂")
 6. Sequential scene indices assigned starting from current index
 
@@ -279,9 +279,9 @@ Hard char truncation is used instead of sentence-aware splitting because LLM sum
 
 ### Phase 3.5: Daily Snapshots (after compression)
 
-After compression completes, `_save_daily_snapshots(day)` copies each agent's current `state.json`, `relationships.json`, and `self_narrative.json` to `logs/day_{N:03d}/agent_snapshots/{agent_id}/`. These snapshots represent agent state at **end of Day N** = **start of Day N+1**.
+After compression completes, `_save_daily_snapshots(day)` copies each agent's current `state.json`, `relationships.json`, and `self_narrative.json` to `simulation/days/day_{N:03d}/agent_snapshots/{agent_id}/`. These snapshots represent agent state at **end of Day N** = **start of Day N+1**.
 
-**Day 0 initial snapshot**: `_save_day0_snapshot_if_needed()` runs at the start of each day loop, idempotently creating `logs/day_000/agent_snapshots/` from the pristine agent files if it doesn't already exist. This is the baseline for Day 1 morning state.
+**Day 0 initial snapshot**: `_save_day0_snapshot_if_needed()` runs at the start of each day loop, idempotently creating `simulation/days/day_000/agent_snapshots/` from the pristine agent files if it doesn't already exist. This is the baseline for Day 1 morning state.
 
 **Snapshot semantics**: `day_N` snapshot = agent state at end of Day N. Exception: `day_000` = initial state before any simulation = start of Day 1.
 
@@ -290,7 +290,7 @@ After compression completes, `_save_daily_snapshots(day)` copies each agent's cu
 **Purpose**: Snapshots enable the interactive chat API to reconstruct agent state at any historical timepoint (used by God Mode and Role Play chat).
 
 ```
-logs/day_001/agent_snapshots/
+simulation/days/day_001/agent_snapshots/
   lin_zhaoyu/
     state.json
     relationships.json
@@ -309,15 +309,15 @@ For all agents (students + teacher):
 - **Academic pressure update** (students only): calls `update_academic_pressure()` with current countdown and days since last exam. This activates countdown pressure escalation (≤14 days: +3, ≤7 days: +8, ≤3 days: +15) and post-exam recovery (day 0 resets to base, then -2/day decay). `days_since_exam` is computed from `progress.last_exam_day`.
 
 Global end-of-day:
-- Save trajectory data to `logs/day_NNN/trajectory.json`
-- Write `logs/day_NNN/scenes.json` — scene index for frontend navigation (built from scene files written during the day)
+- Save trajectory data to `simulation/days/day_NNN/trajectory.json`
+- Write `simulation/days/day_NNN/scenes.json` — scene index for frontend navigation (built from scene files written during the day)
 - Expire events older than `event_expire_days` (default 3)
 - Decrement `next_exam_in_days`
 - Advance progress to next day
 
 ### Scene File Output
 
-After all groups in a scene complete, the orchestrator writes a single frontend-ready scene file: `logs/day_NNN/HHMM_scenename.json` (e.g. `0845_课间@教室.json`). `scene.name` already includes `@location` for free periods.
+After all groups in a scene complete, the orchestrator writes a single frontend-ready scene file: `simulation/days/day_NNN/HHMM_scenename.json` (e.g. `0845_课间@教室.json`). `scene.name` already includes `@location` for free periods.
 
 **Format:**
 ```json
@@ -444,7 +444,7 @@ Concerns are generated at three points: per-agent self-reflection (post-scene, `
 
 **TTL + backstops** (`agent/state_update.decay_concerns`): three-layer eviction runs end-of-day. Layer 1 — TTL stale (`today - last_new_info_day >= concern_stale_days`, default 5): evict. Layer 2 — stuck-topic forced decay: `reinforcement_count >= 10` on a negative concern forces `decay=2` even for high-intensity (defeats the "high-intensity stickiness" that would otherwise freeze a stuck topic). Layer 3 — hard eviction: `reinforcement_count >= 15` on a negative concern drops it regardless of TTL. After thresholds, `reinforcement_count` decays `-1` per day (natural forgetting; prevents long-run systematic eviction). `intent.fulfilled` with a linked concern also deducts 3 from count — explicit reward that pushes a fulfilled concern out of stuck territory. Positive concerns are immune to both backstops so natural recurrence ("喜欢陆思远") is never suppressed.
 
-**Merge via `add_concern`** performs topic-based dedup with alias-normalized `related_people` sets (`agent/name_aliases.normalize` sourced from `data/name_aliases.json`). For `其他` topic: exact people-set match required (Frankenstein guard still refuses to merge empty-people pairs). For other topics: any non-empty people intersection merges. Merge always bumps `reinforcement_count`, `last_reinforced_day`, and `last_new_info_day` (to `today`). New (non-merge) paths seed `last_reinforced_day` and `last_new_info_day` to `today` so day-0 concerns don't immediately look stale.
+**Merge via `add_concern`** performs topic-based dedup with alias-normalized `related_people` sets (`agent/name_aliases.normalize` sourced from `canon/worldbook/name_aliases.json`). For `其他` topic: exact people-set match required (Frankenstein guard still refuses to merge empty-people pairs). For other topics: any non-empty people intersection merges. Merge always bumps `reinforcement_count`, `last_reinforced_day`, and `last_new_info_day` (to `today`). New (non-merge) paths seed `last_reinforced_day` and `last_new_info_day` to `today` so day-0 concerns don't immediately look stale.
 
 Max 4 concerns per agent; lowest intensity evicted when full. `ConcernTopic` is a `Literal[10]` enum (`models/agent.py`): `学业焦虑 / 家庭压力 / 人际矛盾 / 恋爱 / 自我认同 / 未来规划 / 健康 / 兴趣爱好 / 期待的事 / 其他`. Both positive buckets (`兴趣爱好`, `期待的事`) ensure positive concerns aren't pushed into `其他` and outcompeted by negative ones.
 
@@ -744,7 +744,7 @@ The `concern_updates` caller specifically only counts a positive update toward `
 
 The only production caller of `skip_cap=True` today is `apply_exam_effects` (`world/exam.py`): when a student's `rank_change <= -3` after an exam, an `ActiveConcern(topic="学业焦虑", intensity=min(10, 5 + magnitude))` (8/9/10 ladder) is pushed via `add_concern(skip_cap=True, source="shock", today=day)`.
 
-**Name aliases** (`agent/name_aliases.py`, `data/name_aliases.json`): a hand-maintained mapping from informal appellations to canonical form (爸爸 → 父亲, 妈妈 → 母亲, etc.). Only applied inside `_find_existing_concern`'s comparison — rendered prompts, narrative, and concern.text all keep whatever spelling the LLM used. New aliases (class nicknames, etc.) are added via PR; no automatic learning.
+**Name aliases** (`agent/name_aliases.py`, `canon/worldbook/name_aliases.json`): a hand-maintained mapping from informal appellations to canonical form (爸爸 → 父亲, 妈妈 → 母亲, etc.). Only applied inside `_find_existing_concern`'s comparison — rendered prompts, narrative, and concern.text all keep whatever spelling the LLM used. New aliases (class nicknames, etc.) are added via PR; no automatic learning.
 
 **Concern id + lookup**: every concern has a stable 6-hex `id` (auto-generated). `id_history` preserves ids of concerns that were merged away (populated by `_apply_consolidation`'s merge branch). All LLM prompts render `[ref: <id>]` on each concern, and callers use `concern_lookup` to resolve references — see the ActiveConcern section above for details.
 
@@ -767,7 +767,7 @@ score = base(overall_rank) + subject_mod(±5 for strengths/weaknesses)
 - Variance inversely correlated with rank: top=3.0, 下游=10.0 (stronger students more consistent)
 - Attitude coefficient maps `study_attitude` text → 0.0-1.2 multiplier
 - Post-exam effects: rank drop ≥5 → SAD, rank rise ≥5 → EXCITED, high-pressure family + rank>5 → ANXIOUS, energy -15
-- Results saved to `world/exam_results/day_NNN.json`
+- Results saved to `simulation/world/exam_results/day_NNN.json`
 
 ### PDA Tick Resolution (`interaction/resolution.py`)
 
@@ -900,58 +900,76 @@ Context assembly (`agent/context.py:prepare_context()`):
 
 `system_base.j2` no longer contains the line "不要刻意戏剧化，允许平淡的日常对话" (P2.A.1). It was inadvertently suppressing positive moments alongside drama; with joy_source injection + self_reflection's positive-concern guidance now carrying the "everyday is OK" load explicitly, the negative-only suppression line was net-harmful. The 禁用词 / inner_thought / register constraints all stay.
 
-Every LLM call is logged to `logs/day_NNN/debug/scene_name/group_id/calltype_timestamp.json` with full input/output, latency, and token counts. Costs are appended to `logs/costs.jsonl`.
+Every LLM call is logged to `simulation/days/day_NNN/debug/scene_name/group_id/calltype_timestamp.json` with full input/output, latency, and token counts. Costs are appended to `simulation/costs.jsonl`.
 
 ---
 
 ## File Layout
 
 ```
-data/
-  characters/                    # 10 student + 1 teacher JSON profiles (immutable source of truth)
-    lin_zhaoyu.json, tang_shihan.json, jiang_haotian.json, lu_siyuan.json,
-    he_jiajun.json, shen_yifan.json, cheng_yutong.json, su_nianyao.json,
-    fang_yuchen.json, he_min.json
-  schedule.json                  # 8 daily scenes: 07:00 早读 → 22:00 宿舍夜聊 (3 with is_free_period=true)
-  location_events.json           # Location-specific opening events for free period scenes
-  scene_ambient_events.json      # Fix 12: per-location ambient events — mixed plain strings and dicts with `text` + `cooldown_days` fields
-  catalyst_events.json           # Conditional trigger definitions. PR4: `concern_stalled` 人际矛盾 and 学业焦虑 each split into `-relational` (require_related_people) and `-generic` (require_empty_related_people) entries — mutex on related_people presence
-  name_aliases.json              # PR1: hand-maintained informal→canonical name mapping (爸爸→父亲 etc). Nested under `aliases` key; `_doc` prefix is metadata. Loader: `agent/name_aliases.py`
+canon/                           # Class-story canon (pre-run, hand-authored)
+  cast/                          # People
+    profiles/                    # 10 student + 1 teacher JSON profiles (immutable source of truth)
+      lin_zhaoyu.json, tang_shihan.json, jiang_haotian.json, lu_siyuan.json,
+      he_jiajun.json, shen_yifan.json, cheng_yutong.json, su_nianyao.json,
+      fang_yuchen.json, he_min.json
+    portraits/                   # Derived 320×320 portrait PNGs (checked in, regenerated by scripts/generate_portraits.py)
+    visual_bible.json            # Per-agent visual config (sprite_source, crop, colors, motif) for share-card rendering
+  worldbook/                     # World rules
+    schedule.json                # 8 daily scenes: 07:00 早读 → 22:00 宿舍夜聊 (3 with is_free_period=true)
+    location_events.json         # Location-specific opening events for free period scenes
+    scene_ambient_events.json    # Fix 12: per-location ambient events — mixed plain strings and dicts with `text` + `cooldown_days` fields
+    catalyst_events.json         # Conditional trigger definitions. PR4: `concern_stalled` 人际矛盾 and 学业焦虑 each split into `-relational` (require_related_people) and `-generic` (require_empty_related_people) entries — mutex on related_people presence
+    name_aliases.json            # PR1: hand-maintained informal→canonical name mapping (爸爸→父亲 etc). Nested under `aliases` key; `_doc` prefix is metadata. Loader: `agent/name_aliases.py`
 
-agents/                          # Runtime state (gitignored, created by init_world.py)
-  <agent_id>/
-    profile.json                 # Copy of character profile
-    state.json                   # Current emotion, energy, pressure, plan, day, active_concerns
-    relationships.json           # Sparse relationship map {target_id: Relationship}
-    self_narrative.json          # Structured self-narrative (narrative + self_concept + current_tensions)
-    self_narrative.md            # Human-readable mirror of narrative text (not read as source)
-    key_memories.json            # Permanent memories (importance ≥ key_memory_write_threshold, Fix 14: =3)
-    today.md                     # Raw events from current day (cleared nightly)
-    recent.md                    # Compressed daily summaries (rolling window)
+simulation/                      # Simulation output (post-run, generated — tracked in git so Vercel builds see it)
+  sim.log                        # Main log (10MB rotation, gitignored)
+  costs.jsonl                    # Per-call cost tracking (gitignored)
+  state/                         # Per-agent runtime state (was top-level `agents/`); created by init_world.py
+    <agent_id>/
+      profile.json               # Copy of character profile
+      state.json                 # Current emotion, energy, pressure, plan, day, active_concerns
+      relationships.json         # Sparse relationship map {target_id: Relationship}
+      self_narrative.json        # Structured self-narrative (narrative + self_concept + current_tensions)
+      self_narrative.md          # Human-readable mirror of narrative text (not read as source)
+      key_memories.json          # Permanent memories (importance ≥ key_memory_write_threshold, Fix 14: =3)
+      today.md                   # Raw events from current day (cleared nightly)
+      recent.md                  # Compressed daily summaries (rolling window)
+  world/                         # Global world state (was top-level `world/`); created by init_world.py
+    progress.json                # Simulation checkpoint
+    event_queue.json             # Active + expired events
+    ambient_cooldowns.json       # Per-event cooldown state for ambient events with cooldown_days
+    catalyst_cooldowns.json      # Per-trigger cooldown state for catalyst events
+    exam_results/                # Per-exam result files (day_NNN.json)
+    snapshots/                   # Pre-scene agent snapshots for crash recovery (transient)
+      scene_N/
+        .complete                # Marker: snapshot fully written
+        <agent_id>/
+          state.json, relationships.json, key_memories.json, today.md
+  days/                          # Per-day sim output (was top-level `logs/`)
+    day_NNN/
+      HHMM_scenename.json        # One file per scene, all groups inside (frontend-ready)
+      scenes.json                # Scene index for frontend navigation
+      trajectory.json            # Per-agent location/emotion trajectory for frontend
+      agent_snapshots/           # End-of-day state copy used by chat-mode time travel
+        <agent_id>/
+          state.json, relationships.json, self_narrative.json
+      debug/                     # Raw LLM call logs (gitignored)
+        scene_name/
+          group_id/
+            calltype_timestamp.json
 
-world/                           # Global state (gitignored, created by init_world.py)
-  progress.json                  # Simulation checkpoint
-  event_queue.json               # Active + expired events
-  ambient_cooldowns.json         # Per-event cooldown state for ambient events with cooldown_days
-  catalyst_cooldowns.json        # Per-trigger cooldown state for catalyst events
-  exam_results/                  # Per-exam result files (day_NNN.json)
-  snapshots/                     # Pre-scene agent snapshots for crash recovery (transient)
-    scene_N/
-      .complete                  # Marker: snapshot fully written
-      <agent_id>/
-        state.json, relationships.json, key_memories.json, today.md
+assets/                          # External media
+  fonts/                         # OFL-licensed Chinese fonts (tracked in git via whitelist)
+    LXGWWenKai-Regular.ttf, NotoSerifSC-{Regular,Bold}.ttf, NotoSansSC-{Regular,Bold}.ttf, LICENSES.md
+  moderninteriors-win/           # LimeZu Modern Interiors sprite sheets (commercial, gitignored)
+  modernexteriors-win/           # LimeZu Modern Exteriors (commercial, gitignored)
+  Complete_UI_Essential_Pack_v2.4/  # Commercial UI pack (gitignored)
+  kenney_emotes-pack/, 32x32_emote-chat-balloons_pack/, bubble emotes july update.png  # Emote packs (gitignored)
 
-logs/                            # Simulation logs (gitignored)
-  sim.log                        # Main log (10MB rotation)
-  costs.jsonl                    # Per-call cost tracking
-  day_NNN/                       # Per-day detailed logs
-    HHMM_scenename.json          # One file per scene, all groups inside (frontend-ready)
-    scenes.json                  # Scene index for frontend navigation
-    trajectory.json              # Per-agent location/emotion trajectory for frontend
-    debug/                       # Raw LLM call logs
-      scene_name/
-        group_id/
-          calltype_timestamp.json
+.cache/
+  cards/                         # Share-card render cache (gitignored, regenerated from sim data)
+  self_test/                     # Phase 0 self-test output PNGs (gitignored)
 
 tests/                           # Unit tests (pytest)
   test_resolution.py             # PDA tick resolution logic (31 tests)
@@ -959,7 +977,7 @@ tests/                           # Unit tests (pytest)
   test_models.py                 # Pydantic model validation (PerceptionOutput, ActionType)
 
 scripts/
-  init_world.py                  # Initialize agents/ and world/ from data/characters/
+  init_world.py                  # Initialize simulation/state/ and simulation/world/ from canon/cast/profiles/
   inspect_state.py               # Debug tool to view current simulation state
   export_frontend_data.py        # Copy simulation output → web/public/data/
   generate_behavioral_anchors.py # Fix 5: one-shot LLM generation of behavioral_anchors for each character
@@ -987,7 +1005,7 @@ src/sim/
     replan.py                    # maybe_replan() — reactive location changes between scenes
     state_update.py              # Energy, pressure, emotion, concern decay formulas (PR3: three-layer decay + backstops)
   world/                         # World-level logic
-    schedule.py                  # load_schedule() from data/schedule.json
+    schedule.py                  # load_schedule() from canon/worldbook/schedule.json
     scene_generator.py           # SceneGenerator — lazy per-config scene generation, free period location splitting, ambient event cooldowns
     grouping.py                  # group_agents() — solo detection + affinity-based clustering
     event_queue.py               # EventQueueManager — add, spread, expire events
@@ -1079,15 +1097,15 @@ All settings via `pydantic-settings` `BaseSettings`, loaded from `.env` file, ov
 
 ## Initialization (`scripts/init_world.py`)
 
-1. Wipes `agents/`, `world/`, and `logs/` directories
-2. For each character in `data/characters/*.json`:
-   - Copies profile to `agents/<id>/profile.json`
+1. Wipes `simulation/state/`, `simulation/world/`, and `simulation/days/` directories
+2. For each character in `canon/cast/profiles/*.json`:
+   - Copies profile to `simulation/state/<id>/profile.json`
    - Creates initial state (energy=85, pressure based on family: 高→60, 中→35, 低→15, emotion=neutral, active_concerns=[])
    - Creates relationships from preset pairs (defined in `PRESET_RELATIONSHIPS` — roommates, seatmates, desk neighbors with initial favorability/trust values)
    - Creates empty `key_memories.json`, `today.md`, `recent.md`, `self_narrative.md`
-3. Creates `world/progress.json` (day 1, daily_plan phase, next_exam_in_days=29)
-4. Creates empty `world/event_queue.json`
-5. Creates `world/exam_results/` directory
+3. Creates `simulation/world/progress.json` (day 1, daily_plan phase, next_exam_in_days=29)
+4. Creates empty `simulation/world/event_queue.json`
+5. Creates `simulation/world/exam_results/` directory
 
 ### Dorm Assignments (hardcoded in `world/scene_generator.py`)
 
@@ -1117,7 +1135,7 @@ tang_shihan ↔ su_nianyao    室友    fav: 10/10  trust: 5/5
 
 ## Trajectory Output (`models/trajectory.py`)
 
-Per-day trajectory data saved to `logs/day_NNN/trajectory.json` for frontend visualization:
+Per-day trajectory data saved to `simulation/days/day_NNN/trajectory.json` for frontend visualization:
 
 ```
 DayTrajectory:
@@ -1166,6 +1184,7 @@ Split-pane "AI social reality show + read-the-mind" viewer. Top half (~55vh) is 
 web/public/data/
   meta.json                     # days, agent map, schedule, date, exam countdown
   agents/{agent_id}.json        # profile + state + relationships + self_narrative + key_memories
+  portraits/{agent_id}.png      # staged from canon/cast/portraits/ so CharacterGallery can fetch them
   days/day_001/
     scenes.json                 # scene index
     0845_课间@教室.json          # scene files with tick data
@@ -1296,7 +1315,7 @@ FastAPI server providing two interactive chat modes. Both are **read-only** (don
 
 `build_context_at_timepoint(agent_id, day, time_period, world)` reconstructs full agent context at a specific (day, time_period):
 
-1. **Baseline state**: Load from `logs/day_{N-1}/agent_snapshots/` (previous day's end-of-day = this day's start). For Day 1, uses `day_000` (initial state).
+1. **Baseline state**: Load from `simulation/days/day_{N-1}/agent_snapshots/` (previous day's end-of-day = this day's start). For Day 1, uses `day_000` (initial state).
 2. **Key memories**: Filter `key_memories.json` to `day <= N`, sorted by importance.
 3. **Recent summary**: Last 3 days from `recent.md`, filtered to `day <= N` via `max_day` parameter to prevent time-travel (viewing Day 1 won't leak Day 5 content).
 4. **"Today so far"**: Reconstruct from scene files — loads `scenes.json`, filters scenes before the given time period, extracts `narrative.key_moments` and `reflections[agent_id].emotion` from scene JSONs.
@@ -1426,9 +1445,9 @@ Phase 0–3 of the 小红书传播 initiative: server-side rendered PNGs that us
 - `captions.py` — Pure caption/filename/hashtag builders. Three entry points: `scene_caption()`, `daily_caption()`, `agent_caption()`. Each returns `{caption, hashtags, filename}`. CJK filenames are sanitized of filesystem-unsafe characters.
 - `elements/` — Compositional primitives: `portrait.py` (loads pre-generated pixel-art portraits with NEAREST resampling), `seal.py` (cinnabar rounded-square with reversed-out text — brand mark 「班」 and date stamps), `balloon.py` (CJK-wrapped speech + thought bubbles), `banner.py` (dashed dividers), `paper.py` (re-exports `paper_background`).
 
-### Data Model (`data/visual_bible.json`)
+### Data Model (`canon/cast/visual_bible.json`)
 
-Per-agent visual config: `name_cn`, `sprite_source` (LimeZu premade sheet), `crop` (x/y/w/h for the portrait frame), `main_color` (seeded from `CharacterSprite.ts::AGENT_COLORS` — do not change without syncing), `accent_color`, `motif_emoji`, `motif_tag`, `archetype_keywords`, and `is_teacher` flag for teacher-specific rendering paths. `scripts/generate_portraits.py` reads this and writes `data/portraits/{agent_id}.png` — rerun after any `sprite_source` or `crop` change.
+Per-agent visual config: `name_cn`, `sprite_source` (LimeZu premade sheet), `crop` (x/y/w/h for the portrait frame), `main_color` (seeded from `CharacterSprite.ts::AGENT_COLORS` — do not change without syncing), `accent_color`, `motif_emoji`, `motif_tag`, `archetype_keywords`, and `is_teacher` flag for teacher-specific rendering paths. `scripts/generate_portraits.py` reads this and writes `canon/cast/portraits/{agent_id}.png` — rerun after any `sprite_source` or `crop` change.
 
 ### Scene Card (`scene_card.py`, Phase 1)
 

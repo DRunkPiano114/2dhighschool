@@ -1,0 +1,48 @@
+{
+  "emotion": "neutral",
+  "energy": 85,
+  "academic_pressure": 35,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "林昭宇",
+        "goal": "课间找他聊聊，观察他的精神状态",
+        "reason": "看他上次月考后紧绷的样子，怕他压力过大出问题",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "7b3c91",
+        "origin_day": 1,
+        "pursued_days": 1
+      },
+      {
+        "target": "何家骏",
+        "goal": "检查他的作业进度，了解家庭情况",
+        "reason": "他底子薄又没人管，得在他彻底掉队前拉一把",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "4d2a8e",
+        "origin_day": 1,
+        "pursued_days": 1
+      },
+      {
+        "target": null,
+        "goal": "去学校门口买杯热咖啡",
+        "reason": "早起改卷子太累了，需要提神",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 1,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "教室"
+    }
+  },
+  "day": 1,
+  "active_concerns": []
+}

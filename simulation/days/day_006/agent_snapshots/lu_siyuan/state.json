@@ -1,0 +1,93 @@
+{
+  "emotion": "bored",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "公众号草稿",
+        "goal": "尝试删减掉一些冗长的句子，把那篇关于校园琐事的文章发布出去",
+        "reason": "一直拖着也不是办法，想看看迈出第一步会不会好一点",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "b6f36e",
+        "origin_day": 6,
+        "pursued_days": 1
+      },
+      {
+        "target": "林昭宇",
+        "goal": "约林昭宇一起去图书馆自习",
+        "reason": "和他待在一起讨论物理比较有安全感，也容易静下心来",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 6,
+        "pursued_days": 1
+      },
+      {
+        "target": "姜皓天",
+        "goal": "在晚自习尽量找借口避开他的干扰",
+        "reason": "虽然不敢直接拒绝，但想试着减少被他打断学习的次数",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "2510f4",
+        "origin_day": 6,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "calm",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 6,
+  "active_concerns": [
+    {
+      "id": "2510f4",
+      "text": "姜皓天在晚自习和宿舍的干扰行为让我感到无奈，但我选择了忍让。",
+      "source_event": "晚自习被踢凳子，宿舍被追问升学打算。",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "bored",
+      "intensity": 2,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 6,
+      "last_new_info_day": 4,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 6,
+      "bumps_today": 2
+    },
+    {
+      "id": "b6f36e",
+      "text": "公众号草稿箱里积攒的文章一直没有发布，总觉得还没准备好，但又很想迈出第一步。",
+      "source_event": "全天复习间隙；08:45 课间修改公众号草稿",
+      "source_scene": "",
+      "source_day": 5,
+      "emotion": "anxious",
+      "intensity": 3,
+      "related_people": [],
+      "positive": false,
+      "topic": "自我认同",
+      "last_reinforced_day": 5,
+      "last_new_info_day": 5,
+      "reinforcement_count": 0,
+      "text_history": [
+        "公众号草稿箱里的文章反复修改却始终不敢发布，担心内容过于矫情，想迈出第一步却又感到迟疑。"
+      ],
+      "id_history": [
+        "7080fd"
+      ],
+      "last_bump_day": 6,
+      "bumps_today": 2
+    }
+  ]
+}

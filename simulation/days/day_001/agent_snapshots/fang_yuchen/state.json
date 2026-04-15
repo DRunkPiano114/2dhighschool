@@ -1,0 +1,91 @@
+{
+  "emotion": "calm",
+  "energy": 85,
+  "academic_pressure": 35,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "苏念瑶",
+        "goal": "找苏念瑶分享昨天刚听到的班内八卦",
+        "reason": "憋着太难受了，一定要找人吐槽一下才能舒服，这可是社交蝴蝶的生存之道。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 1,
+        "pursued_days": 1
+      },
+      {
+        "target": "唐诗涵",
+        "goal": "和唐诗涵交换最新收到的限定谷子照片",
+        "reason": "买谷子太快乐了，必须找懂的人显摆一下，心情瞬间变好。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 1,
+        "pursued_days": 1
+      },
+      {
+        "target": "史政地课本",
+        "goal": "临时抱佛脚翻翻史政地笔记",
+        "reason": "虽然嘴上说背背就行，但二本线还是有点慌，先看一眼求个心安。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 1,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "excited",
+    "location_preferences": {
+      "morning_break": "走廊",
+      "lunch": "食堂",
+      "afternoon_break": "教室"
+    }
+  },
+  "day": 1,
+  "active_concerns": [
+    {
+      "id": "e800c7",
+      "text": "那两人到底是不是在谈恋爱啊，好想快点挖出后续！",
+      "source_event": "聊到翻围墙买手办的同学和高一女生",
+      "source_scene": "午饭@食堂",
+      "source_day": 1,
+      "emotion": "curious",
+      "intensity": 5,
+      "related_people": [
+        "隔壁班同学"
+      ],
+      "positive": true,
+      "topic": "恋爱",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "5a53fd",
+      "text": "周末和诗涵去玩恐怖本，一定要找个够恐怖的才行！",
+      "source_event": "宿舍夜聊时约好一起去玩恐怖本",
+      "source_scene": "宿舍夜聊",
+      "source_day": 1,
+      "emotion": "excited",
+      "intensity": 4,
+      "related_people": [
+        "唐诗涵"
+      ],
+      "positive": true,
+      "topic": "期待的事",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

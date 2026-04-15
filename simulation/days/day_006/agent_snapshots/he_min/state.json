@@ -1,0 +1,48 @@
+{
+  "emotion": "neutral",
+  "energy": 85,
+  "academic_pressure": 35,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "林昭宇",
+        "goal": "找个课间把他叫到办公室，观察状态并谈谈压力",
+        "reason": "这孩子最近红了眼眶，我不能再拖了，得确认他心理没出大问题。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "eeb8c6",
+        "origin_day": 3,
+        "pursued_days": 4
+      },
+      {
+        "target": "何家骏",
+        "goal": "检查他的错题本，辅导薄弱环节",
+        "reason": "他底子薄，不盯着不行，这几天进步了，得趁热打铁。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "fca093",
+        "origin_day": 3,
+        "pursued_days": 4
+      },
+      {
+        "target": "学校门口咖啡店",
+        "goal": "去学校门口买杯热咖啡",
+        "reason": "这几天忙得头晕，喝杯咖啡提提神，让自己状态好点。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 6,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "教室"
+    }
+  },
+  "day": 6,
+  "active_concerns": []
+}

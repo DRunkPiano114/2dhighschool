@@ -1,0 +1,95 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 15,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "陆思远",
+        "goal": "在午休时找个机会问问他毕业后打算去哪混，看能不能透点底。",
+        "reason": "沈逸凡老盯着，我得找个他不注意的空档，不然心里一直没谱。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "df3acc",
+        "origin_day": 5,
+        "pursued_days": 3
+      },
+      {
+        "target": "何家骏",
+        "goal": "拉他去操场投几个三分球，顺便带他开把王者。",
+        "reason": "看他天天抄答案太压抑了，带他出来透透气，我也能找回点主场感觉。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 7,
+        "pursued_days": 1
+      },
+      {
+        "target": "沈逸凡",
+        "goal": "故意在他面前哼新出的说唱，看他想管又管不了的样子。",
+        "reason": "这小子天天摆着张臭脸管我，不逗逗他我心里不爽。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 7,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "操场",
+      "lunch": "食堂",
+      "afternoon_break": "走廊"
+    }
+  },
+  "day": 7,
+  "active_concerns": [
+    {
+      "id": "df3acc",
+      "text": "沈逸凡在学校里管得太宽，导致我完全没机会和陆思远聊聊毕业后的出路，心里越来越没底。",
+      "source_event": "宿舍夜聊；全天被沈逸凡限制活动；全天被沈逸凡监控",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "frustrated",
+      "intensity": 4,
+      "related_people": [
+        "陆思远",
+        "沈逸凡"
+      ],
+      "positive": false,
+      "topic": "未来规划",
+      "last_reinforced_day": 7,
+      "last_new_info_day": 6,
+      "reinforcement_count": 5,
+      "text_history": [
+        "想找陆思远聊聊毕业后的打算，但沈逸凡总是盯着不放，完全找不到机会。",
+        "沈逸凡盯得太紧，完全没法和陆思远聊毕业后的打算，心里越来越没底。"
+      ],
+      "id_history": [],
+      "last_bump_day": 7,
+      "bumps_today": 2
+    },
+    {
+      "id": "907820",
+      "text": "何家骏越来越不爱理人，整天闷头刷题，想带他出来透透气都找不到机会，这哥们状态太紧绷了。",
+      "source_event": "午饭及下午上课期间多次邀请何家骏打球被拒",
+      "source_scene": "",
+      "source_day": 7,
+      "emotion": "frustrated",
+      "intensity": 5,
+      "related_people": [
+        "何家骏"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 7,
+      "last_new_info_day": 7,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

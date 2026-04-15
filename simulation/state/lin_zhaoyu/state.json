@@ -1,0 +1,73 @@
+{
+  "emotion": "calm",
+  "energy": 85,
+  "academic_pressure": 50,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "苏念瑶",
+        "goal": "找机会看一眼苏念瑶是在看我还是在看别处",
+        "reason": "这事儿一直挂在心上，总觉得有点在意，虽然很怂不敢直接对视，但还是想确认一下。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "376b5c",
+        "origin_day": 7,
+        "pursued_days": 3
+      },
+      {
+        "target": "陆思远",
+        "goal": "想问问陆思远能不能在晚自习帮我挡一下姜皓天的噪音",
+        "reason": "姜皓天太吵了，影响我复习，陆思远比较好说话，想看看他有没有什么办法。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "3247a4",
+        "origin_day": 9,
+        "pursued_days": 1
+      },
+      {
+        "target": null,
+        "goal": "去图书馆安安静静刷会数学题",
+        "reason": "只有在图书馆做题的时候才觉得踏实，不想被打扰。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 9,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "frustrated",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 9,
+  "active_concerns": [
+    {
+      "id": "376b5c",
+      "text": "今天在图书馆和教室依然没能确认唐诗涵是否在关注我，这种不确定感让我有些在意。",
+      "source_event": "日常校园生活；图书馆与晚自习期间；课间与唐诗涵的借橡皮互动",
+      "source_scene": "",
+      "source_day": 7,
+      "emotion": "curious",
+      "intensity": 1,
+      "related_people": [
+        "唐诗涵"
+      ],
+      "positive": true,
+      "topic": "恋爱",
+      "last_reinforced_day": 9,
+      "last_new_info_day": 9,
+      "reinforcement_count": 1,
+      "text_history": [
+        "想找机会确认唐诗涵是否在关注我，这个念头一直挥之不去。",
+        "今天在图书馆和晚自习都没能找到机会确认唐诗涵是否在关注我。"
+      ],
+      "id_history": [],
+      "last_bump_day": 9,
+      "bumps_today": 2
+    }
+  ]
+}

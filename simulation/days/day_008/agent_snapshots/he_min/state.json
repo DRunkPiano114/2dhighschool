@@ -1,0 +1,91 @@
+{
+  "emotion": "neutral",
+  "energy": 85,
+  "academic_pressure": 35,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "林昭宇",
+        "goal": "在课间把林昭宇叫到办公室，观察他的状态并进行深度谈话",
+        "reason": "这孩子最近太紧绷了，再不找他聊聊我怕他心态出问题，不能再拖了。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "3a3127",
+        "origin_day": 8,
+        "pursued_days": 1
+      },
+      {
+        "target": "何家骏",
+        "goal": "检查何家骏的错题本，辅导薄弱环节",
+        "reason": "虽然他最近肯整理了，但我得趁热打铁，把知识点落实下去，不能让他半途而废。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "fca093",
+        "origin_day": 8,
+        "pursued_days": 1
+      },
+      {
+        "target": null,
+        "goal": "去校门口买杯热咖啡",
+        "reason": "这几天忙得头昏脑涨，得喝杯咖啡提提神，不然下午的课真撑不住。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 8,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "教室"
+    }
+  },
+  "day": 8,
+  "active_concerns": [
+    {
+      "id": "a7d34c",
+      "text": "姜皓天这孩子身上的戾气太重，得找个机会单独敲打一下，不能让他影响班级风气。",
+      "source_event": "姜皓天在食堂对我冷哼并斜眼挑衅",
+      "source_scene": "午饭@食堂",
+      "source_day": 7,
+      "emotion": "frustrated",
+      "intensity": 5,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 7,
+      "last_new_info_day": 7,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "3a3127",
+      "text": "林昭宇最近状态紧绷，需要尽快找时间进行深度谈话，防止压力过大导致心理问题。",
+      "source_event": "日常观察",
+      "source_scene": "",
+      "source_day": 7,
+      "emotion": "担忧",
+      "intensity": 5,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 7,
+      "last_new_info_day": 7,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

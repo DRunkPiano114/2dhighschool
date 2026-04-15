@@ -1,0 +1,70 @@
+{
+  "emotion": "calm",
+  "energy": 85,
+  "academic_pressure": 35,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "方语晨",
+        "goal": "和方语晨聊聊天，听听八卦",
+        "reason": "最近复习有点闷，想听点新鲜事放松一下，顺便在人群里找点安全感。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 1,
+        "pursued_days": 1
+      },
+      {
+        "target": "林昭宇",
+        "goal": "路过林昭宇座位时偷偷看他一眼",
+        "reason": "虽然不想承认，但就是控制不住想确认一下他在干嘛，算是一种心理调节吧。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 1,
+        "pursued_days": 1
+      },
+      {
+        "target": null,
+        "goal": "在日记本里写下关于爸爸的新随笔",
+        "reason": "心里有些话没处说，写下来会觉得轻松一点，不然总觉得堵得慌。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 1,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "走廊"
+    }
+  },
+  "day": 1,
+  "active_concerns": [
+    {
+      "id": "fc7830",
+      "text": "到底哪个男生翻墙去买手办还带了高一学妹？",
+      "source_event": "方语晨在食堂提起隔壁班男生翻墙带女生的八卦但没说名字",
+      "source_scene": "午饭@食堂",
+      "source_day": 1,
+      "emotion": "curious",
+      "intensity": 3,
+      "related_people": [
+        "方语晨"
+      ],
+      "positive": false,
+      "topic": "其他",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

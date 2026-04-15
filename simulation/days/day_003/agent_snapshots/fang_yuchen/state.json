@@ -1,0 +1,112 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "苏念瑶",
+        "goal": "旁敲侧击沈逸凡周末去图书馆的真相",
+        "reason": "总觉得那家伙周末去图书馆不是为了学习，好奇心快憋死我了。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "756877",
+        "origin_day": 3,
+        "pursued_days": 1
+      },
+      {
+        "target": "唐诗涵",
+        "goal": "跟她吐槽一下那个新出的谷子限定款",
+        "reason": "昨天聊到一半断了，今天得赶紧跟她讨论下怎么拼单。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 3,
+        "pursued_days": 1
+      },
+      {
+        "target": null,
+        "goal": "偷偷刷一会儿微短剧",
+        "reason": "昨晚熬夜刷的那部剧还没更新完，课间得找机会补上。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 3,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "excited",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "走廊"
+    }
+  },
+  "day": 3,
+  "active_concerns": [
+    {
+      "id": "e800c7",
+      "text": "那两人到底是不是在谈恋爱啊，好想快点挖出后续！",
+      "source_event": "聊到翻围墙买手办的同学和高一女生",
+      "source_scene": "午饭@食堂",
+      "source_day": 1,
+      "emotion": "curious",
+      "intensity": 1,
+      "related_people": [
+        "隔壁班同学"
+      ],
+      "positive": true,
+      "topic": "恋爱",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 2,
+      "bumps_today": 2
+    },
+    {
+      "id": "756877",
+      "text": "沈逸凡周末去图书馆到底是不是去约会的？好想知道！",
+      "source_event": "课间听到沈逸凡说周末去图书馆",
+      "source_scene": "课间@教室",
+      "source_day": 2,
+      "emotion": "curious",
+      "intensity": 7,
+      "related_people": [
+        "沈逸凡"
+      ],
+      "positive": true,
+      "topic": "恋爱",
+      "last_reinforced_day": 3,
+      "last_new_info_day": 2,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 3,
+      "bumps_today": 2
+    },
+    {
+      "id": "13a135",
+      "text": "姜皓天手机里到底藏着什么秘密？当时他那个反应太奇怪了，一定要找机会再试探一下。",
+      "source_event": "15:30 课间@走廊",
+      "source_scene": "",
+      "source_day": 3,
+      "emotion": "curious",
+      "intensity": 4,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": false,
+      "topic": "其他",
+      "last_reinforced_day": 3,
+      "last_new_info_day": 3,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

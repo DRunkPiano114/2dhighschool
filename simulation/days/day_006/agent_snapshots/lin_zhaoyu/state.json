@@ -1,0 +1,115 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 50,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "陆思远",
+        "goal": "请教英语阅读理解的逻辑，搞懂长难句怎么拆",
+        "reason": "英语一直是短板，再不提升怕拖后腿，想听听思远是怎么学的。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "ed4070",
+        "origin_day": 5,
+        "pursued_days": 2
+      },
+      {
+        "target": null,
+        "goal": "晚自习前偷偷戴耳机听一下许嵩的新歌",
+        "reason": "最近压力太大了，脑子里全是公式，需要一点音乐让自己喘口气。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 5,
+        "pursued_days": 2
+      },
+      {
+        "target": "苏念瑶",
+        "goal": "确认下她是不是在看我，还是我自作多情",
+        "reason": "老觉得有人盯着，有点心慌，想看一眼确认下，但我不敢直接过去。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "f44220",
+        "origin_day": 6,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "anxious",
+    "location_preferences": {
+      "morning_break": "图书馆",
+      "lunch": "食堂",
+      "afternoon_break": "教室"
+    }
+  },
+  "day": 6,
+  "active_concerns": [
+    {
+      "id": "ed4070",
+      "text": "英语成绩一直没有起色，担心这门课会成为拖累总分、影响考取985的短板。",
+      "source_event": "今天在图书馆询问陆思远英语题答案时，再次感到无力。；15:30 课间在教室补例句",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "anxious",
+      "intensity": 6,
+      "related_people": [],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 6,
+      "last_new_info_day": 4,
+      "reinforcement_count": 0,
+      "text_history": [
+        "英语阅读理解的逻辑始终无法掌握，担心这会成为冲击985的致命短板。"
+      ],
+      "id_history": [
+        "5e32b2"
+      ],
+      "last_bump_day": 6,
+      "bumps_today": 2
+    },
+    {
+      "id": "3247a4",
+      "text": "宿舍环境太吵闹，姜皓天的行为让人无法静心休息，影响了晚上的状态。",
+      "source_event": "晚自习和宿舍夜聊期间姜皓天的干扰行为。",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "frustrated",
+      "intensity": 5,
+      "related_people": [
+        "姜皓天",
+        "陆思远"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 6,
+      "last_new_info_day": 4,
+      "reinforcement_count": 2,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 6,
+      "bumps_today": 2
+    },
+    {
+      "id": "f6d323",
+      "text": "希望能找陆思远请教英语阅读理解的逻辑，担心英语短板会影响考取985的目标。",
+      "source_event": "今天英语复习计划未执行",
+      "source_scene": "",
+      "source_day": 5,
+      "emotion": "anxious",
+      "intensity": 6,
+      "related_people": [
+        "陆思远"
+      ],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 6,
+      "last_new_info_day": 5,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 6,
+      "bumps_today": 2
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "姜皓天",
+        "goal": "假装问他奶茶拼单的事，顺便瞄一眼他手机屏保是不是猫猫图",
+        "reason": "他最近手机神神秘秘的，这事儿不搞清楚我心里真的难受，必须确认一下他到底在搞什么鬼。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "e88a6c",
+        "origin_day": 9,
+        "pursued_days": 1
+      },
+      {
+        "target": "苏念瑶",
+        "goal": "午饭时试探她和林昭宇最近到底在搞什么鬼",
+        "reason": "她俩之间那个氛围太奇怪了，肯定有什么秘密瞒着我，我得问出来。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "b93fe3",
+        "origin_day": 9,
+        "pursued_days": 1
+      },
+      {
+        "target": "唐诗涵",
+        "goal": "拉着她一起刷一下新出的谷子预览图，缓解一下烦躁心情",
+        "reason": "今天心情有点闷，看看新出的立牌心情会好一点，顺便放松一下。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 9,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "frustrated",
+    "location_preferences": {
+      "morning_break": "走廊",
+      "lunch": "教室",
+      "afternoon_break": "教室"
+    }
+  },
+  "day": 9,
+  "active_concerns": [
+    {
+      "id": "b93fe3",
+      "text": "苏念瑶和林昭宇到底是什么情况，总觉得她瞒着我什么，下次一定要问清楚。",
+      "source_event": "宿舍夜聊提到林昭宇",
+      "source_scene": "",
+      "source_day": 8,
+      "emotion": "curious",
+      "intensity": 2,
+      "related_people": [
+        "苏念瑶",
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "恋爱",
+      "last_reinforced_day": 9,
+      "last_new_info_day": 8,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 9,
+      "bumps_today": 2
+    },
+    {
+      "id": "27d166",
+      "text": "苏念瑶和唐诗涵在宿舍对我保持沉默，她们是不是在瞒着我什么？",
+      "source_event": "22:00 宿舍夜聊",
+      "source_scene": "",
+      "source_day": 9,
+      "emotion": "frustrated",
+      "intensity": 5,
+      "related_people": [
+        "苏念瑶",
+        "唐诗涵"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 9,
+      "last_new_info_day": 9,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

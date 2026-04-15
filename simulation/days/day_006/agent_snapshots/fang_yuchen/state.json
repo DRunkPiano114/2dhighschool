@@ -1,0 +1,135 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "姜皓天",
+        "goal": "假装借作业看，顺势瞄一眼他的手机屏幕或桌面通知",
+        "reason": "他上次那个反应太怪了，我总觉得他手机里藏着个超级大瓜，一定要挖出来！",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "13a135",
+        "origin_day": 4,
+        "pursued_days": 3
+      },
+      {
+        "target": "苏念瑶",
+        "goal": "在午饭时跟念瑶旁敲侧击一下沈逸凡周末的动向",
+        "reason": "心里总觉得沈逸凡周末去图书馆不对劲，不问清楚我晚上都睡不着觉。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "756877",
+        "origin_day": 6,
+        "pursued_days": 1
+      },
+      {
+        "target": "唐诗涵",
+        "goal": "确认周末剧本杀的丝绒裙装备，顺便刷刷最近的短剧",
+        "reason": "周末一定要穿得美美的，而且最近那部剧真的太上头了，必须找诗涵一起吐槽。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 6,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "excited",
+    "location_preferences": {
+      "morning_break": "操场",
+      "lunch": "食堂",
+      "afternoon_break": "走廊"
+    }
+  },
+  "day": 6,
+  "active_concerns": [
+    {
+      "id": "13a135",
+      "text": "姜皓天手机里到底藏着什么秘密？当时他那个反应太奇怪了，一定要找机会再试探一下。",
+      "source_event": "15:30 课间@走廊",
+      "source_scene": "",
+      "source_day": 3,
+      "emotion": "curious",
+      "intensity": 2,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": false,
+      "topic": "其他",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 3,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 6,
+      "bumps_today": 2
+    },
+    {
+      "id": "2eaff3",
+      "text": "周末恐怖本一定要穿那套丝绒裙，绝对不能输给别人！",
+      "source_event": "和唐诗涵讨论奶茶时提到了周末活动",
+      "source_scene": "课间@教室",
+      "source_day": 5,
+      "emotion": "excited",
+      "intensity": 5,
+      "related_people": [
+        "唐诗涵",
+        "苏念瑶"
+      ],
+      "positive": true,
+      "topic": "期待的事",
+      "last_reinforced_day": 5,
+      "last_new_info_day": 5,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "c727f6",
+      "text": "沈逸凡的猫猫背景图到底是什么意思？他手机里藏的秘密还没挖出来，总觉得他有什么大瓜。",
+      "source_event": "宿舍夜聊提到沈逸凡的背景图",
+      "source_scene": "",
+      "source_day": 5,
+      "emotion": "curious",
+      "intensity": 3,
+      "related_people": [
+        "沈逸凡"
+      ],
+      "positive": false,
+      "topic": "其他",
+      "last_reinforced_day": 6,
+      "last_new_info_day": 5,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 6,
+      "bumps_today": 2
+    },
+    {
+      "id": "aff22f",
+      "text": "苏念瑶在经过林昭宇座位时表现得不自然，她和林昭宇之间到底有什么秘密？",
+      "source_event": "晚自习苏念瑶去饮水机接水路过林昭宇位置",
+      "source_scene": "",
+      "source_day": 6,
+      "emotion": "curious",
+      "intensity": 4,
+      "related_people": [
+        "苏念瑶",
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 6,
+      "last_new_info_day": 6,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

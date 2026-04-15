@@ -1,0 +1,134 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 15,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "陆思远",
+        "goal": "找个机会旁敲侧击问问他以后打算干嘛，看看大家对未来怎么想的",
+        "reason": "老是担心家里厂子的事，想听听同龄人是怎么打算的，心里有点底",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 2,
+        "pursued_days": 1
+      },
+      {
+        "target": "何家骏",
+        "goal": "课间拉这哥们去操场投几个篮，让他别闷在教室里",
+        "reason": "看他平时太压抑了，带他动动，顺便自己也放松一下",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 2,
+        "pursued_days": 1
+      },
+      {
+        "target": "沈逸凡",
+        "goal": "在晚自习前故意在他面前晃悠，逗逗他看他那副气急败坏的样子",
+        "reason": "看他不顺眼，找点乐子让自己心情好点",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 2,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "happy",
+    "location_preferences": {
+      "morning_break": "操场",
+      "lunch": "食堂",
+      "afternoon_break": "走廊"
+    }
+  },
+  "day": 2,
+  "active_concerns": [
+    {
+      "id": "168376",
+      "text": "何家骏这小子倒是能陪我打球，希望他别被这破学校压傻了。",
+      "source_event": "邀请何家骏去操场打球",
+      "source_scene": "课间@教室",
+      "source_day": 1,
+      "emotion": "calm",
+      "intensity": 2,
+      "related_people": [
+        "何家骏"
+      ],
+      "positive": true,
+      "topic": "其他",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 1,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 2,
+      "bumps_today": 1
+    },
+    {
+      "id": "9e32b7",
+      "text": "家里工厂订单减少，想打听别人对未来就业的看法，但一直没找到合适的机会深入询问。",
+      "source_event": "与陆思远关于毕业后打算的简短对话",
+      "source_scene": "",
+      "source_day": 1,
+      "emotion": "anxious",
+      "intensity": 6,
+      "related_people": [
+        "陆思远"
+      ],
+      "positive": false,
+      "topic": "家庭压力",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 1,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 2,
+      "bumps_today": 1
+    },
+    {
+      "id": "8b8220",
+      "text": "何家骏这小子平时闷声不响的，晚上带他开黑得让他玩得开心点，别让他光顾着紧张。",
+      "source_event": "食堂午饭时何家骏主动问晚上能不能一起开黑",
+      "source_scene": "午饭@食堂",
+      "source_day": 2,
+      "emotion": "excited",
+      "intensity": 4,
+      "related_people": [
+        "何家骏"
+      ],
+      "positive": true,
+      "topic": "期待的事",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 2,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "caf0ef",
+      "text": "想找机会问问陆思远他们对未来升学的打算，但被沈逸凡搅和了，关于未来的迷茫感还是没能排解。",
+      "source_event": "宿舍夜聊",
+      "source_scene": "",
+      "source_day": 2,
+      "emotion": "frustrated",
+      "intensity": 5,
+      "related_people": [
+        "陆思远",
+        "沈逸凡"
+      ],
+      "positive": false,
+      "topic": "未来规划",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 2,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "memories": [
+    {
+      "date": "Day 2",
+      "day": 2,
+      "people": [
+        "何家骏"
+      ],
+      "location": "教室",
+      "emotion": "touched",
+      "importance": 5,
+      "topics": [
+        "学业焦虑"
+      ],
+      "text": "何家骏拿着乱糟糟的卷子，手都在抖，这孩子底子薄还没人管，看着真揪心。",
+      "source_days": [
+        2,
+        3
+      ],
+      "text_history": [
+        "课间督促何家骏整理数学错题，并针对其家庭情况进行了简短询问。",
+        "何家骏吃饭时一直低着头，连看我一眼的勇气都没有，感觉这孩子压力太大了。",
+        "在食堂督促何家骏进食并核对错题本整理进度，感受到作为班主任对后进生必须持续投入精力的责任感。"
+      ]
+    },
+    {
+      "date": "Day 7",
+      "day": 7,
+      "people": [
+        "姜皓天"
+      ],
+      "location": "食堂",
+      "emotion": "angry",
+      "importance": 5,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "姜皓天在食堂公然对我表现出抵触情绪，现在的孩子真是越来越难管。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 7",
+      "day": 7,
+      "people": [
+        "何家骏",
+        "姜皓天"
+      ],
+      "location": "食堂",
+      "emotion": "欣慰",
+      "importance": 6,
+      "topics": [
+        "学业焦虑"
+      ],
+      "text": "何家骏在食堂拒绝了姜皓天的练球邀请，主动选择整理错题本，表现出学习态度的转变。",
+      "source_days": [],
+      "text_history": []
+    }
+  ]
+}

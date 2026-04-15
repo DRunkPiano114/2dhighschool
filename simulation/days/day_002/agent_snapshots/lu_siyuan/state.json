@@ -1,0 +1,89 @@
+{
+  "emotion": "anxious",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "公众号",
+        "goal": "尝试给公众号草稿加个标题，或者检查一下排版",
+        "reason": "老是想发又不敢发，总得先往前迈一小步吧，哪怕只是改个标题。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 2,
+        "pursued_days": 1
+      },
+      {
+        "target": "林昭宇",
+        "goal": "约林昭宇一起去图书馆自习",
+        "reason": "只有在他旁边我才能稍微放松点，不想一个人待着胡思乱想。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 2,
+        "pursued_days": 1
+      },
+      {
+        "target": "姜皓天",
+        "goal": "在数学课前把上次借他的笔记要回来",
+        "reason": "虽然不好意思催，但下午数学课要用，只能硬着头皮去问问。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 2,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 2,
+  "active_concerns": [
+    {
+      "id": "e59812",
+      "text": "公众号草稿箱里写好的感悟，想发却始终不敢点击发布。",
+      "source_event": "独处时的自我反思",
+      "source_scene": "",
+      "source_day": 1,
+      "emotion": "anxious",
+      "intensity": 1,
+      "related_people": [],
+      "positive": false,
+      "topic": "自我认同",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "36852a",
+      "text": "姜皓天始终没有归还数学笔记，导致数学学习受到影响，心里感到有些委屈和焦虑。",
+      "source_event": "22:00 宿舍夜聊",
+      "source_scene": "",
+      "source_day": 2,
+      "emotion": "anxious",
+      "intensity": 5,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 2,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

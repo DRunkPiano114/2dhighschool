@@ -1,0 +1,94 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "姜皓天",
+        "goal": "找个课间跟他聊聊手机纪律，这次必须解决掉这个问题，不能再拖了。",
+        "reason": "作为班长，晚自习这种僵持状态太影响班级纪律，也让我自己很烦躁。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 2,
+        "pursued_days": 1
+      },
+      {
+        "target": "林昭宇",
+        "goal": "今天跟他聊聊课本以外的事，稍微放松点管人的语气。",
+        "reason": "最近管得太严，怕室友觉得压抑，得改善一下宿舍关系。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 2,
+        "pursued_days": 1
+      },
+      {
+        "target": null,
+        "goal": "去操场跑两圈，把郁闷的情绪发泄掉。",
+        "reason": "心里太憋屈了，运动一下或许能清醒点，父亲说运动是最好的自律。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 2,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "frustrated",
+    "location_preferences": {
+      "morning_break": "操场",
+      "lunch": "食堂",
+      "afternoon_break": "教室"
+    }
+  },
+  "day": 2,
+  "active_concerns": [
+    {
+      "id": "dc9947",
+      "text": "对室友管得太严了吗？看来以后说话得注意点分寸。",
+      "source_event": "林昭宇听到我劝他放松后，吃饭速度明显加快，只想尽快离开。",
+      "source_scene": "午饭@食堂",
+      "source_day": 1,
+      "emotion": "guilty",
+      "intensity": 6,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 1,
+      "reinforcement_count": 2,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 2,
+      "bumps_today": 1
+    },
+    {
+      "id": "42fa81",
+      "text": "在宿舍管理上，我多次要求姜皓天停止说话却被无视，这种班长权威被挑战的感觉让我非常烦躁，必须找机会彻底解决这个问题。",
+      "source_event": "宿舍熄灯后的纪律警告；看到何家骏在食堂顺从姜皓天并约着晚上打游戏；宿舍夜聊",
+      "source_scene": "",
+      "source_day": 1,
+      "emotion": "frustrated",
+      "intensity": 7,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 2,
+      "reinforcement_count": 3,
+      "text_history": [
+        "作为班长在处理姜皓天违纪问题时感到两难，既想维护班级纪律又对这种僵持关系感到疲惫。",
+        "连何家骏都开始跟着姜皓天胡闹了，班里的纪律是不是真的要管不住了？"
+      ],
+      "id_history": [],
+      "last_bump_day": 2,
+      "bumps_today": 2
+    }
+  ]
+}

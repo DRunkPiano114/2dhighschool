@@ -1,0 +1,68 @@
+{
+  "emotion": "calm",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "姜皓天",
+        "goal": "委婉地要回我的数学笔记",
+        "reason": "数学笔记一直在他那里，没法复习，心里一直放不下这个事。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "36852a",
+        "origin_day": 3,
+        "pursued_days": 1
+      },
+      {
+        "target": "林昭宇",
+        "goal": "约林昭宇一起去图书馆自习",
+        "reason": "只有和他在一起学习效率最高，也能稍微放松一点。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 2,
+        "pursued_days": 2
+      },
+      {
+        "target": null,
+        "goal": "给公众号草稿想个标题并检查排版",
+        "reason": "写了这么多草稿一直没动，想看看能不能整理好。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 3,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "anxious",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 3,
+  "active_concerns": [
+    {
+      "id": "3c5cd8",
+      "text": "想整理公众号草稿却总是被琐事打断，感觉自己的想法很难有空间表达出来。",
+      "source_event": "全天被班级杂事占用时间",
+      "source_scene": "",
+      "source_day": 3,
+      "emotion": "frustrated",
+      "intensity": 4,
+      "related_people": [],
+      "positive": false,
+      "topic": "自我认同",
+      "last_reinforced_day": 3,
+      "last_new_info_day": 3,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

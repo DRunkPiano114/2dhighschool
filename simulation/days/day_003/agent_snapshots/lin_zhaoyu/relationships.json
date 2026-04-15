@@ -1,0 +1,91 @@
+{
+  "relationships": {
+    "tang_shihan": {
+      "target_name": "唐诗涵",
+      "target_id": "tang_shihan",
+      "favorability": 8,
+      "trust": 5,
+      "understanding": 12,
+      "label": "同桌",
+      "recent_interactions": [
+        "Day 1 −课间@教室",
+        "Day 2 −课间@教室"
+      ],
+      "days_since_interaction": 1
+    },
+    "jiang_haotian": {
+      "target_name": "姜皓天",
+      "target_id": "jiang_haotian",
+      "favorability": 1,
+      "trust": -1,
+      "understanding": 12,
+      "label": "前后桌",
+      "recent_interactions": [
+        "Day 1 −宿舍夜聊",
+        "Day 2 −宿舍夜聊",
+        "Day 3 −午饭@食堂",
+        "Day 3 −宿舍夜聊"
+      ],
+      "days_since_interaction": 0
+    },
+    "lu_siyuan": {
+      "target_name": "陆思远",
+      "target_id": "lu_siyuan",
+      "favorability": 28,
+      "trust": 23,
+      "understanding": 21,
+      "label": "室友",
+      "recent_interactions": [
+        "Day 1 +课间@教室",
+        "Day 1 +课间@图书馆",
+        "Day 1 +宿舍夜聊",
+        "Day 2 +课间@教室",
+        "Day 2 +课间@图书馆",
+        "Day 2 +宿舍夜聊",
+        "Day 3 +课间@教室",
+        "Day 3 +午饭@食堂",
+        "Day 3 +课间@图书馆"
+      ],
+      "days_since_interaction": 0
+    },
+    "shen_yifan": {
+      "target_name": "沈逸凡",
+      "target_id": "shen_yifan",
+      "favorability": 12,
+      "trust": 7,
+      "understanding": 13,
+      "label": "室友",
+      "recent_interactions": [
+        "Day 1 +午饭@食堂",
+        "Day 3 +课间@教室",
+        "Day 3 −午饭@食堂",
+        "Day 3 +宿舍夜聊"
+      ],
+      "days_since_interaction": 0
+    },
+    "cheng_yutong": {
+      "target_name": "程雨桐",
+      "target_id": "cheng_yutong",
+      "favorability": 0,
+      "trust": 0,
+      "understanding": 1,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 1 −课间@图书馆"
+      ],
+      "days_since_interaction": 2
+    },
+    "he_jiajun": {
+      "target_name": "何家骏",
+      "target_id": "he_jiajun",
+      "favorability": -1,
+      "trust": 0,
+      "understanding": 1,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 3 −课间@教室"
+      ],
+      "days_since_interaction": 0
+    }
+  }
+}

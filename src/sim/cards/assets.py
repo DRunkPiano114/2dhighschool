@@ -9,10 +9,10 @@ from typing import Any
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 ASSETS_DIR = PROJECT_ROOT / "assets"
-FONTS_DIR = PROJECT_ROOT / "fonts"
-DATA_DIR = PROJECT_ROOT / "data"
-PORTRAITS_DIR = DATA_DIR / "portraits"
-VISUAL_BIBLE_PATH = DATA_DIR / "visual_bible.json"
+FONTS_DIR = ASSETS_DIR / "fonts"
+CAST_DIR = PROJECT_ROOT / "canon" / "cast"
+PORTRAITS_DIR = CAST_DIR / "portraits"
+VISUAL_BIBLE_PATH = CAST_DIR / "visual_bible.json"
 CACHE_DIR = PROJECT_ROOT / ".cache" / "cards"
 
 SPRITE_SHEETS_DIR = (

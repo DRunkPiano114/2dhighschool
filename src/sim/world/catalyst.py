@@ -25,7 +25,7 @@ class CatalystChecker:
       - Cooldown is always per-agent (or per-pair for 2-agent witnesses).
         Previously a global cooldown on a trigger starved every other agent
         that day; scope is inferred from the witnesses list.
-      - The `人际矛盾` and `学业焦虑` catalysts in `data/catalyst_events.json`
+      - The `人际矛盾` and `学业焦虑` catalysts in `canon/worldbook/catalyst_events.json`
         are split into `-relational` and `-generic` entries. `-relational`
         requires `related_people` non-empty via `require_related_people=True`;
         `-generic` requires empty via `require_empty_related_people=True`.
@@ -159,7 +159,7 @@ class CatalystChecker:
                     if c.topic != params["topic"]:
                         continue
                     # -relational / -generic mutex: entries in
-                    # data/catalyst_events.json carry either
+                    # canon/worldbook/catalyst_events.json carry either
                     # require_related_people or require_empty_related_people.
                     if params.get("require_related_people") and not c.related_people:
                         continue

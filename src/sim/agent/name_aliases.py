@@ -17,7 +17,7 @@ from ..config import settings
 
 @lru_cache(maxsize=1)
 def _load_aliases() -> dict[str, str]:
-    path: Path = settings.data_dir / "name_aliases.json"
+    path: Path = settings.worldbook_dir / "name_aliases.json"
     if not path.exists():
         return {}
     raw = json.loads(path.read_text("utf-8"))

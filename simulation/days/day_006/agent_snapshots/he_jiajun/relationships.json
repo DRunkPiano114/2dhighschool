@@ -1,0 +1,98 @@
+{
+  "relationships": {
+    "lin_zhaoyu": {
+      "target_name": "林昭宇",
+      "target_id": "lin_zhaoyu",
+      "favorability": 0,
+      "trust": 0,
+      "understanding": 3,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 1 −课间@教室",
+        "Day 1 ·课间@图书馆",
+        "Day 3 ·课间@教室"
+      ],
+      "days_since_interaction": 3
+    },
+    "tang_shihan": {
+      "target_name": "唐诗涵",
+      "target_id": "tang_shihan",
+      "favorability": 0,
+      "trust": 0,
+      "understanding": 1,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 1 ·课间@教室"
+      ],
+      "days_since_interaction": 5
+    },
+    "lu_siyuan": {
+      "target_name": "陆思远",
+      "target_id": "lu_siyuan",
+      "favorability": 0,
+      "trust": 0,
+      "understanding": 4,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 1 ·课间@图书馆",
+        "Day 2 ·午饭@食堂",
+        "Day 3 ·课间@教室",
+        "Day 5 ·课间@图书馆"
+      ],
+      "days_since_interaction": 1
+    },
+    "jiang_haotian": {
+      "target_name": "姜皓天",
+      "target_id": "jiang_haotian",
+      "favorability": 14,
+      "trust": 8,
+      "understanding": 9,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 2 +午饭@食堂",
+        "Day 4 +午饭@食堂",
+        "Day 4 −课间@操场",
+        "Day 5 +早读",
+        "Day 5 +上课",
+        "Day 6 +早读",
+        "Day 6 +午饭@食堂",
+        "Day 6 +晚自习"
+      ],
+      "days_since_interaction": 0
+    },
+    "he_min": {
+      "target_name": "何老师",
+      "target_id": "he_min",
+      "favorability": 0,
+      "trust": 0,
+      "understanding": 3,
+      "label": "老师",
+      "recent_interactions": [
+        "Day 2 +课间@教室",
+        "Day 3 −午饭@食堂"
+      ],
+      "days_since_interaction": 3
+    },
+    "shen_yifan": {
+      "target_name": "沈逸凡",
+      "target_id": "shen_yifan",
+      "favorability": -11,
+      "trust": 0,
+      "understanding": 6,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 2 −课间@教室",
+        "Day 3 −课间@教室",
+        "Day 3 −课间@操场",
+        "Day 4 −课间@操场",
+        "Day 5 −课间@教室",
+        "Day 5 −上课",
+        "Day 5 −午饭@教室",
+        "Day 6 −午饭@食堂",
+        "Day 6 −课间@操场",
+        "Day 6 −晚自习"
+      ],
+      "days_since_interaction": 0
+    }
+  }
+}

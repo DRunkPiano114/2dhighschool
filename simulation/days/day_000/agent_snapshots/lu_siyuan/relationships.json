@@ -1,0 +1,22 @@
+{
+  "relationships": {
+    "lin_zhaoyu": {
+      "target_name": "林昭宇",
+      "target_id": "lin_zhaoyu",
+      "favorability": 15,
+      "trust": 10,
+      "understanding": 10,
+      "label": "室友",
+      "recent_interactions": []
+    },
+    "jiang_haotian": {
+      "target_name": "姜皓天",
+      "target_id": "jiang_haotian",
+      "favorability": 5,
+      "trust": 5,
+      "understanding": 10,
+      "label": "室友",
+      "recent_interactions": []
+    }
+  }
+}

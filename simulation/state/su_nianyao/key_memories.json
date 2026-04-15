@@ -1,0 +1,255 @@
+{
+  "memories": [
+    {
+      "date": "Day 1",
+      "day": 1,
+      "people": [
+        "程雨桐"
+      ],
+      "location": "宿舍",
+      "emotion": "embarrassed",
+      "importance": 4,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "躲在被子里写日记，被程雨桐嫌弃台灯光线太亮",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 1",
+      "day": 1,
+      "people": [
+        "方语晨",
+        "唐诗涵"
+      ],
+      "location": "食堂",
+      "emotion": "calm",
+      "importance": 3,
+      "topics": [
+        "人际矛盾",
+        "兴趣爱好"
+      ],
+      "text": "和方语晨、唐诗涵在食堂吃饭，方语晨卖关子不肯说那个男生的名字，还在那显摆她的娃衣。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 2",
+      "day": 2,
+      "people": [
+        "方语晨",
+        "沈逸凡"
+      ],
+      "location": "走廊",
+      "emotion": "excited",
+      "importance": 5,
+      "topics": [
+        "恋爱"
+      ],
+      "text": "方语晨终于说了那个翻墙男生的八卦，竟然是沈逸凡，还拍了猫的照片，这也太甜了。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 2",
+      "day": 2,
+      "people": [
+        "方语晨",
+        "唐诗涵"
+      ],
+      "location": "食堂",
+      "emotion": "excited",
+      "importance": 5,
+      "topics": [
+        "期待的事",
+        "人际关系"
+      ],
+      "text": "和方语晨、唐诗涵约好周末去玩恐怖本《深渊录》，并讨论了攻略细节。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 3",
+      "day": 3,
+      "people": [
+        "方语晨",
+        "唐诗涵"
+      ],
+      "location": "食堂",
+      "emotion": "frustrated",
+      "importance": 5,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "方语晨一直追问沈逸凡那个猫头像的事，差点就瞒不住了，烦死了。",
+      "source_days": [
+        4
+      ],
+      "text_history": [
+        "食堂里语晨和诗涵一直追问沈逸凡的事，吵得我头疼。"
+      ]
+    },
+    {
+      "date": "Day 3",
+      "day": 3,
+      "people": [
+        "程雨桐"
+      ],
+      "location": "图书馆",
+      "emotion": "calm",
+      "importance": 3,
+      "topics": [
+        "学业焦虑"
+      ],
+      "text": "在图书馆和程雨桐分别复习，她戴着降噪耳机，我也没打扰她，两人就这么静静坐着。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 4",
+      "day": 4,
+      "people": [
+        "方语晨"
+      ],
+      "location": "走廊",
+      "emotion": "excited",
+      "importance": 4,
+      "topics": [
+        "期待的事",
+        "兴趣爱好"
+      ],
+      "text": "和语晨商量好周末恐怖本穿那件丝绒裙子，虽然有点怕太招摇。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 5",
+      "day": 5,
+      "people": [],
+      "location": "教室",
+      "emotion": "excited",
+      "importance": 5,
+      "topics": [
+        "期待的事"
+      ],
+      "text": "终于把那件丝绒裙子下单了，希望周末穿起来好看。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 5",
+      "day": 5,
+      "people": [
+        "方语晨",
+        "唐诗涵",
+        "程雨桐"
+      ],
+      "location": "教室",
+      "emotion": "frustrated",
+      "importance": 6,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "方语晨和唐诗涵一直追问林昭宇的事，烦死了，程雨桐还冷着脸摔杯子。",
+      "source_days": [
+        7,
+        9
+      ],
+      "text_history": [
+        "宿舍里关于林昭宇的追问太吵了，雨桐甚至直接冷脸戴耳机，气氛简直降到了冰点。",
+        "宿舍里又闹了一通，最后大家都不说话了，气氛闷得让人想逃走。"
+      ]
+    },
+    {
+      "date": "Day 6",
+      "day": 6,
+      "people": [
+        "林昭宇",
+        "方语晨"
+      ],
+      "location": "教室",
+      "emotion": "frustrated",
+      "importance": 6,
+      "topics": [
+        "恋爱"
+      ],
+      "text": "晚自习路过林昭宇座位时下意识的侧头注视，被方语晨察觉并追问两人关系。",
+      "source_days": [
+        7
+      ],
+      "text_history": [
+        "在食堂被方语晨当面戳穿看林昭宇的事，真是尴尬死我了。"
+      ]
+    },
+    {
+      "date": "Day 6",
+      "day": 6,
+      "people": [
+        "方语晨",
+        "程雨桐"
+      ],
+      "location": "教室",
+      "emotion": "frustrated",
+      "importance": 4,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "早读课被方语晨缠着问沈逸凡的事，雨桐烦得戴上耳机还弄出响声，乱死了。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 8",
+      "day": 8,
+      "people": [
+        "方语晨"
+      ],
+      "location": "食堂",
+      "emotion": "embarrassed",
+      "importance": 6,
+      "topics": [
+        "恋爱",
+        "人际矛盾"
+      ],
+      "text": "方语晨在食堂当众逼问我和林昭宇的事，大家都听见了，尴尬死我了。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 8",
+      "day": 8,
+      "people": [
+        "林昭宇",
+        "程雨桐",
+        "方语晨"
+      ],
+      "location": "宿舍",
+      "emotion": "frustrated",
+      "importance": 6,
+      "topics": [
+        "人际矛盾",
+        "恋爱"
+      ],
+      "text": "宿舍里又因为林昭宇的话题闹得不愉快，雨桐连手机都关了，气氛闷得让人窒息。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 9",
+      "day": 9,
+      "people": [
+        "程雨桐"
+      ],
+      "location": "教室",
+      "emotion": "frustrated",
+      "importance": 6,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "课间想找雨桐缓和一下关系，结果她戴着耳机完全不理我，气氛好僵。",
+      "source_days": [],
+      "text_history": []
+    }
+  ]
+}

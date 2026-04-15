@@ -1,0 +1,96 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 50,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "智学网",
+        "goal": "确认月考排名",
+        "reason": "等待时间太久了，不确定性影响了后续复习计划的制定。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 5,
+        "pursued_days": 1
+      },
+      {
+        "target": "《仙路独行》",
+        "goal": "阅读更新章节",
+        "reason": "这是维持心理平衡的必要手段，需要从高压环境下暂时剥离出来。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 5,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "anxious",
+    "location_preferences": {
+      "morning_break": "操场",
+      "lunch": "操场",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 5,
+  "active_concerns": [
+    {
+      "id": "998933",
+      "text": "月考排名尚未公布，对成绩的悬念导致持续的焦虑感。",
+      "source_event": "午饭时演算物理题",
+      "source_scene": "",
+      "source_day": 1,
+      "emotion": "anxious",
+      "intensity": 10,
+      "related_people": [],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 5,
+      "last_new_info_day": 1,
+      "reinforcement_count": 4,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 5,
+      "bumps_today": 2
+    },
+    {
+      "id": "eb3d29",
+      "text": "月考排名迟迟未公布，这种不确定性导致复习计划的调整受阻。",
+      "source_event": "智学网后台持续刷新无结果",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "anxious",
+      "intensity": 7,
+      "related_people": [],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 5,
+      "last_new_info_day": 4,
+      "reinforcement_count": 2,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 5,
+      "bumps_today": 2
+    },
+    {
+      "id": "f5f334",
+      "text": "每晚熄灯后阅读《仙路独行》的私密时间被白天的琐事和晚上的宿舍喧闹挤压，难以获得心理逃避。",
+      "source_event": "22:00 宿舍夜聊",
+      "source_scene": "",
+      "source_day": 5,
+      "emotion": "frustrated",
+      "intensity": 6,
+      "related_people": [],
+      "positive": false,
+      "topic": "兴趣爱好",
+      "last_reinforced_day": 5,
+      "last_new_info_day": 5,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 50,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "网易云音乐",
+        "goal": "听一下许嵩的新歌",
+        "reason": "最近压力太大了，想听听歌放松一下，不然感觉喘不过气。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 3,
+        "pursued_days": 2
+      },
+      {
+        "target": "英语试卷",
+        "goal": "再复习一遍昨天的错题逻辑",
+        "reason": "怕英语拖后腿，虽然昨天看过了，但还是心慌，想再确认一下逻辑。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 4,
+        "pursued_days": 1
+      },
+      {
+        "target": "陆思远",
+        "goal": "确认周末一起去图书馆的时间",
+        "reason": "跟着陆思远复习效率高点，心里也踏实些。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 4,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "anxious",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 4,
+  "active_concerns": [
+    {
+      "id": "f44220",
+      "text": "苏念瑶刚才好像一直在看我，她是想干嘛？",
+      "source_event": "苏念瑶在图书馆频繁走动并往我这边看",
+      "source_scene": "课间@图书馆",
+      "source_day": 4,
+      "emotion": "anxious",
+      "intensity": 3,
+      "related_people": [
+        "苏念瑶"
+      ],
+      "positive": false,
+      "topic": "其他",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 4,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "ed4070",
+      "text": "英语成绩一直没有起色，担心这门课会成为拖累总分、影响考取985的短板。",
+      "source_event": "今天在图书馆询问陆思远英语题答案时，再次感到无力。",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "anxious",
+      "intensity": 6,
+      "related_people": [],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 4,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "3247a4",
+      "text": "宿舍环境太吵闹，姜皓天的行为让人无法静心休息，影响了晚上的状态。",
+      "source_event": "晚自习和宿舍夜聊期间姜皓天的干扰行为。",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "frustrated",
+      "intensity": 5,
+      "related_people": [
+        "姜皓天",
+        "陆思远"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 4,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

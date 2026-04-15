@@ -24,8 +24,8 @@ TIME_PERIOD_ORDER = ["08:45", "12:00", "15:30", "22:00"]
 
 
 def _snapshot_dir(day: int) -> Path:
-    """Return path to logs/day_{N}/agent_snapshots/."""
-    return settings.logs_dir / f"day_{day:03d}" / "agent_snapshots"
+    """Return path to simulation/days/day_{N}/agent_snapshots/."""
+    return settings.days_dir / f"day_{day:03d}" / "agent_snapshots"
 
 
 def _load_snapshot_state(agent_id: str, day: int) -> AgentState | None:
@@ -54,7 +54,7 @@ def _load_snapshot_self_narrative(agent_id: str, day: int) -> SelfNarrativeResul
 
 def _load_scenes_index(day: int) -> list[dict]:
     """Load scenes.json for a given day."""
-    path = settings.logs_dir / f"day_{day:03d}" / "scenes.json"
+    path = settings.days_dir / f"day_{day:03d}" / "scenes.json"
     if not path.exists():
         return []
     return json.loads(path.read_text("utf-8"))
@@ -62,7 +62,7 @@ def _load_scenes_index(day: int) -> list[dict]:
 
 def _load_scene_file(day: int, filename: str) -> dict | None:
     """Load a specific scene JSON file."""
-    path = settings.logs_dir / f"day_{day:03d}" / filename
+    path = settings.days_dir / f"day_{day:03d}" / filename
     if not path.exists():
         return None
     return json.loads(path.read_text("utf-8"))
