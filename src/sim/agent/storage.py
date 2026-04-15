@@ -167,6 +167,8 @@ class WorldStorage:
 
     def get_agent(self, agent_id: str) -> AgentStorage:
         if agent_id not in self.agents:
+            if not (self.agents_dir / agent_id / "profile.json").exists():
+                raise KeyError(f"unknown agent: {agent_id}")
             self.agents[agent_id] = AgentStorage(agent_id, self.agents_dir)
         return self.agents[agent_id]
 

@@ -89,6 +89,12 @@ async def god_mode_chat(req: ChatRequest):
 async def role_play_chat(req: RolePlayRequest):
     world = _get_world()
 
+    # Validate up-front so a bad id surfaces as 404 instead of a stream-time 500
+    # (and never reaches get_agent's strict KeyError path).
+    for aid in (req.user_agent_id, *req.target_agent_ids):
+        if aid not in world.agents:
+            raise HTTPException(status_code=404, detail=f"unknown agent: {aid}")
+
     # Build context for user's character (to know their name)
     user_storage = world.get_agent(req.user_agent_id)
     user_profile = user_storage.load_profile()

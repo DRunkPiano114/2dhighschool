@@ -95,7 +95,7 @@ def export_meta(days: list[str]) -> None:
 def export_agents() -> None:
     """Merge agent profile + state + self_narrative + relationships → agents/{id}.json."""
     for agent_dir in sorted(AGENTS.iterdir()):
-        if not agent_dir.is_dir():
+        if not agent_dir.is_dir() or not (agent_dir / "profile.json").exists():
             continue
         aid = agent_dir.name
         profile = _read_json(agent_dir / "profile.json")
