@@ -719,6 +719,28 @@ body {
   text-shadow: none;
 }
 
+/* Gold variant — used for the 日报 (read-only / archive) CTA so it reads as
+   a secondary seal next to the vermillion 入戏. Traditional 金印 palette. */
+.seal-btn--gold::before {
+  background:
+    radial-gradient(ellipse at 28% 22%, rgba(0, 0, 0, 0.22), transparent 55%),
+    radial-gradient(ellipse at 78% 78%, rgba(247, 232, 200, 0.22), transparent 50%),
+    #a07a1f;
+}
+.seal-btn--gold:hover:not(.seal-btn-disabled) {
+  filter: drop-shadow(0 2px 5px rgba(160, 122, 31, 0.45));
+}
+
+/* Pin a seal to the viewport's top-right corner — used on the daily-report
+   page to mirror the TopBar seal position from the scene view, so flipping
+   between views feels like tapping the same spot. */
+.seal-btn-pinned {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 40;
+}
+
 /* ---- Share buttons (save PNG + copy caption) ---- */
 
 .share-buttons {

@@ -1,10 +1,10 @@
 {
-  "_comment": "Visual bible for SimClass share cards. main_color seeded from web/src/components/world/CharacterSprite.ts::AGENT_COLORS — do not change without syncing there. crop coordinates index into LimeZu premade character sheets — each character frame is 32x64 (the top-left front-facing idle). Re-run scripts/generate_portraits.py after any change here.",
+  "_comment": "Visual bible for SimClass share cards. main_color is exported to web/public/data/agent_colors.json by export_frontend_data.py; CharacterSprite.ts carries a fallback copy. LimeZu premade sheets lay out four 32x64 idle frames per row in the order [left, up, right, down], so crop.x=96 is the front-facing (down) idle — always use that unless you specifically want a side/back pose. Re-run generate_portraits.py + generate_map_sprites.py + export_frontend_data.py after any change here.",
   "fang_yuchen": {
     "name_cn": "方语晨",
     "sprite_source": "Premade_Character_32x32_14.png",
     "crop": {
-      "x": 0,
+      "x": 96,
       "y": 0,
       "w": 32,
       "h": 64
@@ -26,7 +26,7 @@
     "name_cn": "苏念瑶",
     "sprite_source": "Premade_Character_32x32_03.png",
     "crop": {
-      "x": 0,
+      "x": 96,
       "y": 0,
       "w": 32,
       "h": 64
@@ -48,7 +48,7 @@
     "name_cn": "唐诗涵",
     "sprite_source": "Premade_Character_32x32_07.png",
     "crop": {
-      "x": 0,
+      "x": 96,
       "y": 0,
       "w": 32,
       "h": 64
@@ -70,7 +70,7 @@
     "name_cn": "程雨桐",
     "sprite_source": "Premade_Character_32x32_02.png",
     "crop": {
-      "x": 0,
+      "x": 96,
       "y": 0,
       "w": 32,
       "h": 64
@@ -92,7 +92,7 @@
     "name_cn": "林昭宇",
     "sprite_source": "Premade_Character_32x32_05.png",
     "crop": {
-      "x": 0,
+      "x": 96,
       "y": 0,
       "w": 32,
       "h": 64
@@ -114,7 +114,7 @@
     "name_cn": "陆思远",
     "sprite_source": "Premade_Character_32x32_06.png",
     "crop": {
-      "x": 0,
+      "x": 96,
       "y": 0,
       "w": 32,
       "h": 64
@@ -136,7 +136,7 @@
     "name_cn": "沈逸凡",
     "sprite_source": "Premade_Character_32x32_09.png",
     "crop": {
-      "x": 0,
+      "x": 96,
       "y": 0,
       "w": 32,
       "h": 64
@@ -158,7 +158,7 @@
     "name_cn": "姜皓天",
     "sprite_source": "Premade_Character_32x32_11.png",
     "crop": {
-      "x": 0,
+      "x": 96,
       "y": 0,
       "w": 32,
       "h": 64
@@ -180,7 +180,7 @@
     "name_cn": "何家骏",
     "sprite_source": "Premade_Character_32x32_04.png",
     "crop": {
-      "x": 0,
+      "x": 96,
       "y": 0,
       "w": 32,
       "h": 64
@@ -202,7 +202,7 @@
     "name_cn": "何老师",
     "sprite_source": "Premade_Character_32x32_17.png",
     "crop": {
-      "x": 0,
+      "x": 96,
       "y": 0,
       "w": 32,
       "h": 64

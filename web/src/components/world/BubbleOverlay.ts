@@ -6,6 +6,9 @@ export interface BubbleData {
   text: string
   type: 'speech' | 'emoji' | 'action'
   target?: string
+  /** For type:'emoji' only — emotion key used to pick the pixel balloon PNG
+   * from /data/balloons/. Falls back to `text` (emoji glyph) if missing. */
+  emotion?: string
 }
 
 /**
@@ -137,19 +140,23 @@ export class BubbleOverlay {
     const interactive = b.type !== 'action'
 
     if (b.type === 'emoji') {
+      // Pixel-art balloon: fixed 48×48 (32×32 source scaled 1.5× w/ nearest).
       Object.assign(el.style, {
         position: 'absolute',
         left: '0',
         top: '0',
-        fontSize: '20px',
-        lineHeight: '1',
-        textAlign: 'center',
+        width: '48px',
+        height: '48px',
+        imageRendering: 'pixelated',
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
         pointerEvents: 'auto',
         cursor: 'pointer',
         opacity: '0',
         transition: 'opacity 0.3s',
         willChange: 'transform',
-        filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.3))',
+        filter: 'drop-shadow(0 2px 2px rgba(0,0,0,0.25))',
       })
     } else if (b.type === 'action') {
       Object.assign(el.style, {
@@ -208,7 +215,15 @@ export class BubbleOverlay {
 
   private updateBubbleContent(el: HTMLDivElement, b: BubbleData) {
     if (b.type === 'emoji') {
-      el.textContent = b.text
+      // Prefer pixel-art balloon PNG keyed by emotion; if no emotion
+      // provided (older callers), fall back to the emoji glyph.
+      if (b.emotion) {
+        el.style.backgroundImage = `url('/data/balloons/${b.emotion}.png')`
+        el.textContent = ''
+      } else {
+        el.style.backgroundImage = ''
+        el.textContent = b.text
+      }
       return
     }
 

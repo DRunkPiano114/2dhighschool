@@ -139,6 +139,15 @@ export function DailyReport() {
 
   return (
     <div className="daily-root">
+      <Link
+        to={`/day/${dayId}/scene/first`}
+        className="seal-btn seal-btn--gold seal-btn-pinned"
+        aria-label="现场 — 进入场景视图"
+        title="现场 — 进入场景视图"
+      >
+        <span className="seal-btn-text">现场</span>
+      </Link>
+
       <DailyNav dayId={dayId} days={days} />
 
       {loading && <div className="daily-loading">加载今日日报中…</div>}

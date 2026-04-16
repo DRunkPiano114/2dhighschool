@@ -1,10 +1,12 @@
 import { Application, extend, useApplication, useTick } from '@pixi/react'
 import { Container, Graphics } from 'pixi.js'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useWorldStore } from '../../stores/useWorldStore'
-import { loadMeta, loadScenes, loadSceneFile, prefetchDay } from '../../lib/data'
+import { loadMeta, loadScenes, loadSceneFile, prefetchDay, loadAgentColors, loadTilesetManifest, loadAnimatedManifest } from '../../lib/data'
 import { ROOMS, TILE, derivePositions } from '../../lib/roomConfig'
-import { createCharacterSprite, updateSpriteState } from './CharacterSprite'
+import { createCharacterSprite, updateSpriteState, primeAgentColors, preloadMapSprites } from './CharacterSprite'
+import { preloadTilesets } from './tilesets'
+import { preloadAnimated } from './animated'
 import { Camera } from './Camera'
 import { BubbleOverlay, type BubbleData } from './BubbleOverlay'
 import { EMOTION_EMOJIS } from '../../lib/constants'
@@ -41,7 +43,20 @@ function useDataLoader() {
   const genRef = useRef(0)
 
   useEffect(() => {
-    loadMeta().then(setMeta)
+    loadMeta().then(async meta => {
+      setMeta(meta)
+      const [colors, tilesets, animated] = await Promise.all([
+        loadAgentColors().catch(() => null),
+        loadTilesetManifest().catch(() => null),
+        loadAnimatedManifest().catch(() => null),
+      ])
+      if (colors) primeAgentColors(colors)
+      await Promise.all([
+        preloadMapSprites(Object.keys(meta.agents ?? {})),
+        tilesets ? preloadTilesets(tilesets) : Promise.resolve(),
+        animated ? preloadAnimated(animated) : Promise.resolve(),
+      ])
+    })
   }, [setMeta])
 
   useEffect(() => {
@@ -118,10 +133,12 @@ function WorldScene() {
     }
   }, [app])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const world = worldRef.current
     if (!world || !sceneFile) return
 
+    // Destroy old sprites synchronously before paint so stale characters
+    // from a previous room/scene never flash on the new room floor.
     for (const s of spritesRef.current.values()) s.destroy({ children: true })
     spritesRef.current.clear()
 
@@ -188,15 +205,17 @@ function WorldScene() {
       return
     }
 
-    // Solo: single emoji bubble over the solo agent; narrative panel owns text.
+    // Solo: single pixel balloon over the solo agent; narrative panel owns text.
     if (group.is_solo) {
       const soloId = group.participants[0]
-      const emoji = EMOTION_EMOJIS[group.solo_reflection.emotion] ?? '😐'
+      const emotion = group.solo_reflection.emotion
+      const emoji = EMOTION_EMOJIS[emotion] ?? '😐'
       bubbleRef.current?.setBubbles([{
         agentId: soloId,
         displayName: '',
         text: emoji,
         type: 'emoji',
+        emotion,
       }])
       return
     }

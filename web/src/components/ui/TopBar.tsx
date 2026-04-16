@@ -1,4 +1,5 @@
 import { useMemo, useState, useRef, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { useWorldStore } from '../../stores/useWorldStore'
 import { RolePlaySetup } from './RolePlaySetup'
@@ -19,6 +20,7 @@ export function TopBar() {
   const [apiOnline, setApiOnline] = useState<boolean | null>(null)
   const menuRef = useRef<HTMLDivElement>(null)
   const dayMenuRef = useRef<HTMLDivElement>(null)
+  const navigate = useNavigate()
 
   const days = meta?.days ?? [currentDay]
   const dayNum = currentDay.replace('day_', '')
@@ -164,8 +166,16 @@ export function TopBar() {
         <span className="text-amber-400/80">第{dayNum}天</span>
       </div>
 
-      {/* Right: Role Play seal — vermillion stamp, intentionally offbeat */}
+      {/* Right: 日报 (gold archive seal) + 入戏 (vermillion role-play seal) */}
       <div className="flex items-center gap-3 pointer-events-auto">
+        <button
+          onClick={() => navigate(`/day/${currentDay}`)}
+          aria-label="日报 — 查看今天的班级日报"
+          title="日报 — 查看今天的班级日报"
+          className="seal-btn seal-btn--gold"
+        >
+          <span className="seal-btn-text">日报</span>
+        </button>
         <button
           onClick={() => apiOnline && setShowRolePlaySetup(true)}
           disabled={apiOnline !== true}

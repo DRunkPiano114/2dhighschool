@@ -1,9 +1,11 @@
-import { Graphics, Text, TextStyle, Container, Rectangle } from 'pixi.js'
+import { Graphics, Text, TextStyle, Container, Rectangle, Sprite, Texture, Assets } from 'pixi.js'
 
 const TILE = 32
-const SPRITE_R = TILE * 0.4
 
-/** Character visual colors — each agent gets a consistent color. */
+/** Fallback agent colors — seeded from visual_bible.json. Overridden at runtime
+ * once /data/agent_colors.json loads via primeAgentColors(). Keep the fallback
+ * here so sprites created before the fetch resolves still get a reasonable color.
+ */
 const AGENT_COLORS: Record<string, number> = {
   lin_zhaoyu: 0x4a7bc4,
   lu_siyuan: 0x5baa5b,
@@ -24,9 +26,44 @@ export function getAgentColor(agentId: string): number {
   return AGENT_COLORS[agentId] ?? 0x888888
 }
 
+/** Replace the in-memory palette from the authoritative JSON export. */
+export function primeAgentColors(
+  map: Record<string, { main_color: string }>,
+): void {
+  for (const [id, v] of Object.entries(map)) {
+    const hex = v.main_color.replace('#', '')
+    const n = parseInt(hex, 16)
+    if (!Number.isNaN(n)) AGENT_COLORS[id] = n
+  }
+}
+
+/** Preload all map sprite textures so Sprite.from() hits cache and renders
+ * pixel-perfect (nearest scaling) on first frame.
+ */
+export async function preloadMapSprites(agentIds: string[]): Promise<void> {
+  await Promise.all(
+    agentIds.map(async aid => {
+      try {
+        const tex = await Assets.load(`/data/map_sprites/${aid}.png`)
+        if (tex?.source) tex.source.scaleMode = 'nearest'
+      } catch {
+        // Missing sprite is non-fatal — sprite will render empty and the
+        // name label still identifies the character.
+      }
+    }),
+  )
+}
+
+const HALO_RADIUS = TILE * 0.6
+
 /**
- * Create a character display object (Container with circle + label).
+ * Create a character display object (Container with pixel sprite + halo + label).
  * Returns a PixiJS Container that can be added to a room layer.
+ *
+ * Layout (container origin at tile center):
+ *   halo (Graphics)          z=0, hidden unless talking
+ *   sprite (32x64 pixel art) z=1, anchor (0.5, 0.5) → centered on tile
+ *   label (Text)             z=2, below sprite
  */
 export function createCharacterSprite(
   agentId: string,
@@ -37,20 +74,40 @@ export function createCharacterSprite(
 
   const color = getAgentColor(agentId)
 
-  // Body circle
-  const body = new Graphics()
-  body.circle(0, 0, SPRITE_R).fill(color)
-  body.circle(0, 0, SPRITE_R).stroke({ color: 0xffffff, width: 2, alpha: 0.6 })
-  container.addChild(body)
+  // Talking halo — a colored disc behind the character. Hidden by default;
+  // shown via updateSpriteState when this agent is the active speaker.
+  const halo = new Graphics()
+  halo.circle(0, 0, HALO_RADIUS).fill({ color, alpha: 0.35 })
+  halo.circle(0, 0, HALO_RADIUS).stroke({ color, width: 2, alpha: 0.9 })
+  halo.visible = false
+  halo.label = '__halo'
+  container.addChild(halo)
 
-  // Head (smaller circle on top)
-  const head = new Graphics()
-  head.circle(0, -SPRITE_R * 1.1, SPRITE_R * 0.55).fill(0xf5dcc0) // skin tone
-  head.circle(0, -SPRITE_R * 1.1, SPRITE_R * 0.55).stroke({ color: color, width: 2 })
-  container.addChild(head)
+  // Pixel-art character sprite (32×64 native; rendered at 1× pixel scale).
+  // Pixi v8's Texture.from(url) returns EMPTY unless the asset is preloaded;
+  // async-load here and swap the texture in when ready (Assets dedupes).
+  const sprite = new Sprite(Texture.EMPTY)
+  sprite.anchor.set(0.5, 0.5)
+  sprite.label = '__body'
+  container.addChild(sprite)
 
-  // Name label — full name, placed below the body so a 3-char name doesn't
-  // get clipped by the sprite circle.
+  Assets.load(`/data/map_sprites/${agentId}.png`)
+    .then((tex: Texture) => {
+      if (tex?.source) tex.source.scaleMode = 'nearest'
+      sprite.texture = tex
+    })
+    .catch(() => {
+      // Missing sprite fallback — draw a colored circle so the character
+      // still has a visible body anchored at the tile.
+      sprite.visible = false
+      const fallback = new Graphics()
+      fallback.circle(0, 0, TILE * 0.4).fill(color)
+      fallback.circle(0, 0, TILE * 0.4).stroke({ color: 0xffffff, width: 2, alpha: 0.6 })
+      fallback.label = '__body'
+      container.addChild(fallback)
+    })
+
+  // Name label — placed below the sprite so a 3-char name doesn't clip the body.
   const label = new Text({
     text: displayName,
     style: new TextStyle({
@@ -68,18 +125,17 @@ export function createCharacterSprite(
     }),
   })
   label.anchor.set(0.5, 0)
-  label.y = SPRITE_R * 1.4
+  label.y = 34
   container.addChild(label)
 
-  // Expanded hit area keeps clicks reliable when the stage shrinks to ~40vh.
-  // Extended downward to cover the name label under the body.
-  container.hitArea = new Rectangle(-22, -28, 44, 58)
+  // Hit area covers the full sprite (32×64 centered) plus the label below.
+  container.hitArea = new Rectangle(-18, -34, 36, 82)
 
   return container
 }
 
 /**
- * Update sprite visual state (talking pulse, dimming, etc.)
+ * Update sprite visual state (talking halo, dimming, slight float).
  */
 export function updateSpriteState(
   container: Container,
@@ -87,7 +143,8 @@ export function updateSpriteState(
   dimmed: boolean,
 ) {
   container.alpha = dimmed ? 0.4 : 1
-  // Talking: slight scale pulse
-  const scale = state === 'talking' ? 1.1 : 1
-  container.scale.set(scale)
+  const halo = container.getChildByLabel('__halo') as Graphics | null
+  if (halo) halo.visible = state === 'talking'
+  const body = container.getChildByLabel('__body') as Sprite | null
+  if (body) body.y = state === 'talking' ? -3 : 0
 }

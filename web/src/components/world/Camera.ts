@@ -17,6 +17,8 @@ export class Camera {
   private isDragging = false
   private dragStart = { x: 0, y: 0 }
   private pivotStart = { x: 0, y: 0 }
+  private roomW = 0
+  private roomH = 0
 
   constructor(
     private worldContainer: Container,
@@ -50,6 +52,8 @@ export class Camera {
     roomH: number,
     inset: { top: number; bottom: number; left: number; right: number },
   ) {
+    this.roomW = roomW
+    this.roomH = roomH
     const viewW = this.canvasWidth - inset.left - inset.right
     const viewH = this.canvasHeight - inset.top - inset.bottom
     const zoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, Math.min(viewW / roomW, viewH / roomH)))
@@ -96,6 +100,22 @@ export class Camera {
   }
 
   private apply(x: number, y: number, zoom: number) {
+    // Clamp pivot so the viewport never extends beyond room boundaries.
+    // When the viewport is larger than the room (zoomed out), center instead.
+    if (this.roomW > 0 && this.roomH > 0) {
+      const halfViewW = this.canvasWidth / (2 * zoom)
+      const halfViewH = this.canvasHeight / (2 * zoom)
+      if (halfViewW * 2 >= this.roomW) {
+        x = this.roomW / 2
+      } else {
+        x = Math.max(halfViewW, Math.min(this.roomW - halfViewW, x))
+      }
+      if (halfViewH * 2 >= this.roomH) {
+        y = this.roomH / 2
+      } else {
+        y = Math.max(halfViewH, Math.min(this.roomH - halfViewH, y))
+      }
+    }
     this.worldContainer.pivot.set(x, y)
     this.worldContainer.position.set(this.canvasWidth / 2, this.canvasHeight / 2)
     this.worldContainer.scale.set(zoom)
