@@ -1,7 +1,7 @@
 import { Application, extend, useApplication, useTick } from '@pixi/react'
 import { Container, Graphics } from 'pixi.js'
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { useWorldStore } from '../../stores/useWorldStore'
 import { loadMeta, loadScenes, loadSceneFile, prefetchDay, loadAgentColors, loadTilesetManifest, loadAnimatedManifest } from '../../lib/data'
 import { ROOMS, TILE, derivePositions } from '../../lib/roomConfig'
@@ -35,7 +35,6 @@ function useDataLoader() {
   const urlGroup = searchParams.get('g')
   const urlTick = searchParams.get('t')
   const navigate = useNavigate()
-  const location = useLocation()
 
   const setMeta = useWorldStore(s => s.setMeta)
   const setScenes = useWorldStore(s => s.setScenes)
@@ -138,21 +137,35 @@ function useDataLoader() {
   // store → URL: when keyboard / TopBar / TickNav advances the store past the
   // URL, replace the URL so refreshing or sharing reflects what's on screen.
   //
-  // Guard: only sync when (a) URL day and store day agree, and (b) the store's
-  // `scenes` array was loaded for the current day. Without these, a cross-day
-  // click (e.g. 次条 on day_003 while store is still day_002) can fire this
-  // effect with a stale scene list and `replace` the fresh URL with a
-  // (new_day, old_scene_file) mashup — landing the user on the wrong scene.
+  // Guards:
+  // (a) URL day and store day must agree, and the store's `scenes` array must
+  //     be loaded for the current day — otherwise a cross-day click (e.g. 次条
+  //     on day_003 while store is still day_002) can fire with a stale scene
+  //     list and land the user on the wrong scene.
+  // (b) Do NOT depend on `location.pathname` and skip the first mount fire.
+  //     The URL→store direction is owned by the effect above. If this effect
+  //     ran on pathname change, a remount triggered by a deep-link (daily
+  //     report → scene) would fire once with a stale `sceneIdx` (from the
+  //     previous scene visit) and clobber the fresh URL back to the old
+  //     scene's file — also dropping the ?g=&t= query params. Firing only on
+  //     store-side changes avoids that race; Effect above catches up sceneIdx
+  //     from the URL and this effect then sees they already match.
+  const urlSyncedOnce = useRef(false)
   useEffect(() => {
+    if (!urlSyncedOnce.current) {
+      urlSyncedOnce.current = true
+      return
+    }
     if (urlDayId && urlDayId !== currentDay) return
     if (scenesDay !== currentDay) return
     const entry = scenes[sceneIdx]
     if (!entry) return
     const expected = `/day/${currentDay}/scene/${entry.file}`
-    if (location.pathname !== expected) {
+    if (window.location.pathname !== expected) {
       navigate(expected, { replace: true })
     }
-  }, [urlDayId, currentDay, scenesDay, sceneIdx, scenes, location.pathname, navigate])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [urlDayId, currentDay, scenesDay, sceneIdx, scenes, navigate])
 }
 
 // --- world scene ---
