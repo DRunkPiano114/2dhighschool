@@ -15,8 +15,6 @@ import { Room } from './Room'
 import { TopBar } from '../ui/TopBar'
 import { SidePanel } from '../ui/SidePanel'
 import { ErrorBoundary } from '../ui/ErrorBoundary'
-import { GodModeChat } from '../ui/GodModeChat'
-import { RolePlayChat } from '../ui/RolePlayChat'
 // import { NarrativePanel } from '../narrative/NarrativePanel'
 // import { ScriptScene } from '../narrative/ScriptScene'
 import { GroupGrid } from '../narrative/GroupGrid'
@@ -493,8 +491,6 @@ export function PixiCanvas() {
       </div>
 
       <ErrorBoundary><SidePanel /></ErrorBoundary>
-      <GodModeChat />
-      <RolePlayChat />
     </div>
   )
 }
