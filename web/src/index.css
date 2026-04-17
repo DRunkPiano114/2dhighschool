@@ -1035,14 +1035,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 14px;
   flex: 1 1 0;
 }
 .daily-nav-btn {
-  font-size: 13px;
+  font-size: 18px;
   color: #8a5e1c;
   text-decoration: none;
-  padding: 4px 10px;
-  border-radius: 12px;
+  padding: 7px 16px;
+  border-radius: 14px;
   transition: background 150ms ease;
 }
 .daily-nav-btn:hover:not(.daily-nav-btn-disabled) {
@@ -1056,16 +1057,16 @@ body {
 .daily-hero-seal {
   background: #b0281c;
   color: #fff8e8;
-  padding: 5px 12px;
+  padding: 6px 14px;
   border-radius: 6px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.08em;
   flex-shrink: 0;
   align-self: center;
 }
 .daily-hero-title {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
   margin: 0;
   letter-spacing: 0.15em;
@@ -1074,28 +1075,28 @@ body {
 }
 .daily-hero-subtitle {
   color: #8a7f6a;
-  font-size: 12px;
+  font-size: 15px;
   letter-spacing: 0.06em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.daily-actions {
-  display: flex;
-  justify-content: center;
-  padding: 4px 0 2px;
-  flex-shrink: 0;
-}
-/* Daily-actions context: drop the scene-panel divider/label since the dock
-   sits in a tidy header strip, not below a stream of dialog cards. */
-.daily-actions .share-dock {
+/* Daily-report share dock lives inline in the nav row — strip the
+   scene-panel divider + label since it sits next to the 现场 seal, not
+   below a stream of dialog cards. */
+.daily-nav-right .share-dock {
   border-top: none;
   margin-top: 0;
-  padding-top: 0;
+  padding: 0;
 }
-.daily-actions .share-dock-label {
+.daily-nav-right .share-dock-label {
   display: none;
+}
+.daily-nav-right .share-btn {
+  padding: 8px 18px;
+  min-width: 0;
+  font-size: 14px;
 }
 
 .daily-section {
@@ -1108,7 +1109,7 @@ body {
   flex-direction: column;
 }
 .daily-section-title {
-  font-size: 14px;
+  font-size: 15.5px;
   font-weight: 700;
   margin: 0 0 6px;
   color: #2a2520;
@@ -1117,7 +1118,7 @@ body {
 }
 
 .daily-headline-meta {
-  font-size: 12px;
+  font-size: 13px;
   color: #8a7f6a;
   margin-bottom: 6px;
   letter-spacing: 0.04em;
@@ -1126,7 +1127,7 @@ body {
 .daily-thought {
   margin: 4px 0;
   line-height: 1.55;
-  font-size: 14px;
+  font-size: 15.5px;
 }
 .daily-speech-speaker {
   color: #8a5e1c;
@@ -1143,7 +1144,7 @@ body {
 .daily-thought-label {
   color: #a095b8;
   margin-right: 4px;
-  font-size: 12px;
+  font-size: 13px;
 }
 .daily-headline-link {
   margin-top: 6px;
@@ -1151,7 +1152,7 @@ body {
 }
 .daily-headline-link a {
   color: #8a5e1c;
-  font-size: 12px;
+  font-size: 13px;
   text-decoration: none;
   border-bottom: 1px solid currentColor;
 }
@@ -1168,13 +1169,13 @@ body {
 }
 .daily-quote-text {
   display: block;
-  font-size: 14px;
+  font-size: 15.5px;
   line-height: 1.55;
   color: #2a2520;
 }
 .daily-quote-footer {
   margin-top: 4px;
-  font-size: 11px;
+  font-size: 12.5px;
   color: #8a7f6a;
   font-style: normal;
 }
@@ -1201,14 +1202,14 @@ body {
 }
 .daily-secondary-meta {
   display: block;
-  font-size: 11px;
+  font-size: 12.5px;
   color: #8a7f6a;
   margin-bottom: 2px;
   letter-spacing: 0.04em;
 }
 .daily-secondary-body {
   display: block;
-  font-size: 12.5px;
+  font-size: 14px;
   color: #3a3530;
   line-height: 1.45;
 }
@@ -1236,11 +1237,11 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 3px;
   text-align: center;
   text-decoration: none;
   color: inherit;
-  padding: 4px 2px;
+  padding: 6px 4px;
   aspect-ratio: 1 / 1;
   background: #fbf3dd;
   border: 1px solid #e0d5b9;
@@ -1253,8 +1254,8 @@ body {
   transform: translateY(-1px);
 }
 .mood-sprite {
-  width: 32px;
-  height: 56px;
+  width: 40px;
+  height: 72px;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   object-fit: contain;
@@ -1262,12 +1263,12 @@ body {
   flex-shrink: 0;
 }
 .mood-name {
-  font-size: 12px;
+  font-size: 15.5px;
   color: #2a2520;
   font-weight: 600;
 }
 .mood-emotion {
-  font-size: 10.5px;
+  font-size: 13px;
   color: #8a7f6a;
 }
 
@@ -1279,7 +1280,7 @@ body {
   margin-bottom: 4px;
 }
 .cp-name {
-  font-size: 16px;
+  font-size: 17.5px;
   font-weight: 700;
   color: #2a2520;
 }
@@ -1291,7 +1292,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 12px;
-  font-size: 11.5px;
+  font-size: 13px;
   color: #8a7f6a;
   letter-spacing: 0.04em;
 }
@@ -1301,18 +1302,18 @@ body {
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-  gap: 6px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
   overflow-y: auto;
   min-height: 0;
 }
 .scene-strip-link {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 8px;
+  gap: 12px;
+  padding: 10px 14px;
   background: #efe7d0;
-  border-radius: 8px;
+  border-radius: 10px;
   text-decoration: none;
   color: inherit;
   transition: background 150ms ease;
@@ -1321,7 +1322,7 @@ body {
   background: #e5d9ba;
 }
 .scene-strip-icon {
-  font-size: 20px;
+  font-size: 30px;
 }
 .scene-strip-meta {
   display: flex;
@@ -1330,12 +1331,12 @@ body {
   min-width: 0;
 }
 .scene-strip-time {
-  font-size: 10px;
+  font-size: 15px;
   color: #8a7f6a;
   letter-spacing: 0.06em;
 }
 .scene-strip-name {
-  font-size: 12px;
+  font-size: 17px;
   color: #2a2520;
   font-weight: 600;
   white-space: nowrap;
@@ -1343,7 +1344,7 @@ body {
   text-overflow: ellipsis;
 }
 .scene-strip-loc {
-  font-size: 10px;
+  font-size: 15px;
   color: #8a7f6a;
 }
 
@@ -1742,7 +1743,7 @@ body {
   display: inline-block;
   padding: 2px 8px;
   border-radius: 999px;
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.08em;
   background: #efe2c3;
@@ -1770,13 +1771,13 @@ body {
   border-color: #8f8dbe;
 }
 .daily-topevent-meta {
-  font-size: 11px;
+  font-size: 12.5px;
   color: #8a7f6a;
   letter-spacing: 0.04em;
 }
 .daily-topevent-text {
   margin: 2px 0;
-  font-size: 16px;
+  font-size: 17.5px;
   line-height: 1.55;
   font-weight: 700;
   color: #2a2520;
@@ -1792,12 +1793,12 @@ body {
 }
 .daily-topevent-quote-text {
   display: block;
-  font-size: 13px;
+  font-size: 14.5px;
   line-height: 1.5;
 }
 .daily-topevent-quote-footer {
   margin-top: 2px;
-  font-size: 11px;
+  font-size: 12.5px;
   color: #8a7f6a;
   font-style: normal;
 }
@@ -1814,7 +1815,7 @@ body {
   flex-wrap: wrap;
 }
 .daily-topevent-row-label {
-  font-size: 11px;
+  font-size: 12.5px;
   letter-spacing: 0.1em;
   color: #8a7f6a;
   flex-shrink: 0;
@@ -1843,7 +1844,7 @@ body {
   object-position: center top;
 }
 .daily-topevent-face-name {
-  font-size: 10px;
+  font-size: 11.5px;
   color: #6a5f4a;
   white-space: nowrap;
 }
@@ -1863,7 +1864,7 @@ body {
   display: inline-block;
   align-self: flex-start;
   padding: 2px 8px;
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.12em;
   color: #fff;
@@ -1915,17 +1916,17 @@ body {
 .daily-contrast-side-name {
   font-weight: 700;
   color: #2a2520;
-  font-size: 13px;
+  font-size: 14.5px;
 }
 .daily-contrast-side-emotion {
-  font-size: 11px;
+  font-size: 12.5px;
   color: #6a5f4a;
   background: #efe2c3;
   padding: 1px 6px;
   border-radius: 999px;
 }
 .daily-contrast-side-fav {
-  font-size: 11px;
+  font-size: 12.5px;
   color: #6a5f4a;
 }
 .daily-contrast-favbadge {
@@ -1938,7 +1939,7 @@ body {
 .daily-contrast-favbadge--neg { background: #f2d3ce; color: #8f2a12; }
 .daily-contrast-side-thought {
   margin: 0;
-  font-size: 13px;
+  font-size: 14.5px;
   line-height: 1.55;
   color: #3a3530;
   font-style: italic;
@@ -1966,14 +1967,14 @@ body {
 .daily-contrast-failed-name {
   font-weight: 700;
   color: #2a2520;
-  font-size: 13px;
+  font-size: 14.5px;
 }
 .daily-contrast-failed-arrow {
   display: flex;
   align-items: center;
   gap: 6px;
   flex-wrap: wrap;
-  font-size: 13px;
+  font-size: 14.5px;
 }
 .daily-contrast-failed-goal {
   color: #2a2520;
@@ -1995,7 +1996,7 @@ body {
 }
 .daily-contrast-failed-reason {
   margin: 0;
-  font-size: 12.5px;
+  font-size: 14px;
   color: #5a5145;
   line-height: 1.55;
 }
@@ -2018,11 +2019,11 @@ body {
 }
 .daily-contrast-silent-name {
   font-weight: 700;
-  font-size: 13px;
+  font-size: 14.5px;
   color: #2a2520;
 }
 .daily-contrast-silent-subtitle {
-  font-size: 10px;
+  font-size: 11.5px;
   color: #6a5f4a;
   letter-spacing: 0.06em;
 }
@@ -2046,11 +2047,11 @@ body {
   min-width: 44px;
 }
 .daily-contrast-silent-accuser-name {
-  font-size: 11px;
+  font-size: 12.5px;
   color: #3a3530;
 }
 .daily-contrast-silent-fav {
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 700;
   color: #8f2a12;
 }
@@ -2062,12 +2063,12 @@ body {
   margin-top: 4px;
 }
 .daily-contrast-meta {
-  font-size: 11px;
+  font-size: 12.5px;
   color: #8a7f6a;
 }
 .daily-contrast-link {
   color: #8a5e1c;
-  font-size: 12px;
+  font-size: 13px;
   text-decoration: none;
   border-bottom: 1px solid currentColor;
 }
@@ -2104,13 +2105,13 @@ body {
 }
 .daily-concern-name {
   font-weight: 700;
-  font-size: 13.5px;
+  font-size: 15px;
   color: #2a2520;
 }
 .daily-concern-topic {
   display: inline-block;
   padding: 1px 8px;
-  font-size: 11px;
+  font-size: 12.5px;
   color: #fff;
   border-radius: 999px;
   letter-spacing: 0.08em;
@@ -2121,7 +2122,7 @@ body {
   flex-wrap: wrap;
 }
 .daily-concern-badge {
-  font-size: 10.5px;
+  font-size: 12px;
   padding: 1px 6px;
   border-radius: 999px;
   background: #efe2c3;
@@ -2136,7 +2137,7 @@ body {
 }
 .daily-concern-text {
   margin: 4px 0;
-  font-size: 14px;
+  font-size: 15.5px;
   line-height: 1.55;
   color: #3a3530;
 }
@@ -2146,7 +2147,7 @@ body {
   gap: 6px;
 }
 .daily-concern-intensity-label {
-  font-size: 11px;
+  font-size: 12.5px;
   color: #8a7f6a;
   letter-spacing: 0.06em;
 }
@@ -2164,7 +2165,7 @@ body {
   background: #c25a8a;
 }
 .daily-concern-intensity-value {
-  font-size: 11px;
+  font-size: 12.5px;
   color: #6a5f4a;
   margin-left: auto;
 }

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type RefObject } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { loadMeta } from '../../lib/data'
 import { EMOTION_LABELS, LOCATION_ICONS } from '../../lib/constants'
@@ -213,7 +213,12 @@ export function DailyReport() {
 
   return (
     <div className="daily-root" ref={captureRef}>
-      <DailyTopBar dayId={dayId} day={day} days={days} />
+      <DailyTopBar
+        dayId={dayId}
+        day={day}
+        days={days}
+        captureRef={captureRef}
+      />
 
       {loading && <div className="daily-loading">加载今日日报中…</div>}
 
@@ -229,14 +234,6 @@ export function DailyReport() {
 
       {!loading && summary && (
         <>
-          <div className="daily-actions" data-exclude-from-capture>
-            <ShareButtons
-              cardEndpoint={`/api/card/daily/${summary.day}`}
-              cardLabel="今日日报"
-              showCopy={false}
-              captureTarget={captureRef}
-            />
-          </div>
           <div className="daily-body">
             <div className="daily-col daily-col-left">
               {summary.top_event
@@ -276,10 +273,12 @@ function DailyTopBar({
   dayId,
   day,
   days,
+  captureRef,
 }: {
   dayId: string
   day: number
   days: string[] | null
+  captureRef: RefObject<HTMLDivElement | null>
 }) {
   const sceneLink = (
     <Link
@@ -290,6 +289,14 @@ function DailyTopBar({
     >
       <span className="seal-btn-text">现场</span>
     </Link>
+  )
+  const share = (
+    <ShareButtons
+      cardEndpoint={`/api/card/daily/${day}`}
+      cardLabel="今日日报"
+      showCopy={false}
+      captureTarget={captureRef}
+    />
   )
   const hero = (
     <div className="daily-nav-center">
@@ -303,7 +310,10 @@ function DailyTopBar({
       <nav className="daily-nav">
         <div className="daily-nav-left" data-exclude-from-capture />
         {hero}
-        <div className="daily-nav-right" data-exclude-from-capture>{sceneLink}</div>
+        <div className="daily-nav-right" data-exclude-from-capture>
+          {share}
+          {sceneLink}
+        </div>
       </nav>
     )
   }
@@ -325,7 +335,10 @@ function DailyTopBar({
         )}
       </div>
       {hero}
-      <div className="daily-nav-right" data-exclude-from-capture>{sceneLink}</div>
+      <div className="daily-nav-right" data-exclude-from-capture>
+        {share}
+        {sceneLink}
+      </div>
     </nav>
   )
 }
