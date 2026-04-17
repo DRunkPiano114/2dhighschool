@@ -11,6 +11,10 @@ interface WorldState {
   // --- data ---
   meta: Meta | null
   scenes: SceneIndexEntry[]
+  // Which day the `scenes` array was loaded for. Used to guard the store→URL
+  // sync in PixiCanvas: while URL-driven day navigation is mid-flight, scenes
+  // may still reflect the previous day and must not be echoed back into the URL.
+  scenesDay: string | null
   currentSceneFile: SceneFile | null
 
   // --- navigation ---
@@ -40,7 +44,7 @@ interface WorldState {
 
   // --- actions ---
   setMeta: (meta: Meta) => void
-  setScenes: (scenes: SceneIndexEntry[]) => void
+  setScenes: (scenes: SceneIndexEntry[], day: string) => void
   setCurrentSceneFile: (file: SceneFile | null) => void
   setCurrentDay: (day: string, landAtEnd?: boolean) => void
   setCurrentSceneIndex: (index: number, landAtEnd?: boolean) => void
@@ -69,6 +73,7 @@ interface WorldState {
 export const useWorldStore = create<WorldState>((set, get) => ({
   meta: null,
   scenes: [],
+  scenesDay: null,
   currentSceneFile: null,
 
   currentDay: 'day_001',
@@ -91,7 +96,7 @@ export const useWorldStore = create<WorldState>((set, get) => ({
   rolePlayReactions: [],
 
   setMeta: (meta) => set({ meta }),
-  setScenes: (scenes) => set({ scenes }),
+  setScenes: (scenes, day) => set({ scenes, scenesDay: day }),
 
   setCurrentSceneFile: (file) => {
     if (!file) {

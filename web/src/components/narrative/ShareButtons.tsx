@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type RefObject } from 'react'
 
 interface ShareCardMeta {
   caption: string
@@ -14,6 +14,14 @@ export interface ShareButtonsProps {
   cardEndpoint: string
   /** Human label for the card type, used in tooltips and toasts. */
   cardLabel?: string
+  /** Set to false on surfaces where only the image is meaningful (e.g. the
+   * daily report, where the long-form body *is* the caption). */
+  showCopy?: boolean
+  /** When set, save-image screenshots this DOM subtree instead of fetching
+   * the server-rendered `.png`. Elements with `data-exclude-from-capture`
+   * are skipped — use it to hide nav chrome and the share dock itself.
+   * Metadata (caption / filename) still comes from `cardEndpoint.json`. */
+  captureTarget?: RefObject<HTMLElement | null>
 }
 
 /**
@@ -23,7 +31,12 @@ export interface ShareButtonsProps {
  * Hidden when the API is offline — with no server there's nothing to render.
  * Matches the TopBar "入戏" grey-out pattern rather than inventing new UX.
  */
-export function ShareButtons({ cardEndpoint, cardLabel = '分享卡' }: ShareButtonsProps) {
+export function ShareButtons({
+  cardEndpoint,
+  cardLabel = '分享卡',
+  showCopy = true,
+  captureTarget,
+}: ShareButtonsProps) {
   const [healthStatus, setHealthStatus] = useState<'unknown' | 'online' | 'offline'>('unknown')
   const [cardStatus, setCardStatus] = useState<'unknown' | 'available' | 'not_available'>('unknown')
   const [toast, setToast] = useState<string | null>(null)
@@ -80,33 +93,86 @@ export function ShareButtons({ cardEndpoint, cardLabel = '分享卡' }: ShareBut
     }
   }
 
+  async function captureDomBlob(node: HTMLElement): Promise<Blob | null> {
+    // Fonts must be ready or the screenshot falls back to the default font
+    // and the Chinese glyphs look generic. Image loads are awaited too — any
+    // pending sprite would render as a broken-image placeholder.
+    if (document.fonts?.ready) {
+      try { await document.fonts.ready } catch { /* ignore */ }
+    }
+    const imgs = Array.from(node.querySelectorAll('img'))
+    await Promise.all(
+      imgs.map(img => {
+        if (img.complete && img.naturalWidth > 0) return Promise.resolve()
+        return new Promise<void>(resolve => {
+          img.addEventListener('load', () => resolve(), { once: true })
+          img.addEventListener('error', () => resolve(), { once: true })
+        })
+      }),
+    )
+    const { toBlob } = await import('html-to-image')
+    // Paper background matches `.daily-root` so antialiased edges don't show
+    // a transparent halo when opened in viewers that default to white.
+    // skipFonts: the page already rendered with the intended webfonts, so the
+    // browser has them in its CSS cache; inlining Google Fonts' hundreds of
+    // unicode-range WOFF2 subsets into the SVG takes ~10s for negligible
+    // visual benefit on the capturing machine. Chinese glyphs fall back to
+    // the system family in the rendered PNG (PingFang on macOS, YaHei on
+    // Windows) — acceptable trade-off for a <1s save.
+    return toBlob(node, {
+      pixelRatio: 2,
+      backgroundColor: '#f5efe0',
+      skipFonts: true,
+      filter: el => !(el instanceof HTMLElement && el.dataset.excludeFromCapture !== undefined),
+    })
+  }
+
   async function saveCard() {
     if (saving || apiStatus !== 'online') return
     setSaving(true)
     try {
-      const [meta, pngRes] = await Promise.all([
-        fetchMeta(),
-        fetch(`${cardEndpoint}.png`),
-      ])
-      if (!pngRes.ok) {
-        flashToast('卡片生成失败')
-        return
+      let blob: Blob | null
+      let meta: ShareCardMeta | null
+      if (captureTarget?.current) {
+        // Client-side path: DOM screenshot. Metadata still comes from the
+        // JSON endpoint so the filename and any future share text stay
+        // server-owned.
+        meta = await fetchMeta()
+        try {
+          blob = await captureDomBlob(captureTarget.current)
+        } catch (err) {
+          console.error('DOM capture failed', err)
+          flashToast('截图失败')
+          return
+        }
+        if (!blob) {
+          flashToast('截图失败')
+          return
+        }
+      } else {
+        const [m, pngRes] = await Promise.all([
+          fetchMeta(),
+          fetch(`${cardEndpoint}.png`),
+        ])
+        if (!pngRes.ok) {
+          flashToast('卡片生成失败')
+          return
+        }
+        meta = m
+        blob = await pngRes.blob()
       }
-      const blob = await pngRes.blob()
       const filename = meta?.filename ?? 'simcampus_card.png'
 
       // Progressive: Web Share API first (mobile native share sheet), then
-      // download fallback (desktop).
+      // download fallback (desktop). Image-only — captions belong to the
+      // copy button; bundling them here makes the two actions feel identical
+      // on platforms that merge share-sheet text with the attached file.
       const file = new File([blob], filename, { type: 'image/png' })
       if (typeof navigator.canShare === 'function' && navigator.canShare({ files: [file] })) {
         try {
-          await navigator.share({
-            files: [file],
-            text: meta ? `${meta.caption}\n\n${meta.hashtags.join(' ')}` : undefined,
-          })
+          await navigator.share({ files: [file] })
           return
         } catch (err) {
-          // User cancelled → fall through to download. AbortError is normal.
           if (!(err instanceof DOMException) || err.name !== 'AbortError') {
             console.error('share failed, falling back to download', err)
           } else {
@@ -170,16 +236,18 @@ export function ShareButtons({ cardEndpoint, cardLabel = '分享卡' }: ShareBut
           <span className="share-btn-icon">📥</span>
           <span className="share-btn-label">{saving ? '保存中…' : '保存图'}</span>
         </button>
-        <button
-          type="button"
-          className={`share-btn share-btn--secondary${copying ? ' share-btn-busy' : ''}`}
-          onClick={copyCaption}
-          disabled={disabled || copying}
-          title={title || (copying ? '复制中…' : '复制文案')}
-        >
-          <span className="share-btn-icon">📋</span>
-          <span className="share-btn-label">{copying ? '复制中…' : '复制文案'}</span>
-        </button>
+        {showCopy && (
+          <button
+            type="button"
+            className={`share-btn share-btn--secondary${copying ? ' share-btn-busy' : ''}`}
+            onClick={copyCaption}
+            disabled={disabled || copying}
+            title={title || (copying ? '复制中…' : '复制文案')}
+          >
+            <span className="share-btn-icon">📋</span>
+            <span className="share-btn-label">{copying ? '复制中…' : '复制文案'}</span>
+          </button>
+        )}
         {toast && <div className="share-toast" role="status">{toast}</div>}
       </div>
     </div>

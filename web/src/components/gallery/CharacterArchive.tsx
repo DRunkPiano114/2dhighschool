@@ -94,7 +94,7 @@ export function CharacterArchive({
   return (
     <div className="archive-root">
       <header className="archive-nav">
-        <Link to={`/characters`} className="archive-back">← 人物志</Link>
+        <Link to={`/day/${dayId}`} className="archive-back">← 日报</Link>
         <ArchiveDayNav agentId={agentId} dayId={dayId} days={days} />
       </header>
 

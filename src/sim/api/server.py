@@ -290,7 +290,10 @@ def _daily_meta_and_caption(day: int) -> tuple[card_agg.DailySummary, dict]:
 @app.get("/api/card/daily/{day}.png")
 async def card_daily_png(day: int) -> Response:
     summary, caption = _daily_meta_and_caption(day)
-    key = f"daily_{day:03d}"
+    # v2: layout includes TopEvent / Contrast / ConcernSpotlight sections.
+    # Bumping the key bypasses any `.cache/cards/daily_<day>.png` written by
+    # the old renderer so deployments don't serve stale PNGs.
+    key = f"daily_v2_{day:03d}"
 
     def _render():
         return daily_card._render_card(summary)

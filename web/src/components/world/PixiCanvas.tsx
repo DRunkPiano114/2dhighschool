@@ -1,7 +1,7 @@
 import { Application, extend, useApplication, useTick } from '@pixi/react'
 import { Container, Graphics } from 'pixi.js'
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { useWorldStore } from '../../stores/useWorldStore'
 import { loadMeta, loadScenes, loadSceneFile, prefetchDay, loadAgentColors, loadTilesetManifest, loadAnimatedManifest } from '../../lib/data'
 import { ROOMS, TILE, derivePositions } from '../../lib/roomConfig'
@@ -31,6 +31,9 @@ const UI_INSET = { top: 8, bottom: 8, left: 8, right: 8 }
 
 function useDataLoader() {
   const { dayId: urlDayId, sceneFile: urlSceneFile } = useParams<{ dayId: string; sceneFile: string }>()
+  const [searchParams] = useSearchParams()
+  const urlGroup = searchParams.get('g')
+  const urlTick = searchParams.get('t')
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -38,11 +41,15 @@ function useDataLoader() {
   const setScenes = useWorldStore(s => s.setScenes)
   const setSceneFile = useWorldStore(s => s.setCurrentSceneFile)
   const setSceneIdx = useWorldStore(s => s.setCurrentSceneIndex)
+  const setGroupIdx = useWorldStore(s => s.setActiveGroupIndex)
+  const setTick = useWorldStore(s => s.setCurrentTick)
   const setCurrentDay = useWorldStore(s => s.setCurrentDay)
   const consumePendingDayLanding = useWorldStore(s => s.consumePendingDayLanding)
   const currentDay = useWorldStore(s => s.currentDay)
   const sceneIdx = useWorldStore(s => s.currentSceneIndex)
   const scenes = useWorldStore(s => s.scenes)
+  const scenesDay = useWorldStore(s => s.scenesDay)
+  const sceneFile = useWorldStore(s => s.currentSceneFile)
 
   // One generation token shared across both async layers so that rapid
   // Day1→Day2→Day1 clicks can't drop a stale scene list or scene file into
@@ -83,7 +90,7 @@ function useDataLoader() {
     const myGen = ++genRef.current
     loadScenes(currentDay).then(s => {
       if (myGen !== genRef.current) return
-      setScenes(s)
+      setScenes(s, currentDay)
       if (s.length === 0) return
       // Explicit scene file in the URL takes priority over both the rewind
       // landing and the default-to-zero. Stale/invalid file → fall through.
@@ -111,16 +118,41 @@ function useDataLoader() {
     })
   }, [currentDay, sceneIdx, scenes, setSceneFile])
 
+  // URL → store: apply ?g= / ?t= query params once the matching scene file
+  // has loaded, so deep links from the daily report (次条 / 头条) land on the
+  // exact group and tick that was quoted, not the scene's first speech.
+  useEffect(() => {
+    if (!sceneFile) return
+    if (urlDayId !== currentDay) return
+    if (urlSceneFile && urlSceneFile !== 'first' && scenes[sceneIdx]?.file !== urlSceneFile) return
+    if (urlGroup === null && urlTick === null) return
+    const g = urlGroup !== null ? Math.max(0, Math.min(sceneFile.groups.length - 1, Number(urlGroup))) : 0
+    const group = sceneFile.groups[g]
+    if (!group) return
+    const maxTick = group.is_solo ? 0 : Math.max(0, (group as SceneGroup).ticks.length - 1)
+    const t = urlTick !== null ? Math.max(0, Math.min(maxTick, Number(urlTick))) : 0
+    setGroupIdx(g)
+    setTick(t)
+  }, [sceneFile, urlGroup, urlTick, urlDayId, urlSceneFile, currentDay, scenes, sceneIdx, setGroupIdx, setTick])
+
   // store → URL: when keyboard / TopBar / TickNav advances the store past the
   // URL, replace the URL so refreshing or sharing reflects what's on screen.
+  //
+  // Guard: only sync when (a) URL day and store day agree, and (b) the store's
+  // `scenes` array was loaded for the current day. Without these, a cross-day
+  // click (e.g. 次条 on day_003 while store is still day_002) can fire this
+  // effect with a stale scene list and `replace` the fresh URL with a
+  // (new_day, old_scene_file) mashup — landing the user on the wrong scene.
   useEffect(() => {
+    if (urlDayId && urlDayId !== currentDay) return
+    if (scenesDay !== currentDay) return
     const entry = scenes[sceneIdx]
     if (!entry) return
     const expected = `/day/${currentDay}/scene/${entry.file}`
     if (location.pathname !== expected) {
       navigate(expected, { replace: true })
     }
-  }, [currentDay, sceneIdx, scenes, location.pathname, navigate])
+  }, [urlDayId, currentDay, scenesDay, sceneIdx, scenes, location.pathname, navigate])
 }
 
 // --- world scene ---

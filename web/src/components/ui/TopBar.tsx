@@ -65,10 +65,10 @@ export function TopBar() {
         <div ref={dayMenuRef} className="relative">
           <button
             onClick={() => setDayMenuOpen(o => !o)}
-            className="flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-white/10 hover:bg-white/20 text-sm text-white/85 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-md bg-white/10 hover:bg-white/20 text-base text-white/85 transition-colors"
           >
             <span className="text-white/55 text-[11px] uppercase tracking-wider">Day</span>
-            <span className="font-mono font-semibold text-white">{dayNum}</span>
+            <span className="font-mono font-semibold text-lg text-white">{dayNum}</span>
             <span className="text-white/40 text-xs">▾</span>
           </button>
           {dayMenuOpen && (
@@ -80,7 +80,7 @@ export function TopBar() {
                   <button
                     key={d}
                     onClick={() => { setCurrentDay(d); setDayMenuOpen(false) }}
-                    className={`w-full text-left flex items-center gap-2 px-3 py-1.5 text-xs font-mono ${
+                    className={`w-full text-left flex items-center gap-2 px-3 py-1.5 text-sm font-mono ${
                       isActive ? 'bg-white/15 text-white' : 'text-white/60 hover:bg-white/10 hover:text-white'
                     }`}
                   >
@@ -98,7 +98,7 @@ export function TopBar() {
         <div ref={menuRef} className="relative">
           <button
             onClick={() => setSceneMenuOpen(o => !o)}
-            className="flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-white/10 hover:bg-white/20 text-sm text-white/85 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 rounded-md bg-white/10 hover:bg-white/20 text-base text-white/85 transition-colors"
           >
             {currentScene && (
               <>
@@ -122,7 +122,7 @@ export function TopBar() {
                     <button
                       key={slot.key}
                       onClick={() => { setSceneIndex(arrIdx); setSceneMenuOpen(false) }}
-                      className={`w-full text-left flex items-center gap-2 px-3 py-1.5 text-xs ${
+                      className={`w-full text-left flex items-center gap-2 px-3 py-1.5 text-sm ${
                         isActive ? 'bg-white/15 text-white' : 'text-white/60 hover:bg-white/10 hover:text-white'
                       }`}
                     >
@@ -135,7 +135,7 @@ export function TopBar() {
                 }
                 return (
                   <div key={slot.key}>
-                    <div className={`px-3 py-1 text-[10px] uppercase tracking-wider ${slotActive ? 'text-amber-400/80' : 'text-white/30'}`}>
+                    <div className={`px-3 py-1 text-xs uppercase tracking-wider ${slotActive ? 'text-amber-400/80' : 'text-white/30'}`}>
                       {slot.time} · {slot.name}
                     </div>
                     {slot.scenes.map(scene => {
@@ -145,7 +145,7 @@ export function TopBar() {
                         <button
                           key={arrIdx}
                           onClick={() => { setSceneIndex(arrIdx); setSceneMenuOpen(false) }}
-                          className={`w-full text-left flex items-center gap-2 pl-8 pr-3 py-1.5 text-xs ${
+                          className={`w-full text-left flex items-center gap-2 pl-8 pr-3 py-1.5 text-sm ${
                             isActive ? 'bg-white/15 text-white' : 'text-white/60 hover:bg-white/10 hover:text-white'
                           }`}
                         >
@@ -163,13 +163,13 @@ export function TopBar() {
 
       </div>
 
-      {/* Right: 日报 (gold archive seal, secondary) + 入戏 (vermillion seal, primary CTA) */}
+      {/* Right: 日报 (gold archive seal) + 入戏 (vermillion seal) — equal-size mode switches */}
       <div className="flex items-center gap-4 pointer-events-auto">
         <button
           onClick={() => navigate(`/day/${currentDay}`)}
           aria-label="日报 — 查看今天的班级日报"
           title="日报 — 查看今天的班级日报"
-          className="seal-btn seal-btn--gold"
+          className="seal-btn seal-btn--gold seal-btn--lg"
         >
           <span className="seal-btn-text">日报</span>
         </button>
