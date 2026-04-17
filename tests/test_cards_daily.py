@@ -409,6 +409,70 @@ def test_pick_top_event_pull_quote_none_when_no_witness_thought():
     assert card.pull_quote_agent_id is None
 
 
+def test_pick_top_event_tick_falls_back_to_cite_tick_when_no_pull_quote():
+    # No witness has a thought on any cite_tick → pull_quote resolves to None.
+    # The deep-link tick must still point *into* the cited region, not snap
+    # to 0, so "进入现场" lands on the event's beat instead of the scene top.
+    # Uses cite_ticks=[3] with a witness (lin_zhaoyu) who is silent on that
+    # tick but speaks elsewhere, plus a non-witness with thoughts.
+    scenes = [
+        _scene(
+            "08:45", "x", "y", "a.json",
+            [{
+                "group_index": 0,
+                "participants": ["lin_zhaoyu", "tang_shihan"],
+                "ticks": [
+                    _tick("lin_zhaoyu", "", {"lin_zhaoyu": _mind(3, "0号位的长心声")}),
+                    _tick("lin_zhaoyu", "", {}),
+                    _tick("lin_zhaoyu", "", {}),
+                    _tick("lin_zhaoyu", "", {"tang_shihan": _mind(5, "非目击者说话了")}),
+                ],
+                "reflections": {},
+                "narrative": {
+                    "new_events": [
+                        _new_event("事件", "八卦", ["林昭宇"], [3]),
+                    ],
+                },
+            }],
+        ),
+    ]
+    card = pick_top_event(scenes, min_score=0.0)
+    assert card is not None
+    assert card.pull_quote is None
+    assert card.tick_index == 3
+
+
+def test_pick_top_event_tick_fallback_handles_one_indexed_cite():
+    # Some LLM traces emit 1-indexed cite_ticks. A cite_tick of `len(ticks)`
+    # is out of range as-is but valid when treated as 1-indexed (len-1). The
+    # fallback must probe (t, t-1) the same way `_pull_quote_from_group` does.
+    scenes = [
+        _scene(
+            "08:45", "x", "y", "a.json",
+            [{
+                "group_index": 0,
+                "participants": ["lin_zhaoyu"],
+                "ticks": [
+                    _tick("lin_zhaoyu", "", {}),
+                    _tick("lin_zhaoyu", "", {}),
+                    _tick("lin_zhaoyu", "", {}),
+                ],
+                "reflections": {},
+                "narrative": {
+                    "new_events": [
+                        # cite_ticks=[3] with only 3 ticks → 1-indexed, normalize to 2.
+                        _new_event("事件", "八卦", ["林昭宇"], [3]),
+                    ],
+                },
+            }],
+        ),
+    ]
+    card = pick_top_event(scenes, min_score=0.0)
+    assert card is not None
+    assert card.pull_quote is None
+    assert card.tick_index == 2
+
+
 def test_pick_top_event_works_without_group_index_on_event():
     # Scene JSON exports `new_events` without `group_index` — pick_top_event
     # must NOT rely on the field and must still locate the right group by
@@ -572,6 +636,11 @@ def test_pick_contrast_silent_judgment_aggregates_accusers():
     accusers = {a["id"] for a in c.payload["accusers"]}
     assert accusers == {"fang_yuchen", "lin_zhaoyu"}
     assert c.score >= CONTRAST_SILENT_JUDGMENT_MIN_SUM
+    # Silent judgment is cross-scene by construction — no single scene pointer.
+    # The UI hides the "进入现场" link when these are None.
+    assert c.scene_file is None
+    assert c.scene_time is None
+    assert c.scene_name is None
 
 
 def test_pick_contrast_returns_none_below_all_thresholds():

@@ -488,6 +488,20 @@ def _event_score(event: dict[str, Any]) -> float:
     )
 
 
+def _fallback_event_tick(event: dict[str, Any], group: dict[str, Any]) -> int:
+    """Return a sensible tick to deep-link to when the pull_quote can't be
+    resolved. Walks `cite_ticks` and returns the first one that lands inside
+    the group's tick range, tolerating 0/1-indexed traces the same way
+    ``_pull_quote_from_group`` does. 0 only if nothing survives — better than
+    dropping the cite information entirely."""
+    ticks = group.get("ticks") or []
+    for t_idx in event.get("cite_ticks") or []:
+        for probe in (t_idx, t_idx - 1):
+            if 0 <= probe < len(ticks):
+                return probe
+    return 0
+
+
 def _pull_quote_from_group(
     group: dict[str, Any],
     event: dict[str, Any],
@@ -594,7 +608,7 @@ def pick_top_event(
         pull_quote_agent_id=pull_id,
         pull_quote_agent_name=_bible_name(pull_id) if pull_id else None,
         group_index=gi,
-        tick_index=pull_tick_idx if pull_tick_idx is not None else 0,
+        tick_index=pull_tick_idx if pull_tick_idx is not None else _fallback_event_tick(event, group),
         score=score,
     )
 
@@ -748,15 +762,18 @@ def _pick_failed_intent_candidate(
 def _pick_silent_judgment_candidate(
     scenes: list[dict[str, Any]],
     name_to_id: dict[str, str],
-) -> tuple[float, dict[str, Any], dict[str, Any]] | None:
+) -> tuple[float, dict[str, Any]] | None:
     """Aggregate off-stage negative favorability — the 暗戳戳 card.
 
     Gathers every `relationship_change` where direct_interaction is False
     and favorability is negative, groups by target agent, sums the absolute
     deltas. The winning target is the one the class is most quietly
-    shit-talking."""
+    shit-talking.
+
+    Cross-scene by construction — this card deliberately carries no scene
+    pointer. `pick_contrast` returns `scene_*=None`, which hides the
+    "进入现场" link in the UI."""
     per_target: dict[str, list[dict[str, Any]]] = defaultdict(list)
-    per_target_scene: dict[str, dict[str, Any]] = {}
     for scene in scenes:
         for group in scene.get("groups") or []:
             reflections = group.get("reflections") or {}
@@ -777,7 +794,6 @@ def _pick_silent_judgment_candidate(
                             "fav_delta": fav,
                         }
                     )
-                    per_target_scene.setdefault(target_id, scene)
 
     if not per_target:
         return None
@@ -795,7 +811,7 @@ def _pick_silent_judgment_candidate(
         "target_name": _bible_name(target_id),
         "accusers": per_target[target_id],
     }
-    return (score, per_target_scene[target_id], payload)
+    return (score, payload)
 
 
 def pick_contrast(scenes: list[dict[str, Any]]) -> ContrastCard | None:
@@ -841,16 +857,14 @@ def pick_contrast(scenes: list[dict[str, Any]]) -> ContrastCard | None:
         )
     s = _pick_silent_judgment_candidate(scenes, name_to_id)
     if s is not None:
-        score, scene, payload = s
-        scene_info = scene.get("scene") or {}
-        entry = scene.get("_index_entry") or {}
+        score, payload = s
         return ContrastCard(
             kind="silent_judgment",
             payload=payload,
             score=score,
-            scene_time=scene_info.get("time") or "",
-            scene_name=scene_info.get("name") or "",
-            scene_file=entry.get("file") or "",
+            scene_time=None,
+            scene_name=None,
+            scene_file=None,
         )
     return None
 
