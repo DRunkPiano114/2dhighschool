@@ -35,9 +35,17 @@ from .elements.seal import render_seal
 
 DAYS_DIR = PROJECT_ROOT / "web" / "public" / "data" / "days"
 
-# Maximum number of participants we portrait. Beyond this, the card gets
-# unreadable — we pick the three most involved (speaker, target, top witness).
-MAX_PORTRAITS = 3
+# Portrait + bubble caps. Groups of ≤4 get everyone on the card (fits cleanly
+# at 1080 width). Groups of 5+ fall back to the speaker/target/top-witness
+# summary so the card doesn't turn into a crowded thumbnail grid.
+def _portrait_cap_for(n_participants: int) -> int:
+    return 4 if n_participants <= 4 else 3
+
+
+def _witness_bubble_cap_for(n_participants: int) -> int:
+    # Speaker speech + target thought occupy 2 bubble slots; remaining slots go
+    # to witnesses by urgency. 4-person → 2 witness bubbles, 5+ → 1.
+    return max(1, _portrait_cap_for(n_participants) - 2)
 
 
 # --- Data loading ----------------------------------------------------------
@@ -110,26 +118,30 @@ def select_featured_group(scene_data: dict[str, Any]) -> int | None:
     return candidates[0][1]
 
 
-def _pick_featured_tick(group: dict[str, Any]) -> dict[str, Any] | None:
+def _pick_featured_tick_index(group: dict[str, Any]) -> int | None:
     """Choose the tick inside the group with the strongest beat.
 
     Prefers: tick that has public speech AND at least one rich inner thought
-    (≥ 12 chars). Falls back to highest aggregate urgency.
+    (≥ 12 chars). Falls back to highest aggregate urgency. Returns the index
+    into group['ticks']; None if no ticks.
     """
     ticks = group.get("ticks") or []
     if not ticks:
         return None
 
-    def score(tick: dict[str, Any]) -> tuple[int, int, int]:
+    def score(indexed: tuple[int, dict[str, Any]]) -> tuple[int, int, int, int]:
+        _, tick = indexed
         has_speech = bool((tick.get("public") or {}).get("speech"))
         minds = tick.get("minds") or {}
         rich_thoughts = sum(
             1 for m in minds.values() if len(m.get("inner_thought") or "") >= 12
         )
         urgency_sum = sum(int(m.get("urgency") or 0) for m in minds.values())
-        return (int(has_speech), rich_thoughts, urgency_sum)
+        # Tie-break on earliest tick for determinism.
+        return (int(has_speech), rich_thoughts, urgency_sum, -indexed[0])
 
-    return max(ticks, key=score)
+    best = max(enumerate(ticks), key=score)
+    return best[0]
 
 
 # --- LayoutSpec ------------------------------------------------------------
@@ -156,6 +168,9 @@ class LayoutSpec:
     bubbles: list[BubbleSpec] = field(default_factory=list)
     featured_quote: str | None = None  # strongest inner thought, for caption
     featured_speaker_name: str | None = None
+    # Group-local index of the tick this layout was projected from. None only
+    # when the group has no ticks at all (header-only card).
+    tick_index: int | None = None
 
 
 def _group_display_name(
@@ -172,20 +187,32 @@ def _group_display_name(
 def scene_to_layout_spec(
     scene_data: dict[str, Any],
     group_index: int,
+    tick_index: int | None = None,
 ) -> LayoutSpec:
-    """Project a scene + group selection into a render-ready dataclass."""
+    """Project a scene + group + tick into a render-ready dataclass.
+
+    ``tick_index`` selects which tick in the group anchors the card. When
+    ``None``, falls back to ``_pick_featured_tick_index`` (server-side best
+    pick). The frontend passes the user's currently-viewed tick so 保存图
+    matches what the user is reading.
+    """
     bible = load_visual_bible()
     scene = scene_data["scene"]
     participant_names = scene_data.get("participant_names", {})
     group = scene_data["groups"][group_index]
+    ticks = group.get("ticks") or []
 
     portraits: list[tuple[str, str]] = []
     bubbles: list[BubbleSpec] = []
     featured_quote: str | None = None
     featured_speaker_name: str | None = None
 
-    tick = _pick_featured_tick(group)
-    if tick is None:
+    if tick_index is not None and 0 <= tick_index < len(ticks):
+        resolved_index: int | None = tick_index
+    else:
+        resolved_index = _pick_featured_tick_index(group)
+
+    if resolved_index is None:
         # No ticks — unusual but possible. Card still renders header + empty.
         return LayoutSpec(
             day=scene["day"],
@@ -193,6 +220,7 @@ def scene_to_layout_spec(
             scene_name=scene["name"],
             location=scene["location"],
         )
+    tick = ticks[resolved_index]
 
     speech = (tick.get("public") or {}).get("speech") or {}
     speaker_id = speech.get("agent")
@@ -211,6 +239,10 @@ def scene_to_layout_spec(
         ordered.append(target_id)
         used.add(target_id)
 
+    participants = group.get("participants", [])
+    portrait_cap = _portrait_cap_for(len(participants))
+    witness_cap = _witness_bubble_cap_for(len(participants))
+
     witness_candidates = [
         (aid, m)
         for aid, m in minds.items()
@@ -221,15 +253,15 @@ def scene_to_layout_spec(
         reverse=True,
     )
     for aid, _ in witness_candidates:
-        if len(ordered) >= MAX_PORTRAITS:
+        if len(ordered) >= portrait_cap:
             break
         ordered.append(aid)
         used.add(aid)
 
     # Fill remaining slots from other participants (keeps the card populated
     # even when there's no rich inner monologue).
-    for aid in group.get("participants", []):
-        if len(ordered) >= MAX_PORTRAITS:
+    for aid in participants:
+        if len(ordered) >= portrait_cap:
             break
         if aid not in used:
             ordered.append(aid)
@@ -237,7 +269,7 @@ def scene_to_layout_spec(
 
     portraits = [
         (aid, _group_display_name(aid, participant_names, bible))
-        for aid in ordered[:MAX_PORTRAITS]
+        for aid in ordered[:portrait_cap]
     ]
 
     # Bubbles: speech from speaker, thought from target (if present), thought
@@ -264,7 +296,7 @@ def scene_to_layout_spec(
                 )
             )
 
-    for aid, _ in witness_candidates[:1]:
+    for aid, _ in witness_candidates[:witness_cap]:
         w_thought = minds[aid].get("inner_thought")
         if w_thought:
             bubbles.append(
@@ -299,6 +331,7 @@ def scene_to_layout_spec(
         bubbles=bubbles,
         featured_quote=featured_quote,
         featured_speaker_name=featured_speaker_name,
+        tick_index=resolved_index,
     )
 
 
@@ -329,15 +362,28 @@ def _render_card(spec: LayoutSpec) -> Image.Image:
 
     # --- Portraits row ----------------------------------------------------
     n = len(spec.portraits)
-    portrait_size = 320 if n <= 2 else 260
-    y_portraits = 260
-    gutter = 40
-
-    if n == 0:
-        pass  # header-only card (rare; empty body)
+    # Scale down at 4 portraits so the row still fits inside the 72px side
+    # padding at 1080 width.
+    if n <= 2:
+        portrait_size = 320
+    elif n == 3:
+        portrait_size = 260
     else:
-        total_w = n * portrait_size + (n - 1) * gutter
-        start_x = (CANVAS_W - total_w) // 2
+        portrait_size = 200
+    y_portraits = 260
+
+    if n > 0:
+        if n == 4:
+            # Mirror CSS `justify-content: space-between` — portraits span the
+            # full content width, aligning the row's right edge with the
+            # thought bubble column on the right.
+            content_w = CANVAS_W - 72 * 2
+            gutter = (content_w - n * portrait_size) // max(1, n - 1)
+            start_x = 72
+        else:
+            gutter = 40
+            total_w = n * portrait_size + (n - 1) * gutter
+            start_x = (CANVAS_W - total_w) // 2
         name_fnt = font_serif(36, bold=True)
         motif_fnt = font_wen(22)
         for i, (aid, name_cn) in enumerate(spec.portraits):
@@ -463,4 +509,5 @@ def spec_to_dict(spec: LayoutSpec) -> dict[str, Any]:
         ],
         "featured_quote": spec.featured_quote,
         "featured_speaker_name": spec.featured_speaker_name,
+        "tick_index": spec.tick_index,
     }

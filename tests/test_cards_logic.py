@@ -138,6 +138,18 @@ def test_scene_filename_includes_zero_padded_day():
     assert scene_filename(7, "早读", "教室").startswith("simcampus_第007天_")
 
 
+def test_scene_filename_appends_tick_suffix_when_index_given():
+    """tick_index=2 (0-indexed) should render as _t03 (1-indexed, 2-digit).
+    Matches the 1-indexed tick labels shown in the UI."""
+    f = scene_filename(1, "早读", "教室", tick_index=2)
+    assert "_t03" in f
+    assert f.endswith(".png")
+
+
+def test_scene_filename_omits_tick_suffix_by_default():
+    assert "_t" not in scene_filename(1, "早读", "教室")
+
+
 def test_pick_hashtags_includes_base_set():
     tags = pick_hashtags(location=None, time=None)
     for t in BASE_HASHTAGS:

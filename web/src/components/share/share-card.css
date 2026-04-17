@@ -91,13 +91,24 @@
 }
 
 /* --- Brand footer (shared by scene + agent cards) --------------------- */
+/* Scene card places the footer via flex (see .scene-share-card below);
+   agent card keeps the legacy absolute positioning since its body height
+   varies and has its own bottom breathing room. Host card overrides
+   position/placement. Shared rules here are just dimensions + inner layout. */
 .share-brand-footer {
+  height: 150px;
+  padding-top: 28px;
+}
+
+.agent-share-card .share-brand-footer {
   position: absolute;
   left: 72px;
   right: 72px;
   bottom: 72px;
-  height: 150px;
-  padding-top: 28px;
+}
+
+.scene-share-card .share-brand-footer {
+  position: relative;
 }
 
 .share-brand-footer .share-divider {
@@ -129,8 +140,22 @@
 }
 
 /* --- Scene card header ------------------------------------------------- */
+/* Flex column distribution: header/portraits/footer are fixed-size;
+   bubbles area (flex:1) swallows the remaining space and centers its
+   content vertically. Short content: centered with equal breathing room
+   above and below. Long content: fills the area without spilling into
+   the footer (overflow is clipped at the bubbles container). */
 .scene-share-card {
   padding: 64px 72px 72px;
+  display: flex;
+  flex-direction: column;
+}
+
+.scene-share-card > .share-divider,
+.scene-share-card > .scene-share-header,
+.scene-share-card > .scene-share-portraits,
+.scene-share-card > .share-brand-footer {
+  flex-shrink: 0;
 }
 
 .scene-share-header {
@@ -181,6 +206,13 @@
   margin-bottom: 36px;
 }
 
+/* 4 portraits span the full content width via space-between — the row's
+   right edge lines up with the thought-bubble column on the right, so the
+   bubble no longer visually protrudes past the last portrait. */
+.scene-share-portraits--four {
+  justify-content: space-between;
+}
+
 .scene-share-portrait {
   display: flex;
   flex-direction: column;
@@ -201,6 +233,11 @@
   height: 320px;
 }
 
+.scene-share-portrait-img--small {
+  width: 200px;
+  height: 200px;
+}
+
 .scene-share-portrait-name {
   font-size: 36px;
   font-weight: 700;
@@ -216,11 +253,20 @@
 }
 
 /* --- Bubbles ----------------------------------------------------------- */
+/* flex:1 — swallow remaining vertical between portraits and footer.
+   justify-content: center — short content sits balanced in the middle
+   instead of top-aligned with a huge bottom gap. overflow: hidden —
+   catastrophically long content clips at the bubbles-area bottom edge
+   instead of spilling into the footer below. */
 .scene-share-bubbles {
   display: flex;
   flex-direction: column;
   gap: 24px;
   margin-top: 24px;
+  flex: 1 1 0;
+  min-height: 0;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .scene-share-bubble {

@@ -8,10 +8,15 @@ import './share-card.css'
  * at 1080×1440, ready for html-to-image capture.
  */
 export function SceneShareCard({ layout }: { layout: SceneLayoutJson }) {
+  const n = layout.portraits.length
   const portraitClass =
-    layout.portraits.length <= 2
+    n <= 2
       ? 'scene-share-portrait-img scene-share-portrait-img--large'
+      : n >= 4
+      ? 'scene-share-portrait-img scene-share-portrait-img--small'
       : 'scene-share-portrait-img'
+  const portraitsClass =
+    n >= 4 ? 'scene-share-portraits scene-share-portraits--four' : 'scene-share-portraits'
 
   return (
     <div className="share-card scene-share-card">
@@ -29,8 +34,8 @@ export function SceneShareCard({ layout }: { layout: SceneLayoutJson }) {
 
       <hr className="share-divider scene-share-divider" />
 
-      {layout.portraits.length > 0 && (
-        <div className="scene-share-portraits">
+      {n > 0 && (
+        <div className={portraitsClass}>
           {layout.portraits.map(p => (
             <div key={p.agent_id} className="scene-share-portrait">
               <img

@@ -129,6 +129,7 @@ export interface SceneLayoutJson {
   }>
   featured_quote: string | null
   featured_speaker_name: string | null
+  tick_index: number | null
 }
 
 export interface SceneGroup {
@@ -138,8 +139,13 @@ export interface SceneGroup {
   narrative: NarrativeExtraction
   reflections: Record<string, AgentReflection>
   is_solo?: false
-  share_caption_payload?: ShareCaptionPayload & { group_index: number }
-  share_layout?: SceneLayoutJson
+  // Per-tick arrays aligned with `ticks`. The frontend picks the entry at the
+  // currently-viewed tick when the user clicks 保存图, so the poster anchors
+  // on whatever bubble they were reading.
+  share_tick_layouts?: SceneLayoutJson[]
+  share_tick_captions?: Array<
+    ShareCaptionPayload & { group_index: number; tick_index: number }
+  >
 }
 
 export interface SoloGroup {

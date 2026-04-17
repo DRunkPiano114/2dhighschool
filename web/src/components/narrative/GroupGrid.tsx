@@ -20,12 +20,19 @@ export function GroupGrid() {
   const group = sceneFile.groups[groupIdx]
   const names = sceneFile.participant_names
 
-  // A group is shareable iff Python's export has injected share_layout and
-  // caption payload for it (multi-agent groups with ticks). Solo / trivial
-  // groups → dock hidden.
-  const shareLayout = group && !group.is_solo ? group.share_layout : undefined
-  const shareMeta = group && !group.is_solo ? group.share_caption_payload ?? null : null
-  const shareable = !!shareLayout && !!shareMeta
+  // Per-tick share payloads arrive aligned with `group.ticks`. 保存图 picks
+  // the entry at the currently-viewed tick so the poster matches what the
+  // user was reading. Solo / trivial groups → dock hidden.
+  const tickLayouts = group && !group.is_solo ? group.share_tick_layouts : undefined
+  const tickCaptions = group && !group.is_solo ? group.share_tick_captions : undefined
+  const tickCount = tickLayouts?.length ?? 0
+  const shareTick = tickCount > 0 ? Math.min(Math.max(currentTick, 0), tickCount - 1) : 0
+  const shareLayout = tickLayouts?.[shareTick]
+  const shareMeta = tickCaptions?.[shareTick] ?? null
+  // Placeholder `{}` entries from a failed export still land in the arrays
+  // to keep indices aligned with ticks — gate on presence of the required
+  // fields so the card doesn't render a broken shell.
+  const shareable = !!shareLayout?.day && !!shareMeta?.filename
 
   return (
     <div className="grid-stage">

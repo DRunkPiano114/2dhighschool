@@ -35,11 +35,22 @@ def _sanitize_filename_component(text: str) -> str:
     return "".join(" " if c in bad else c for c in text).strip()
 
 
-def scene_filename(day: int, name: str, location: str) -> str:
-    """Return a human-readable filename for a scene card download."""
+def scene_filename(
+    day: int,
+    name: str,
+    location: str,
+    tick_index: int | None = None,
+) -> str:
+    """Return a human-readable filename for a scene card download.
+
+    When ``tick_index`` is supplied, appends ``_tNN`` (1-indexed, zero-padded
+    to 2 digits) so saving multiple ticks from the same group yields distinct
+    filenames. 1-indexed because the UI labels ticks 1/N, not 0/N.
+    """
     safe_name = _sanitize_filename_component(name)
     safe_loc = _sanitize_filename_component(location)
-    return f"simcampus_第{day:03d}天_{safe_name}@{safe_loc}.png"
+    suffix = f"_t{tick_index + 1:02d}" if tick_index is not None else ""
+    return f"simcampus_第{day:03d}天_{safe_name}@{safe_loc}{suffix}.png"
 
 
 def pick_hashtags(
@@ -77,6 +88,7 @@ def scene_caption(
     featured_quote: str | None,
     featured_speaker: str | None,
     motif_emoji: str = "",
+    tick_index: int | None = None,
 ) -> dict[str, Any]:
     """Build the caption payload for a scene card.
 
@@ -96,7 +108,7 @@ def scene_caption(
     return {
         "caption": caption,
         "hashtags": pick_hashtags(location=location, time=time),
-        "filename": scene_filename(day, scene_name, location),
+        "filename": scene_filename(day, scene_name, location, tick_index),
     }
 
 

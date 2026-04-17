@@ -180,9 +180,12 @@ def export_agent_day_specs(days: list[str]) -> None:
 
 
 def _inject_scene_share_data(scene_file: dict) -> dict:
-    """For each multi-agent group with ticks, inject share_caption_payload and
-    share_layout fields. Python owns the selection/ordering logic — the
-    frontend <SceneShareCard> is a pure renderer consuming share_layout.
+    """For each multi-agent group with ticks, inject per-tick share_tick_layouts
+    and share_tick_captions arrays (one entry per tick, aligned with
+    group['ticks']). The frontend picks the entry matching the user's current
+    tick at save time, so 保存图 matches the bubble the user was reading.
+    Python still owns all selection/ordering logic — the React component is
+    just a pure renderer.
     """
     from sim.cards.assets import load_visual_bible
     from sim.cards.captions import scene_caption
@@ -192,27 +195,38 @@ def _inject_scene_share_data(scene_file: dict) -> dict:
     for gi, group in enumerate(scene_file.get("groups", [])):
         if group.get("is_solo") or len(group.get("participants", [])) < 2:
             continue
-        if not group.get("ticks"):
+        ticks = group.get("ticks") or []
+        if not ticks:
             continue
-        try:
-            spec = scene_to_layout_spec(scene_file, gi)
-        except Exception:
-            continue
-        motif_emoji = ""
-        if spec.bubbles:
-            motif_emoji = bible.get(spec.bubbles[0].agent_id, {}).get("motif_emoji", "")
-        caption = scene_caption(
-            day=spec.day,
-            scene_name=spec.scene_name,
-            location=spec.location,
-            time=spec.time,
-            featured_quote=spec.featured_quote,
-            featured_speaker=spec.featured_speaker_name,
-            motif_emoji=motif_emoji,
-        )
-        caption["group_index"] = gi
-        group["share_caption_payload"] = caption
-        group["share_layout"] = spec_to_dict(spec)
+        tick_layouts: list[dict] = []
+        tick_captions: list[dict] = []
+        for ti in range(len(ticks)):
+            try:
+                spec = scene_to_layout_spec(scene_file, gi, tick_index=ti)
+            except Exception:
+                # Placeholder so array indices stay aligned with group['ticks'].
+                tick_layouts.append({})
+                tick_captions.append({})
+                continue
+            motif_emoji = ""
+            if spec.bubbles:
+                motif_emoji = bible.get(spec.bubbles[0].agent_id, {}).get("motif_emoji", "")
+            caption = scene_caption(
+                day=spec.day,
+                scene_name=spec.scene_name,
+                location=spec.location,
+                time=spec.time,
+                featured_quote=spec.featured_quote,
+                featured_speaker=spec.featured_speaker_name,
+                motif_emoji=motif_emoji,
+                tick_index=ti,
+            )
+            caption["group_index"] = gi
+            caption["tick_index"] = ti
+            tick_layouts.append(spec_to_dict(spec))
+            tick_captions.append(caption)
+        group["share_tick_layouts"] = tick_layouts
+        group["share_tick_captions"] = tick_captions
     return scene_file
 
 
