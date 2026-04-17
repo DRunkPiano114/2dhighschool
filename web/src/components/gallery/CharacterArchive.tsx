@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useWorldStore } from '../../stores/useWorldStore'
 import { ShareButtons } from '../narrative/ShareButtons'
 import { AgentShareCard } from '../share/AgentShareCard'
 import { useShareCapture } from '../share/useShareCapture'
 import { useChatApiOnline } from '../../lib/useChatApiOnline'
+import { RolePlaySetup } from '../ui/RolePlaySetup'
 import type { AgentDayJson } from '../../lib/types'
 
 export function CharacterArchive({
@@ -18,6 +18,7 @@ export function CharacterArchive({
 }) {
   const [data, setData] = useState<AgentDayJson | null>(null)
   const [loading, setLoading] = useState(true)
+  const [showSetup, setShowSetup] = useState(false)
   const chatOnline = useChatApiOnline()
   const { nodeRef, capture } = useShareCapture()
 
@@ -25,8 +26,6 @@ export function CharacterArchive({
     const m = dayId.match(/day_0*(\d+)/)
     return m ? parseInt(m[1], 10) : null
   })()
-
-  const openRolePlay = useWorldStore(s => s.openRolePlayChat)
 
   useEffect(() => {
     if (dayNum === null) return
@@ -104,13 +103,9 @@ export function CharacterArchive({
             <button
               type="button"
               className="archive-roleplay-btn"
-              onClick={() => {
-                // Open role-play chat with this character as the target,
-                // leaving user-agent selection open (user picks in the modal).
-                openRolePlay(data.agent_id, [data.agent_id])
-              }}
+              onClick={() => setShowSetup(true)}
               disabled={chatOnline !== true}
-              title={chatOnline !== true ? 'API 未启动' : `以此身份与 ${data.name_cn} 聊聊`}
+              title={chatOnline !== true ? 'API 未启动' : `与 ${data.name_cn} 聊聊`}
             >
               与 {data.name_cn} 聊聊 →
             </button>
@@ -178,6 +173,12 @@ export function CharacterArchive({
             <AgentShareCard data={data} />
           </div>
         </div>
+      )}
+      {showSetup && data && (
+        <RolePlaySetup
+          initialTargetId={data.agent_id}
+          onClose={() => setShowSetup(false)}
+        />
       )}
     </div>
   )

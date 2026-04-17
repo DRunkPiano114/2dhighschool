@@ -27,13 +27,16 @@ function AgentPortrait({ agentId, name, selected, onClick }: {
 
 interface RolePlaySetupProps {
   onClose: () => void
+  initialTargetId?: string
 }
 
-export function RolePlaySetup({ onClose }: RolePlaySetupProps) {
+export function RolePlaySetup({ onClose, initialTargetId }: RolePlaySetupProps) {
   const meta = useWorldStore((s) => s.meta)
   const openRolePlay = useWorldStore((s) => s.openRolePlayChat)
   const [userAgent, setUserAgent] = useState<string | null>(null)
-  const [targets, setTargets] = useState<Set<string>>(new Set())
+  const [targets, setTargets] = useState<Set<string>>(
+    () => new Set(initialTargetId ? [initialTargetId] : [])
+  )
 
   if (!meta) return null
 
