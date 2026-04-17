@@ -7,6 +7,9 @@ import type { Tick, Emotion, MindState, GroupData } from '../../lib/types'
 
 const URGENCY_THRESHOLD = 2
 
+const GROUP_DOT_COLORS = ['#6aa8d4', '#d4886a', '#7ab867', '#b88aa8', '#c9a868'] as const
+const SOLO_DOT_COLOR = '#a8a0c0'
+
 export function GroupGrid() {
   const sceneFile = useWorldStore(s => s.currentSceneFile)
   const groupIdx = useWorldStore(s => s.activeGroupIndex)
@@ -65,20 +68,29 @@ interface GroupPillsProps {
 
 function GroupPills({ groups, activeIdx, names }: GroupPillsProps) {
   const setActiveGroup = useWorldStore(s => s.setActiveGroupIndex)
+  const showLabel = groups.length > 1
   return (
-    <nav className="group-pills">
+    <nav className="group-pills" aria-label="对话组切换">
+      {showLabel && <span className="group-pills-label">对话组</span>}
       {groups.map((g, idx) => {
         const label = g.is_solo
           ? (names[g.participants[0]] ?? g.participants[0])
           : g.participants.map(p => names[p] ?? p).join(' · ')
         const prefix = g.is_solo ? '独白' : `G${g.group_index}`
+        const dotColor = g.is_solo
+          ? SOLO_DOT_COLOR
+          : GROUP_DOT_COLORS[g.group_index % GROUP_DOT_COLORS.length]
+        const n = g.participants.length
+        const density = n >= 6 ? ' group-pill-xdense' : n >= 4 ? ' group-pill-dense' : ''
         return (
           <button
             key={idx}
             type="button"
             onClick={() => setActiveGroup(idx)}
-            className={`group-pill${idx === activeIdx ? ' group-pill-active' : ''}`}
+            className={`group-pill${idx === activeIdx ? ' group-pill-active' : ''}${density}`}
+            aria-pressed={idx === activeIdx}
           >
+            <span className="group-pill-dot" style={{ background: dotColor }} />
             <span className="group-pill-prefix">{prefix}</span>
             <span className="group-pill-names">{label}</span>
           </button>

@@ -231,57 +231,100 @@ body {
   min-height: 0;
 }
 
-/* ---- Group pills (tabs across the top of the panel) ---- */
+/* ---- Group pills (tabs across the top of the panel) ----
+   Primary switcher for parallel conversations in the same scene. Styled as
+   a proper tab bar — the active tab visibly lifts off the page so users
+   know what they're reading and that they can switch. */
 
 .group-pills {
   display: flex;
-  gap: 6px;
-  padding: 0 0 10px;
-  overflow-x: auto;
+  gap: 8px;
+  padding: 4px 0 12px;
+  margin-bottom: 8px;
   flex-shrink: 0;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
+  border-bottom: 1px dashed #d8cdb5;
+}
+
+.group-pills-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: #8a7f6a;
+  letter-spacing: 0.18em;
+  margin-right: 2px;
+  flex-shrink: 0;
 }
 
 .group-pill {
   display: inline-flex;
-  align-items: baseline;
-  gap: 6px;
-  padding: 4px 10px;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
   background: #ede0c5;
   border: 1px solid #d8cdb5;
-  border-radius: 14px;
+  border-radius: 18px;
   font-family: 'Noto Serif SC', serif;
-  font-size: 11.5px;
+  font-size: 13px;
   color: #6b6356;
   cursor: pointer;
-  transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
-  max-width: 280px;
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease,
+              transform 150ms ease, box-shadow 150ms ease;
 }
 .group-pill:hover {
   background: #e3d4b2;
   color: #3a3530;
+  transform: translateY(-1px);
 }
 .group-pill-active {
-  background: #fef3d6;
-  border-color: #d4a853;
+  background: linear-gradient(135deg, #fef3d6 0%, #fce1a7 100%);
+  border-color: #b88834;
   color: #8a5e1c;
+  box-shadow: 0 2px 8px rgba(160, 122, 31, 0.22);
+  transform: translateY(-1px);
+}
+.group-pill-active .group-pill-names,
+.group-pill-active .group-pill-prefix {
+  font-weight: 600;
+}
+
+.group-pill-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6);
 }
 
 .group-pill-prefix {
   font-weight: 600;
   letter-spacing: 0.08em;
   color: inherit;
-  opacity: 0.85;
+  font-size: 12.5px;
+  opacity: 0.9;
 }
 .group-pill-names {
   font-family: 'LXGW WenKai', serif;
-  font-size: 13px;
+  font-size: 15px;
   color: inherit;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
+
+/* Dense pills (≥4 participants) trade size for fit — small font is acceptable,
+   truncated names are not. Kicks in via the .group-pill-dense modifier. */
+.group-pill-dense {
+  padding: 6px 12px;
+  gap: 7px;
+}
+.group-pill-dense .group-pill-names { font-size: 13px; }
+.group-pill-dense .group-pill-prefix { font-size: 11.5px; }
+.group-pill-xdense {
+  padding: 5px 11px;
+  gap: 6px;
+}
+.group-pill-xdense .group-pill-names { font-size: 12px; }
+.group-pill-xdense .group-pill-prefix { font-size: 11px; }
 
 /* ---- Fixed-position adaptive grid ----
    Each participant owns a stable cell that doesn't move per tick.
