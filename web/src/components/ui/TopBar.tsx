@@ -5,6 +5,7 @@ import { useWorldStore } from '../../stores/useWorldStore'
 import { RolePlaySetup } from './RolePlaySetup'
 import { LOCATION_ICONS } from '../../lib/constants'
 import { groupScenesByTimeSlot } from '../../lib/sceneGroup'
+import { useChatApiOnline } from '../../lib/useChatApiOnline'
 
 export function TopBar() {
   const currentDay = useWorldStore(s => s.currentDay)
@@ -17,7 +18,7 @@ export function TopBar() {
   const [showRolePlaySetup, setShowRolePlaySetup] = useState(false)
   const [sceneMenuOpen, setSceneMenuOpen] = useState(false)
   const [dayMenuOpen, setDayMenuOpen] = useState(false)
-  const [apiOnline, setApiOnline] = useState<boolean | null>(null)
+  const apiOnline = useChatApiOnline()
   const menuRef = useRef<HTMLDivElement>(null)
   const dayMenuRef = useRef<HTMLDivElement>(null)
   const navigate = useNavigate()
@@ -32,16 +33,6 @@ export function TopBar() {
   // everywhere else (store + data loader), so we map scene → array index here.
   const sceneArrayIndex = useMemo(() => new Map(scenes.map((s, i) => [s, i])), [scenes])
   const currentScene = scenes[sceneIdx]
-
-  useEffect(() => {
-    const ctl = new AbortController()
-    const timer = setTimeout(() => ctl.abort(), 1500)
-    fetch('/api/health', { signal: ctl.signal })
-      .then(r => setApiOnline(r.ok))
-      .catch(() => setApiOnline(false))
-      .finally(() => clearTimeout(timer))
-    return () => { ctl.abort(); clearTimeout(timer) }
-  }, [])
 
   useEffect(() => {
     if (!sceneMenuOpen && !dayMenuOpen) return

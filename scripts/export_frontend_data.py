@@ -94,7 +94,7 @@ def export_meta(days: list[str]) -> None:
 
 
 def export_agents() -> None:
-    """Merge agent profile + state + self_narrative + relationships → agents/{id}.json."""
+    """Merge agent profile + state + self_narrative + relationships → agents/{id}/profile.json."""
     for agent_dir in sorted(AGENTS.iterdir()):
         if not agent_dir.is_dir() or not (agent_dir / "profile.json").exists():
             continue
@@ -118,8 +118,102 @@ def export_agents() -> None:
             "self_narrative": self_narrative,
             "key_memories": key_memories,
         }
-        _write_json(OUT / "agents" / f"{aid}.json", merged)
+        _write_json(OUT / "agents" / aid / "profile.json", merged)
     print(f"  agents/ ({len(list((OUT / 'agents').iterdir()))} agents)")
+
+
+def export_daily_summaries(days: list[str]) -> None:
+    """Serialize build_daily_summary() for each day → daily/{day:03d}.json."""
+    from sim.cards.aggregations import build_daily_summary, summary_to_dict
+    from sim.cards.captions import daily_caption
+
+    count = 0
+    for day_name in days:
+        day = int(day_name.removeprefix("day_"))
+        try:
+            summary = build_daily_summary(day)
+        except FileNotFoundError:
+            continue
+        summary_dict = summary_to_dict(summary)
+        headline = summary.headline
+        cp = summary.cp
+        summary_dict["caption_payload"] = daily_caption(
+            day=day,
+            headline_quote=headline.thought if headline else None,
+            headline_speaker=(headline.thought_name or headline.speaker_name) if headline else None,
+            cp_pair=(cp.a_name, cp.b_name) if cp else None,
+        )
+        _write_json(OUT / "daily" / f"{day:03d}.json", summary_dict)
+        count += 1
+    print(f"  daily/ ({count} summaries)")
+
+
+def export_agent_day_specs(days: list[str]) -> None:
+    """Serialize build_agent_spec() for each (agent, day) → agents/{id}/days/{day:03d}.json."""
+    from sim.agent.storage import WorldStorage
+    from sim.cards.agent_card import build_agent_spec, spec_to_dict
+    from sim.cards.captions import agent_caption
+
+    world = WorldStorage()
+    world.load_all_agents()
+
+    count = 0
+    for day_name in days:
+        day = int(day_name.removeprefix("day_"))
+        for aid in world.agents:
+            try:
+                spec = build_agent_spec(aid, day, world)
+            except (KeyError, FileNotFoundError):
+                continue
+            spec_dict = spec_to_dict(spec)
+            spec_dict["caption_payload"] = agent_caption(
+                day=day,
+                agent_name_cn=spec.name_cn,
+                motif_emoji=spec.motif_emoji,
+                motif_tag=spec.motif_tag,
+                emotion_label=spec.emotion_label,
+                featured_quote=spec.featured_quote,
+            )
+            _write_json(OUT / "agents" / aid / "days" / f"{day:03d}.json", spec_dict)
+            count += 1
+    print(f"  agents/*/days/ ({count} day specs)")
+
+
+def _inject_scene_share_data(scene_file: dict) -> dict:
+    """For each multi-agent group with ticks, inject share_caption_payload and
+    share_layout fields. Python owns the selection/ordering logic — the
+    frontend <SceneShareCard> is a pure renderer consuming share_layout.
+    """
+    from sim.cards.assets import load_visual_bible
+    from sim.cards.captions import scene_caption
+    from sim.cards.scene_card import scene_to_layout_spec, spec_to_dict
+
+    bible = load_visual_bible()
+    for gi, group in enumerate(scene_file.get("groups", [])):
+        if group.get("is_solo") or len(group.get("participants", [])) < 2:
+            continue
+        if not group.get("ticks"):
+            continue
+        try:
+            spec = scene_to_layout_spec(scene_file, gi)
+        except Exception:
+            continue
+        motif_emoji = ""
+        if spec.bubbles:
+            motif_emoji = bible.get(spec.bubbles[0].agent_id, {}).get("motif_emoji", "")
+        caption = scene_caption(
+            day=spec.day,
+            scene_name=spec.scene_name,
+            location=spec.location,
+            time=spec.time,
+            featured_quote=spec.featured_quote,
+            featured_speaker=spec.featured_speaker_name,
+            motif_emoji=motif_emoji,
+        )
+        caption["group_index"] = gi
+        group["share_caption_payload"] = caption
+        group["share_layout"] = spec_to_dict(spec)
+    return scene_file
 
 
 def export_days(days: list[str]) -> None:
@@ -162,13 +256,15 @@ def export_days(days: list[str]) -> None:
         if traj_path.exists():
             shutil.copy2(traj_path, out_day / "trajectory.json")
 
-        # Copy all scene files (HHMM_*.json but not scenes.json or trajectory.json)
+        # Copy scene files with share_caption_payload + share_layout injected
+        # on each multi-agent group. The frontend <SceneShareCard> consumes
+        # these directly — Python owns the selection/ordering logic.
         for f in sorted(day_dir.glob("*.json")):
             if f.name in ("scenes.json", "trajectory.json"):
                 continue
             if f.name.startswith("debug"):
                 continue
-            shutil.copy2(f, out_day / f.name)
+            _write_json(out_day / f.name, _inject_scene_share_data(_read_json(f)))
 
         count += 1
     print(f"  days/ ({count} days, {filtered_out} empty scenes filtered from dropdowns)")
@@ -343,6 +439,12 @@ def main() -> None:
     export_meta(days)
     export_agents()
     export_days(days)
+    # export_daily_summaries / export_agent_day_specs depend on
+    # web/public/data/days/ being populated (build_daily_summary /
+    # build_context_at_timepoint read from there via aggregations.py and
+    # api/context.py).
+    export_daily_summaries(days)
+    export_agent_day_specs(days)
     export_events()
     export_portraits()
     export_map_sprites()

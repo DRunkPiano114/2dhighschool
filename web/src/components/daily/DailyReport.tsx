@@ -3,6 +3,7 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import { loadMeta } from '../../lib/data'
 import { EMOTION_LABELS, LOCATION_ICONS } from '../../lib/constants'
 import { ShareButtons } from '../narrative/ShareButtons'
+import { captureDomBlob } from '../../lib/captureDom'
 import type { Emotion } from '../../lib/types'
 
 interface Beat {
@@ -173,7 +174,6 @@ export function DailyReport() {
 
   const [summary, setSummary] = useState<DailySummaryJson | null>(null)
   const [loading, setLoading] = useState(true)
-  const [apiOnline, setApiOnline] = useState<boolean | null>(null)
   const [days, setDays] = useState<string[] | null>(null)
   const captureRef = useRef<HTMLDivElement>(null)
 
@@ -186,23 +186,18 @@ export function DailyReport() {
     let alive = true
     setLoading(true)
     setSummary(null)
-    fetch(`/api/card/daily/${day}.json`)
+    fetch(`/data/daily/${String(day).padStart(3, '0')}.json`)
       .then(async r => {
         if (!alive) return
         if (!r.ok) {
-          setApiOnline(false)
           setLoading(false)
           return
         }
-        setApiOnline(true)
         setSummary(await r.json())
         setLoading(false)
       })
       .catch(() => {
-        if (alive) {
-          setApiOnline(false)
-          setLoading(false)
-        }
+        if (alive) setLoading(false)
       })
     return () => { alive = false }
   }, [day])
@@ -218,16 +213,17 @@ export function DailyReport() {
         day={day}
         days={days}
         captureRef={captureRef}
+        summary={summary}
       />
 
       {loading && <div className="daily-loading">加载今日日报中…</div>}
 
-      {!loading && apiOnline === false && (
+      {!loading && !summary && (
         <div className="daily-offline">
-          <p>API 未启动，无法生成今日日报。</p>
-          <p className="daily-offline-cmd">请先执行 <code>uv run api</code>。</p>
+          <p>本日数据缺失。</p>
+          <p className="daily-offline-cmd">请先执行 <code>pnpm bootstrap</code>。</p>
           <Link to={`/day/${dayId}/scene/first`} className="daily-offline-fallback">
-            进入场景视图（不需要 API）→
+            进入场景视图 →
           </Link>
         </div>
       )}
@@ -274,11 +270,13 @@ function DailyTopBar({
   day,
   days,
   captureRef,
+  summary,
 }: {
   dayId: string
   day: number
   days: string[] | null
   captureRef: RefObject<HTMLDivElement | null>
+  summary: DailySummaryJson | null
 }) {
   const sceneLink = (
     <Link
@@ -292,10 +290,13 @@ function DailyTopBar({
   )
   const share = (
     <ShareButtons
-      cardEndpoint={`/api/card/daily/${day}`}
       cardLabel="今日日报"
       showCopy={false}
-      captureTarget={captureRef}
+      capture={() =>
+        captureRef.current ? captureDomBlob(captureRef.current) : Promise.resolve(null)
+      }
+      meta={summary?.caption_payload ?? null}
+      available={!!summary}
     />
   )
   const hero = (

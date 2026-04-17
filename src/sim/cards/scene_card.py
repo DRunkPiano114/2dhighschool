@@ -423,3 +423,44 @@ def render(day: int, scene_idx: int) -> Image.Image | None:
         return None
     spec = scene_to_layout_spec(scene_data, group_index)
     return _render_card(spec)
+
+
+# --- JSON serialization for frontend-rendered share cards ------------------
+
+
+def spec_to_dict(spec: LayoutSpec) -> dict[str, Any]:
+    """Serialize a LayoutSpec for consumption by the frontend <SceneShareCard>.
+
+    Python is the source of truth for scene selection/ordering logic (featured
+    tick pick, portrait ordering, bubble choice, featured_quote). The frontend
+    never recomputes these — it renders this dict directly. Each portrait
+    carries motif_emoji + motif_tag inline so the TS side doesn't need to
+    join against visual_bible.json.
+    """
+    bible = load_visual_bible()
+    return {
+        "day": spec.day,
+        "time": spec.time,
+        "scene_name": spec.scene_name,
+        "location": spec.location,
+        "portraits": [
+            {
+                "agent_id": aid,
+                "name_cn": name_cn,
+                "motif_emoji": bible.get(aid, {}).get("motif_emoji", ""),
+                "motif_tag": bible.get(aid, {}).get("motif_tag", ""),
+            }
+            for aid, name_cn in spec.portraits
+        ],
+        "bubbles": [
+            {
+                "agent_id": b.agent_id,
+                "display_name": b.display_name,
+                "kind": b.kind,
+                "text": b.text,
+            }
+            for b in spec.bubbles
+        ],
+        "featured_quote": spec.featured_quote,
+        "featured_speaker_name": spec.featured_speaker_name,
+    }

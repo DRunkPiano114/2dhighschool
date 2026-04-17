@@ -1,0 +1,441 @@
+/* Share-card styles — rendered off-screen at 1080×1440 and captured via
+   html-to-image. Deliberately scoped under `.share-card` so nothing here
+   bleeds into the normal app layout. */
+
+/* Offscreen mount for share-card capture. The WRAPPER is position:fixed +
+   far-offscreen so the 1080px poster doesn't push the viewport's scrollbar
+   or appear on screen. The INNER node (.share-offscreen-node — the one
+   useShareCapture's ref points at) has no special positioning, so when
+   html-to-image clones it into an SVG <foreignObject> the cloned root
+   lays out naturally at (0,0) inside the SVG canvas. Don't collapse these
+   two: putting position:fixed on the captured node itself causes the
+   cloned tree to render at left:-99999px inside the SVG and produces a
+   blank PNG. */
+.share-offscreen {
+  position: fixed;
+  left: -99999px;
+  top: 0;
+  pointer-events: none;
+}
+
+.share-offscreen-node {
+  width: 1080px;
+  height: 1440px;
+}
+
+.share-card {
+  width: 1080px;
+  height: 1440px;
+  background:
+    linear-gradient(to bottom, #f5efe0, #ebe2c8 240px, #ebe2c8);
+  color: #3a3530;
+  font-family: 'Noto Serif SC', 'LXGW WenKai', serif;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.share-card * {
+  box-sizing: border-box;
+}
+
+.share-card img.pixel {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* --- Date seal (upper-left of every card) ------------------------------ */
+.share-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #c0392b;
+  color: #fff8ec;
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  border-radius: 8px;
+  letter-spacing: 0.08em;
+  filter: drop-shadow(2px 3px 0 rgba(120, 40, 30, 0.35));
+}
+
+.share-seal--date {
+  width: 118px;
+  height: 118px;
+  font-size: 30px;
+  line-height: 1.15;
+  text-align: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.share-seal--brand {
+  width: 120px;
+  height: 120px;
+  font-size: 80px;
+}
+
+/* --- Dashed divider ---------------------------------------------------- */
+.share-divider {
+  height: 2px;
+  border: 0;
+  background-image: linear-gradient(
+    to right,
+    rgba(107, 99, 86, 0.6) 0,
+    rgba(107, 99, 86, 0.6) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  background-size: 20px 2px;
+  background-repeat: repeat-x;
+  background-position: left center;
+}
+
+/* --- Brand footer (shared by scene + agent cards) --------------------- */
+.share-brand-footer {
+  position: absolute;
+  left: 72px;
+  right: 72px;
+  bottom: 72px;
+  height: 150px;
+  padding-top: 28px;
+}
+
+.share-brand-footer .share-divider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.share-brand-footer-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #3a3530;
+  margin: 30px 0 4px;
+  letter-spacing: 0.02em;
+}
+
+.share-brand-footer-tag {
+  font-size: 26px;
+  color: #6b6356;
+  margin: 0;
+  font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+}
+
+.share-brand-footer .share-seal--brand {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+/* --- Scene card header ------------------------------------------------- */
+.scene-share-card {
+  padding: 64px 72px 72px;
+}
+
+.scene-share-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.scene-share-header-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 118px;
+  flex: 1;
+}
+
+.scene-share-title {
+  margin: 0;
+  font-size: 52px;
+  font-weight: 700;
+  color: #3a3530;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+}
+
+.scene-share-subtitle {
+  margin: 12px 0 0;
+  font-size: 30px;
+  color: #6b6356;
+  font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+}
+
+.scene-share-header .share-divider {
+  width: 100%;
+}
+
+.scene-share-divider {
+  margin: 10px 0 40px;
+}
+
+/* --- Portraits row ----------------------------------------------------- */
+.scene-share-portraits {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 36px;
+}
+
+.scene-share-portrait {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.scene-share-portrait-img {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.scene-share-portrait-img--large {
+  width: 320px;
+  height: 320px;
+}
+
+.scene-share-portrait-name {
+  font-size: 36px;
+  font-weight: 700;
+  color: #3a3530;
+  margin: 0;
+}
+
+.scene-share-portrait-motif {
+  font-size: 22px;
+  color: #6b6356;
+  margin: 0;
+  font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+}
+
+/* --- Bubbles ----------------------------------------------------------- */
+.scene-share-bubbles {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.scene-share-bubble {
+  max-width: 840px;
+  padding: 22px 28px;
+  font-size: 34px;
+  line-height: 1.45;
+  color: #3a3530;
+  position: relative;
+  font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+}
+
+.scene-share-bubble--speech {
+  background: #fff8ec;
+  border: 3px solid #a0917b;
+  border-radius: 20px;
+  align-self: flex-start;
+}
+
+.scene-share-bubble--speech::after {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  left: 60px;
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 14px solid #a0917b;
+}
+
+.scene-share-bubble--speech::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 62px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid #fff8ec;
+  z-index: 1;
+}
+
+.scene-share-bubble--thought {
+  background: rgba(255, 248, 235, 0.9);
+  border: 3px dashed #a0917b;
+  border-radius: 32px;
+  align-self: flex-end;
+  font-size: 32px;
+  color: #4a433b;
+}
+
+.scene-share-bubble-speaker {
+  font-weight: 700;
+  color: #6b4a35;
+  margin-right: 6px;
+}
+
+.scene-share-bubble-text {
+  color: inherit;
+}
+
+/* --- Agent card -------------------------------------------------------- */
+.agent-share-card {
+  padding: 0;
+}
+
+.agent-share-color-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 36px;
+  opacity: 0.75;
+}
+
+.agent-share-inner {
+  padding: 72px 72px 72px;
+}
+
+.agent-share-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.agent-share-header-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 118px;
+  flex: 1;
+}
+
+.agent-share-name {
+  font-size: 60px;
+  font-weight: 700;
+  color: #3a3530;
+  margin: 0;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+.agent-share-motif {
+  font-size: 28px;
+  color: #6b6356;
+  margin-top: 12px;
+  font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+}
+
+.agent-share-divider {
+  margin: 12px 0 30px;
+}
+
+.agent-share-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 36px;
+}
+
+.agent-share-portrait {
+  width: 360px;
+  height: 360px;
+  flex-shrink: 0;
+  object-fit: cover;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.agent-share-state {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  padding-top: 12px;
+}
+
+.agent-share-state-row {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  font-size: 28px;
+  font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+}
+
+.agent-share-state-label {
+  width: 100px;
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  color: #6b6356;
+  font-size: 22px;
+}
+
+.agent-share-state-value {
+  color: #3a3530;
+}
+
+.agent-share-state-value--concern {
+  font-size: 26px;
+}
+
+.agent-share-state-concern-label {
+  color: #c0392b;
+}
+
+.agent-share-quote-label {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3a3530;
+  margin: 24px 0 12px;
+}
+
+.agent-share-quote-bubble {
+  padding: 22px 28px;
+  background: rgba(255, 248, 235, 0.9);
+  border: 3px dashed #a0917b;
+  border-radius: 32px;
+  font-size: 28px;
+  line-height: 1.45;
+  color: #4a433b;
+  font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+}
+
+.agent-share-quote-meta {
+  margin: 14px 0 0;
+  font-size: 22px;
+  color: #6b6356;
+}
+
+.agent-share-rel-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3a3530;
+  margin: 28px 0 12px;
+}
+
+.agent-share-rel-row {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  padding: 8px 0;
+  font-family: 'LXGW WenKai', 'Noto Serif SC', serif;
+}
+
+.agent-share-rel-name {
+  font-size: 26px;
+  font-weight: 700;
+  color: #3a3530;
+  min-width: 180px;
+}
+
+.agent-share-rel-meta {
+  font-size: 20px;
+  color: #6b6356;
+}

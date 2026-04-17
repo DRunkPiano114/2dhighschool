@@ -2,45 +2,10 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useWorldStore } from '../../stores/useWorldStore'
 import { ShareButtons } from '../narrative/ShareButtons'
-
-interface RelationshipPreview {
-  target_name: string
-  favorability: number
-  trust: number
-  label_text: string
-}
-
-interface MemoryPreview {
-  date: string
-  text: string
-  importance: number
-}
-
-interface ConcernPreview {
-  text: string
-  intensity_label: string
-  positive: boolean
-}
-
-interface AgentJson {
-  agent_id: string
-  name_cn: string
-  day: number
-  is_teacher: boolean
-  motif_emoji: string
-  motif_tag: string
-  main_color: string
-  emotion_label: string
-  energy_label: string
-  pressure_label: string
-  featured_quote: string | null
-  featured_scene: string | null
-  relationships: RelationshipPreview[]
-  memories: MemoryPreview[]
-  top_concern: ConcernPreview | null
-  self_narrative: string
-  caption_payload: { caption: string; hashtags: string[]; filename: string }
-}
+import { AgentShareCard } from '../share/AgentShareCard'
+import { useShareCapture } from '../share/useShareCapture'
+import { useChatApiOnline } from '../../lib/useChatApiOnline'
+import type { AgentDayJson } from '../../lib/types'
 
 export function CharacterArchive({
   agentId,
@@ -51,9 +16,10 @@ export function CharacterArchive({
   dayId: string
   days: string[] | null
 }) {
-  const [data, setData] = useState<AgentJson | null>(null)
+  const [data, setData] = useState<AgentDayJson | null>(null)
   const [loading, setLoading] = useState(true)
-  const [apiOnline, setApiOnline] = useState<boolean | null>(null)
+  const chatOnline = useChatApiOnline()
+  const { nodeRef, capture } = useShareCapture()
 
   const dayNum = (() => {
     const m = dayId.match(/day_0*(\d+)/)
@@ -66,23 +32,19 @@ export function CharacterArchive({
     if (dayNum === null) return
     let alive = true
     setLoading(true)
-    fetch(`/api/card/agent/${agentId}/${dayNum}.json`)
+    setData(null)
+    fetch(`/data/agents/${agentId}/days/${String(dayNum).padStart(3, '0')}.json`)
       .then(async r => {
         if (!alive) return
         if (!r.ok) {
-          setApiOnline(false)
           setLoading(false)
           return
         }
-        setApiOnline(true)
         setData(await r.json())
         setLoading(false)
       })
       .catch(() => {
-        if (alive) {
-          setApiOnline(false)
-          setLoading(false)
-        }
+        if (alive) setLoading(false)
       })
     return () => { alive = false }
   }, [agentId, dayNum])
@@ -100,10 +62,10 @@ export function CharacterArchive({
 
       {loading && <div className="archive-loading">加载中…</div>}
 
-      {!loading && apiOnline === false && (
+      {!loading && !data && (
         <div className="archive-offline">
-          <p>档案卡需要 API 才能生成。</p>
-          <p className="daily-offline-cmd">请先执行 <code>uv run api</code>。</p>
+          <p>本日档案缺失。</p>
+          <p className="daily-offline-cmd">请先执行 <code>pnpm bootstrap</code>。</p>
         </div>
       )}
 
@@ -135,8 +97,9 @@ export function CharacterArchive({
 
           <div className="archive-actions">
             <ShareButtons
-              cardEndpoint={`/api/card/agent/${data.agent_id}/${data.day}`}
               cardLabel="档案卡"
+              capture={capture}
+              meta={data.caption_payload}
             />
             <button
               type="button"
@@ -146,8 +109,8 @@ export function CharacterArchive({
                 // leaving user-agent selection open (user picks in the modal).
                 openRolePlay(data.agent_id, [data.agent_id])
               }}
-              disabled={apiOnline !== true}
-              title={apiOnline !== true ? 'API 未启动' : `以此身份与 ${data.name_cn} 聊聊`}
+              disabled={chatOnline !== true}
+              title={chatOnline !== true ? 'API 未启动' : `以此身份与 ${data.name_cn} 聊聊`}
             >
               与 {data.name_cn} 聊聊 →
             </button>
@@ -208,6 +171,13 @@ export function CharacterArchive({
             </section>
           )}
         </>
+      )}
+      {data && (
+        <div className="share-offscreen" aria-hidden>
+          <div ref={nodeRef} className="share-offscreen-node">
+            <AgentShareCard data={data} />
+          </div>
+        </div>
       )}
     </div>
   )

@@ -104,6 +104,33 @@ export interface SoloReflection {
   activity: string
 }
 
+export interface ShareCaptionPayload {
+  caption: string
+  hashtags: string[]
+  filename: string
+}
+
+export interface SceneLayoutJson {
+  day: number
+  time: string
+  scene_name: string
+  location: string
+  portraits: Array<{
+    agent_id: string
+    name_cn: string
+    motif_emoji: string
+    motif_tag: string
+  }>
+  bubbles: Array<{
+    agent_id: string
+    display_name: string
+    kind: 'speech' | 'thought'
+    text: string
+  }>
+  featured_quote: string | null
+  featured_speaker_name: string | null
+}
+
 export interface SceneGroup {
   group_index: number
   participants: string[]
@@ -111,6 +138,8 @@ export interface SceneGroup {
   narrative: NarrativeExtraction
   reflections: Record<string, AgentReflection>
   is_solo?: false
+  share_caption_payload?: ShareCaptionPayload & { group_index: number }
+  share_layout?: SceneLayoutJson
 }
 
 export interface SoloGroup {
@@ -327,5 +356,48 @@ export interface CharacterPosition {
   x: number
   y: number
   room: RoomId
+}
+
+// --- Agent archive card data (per-agent, per-day) --------------------------
+// Matches spec_to_dict(AgentLayoutSpec) in src/sim/cards/agent_card.py plus
+// the caption_payload injected by scripts/export_frontend_data.py.
+
+export interface AgentDayRelationshipPreview {
+  target_name: string
+  favorability: number
+  trust: number
+  label_text: string
+}
+
+export interface AgentDayMemoryPreview {
+  date: string
+  text: string
+  importance: number
+}
+
+export interface AgentDayConcernPreview {
+  text: string
+  intensity_label: string
+  positive: boolean
+}
+
+export interface AgentDayJson {
+  agent_id: string
+  name_cn: string
+  day: number
+  is_teacher: boolean
+  motif_emoji: string
+  motif_tag: string
+  main_color: string
+  emotion_label: string
+  energy_label: string
+  pressure_label: string
+  featured_quote: string | null
+  featured_scene: string | null
+  relationships: AgentDayRelationshipPreview[]
+  memories: AgentDayMemoryPreview[]
+  top_concern: AgentDayConcernPreview | null
+  self_narrative: string
+  caption_payload: ShareCaptionPayload
 }
 

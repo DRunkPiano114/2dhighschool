@@ -1,6 +1,8 @@
 import { useWorldStore } from '../../stores/useWorldStore'
 import { EMOTION_COLORS, EMOTION_LABELS } from '../../lib/constants'
 import { ShareButtons } from './ShareButtons'
+import { SceneShareCard } from '../share/SceneShareCard'
+import { useShareCapture } from '../share/useShareCapture'
 import type { Tick, Emotion, MindState, GroupData } from '../../lib/types'
 
 const URGENCY_THRESHOLD = 2
@@ -9,8 +11,7 @@ export function GroupGrid() {
   const sceneFile = useWorldStore(s => s.currentSceneFile)
   const groupIdx = useWorldStore(s => s.activeGroupIndex)
   const currentTick = useWorldStore(s => s.currentTick)
-  const currentDay = useWorldStore(s => s.currentDay)
-  const currentSceneIndex = useWorldStore(s => s.currentSceneIndex)
+  const { nodeRef, capture } = useShareCapture()
 
   if (!sceneFile) {
     return <div className="grid-stage grid-loading">…</div>
@@ -19,14 +20,12 @@ export function GroupGrid() {
   const group = sceneFile.groups[groupIdx]
   const names = sceneFile.participant_names
 
-  // day_001 → 1; the API uses a bare integer.
-  const dayNum = parseInt(currentDay.replace('day_', ''), 10)
-  const cardEndpoint = `/api/card/scene/${dayNum}/${currentSceneIndex}`
-  // Pin the share card to the viewer's current group so the caption + image
-  // match what they're looking at. Solo groups have no scene card — omit the
-  // param so the server falls back to its featured multi-agent pick instead
-  // of 404'ing the share buttons.
-  const shareGroupQuery = group && !group.is_solo ? `group=${groupIdx}` : undefined
+  // A group is shareable iff Python's export has injected share_layout and
+  // caption payload for it (multi-agent groups with ticks). Solo / trivial
+  // groups → dock hidden.
+  const shareLayout = group && !group.is_solo ? group.share_layout : undefined
+  const shareMeta = group && !group.is_solo ? group.share_caption_payload ?? null : null
+  const shareable = !!shareLayout && !!shareMeta
 
   return (
     <div className="grid-stage">
@@ -34,11 +33,19 @@ export function GroupGrid() {
         <GroupPills groups={sceneFile.groups} activeIdx={groupIdx} names={names} />
         <GroupBody group={group} currentTick={currentTick} names={names} />
         <ShareButtons
-          cardEndpoint={cardEndpoint}
           cardLabel="场景卡"
-          endpointQuery={shareGroupQuery}
+          capture={capture}
+          meta={shareMeta}
+          available={shareable}
         />
       </div>
+      {shareable && shareLayout && (
+        <div className="share-offscreen" aria-hidden>
+          <div ref={nodeRef} className="share-offscreen-node">
+            <SceneShareCard layout={shareLayout} />
+          </div>
+        </div>
+      )}
     </div>
   )
 }

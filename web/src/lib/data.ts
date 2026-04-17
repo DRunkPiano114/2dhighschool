@@ -17,7 +17,7 @@ export function loadMeta(): Promise<Meta> {
 }
 
 export function loadAgent(id: string): Promise<Agent> {
-  return fetchJson<Agent>(`/data/agents/${id}.json`)
+  return fetchJson<Agent>(`/data/agents/${id}/profile.json`)
 }
 
 export function loadScenes(day: string): Promise<SceneIndexEntry[]> {
