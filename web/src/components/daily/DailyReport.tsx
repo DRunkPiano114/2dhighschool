@@ -221,7 +221,7 @@ export function DailyReport() {
       {!loading && !summary && (
         <div className="daily-offline">
           <p>本日数据缺失。</p>
-          <p className="daily-offline-cmd">请先执行 <code>pnpm bootstrap</code>。</p>
+          <p className="daily-offline-cmd">请先执行 <code>uv run python scripts/export_frontend_data.py</code>。</p>
           <Link to={`/day/${dayId}/scene/first`} className="daily-offline-fallback">
             进入场景视图 →
           </Link>

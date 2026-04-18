@@ -64,7 +64,7 @@ export function CharacterArchive({
       {!loading && !data && (
         <div className="archive-offline">
           <p>本日档案缺失。</p>
-          <p className="daily-offline-cmd">请先执行 <code>pnpm bootstrap</code>。</p>
+          <p className="daily-offline-cmd">请先执行 <code>uv run python scripts/export_frontend_data.py</code>。</p>
         </div>
       )}
 
