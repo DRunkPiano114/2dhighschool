@@ -1,4 +1,4 @@
-"""Resource paths and visual-bible loader for share cards."""
+"""Resource paths and visual-bible loader shared by card projection + asset-gen scripts."""
 
 from __future__ import annotations
 
@@ -9,11 +9,9 @@ from typing import Any
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 ASSETS_DIR = PROJECT_ROOT / "assets"
-FONTS_DIR = ASSETS_DIR / "fonts"
 CAST_DIR = PROJECT_ROOT / "canon" / "cast"
 PORTRAITS_DIR = CAST_DIR / "portraits"
 VISUAL_BIBLE_PATH = CAST_DIR / "visual_bible.json"
-CACHE_DIR = PROJECT_ROOT / ".cache" / "cards"
 
 SPRITE_SHEETS_DIR = (
     ASSETS_DIR
@@ -23,12 +21,6 @@ SPRITE_SHEETS_DIR = (
     / "0_Premade_Characters"
     / "32x32"
 )
-
-FONT_LXGW_REGULAR = FONTS_DIR / "LXGWWenKai-Regular.ttf"
-FONT_SERIF_REGULAR = FONTS_DIR / "NotoSerifSC-Regular.ttf"
-FONT_SERIF_BOLD = FONTS_DIR / "NotoSerifSC-Bold.ttf"
-FONT_SANS_REGULAR = FONTS_DIR / "NotoSansSC-Regular.ttf"
-FONT_SANS_BOLD = FONTS_DIR / "NotoSansSC-Bold.ttf"
 
 
 @lru_cache(maxsize=1)
@@ -46,7 +38,3 @@ def get_agent_visual(agent_id: str) -> dict[str, Any]:
     if agent_id not in bible:
         raise KeyError(f"agent_id '{agent_id}' not in visual_bible.json")
     return bible[agent_id]
-
-
-def portrait_path(agent_id: str) -> Path:
-    return PORTRAITS_DIR / f"{agent_id}.png"

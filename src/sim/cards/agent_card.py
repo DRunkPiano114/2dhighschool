@@ -1,10 +1,11 @@
-"""Agent archive card — 累计成长模式.
+"""Agent archive card projection — 累计成长模式.
 
 Day N's agent card shows the agent as they are at the end of Day N: cumulative
 emotion, top relationships, recent memories, active concerns, and a featured
 inner thought from the day. Reuses `build_context_at_timepoint` so all the
 snapshot-loading, today-so-far, and qualitative-label logic is shared with
-the chat/role-play endpoints.
+the chat/role-play endpoints. `spec_to_dict` serializes the layout for the
+frontend <AgentShareCard> to render.
 """
 
 from __future__ import annotations
@@ -12,25 +13,10 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any
 
-from PIL import Image, ImageDraw
-
 from ..agent.storage import WorldStorage
 from ..api.context import build_context_at_timepoint
 from .aggregations import load_day_scenes
 from .assets import get_agent_visual
-from .base import (
-    CANVAS_H,
-    CANVAS_W,
-    INK_BLACK,
-    INK_GRAY,
-    font_serif,
-    font_wen,
-    paper_background,
-)
-from .elements.balloon import render_balloon
-from .elements.banner import draw_divider
-from .elements.portrait import scaled_portrait
-from .elements.seal import render_seal
 
 # Agent cards are rendered using the 22:00 end-of-day snapshot.
 AGENT_TIME_PERIOD = "22:00"
@@ -235,131 +221,7 @@ def build_agent_spec(
     return context_to_agent_spec(agent_id, day, ctx, quote, scene_label)
 
 
-# --- Rendering -------------------------------------------------------------
-
-
-def _hex_to_rgba(hex_str: str, alpha: int = 255) -> tuple[int, int, int, int]:
-    h = hex_str.lstrip("#")
-    if len(h) == 3:
-        h = "".join(c * 2 for c in h)
-    return (int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16), alpha)
-
-
-def _render_card(spec: AgentLayoutSpec) -> Image.Image:
-    img = paper_background(CANVAS_W, CANVAS_H)
-    draw = ImageDraw.Draw(img, "RGBA")
-
-    # --- Header strip with main color + day seal -----------------------
-    color = _hex_to_rgba(spec.main_color, 180)
-    draw.rectangle([(0, 0), (CANVAS_W, 36)], fill=color)
-
-    seal = render_seal(f"第{spec.day:03d}天", size=118, font_size=30)
-    img.paste(seal, (72, 56), seal)
-
-    title_fnt = font_serif(60, bold=True)
-    sub_fnt = font_wen(30)
-    draw.text((232, 56), spec.name_cn, font=title_fnt, fill=INK_BLACK)
-    # Teacher motif_tag (e.g. '班主任') already names the role — avoid
-    # rendering "班主任 · 班主任 · 语文".
-    subtitle = (
-        f"{spec.motif_emoji} {spec.motif_tag} · 语文"
-        if spec.is_teacher
-        else f"{spec.motif_emoji} {spec.motif_tag} · 学生"
-    )
-    draw.text((232, 130), subtitle.strip(), font=sub_fnt, fill=INK_GRAY)
-
-    draw_divider(img, y=210, x_start=72, x_end=CANVAS_W - 72, color=INK_GRAY, dash=10)
-
-    # --- Big portrait ---------------------------------------------------
-    portrait_size = 360
-    portrait = scaled_portrait(spec.agent_id, portrait_size)
-    img.paste(portrait, (72, 240), portrait)
-
-    # --- Current-state panel (right of portrait) -----------------------
-    panel_x = 72 + portrait_size + 40
-    panel_y = 252
-    label_fnt = font_serif(22, bold=True)
-    value_fnt = font_wen(28)
-
-    def _row(label: str, value: str, dy: int) -> None:
-        draw.text((panel_x, panel_y + dy), label, font=label_fnt, fill=INK_GRAY)
-        draw.text((panel_x + 110, panel_y + dy - 4), value, font=value_fnt, fill=INK_BLACK)
-
-    _row("情绪", spec.emotion_label or "—", 0)
-    _row("精力", spec.energy_label or "—", 56)
-    _row("压力", spec.pressure_label or "—", 112)
-
-    if spec.top_concern and not spec.is_teacher:
-        tag = "期待" if spec.top_concern.positive else "挂怀"
-        _row(tag, f"{spec.top_concern.intensity_label} · {spec.top_concern.text[:18]}", 168)
-
-    # --- Featured inner thought (the card's heart) ----------------------
-    y_quote = 240 + portrait_size + 40
-    if spec.featured_quote:
-        quote_label_fnt = font_serif(24, bold=True)
-        draw.text((72, y_quote), "今日金句", font=quote_label_fnt, fill=INK_BLACK)
-        bal = render_balloon(
-            f"（{spec.name_cn} 心想）{spec.featured_quote}",
-            max_width=CANVAS_W - 2 * 72,
-            kind="thought",
-            font_size=28,
-        )
-        img.paste(bal, (72, y_quote + 36), bal)
-        y_quote += 36 + bal.height + 14
-        if spec.featured_scene:
-            meta_fnt = font_wen(20)
-            draw.text(
-                (72, y_quote),
-                f"— {spec.featured_scene}",
-                font=meta_fnt,
-                fill=INK_GRAY,
-            )
-            y_quote += 32
-
-    # --- Relationships (students only) ---------------------------------
-    y_rels = y_quote + 20
-    if spec.relationships:
-        draw.text(
-            (72, y_rels),
-            "此刻关系 TOP 3",
-            font=font_serif(24, bold=True),
-            fill=INK_BLACK,
-        )
-        y_rels += 36
-        rel_fnt = font_wen(24)
-        label_small = font_wen(18)
-        for r in spec.relationships:
-            name_text = f"{r.target_name}"
-            draw.text((86, y_rels), name_text, font=rel_fnt, fill=INK_BLACK)
-            meta_text = f"{r.label_text} · 好感 {r.favorability:+d}  信任 {r.trust:+d}"
-            draw.text((300, y_rels + 4), meta_text, font=label_small, fill=INK_GRAY)
-            y_rels += 36
-
-    # --- Footer -------------------------------------------------------------
-    draw_divider(img, y=CANVAS_H - 150, x_start=72, x_end=CANVAS_W - 72, color=INK_GRAY, dash=10)
-    brand = render_seal("班", size=120, font_size=80)
-    img.paste(brand, (CANVAS_W - 72 - 120, CANVAS_H - 72 - 120), brand)
-    draw.text(
-        (90, CANVAS_H - 120),
-        "SimCampus · AI 校园模拟器",
-        font=font_serif(32, bold=True),
-        fill=INK_BLACK,
-    )
-    draw.text(
-        (90, CANVAS_H - 80),
-        "每天都在上演",
-        font=font_wen(26),
-        fill=INK_GRAY,
-    )
-    return img
-
-
-def render(agent_id: str, day: int, world: WorldStorage) -> Image.Image:
-    spec = build_agent_spec(agent_id, day, world)
-    return _render_card(spec)
-
-
-# --- JSON serialization for API -------------------------------------------
+# --- JSON serialization for frontend-rendered share cards ------------------
 
 
 def spec_to_dict(spec: AgentLayoutSpec) -> dict[str, Any]:

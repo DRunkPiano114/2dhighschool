@@ -1,12 +1,11 @@
-"""Scene card — Phase 1 template.
+"""Scene card projection — raw scene JSON → LayoutSpec → dict for the frontend.
 
-Three layers, deliberately separated for testability:
-
-  1. Pure selection (`select_featured_group`) — no Pillow, works on raw JSON.
-  2. LayoutSpec (`scene_to_layout_spec`) — dataclass capturing exactly what
-     the renderer needs. Trivially unit-testable.
-  3. Render (`render`) — Pillow-side, smoke-tested only (pixel output is
-     non-deterministic across libfreetype versions).
+Two layers, both pure:
+  1. Selection (`select_featured_group`, `_pick_featured_tick_index`) — heuristics
+     that pick which group + tick a share card should anchor on.
+  2. LayoutSpec (`scene_to_layout_spec`) — dataclass capturing exactly what the
+     frontend <SceneShareCard> needs to render. `spec_to_dict` serializes it
+     for `share_tick_layouts[]` in the exported scene JSON.
 """
 
 from __future__ import annotations
@@ -16,22 +15,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-from PIL import Image, ImageDraw
-
 from .assets import PROJECT_ROOT, load_visual_bible
-from .base import (
-    CANVAS_H,
-    CANVAS_W,
-    INK_BLACK,
-    INK_GRAY,
-    font_serif,
-    font_wen,
-    paper_background,
-)
-from .elements.balloon import render_balloon
-from .elements.banner import draw_divider
-from .elements.portrait import scaled_portrait
-from .elements.seal import render_seal
 
 DAYS_DIR = PROJECT_ROOT / "web" / "public" / "data" / "days"
 
@@ -66,7 +50,7 @@ def load_scene_by_array_index(day: int, scene_idx: int) -> dict[str, Any]:
     """Load a scene by its position in scenes.json (0-based).
 
     The frontend navigates by array position (scenes.json entries can carry
-    non-sequential `scene_index` fields); the API mirrors that contract.
+    non-sequential `scene_index` fields); the export mirrors that contract.
     """
     index = load_scenes_index(day)
     if scene_idx < 0 or scene_idx >= len(index):
@@ -91,8 +75,8 @@ def select_featured_group(scene_data: dict[str, Any]) -> int | None:
       1. Filter to multi-agent groups (is_solo=False or no is_solo field +
          multiple participants).
       2. Rank by sum(tick.urgency) + sum(len(inner_thought)) across all ticks.
-      3. If no multi-agent group exists, return None (caller should emit 404:
-         solo reflections belong on the agent card, not the scene card).
+      3. If no multi-agent group exists, return None (caller should treat as
+         "no scene card" — solo reflections belong on the agent card).
     """
     candidates: list[tuple[int, int]] = []  # (score, group_index)
     for idx, group in enumerate(scene_data.get("groups", [])):
@@ -157,7 +141,7 @@ class BubbleSpec:
 
 @dataclass(frozen=True)
 class LayoutSpec:
-    """Everything the renderer needs, derived purely from scene data."""
+    """Everything the frontend renderer needs, derived purely from scene data."""
 
     day: int
     time: str
@@ -333,142 +317,6 @@ def scene_to_layout_spec(
         featured_speaker_name=featured_speaker_name,
         tick_index=resolved_index,
     )
-
-
-# --- Rendering -------------------------------------------------------------
-
-
-def _render_card(spec: LayoutSpec) -> Image.Image:
-    """Draw a 1080×1440 scene card from a LayoutSpec. Pillow side only."""
-    bible = load_visual_bible()
-    img = paper_background(CANVAS_W, CANVAS_H)
-    draw = ImageDraw.Draw(img, "RGBA")
-
-    # --- Header: date seal + scene title ----------------------------------
-    date_seal = render_seal(f"第{spec.day:03d}天", size=118, font_size=30)
-    img.paste(date_seal, (72, 64), date_seal)
-
-    title_fnt = font_serif(52, bold=True)
-    sub_fnt = font_wen(32)
-    draw.text(
-        (210, 70),
-        f"{spec.time}  ·  {spec.scene_name}",
-        font=title_fnt,
-        fill=INK_BLACK,
-    )
-    draw.text((210, 138), spec.location, font=sub_fnt, fill=INK_GRAY)
-
-    draw_divider(img, y=210, x_start=72, x_end=CANVAS_W - 72, color=INK_GRAY, dash=10)
-
-    # --- Portraits row ----------------------------------------------------
-    n = len(spec.portraits)
-    # Scale down at 4 portraits so the row still fits inside the 72px side
-    # padding at 1080 width.
-    if n <= 2:
-        portrait_size = 320
-    elif n == 3:
-        portrait_size = 260
-    else:
-        portrait_size = 200
-    y_portraits = 260
-
-    if n > 0:
-        if n == 4:
-            # Mirror CSS `justify-content: space-between` — portraits span the
-            # full content width, aligning the row's right edge with the
-            # thought bubble column on the right.
-            content_w = CANVAS_W - 72 * 2
-            gutter = (content_w - n * portrait_size) // max(1, n - 1)
-            start_x = 72
-        else:
-            gutter = 40
-            total_w = n * portrait_size + (n - 1) * gutter
-            start_x = (CANVAS_W - total_w) // 2
-        name_fnt = font_serif(36, bold=True)
-        motif_fnt = font_wen(22)
-        for i, (aid, name_cn) in enumerate(spec.portraits):
-            x = start_x + i * (portrait_size + gutter)
-            p = scaled_portrait(aid, portrait_size)
-            img.paste(p, (x, y_portraits), p)
-            cx = x + portrait_size / 2
-            draw.text(
-                (cx, y_portraits + portrait_size + 12),
-                name_cn,
-                font=name_fnt,
-                fill=INK_BLACK,
-                anchor="mt",
-            )
-            motif = bible.get(aid, {})
-            tag = f"{motif.get('motif_emoji', '')} {motif.get('motif_tag', '')}".strip()
-            if tag:
-                draw.text(
-                    (cx, y_portraits + portrait_size + 58),
-                    tag,
-                    font=motif_fnt,
-                    fill=INK_GRAY,
-                    anchor="mt",
-                )
-
-    # --- Bubbles ----------------------------------------------------------
-    bubble_y = y_portraits + portrait_size + 120
-    max_bubble_y = CANVAS_H - 200
-    for i, bubble in enumerate(spec.bubbles):
-        if bubble_y >= max_bubble_y:
-            break
-        # Alternate sides: speech left, thought right.
-        align_right = bubble.kind == "thought" and i > 0
-        prefix = ""
-        if bubble.kind == "thought":
-            prefix = f"（{bubble.display_name} 心想）"
-        else:
-            prefix = f"{bubble.display_name}："
-        bal = render_balloon(
-            prefix + bubble.text,
-            max_width=840,
-            kind=bubble.kind,
-            font_size=34 if bubble.kind == "thought" else 36,
-            tail="br" if align_right else "bl",
-        )
-        x = CANVAS_W - 90 - bal.width if align_right else 90
-        img.paste(bal, (x, bubble_y), bal)
-        bubble_y += bal.height + 28
-
-    # --- Footer: divider + brand seal + tagline ---------------------------
-    draw_divider(
-        img,
-        y=CANVAS_H - 150,
-        x_start=72,
-        x_end=CANVAS_W - 72,
-        color=INK_GRAY,
-        dash=10,
-    )
-
-    brand = render_seal("班", size=120, font_size=80)
-    img.paste(brand, (CANVAS_W - 72 - 120, CANVAS_H - 72 - 120), brand)
-
-    draw.text(
-        (90, CANVAS_H - 120),
-        "SimCampus · AI 校园模拟器",
-        font=font_serif(32, bold=True),
-        fill=INK_BLACK,
-    )
-    draw.text(
-        (90, CANVAS_H - 80),
-        "每天都在上演",
-        font=font_wen(26),
-        fill=INK_GRAY,
-    )
-    return img
-
-
-def render(day: int, scene_idx: int) -> Image.Image | None:
-    """Public entry point: load scene, pick group, render, or None if all-solo."""
-    scene_data = load_scene_by_array_index(day, scene_idx)
-    group_index = select_featured_group(scene_data)
-    if group_index is None:
-        return None
-    spec = scene_to_layout_spec(scene_data, group_index)
-    return _render_card(spec)
 
 
 # --- JSON serialization for frontend-rendered share cards ------------------

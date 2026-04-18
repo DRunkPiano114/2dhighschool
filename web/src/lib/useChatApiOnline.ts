@@ -4,11 +4,8 @@ import { useEffect, useState } from 'react'
  * Probe whether the chat backend is reachable. Used to disable role-play
  * and "与 X 聊聊" entry points when `uv run api` isn't running.
  *
- * Hits /api/agents rather than /api/health because it shares a lifecycle
- * with the chat endpoints — checking that the right service is up, not
- * just that *some* server is listening. Content-type + shape guards keep
- * a static-SPA deploy (where every unknown path returns index.html) from
- * being mistaken for an online API.
+ * Content-type + shape guards keep a static-SPA deploy (where every unknown
+ * path returns index.html) from being mistaken for an online API.
  *
  * Returns `null` while probing, `true` when reachable, `false` when not.
  */
