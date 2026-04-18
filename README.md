@@ -1,124 +1,175 @@
 # SimCampus
 
-Multi-agent LLM simulation of a Chinese high school class. AI-powered students and a teacher live through three years of school life — attending classes, forming friendships, navigating conflicts, and growing up — generating emergent narratives with no human intervention.
+**[Live Demo](https://www.simcampus.top/)** · [中文](README.zh.md) · [MIT License](LICENSE)
 
-## Tech Stack
+A multi-agent LLM simulation engine. Define a cast of characters — each with a personality, goals, concerns, and relationships — plus a daily schedule of shared scenes, and the simulation runs day-by-day, producing emergent dialogue, memories, and narrative with no hand-written script.
 
-- **Simulation** — Python 3.12+, DeepSeek V3.2 (via LiteLLM), Instructor, Pydantic, Jinja2
-- **Frontend** — React 19, TypeScript, PixiJS, D3, Tailwind CSS, Vite
-- **Storage** — flat JSON + Markdown files (no database)
+---
+
+## Table of Contents
+
+- [What is this](#what-is-this)
+- [Quick Start](#quick-start)
+- [Customize the cast](#customize-the-cast)
+- [Cost reference](#cost-reference)
+- [Art assets](#art-assets)
+- [Tests](#tests)
+- [License](#license)
+
+---
+
+## What is this
+
+Each character is an independent agent with:
+
+- A **profile** (personality, backstory, goals, behavioral anchors) — immutable during simulation
+- **State** — emotion, energy, and up to 4 active concerns (each with intensity 1–10 and a TTL)
+- **Memory** — up to 10 key memories ranked by importance, a self-narrative refreshed every few days, and a rolling recent log
+- **Relationships** with every other agent, quantified by favorability, trust, and understanding
+
+Simulating one day means running every scene in the daily schedule. Inside each scene, agents perceive, think, speak, and act; after scenes end, they summarize, write memories, and update relationships and concerns. Storage is flat JSON + Markdown — no database; every file is directly inspectable.
+
+**Why it's worth a look:**
+
+- **Agents with minds** — dialogue is driven by concerns and intentions, not random chatter. Agents recall and cite events from days ago.
+- **Configurable daily loop** — scenes, density, grouping rules, and free periods all live in `canon/worldbook/schedule.json`.
+- **Emergent narrative** — run enough days and multi-day storylines surface on their own: rumors propagate, rivalries form, alliances shift.
+- **Whole cast is replaceable** — edit `canon/cast/profiles/*.json` to swap in your own scenario.
 
 ## Quick Start
 
+### A. Explore the shipped demo (no API key needed)
+
+The repo ships with a 9-day pre-run simulation, already exported to the frontend. Prereqs: Node 18+ with [pnpm](https://pnpm.io/).
+
 ```bash
-uv sync                                          # install dependencies
-uv run python scripts/init_world.py              # init world (wipes simulation/state/, simulation/world/, simulation/days/)
-uv run sim --days 5                              # run simulation
-uv run sim --days 1 --start-day 3 --seed 42      # resume from day 3, reproducible
+cd web
+pnpm install
+pnpm dev # → http://localhost:5173
 ```
 
-## Customize Your Class
+Open the URL in your browser and click around — daily report, pixel world, character archive, relationship graph.
 
-The default cast is a Chinese high school class — 10 students and 1 homeroom
-teacher (`he_min`). To run the simulation with your own characters, edit
-`canon/cast/profiles/*.json` (one file per character).
 
-**Important constraint**: don't add, remove, or rename `agent_id` slots. The
-10 student slots + `he_min` are hardcoded in `scripts/init_world.py`,
-`src/sim/world/scene_generator.py`, `src/sim/interaction/orchestrator.py`, and
-`web/src/components/world/CharacterSprite.ts`. Replace the *content* of each
-slot, not the slot itself.
+### B. Run your own simulation
 
-### For humans (manual editing)
+> Want to build a highschool with your own characters? See [Customize the cast](#customize-the-cast) to edit character profiles first.
 
-1. Open a file under `canon/cast/profiles/` and modify the fields. Schema is
-   defined in `src/sim/models/agent.py` (`AgentProfile`).
-2. Validate after editing:
+Prereqs: Python 3.12+ via [uv](https://docs.astral.sh/uv/), Node 18+ with [pnpm](https://pnpm.io/), plus an LLM provider API key. Defaults to **OpenRouter** (Gemini 3.1 Flash Lite as primary model, cheap and stable); DeepSeek / OpenAI / Anthropic also supported via LiteLLM.
+
+> **Heads up**: step 2 below wipes `simulation/state|world|days` — including the pre-run data.
+
+```bash
+uv sync
+
+# Configure your LLM API key
+cp .env.example .env
+# Edit .env and fill in OPENROUTER_API_KEY (or switch to another provider — see .env.example notes + src/sim/config.py)
+
+# Initialize the world
+uv run python scripts/init_world.py
+
+# Run 5 days of simulation
+uv run sim --days 5
+
+# Start the API server — required for Role Play / God Mode chat in the frontend.
+# Run in a separate terminal.
+uv run api                           # → http://localhost:8000
+
+# Export to the frontend + view
+uv run python scripts/export_frontend_data.py
+cd web && pnpm install && pnpm dev   # → http://localhost:5173
+```
+
+
+## Customize the cast
+
+Edit `canon/cast/profiles/*.json` — one file per character.
+
+### Hard constraint
+
+**Do not add, remove, or rename `agent_id` slots.** The slot set is hardcoded across the codebase:
+
+- `scripts/init_world.py` → `PRESET_RELATIONSHIPS`
+- `src/sim/world/scene_generator.py` → location and grouping logic
+- `src/sim/interaction/orchestrator.py` → special-role hook
+- `src/sim/world/homeroom_teacher.py` → special-role logic
+
+**Replace the content of each slot, never the slot itself.** Adding/removing slots requires coordinated edits across these files — out of scope for the standard workflow.
+
+### Option 1: edit by hand
+
+1. Open `canon/cast/profiles/<id>.json` and edit against the schema in `src/sim/models/agent.py` (`AgentProfile`)
+2. Validate JSON + Pydantic:
    ```bash
    python -m json.tool canon/cast/profiles/<id>.json > /dev/null
    uv run python -c "from src.sim.models.agent import AgentProfile; AgentProfile.model_validate_json(open('canon/cast/profiles/<id>.json').read())"
    ```
-3. Rebuild the world (this **wipes** `simulation/state/`, `simulation/world/`,
-   and `simulation/days/`, including all previous runs):
+3. If relationships changed, sync `PRESET_RELATIONSHIPS` in `scripts/init_world.py`
+4. Rebuild the world (**this wipes `simulation/state|world|days`**, including all past runs):
    ```bash
    uv run python scripts/init_world.py
    uv run sim --days 5
    ```
 
-If you change relationships between characters, also edit
-`PRESET_RELATIONSHIPS` in `scripts/init_world.py`.
+### Option 2: let an AI agent do it (recommended)
 
-### For coding agents (Claude Code, Cursor, Codex, …)
+Paste this to Claude Code / Cursor / Codex:
 
-Paste this to your agent:
+> I want to use this project to simulate my own scenario. Please follow the workflow in `skills/build-cast.md` to guide me through editing the characters.
 
-> I want to use this project to simulate my own class. Please follow the workflow in `skills/build-cast.md` to guide me through editing the characters.
+The agent reads the schema, asks you for fields in batches, polishes backstory drafts, validates JSON, updates the relationship preset, and tells you what to run next. A full cast swap takes 30–60 minutes of back-and-forth.
 
-The agent will read the schema, walk you through fields batch-by-batch,
-validate the JSON, update relationship presets if needed, and tell you what
-to run next.
+## Cost reference
 
-## Inspect & Export
+Measured on a 9-day baseline run (primary model at that time was DeepSeek V3.2 — the token volume and call distribution are still representative for the current default, Gemini 3.1 Flash Lite):
 
-```bash
-uv run python scripts/inspect_state.py           # inspect state (--agent lin_zhaoyu / --world)
-uv run python scripts/export_frontend_data.py    # export sim data → web/public/data/
-```
+| Metric | 9-day total | Per-day avg |
+|---|---|---|
+| LLM calls | 3,357 | ~370 |
+| Prompt tokens | 16.0M | ~1.8M |
+| Completion tokens | 631K | ~70K |
+| Scenes | 105 | ~12 |
+| Ticks | 1,283 | ~140 |
 
-## 素材配置 (Art Assets)
+About **77% of tokens are spent on perception** (every in-scene agent runs one per tick). On a cheap model like Gemini Flash Lite or DeepSeek, a 9-day run typically lands in the **single-digit-dollars** range. Switching to Claude Sonnet / GPT-4 is an order of magnitude more expensive. Start with `uv run sim --days 1` to calibrate pacing and cost before longer runs.
 
-Share-card rendering needs the LimeZu Modern Interiors premade sprite sheets
-and a few UI theme packs. These are **commercial assets** and are not in git.
-Place them locally before running anything under `src/sim/cards/`:
+## Art assets
+
+Share-card rendering (`src/sim/cards/`) uses [LimeZu Modern Interiors](https://limezu.itch.io/moderninteriors) premade sprite sheets plus a few UI theme packs — these are **commercial assets** and are not in git. Place them locally before running anything under `src/sim/cards/`:
 
 ```bash
 cp -r /path/to/your/assets/* ./assets/
-# ./assets/moderninteriors-win/... and ./assets/Complete_UI_Essential_Pack_v2.4/...
+# You need ./assets/moderninteriors-win/... and ./assets/Complete_UI_Essential_Pack_v2.4/...
 ```
 
-Contents of `./assets/` are gitignored by default; only `./assets/fonts/`
-(OFL-licensed Chinese fonts) is whitelisted and tracked. The **derived** 10
-character portrait PNGs under `canon/cast/portraits/` *are* checked in so
-freshly cloned workspaces can render cards without re-running the generator.
+`./assets/` is gitignored by default; only `./assets/fonts/` (OFL-licensed fonts) is whitelisted and tracked. The character portrait PNGs under `canon/cast/portraits/` **are** checked in, so a fresh clone can render cards without re-running the generator.
 
-**Convention:** after editing `canon/cast/visual_bible.json` (sprite_source or
-crop fields), re-run the portrait generator or the PNGs will drift from the
-config:
+**Convention**: after editing `canon/cast/visual_bible.json` (`sprite_source` or crop fields), regenerate or the PNGs will drift from the config:
 
 ```bash
 uv run python scripts/generate_portraits.py     # regenerate canon/cast/portraits/*.png
-uv run python -m sim.cards.self_test            # sanity-check → .cache/self_test/
+uv run python -m sim.cards.self_test            # sanity check → .cache/self_test/
 ```
 
-The share-card render cache lives in `.cache/cards/` (gitignored). After a sim
-rerun, clear it so cards reflect the new data:
+The share-card render cache lives in `.cache/cards/` (gitignored). Clear it after a sim rerun so cards reflect new data:
 
 ```bash
 rm -rf .cache/cards
 ```
 
-## API Server
-
-```bash
-uv run api                                       # start API at localhost:8000
-```
-
-God Mode and Role Play chat features require the API server running alongside the frontend.
-
-## Frontend
-
-```bash
-cd web && pnpm install                           # install dependencies
-cd web && pnpm dev                               # dev server at localhost:5173
-cd web && pnpm build                             # production build → web/dist/
-```
-
 ## Tests
 
 ```bash
-uv run python -m pytest                         # run all Python tests
-uv run python -m pytest tests/test_foo.py -v    # run one test file, verbose
-uv run python -m pytest -k "test_name"          # run tests matching a name
-cd web && pnpm vitest run                       # run frontend unit tests
+uv run python -m pytest                         # all tests
+uv run python -m pytest tests/test_foo.py -v    # single file
+uv run python -m pytest -k "test_name"          # by name
 ```
 
+Project rule (see `CLAUDE.md`): when you change logic under `src/sim/`, you must also update or add corresponding tests. A task is not complete until pytest passes.
+
+## License
+
+Code is released under the [MIT License](LICENSE).
+
+Art assets (LimeZu Modern Interiors, etc.) are **not included** — you must obtain your own licenses. PNGs under `canon/cast/portraits/`, `canon/cast/map_sprites/`, and `canon/tilesets/` are derivatives generated from those assets and inherit the source licenses. Fonts under `./assets/fonts/` are distributed under the SIL Open Font License.
