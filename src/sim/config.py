@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     world_dir: Path = Path("simulation/world")
 
     # LLM
-    llm_model: str = "deepseek/deepseek-chat"
+    llm_model: str = "openrouter/google/gemini-3.1-flash-lite-preview"
     llm_fallback_model: str = "openrouter/google/gemini-3-flash-preview"
     creative_temperature: float = 0.9
     analytical_temperature: float = 0.3
