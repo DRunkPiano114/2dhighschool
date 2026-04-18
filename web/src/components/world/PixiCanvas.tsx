@@ -106,6 +106,11 @@ function useDataLoader() {
   }, [currentDay, urlDayId, urlSceneFile, setScenes, setSceneIdx, consumePendingDayLanding])
 
   useEffect(() => {
+    // Wait for scenes[] to match currentDay. Without this guard, a day switch
+    // fires this effect with the previous day's scenes[], triggering a stale
+    // cross-day loadSceneFile and (worse) bumping the shared genRef so the
+    // scene-list fetch's callback gets invalidated and dropped.
+    if (scenesDay !== currentDay) return
     const entry = scenes[sceneIdx]
     if (!entry) return
     const myGen = ++genRef.current
@@ -113,7 +118,7 @@ function useDataLoader() {
       if (myGen !== genRef.current) return
       setSceneFile(file)
     })
-  }, [currentDay, sceneIdx, scenes, setSceneFile])
+  }, [currentDay, sceneIdx, scenes, scenesDay, setSceneFile])
 
   // URL → store: apply ?g= / ?t= query params once the matching scene file
   // has loaded, so deep links from the daily report (次条 / 头条) land on the

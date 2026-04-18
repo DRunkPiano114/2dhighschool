@@ -10,7 +10,6 @@ import { useChatApiOnline } from '../../lib/useChatApiOnline'
 export function TopBar() {
   const currentDay = useWorldStore(s => s.currentDay)
   const meta = useWorldStore(s => s.meta)
-  const setCurrentDay = useWorldStore(s => s.setCurrentDay)
   const scenes = useWorldStore(s => s.scenes)
   const sceneIdx = useWorldStore(s => s.currentSceneIndex)
   const setSceneIndex = useWorldStore(s => s.setCurrentSceneIndex)
@@ -70,7 +69,7 @@ export function TopBar() {
                 return (
                   <button
                     key={d}
-                    onClick={() => { setCurrentDay(d); setDayMenuOpen(false) }}
+                    onClick={() => { navigate(`/day/${d}/scene/first`); setDayMenuOpen(false) }}
                     className={`w-full text-left flex items-center gap-2.5 px-4 py-2.5 text-base font-mono ${
                       isActive ? 'bg-white/15 text-white' : 'text-white/70 hover:bg-white/10 hover:text-white'
                     }`}
