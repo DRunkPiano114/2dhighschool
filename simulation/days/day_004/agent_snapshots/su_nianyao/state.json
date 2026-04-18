@@ -1,93 +1,93 @@
 {
-  "emotion": "frustrated",
+  "emotion": "embarrassed",
   "energy": 85,
   "academic_pressure": 30,
   "location": "教室",
   "daily_plan": {
     "intentions": [
       {
-        "target": "林昭宇",
-        "goal": "去接水时路过他的座位，看一眼他在干嘛",
-        "reason": "老是想着这事，感觉再不看一眼心里就不踏实，希望能确认他是不是还在听那首歌。",
-        "fulfilled": true,
-        "abandoned": false,
-        "satisfies_concern": "7d8a16",
-        "origin_day": 4,
-        "pursued_days": 1
-      },
-      {
         "target": "方语晨",
-        "goal": "午饭时和方语晨聊聊周末恐怖本的组队情况",
-        "reason": "需要一点新鲜的社交刺激，顺便转移一下注意力，缓解最近学习带来的枯燥感。",
+        "goal": "和方语晨聊八卦，顺便侧面打听林昭宇的竞赛情况",
+        "reason": "方语晨最近老盯着我笑，我得先稳住她，不然心事全露了。",
         "fulfilled": true,
-        "abandoned": false,
-        "satisfies_concern": "2ebd9e",
-        "origin_day": 4,
-        "pursued_days": 1
-      },
-      {
-        "target": null,
-        "goal": "在午休时写一段关于冬天的随笔",
-        "reason": "写东西能让我平静下来，感觉今天状态不错，想写点满意的句子。",
-        "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
         "origin_day": 4,
         "pursued_days": 1
+      },
+      {
+        "target": "数学错题本",
+        "goal": "把数学错题本整理一遍",
+        "reason": "再不整理的话物理数学真的要崩了，那种无力感太难受了。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 3,
+        "pursued_days": 2
+      },
+      {
+        "target": "图书馆",
+        "goal": "去图书馆借一本新书",
+        "reason": "最近压力大，想找本安静的散文看，逃避一下现实。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 3,
+        "pursued_days": 2
       }
     ],
-    "mood_forecast": "excited",
+    "mood_forecast": "anxious",
     "location_preferences": {
-      "morning_break": "走廊",
-      "lunch": "食堂",
+      "morning_break": "教室",
+      "lunch": "操场",
       "afternoon_break": "图书馆"
     }
   },
   "day": 4,
   "active_concerns": [
     {
-      "id": "015860",
-      "text": "被她们发现我在偷看林昭宇了，好尴尬，以后得更小心点。",
-      "source_event": "唐诗涵和方语晨在晚自习当众讨论我的眼神动向",
-      "source_scene": "晚自习",
-      "source_day": 4,
-      "emotion": "embarrassed",
-      "intensity": 4,
+      "id": "bdfb98",
+      "text": "方语晨已经拆穿了我的手机备注，担心她会进一步追问或在班级里引起不必要的关注。",
+      "source_event": "宿舍夜聊；食堂午餐时的对话；宿舍夜聊",
+      "source_scene": "",
+      "source_day": 2,
+      "emotion": "frustrated",
+      "intensity": 7,
       "related_people": [
         "林昭宇",
-        "方语晨",
-        "唐诗涵"
-      ],
-      "positive": false,
-      "topic": "其他",
-      "last_reinforced_day": 4,
-      "last_new_info_day": 4,
-      "reinforcement_count": 0,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
-    },
-    {
-      "id": "1a6e9b",
-      "text": "周末剧本杀活动的丝绒裙子还没买，担心到时候穿搭效果不好。",
-      "source_event": "食堂与方语晨讨论剧本杀服装",
-      "source_scene": "",
-      "source_day": 4,
-      "emotion": "frustrated",
-      "intensity": 3,
-      "related_people": [
         "方语晨"
       ],
-      "positive": true,
-      "topic": "期待的事",
+      "positive": false,
+      "topic": "恋爱",
       "last_reinforced_day": 4,
       "last_new_info_day": 4,
+      "reinforcement_count": 4,
+      "text_history": [
+        "林昭宇忙于竞赛的事实让我感到不安，担心这会影响我们之间的联系。",
+        "方语晨已经察觉到我对林昭宇的关注，担心这种隐秘的情感被更多人发现或被林昭宇本人察觉。"
+      ],
+      "id_history": [],
+      "last_bump_day": 4,
+      "bumps_today": 2
+    },
+    {
+      "id": "f31d4d",
+      "text": "数学错题本迟迟未整理，担心物理和数学的学习陷入瓶颈。",
+      "source_event": "课间借阅纠错本",
+      "source_scene": "",
+      "source_day": 2,
+      "emotion": "anxious",
+      "intensity": 2,
+      "related_people": [],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 3,
+      "last_new_info_day": 2,
       "reinforcement_count": 0,
       "text_history": [],
       "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
+      "last_bump_day": 3,
+      "bumps_today": 2
     }
   ]
 }

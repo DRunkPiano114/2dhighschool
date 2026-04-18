@@ -1,0 +1,75 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "苏念瑶",
+        "goal": "在食堂买奶茶时，装作不经意地套话，确认LYU到底是不是林昭宇",
+        "reason": "这事儿一直卡在心里太难受了，既然是好朋友，有什么不能跟我说的？",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 10,
+        "pursued_days": 1
+      },
+      {
+        "target": "林昭宇",
+        "goal": "拿道超难的物理题去问他，顺便观察他听到苏念瑶名字时的反应",
+        "reason": "直接问苏念瑶没用，我得侧面观察下那个闷葫芦的反应，看能不能抓到马脚。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 10,
+        "pursued_days": 1
+      },
+      {
+        "target": "方语晨",
+        "goal": "一起刷昨晚没看完的那部甜宠剧",
+        "reason": "宿舍气氛太压抑了，我得找个借口放松一下，顺便缓和下关系。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 9,
+        "pursued_days": 2
+      }
+    ],
+    "mood_forecast": "frustrated",
+    "location_preferences": {
+      "morning_break": "走廊",
+      "lunch": "食堂",
+      "afternoon_break": "走廊"
+    }
+  },
+  "day": 10,
+  "active_concerns": [
+    {
+      "id": "e8d6ea",
+      "text": "苏念瑶对LYU身份的刻意隐瞒以及宿舍里微妙的冷战气氛，让我非常在意真相。",
+      "source_event": "午饭和宿舍夜聊；午饭时苏念瑶指向姜皓天所在方向；22:00 宿舍夜聊；宿舍夜聊时关于LYU备注的争执；22:00 宿舍夜聊；宿舍夜聊及食堂追问；宿舍夜聊及食堂对话",
+      "source_scene": "",
+      "source_day": 3,
+      "emotion": "curious",
+      "intensity": 2,
+      "related_people": [
+        "苏念瑶",
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 10,
+      "reinforcement_count": 7,
+      "text_history": [
+        "苏念瑶对LYU备注的极力掩饰让我怀疑她和林昭宇之间有秘密，必须找机会彻底弄清楚。",
+        "苏念瑶在宿舍面对我的质问选择用被子蒙头回避，这种强烈的反应让我更加确信她和林昭宇之间有事瞒着我。",
+        "苏念瑶对LYU身份的极度回避和反常反应，让我怀疑她是否在隐瞒什么重要的事情。"
+      ],
+      "id_history": [],
+      "last_bump_day": 10,
+      "bumps_today": 2
+    }
+  ]
+}

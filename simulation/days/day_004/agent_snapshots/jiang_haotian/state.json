@@ -7,36 +7,36 @@
     "intentions": [
       {
         "target": "陆思远",
-        "goal": "找机会问问他毕业后打算干嘛，探探口风",
-        "reason": "老是憋着心里没底，想看看别人怎么打算的，能不能避开沈逸凡的眼线",
+        "goal": "侧面打听一下家里工厂的近况",
+        "reason": "老爸老妈最近神神秘秘的，想从陆思远那儿探探口风，看是不是真的要关厂了。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "9e32b7",
-        "origin_day": 3,
-        "pursued_days": 2
-      },
-      {
-        "target": "何家骏",
-        "goal": "带他去操场投几个篮，让他别在教室闷坏了",
-        "reason": "这哥们太孤僻了，带他打球顺便自己也能放松一下",
-        "fulfilled": true,
-        "abandoned": false,
-        "satisfies_concern": "8b8220",
+        "satisfies_concern": "dcf8e8",
         "origin_day": 4,
         "pursued_days": 1
       },
       {
         "target": "沈逸凡",
-        "goal": "故意在他面前晃悠，逗逗他",
-        "reason": "最近被他管得太烦了，不找点乐子逗逗他我心里不爽",
+        "goal": "在他眼皮底下玩把游戏",
+        "reason": "看他不爽很久了，想气气他，顺便转移一下注意力，别老想那些烦心事。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 4,
+        "pursued_days": 1
+      },
+      {
+        "target": "何家骏",
+        "goal": "拉他去操场投几个三分",
+        "reason": "打球最爽了，进了球什么烦恼都没了，还能带带这哥们。",
         "fulfilled": true,
         "abandoned": false,
-        "satisfies_concern": "d85c7f",
-        "origin_day": 2,
-        "pursued_days": 3
+        "satisfies_concern": null,
+        "origin_day": 4,
+        "pursued_days": 1
       }
     ],
-    "mood_forecast": "neutral",
+    "mood_forecast": "frustrated",
     "location_preferences": {
       "morning_break": "走廊",
       "lunch": "食堂",
@@ -46,70 +46,46 @@
   "day": 4,
   "active_concerns": [
     {
-      "id": "9e32b7",
-      "text": "家里工厂订单减少，想打听别人对未来就业的看法，但一直没找到合适的机会深入询问。",
-      "source_event": "与陆思远关于毕业后打算的简短对话",
+      "id": "8696a8",
+      "text": "爸妈最近总念叨工厂订单减少，心里总觉得不踏实，想找机会旁敲侧击问问情况。",
+      "source_event": "日常焦虑",
       "source_scene": "",
-      "source_day": 1,
+      "source_day": 2,
       "emotion": "anxious",
-      "intensity": 4,
+      "intensity": 6,
+      "related_people": [],
+      "positive": false,
+      "topic": "家庭压力",
+      "last_reinforced_day": 3,
+      "last_new_info_day": 2,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 3,
+      "bumps_today": 2
+    },
+    {
+      "id": "dcf8e8",
+      "text": "陆思远对家里工厂经营状况的刻意回避，让我更加担心家里是不是真的出了大问题。",
+      "source_event": "宿舍夜聊；22:00 宿舍夜聊",
+      "source_scene": "",
+      "source_day": 3,
+      "emotion": "anxious",
+      "intensity": 6,
       "related_people": [
         "陆思远"
       ],
       "positive": false,
       "topic": "家庭压力",
-      "last_reinforced_day": 2,
-      "last_new_info_day": 1,
-      "reinforcement_count": 0,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 4,
-      "bumps_today": 2
-    },
-    {
-      "id": "d85c7f",
-      "text": "沈逸凡管得越来越严，想找陆思远聊聊未来或者带何家骏打球的机会都被他搅和了，这种被处处限制的感觉很烦。",
-      "source_event": "食堂与宿舍的冲突",
-      "source_scene": "",
-      "source_day": 3,
-      "emotion": "frustrated",
-      "intensity": 2,
-      "related_people": [
-        "沈逸凡",
-        "陆思远",
-        "何家骏"
-      ],
-      "positive": false,
-      "topic": "人际矛盾",
-      "last_reinforced_day": 4,
-      "last_new_info_day": 3,
-      "reinforcement_count": 1,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 4,
-      "bumps_today": 2
-    },
-    {
-      "id": "df3acc",
-      "text": "想找陆思远聊聊毕业后的打算，但沈逸凡总是盯着不放，完全找不到机会。",
-      "source_event": "宿舍夜聊",
-      "source_scene": "",
-      "source_day": 4,
-      "emotion": "frustrated",
-      "intensity": 6,
-      "related_people": [
-        "陆思远",
-        "沈逸凡"
-      ],
-      "positive": false,
-      "topic": "未来规划",
       "last_reinforced_day": 4,
       "last_new_info_day": 4,
-      "reinforcement_count": 0,
-      "text_history": [],
+      "reinforcement_count": 2,
+      "text_history": [
+        "陆思远对生意话题的避而不谈让我更加不安，不确定家里工厂的经营状况到底有多糟糕。"
+      ],
       "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
+      "last_bump_day": 4,
+      "bumps_today": 2
     }
   ]
 }

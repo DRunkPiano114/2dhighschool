@@ -1,0 +1,2421 @@
+{
+  "scene": {
+    "scene_index": 6,
+    "time": "12:00",
+    "name": "午饭",
+    "location": "食堂",
+    "description": "午饭时间，同学们结伴去食堂吃饭",
+    "day": 10
+  },
+  "participant_names": {
+    "fang_yuchen": "方语晨",
+    "he_jiajun": "何家骏",
+    "jiang_haotian": "姜皓天",
+    "lin_zhaoyu": "林昭宇",
+    "lu_siyuan": "陆思远",
+    "shen_yifan": "沈逸凡",
+    "su_nianyao": "苏念瑶",
+    "tang_shihan": "唐诗涵"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "lin_zhaoyu",
+        "lu_siyuan",
+        "shen_yifan"
+      ],
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": {
+              "agent": "lin_zhaoyu",
+              "target": "lu_siyuan",
+              "content": "思远，那个……那个……等会儿去图书馆，我有道物理题想再对一下。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "食堂里到处都是人，沈逸凡端着餐盘正朝我和陆思远坐着的地方走过来。",
+              "inner_thought": "别过来别过来，刚才英语语法还没看呢，待会还要见何老师，心烦。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "思远，那个……那个……等会儿去图书馆，我有道物理题想再对一下。",
+              "action_target": "lu_siyuan",
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "shen_yifan": {
+              "observation": "陆思远和林昭宇坐在一起，两人正在低头吃饭，看起来聊得挺投机。",
+              "inner_thought": "老是这么躲着我吗？算了，还是趁现在问问物理题吧。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "陆思远，那道物理压轴题你有思路了吗？我有几个点想再跟你对一下。",
+              "action_target": "lu_siyuan",
+              "urgency": 7,
+              "is_disruptive": false
+            },
+            "lu_siyuan": {
+              "observation": "食堂里到处都是人，沈逸凡走在我们前面，林昭宇往旁边让了让。",
+              "inner_thought": "还好林昭宇在旁边，跟他坐一起总算没那么压抑。",
+              "emotion": "touched",
+              "action_type": "speak",
+              "action_content": "坐这儿吧，正好还有位子。",
+              "action_target": "lin_zhaoyu",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": {
+              "agent": "lu_siyuan",
+              "target": "lin_zhaoyu",
+              "content": "坐这儿吧，正好还有位子。"
+            },
+            "actions": [
+              {
+                "agent": "lin_zhaoyu",
+                "type": "non_verbal",
+                "content": "迅速低下头扒了一大口饭，假装没看见沈逸凡。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "沈逸凡端着餐盘靠得越来越近，食堂周围吵吵嚷嚷的。",
+              "inner_thought": "好烦，他该不会又要问我科技节的事吧，躲远点。",
+              "emotion": "anxious",
+              "action_type": "non_verbal",
+              "action_content": "迅速低下头扒了一大口饭，假装没看见沈逸凡。",
+              "action_target": "shen_yifan",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": {
+              "agent": "shen_yifan",
+              "target": "lu_siyuan",
+              "content": "陆思远，那道物理压轴题你有思路了吗？我有几个点想再跟你对一下。"
+            },
+            "actions": [
+              {
+                "agent": "lin_zhaoyu",
+                "type": "non_verbal",
+                "content": "将餐盘往陆思远那边挪了挪，尽量缩小自己的存在感。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "沈逸凡在旁边的空位坐了下来，眼神似乎在搜寻话题。",
+              "inner_thought": "别开口，千万别问我科技节表格填了没，还没填呢。",
+              "emotion": "anxious",
+              "action_type": "non_verbal",
+              "action_content": "将餐盘往陆思远那边挪了挪，尽量缩小自己的存在感。",
+              "action_target": "lu_siyuan",
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "lu_siyuan": {
+              "observation": "林昭宇低着头专注吃饭，尽量避开隔壁桌沈逸凡投来的视线。",
+              "inner_thought": "沈逸凡在附近总觉得喘不过气，还是赶紧吃完去图书馆吧。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "嗯，吃快点，待会早点走。",
+              "action_target": "lin_zhaoyu",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": {
+              "agent": "lu_siyuan",
+              "target": "lin_zhaoyu",
+              "content": "嗯，吃快点，待会早点走。"
+            },
+            "actions": [
+              {
+                "agent": "lin_zhaoyu",
+                "type": "non_verbal",
+                "content": "默默加快了吃饭的速度，尽量不抬头，盯着餐盘里的菜。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "沈逸凡在旁边坐下开始问物理题，陆思远还没来得及回我，我心里压力很大。",
+              "inner_thought": "又要问物理，烦死了，等下还得去办公室见何老师，头都要炸了。",
+              "emotion": "anxious",
+              "action_type": "non_verbal",
+              "action_content": "默默加快了吃饭的速度，尽量不抬头，盯着餐盘里的菜。",
+              "action_target": null,
+              "urgency": 4,
+              "is_disruptive": false
+            },
+            "shen_yifan": {
+              "observation": "林昭宇在刻意回避我的目光，陆思远似乎也被这种氛围弄得有些拘束。",
+              "inner_thought": "气氛搞这么僵干嘛，我也不是非要打扰他们，算了，算了。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "算了，你们先聊你们的吧，我吃完先走了。",
+              "action_target": "lu_siyuan",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 4,
+          "public": {
+            "speech": {
+              "agent": "shen_yifan",
+              "target": "lu_siyuan",
+              "content": "算了，你们先聊你们的吧，我吃完先走了。"
+            },
+            "actions": [
+              {
+                "agent": "lin_zhaoyu",
+                "type": "non_verbal",
+                "content": "快速吞下最后一口饭，把餐盘推开，拿纸巾擦了擦嘴，动作有些僵硬。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "沈逸凡在旁边坐着等陆思远回话，我被夹在中间感觉浑身不自在。",
+              "inner_thought": "好想赶紧吃完逃走，一会儿还要去老师办公室，沈逸凡怎么还不走啊。",
+              "emotion": "anxious",
+              "action_type": "non_verbal",
+              "action_content": "快速吞下最后一口饭，把餐盘推开，拿纸巾擦了擦嘴，动作有些僵硬。",
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "lu_siyuan": {
+              "observation": "沈逸凡在旁边盯着我们，空气怪压抑的，林昭宇连头都不敢抬。",
+              "inner_thought": "他怎么还不走啊，搞得我饭都不香了，快点吃完溜吧。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "那我也吃完了，走吗？",
+              "action_target": "lin_zhaoyu",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 5,
+          "public": {
+            "speech": {
+              "agent": "lu_siyuan",
+              "target": "lin_zhaoyu",
+              "content": "那我也吃完了，走吗？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": [
+              "shen_yifan"
+            ]
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "沈逸凡终于站起来走了，餐桌边清静了不少。",
+              "inner_thought": "谢天谢地，他总算走了，终于能和思远说两句了。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "刚才那个物理压轴题，我也觉得第二问逻辑有点奇怪，你那儿有草稿纸吗，我们对一下？",
+              "action_target": "lu_siyuan",
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "shen_yifan": {
+              "observation": "林昭宇动作僵硬地准备离开，明显是想避开我。",
+              "inner_thought": "搞得像我欠他们钱一样，走就走，谁稀罕留在这儿。",
+              "emotion": "frustrated",
+              "action_type": "exit",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 6,
+          "public": {
+            "speech": {
+              "agent": "lin_zhaoyu",
+              "target": "lu_siyuan",
+              "content": "刚才那个物理压轴题，我也觉得第二问逻辑有点奇怪，你那儿有草稿纸吗，我们对一下？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lu_siyuan": {
+              "observation": "沈逸凡终于走了，林昭宇整个人的肩膀都放松了下来。",
+              "inner_thought": "谢天谢地，这下终于能透口气了，刚才真是压抑得要命。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "走吧，去图书馆，这边吵得头疼。",
+              "action_target": "lin_zhaoyu",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 7,
+          "public": {
+            "speech": {
+              "agent": "lu_siyuan",
+              "target": "lin_zhaoyu",
+              "content": "走吧，去图书馆，这边吵得头疼。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "沈逸凡终于走远了，桌上总算清静，我把餐盘往旁边推了推，准备和思远专心研究物理题。",
+              "inner_thought": "终于没人打扰了，物理题要是逻辑没搞清楚，下午去办公室肯定要被何老师问住的。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "刚才那个物理压轴题，我也觉得第二问逻辑有点奇怪，你那儿有草稿纸吗，我们对一下？",
+              "action_target": "lu_siyuan",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 8,
+          "public": {
+            "speech": {
+              "agent": "lin_zhaoyu",
+              "target": "lu_siyuan",
+              "content": "刚才那个物理压轴题，我也觉得第二问逻辑有点奇怪，你那儿有草稿纸吗，我们对一下？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lu_siyuan": {
+              "observation": "沈逸凡终于走远了，林昭宇紧绷的肩膀明显松弛了下来。",
+              "inner_thought": "总算走了，再待下去我胃都要不舒服了。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "走吧，去图书馆，这边吵得头疼。",
+              "action_target": "lin_zhaoyu",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 9,
+          "public": {
+            "speech": {
+              "agent": "lu_siyuan",
+              "target": "lin_zhaoyu",
+              "content": "走吧，去图书馆，这边吵得头疼。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "沈逸凡终于走开了，陆思远正等着我收拾餐盘准备去图书馆。",
+              "inner_thought": "还好他走了，还是思远靠谱，赶紧把物理题搞定去办公室。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "行，走吧，我物理练习册带在包里了，图书馆二楼角落那儿应该没人。",
+              "action_target": "lu_siyuan",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 10,
+          "public": {
+            "speech": {
+              "agent": "lin_zhaoyu",
+              "target": "lu_siyuan",
+              "content": "行，走吧，我物理练习册带在包里了，图书馆二楼角落那儿应该没人。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lu_siyuan": {
+              "observation": "沈逸凡终于不见了，林昭宇松了口气，我也不用再担惊受怕了。",
+              "inner_thought": "还好他走了，去图书馆的路上就能安静对题了，心里踏实多了。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "草稿纸我带了，我那儿还有几张空白的，等会儿一块儿用。",
+              "action_target": "lin_zhaoyu",
+              "urgency": 4,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 11,
+          "public": {
+            "speech": {
+              "agent": "lu_siyuan",
+              "target": "lin_zhaoyu",
+              "content": "草稿纸我带了，我那儿还有几张空白的，等会儿一块儿用。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "沈逸凡终于走远了，图书馆那边应该比较清静，可以安心讨论物理题。",
+              "inner_thought": "还好思远陪我，不然真的要焦虑死，先把物理逻辑捋清楚吧。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "那快走吧，我先把餐盘放了，你在门口等我下。",
+              "action_target": "lu_siyuan",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 12,
+          "public": {
+            "speech": {
+              "agent": "lin_zhaoyu",
+              "target": "lu_siyuan",
+              "content": "那快走吧，我先把餐盘放了，你在门口等我下。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lu_siyuan": {
+              "observation": "林昭宇利索地背起书包，看起来心情好了一些。",
+              "inner_thought": "终于可以去图书馆了，刚才差点被挤得透不过气。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "走吧，动作快点，晚了怕没位子了。",
+              "action_target": "lin_zhaoyu",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 13,
+          "public": {
+            "speech": {
+              "agent": "lu_siyuan",
+              "target": "lin_zhaoyu",
+              "content": "走吧，动作快点，晚了怕没位子了。"
+            },
+            "actions": [
+              {
+                "agent": "lin_zhaoyu",
+                "type": "non_verbal",
+                "content": "端起餐盘起身，快步走向回收处。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "沈逸凡已经走远，陆思远正等着我收拾好餐盘往图书馆走。",
+              "inner_thought": "终于可以安静会儿了，赶紧把物理题搞定，不然下午去老师办公室心里不踏实。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "端起餐盘起身，快步走向回收处。",
+              "action_target": "lu_siyuan",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 14,
+          "public": {
+            "speech": {
+              "agent": "lin_zhaoyu",
+              "target": "lu_siyuan",
+              "content": "思远，等等我，我餐盘放好就来。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "沈逸凡已经彻底离开食堂区域，陆思远走在前面，我端着餐盘快步追上去。",
+              "inner_thought": "终于清静了，等会儿图书馆里要是有位子，得赶紧把那道物理题攻下来，不然下午心慌。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "思远，等等我，我餐盘放好就来。",
+              "action_target": "lu_siyuan",
+              "urgency": 6,
+              "is_disruptive": false
+            },
+            "lu_siyuan": {
+              "observation": "林昭宇去放餐盘了，食堂里人开始变多了。",
+              "inner_thought": "早点去图书馆占个好位置，还能顺便听会儿歌放松一下。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "那我先去食堂门口等你，别磨蹭啊。",
+              "action_target": "lin_zhaoyu",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 15,
+          "public": {
+            "speech": {
+              "agent": "lu_siyuan",
+              "target": "lin_zhaoyu",
+              "content": "那我先去食堂门口等你，别磨蹭啊。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "餐盘已经放进回收处了，陆思远正在食堂门口等着我，周围嘈杂的说话声好多了。",
+              "inner_thought": "终于出来了，空气好多了，赶紧去找个清静的地方坐下。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "走吧，刚才那题我总觉得受力分析有问题，等会儿你先别急着告诉我答案，我想自己先试一次。",
+              "action_target": "lu_siyuan",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 16,
+          "public": {
+            "speech": {
+              "agent": "lin_zhaoyu",
+              "target": "lu_siyuan",
+              "content": "走吧，刚才那题我总觉得受力分析有问题，等会儿你先别急着告诉我答案，我想自己先试一次。"
+            },
+            "actions": [
+              {
+                "agent": "lu_siyuan",
+                "type": "non_verbal",
+                "content": "朝着食堂出口的方向慢慢挪动脚步，顺便调整了一下书包肩带。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lu_siyuan": {
+              "observation": "林昭宇端着餐盘快步往回收处走去，食堂里的人流开始变得拥挤。",
+              "inner_thought": "还好沈逸凡没跟着，真不想再应付他了，赶紧去图书馆吧。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "朝着食堂出口的方向慢慢挪动脚步，顺便调整了一下书包肩带。",
+              "action_target": "lin_zhaoyu",
+              "urgency": 4,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 17,
+          "public": {
+            "speech": {
+              "agent": "lu_siyuan",
+              "target": "lin_zhaoyu",
+              "content": "行，那你先试，我也正好理理思路。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "陆思远已经在出口处等我，我快步向他靠拢。",
+              "inner_thought": "还好思远没走远，要是能尽快把那道题弄通就好了，下午办公室不想太难看。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "走吧，图书馆远不远？",
+              "action_target": "lu_siyuan",
+              "urgency": 6,
+              "is_disruptive": false
+            },
+            "lu_siyuan": {
+              "observation": "林昭宇还在回收处放餐盘，食堂人流变得拥挤，他正往出口走来。",
+              "inner_thought": "还好他也想自己琢磨，省得我还要费劲讲，去图书馆呆着真的太舒服了。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "行，那你先试，我也正好理理思路。",
+              "action_target": "lin_zhaoyu",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 18,
+          "public": {
+            "speech": {
+              "agent": "lin_zhaoyu",
+              "target": "lu_siyuan",
+              "content": "走吧，图书馆远不远？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lu_siyuan": {
+              "observation": "林昭宇放好餐盘正朝着食堂门口走过来。",
+              "inner_thought": "还好沈逸凡没跟着，图书馆安静，终于能喘口气了。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "动作快点，图书馆没人我们就赚到了。",
+              "action_target": "lin_zhaoyu",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 19,
+          "public": {
+            "speech": {
+              "agent": "lu_siyuan",
+              "target": "lin_zhaoyu",
+              "content": "动作快点，图书馆没人我们就赚到了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "陆思远就在旁边，我们正准备往图书馆走，终于可以不用再听到沈逸凡那些乱七八糟的讨论了。",
+              "inner_thought": "还好没多远，赶紧把物理题搞定最重要，下午那场谈话真的压力好大。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "不远，抄小路过去五分钟就够了。你物理题要是还没头绪，待会直接在图书馆拿草稿纸画模型吧。",
+              "action_target": "lu_siyuan",
+              "urgency": 7,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        }
+      ],
+      "narrative": {
+        "key_moments": [
+          "林昭宇邀请陆思远去图书馆对物理题。",
+          "沈逸凡向陆思远询问物理压轴题思路。",
+          "沈逸凡离开食堂。",
+          "陆思远与林昭宇决定前往图书馆讨论物理题。",
+          "林昭宇与陆思远在食堂门口汇合并离开。"
+        ],
+        "fulfilled_intentions": [
+          "林昭宇:与陆思远讨论物理题",
+          "陆思远:与林昭宇前往图书馆",
+          "沈逸凡:离开食堂"
+        ],
+        "events_discussed": [
+          "物理压轴题讨论",
+          "前往图书馆"
+        ],
+        "new_events": [
+          {
+            "text": "林昭宇与陆思远约定前往图书馆讨论物理压轴题。",
+            "category": "学习计划",
+            "witnesses": [
+              "林昭宇",
+              "陆思远"
+            ],
+            "spread_probability": 0.2,
+            "cite_ticks": [
+              1,
+              7,
+              11,
+              17
+            ]
+          },
+          {
+            "text": "沈逸凡向陆思远询问物理压轴题思路后离开食堂。",
+            "category": "社交互动",
+            "witnesses": [
+              "林昭宇",
+              "陆思远",
+              "沈逸凡"
+            ],
+            "spread_probability": 0.3,
+            "cite_ticks": [
+              3,
+              5,
+              6
+            ]
+          }
+        ]
+      },
+      "reflections": {
+        "lin_zhaoyu": {
+          "emotion": "calm",
+          "relationship_changes": [
+            {
+              "to_agent": "陆思远",
+              "favorability": 2,
+              "trust": 2,
+              "understanding": 1,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "沈逸凡",
+              "favorability": -1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "沈逸凡在食堂问物理题的时候，我把餐盘挪开，只想赶紧走掉。",
+              "emotion": "frustrated",
+              "importance": 4,
+              "people": [
+                "沈逸凡",
+                "陆思远"
+              ],
+              "location": "食堂",
+              "topics": [
+                "人际矛盾"
+              ]
+            },
+            {
+              "text": "陆思远说去图书馆人少就赚到了，他带了草稿纸，待会儿能一起对物理题。",
+              "emotion": "calm",
+              "importance": 5,
+              "people": [
+                "陆思远"
+              ],
+              "location": "食堂",
+              "topics": [
+                "学业焦虑"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "c775a6",
+              "adjustment": 0
+            },
+            {
+              "concern_text": "870382",
+              "adjustment": 0
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "请教定语从句的用法",
+              "status": "pending",
+              "brief_reason": "现在在食堂，还在忙着对物理题，没机会提英语语法。"
+            },
+            {
+              "goal": "找机会戴上耳机听许嵩的新歌",
+              "status": "pending",
+              "brief_reason": "一直在和陆思远讨论物理题，没空戴耳机。"
+            }
+          ]
+        },
+        "lu_siyuan": {
+          "emotion": "calm",
+          "relationship_changes": [
+            {
+              "to_agent": "林昭宇",
+              "favorability": 2,
+              "trust": 2,
+              "understanding": 1,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "沈逸凡",
+              "favorability": -1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "沈逸凡在食堂想问物理题，感觉怪怪的，好在林昭宇带我一起撤了。",
+              "emotion": "calm",
+              "importance": 4,
+              "people": [
+                "沈逸凡",
+                "林昭宇"
+              ],
+              "location": "食堂",
+              "topics": [
+                "人际矛盾",
+                "学业焦虑"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "1eefd1",
+              "adjustment": -1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "删掉太具体的细节，把那篇草稿发出去",
+              "status": "pending",
+              "brief_reason": "在食堂和图书馆忙着物理题，没机会碰手机写稿。"
+            },
+            {
+              "goal": "找一首节奏轻快的民谣听",
+              "status": "pending",
+              "brief_reason": "一直在和林昭宇讨论物理题，还没空打开网易云。"
+            }
+          ]
+        },
+        "shen_yifan": {
+          "emotion": "frustrated",
+          "relationship_changes": [
+            {
+              "to_agent": "陆思远",
+              "favorability": -2,
+              "trust": -1,
+              "understanding": 1,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "林昭宇",
+              "favorability": -1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "想找陆思远讨论物理题，结果他敷衍我直接带着林昭宇走了。",
+              "emotion": "frustrated",
+              "importance": 6,
+              "people": [
+                "陆思远",
+                "林昭宇"
+              ],
+              "location": "食堂",
+              "topics": [
+                "人际矛盾",
+                "学业焦虑"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "5fc846",
+              "adjustment": 2
+            },
+            {
+              "concern_text": "ce28db",
+              "adjustment": 1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "找他聊聊物理题，缓和下之前的尴尬。",
+              "status": "frustrated",
+              "brief_reason": "我主动开口问物理题，陆思远却当着我的面带着林昭宇离开，根本不给我交流机会。"
+            },
+            {
+              "goal": "尝试用更平和的态度提醒他遵守纪律，不再直接威胁记名字。",
+              "status": "pending",
+              "brief_reason": "姜皓天不在场。"
+            },
+            {
+              "goal": "去操场一个人跑两圈，把心里的烦躁压下去。",
+              "status": "pending",
+              "brief_reason": "现在还在食堂，还没去操场。"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "group_index": 1,
+      "participants": [
+        "fang_yuchen",
+        "tang_shihan",
+        "su_nianyao"
+      ],
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "诶，那边窗边有两个位子，快去快去。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "食堂人巨多，苏念瑶和唐诗涵正端着盘子找空位。",
+              "inner_thought": "这儿吵死了，奶茶还没喝上，念瑶又不吭声，烦死了。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "诶，那边窗边有两个位子，快去快去。",
+              "action_target": "su_nianyao",
+              "urgency": 7,
+              "is_disruptive": false
+            },
+            "su_nianyao": {
+              "observation": "食堂里闹哄哄的，方语晨和唐诗涵正一边找座位一边说话。",
+              "inner_thought": "好烦，这两人还没消停，赶紧找个位子坐下吃完走人。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "那边有个空位，快过去吧。",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            },
+            "tang_shihan": {
+              "observation": "食堂里人特别多，苏念瑶和方语晨也在找位子，气氛怪怪的。",
+              "inner_thought": "这两人真能装，明明有事瞒着我，还跑来吃饭。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "诶，那边刚好有个位子，快去快去。",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": {
+              "agent": "su_nianyao",
+              "target": "fang_yuchen",
+              "content": "那边有个空位，快过去吧。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "到了座位旁，苏念瑶把餐盘放下，唐诗涵也在边上坐下了。",
+              "inner_thought": "老是这么拖着没意思，待会趁吃完饭那会儿问个清楚。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "坐吧，一会儿人更多了，这红烧肉看着又老又柴的。",
+              "action_target": "su_nianyao",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "坐吧，一会儿人更多了，这红烧肉看着又老又柴的。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "唐诗涵走在方语晨后面，表情还没完全舒展开，手里还在摆弄手机。",
+              "inner_thought": "千万别这时候又提LYU的事，我心脏受不了。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "今天食堂阿姨手抖得好厉害，这块红烧肉还没指甲盖大。",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "诶，那边刚好有个位子，快去快去。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "苏念瑶在专心吃红烧肉，完全没接我刚才吐槽的话茬。",
+              "inner_thought": "装傻是吧？又想蒙混过关，我偏不让你如愿。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "不是吧，你怎么一句话都不回我？这肉真的难吃死了，你吃得下去？",
+              "action_target": "su_nianyao",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 4,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "不是吧，你怎么一句话都不回我？这肉真的难吃死了，你吃得下去？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "tang_shihan": {
+              "observation": "方语晨和苏念瑶在找位子的时候还在低声说话，完全把我排除在外。",
+              "inner_thought": "到底有什么事不能让我知道？真是烦死了。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "你俩刚才在嘀咕啥呢？神神秘秘的。",
+              "action_target": "su_nianyao",
+              "urgency": 7,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 5,
+          "public": {
+            "speech": {
+              "agent": "su_nianyao",
+              "target": "fang_yuchen",
+              "content": "今天食堂阿姨手抖得好厉害，这块红烧肉还没指甲盖大。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "苏念瑶在餐桌对面低头吃肉，完全无视了我的吐槽，唐诗涵也在低头吃饭，气氛很沉闷。",
+              "inner_thought": "真当我是空气啊？装聋作哑这招用得也太溜了，我真的受够了这种感觉。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "你能不能别装死？那备注到底是什么？",
+              "action_target": "su_nianyao",
+              "urgency": 9,
+              "is_disruptive": true
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 6,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "你能不能别装死？那备注到底是什么？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "唐诗涵就坐在旁边，方语晨正盯着我等回应，气氛有点凝固。",
+              "inner_thought": "希望能赶紧把这顿饭吃完，不想在食堂聊那些破事儿。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "凑合吃点吧，下午还要补物理竞赛题呢。",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 7,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "su_nianyao",
+              "content": "你俩刚才在嘀咕啥呢？神神秘秘的。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "苏念瑶在埋头吃饭，完全没理会我的质问，空气安静得连旁边的唐诗涵都抬起头看了看。",
+              "inner_thought": "搞什么，当我是空气？这种被蒙在鼓里的感觉真的快受够了。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "我就这么让你难以开口吗？还是说，我也不能知道关于林昭宇的事？",
+              "action_target": "su_nianyao",
+              "urgency": 9,
+              "is_disruptive": true
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 8,
+          "public": {
+            "speech": {
+              "agent": "su_nianyao",
+              "target": "fang_yuchen",
+              "content": "凑合吃点吧，下午还要补物理竞赛题呢。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "tang_shihan": {
+              "observation": "方语晨和苏念瑶明显在避开我的话题，两人之间的气氛甚至有点僵。",
+              "inner_thought": "搞什么啊，我问话呢装听不到？真是够了，非要我捅破窗户纸吗。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "哎，你们俩这一唱一和的，把我就当空气是吧？那个LYU到底有什么不能说的？",
+              "action_target": "su_nianyao",
+              "urgency": 8,
+              "is_disruptive": true
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 9,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "我就这么让你难以开口吗？还是说，我也不能知道关于林昭宇的事？"
+            },
+            "actions": [
+              {
+                "agent": "su_nianyao",
+                "type": "non_verbal",
+                "content": "埋头猛吃了一口饭，试图用咀嚼掩盖必须回答的压力，然后把视线移向窗外。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "唐诗涵还在盯着我，方语晨也没放弃追问，空气里全是红烧肉的味道和尴尬的沉默。",
+              "inner_thought": "这红烧肉又甜又咸，吃得反胃。还要怎么躲？干脆把水喝完走人。",
+              "emotion": "anxious",
+              "action_type": "non_verbal",
+              "action_content": "埋头猛吃了一口饭，试图用咀嚼掩盖必须回答的压力，然后把视线移向窗外。",
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 10,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "su_nianyao",
+              "content": "哎，你们俩这一唱一和的，把我就当空气是吧？那个LYU到底有什么不能说的？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "苏念瑶明显在回避林昭宇的话题，甚至连头都不敢抬起来看我。",
+              "inner_thought": "死活就是不讲，到底有什么见不得人的？真的是气死我了。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "行，你不想说就算了，真当我稀罕知道那点破事？",
+              "action_target": "su_nianyao",
+              "urgency": 8,
+              "is_disruptive": true
+            },
+            "su_nianyao": {
+              "observation": "方语晨和唐诗涵都在死死盯着我，空气压抑得像暴雨前的闷热。",
+              "inner_thought": "躲不掉了，干脆抛个烟雾弹，先混过去再说。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "也不是不能说……就是太尴尬了，下午奶茶到了给你们看备注全称行了吧？",
+              "action_target": "fang_yuchen",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 11,
+          "public": {
+            "speech": {
+              "agent": "su_nianyao",
+              "target": "fang_yuchen",
+              "content": "也不是不能说……就是太尴尬了，下午奶茶到了给你们看备注全称行了吧？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "tang_shihan": {
+              "observation": "苏念瑶在回避我的问题，连饭都不好好吃了，这反应太心虚了。",
+              "inner_thought": "这两人真搞心态，到底在藏什么啊，烦死。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "行行行，不说就不说，当我不存在好了。",
+              "action_target": "su_nianyao",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 12,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "行，你不想说就算了，真当我稀罕知道那点破事？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "唐诗涵听到了奶茶的承诺，看样子是打算先放我一马。",
+              "inner_thought": "好险，终于暂时堵住嘴了，再这么问下去真的要窒息了。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "趁现在没那么挤，赶紧吃吧，不然饭都凉了。",
+              "action_target": "fang_yuchen",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 13,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "su_nianyao",
+              "content": "行行行，不说就不说，当我不存在好了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "念瑶说是奶茶到了再解释，唐诗涵也在旁边看着，这气氛简直尴尬到极点。",
+              "inner_thought": "算了，反正下午就能知道，不急这一会，省得把诗涵也卷进来。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "诗涵，你晚自习帮我带点水果捞吗？这红烧肉我是真的一口都吃不下了。",
+              "action_target": "tang_shihan",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 14,
+          "public": {
+            "speech": {
+              "agent": "su_nianyao",
+              "target": "fang_yuchen",
+              "content": "趁现在没那么挤，赶紧吃吧，不然饭都凉了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "tang_shihan": {
+              "observation": "苏念瑶终于松口说下午给看备注，但我还是觉得这事儿没那么简单。",
+              "inner_thought": "这两人真烦，搞得像我逼供一样，算了，吃完赶紧走人。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "行吧，那下午再说，先吃饭，红烧肉都凉了。",
+              "action_target": "su_nianyao",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 15,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "tang_shihan",
+              "content": "诗涵，你晚自习帮我带点水果捞吗？这红烧肉我是真的一口都吃不下了。"
+            },
+            "actions": [
+              {
+                "agent": "su_nianyao",
+                "type": "non_verbal",
+                "content": "默默把餐盘里的红烧肉拨到一边，拿起筷子开始挑青菜吃。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "方语晨和唐诗涵终于不再盯着我，开始低头吃自己盘子里的饭了。",
+              "inner_thought": "谢天谢地，这顿饭总算能安稳吃完了，只要熬到放学就行。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "默默把餐盘里的红烧肉拨到一边，拿起筷子开始挑青菜吃。",
+              "action_target": null,
+              "urgency": 3,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 16,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "su_nianyao",
+              "content": "行吧，那下午再说，先吃饭，红烧肉都凉了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "诗涵答应了我的请求，念瑶还在旁边闷头挑青菜，这饭吃的真没劲。",
+              "inner_thought": "真的服了，下午看她能玩出什么花样，先把这倒霉午饭解决掉吧。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "谢啦，还是你靠谱。",
+              "action_target": "tang_shihan",
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "su_nianyao": {
+              "observation": "方语晨和唐诗涵开始讨论晚自习水果捞的事，这顿午饭总算不用在逼问中度过了。",
+              "inner_thought": "听她们聊吃的真好，只要不问我林昭宇，聊什么都行。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "我也要带一份，帮我也点个西瓜捞吧，最近热得我想喝冰的。",
+              "action_target": "tang_shihan",
+              "urgency": 4,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 17,
+          "public": {
+            "speech": {
+              "agent": "su_nianyao",
+              "target": "tang_shihan",
+              "content": "我也要带一份，帮我也点个西瓜捞吧，最近热得我想喝冰的。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "tang_shihan": {
+              "observation": "苏念瑶在挑青菜，方语晨在嫌弃红烧肉，大家的午饭吃得很没劲。",
+              "inner_thought": "下午一定要搞清楚那个LYU，这饭吃得真堵心，水果捞也救不了我的胃口。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "那我晚点去买，学校超市的水果捞经常抢不到，这红烧肉确实没法吃。",
+              "action_target": "fang_yuchen",
+              "urgency": 4,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 18,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "那我晚点去买，学校超市的水果捞经常抢不到，这红烧肉确实没法吃。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "唐诗涵答应了帮带水果捞，大家终于不再盯着我追问林昭宇的事了。",
+              "inner_thought": "水果捞真是当代高中的救赎，只要不提备注，大家还是好朋友。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "记得帮我多加点西瓜，我不喜欢哈密瓜。",
+              "action_target": "tang_shihan",
+              "urgency": 3,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 19,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "tang_shihan",
+              "content": "谢啦，还是你靠谱。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "tang_shihan": {
+              "observation": "苏念瑶在挑剩下的青菜，方语晨在旁边叹气，三个人各怀心思。",
+              "inner_thought": "这奶茶和水果捞都成了封口费了，真是离谱。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "行吧，我先去把餐盘收了，你们俩慢慢吃。",
+              "action_target": "fang_yuchen",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        }
+      ],
+      "narrative": {
+        "key_moments": [
+          "方语晨询问苏念瑶关于林昭宇的备注信息。",
+          "苏念瑶表示下午奶茶到达后会公开备注全称。",
+          "方语晨请求唐诗涵在晚自习代买水果捞。",
+          "苏念瑶请求唐诗涵代买西瓜捞。"
+        ],
+        "fulfilled_intentions": [
+          "方语晨:请求代买水果捞",
+          "苏念瑶:请求代买西瓜捞"
+        ],
+        "events_discussed": [
+          "下午补物理竞赛题",
+          "林昭宇的备注信息",
+          "晚自习代买水果捞"
+        ],
+        "new_events": [
+          {
+            "text": "苏念瑶承诺下午奶茶到后公开关于林昭宇的备注全称",
+            "category": "信息披露",
+            "witnesses": [
+              "方语晨",
+              "唐诗涵"
+            ],
+            "spread_probability": 0.8,
+            "cite_ticks": [
+              12
+            ]
+          },
+          {
+            "text": "唐诗涵同意在晚自习为方语晨购买水果捞，为苏念瑶购买西瓜捞",
+            "category": "代买服务",
+            "witnesses": [
+              "方语晨",
+              "苏念瑶"
+            ],
+            "spread_probability": 0.3,
+            "cite_ticks": [
+              16,
+              18,
+              19,
+              20
+            ]
+          }
+        ]
+      },
+      "reflections": {
+        "fang_yuchen": {
+          "emotion": "frustrated",
+          "relationship_changes": [
+            {
+              "to_agent": "苏念瑶",
+              "favorability": -2,
+              "trust": -3,
+              "understanding": 1,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "唐诗涵",
+              "favorability": 1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "苏念瑶终于松口说奶茶到了会解释LYU，虽然还是觉得她很敷衍。",
+              "emotion": "frustrated",
+              "importance": 5,
+              "people": [
+                "苏念瑶"
+              ],
+              "location": "食堂",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [
+            {
+              "text": "下午奶茶到了她真会说吗？别又是拖延战术。",
+              "source_event": "苏念瑶承诺下午奶茶送达后解释LYU备注",
+              "emotion": "anxious",
+              "intensity": 6,
+              "related_people": [
+                "苏念瑶"
+              ],
+              "positive": false,
+              "topic": "人际矛盾"
+            }
+          ],
+          "concern_updates": [
+            {
+              "concern_text": "e2cd81",
+              "adjustment": -1
+            },
+            {
+              "concern_text": "802306",
+              "adjustment": -1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "找个没人的机会问问林昭宇的事，尽量软一点（想找苏念瑶）",
+              "status": "attempted",
+              "brief_reason": "在食堂直接追问了，结果她还是打岔，只换来一个下午解释的承诺。"
+            },
+            {
+              "goal": "跟她讨论一下新收的立牌，缓和一下宿舍气氛（想找唐诗涵）",
+              "status": "missed_opportunity",
+              "brief_reason": "光顾着和苏念瑶吵架了，没心思聊立牌，气氛还是僵着。"
+            }
+          ]
+        },
+        "tang_shihan": {
+          "emotion": "frustrated",
+          "relationship_changes": [
+            {
+              "to_agent": "苏念瑶",
+              "favorability": -1,
+              "trust": -1,
+              "understanding": 1,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "方语晨",
+              "favorability": 1,
+              "trust": 1,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "食堂吃饭时苏念瑶终于松口说下午奶茶到了给看备注，虽然还是没直接说，但感觉离真相近了一步。",
+              "emotion": "curious",
+              "importance": 5,
+              "people": [
+                "苏念瑶",
+                "方语晨"
+              ],
+              "location": "食堂",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "e8d6ea",
+              "adjustment": -1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "在食堂买奶茶时，装作不经意地套话，确认LYU到底是不是林昭宇",
+              "status": "attempted",
+              "brief_reason": "在食堂直接追问了，虽然没得到确切答案，但逼出了她下午给看备注的承诺。"
+            },
+            {
+              "goal": "拿道超难的物理题去问他，顺便观察他听到苏念瑶名字时的反应",
+              "status": "pending",
+              "brief_reason": "林昭宇不在场，根本没机会实施。"
+            },
+            {
+              "goal": "一起刷昨晚没看完的那部甜宠剧",
+              "status": "missed_opportunity",
+              "brief_reason": "食堂太挤且大家都在讨论LYU的事，没心情也没环境看剧。"
+            }
+          ]
+        },
+        "su_nianyao": {
+          "emotion": "anxious",
+          "relationship_changes": [
+            {
+              "to_agent": "方语晨",
+              "favorability": 1,
+              "trust": 1,
+              "understanding": 1,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "唐诗涵",
+              "favorability": -1,
+              "trust": -1,
+              "understanding": 0,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "食堂红烧肉难吃，诗涵答应帮带水果捞，算是暂时避开了LYU的追问。",
+              "emotion": "calm",
+              "importance": 4,
+              "people": [
+                "方语晨",
+                "唐诗涵"
+              ],
+              "location": "食堂",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "bdfb98",
+              "adjustment": -1
+            },
+            {
+              "concern_text": "dbfd07",
+              "adjustment": -1
+            },
+            {
+              "concern_text": "780367",
+              "adjustment": 1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "向她请教那道物理竞赛题",
+              "status": "pending",
+              "brief_reason": "程雨桐不在场，且午饭时间一直在应付诗涵的盘问。"
+            },
+            {
+              "goal": "去图书馆找本散文集看，躲开唐诗涵的视线",
+              "status": "frustrated",
+              "brief_reason": "被诗涵和语晨围住吃饭，根本没法脱身去图书馆。"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "group_index": 2,
+      "participants": [
+        "he_jiajun",
+        "jiang_haotian"
+      ],
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "he_jiajun",
+              "content": "兄弟，快看那边，靠窗有个空位，冲啊！"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "食堂里全是人，我和何家骏端着餐盘在人群里找空位。",
+              "inner_thought": "这食堂跟打仗一样，再晚点连汤都喝不到。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "兄弟，快看那边，靠窗有个空位，冲啊！",
+              "action_target": "he_jiajun",
+              "urgency": 7,
+              "is_disruptive": false
+            },
+            "he_jiajun": {
+              "observation": "姜皓天端着餐盘在人头攒动的人群里找位子，看起来也还没坐下。",
+              "inner_thought": "要不要上去坐一起？算了，他旁边估计人多，挺烦的。",
+              "emotion": "anxious",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 4,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": {
+              "agent": "he_jiajun",
+              "target": "jiang_haotian",
+              "content": "来了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "何家骏跟着我往窗边走，食堂这帮学生抢位置跟疯了一样。",
+              "inner_thought": "赶紧坐下，今天排骨怎么这么少，看着就没胃口。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "搞定，这位置视野不错，省得像在那儿挤沙丁鱼了。",
+              "action_target": "he_jiajun",
+              "urgency": 5,
+              "is_disruptive": false
+            },
+            "he_jiajun": {
+              "observation": "姜皓天端着餐盘正朝靠窗的空位走去，还回头朝我招了招手。",
+              "inner_thought": "他居然喊我一起？那我就坐过去吧。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "来了。",
+              "action_target": "jiang_haotian",
+              "urgency": 7,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "he_jiajun",
+              "content": "搞定，这位置视野不错，省得像在那儿挤沙丁鱼了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "姜皓天已经先一步走到窗边的位子坐下，正把餐盘放好。",
+              "inner_thought": "希望沈逸凡没跟过来。坐过去看看他今天打的什么菜。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "今天又是红烧肉？",
+              "action_target": "jiang_haotian",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": {
+              "agent": "he_jiajun",
+              "target": "jiang_haotian",
+              "content": "今天又是红烧肉？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "何家骏跟着坐下来了，正准备开始吃饭。",
+              "inner_thought": "这排骨卖相真差，希望能早点把陆思远那怂货堵住问个明白。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "哎，这食堂大厨是不是又手抖多放了半袋盐？你尝尝看。",
+              "action_target": "he_jiajun",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 4,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "he_jiajun",
+              "content": "哎，这食堂大厨是不是又手抖多放了半袋盐？你尝尝看。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "姜皓天一边拿着筷子挑红烧肉，一边笑着回话。",
+              "inner_thought": "希望晚自习加练的时候他能教我那个晃人动作，别又被沈逸凡打断了。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "就这，每天吃不腻吗。",
+              "action_target": "jiang_haotian",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 5,
+          "public": {
+            "speech": {
+              "agent": "he_jiajun",
+              "target": "jiang_haotian",
+              "content": "就这，每天吃不腻吗。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "何家骏拿筷子夹了一块肉，皱着眉头准备吃下去。",
+              "inner_thought": "这小子脸皱得跟苦瓜一样，看来食堂确实没救了，心烦。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "别勉强了，这玩意儿能吃才怪，下次咱俩还是带点干粮吧。",
+              "action_target": "he_jiajun",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 6,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "he_jiajun",
+              "content": "别勉强了，这玩意儿能吃才怪，下次咱俩还是带点干粮吧。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "姜皓天一边嚼着红烧肉一边吐槽食堂伙食，看起来还挺开心的。",
+              "inner_thought": "希望晚上加练别碰上沈逸凡，那个动作我想再练练。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "还能咋办，有的吃就不错了。",
+              "action_target": "jiang_haotian",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 7,
+          "public": {
+            "speech": {
+              "agent": "he_jiajun",
+              "target": "jiang_haotian",
+              "content": "还能咋办，有的吃就不错了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "何家骏把那块看起来很咸的肉硬吞了下去，眉头还是皱着的。",
+              "inner_thought": "这小子也是倔，难吃还要硬塞，看着真让人闹心。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "行了行了，别硬撑了，下午体育课我带瓶水给你，这盐分太重了吃着真受罪。",
+              "action_target": "he_jiajun",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 8,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "he_jiajun",
+              "content": "行了行了，别硬撑了，下午体育课我带瓶水给你，这盐分太重了吃着真受罪。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "姜皓天一边吐槽食堂的红烧肉，一边把盘子里剩下的几块肉拨到一边去。",
+              "inner_thought": "他今天胃口好像也不大好，晚上加练会不会没力气。那个动作我想让他再教我一遍。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "晚上还是加练吗？",
+              "action_target": "jiang_haotian",
+              "urgency": 7,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 9,
+          "public": {
+            "speech": {
+              "agent": "he_jiajun",
+              "target": "jiang_haotian",
+              "content": "晚上还是加练吗？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "何家骏还在勉强吃那盘咸得要命的菜。",
+              "inner_thought": "真看不下去了，这傻小子，难吃就别塞了，看得我更心烦。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "别吃了，剩下的倒了得了，一会儿我请你喝奶茶，这垃圾饭真咽不下去。",
+              "action_target": "he_jiajun",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 10,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "he_jiajun",
+              "content": "别吃了，剩下的倒了得了，一会儿我请你喝奶茶，这垃圾饭真咽不下去。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "姜皓天听到我问加练的事，停下了拨弄红烧肉的动作，看着我。",
+              "inner_thought": "千万别被他拒绝，或者被其他人搅局。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "就那个……晃人，我想再练练。",
+              "action_target": "jiang_haotian",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 11,
+          "public": {
+            "speech": {
+              "agent": "he_jiajun",
+              "target": "jiang_haotian",
+              "content": "就那个……晃人，我想再练练。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "何家骏还在往嘴里塞那盘半生不熟的红烧肉，看着就让人倒胃口。",
+              "inner_thought": "这小子真笨，有的吃不是这么个吃法，看得我胃里反酸。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "啧，听我的，快走吧，没胃口了。",
+              "action_target": "he_jiajun",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 12,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "he_jiajun",
+              "content": "啧，听我的，快走吧，没胃口了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "姜皓天听了我的话，停下动作看着我，好像是在考虑加练的事。",
+              "inner_thought": "他要是能教我那个晃人，下次打球肯定不会那么拉胯了。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "就……那个动作，行吗？",
+              "action_target": "jiang_haotian",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 13,
+          "public": {
+            "speech": {
+              "agent": "he_jiajun",
+              "target": "jiang_haotian",
+              "content": "就……那个动作，行吗？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "何家骏还在慢吞吞地嚼那块肉，好像完全不在意味道，这种忍耐劲儿让我更烦了。",
+              "inner_thought": "这哥们怎么这么死心眼，这种垃圾饭有什么好硬吃的，看得我心烦。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "行了行了，真的别吃了，看着都闹心，走吧。",
+              "action_target": "he_jiajun",
+              "urgency": 7,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 14,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "he_jiajun",
+              "content": "行了行了，真的别吃了，看着都闹心，走吧。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "姜皓天催促着起身，看来确实是因为食堂味道太重不想待了。",
+              "inner_thought": "真好，他没嫌我烦，还愿意教我。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "行，走吧。",
+              "action_target": "jiang_haotian",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 15,
+          "public": {
+            "speech": {
+              "agent": "he_jiajun",
+              "target": "jiang_haotian",
+              "content": "行，走吧。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "何家骏还在执着于要把那份难吃的饭吃完，看着他那副样子我更烦了。",
+              "inner_thought": "这小子怎么那么死脑筋，垃圾饭有什么好心疼的，看着闹心。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "啧，走走走，别吃了，奶茶我请，赶紧的。",
+              "action_target": "he_jiajun",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 16,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "he_jiajun",
+              "content": "啧，走走走，别吃了，奶茶我请，赶紧的。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "姜皓天已经推开餐盘站了起来，看起来是真的吃不下了。",
+              "inner_thought": "他居然真请我喝奶茶，希望能顺便问问他打算晚自习后几点去球场。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "那……走吧，你想喝哪家的？",
+              "action_target": "jiang_haotian",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 17,
+          "public": {
+            "speech": {
+              "agent": "he_jiajun",
+              "target": "jiang_haotian",
+              "content": "那……走吧，你想喝哪家的？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "何家骏终于放下了筷子，一脸无奈地跟着我准备离开座位。",
+              "inner_thought": "这小子终于听劝了，奶茶总比这盐罐子强，赶紧滚出食堂。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "走吧，这味道我闻着都想吐，下午还要训练呢，别被这玩意儿坏了肠胃。",
+              "action_target": "he_jiajun",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 18,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "he_jiajun",
+              "content": "走吧，这味道我闻着都想吐，下午还要训练呢，别被这玩意儿坏了肠胃。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "姜皓天已经把餐盘推到一边站起来了，正等着我一起走。",
+              "inner_thought": "他居然真要请我喝奶茶，晚自习后再找他练球准没错。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "就门口那家吧，快点。",
+              "action_target": "jiang_haotian",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 19,
+          "public": {
+            "speech": {
+              "agent": "he_jiajun",
+              "target": "jiang_haotian",
+              "content": "就门口那家吧，快点。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "何家骏终于不再执着于那盘难吃的红烧肉，起身准备离开食堂。",
+              "inner_thought": "这小子终于动了，奶茶赶紧安排上，喝完正好回宿舍找陆思远那怂货说清楚。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "搞快点，再晚去那家店人都要排长队了。",
+              "action_target": "he_jiajun",
+              "urgency": 7,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        }
+      ],
+      "narrative": {
+        "key_moments": [
+          "姜皓天与何家骏在食堂找到靠窗空位。",
+          "姜皓天评价食堂红烧肉盐分过高。",
+          "姜皓天提议放弃食用红烧肉并提出请何家骏喝奶茶。",
+          "何家骏询问关于晚上加练的事宜。",
+          "两人决定离开食堂前往校门口购买奶茶。"
+        ],
+        "fulfilled_intentions": [
+          "姜皓天:在食堂找到座位",
+          "姜皓天:请何家骏喝奶茶",
+          "何家骏:离开食堂"
+        ],
+        "events_discussed": [
+          "食堂午餐",
+          "下午体育课",
+          "晚上加练"
+        ],
+        "new_events": [
+          {
+            "text": "姜皓天提议下午体育课给何家骏带水。",
+            "category": "计划",
+            "witnesses": [
+              "何家骏",
+              "姜皓天"
+            ],
+            "spread_probability": 0.2,
+            "cite_ticks": [
+              9
+            ]
+          },
+          {
+            "text": "姜皓天决定请何家骏喝奶茶。",
+            "category": "决定",
+            "witnesses": [
+              "何家骏",
+              "姜皓天"
+            ],
+            "spread_probability": 0.3,
+            "cite_ticks": [
+              11,
+              17
+            ]
+          },
+          {
+            "text": "两人决定前往校门口购买奶茶并离开食堂。",
+            "category": "行动",
+            "witnesses": [
+              "何家骏",
+              "姜皓天"
+            ],
+            "spread_probability": 0.1,
+            "cite_ticks": [
+              18,
+              20
+            ]
+          }
+        ]
+      },
+      "reflections": {
+        "he_jiajun": {
+          "emotion": "excited",
+          "relationship_changes": [
+            {
+              "to_agent": "姜皓天",
+              "favorability": 2,
+              "trust": 2,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "姜皓天请我喝奶茶，还说食堂的饭太难吃，带我出来吃好的。",
+              "emotion": "touched",
+              "importance": 6,
+              "people": [
+                "姜皓天"
+              ],
+              "location": "食堂",
+              "topics": [
+                "人际矛盾",
+                "期待的事"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "7908df",
+              "adjustment": 2
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "在课间把数学课本前几章的基础定义翻一遍",
+              "status": "pending",
+              "brief_reason": "一直在和姜皓天讨论吃饭和打球的事，没机会看书。"
+            },
+            {
+              "goal": "晚自习后和姜皓天去操场加练，顺便吃辣条",
+              "status": "fulfilled",
+              "brief_reason": "聊到了晚上加练和练晃人的动作，加练的计划确认了。"
+            }
+          ]
+        },
+        "jiang_haotian": {
+          "emotion": "calm",
+          "relationship_changes": [
+            {
+              "to_agent": "何家骏",
+              "favorability": 2,
+              "trust": 1,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "食堂红烧肉咸得离谱，带着何家骏去喝奶茶。",
+              "emotion": "calm",
+              "importance": 3,
+              "people": [
+                "何家骏"
+              ],
+              "location": "食堂",
+              "topics": [
+                "兴趣爱好"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [],
+          "intention_outcomes": [
+            {
+              "goal": "在寝室里找机会单刀直入问清楚工厂的事，不能让他再装睡了（想找陆思远）",
+              "status": "pending",
+              "brief_reason": "陆思远没在食堂，没机会问。"
+            },
+            {
+              "goal": "在晚自习前故意把练习册放歪一点，看他那副想管又不知道怎么开口的样子（想找沈逸凡）",
+              "status": "pending",
+              "brief_reason": "现在还在午饭时间，还没到晚自习。"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

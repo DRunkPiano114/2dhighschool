@@ -6,29 +6,29 @@
   "daily_plan": {
     "intentions": [
       {
-        "target": "沈逸凡",
-        "goal": "假装借作业看，顺势瞄一眼他手机屏幕或桌面通知，看看那个猫猫背景是怎么回事",
-        "reason": "这猫猫背景图太可疑了，肯定藏着什么惊天大瓜，我一定要搞清楚！",
-        "fulfilled": false,
-        "abandoned": false,
-        "satisfies_concern": "c727f6",
-        "origin_day": 7,
-        "pursued_days": 1
-      },
-      {
         "target": "苏念瑶",
-        "goal": "午饭时旁敲侧击一下她和林昭宇最近到底怎么回事",
-        "reason": "她经过林昭宇座位时那个不自然的样子，我直觉里面有情况，好姐妹不能瞒着我。",
+        "goal": "在课间休息时找机会和她单独待会儿，看能不能套出LYU的真相。",
+        "reason": "这几天念瑶一直瞒着我，我心里像猫抓一样，不搞清楚我就没法安生。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "aff22f",
-        "origin_day": 7,
-        "pursued_days": 1
+        "satisfies_concern": "e2cd81",
+        "origin_day": 4,
+        "pursued_days": 4
       },
       {
         "target": "唐诗涵",
-        "goal": "找她确认周末剧本杀的丝绒裙装备，再一起刷刷最新的短剧",
-        "reason": "周末恐怖本决不能输，而且刷剧是补充精力的必备环节。",
+        "goal": "和她交换一下最近收到的谷子，顺便聊聊昨天宿舍里的矛盾。",
+        "reason": "宿舍气氛太僵了，我得缓和一下，顺便看看能不能从她那儿再挖点消息。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "802306",
+        "origin_day": 7,
+        "pursued_days": 1
+      },
+      {
+        "target": "陆思远",
+        "goal": "课间去堵他，问问班里最近有没有什么劲爆的八卦。",
+        "reason": "最近情报太滞后了，我得找点新鲜事转移下注意力。",
         "fulfilled": true,
         "abandoned": false,
         "satisfies_concern": null,
@@ -36,100 +36,86 @@
         "pursued_days": 1
       }
     ],
-    "mood_forecast": "excited",
+    "mood_forecast": "frustrated",
     "location_preferences": {
       "morning_break": "教室",
       "lunch": "食堂",
-      "afternoon_break": "走廊"
+      "afternoon_break": "教室"
     }
   },
   "day": 7,
   "active_concerns": [
     {
-      "id": "2eaff3",
-      "text": "周末恐怖本一定要穿那套丝绒裙，绝对不能输给别人！",
-      "source_event": "和唐诗涵讨论奶茶时提到了周末活动",
-      "source_scene": "课间@教室",
-      "source_day": 5,
+      "id": "8aa6eb",
+      "text": "一定要找机会和诗涵好好吐槽那家店的抽奖概率，顺便看看她的限定立牌。",
+      "source_event": "食堂午饭时唐诗涵确认她收到了全套限定立牌。；宿舍夜聊被打断",
+      "source_scene": "午饭@食堂",
+      "source_day": 1,
       "emotion": "excited",
-      "intensity": 4,
+      "intensity": 1,
       "related_people": [
-        "唐诗涵",
-        "苏念瑶"
+        "唐诗涵"
       ],
       "positive": true,
-      "topic": "期待的事",
-      "last_reinforced_day": 7,
-      "last_new_info_day": 5,
-      "reinforcement_count": 1,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 7,
-      "bumps_today": 1
-    },
-    {
-      "id": "c727f6",
-      "text": "沈逸凡的猫猫背景图到底是什么意思？他手机里藏的秘密还没挖出来，总觉得他有什么大瓜。",
-      "source_event": "宿舍夜聊提到沈逸凡的背景图",
-      "source_scene": "",
-      "source_day": 5,
-      "emotion": "curious",
-      "intensity": 2,
-      "related_people": [
-        "沈逸凡"
-      ],
-      "positive": false,
-      "topic": "其他",
+      "topic": "兴趣爱好",
       "last_reinforced_day": 6,
-      "last_new_info_day": 5,
+      "last_new_info_day": 3,
       "reinforcement_count": 0,
-      "text_history": [],
+      "text_history": [
+        "诗涵的限定立牌真的超好看，好想赶紧去宿舍借来看看。"
+      ],
       "id_history": [],
-      "last_bump_day": 7,
+      "last_bump_day": 6,
       "bumps_today": 2
     },
     {
-      "id": "aff22f",
-      "text": "苏念瑶在经过林昭宇座位时表现得不自然，她和林昭宇之间到底有什么秘密？",
-      "source_event": "晚自习苏念瑶去饮水机接水路过林昭宇位置",
-      "source_scene": "",
-      "source_day": 6,
+      "id": "e2cd81",
+      "text": "苏念瑶在食堂提到林昭宇相关话题时表现得非常不自然，她到底在瞒着什么？",
+      "source_event": "食堂里提到林昭宇时苏念瑶的异常反应；食堂与宿舍的对话；12:00 午饭@食堂",
+      "source_scene": "午饭@食堂",
+      "source_day": 3,
       "emotion": "curious",
-      "intensity": 2,
+      "intensity": 9,
       "related_people": [
         "苏念瑶",
         "林昭宇"
       ],
       "positive": false,
-      "topic": "人际矛盾",
+      "topic": "恋爱",
       "last_reinforced_day": 7,
-      "last_new_info_day": 6,
-      "reinforcement_count": 1,
-      "text_history": [],
+      "last_new_info_day": 5,
+      "reinforcement_count": 4,
+      "text_history": [
+        "念瑶是不是真的看上林昭宇了？她刚才反应好大。",
+        "苏念瑶对林昭宇的态度实在太反常了，她到底在隐瞒什么？"
+      ],
       "id_history": [],
       "last_bump_day": 7,
       "bumps_today": 2
     },
     {
-      "id": "83711e",
-      "text": "姜皓天的手机背景照片到底是谁拍的？他一直催奶茶下单，感觉他最近神神秘秘的。",
-      "source_event": "15:30 课间走廊对话",
+      "id": "802306",
+      "text": "苏念瑶对LYU备注的隐瞒已经严重影响了宿舍氛围，如果她一直不肯说实话，我们之间的信任可能会彻底崩塌。",
+      "source_event": "22:00 宿舍夜聊；22:00 宿舍夜聊；22:00 宿舍夜聊",
       "source_scene": "",
-      "source_day": 7,
+      "source_day": 4,
       "emotion": "curious",
-      "intensity": 3,
+      "intensity": 8,
       "related_people": [
-        "姜皓天"
+        "苏念瑶"
       ],
       "positive": false,
-      "topic": "其他",
+      "topic": "人际矛盾",
       "last_reinforced_day": 7,
       "last_new_info_day": 7,
-      "reinforcement_count": 0,
-      "text_history": [],
+      "reinforcement_count": 4,
+      "text_history": [
+        "苏念瑶对LYU这个备注的反应太奇怪了，我一定要搞清楚她到底在瞒着什么。",
+        "苏念瑶在宿舍面对唐诗涵的逼问依然守口如瓶，她到底在瞒着什么，这种被闺蜜排除在外的感觉让我非常不安。"
+      ],
       "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
+      "last_bump_day": 7,
+      "bumps_today": 2
     }
   ]
 }

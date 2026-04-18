@@ -9,17 +9,17 @@
   "emotion_label": "平静",
   "energy_label": "精神还行",
   "pressure_label": "压力不小",
-  "featured_quote": "终于安静了，抓紧时间把逻辑链重新闭合，不能再被这群人打断。",
-  "featured_scene": "10:30 · 上课",
+  "featured_quote": "离上课只有三分钟了。这道动量守恒的题目还没列方程，吵得我根本无法思考。",
+  "featured_scene": "08:45 · 课间",
   "relationships": [
     {
-      "target_name": "林昭宇",
-      "favorability": 0,
-      "trust": 0,
+      "target_name": "陆思远",
+      "favorability": 1,
+      "trust": 1,
       "label_text": "普通同学"
     },
     {
-      "target_name": "陆思远",
+      "target_name": "林昭宇",
       "favorability": 0,
       "trust": 0,
       "label_text": "普通同学"
@@ -33,24 +33,24 @@
   ],
   "memories": [
     {
-      "date": "Day 8",
-      "text": "月考排名迟迟未出，导致学习计划无法推进，内心产生明显的挫败感。",
-      "importance": 6
+      "date": "Day 4",
+      "text": "舍友大半夜还在聊八卦，严重干扰休息。",
+      "importance": 5
     },
     {
-      "date": "Day 6",
-      "text": "早读被方语晨和唐诗涵的闲聊打断，还要处理她们发出的噪音，严重影响了物理错题的演算效率。",
-      "importance": 6
+      "date": "Day 8",
+      "text": "苏念瑶她们一直在旁边吵着买奶茶，严重干扰了力学方程的边界条件推导。",
+      "importance": 4
     }
   ],
   "top_concern": {
-    "text": "月考排名迟迟未发布，无法根据结果评估物理学科的逻辑漏洞，导致复习节奏被打乱。",
+    "text": "力学竞赛进度落后了十分钟，必须补上以维持年级前列的优势。",
     "intensity_label": "中等",
     "positive": false
   },
-  "self_narrative": "班里的隐形人。月考排名还没出，节奏被打乱。整天被噪音包围，效率极低。只有熄灯后那半小时，看《仙路独行》才能喘口气。排名不出的每一秒，都在消耗我的意志。",
+  "self_narrative": "年级前十是底线。苏念瑶总来打扰，解题逻辑太慢。竞赛题没推完，进度落后了。熄灯后的网文是唯一禁区，不能被察觉。父母的期待像空气，压得人喘不过气。我要第一，必须是。",
   "caption_payload": {
-    "caption": "📚 程雨桐 · 第009天 档案\n\n标签：沉默第二名\n此刻心情：平静\n\n「终于安静了，抓紧时间把逻辑链重新闭合，不能再被这群人打断。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "📚 程雨桐 · 第009天 档案\n\n标签：沉默第二名\n此刻心情：平静\n\n「离上课只有三分钟了。这道动量守恒的题目还没列方程，吵得我根本无法思考。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

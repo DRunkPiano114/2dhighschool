@@ -1,37 +1,37 @@
 {
-  "emotion": "calm",
+  "emotion": "anxious",
   "energy": 85,
   "academic_pressure": 50,
   "location": "教室",
   "daily_plan": {
     "intentions": [
       {
-        "target": "英语作业",
-        "goal": "把那几篇阅读理解错题订正好，省得心里一直悬着",
-        "reason": "老拖着也不是办法，怕妈又要查智学网，看到成绩不好又要念叨很久。",
-        "fulfilled": false,
-        "abandoned": false,
-        "satisfies_concern": "9b432b",
-        "origin_day": 2,
-        "pursued_days": 1
-      },
-      {
         "target": "陆思远",
-        "goal": "找他借一下笔记，顺便问问他周末有没有空再一起去图书馆",
-        "reason": "一个人待着容易瞎想，有他在旁边安安静静刷题，心里踏实点。",
+        "goal": "向陆思远请教英语阅读理解的解题技巧",
+        "reason": "英语成绩一直拖后腿，怕月考不行被妈妈骂，找陆思远请教比较放心。",
         "fulfilled": true,
         "abandoned": false,
-        "satisfies_concern": null,
+        "satisfies_concern": "f53193",
         "origin_day": 2,
         "pursued_days": 1
       },
       {
-        "target": "网易云音乐",
-        "goal": "听听许嵩的新歌，放松一下",
-        "reason": "最近压力太大了，想稍微喘口气，听歌的时候能让自己静下来。",
+        "target": null,
+        "goal": "把那套英语卷子的错题整理出来",
+        "reason": "一直拖着也不是办法，得硬着头皮做一下，不然心里老是悬着。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": null,
+        "satisfies_concern": "f53193",
+        "origin_day": 2,
+        "pursued_days": 1
+      },
+      {
+        "target": "沈逸凡",
+        "goal": "观察沈逸凡和别人说话的样子，确认他是不是真的觉得我笨",
+        "reason": "他那个态度让我很不舒服，还是想弄清楚他到底什么意思，省得自己乱猜。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "991b64",
         "origin_day": 2,
         "pursued_days": 1
       }
@@ -39,34 +39,76 @@
     "mood_forecast": "anxious",
     "location_preferences": {
       "morning_break": "教室",
-      "lunch": "教室",
+      "lunch": "食堂",
       "afternoon_break": "图书馆"
     }
   },
   "day": 2,
   "active_concerns": [
     {
-      "id": "9b432b",
-      "text": "英语阅读理解错题尚未完全订正，担心母亲查阅智学网成绩后再次施压。",
-      "source_event": "全天学习计划未完成；全天学习过程",
+      "id": "991b64",
+      "text": "沈逸凡在宿舍对姜皓天的态度很强硬，我不确定他平时那种冷淡的态度是不是也针对我，总觉得他看我不顺眼。",
+      "source_event": "沈逸凡当众催促英语卷子订正；宿舍夜聊",
+      "source_scene": "课间@教室",
+      "source_day": 1,
+      "emotion": "anxious",
+      "intensity": 3,
+      "related_people": [
+        "沈逸凡"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 2,
+      "reinforcement_count": 1,
+      "text_history": [
+        "沈逸凡刚才说话的态度，难道他觉得我很笨吗？"
+      ],
+      "id_history": [],
+      "last_bump_day": 2,
+      "bumps_today": 1
+    },
+    {
+      "id": "44316c",
+      "text": "周五晚上的王者局，希望能赢一把放松一下",
+      "source_event": "陆思远提到了周五打游戏的事",
+      "source_scene": "课间@图书馆",
+      "source_day": 1,
+      "emotion": "excited",
+      "intensity": 2,
+      "related_people": [
+        "陆思远"
+      ],
+      "positive": true,
+      "topic": "期待的事",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "f53193",
+      "text": "英语错题整理一直拖着没做，担心下次月考成绩不理想会被母亲责备。",
+      "source_event": "全天学习过程",
       "source_scene": "",
       "source_day": 1,
       "emotion": "anxious",
-      "intensity": 5,
+      "intensity": 2,
       "related_people": [
         "母亲"
       ],
       "positive": false,
       "topic": "学业焦虑",
       "last_reinforced_day": 2,
-      "last_new_info_day": 2,
-      "reinforcement_count": 2,
-      "text_history": [
-        "英语阅读理解错题未订正，担心成绩拖后腿导致母亲再次施压。"
-      ],
+      "last_new_info_day": 1,
+      "reinforcement_count": 1,
+      "text_history": [],
       "id_history": [],
       "last_bump_day": 2,
-      "bumps_today": 2
+      "bumps_today": 1
     }
   ]
 }

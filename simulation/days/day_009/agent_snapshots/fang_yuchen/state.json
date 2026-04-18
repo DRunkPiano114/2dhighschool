@@ -6,29 +6,29 @@
   "daily_plan": {
     "intentions": [
       {
-        "target": "姜皓天",
-        "goal": "假装问他奶茶拼单的事，顺便瞄一眼他手机屏保是不是猫猫图",
-        "reason": "他最近手机神神秘秘的，这事儿不搞清楚我心里真的难受，必须确认一下他到底在搞什么鬼。",
-        "fulfilled": false,
-        "abandoned": false,
-        "satisfies_concern": "e88a6c",
-        "origin_day": 9,
-        "pursued_days": 1
-      },
-      {
         "target": "苏念瑶",
-        "goal": "午饭时试探她和林昭宇最近到底在搞什么鬼",
-        "reason": "她俩之间那个氛围太奇怪了，肯定有什么秘密瞒着我，我得问出来。",
+        "goal": "找个没人的机会问问林昭宇的事，尽量语气软一点，不让她炸毛",
+        "reason": "老是这么僵着也不是办法，我想知道她到底瞒着什么，心里总是不踏实",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "b93fe3",
-        "origin_day": 9,
-        "pursued_days": 1
+        "satisfies_concern": "e2cd81",
+        "origin_day": 4,
+        "pursued_days": 6
       },
       {
         "target": "唐诗涵",
-        "goal": "拉着她一起刷一下新出的谷子预览图，缓解一下烦躁心情",
-        "reason": "今天心情有点闷，看看新出的立牌心情会好一点，顺便放松一下。",
+        "goal": "带上我新收的立牌找她聊聊，把昨晚紧张的气氛缓解一下",
+        "reason": "昨晚宿舍气氛太差了，我得把关系缓和回来，毕竟还要一起住",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "802306",
+        "origin_day": 7,
+        "pursued_days": 3
+      },
+      {
+        "target": null,
+        "goal": "去小卖部买点零食，顺便看看有没有新出的饮料",
+        "reason": "心情有点烦，吃点好吃的能缓解一下焦虑",
         "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
@@ -36,79 +36,64 @@
         "pursued_days": 1
       }
     ],
-    "mood_forecast": "frustrated",
+    "mood_forecast": "anxious",
     "location_preferences": {
       "morning_break": "走廊",
-      "lunch": "教室",
-      "afternoon_break": "教室"
+      "lunch": "食堂",
+      "afternoon_break": "小卖部"
     }
   },
   "day": 9,
   "active_concerns": [
     {
-      "id": "e88a6c",
-      "text": "姜皓天到底有没有转奶茶钱，而且他最近手机神神秘秘的，一定要找机会看一眼他屏保是不是那个猫猫图。",
-      "source_event": "课间寻找姜皓天未果",
-      "source_scene": "",
-      "source_day": 8,
-      "emotion": "frustrated",
-      "intensity": 1,
-      "related_people": [
-        "姜皓天"
-      ],
-      "positive": false,
-      "topic": "其他",
-      "last_reinforced_day": 8,
-      "last_new_info_day": 8,
-      "reinforcement_count": 0,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 9,
-      "bumps_today": 2
-    },
-    {
-      "id": "b93fe3",
-      "text": "苏念瑶和林昭宇到底是什么情况，总觉得她瞒着我什么，下次一定要问清楚。",
-      "source_event": "宿舍夜聊提到林昭宇",
-      "source_scene": "",
-      "source_day": 8,
+      "id": "e2cd81",
+      "text": "苏念瑶在食堂提到林昭宇相关话题时表现得非常不自然，她到底在瞒着什么？",
+      "source_event": "食堂里提到林昭宇时苏念瑶的异常反应；食堂与宿舍的对话；12:00 午饭@食堂",
+      "source_scene": "午饭@食堂",
+      "source_day": 3,
       "emotion": "curious",
-      "intensity": 4,
+      "intensity": 7,
       "related_people": [
         "苏念瑶",
         "林昭宇"
       ],
       "positive": false,
       "topic": "恋爱",
-      "last_reinforced_day": 9,
-      "last_new_info_day": 8,
-      "reinforcement_count": 1,
-      "text_history": [],
+      "last_reinforced_day": 8,
+      "last_new_info_day": 5,
+      "reinforcement_count": 3,
+      "text_history": [
+        "念瑶是不是真的看上林昭宇了？她刚才反应好大。",
+        "苏念瑶对林昭宇的态度实在太反常了，她到底在隐瞒什么？"
+      ],
       "id_history": [],
-      "last_bump_day": 9,
+      "last_bump_day": 8,
       "bumps_today": 2
     },
     {
-      "id": "27d166",
-      "text": "苏念瑶和唐诗涵在宿舍对我保持沉默，她们是不是在瞒着我什么？",
-      "source_event": "22:00 宿舍夜聊",
+      "id": "802306",
+      "text": "苏念瑶到底在隐瞒什么？她对林昭宇身份的遮掩让我们的关系变得异常紧绷，这种不信任感让我非常不安。",
+      "source_event": "22:00 宿舍夜聊；22:00 宿舍夜聊；22:00 宿舍夜聊；22:00 宿舍夜聊；宿舍夜聊",
       "source_scene": "",
-      "source_day": 9,
-      "emotion": "frustrated",
-      "intensity": 6,
+      "source_day": 4,
+      "emotion": "curious",
+      "intensity": 7,
       "related_people": [
-        "苏念瑶",
-        "唐诗涵"
+        "苏念瑶"
       ],
       "positive": false,
       "topic": "人际矛盾",
       "last_reinforced_day": 9,
       "last_new_info_day": 9,
-      "reinforcement_count": 0,
-      "text_history": [],
+      "reinforcement_count": 4,
+      "text_history": [
+        "苏念瑶在宿舍面对唐诗涵的逼问依然守口如瓶，她到底在瞒着什么，这种被闺蜜排除在外的感觉让我非常不安。",
+        "苏念瑶对LYU备注的隐瞒已经严重影响了宿舍氛围，如果她一直不肯说实话，我们之间的信任可能会彻底崩塌。",
+        "苏念瑶在宿舍面对唐诗涵的质问时表现出的极度回避，让我怀疑我们之间的信任是否已经彻底破裂。"
+      ],
       "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
+      "last_bump_day": 9,
+      "bumps_today": 2
     }
   ]
 }

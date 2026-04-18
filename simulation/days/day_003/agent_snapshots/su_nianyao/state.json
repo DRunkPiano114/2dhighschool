@@ -1,44 +1,44 @@
 {
-  "emotion": "calm",
+  "emotion": "anxious",
   "energy": 85,
   "academic_pressure": 30,
   "location": "教室",
   "daily_plan": {
     "intentions": [
       {
-        "target": "林昭宇",
-        "goal": "去接水时路过他的座位，顺便看一眼他在干嘛",
-        "reason": "昨天没能成行，今天想确认一下他是不是还在听那首歌",
+        "target": "方语晨",
+        "goal": "和方语晨聊八卦，顺便打听林昭宇最近竞赛的情况",
+        "reason": "林昭宇最近总在忙竞赛，感觉和他距离变远了，心里不太踏实，想知道他到底在搞什么。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": null,
+        "satisfies_concern": "bdfb98",
         "origin_day": 3,
         "pursued_days": 1
       },
       {
-        "target": "方语晨",
-        "goal": "在午休时和方语晨聊聊周末恐怖本的组队情况",
-        "reason": "有点担心被队友坑，先通个气比较安心",
-        "fulfilled": true,
+        "target": "数学错题本",
+        "goal": "把数学错题本整理一遍",
+        "reason": "再不整理物理和数学就要跟不上了，这种瓶颈感让我很焦虑，必须得动笔了。",
+        "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "2ebd9e",
+        "satisfies_concern": "f11d4d",
         "origin_day": 3,
         "pursued_days": 1
       },
       {
-        "target": null,
-        "goal": "在LOFTER上更新一小段关于秋天的随笔",
-        "reason": "写出满意的句子能让我心情变好，缓解一点学习压力",
-        "fulfilled": true,
+        "target": "图书馆",
+        "goal": "去图书馆借一本新书",
+        "reason": "最近心情有点闷，想找本喜欢的书换换脑子，找点灵感。",
+        "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
         "origin_day": 3,
         "pursued_days": 1
       }
     ],
-    "mood_forecast": "calm",
+    "mood_forecast": "neutral",
     "location_preferences": {
-      "morning_break": "走廊",
+      "morning_break": "教室",
       "lunch": "食堂",
       "afternoon_break": "图书馆"
     }
@@ -46,49 +46,47 @@
   "day": 3,
   "active_concerns": [
     {
-      "id": "2ebd9e",
-      "text": "周末和朋友们去玩恐怖本，希望能顺利通关并享受过程。",
-      "source_event": "和方语晨、唐诗涵约定周末去玩恐怖本；食堂午饭时关于《深渊录》的讨论",
-      "source_scene": "午饭@食堂",
+      "id": "bdfb98",
+      "text": "方语晨已经察觉到我对林昭宇的关注，担心这种隐秘的情感被更多人发现或被林昭宇本人察觉。",
+      "source_event": "宿舍夜聊；食堂午餐时的对话",
+      "source_scene": "",
       "source_day": 2,
-      "emotion": "anxious",
-      "intensity": 2,
+      "emotion": "frustrated",
+      "intensity": 6,
       "related_people": [
-        "方语晨",
-        "唐诗涵"
+        "林昭宇",
+        "方语晨"
       ],
       "positive": false,
-      "topic": "期待的事",
-      "last_reinforced_day": 3,
-      "last_new_info_day": 2,
-      "reinforcement_count": 1,
-      "text_history": [
-        "周末去玩恐怖本，千万别被那两个坑了。"
-      ],
-      "id_history": [],
-      "last_bump_day": 3,
-      "bumps_today": 1
-    },
-    {
-      "id": "7d8a16",
-      "text": "想路过林昭宇的座位看他是否还在听那首歌，但今天没能找到合适的机会。",
-      "source_event": "路过座位观察",
-      "source_scene": "",
-      "source_day": 3,
-      "emotion": "curious",
-      "intensity": 4,
-      "related_people": [
-        "林昭宇"
-      ],
-      "positive": true,
       "topic": "恋爱",
       "last_reinforced_day": 3,
       "last_new_info_day": 3,
-      "reinforcement_count": 0,
+      "reinforcement_count": 3,
+      "text_history": [
+        "林昭宇忙于竞赛的事实让我感到不安，担心这会影响我们之间的联系。"
+      ],
+      "id_history": [],
+      "last_bump_day": 3,
+      "bumps_today": 2
+    },
+    {
+      "id": "f31d4d",
+      "text": "数学错题本迟迟未整理，担心物理和数学的学习陷入瓶颈。",
+      "source_event": "课间借阅纠错本",
+      "source_scene": "",
+      "source_day": 2,
+      "emotion": "anxious",
+      "intensity": 5,
+      "related_people": [],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 3,
+      "last_new_info_day": 2,
+      "reinforcement_count": 1,
       "text_history": [],
       "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
+      "last_bump_day": 3,
+      "bumps_today": 2
     }
   ]
 }

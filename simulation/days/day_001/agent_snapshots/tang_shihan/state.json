@@ -7,8 +7,8 @@
     "intentions": [
       {
         "target": "林昭宇",
-        "goal": "找个借口问他物理题，看看能不能让他多说两句",
-        "reason": "老是看他一个人闷着，想跟他熟一点，不然坐在一起太尴尬了",
+        "goal": "尝试和他聊聊昨天的物理作业，看能不能让他多说几句",
+        "reason": "老是看他闷着太没意思了，我想看看能不能跟他混熟点，毕竟是同桌。",
         "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
@@ -17,8 +17,8 @@
       },
       {
         "target": "方语晨",
-        "goal": "去买杯新品奶茶，顺便跟方语晨吐槽一下最近的作业",
-        "reason": "喝奶茶心情会好点，而且最近作业多到离谱，找人吐槽下才不会憋坏",
+        "goal": "去小卖部买奶茶顺便聊聊最近追的剧",
+        "reason": "忙了一上午脑子都木了，喝口奶茶回回血，顺便跟方语晨吐槽下剧情。",
         "fulfilled": true,
         "abandoned": false,
         "satisfies_concern": null,
@@ -27,9 +27,9 @@
       },
       {
         "target": "自己",
-        "goal": "在小红书发个学习日常，希望能多几个赞",
-        "reason": "最近感觉压力有点大，看到别人点赞会觉得有人在支持我，心里踏实点",
-        "fulfilled": false,
+        "goal": "晚自习前强迫自己刷两道英语题",
+        "reason": "虽然很想刷八卦，但一本的目标还是得顾着点，不然我妈又要念叨了。",
+        "fulfilled": true,
         "abandoned": false,
         "satisfies_concern": null,
         "origin_day": 1,
@@ -46,82 +46,18 @@
   "day": 1,
   "active_concerns": [
     {
-      "id": "04e80d",
-      "text": "林昭宇是不是烦我了，以后还是别老去打扰他吧。",
-      "source_event": "林昭宇连续两次推脱我的物理题求助",
-      "source_scene": "课间@教室",
-      "source_day": 1,
-      "emotion": "anxious",
-      "intensity": 6,
-      "related_people": [
-        "林昭宇"
-      ],
-      "positive": false,
-      "topic": "人际矛盾",
-      "last_reinforced_day": 1,
-      "last_new_info_day": 1,
-      "reinforcement_count": 0,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
-    },
-    {
-      "id": "7a8fcc",
-      "text": "给我的蛋仔配一套超级好看的娃衣",
-      "source_event": "看到方语晨的娃衣觉得太萌了",
-      "source_scene": "午饭@食堂",
-      "source_day": 1,
-      "emotion": "excited",
-      "intensity": 5,
-      "related_people": [
-        "方语晨"
-      ],
-      "positive": true,
-      "topic": "兴趣爱好",
-      "last_reinforced_day": 1,
-      "last_new_info_day": 1,
-      "reinforcement_count": 1,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 1,
-      "bumps_today": 1
-    },
-    {
-      "id": "01b45a",
-      "text": "明天还得早起，希望寝室气氛能好一点。",
-      "source_event": "宿舍里关于关灯和睡觉的争执",
-      "source_scene": "宿舍夜聊",
-      "source_day": 1,
-      "emotion": "anxious",
-      "intensity": 3,
-      "related_people": [
-        "程雨桐",
-        "苏念瑶"
-      ],
-      "positive": false,
-      "topic": "其他",
-      "last_reinforced_day": 1,
-      "last_new_info_day": 1,
-      "reinforcement_count": 0,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
-    },
-    {
-      "id": "d123bb",
-      "text": "想找机会和林昭宇一起玩王者荣耀，感觉他玩游戏应该很厉害。",
-      "source_event": "15:30 课间@小卖部",
+      "id": "0b892f",
+      "text": "林昭宇总是闷闷的，想找机会跟他多聊聊天，看看能不能混熟。",
+      "source_event": "课间询问物理题被冷落",
       "source_scene": "",
       "source_day": 1,
-      "emotion": "excited",
-      "intensity": 4,
+      "emotion": "curious",
+      "intensity": 3,
       "related_people": [
         "林昭宇"
       ],
       "positive": true,
-      "topic": "兴趣爱好",
+      "topic": "人际矛盾",
       "last_reinforced_day": 1,
       "last_new_info_day": 1,
       "reinforcement_count": 0,

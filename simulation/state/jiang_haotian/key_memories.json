@@ -4,109 +4,85 @@
       "date": "Day 1",
       "day": 1,
       "people": [
-        "沈逸凡"
+        "何家骏"
       ],
       "location": "教室",
-      "emotion": "bored",
-      "importance": 6,
+      "emotion": "touched",
+      "importance": 5,
       "topics": [
-        "人际矛盾"
+        "兴趣爱好"
       ],
-      "text": "沈逸凡那死样子，整天就知道拿纪律压人，真把自己当盘菜了。",
+      "text": "何家骏这小子看起来没睡好，约了他下午打球，希望能让他开心点。",
       "source_days": [
-        2,
-        5,
-        6
+        3,
+        5
       ],
       "text_history": [
-        "沈逸凡那家伙又在课上压我，真把自己当盘菜了，烦死。",
-        "沈逸凡又跑来操场晃悠，拿老师压我，真把自己当盘菜了。",
-        "沈逸凡那死样子，又在食堂当众拿班主任压人，真当自己是个人物了。"
+        "何家骏这小子居然笑了，看来下午打球能带他放松下。",
+        "拉着何家骏去操场打球，这小子护着他的破鞋生怕弄坏了，笑死。"
       ]
     },
     {
       "date": "Day 1",
       "day": 1,
       "people": [
-        "陆思远"
+        "沈逸凡"
       ],
       "location": "宿舍",
-      "emotion": "bored",
-      "importance": 4,
-      "topics": [
-        "未来规划"
-      ],
-      "text": "想跟陆思远正经聊聊未来，结果他一直装睡，真没劲。",
-      "source_days": [],
-      "text_history": []
-    },
-    {
-      "date": "Day 2",
-      "day": 2,
-      "people": [
-        "何家骏"
-      ],
-      "location": "食堂",
-      "emotion": "happy",
-      "importance": 5,
-      "topics": [
-        "兴趣爱好"
-      ],
-      "text": "约了何家骏晚上开黑，这小子答应得挺痛快，看他吃饭那劲儿，估计憋坏了。",
-      "source_days": [
-        8
-      ],
-      "text_history": [
-        "何家骏这小子居然主动问我王者段位，看来是真的憋坏了，晚上带他飞一把。"
-      ]
-    },
-    {
-      "date": "Day 3",
-      "day": 3,
-      "people": [
-        "沈逸凡",
-        "陆思远"
-      ],
-      "location": "食堂",
-      "emotion": "frustrated",
-      "importance": 5,
-      "topics": [
-        "人际矛盾"
-      ],
-      "text": "沈逸凡那家伙又在图书馆话题上把陆思远拉走了，真烦人。",
-      "source_days": [
-        3,
-        7
-      ],
-      "text_history": [
-        "大晚上想找陆思远聊两句，沈逸凡那家伙又在那儿摆班长架子，烦死了。",
-        "熄灯后想找陆思远唠嗑又被沈逸凡那个管家婆打断了，气得我够呛。"
-      ]
-    },
-    {
-      "date": "Day 4",
-      "day": 4,
-      "people": [
-        "沈逸凡",
-        "何家骏"
-      ],
-      "location": "操场",
       "emotion": "frustrated",
       "importance": 6,
       "topics": [
         "人际矛盾"
       ],
-      "text": "在操场被沈逸凡当众要求收起手机，我用肩膀撞了他并威胁要抠出眼珠。",
+      "text": "沈逸凡这死班长又在宿舍盯着我不放，真烦人。",
       "source_days": [
-        4
+        2,
+        4,
+        6
       ],
       "text_history": [
-        "沈逸凡这死班长又在操场上拿纪律压我和家骏，真把自己当盘菜了。"
+        "大晚上被沈逸凡这死班长盯着不让说话，还让我明早跑十圈，烦死了。",
+        "沈逸凡这死班长又在宿舍盯着我，烦死，非要搞得这么僵。",
+        "沈逸凡这死班长又在宿舍盯着我不放，烦死，非要搞得这么僵。"
       ]
     },
     {
-      "date": "Day 6",
-      "day": 6,
+      "date": "Day 2",
+      "day": 2,
+      "people": [
+        "何家骏",
+        "陆思远",
+        "林昭宇"
+      ],
+      "location": "食堂",
+      "emotion": "calm",
+      "importance": 4,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "食堂里这帮人一个个跟躲瘟神似的躲着我，何家骏这小子倒是听话，待会儿体育课有戏。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 3",
+      "day": 3,
+      "people": [
+        "陆思远"
+      ],
+      "location": "宿舍",
+      "emotion": "frustrated",
+      "importance": 6,
+      "topics": [
+        "家庭压力"
+      ],
+      "text": "在宿舍夜聊时试探陆思远关于原材料价格和生意情况，但被对方以物理任务繁重为由拒绝交流。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 4",
+      "day": 4,
       "people": [
         "沈逸凡"
       ],
@@ -116,42 +92,68 @@
       "topics": [
         "人际矛盾"
       ],
-      "text": "熄灯了还被沈逸凡盯着管，这日子简直没法过，烦死了。",
+      "text": "晚自习在宿舍与沈逸凡因为玩手机发生激烈争吵，最终被迫关机。",
       "source_days": [],
       "text_history": []
     },
     {
-      "date": "Day 7",
-      "day": 7,
+      "date": "Day 5",
+      "day": 5,
       "people": [
-        "何家骏"
+        "陆思远"
       ],
-      "location": "教室",
+      "location": "宿舍",
       "emotion": "frustrated",
-      "importance": 5,
+      "importance": 6,
       "topics": [
         "人际矛盾",
-        "学业焦虑"
+        "家庭压力"
       ],
-      "text": "何家骏这小子为了写那个破错题本，连球都不肯跟我打，被何老师管得跟什么一样。",
-      "source_days": [],
-      "text_history": []
+      "text": "问了陆思远家里的生意，这小子居然装睡躲着我，肯定有鬼。",
+      "source_days": [
+        8
+      ],
+      "text_history": [
+        "陆思远这小子在食堂装傻躲我，肯定有猫腻。"
+      ]
+    },
+    {
+      "date": "Day 6",
+      "day": 6,
+      "people": [
+        "陆思远"
+      ],
+      "location": "操场",
+      "emotion": "frustrated",
+      "importance": 6,
+      "topics": [
+        "家庭压力"
+      ],
+      "text": "陆思远跑得飞快，一问家里生意就装傻，肯定有猫腻。",
+      "source_days": [
+        7,
+        9
+      ],
+      "text_history": [
+        "陆思远这小子又跟我装睡，问他家里工厂的事半天憋不出个屁来，肯定有鬼。",
+        "在宿舍直接询问陆思远关于工厂的情况，但他再次通过装睡回避了我的问题。",
+        "陆思远这小子又在我面前装睡，问他家工厂的事半天憋不出个屁，肯定有鬼。"
+      ]
     },
     {
       "date": "Day 8",
       "day": 8,
       "people": [
-        "沈逸凡",
-        "苏念瑶"
+        "陆思远",
+        "沈逸凡"
       ],
-      "location": "操场",
-      "emotion": "proud",
-      "importance": 5,
+      "location": "宿舍",
+      "emotion": "frustrated",
+      "importance": 6,
       "topics": [
-        "人际矛盾",
-        "兴趣爱好"
+        "人际矛盾"
       ],
-      "text": "在操场当面怼了沈逸凡，投了个三分球，苏念瑶夸我厉害。",
+      "text": "大半夜的陆思远装死不理我，沈逸凡还在那儿在那儿叨叨，烦死了。",
       "source_days": [],
       "text_history": []
     },
@@ -159,31 +161,47 @@
       "date": "Day 9",
       "day": 9,
       "people": [
-        "陆思远",
-        "林昭宇"
+        "何家骏"
       ],
-      "location": "食堂",
-      "emotion": "frustrated",
-      "importance": 5,
-      "topics": [
-        "人际矛盾",
-        "未来规划"
-      ],
-      "text": "食堂想找陆思远聊聊未来又被他和林昭宇无视了，这俩人真特么能装。",
-      "source_days": [],
-      "text_history": []
-    },
-    {
-      "date": "Day 9",
-      "day": 9,
-      "people": [],
       "location": "操场",
       "emotion": "proud",
       "importance": 5,
       "topics": [
         "兴趣爱好"
       ],
-      "text": "课间在操场投进个漂亮的三分球，感觉爽翻了。",
+      "text": "带何家骏打球，这小子居然投进个空接，可以啊！",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 10",
+      "day": 10,
+      "people": [
+        "陆思远"
+      ],
+      "location": "宿舍",
+      "emotion": "frustrated",
+      "importance": 8,
+      "topics": [
+        "家庭压力"
+      ],
+      "text": "陆思远这小子又装睡，工厂的事儿肯定有问题，烦死了。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 10",
+      "day": 10,
+      "people": [
+        "何家骏"
+      ],
+      "location": "操场",
+      "emotion": "excited",
+      "importance": 5,
+      "topics": [
+        "兴趣爱好"
+      ],
+      "text": "在操场指导何家骏进行转身上篮练习，并决定以后多带他打球。",
       "source_days": [],
       "text_history": []
     }

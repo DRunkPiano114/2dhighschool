@@ -4,17 +4,23 @@
       "date": "Day 1",
       "day": 1,
       "people": [
-        "林昭宇"
+        "林昭宇",
+        "陆思远"
       ],
       "location": "教室",
       "emotion": "frustrated",
       "importance": 4,
       "topics": [
-        "人际矛盾"
+        "人际矛盾",
+        "学业焦虑"
       ],
-      "text": "林昭宇一直躲着我，问个题都推三阻四的，真没劲。",
-      "source_days": [],
-      "text_history": []
+      "text": "想找林昭宇聊物理，结果他光顾着和陆思远讨论，理都不理我，离谱。",
+      "source_days": [
+        2
+      ],
+      "text_history": [
+        "想找林昭宇聊物理，他却只顾着和陆思远讨论，理都不理我，离谱。"
+      ]
     },
     {
       "date": "Day 1",
@@ -23,21 +29,24 @@
         "方语晨"
       ],
       "location": "食堂",
-      "emotion": "excited",
+      "emotion": "happy",
       "importance": 4,
       "topics": [
         "兴趣爱好"
       ],
-      "text": "和方语晨聊谷子娃衣，她那套针脚超精致，我也想给蛋仔搞一套",
-      "source_days": [],
-      "text_history": []
+      "text": "方语晨一直跟我聊那个电视剧，最后还问我限定立牌的事，虽然有点吵但确实是好姐妹。",
+      "source_days": [
+        2
+      ],
+      "text_history": [
+        "吃完饭准备回宿舍给语晨看我的限定立牌，她好像很期待。"
+      ]
     },
     {
-      "date": "Day 2",
-      "day": 2,
+      "date": "Day 3",
+      "day": 3,
       "people": [
-        "林昭宇",
-        "陆思远"
+        "林昭宇"
       ],
       "location": "教室",
       "emotion": "frustrated",
@@ -45,135 +54,83 @@
       "topics": [
         "人际矛盾"
       ],
-      "text": "林昭宇又躲着我跟陆思远讨论物理，理都不理我一下，真没意思。",
-      "source_days": [],
-      "text_history": []
-    },
-    {
-      "date": "Day 2",
-      "day": 2,
-      "people": [
-        "方语晨",
-        "苏念瑶"
-      ],
-      "location": "食堂",
-      "emotion": "excited",
-      "importance": 5,
-      "topics": [
-        "期待的事",
-        "兴趣爱好"
-      ],
-      "text": "和方语晨、苏念瑶约好周末去玩恐怖本《深渊录》，还要一起去买零食和奶茶，超期待！",
+      "text": "林昭宇又找借口去图书馆，根本不想理我的语法题，离谱。",
       "source_days": [],
       "text_history": []
     },
     {
       "date": "Day 3",
       "day": 3,
-      "people": [
-        "方语晨"
-      ],
-      "location": "教室",
-      "emotion": "excited",
-      "importance": 4,
-      "topics": [
-        "兴趣爱好"
-      ],
-      "text": "和方语晨抢到了心仪的限定立牌，超开心！回头要给它拍ins风大片。",
-      "source_days": [],
-      "text_history": []
-    },
-    {
-      "date": "Day 3",
-      "day": 3,
-      "people": [
-        "方语晨",
-        "苏念瑶",
-        "沈逸凡"
-      ],
-      "location": "食堂",
-      "emotion": "curious",
-      "importance": 4,
-      "topics": [
-        "人际矛盾"
-      ],
-      "text": "方语晨八卦沈逸凡脱单，苏念瑶反应超奇怪，肯定有猫腻。",
-      "source_days": [],
-      "text_history": []
-    },
-    {
-      "date": "Day 4",
-      "day": 4,
-      "people": [
-        "林昭宇",
-        "沈逸凡",
-        "陆思远"
-      ],
-      "location": "教室",
-      "emotion": "frustrated",
-      "importance": 5,
-      "topics": [
-        "学业焦虑",
-        "人际矛盾"
-      ],
-      "text": "想找林昭宇问物理题，结果他敷衍我，还和沈逸凡陆思远聊图书馆的事。",
-      "source_days": [],
-      "text_history": []
-    },
-    {
-      "date": "Day 4",
-      "day": 4,
-      "people": [
-        "苏念瑶",
-        "沈逸凡"
-      ],
-      "location": "食堂",
-      "emotion": "curious",
-      "importance": 5,
-      "topics": [
-        "人际矛盾"
-      ],
-      "text": "苏念瑶在沈逸凡的话题上闪烁其词，肯定有大瓜，星期五一定要挖出来。",
-      "source_days": [],
-      "text_history": []
-    },
-    {
-      "date": "Day 5",
-      "day": 5,
       "people": [
         "苏念瑶",
         "林昭宇"
       ],
-      "location": "教室",
+      "location": "食堂",
       "emotion": "curious",
       "importance": 7,
       "topics": [
         "人际矛盾"
       ],
-      "text": "苏念瑶在聊八卦时居然往林昭宇那边看，肯定有情况！",
+      "text": "苏念瑶被问到林昭宇时脸红了，看来她真有点情况",
       "source_days": [
-        6,
-        8
+        5,
+        7
       ],
       "text_history": [
-        "苏念瑶接水的时候特意往林昭宇那边看，这俩人肯定有事，离谱。",
-        "在宿舍熄灯后，苏念瑶提起林昭宇，让我确认了她们之间确实有对我隐瞒的互动。"
+        "念瑶反应也太大了，一问林昭宇就躲，这瓜绝对熟透了。",
+        "在宿舍夜聊中，我因苏念瑶对LYU备注的隐瞒而与其发生争执，并威胁会直接去问林昭宇。"
       ]
+    },
+    {
+      "date": "Day 4",
+      "day": 4,
+      "people": [
+        "方语晨",
+        "苏念瑶",
+        "林昭宇"
+      ],
+      "location": "教室",
+      "emotion": "curious",
+      "importance": 6,
+      "topics": [
+        "人际矛盾",
+        "恋爱"
+      ],
+      "text": "方语晨和苏念瑶背着我聊八卦，还提到了林昭宇，肯定有猫腻。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 4",
+      "day": 4,
+      "people": [
+        "苏念瑶",
+        "方语晨"
+      ],
+      "location": "宿舍",
+      "emotion": "excited",
+      "importance": 6,
+      "topics": [
+        "恋爱"
+      ],
+      "text": "语晨居然发现苏念瑶手机备注是LYU，这缩写简直就是林昭宇啊，这个瓜没跑了！",
+      "source_days": [],
+      "text_history": []
     },
     {
       "date": "Day 5",
       "day": 5,
       "people": [
-        "方语晨"
+        "苏念瑶"
       ],
-      "location": "教室",
-      "emotion": "happy",
-      "importance": 4,
+      "location": "食堂",
+      "emotion": "excited",
+      "importance": 6,
       "topics": [
-        "期待的事",
+        "恋爱",
         "人际矛盾"
       ],
-      "text": "方语晨请我喝奶茶，果然还是闺蜜最给力，心情瞬间满血复活！",
+      "text": "苏念瑶耳朵红得离谱，还在死鸭子嘴硬不肯承认LYU就是林昭宇，肯定有鬼。",
       "source_days": [],
       "text_history": []
     },
@@ -181,7 +138,45 @@
       "date": "Day 6",
       "day": 6,
       "people": [
-        "方语晨",
+        "苏念瑶",
+        "方语晨"
+      ],
+      "location": "宿舍",
+      "emotion": "frustrated",
+      "importance": 6,
+      "topics": [
+        "人际矛盾",
+        "恋爱"
+      ],
+      "text": "在宿舍夜聊时直接向苏念瑶摊牌询问LYU的身份，并试图用公开备注作为要挟，但被对方无视。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 6",
+      "day": 6,
+      "people": [
+        "苏念瑶",
+        "方语晨"
+      ],
+      "location": "教室",
+      "emotion": "curious",
+      "importance": 6,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "念瑶手机响了死活不看，方语晨去买奶茶了，我感觉她俩肯定有秘密瞒着我。",
+      "source_days": [
+        7
+      ],
+      "text_history": [
+        "苏念瑶和方语晨神神秘秘的，买个奶茶还要搞什么大计划，肯定有鬼。"
+      ]
+    },
+    {
+      "date": "Day 8",
+      "day": 8,
+      "people": [
         "苏念瑶"
       ],
       "location": "教室",
@@ -190,33 +185,28 @@
       "topics": [
         "人际矛盾"
       ],
-      "text": "方语晨和苏念瑶当着我的面传纸条，还在上课搞小动作，明显有事瞒着我。",
+      "text": "苏念瑶为了封口竟然提出请喝奶茶，这招也太明显了，肯定有鬼！",
       "source_days": [
-        7,
-        8,
         9
       ],
       "text_history": [
-        "方语晨和苏念瑶当着我的面又搞小动作，问也不说，真的离谱。",
-        "方语晨和苏念瑶在晚自习传纸条还要借作业，完全无视我，真的离谱。",
-        "方语晨和苏念瑶当着我的面讨论吧唧，完全无视我的存在，真的离谱。"
+        "苏念瑶在食堂为了避开LYU的话题，连饭都不吃就跑去图书馆了，简直做贼心虚。"
       ]
     },
     {
-      "date": "Day 7",
-      "day": 7,
+      "date": "Day 8",
+      "day": 8,
       "people": [
         "苏念瑶",
-        "方语晨",
-        "林昭宇"
+        "方语晨"
       ],
-      "location": "食堂",
+      "location": "教室",
       "emotion": "frustrated",
       "importance": 6,
       "topics": [
         "人际矛盾"
       ],
-      "text": "食堂里苏念瑶一直盯着林昭宇看，语晨也发现了，这俩人肯定有事瞒着我。",
+      "text": "方语晨和苏念瑶居然背着我搞小团体，还当面说LYU的事不让我听，真的破防了。",
       "source_days": [],
       "text_history": []
     },
@@ -224,15 +214,50 @@
       "date": "Day 9",
       "day": 9,
       "people": [
-        "苏念瑶"
+        "苏念瑶",
+        "方语晨"
       ],
-      "location": "操场",
+      "location": "宿舍",
       "emotion": "frustrated",
       "importance": 6,
       "topics": [
         "人际矛盾"
       ],
-      "text": "苏念瑶在操场看到我过来，找个借口就跑了，明显不想理我。",
+      "text": "在宿舍夜聊中，苏念瑶再次以‘普通朋友’模糊回应LYU的身份，并强硬要求结束对话，宿舍气氛降至冰点。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 10",
+      "day": 10,
+      "people": [
+        "苏念瑶",
+        "程雨桐"
+      ],
+      "location": "宿舍",
+      "emotion": "frustrated",
+      "importance": 6,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "宿舍气氛冷到冰点，苏念瑶宁愿跟程雨桐讨教物理题也不肯理我，简直离谱。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 10",
+      "day": 10,
+      "people": [
+        "苏念瑶",
+        "方语晨"
+      ],
+      "location": "教室",
+      "emotion": "frustrated",
+      "importance": 5,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "早读课这俩人又因为LYU冷战，我说话也不理，无语死了",
       "source_days": [],
       "text_history": []
     }

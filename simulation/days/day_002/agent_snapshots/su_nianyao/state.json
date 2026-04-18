@@ -1,5 +1,5 @@
 {
-  "emotion": "calm",
+  "emotion": "frustrated",
   "energy": 85,
   "academic_pressure": 30,
   "location": "教室",
@@ -7,18 +7,18 @@
     "intentions": [
       {
         "target": "方语晨",
-        "goal": "向方语晨打听那个翻墙去买手办的男生的八卦",
-        "reason": "好奇心快要把我淹没了，想知道到底是谁这么大胆，居然带学妹翻墙。",
-        "fulfilled": true,
+        "goal": "和方语晨聊八卦，顺便打听林昭宇最近在忙什么",
+        "reason": "昨天没问成，心里一直惦记着他到底在不在准备竞赛，这对我心态影响太大了。",
+        "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": null,
+        "satisfies_concern": "df74de",
         "origin_day": 2,
         "pursued_days": 1
       },
       {
-        "target": "林昭宇",
-        "goal": "课间去接水的时候路过他的座位",
-        "reason": "就是想离他近一点，看看他在干嘛，虽然肯定要装作很自然的样子。",
+        "target": null,
+        "goal": "把数学错题本整理一遍",
+        "reason": "再不整理的话物理和数学的瓶颈就真的要崩了，得先补救一下。",
         "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
@@ -27,9 +27,9 @@
       },
       {
         "target": null,
-        "goal": "在午休时写一段关于秋天的文字",
-        "reason": "最近心情有点乱，想把那种微妙的感觉写进小说里，写出来会觉得心里踏实点。",
-        "fulfilled": true,
+        "goal": "去图书馆借一本新书",
+        "reason": "最近有点EMO，想找点文字慰藉一下，顺便换个心情。",
+        "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
         "origin_day": 2,
@@ -46,28 +46,45 @@
   "day": 2,
   "active_concerns": [
     {
-      "id": "2ebd9e",
-      "text": "周末和朋友们去玩恐怖本，希望能顺利通关并享受过程。",
-      "source_event": "和方语晨、唐诗涵约定周末去玩恐怖本；食堂午饭时关于《深渊录》的讨论",
-      "source_scene": "午饭@食堂",
+      "id": "bdfb98",
+      "text": "林昭宇忙于竞赛的事实让我感到不安，担心这会影响我们之间的联系。",
+      "source_event": "宿舍夜聊",
+      "source_scene": "",
+      "source_day": 2,
+      "emotion": "frustrated",
+      "intensity": 6,
+      "related_people": [
+        "林昭宇",
+        "方语晨"
+      ],
+      "positive": false,
+      "topic": "恋爱",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 2,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "f31d4d",
+      "text": "数学错题本迟迟未整理，担心物理和数学的学习陷入瓶颈。",
+      "source_event": "课间借阅纠错本",
+      "source_scene": "",
       "source_day": 2,
       "emotion": "anxious",
       "intensity": 5,
-      "related_people": [
-        "方语晨",
-        "唐诗涵"
-      ],
+      "related_people": [],
       "positive": false,
-      "topic": "期待的事",
+      "topic": "学业焦虑",
       "last_reinforced_day": 2,
       "last_new_info_day": 2,
-      "reinforcement_count": 2,
-      "text_history": [
-        "周末去玩恐怖本，千万别被那两个坑了。"
-      ],
+      "reinforcement_count": 0,
+      "text_history": [],
       "id_history": [],
-      "last_bump_day": 2,
-      "bumps_today": 2
+      "last_bump_day": 0,
+      "bumps_today": 0
     }
   ]
 }

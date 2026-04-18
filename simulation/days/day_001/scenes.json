@@ -9,10 +9,9 @@
       {
         "group_index": 0,
         "participants": [
-          "jiang_haotian",
-          "shen_yifan"
+          "jiang_haotian"
         ],
-        "is_solo": false
+        "is_solo": true
       }
     ]
   },
@@ -28,8 +27,8 @@
         "participants": [
           "lin_zhaoyu",
           "lu_siyuan",
+          "shen_yifan",
           "tang_shihan",
-          "su_nianyao",
           "cheng_yutong",
           "he_jiajun"
         ],
@@ -47,14 +46,61 @@
       {
         "group_index": 0,
         "participants": [
-          "fang_yuchen"
+          "fang_yuchen",
+          "su_nianyao"
+        ],
+        "is_solo": false
+      }
+    ]
+  },
+  {
+    "scene_index": 3,
+    "time": "10:30",
+    "name": "上课",
+    "location": "教室",
+    "file": "1030_上课.json",
+    "groups": [
+      {
+        "group_index": 0,
+        "participants": [
+          "fang_yuchen",
+          "tang_shihan",
+          "su_nianyao",
+          "cheng_yutong"
+        ],
+        "is_solo": false
+      },
+      {
+        "group_index": 1,
+        "participants": [
+          "jiang_haotian",
+          "lu_siyuan",
+          "lin_zhaoyu",
+          "shen_yifan",
+          "he_jiajun"
+        ],
+        "is_solo": false
+      }
+    ]
+  },
+  {
+    "scene_index": 4,
+    "time": "12:00",
+    "name": "午饭",
+    "location": "操场",
+    "file": "1200_午饭@操场.json",
+    "groups": [
+      {
+        "group_index": 0,
+        "participants": [
+          "he_jiajun"
         ],
         "is_solo": true
       }
     ]
   },
   {
-    "scene_index": 3,
+    "scene_index": 5,
     "time": "12:00",
     "name": "午饭",
     "location": "教室",
@@ -63,14 +109,16 @@
       {
         "group_index": 0,
         "participants": [
+          "jiang_haotian",
+          "shen_yifan",
           "cheng_yutong"
         ],
-        "is_solo": true
+        "is_solo": false
       }
     ]
   },
   {
-    "scene_index": 4,
+    "scene_index": 6,
     "time": "12:00",
     "name": "午饭",
     "location": "食堂",
@@ -88,30 +136,15 @@
       {
         "group_index": 1,
         "participants": [
-          "jiang_haotian",
+          "lin_zhaoyu",
           "lu_siyuan"
         ],
         "is_solo": false
-      },
-      {
-        "group_index": 2,
-        "participants": [
-          "lin_zhaoyu",
-          "shen_yifan"
-        ],
-        "is_solo": false
-      },
-      {
-        "group_index": 3,
-        "participants": [
-          "he_jiajun"
-        ],
-        "is_solo": true
       }
     ]
   },
   {
-    "scene_index": 5,
+    "scene_index": 7,
     "time": "15:30",
     "name": "课间",
     "location": "图书馆",
@@ -121,16 +154,22 @@
         "group_index": 0,
         "participants": [
           "lin_zhaoyu",
-          "lu_siyuan",
-          "he_jiajun",
-          "cheng_yutong"
+          "lu_siyuan"
+        ],
+        "is_solo": false
+      },
+      {
+        "group_index": 1,
+        "participants": [
+          "cheng_yutong",
+          "su_nianyao"
         ],
         "is_solo": false
       }
     ]
   },
   {
-    "scene_index": 6,
+    "scene_index": 8,
     "time": "15:30",
     "name": "课间",
     "location": "小卖部",
@@ -146,7 +185,24 @@
     ]
   },
   {
-    "scene_index": 7,
+    "scene_index": 9,
+    "time": "15:30",
+    "name": "课间",
+    "location": "操场",
+    "file": "1530_课间@操场.json",
+    "groups": [
+      {
+        "group_index": 0,
+        "participants": [
+          "he_jiajun",
+          "shen_yifan"
+        ],
+        "is_solo": false
+      }
+    ]
+  },
+  {
+    "scene_index": 10,
     "time": "15:30",
     "name": "课间",
     "location": "教室",
@@ -155,32 +211,15 @@
       {
         "group_index": 0,
         "participants": [
-          "jiang_haotian",
-          "shen_yifan",
-          "fang_yuchen"
+          "fang_yuchen",
+          "jiang_haotian"
         ],
         "is_solo": false
       }
     ]
   },
   {
-    "scene_index": 8,
-    "time": "15:30",
-    "name": "课间",
-    "location": "走廊",
-    "file": "1530_课间@走廊.json",
-    "groups": [
-      {
-        "group_index": 0,
-        "participants": [
-          "su_nianyao"
-        ],
-        "is_solo": true
-      }
-    ]
-  },
-  {
-    "scene_index": 9,
+    "scene_index": 11,
     "time": "22:00",
     "name": "宿舍夜聊",
     "location": "宿舍",

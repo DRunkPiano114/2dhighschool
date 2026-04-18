@@ -6,32 +6,32 @@
   "daily_plan": {
     "intentions": [
       {
-        "target": "英语试卷",
-        "goal": "完成那几篇阅读理解错题的订正",
-        "reason": "老是不订正心里一直悬着，怕妈看到成绩又要打电话来问。",
+        "target": "陆思远",
+        "goal": "请教英语阅读理解的解题技巧",
+        "reason": "英语一直拖后腿，怕高考被这一科拉分，陆思远英语比我好，得赶紧问问他怎么看长难句。",
         "fulfilled": true,
         "abandoned": false,
-        "satisfies_concern": "9b432b",
+        "satisfies_concern": "f53193",
         "origin_day": 2,
         "pursued_days": 2
       },
       {
-        "target": "网易云音乐",
-        "goal": "听一下许嵩的新歌",
-        "reason": "最近压力太大了，想稍微放松一下心情，听歌能让我静下来。",
-        "fulfilled": false,
-        "abandoned": false,
-        "satisfies_concern": null,
-        "origin_day": 3,
-        "pursued_days": 1
-      },
-      {
-        "target": "陆思远",
-        "goal": "确认周五晚上能不能一起打王者",
-        "reason": "这算是我一周里最期待的事了，想提前确认一下，有个盼头。",
+        "target": "沈逸凡",
+        "goal": "观察沈逸凡和别人说话的语气",
+        "reason": "看他是不是对谁都那样，如果他只是性格冷，那我就不用瞎担心他针对我了。",
         "fulfilled": true,
         "abandoned": false,
-        "satisfies_concern": null,
+        "satisfies_concern": "991b64",
+        "origin_day": 2,
+        "pursued_days": 2
+      },
+      {
+        "target": null,
+        "goal": "整理那套英语卷子的错题",
+        "reason": "虽然很烦，但一直拖着也不是办法，这次一定要把定语从句的部分补上。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "f53193",
         "origin_day": 3,
         "pursued_days": 1
       }
@@ -46,23 +46,28 @@
   "day": 3,
   "active_concerns": [
     {
-      "id": "0a6c8f",
-      "text": "最近压力太大，本想听听许嵩的新歌放松一下，但因为学习任务没能实现。",
-      "source_event": "全天学习安排",
-      "source_scene": "",
-      "source_day": 3,
+      "id": "991b64",
+      "text": "宿舍里沈逸凡和姜皓天的冲突愈发明显，担心这种紧张氛围会影响到我。",
+      "source_event": "沈逸凡当众催促英语卷子订正；宿舍夜聊；宿舍夜聊",
+      "source_scene": "课间@教室",
+      "source_day": 1,
       "emotion": "anxious",
-      "intensity": 3,
-      "related_people": [],
+      "intensity": 2,
+      "related_people": [
+        "沈逸凡"
+      ],
       "positive": false,
-      "topic": "兴趣爱好",
+      "topic": "人际矛盾",
       "last_reinforced_day": 3,
       "last_new_info_day": 3,
-      "reinforcement_count": 0,
-      "text_history": [],
+      "reinforcement_count": 3,
+      "text_history": [
+        "沈逸凡刚才说话的态度，难道他觉得我很笨吗？",
+        "沈逸凡在宿舍对姜皓天的态度很强硬，我不确定他平时那种冷淡的态度是不是也针对我，总觉得他看我不顺眼。"
+      ],
       "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
+      "last_bump_day": 3,
+      "bumps_today": 2
     }
   ]
 }

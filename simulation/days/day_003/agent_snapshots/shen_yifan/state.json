@@ -7,111 +7,88 @@
     "intentions": [
       {
         "target": "姜皓天",
-        "goal": "在课间找姜皓天谈话，明确纪律底线，不再让他玩手机。",
-        "reason": "不能再由着他挑战纪律，必须通过正式沟通解决这个隐患，恢复班长威信。",
+        "goal": "找个机会私下提醒他收敛点，别再晚自习玩手机了",
+        "reason": "一直盯着他记名太累了，希望能达成某种默契，别总在班级里对峙。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "42fa81",
-        "origin_day": 3,
-        "pursued_days": 1
+        "satisfies_concern": "f8f76e",
+        "origin_day": 1,
+        "pursued_days": 3
       },
       {
         "target": "林昭宇",
-        "goal": "尝试用更温和的语气和林昭宇交流，不再动不动就用命令口吻。",
-        "reason": "意识到自己平时管人太严，想改善一下宿舍关系，不想让室友觉得压抑。",
+        "goal": "午饭时随口聊聊学校活动，缓和一下关系",
+        "reason": "宿舍气氛太压抑，我想稍微灵活点，别让大家都觉得我有压力。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "dc9947",
-        "origin_day": 3,
-        "pursued_days": 1
+        "satisfies_concern": "5fc846",
+        "origin_day": 2,
+        "pursued_days": 2
       },
       {
         "target": null,
-        "goal": "去操场跑两圈，把积压的烦躁情绪发泄掉。",
-        "reason": "最近琐事太多，感觉快透不过气了，运动一下能帮我冷静下来。",
-        "fulfilled": true,
+        "goal": "完成一套数学压轴题模拟",
+        "reason": "我想在物化政上保持优势，学业上的成就感是我现在唯一能掌控的东西。",
+        "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
-        "origin_day": 3,
-        "pursued_days": 1
+        "origin_day": 1,
+        "pursued_days": 3
       }
     ],
     "mood_forecast": "frustrated",
     "location_preferences": {
-      "morning_break": "教室",
+      "morning_break": "图书馆",
       "lunch": "食堂",
-      "afternoon_break": "操场"
+      "afternoon_break": "教室"
     }
   },
   "day": 3,
   "active_concerns": [
     {
-      "id": "dc9947",
-      "text": "对室友管得太严了吗？看来以后说话得注意点分寸。",
-      "source_event": "林昭宇听到我劝他放松后，吃饭速度明显加快，只想尽快离开。",
-      "source_scene": "午饭@食堂",
+      "id": "f8f76e",
+      "text": "总是盯着姜皓天记名太累了，希望能找个机会私下提醒他收敛，让他自觉遵守纪律，避免在班级里总是发生这种尴尬的对峙。",
+      "source_event": "姜皓天在课堂上公开挑衅并带头起哄；22:00 宿舍夜聊",
+      "source_scene": "上课",
       "source_day": 1,
-      "emotion": "guilty",
-      "intensity": 7,
-      "related_people": [
-        "林昭宇"
-      ],
-      "positive": false,
-      "topic": "人际矛盾",
-      "last_reinforced_day": 2,
-      "last_new_info_day": 1,
-      "reinforcement_count": 1,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 3,
-      "bumps_today": 2
-    },
-    {
-      "id": "42fa81",
-      "text": "在宿舍管理上，我与姜皓天的矛盾不断升级，必须找机会进行一次正式谈话，彻底明确纪律底线，不再让这种拉锯战影响我的情绪。",
-      "source_event": "宿舍熄灯后的纪律警告；看到何家骏在食堂顺从姜皓天并约着晚上打游戏；宿舍夜聊；宿舍夜聊",
-      "source_scene": "",
-      "source_day": 1,
-      "emotion": "frustrated",
-      "intensity": 8,
+      "emotion": "anxious",
+      "intensity": 10,
       "related_people": [
         "姜皓天"
       ],
       "positive": false,
       "topic": "人际矛盾",
       "last_reinforced_day": 3,
-      "last_new_info_day": 3,
-      "reinforcement_count": 4,
+      "last_new_info_day": 1,
+      "reinforcement_count": 2,
       "text_history": [
-        "作为班长在处理姜皓天违纪问题时感到两难，既想维护班级纪律又对这种僵持关系感到疲惫。",
-        "连何家骏都开始跟着姜皓天胡闹了，班里的纪律是不是真的要管不住了？",
-        "在宿舍管理上，我多次要求姜皓天停止说话却被无视，这种班长权威被挑战的感觉让我非常烦躁，必须找机会彻底解决这个问题。"
+        "姜皓天这小子越来越无法无天，再这样下去班级纪律全毁了，我到底要不要直接上报老师？"
       ],
       "id_history": [],
       "last_bump_day": 3,
       "bumps_today": 2
     },
     {
-      "id": "cd015c",
-      "text": "我意识到自己对室友的管教方式过于生硬，需要调整沟通语气，避免在宿舍营造压抑的氛围。",
-      "source_event": "课间与宿舍日常",
+      "id": "5fc846",
+      "text": "宿舍氛围过于压抑，我管人的习惯似乎让室友感到压力，需要找机会缓和关系。",
+      "source_event": "宿舍夜聊",
       "source_scene": "",
-      "source_day": 3,
-      "emotion": "anxious",
-      "intensity": 6,
+      "source_day": 2,
+      "emotion": "frustrated",
+      "intensity": 7,
       "related_people": [
         "林昭宇",
         "陆思远"
       ],
-      "positive": true,
-      "topic": "自我认同",
+      "positive": false,
+      "topic": "人际矛盾",
       "last_reinforced_day": 3,
-      "last_new_info_day": 3,
-      "reinforcement_count": 0,
+      "last_new_info_day": 2,
+      "reinforcement_count": 1,
       "text_history": [],
       "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
+      "last_bump_day": 3,
+      "bumps_today": 2
     }
   ]
 }

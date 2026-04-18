@@ -9,48 +9,48 @@
   "emotion_label": "平静",
   "energy_label": "精神还行",
   "pressure_label": "压力不小",
-  "featured_quote": "终于消停了，赶紧趁现在把那道受力分析题最后的矢量方向确定好，不然晚自习又要熬夜。",
-  "featured_scene": "14:00 · 上课",
+  "featured_quote": "思远总是这样，要是没有他，我真的不知道怎么办才好。那个定语从句，一会儿一定得问他。",
+  "featured_scene": "07:00 · 早读",
   "relationships": [
     {
       "target_name": "陆思远",
-      "favorability": 47,
-      "trust": 42,
+      "favorability": 58,
+      "trust": 52,
       "label_text": "很亲近的朋友"
     },
     {
-      "target_name": "沈逸凡",
-      "favorability": 8,
-      "trust": 6,
+      "target_name": "唐诗涵",
+      "favorability": 12,
+      "trust": 5,
       "label_text": "还行，有些好感"
     },
     {
-      "target_name": "唐诗涵",
-      "favorability": 7,
-      "trust": 5,
+      "target_name": "何老师",
+      "favorability": 3,
+      "trust": 2,
       "label_text": "普通同学"
     }
   ],
   "memories": [
     {
-      "date": "Day 7",
-      "text": "陆思远在图书馆帮我讲解英语定语从句，并一起讨论物理题，这种被支持的感觉让我很安心。",
+      "date": "Day 6",
+      "text": "何老师在食堂帮我挡住了沈逸凡的催促，说我身体不舒服，心里挺暖的。",
       "importance": 6
     },
     {
-      "date": "Day 7",
-      "text": "陆思远教我怎么把复杂的长难句拆解开看，果然把从句括起来就没那么绕了。",
+      "date": "Day 5",
+      "text": "沈逸凡在食堂当众阴阳怪气，烦死了，还好思远跟我一起走了。",
       "importance": 6
     }
   ],
   "top_concern": {
-    "text": "英语成绩一直没有起色，担心这门课会成为拖累总分、影响考取985的短板。",
+    "text": "英语定语从句和长难句一直没弄懂，错题整理也拖着没做，担心成绩被英语拖后腿。",
     "intensity_label": "中等",
     "positive": false
   },
-  "self_narrative": "在班里就是个隐形人，除了和陆思远说话，基本不开口。英语单词还没背完，一想到妈那个智学网，心跳就快。物理题做得还行，但总觉得用AI查题很心虚。希望能考上985，别让爸妈再那么累了。",
+  "self_narrative": "在班里就是个隐形人，除了陆思远几乎不和别人说话。英语还是提不上来，妈的电话一响就心慌。宿舍里气氛怪怪的，好想快点考上985，逃离这种压抑的生活。周五打局王者，算是我唯一的喘息了。",
   "caption_payload": {
-    "caption": "🌧️ 林昭宇 · 第007天 档案\n\n标签：书呆子\n此刻心情：平静\n\n「终于消停了，赶紧趁现在把那道受力分析题最后的矢量方向确定好，不然晚自习又要熬夜。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "🌧️ 林昭宇 · 第007天 档案\n\n标签：书呆子\n此刻心情：平静\n\n「思远总是这样，要是没有他，我真的不知道怎么办才好。那个定语从句，一会儿一定得问他。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

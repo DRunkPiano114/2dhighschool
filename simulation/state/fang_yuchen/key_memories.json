@@ -4,106 +4,62 @@
       "date": "Day 1",
       "day": 1,
       "people": [
-        "苏念瑶",
         "唐诗涵"
       ],
       "location": "食堂",
-      "emotion": "happy",
-      "importance": 4,
-      "topics": [
-        "兴趣爱好",
-        "人际矛盾"
-      ],
-      "text": "和念瑶、诗涵在食堂吃饭，聊了八卦还分享了刚到的娃衣",
-      "source_days": [],
-      "text_history": []
-    },
-    {
-      "date": "Day 1",
-      "day": 1,
-      "people": [
-        "唐诗涵"
-      ],
-      "location": "宿舍",
-      "emotion": "excited",
-      "importance": 4,
-      "topics": [
-        "期待的事",
-        "兴趣爱好"
-      ],
-      "text": "约好了周末和诗涵一起去刷恐怖本，想想还挺刺激的。",
-      "source_days": [],
-      "text_history": []
-    },
-    {
-      "date": "Day 2",
-      "day": 2,
-      "people": [
-        "苏念瑶",
-        "沈逸凡"
-      ],
-      "location": "走廊",
       "emotion": "excited",
       "importance": 6,
       "topics": [
-        "恋爱"
+        "兴趣爱好"
       ],
-      "text": "终于把沈逸凡和那个女生的八卦告诉念瑶了，聊天背景是猫真的太好磕了！",
+      "text": "唐诗涵确认已收到限定立牌并存放在宿舍，我们约定好之后交换欣赏。",
       "source_days": [
-        3
+        1,
+        2,
+        6
       ],
       "text_history": [
-        "苏念瑶提到沈逸凡背景图是猫的时候眼神躲闪，肯定有鬼。"
+        "终于要回宿舍去看诗涵的限定立牌了，超期待！",
+        "诗涵的限定立牌质感超赞，亚克力透光度绝了，果然蹲点抢到就是不一样",
+        "终于借到了诗涵的那个限定立牌，细节真的绝了，果然还是实体谷子拿在手里最爽！"
       ]
-    },
-    {
-      "date": "Day 2",
-      "day": 2,
-      "people": [
-        "唐诗涵",
-        "苏念瑶"
-      ],
-      "location": "食堂",
-      "emotion": "excited",
-      "importance": 6,
-      "topics": [
-        "期待的事",
-        "兴趣爱好"
-      ],
-      "text": "约好周末和诗涵、念瑶一起去刷恐怖本《深渊录》，还要去抢奶茶限定款！",
-      "source_days": [],
-      "text_history": []
     },
     {
       "date": "Day 3",
       "day": 3,
       "people": [
-        "唐诗涵"
-      ],
-      "location": "教室",
-      "emotion": "excited",
-      "importance": 5,
-      "topics": [
-        "兴趣爱好"
-      ],
-      "text": "和诗涵拼到了超好看的限量立牌，这波稳了！",
-      "source_days": [],
-      "text_history": []
-    },
-    {
-      "date": "Day 4",
-      "day": 4,
-      "people": [
         "苏念瑶"
       ],
       "location": "食堂",
       "emotion": "frustrated",
+      "importance": 6,
+      "topics": [
+        "人际矛盾",
+        "恋爱"
+      ],
+      "text": "苏念瑶在食堂讨论林昭宇竞赛情况时表现出明显的回避态度并提前离席。",
+      "source_days": [
+        9
+      ],
+      "text_history": [
+        "念瑶在食堂为了躲避林昭宇的话题，连饭都不吃完就跑了，简直心虚得要命。"
+      ]
+    },
+    {
+      "date": "Day 3",
+      "day": 3,
+      "people": [
+        "苏念瑶",
+        "林昭宇"
+      ],
+      "location": "食堂",
+      "emotion": "curious",
       "importance": 5,
       "topics": [
-        "恋爱",
-        "人际矛盾"
+        "人际矛盾",
+        "恋爱"
       ],
-      "text": "念瑶在食堂死活不肯聊沈逸凡，肯定有猫腻，看来得找机会单独问她。",
+      "text": "念瑶提到林昭宇时耳朵都红了，我猜她肯定有秘密瞒着我。",
       "source_days": [],
       "text_history": []
     },
@@ -118,54 +74,74 @@
       "emotion": "curious",
       "importance": 6,
       "topics": [
-        "人际矛盾"
+        "恋爱"
       ],
-      "text": "苏念瑶晚自习一直盯着林昭宇看，还躲着程雨桐，肯定有什么事瞒着我。",
+      "text": "苏念瑶耳朵红了还在硬装，肯定有情况，林昭宇这事儿绝对没那么简单。",
       "source_days": [
-        8
+        4,
+        5
       ],
       "text_history": [
-        "苏念瑶在熄灯后主动提到林昭宇，感觉她和林昭宇之间有我不知道的进展。",
-        "食堂排队太久没吃成，念瑶提到林昭宇时那眼神绝对有情况，晚上回宿舍非得审出来不可。"
+        "念瑶手机备注LYU，这缩写绝对是林昭宇，她还在那装睡",
+        "苏念瑶在食堂被问到LYU备注时耳朵红得离谱，还一直回避话题，绝对有鬼。"
       ]
     },
     {
       "date": "Day 5",
       "day": 5,
       "people": [
+        "唐诗涵",
         "苏念瑶"
       ],
       "location": "宿舍",
-      "emotion": "frustrated",
+      "emotion": "excited",
       "importance": 6,
       "topics": [
-        "人际矛盾",
+        "兴趣爱好"
+      ],
+      "text": "终于从诗涵那里拿到了限定款立牌，虽然念瑶还是死活不肯交代LYU的事，但立牌到手了心情好多了。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 6",
+      "day": 6,
+      "people": [
+        "苏念瑶",
+        "唐诗涵"
+      ],
+      "location": "教室",
+      "emotion": "curious",
+      "importance": 6,
+      "topics": [
         "恋爱"
       ],
-      "text": "晚上想跟念瑶聊沈逸凡的猫，结果她一直敷衍我，气死人。",
-      "source_days": [
-        6
-      ],
-      "text_history": [
-        "念瑶在食堂为了避开沈逸凡背景图的话题，连饭都吃得飞快，绝对有鬼。"
-      ]
+      "text": "念瑶手机响了，诗涵还故意起哄，她那副心虚的样子肯定有鬼。",
+      "source_days": [],
+      "text_history": []
     },
     {
       "date": "Day 7",
       "day": 7,
       "people": [
         "苏念瑶",
-        "林昭宇"
+        "唐诗涵"
       ],
-      "location": "食堂",
-      "emotion": "excited",
-      "importance": 6,
+      "location": "宿舍",
+      "emotion": "frustrated",
+      "importance": 8,
       "topics": [
-        "恋爱"
+        "人际矛盾"
       ],
-      "text": "食堂里念瑶看林昭宇的眼神简直拉丝了，肯定有情况！",
-      "source_days": [],
-      "text_history": []
+      "text": "苏念瑶在宿舍面对唐诗涵关于LYU备注的直接逼问时，依然选择拒绝解释，这让我感到极度的不信任和被排挤。",
+      "source_days": [
+        8,
+        9
+      ],
+      "text_history": [
+        "在宿舍夜聊时，唐诗涵当面拆穿苏念瑶手机备注缩写，苏念瑶选择沉默并躲进被子里。",
+        "宿舍里关于LYU的逼问把念瑶逼得躲进被子里，气氛真的降到冰点了。"
+      ]
     },
     {
       "date": "Day 7",
@@ -176,45 +152,59 @@
       ],
       "location": "教室",
       "emotion": "frustrated",
-      "importance": 4,
+      "importance": 6,
       "topics": [
         "人际矛盾"
       ],
-      "text": "课上想看念瑶手机被拒绝了，程雨桐还在那装腔作势，烦死。",
+      "text": "念瑶手抖得厉害，还在装傻写纸条求教物理，肯定有大秘密瞒着我。",
       "source_days": [],
       "text_history": []
     },
     {
-      "date": "Day 9",
-      "day": 9,
+      "date": "Day 8",
+      "day": 8,
       "people": [
-        "苏念瑶",
-        "唐诗涵",
-        "程雨桐"
+        "苏念瑶"
       ],
-      "location": "宿舍",
+      "location": "教室",
       "emotion": "frustrated",
       "importance": 6,
       "topics": [
         "人际矛盾"
       ],
-      "text": "宿舍夜聊时试图找话题却被苏念瑶和唐诗涵集体冷处理，感到被排挤在她们的秘密之外。",
+      "text": "课上念瑶又在装傻，还拿叶修挂件挡枪，气死我了。",
       "source_days": [],
       "text_history": []
     },
     {
-      "date": "Day 9",
-      "day": 9,
+      "date": "Day 10",
+      "day": 10,
       "people": [
-        "姜皓天"
+        "苏念瑶"
       ],
-      "location": "走廊",
+      "location": "宿舍",
       "emotion": "frustrated",
-      "importance": 5,
+      "importance": 7,
       "topics": [
         "人际矛盾"
       ],
-      "text": "姜皓天这人太小气了，手机藏着掖着，肯定有鬼。",
+      "text": "问了瑶瑶关于LYU的事，她又在装傻，气死我了。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 10",
+      "day": 10,
+      "people": [
+        "苏念瑶"
+      ],
+      "location": "教室",
+      "emotion": "frustrated",
+      "importance": 6,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "早读时苏念瑶竟然塞纸条想用奶茶收买我，还是不肯说林昭宇的事。",
       "source_days": [],
       "text_history": []
     }

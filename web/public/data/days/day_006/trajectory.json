@@ -7,14 +7,14 @@
         "scene_name": "早读",
         "location": "教室",
         "activity": "",
-        "emotion": "neutral"
+        "emotion": "calm"
       },
       {
         "time": "08:45",
-        "scene_name": "课间@图书馆",
-        "location": "图书馆",
+        "scene_name": "课间@教室",
+        "location": "教室",
         "activity": "",
-        "emotion": "frustrated"
+        "emotion": "bored"
       },
       {
         "time": "12:00",
@@ -24,23 +24,9 @@
         "emotion": "bored"
       },
       {
-        "time": "14:00",
-        "scene_name": "上课",
-        "location": "教室",
-        "activity": "",
-        "emotion": "bored"
-      },
-      {
         "time": "15:30",
-        "scene_name": "课间@操场",
-        "location": "操场",
-        "activity": "",
-        "emotion": "frustrated"
-      },
-      {
-        "time": "18:30",
-        "scene_name": "晚自习",
-        "location": "教室",
+        "scene_name": "课间@图书馆",
+        "location": "图书馆",
         "activity": "",
         "emotion": "bored"
       },
@@ -49,7 +35,7 @@
         "scene_name": "宿舍夜聊",
         "location": "宿舍",
         "activity": "",
-        "emotion": "frustrated"
+        "emotion": "bored"
       }
     ],
     "fang_yuchen": [
@@ -58,39 +44,25 @@
         "scene_name": "早读",
         "location": "教室",
         "activity": "",
-        "emotion": "neutral"
+        "emotion": "curious"
       },
       {
         "time": "08:45",
-        "scene_name": "课间@操场",
-        "location": "操场",
+        "scene_name": "课间@走廊",
+        "location": "走廊",
         "activity": "",
-        "emotion": "frustrated"
+        "emotion": "curious"
       },
       {
         "time": "12:00",
         "scene_name": "午饭@食堂",
         "location": "食堂",
         "activity": "",
-        "emotion": "frustrated"
-      },
-      {
-        "time": "14:00",
-        "scene_name": "上课",
-        "location": "教室",
-        "activity": "",
-        "emotion": "frustrated"
+        "emotion": "excited"
       },
       {
         "time": "15:30",
-        "scene_name": "课间@走廊",
-        "location": "走廊",
-        "activity": "",
-        "emotion": "frustrated"
-      },
-      {
-        "time": "18:30",
-        "scene_name": "晚自习",
+        "scene_name": "课间@教室",
         "location": "教室",
         "activity": "",
         "emotion": "curious"
@@ -100,7 +72,7 @@
         "scene_name": "宿舍夜聊",
         "location": "宿舍",
         "activity": "",
-        "emotion": "frustrated"
+        "emotion": "bored"
       }
     ],
     "he_jiajun": [
@@ -109,26 +81,19 @@
         "scene_name": "早读",
         "location": "教室",
         "activity": "",
-        "emotion": "anxious"
+        "emotion": "happy"
       },
       {
         "time": "08:45",
-        "scene_name": "课间@图书馆",
-        "location": "图书馆",
+        "scene_name": "课间@教室",
+        "location": "教室",
         "activity": "",
-        "emotion": "excited"
+        "emotion": "anxious"
       },
       {
         "time": "12:00",
         "scene_name": "午饭@食堂",
         "location": "食堂",
-        "activity": "",
-        "emotion": "excited"
-      },
-      {
-        "time": "14:00",
-        "scene_name": "上课",
-        "location": "教室",
         "activity": "",
         "emotion": "anxious"
       },
@@ -137,14 +102,7 @@
         "scene_name": "课间@操场",
         "location": "操场",
         "activity": "",
-        "emotion": "anxious"
-      },
-      {
-        "time": "18:30",
-        "scene_name": "晚自习",
-        "location": "教室",
-        "activity": "",
-        "emotion": "embarrassed"
+        "emotion": "calm"
       }
     ],
     "jiang_haotian": [
@@ -157,45 +115,31 @@
       },
       {
         "time": "08:45",
-        "scene_name": "课间@走廊",
-        "location": "走廊",
+        "scene_name": "课间@操场",
+        "location": "操场",
         "activity": "",
-        "emotion": "happy"
+        "emotion": "frustrated"
       },
       {
         "time": "12:00",
         "scene_name": "午饭@食堂",
         "location": "食堂",
         "activity": "",
-        "emotion": "bored"
-      },
-      {
-        "time": "14:00",
-        "scene_name": "上课",
-        "location": "教室",
-        "activity": "",
         "emotion": "frustrated"
       },
       {
         "time": "15:30",
-        "scene_name": "课间@走廊",
-        "location": "走廊",
+        "scene_name": "课间@操场",
+        "location": "操场",
         "activity": "",
-        "emotion": "frustrated"
-      },
-      {
-        "time": "18:30",
-        "scene_name": "晚自习",
-        "location": "教室",
-        "activity": "",
-        "emotion": "bored"
+        "emotion": "calm"
       },
       {
         "time": "22:00",
         "scene_name": "宿舍夜聊",
         "location": "宿舍",
         "activity": "",
-        "emotion": "frustrated"
+        "emotion": "happy"
       }
     ],
     "lin_zhaoyu": [
@@ -208,45 +152,31 @@
       },
       {
         "time": "08:45",
-        "scene_name": "课间@图书馆",
-        "location": "图书馆",
+        "scene_name": "课间@小卖部",
+        "location": "小卖部",
         "activity": "",
-        "emotion": "calm"
+        "emotion": "touched"
       },
       {
         "time": "12:00",
         "scene_name": "午饭@食堂",
         "location": "食堂",
         "activity": "",
-        "emotion": "embarrassed"
-      },
-      {
-        "time": "14:00",
-        "scene_name": "上课",
-        "location": "教室",
-        "activity": "",
-        "emotion": "frustrated"
+        "emotion": "touched"
       },
       {
         "time": "15:30",
-        "scene_name": "课间@教室",
-        "location": "教室",
+        "scene_name": "课间@图书馆",
+        "location": "图书馆",
         "activity": "",
-        "emotion": "calm"
-      },
-      {
-        "time": "18:30",
-        "scene_name": "晚自习",
-        "location": "教室",
-        "activity": "",
-        "emotion": "anxious"
+        "emotion": "touched"
       },
       {
         "time": "22:00",
         "scene_name": "宿舍夜聊",
         "location": "宿舍",
         "activity": "",
-        "emotion": "calm"
+        "emotion": "touched"
       }
     ],
     "lu_siyuan": [
@@ -259,45 +189,31 @@
       },
       {
         "time": "08:45",
-        "scene_name": "课间@教室",
-        "location": "教室",
+        "scene_name": "课间@操场",
+        "location": "操场",
         "activity": "",
-        "emotion": "calm"
+        "emotion": "touched"
       },
       {
         "time": "12:00",
         "scene_name": "午饭@食堂",
         "location": "食堂",
         "activity": "",
-        "emotion": "calm"
-      },
-      {
-        "time": "14:00",
-        "scene_name": "上课",
-        "location": "教室",
-        "activity": "",
-        "emotion": "bored"
+        "emotion": "anxious"
       },
       {
         "time": "15:30",
         "scene_name": "课间@图书馆",
         "location": "图书馆",
         "activity": "",
-        "emotion": "bored"
-      },
-      {
-        "time": "18:30",
-        "scene_name": "晚自习",
-        "location": "教室",
-        "activity": "",
-        "emotion": "bored"
+        "emotion": "anxious"
       },
       {
         "time": "22:00",
         "scene_name": "宿舍夜聊",
         "location": "宿舍",
         "activity": "",
-        "emotion": "calm"
+        "emotion": "touched"
       }
     ],
     "shen_yifan": [
@@ -306,12 +222,12 @@
         "scene_name": "早读",
         "location": "教室",
         "activity": "",
-        "emotion": "neutral"
+        "emotion": "frustrated"
       },
       {
         "time": "08:45",
-        "scene_name": "课间@操场",
-        "location": "操场",
+        "scene_name": "课间@教室",
+        "location": "教室",
         "activity": "",
         "emotion": "frustrated"
       },
@@ -320,25 +236,11 @@
         "scene_name": "午饭@食堂",
         "location": "食堂",
         "activity": "",
-        "emotion": "embarrassed"
-      },
-      {
-        "time": "14:00",
-        "scene_name": "上课",
-        "location": "教室",
-        "activity": "",
         "emotion": "frustrated"
       },
       {
         "time": "15:30",
-        "scene_name": "课间@操场",
-        "location": "操场",
-        "activity": "",
-        "emotion": "frustrated"
-      },
-      {
-        "time": "18:30",
-        "scene_name": "晚自习",
+        "scene_name": "课间@教室",
         "location": "教室",
         "activity": "",
         "emotion": "frustrated"
@@ -348,7 +250,7 @@
         "scene_name": "宿舍夜聊",
         "location": "宿舍",
         "activity": "",
-        "emotion": "calm"
+        "emotion": "frustrated"
       }
     ],
     "su_nianyao": [
@@ -361,45 +263,31 @@
       },
       {
         "time": "08:45",
-        "scene_name": "课间@走廊",
-        "location": "走廊",
+        "scene_name": "课间@教室",
+        "location": "教室",
         "activity": "",
-        "emotion": "frustrated"
+        "emotion": "anxious"
       },
       {
         "time": "12:00",
         "scene_name": "午饭@食堂",
         "location": "食堂",
         "activity": "",
-        "emotion": "calm"
-      },
-      {
-        "time": "14:00",
-        "scene_name": "上课",
-        "location": "教室",
-        "activity": "",
-        "emotion": "frustrated"
+        "emotion": "anxious"
       },
       {
         "time": "15:30",
         "scene_name": "课间@图书馆",
         "location": "图书馆",
         "activity": "",
-        "emotion": "frustrated"
-      },
-      {
-        "time": "18:30",
-        "scene_name": "晚自习",
-        "location": "教室",
-        "activity": "",
-        "emotion": "frustrated"
+        "emotion": "embarrassed"
       },
       {
         "time": "22:00",
         "scene_name": "宿舍夜聊",
         "location": "宿舍",
         "activity": "",
-        "emotion": "frustrated"
+        "emotion": "anxious"
       }
     ],
     "tang_shihan": [
@@ -408,39 +296,25 @@
         "scene_name": "早读",
         "location": "教室",
         "activity": "",
-        "emotion": "neutral"
+        "emotion": "curious"
       },
       {
         "time": "08:45",
-        "scene_name": "课间@图书馆",
-        "location": "图书馆",
-        "activity": "",
-        "emotion": "frustrated"
-      },
-      {
-        "time": "12:00",
-        "scene_name": "午饭@食堂",
-        "location": "食堂",
-        "activity": "",
-        "emotion": "frustrated"
-      },
-      {
-        "time": "14:00",
-        "scene_name": "上课",
-        "location": "教室",
-        "activity": "",
-        "emotion": "frustrated"
-      },
-      {
-        "time": "15:30",
         "scene_name": "课间@走廊",
         "location": "走廊",
         "activity": "",
-        "emotion": "frustrated"
+        "emotion": "curious"
       },
       {
-        "time": "18:30",
-        "scene_name": "晚自习",
+        "time": "12:00",
+        "scene_name": "午饭@小卖部",
+        "location": "小卖部",
+        "activity": "",
+        "emotion": "curious"
+      },
+      {
+        "time": "15:30",
+        "scene_name": "课间@教室",
         "location": "教室",
         "activity": "",
         "emotion": "curious"
@@ -450,7 +324,16 @@
         "scene_name": "宿舍夜聊",
         "location": "宿舍",
         "activity": "",
-        "emotion": "frustrated"
+        "emotion": "bored"
+      }
+    ],
+    "he_min": [
+      {
+        "time": "12:00",
+        "scene_name": "午饭@食堂",
+        "location": "食堂",
+        "activity": "",
+        "emotion": "neutral"
       }
     ]
   }

@@ -1,0 +1,27 @@
+{
+  "scene": {
+    "scene_index": 3,
+    "time": "12:00",
+    "name": "午饭",
+    "location": "小卖部",
+    "description": "午饭时间，同学们结伴去食堂吃饭",
+    "day": 4
+  },
+  "participant_names": {
+    "tang_shihan": "唐诗涵"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "tang_shihan"
+      ],
+      "is_solo": true,
+      "solo_reflection": {
+        "inner_thought": "林昭宇到底在藏什么？苏念瑶也不对劲。",
+        "emotion": "curious",
+        "activity": "站在小卖部冰柜前，手里拿着刚买的奶茶，边刷手机表白墙边观察周围的动静。"
+      }
+    }
+  ]
+}

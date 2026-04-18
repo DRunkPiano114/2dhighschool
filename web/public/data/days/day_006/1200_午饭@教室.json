@@ -1,6 +1,6 @@
 {
   "scene": {
-    "scene_index": 5,
+    "scene_index": 6,
     "time": "12:00",
     "name": "午饭",
     "location": "教室",
@@ -18,9 +18,9 @@
       ],
       "is_solo": true,
       "solo_reflection": {
-        "inner_thought": "排名还没出，真磨叽。今晚就能看主角打脸了。",
+        "inner_thought": "好想看《仙路独行》的更新，还有那道力学题。",
         "emotion": "bored",
-        "activity": "边吃午饭边用手机查看《仙路独行》的更新状态。"
+        "activity": "一边快速吃着便当，一边盯着方格本上的力学受力分析图。"
       }
     }
   ]

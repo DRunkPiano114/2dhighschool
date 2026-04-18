@@ -7,36 +7,36 @@
     "intentions": [
       {
         "target": "林昭宇",
-        "goal": "在课间把他叫到办公室，观察状态并谈谈压力",
-        "reason": "这孩子最近绷得太紧，我怕他出问题，今天必须挤出时间和他聊聊。",
+        "goal": "找个时间把他叫到办公室，不谈分数，只关心他最近的睡眠质量和状态",
+        "reason": "这孩子最近太紧绷了，红着眼眶的样子我实在放心不下，得找机会让他松口气。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "eeb8c6",
-        "origin_day": 7,
-        "pursued_days": 1
-      },
-      {
-        "target": "何家骏",
-        "goal": "检查他的错题本，辅导薄弱环节",
-        "reason": "他这两天肯动笔了，趁热打铁帮他把漏洞补上，不能让他又松懈回去。",
-        "fulfilled": false,
-        "abandoned": false,
-        "satisfies_concern": "fca093",
+        "satisfies_concern": "97c316",
         "origin_day": 3,
         "pursued_days": 5
       },
       {
-        "target": "校门口咖啡店",
-        "goal": "去买杯热咖啡",
-        "reason": "最近太累了，给自己充个电，顺便缓和下紧绷的神经。",
+        "target": "何家骏",
+        "goal": "检查他的古诗文默写，手把手教他背诵技巧",
+        "reason": "这孩子底子薄，没人管肯定就放弃了，我得盯着他把基础补起来。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": null,
-        "origin_day": 7,
-        "pursued_days": 1
+        "satisfies_concern": "f9e8d1",
+        "origin_day": 6,
+        "pursued_days": 2
+      },
+      {
+        "target": "女儿",
+        "goal": "下班路上一定要去商场买那个文具盲盒",
+        "reason": "已经拖了好几天了，再不买回去，小姑娘该跟我闹别扭了，当妈的不能说话不算话。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "bed814",
+        "origin_day": 4,
+        "pursued_days": 4
       }
     ],
-    "mood_forecast": "neutral",
+    "mood_forecast": "anxious",
     "location_preferences": {
       "morning_break": "教室",
       "lunch": "食堂",
@@ -46,39 +46,87 @@
   "day": 7,
   "active_concerns": [
     {
-      "id": "a7d34c",
-      "text": "姜皓天这孩子身上的戾气太重，得找个机会单独敲打一下，不能让他影响班级风气。",
-      "source_event": "姜皓天在食堂对我冷哼并斜眼挑衅",
+      "id": "97c316",
+      "text": "林昭宇在食堂表现出的紧绷感加重，需要尽快找时间进行一次深入的心理沟通。",
+      "source_event": "听到苏念瑶提到想去报竞赛，其他人表现出恐慌和逃避；基于对学生日常状态的观察与长期关注；食堂午餐时林昭宇的状态",
       "source_scene": "午饭@食堂",
-      "source_day": 7,
-      "emotion": "frustrated",
-      "intensity": 6,
+      "source_day": 2,
+      "emotion": "anxious",
+      "intensity": 8,
       "related_people": [
-        "姜皓天"
-      ],
-      "positive": false,
-      "topic": "人际矛盾",
-      "last_reinforced_day": 7,
-      "last_new_info_day": 7,
-      "reinforcement_count": 0,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
-    },
-    {
-      "id": "3a3127",
-      "text": "林昭宇最近状态紧绷，需要尽快找时间进行深度谈话，防止压力过大导致心理问题。",
-      "source_event": "日常观察",
-      "source_scene": "",
-      "source_day": 7,
-      "emotion": "担忧",
-      "intensity": 6,
-      "related_people": [
+        "苏念瑶",
         "林昭宇"
       ],
       "positive": false,
       "topic": "学业焦虑",
+      "last_reinforced_day": 7,
+      "last_new_info_day": 6,
+      "reinforcement_count": 2,
+      "text_history": [
+        "班里竞赛焦虑风气蔓延，得找机会敲打又不伤他们。",
+        "林昭宇上次月考后红了眼眶，担心他长期紧绷出问题，需要找机会进行心理疏导。"
+      ],
+      "id_history": [],
+      "last_bump_day": 7,
+      "bumps_today": 1
+    },
+    {
+      "id": "e7ad19",
+      "text": "林昭宇因作业量大导致睡眠不足，需进一步关注其身心状态并寻找合适契机进行疏导。",
+      "source_event": "课间走廊谈话",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "anxious",
+      "intensity": 3,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "健康",
+      "last_reinforced_day": 7,
+      "last_new_info_day": 4,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 7,
+      "bumps_today": 1
+    },
+    {
+      "id": "bed814",
+      "text": "答应女儿的文具盲盒还没买，下班必须补上。",
+      "source_event": "今日未完成的任务；下班前未完成的承诺",
+      "source_scene": "",
+      "source_day": 6,
+      "emotion": "愧疚",
+      "intensity": 3,
+      "related_people": [
+        "女儿"
+      ],
+      "positive": false,
+      "topic": "期待的事",
+      "last_reinforced_day": 7,
+      "last_new_info_day": 7,
+      "reinforcement_count": 1,
+      "text_history": [
+        "答应女儿的文具盲盒还没买，下班必须补上，不能让她失望。"
+      ],
+      "id_history": [],
+      "last_bump_day": 7,
+      "bumps_today": 1
+    },
+    {
+      "id": "6d4a17",
+      "text": "沈逸凡在食堂表现出的管理方式粗暴，需要进一步引导其学会尊重同学。",
+      "source_event": "午饭时沈逸凡用力放下勺子并对林昭宇施压",
+      "source_scene": "",
+      "source_day": 7,
+      "emotion": "concerned",
+      "intensity": 5,
+      "related_people": [
+        "沈逸凡"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
       "last_reinforced_day": 7,
       "last_new_info_day": 7,
       "reinforcement_count": 0,

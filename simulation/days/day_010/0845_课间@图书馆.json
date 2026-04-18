@@ -1,0 +1,389 @@
+{
+  "scene": {
+    "scene_index": 1,
+    "time": "08:45",
+    "name": "课间",
+    "location": "图书馆",
+    "description": "上午第一个课间休息，同学们在教室里活动",
+    "day": 10
+  },
+  "participant_names": {
+    "cheng_yutong": "程雨桐",
+    "he_jiajun": "何家骏"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "cheng_yutong",
+        "he_jiajun"
+      ],
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "he_jiajun",
+                "type": "non_verbal",
+                "content": "默默把手伸进书包，把皱巴巴的数学课本拿出来，翻开第一页。"
+              },
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "戴上降噪耳机，将草稿纸向内挪了五厘米。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "程雨桐在旁边一直盯着物理题看，笔尖在纸上划出沙沙的声音。",
+              "inner_thought": "她好认真，我还是把数学书掏出来吧，磨蹭半天了都。",
+              "emotion": "anxious",
+              "action_type": "non_verbal",
+              "action_content": "默默把手伸进书包，把皱巴巴的数学课本拿出来，翻开第一页。",
+              "action_target": null,
+              "urgency": 4,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "何家骏坐在我对面，一直在无意义地转笔，声音很烦。",
+              "inner_thought": "离竞赛题结项还差十五分钟，这人转笔声音太吵了。",
+              "emotion": "bored",
+              "action_type": "non_verbal",
+              "action_content": "戴上降噪耳机，将草稿纸向内挪了五厘米。",
+              "action_target": "he_jiajun",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "he_jiajun",
+                "type": "non_verbal",
+                "content": "用力盯着书页上的公式，试图强迫自己看进去，但视线开始有些模糊。"
+              },
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "在草稿纸上以极快的速度完成动量守恒方程的最后一步推导，合上笔盖。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "程雨桐戴着耳机还在写物理竞赛题，完全没注意到我在看书。",
+              "inner_thought": "她好厉害，写这种题都不带停的，我连定义都看不懂，难受。",
+              "emotion": "anxious",
+              "action_type": "non_verbal",
+              "action_content": "用力盯着书页上的公式，试图强迫自己看进去，但视线开始有些模糊。",
+              "action_target": null,
+              "urgency": 3,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "何家骏拿出了数学课本，但他看起来完全没打算开始复习。",
+              "inner_thought": "离任务截止还有十分钟，他再闹出动静我就去隔壁桌。",
+              "emotion": "bored",
+              "action_type": "non_verbal",
+              "action_content": "在草稿纸上以极快的速度完成动量守恒方程的最后一步推导，合上笔盖。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "he_jiajun",
+                "type": "non_verbal",
+                "content": "把数学书猛地合上，发出啪的一声，然后盯着课桌上的划痕发呆。"
+              },
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "将刚推导完的草稿纸整齐地折叠，夹进物理竞赛题集里。"
+              }
+            ],
+            "environmental_event": "【动作】何家骏: 把数学书猛地合上，发出啪的一声，然后盯着课桌上的划痕发呆。",
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "程雨桐合上了笔，转头看向窗外的操场，好像做完了什么很难的题目。",
+              "inner_thought": "物理竞赛题这么快就写完了？我也想考好，但脑子完全转不动。",
+              "emotion": "anxious",
+              "action_type": "non_verbal",
+              "action_content": "把数学书猛地合上，发出啪的一声，然后盯着课桌上的划痕发呆。",
+              "action_target": null,
+              "urgency": 3,
+              "is_disruptive": true
+            },
+            "cheng_yutong": {
+              "observation": "何家骏看着数学书发呆，眼神完全没焦点。",
+              "inner_thought": "与其在那儿干耗着，不如直接把错题看了，浪费时间。",
+              "emotion": "bored",
+              "action_type": "non_verbal",
+              "action_content": "将刚推导完的草稿纸整齐地折叠，夹进物理竞赛题集里。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "he_jiajun",
+                "type": "non_verbal",
+                "content": "重新把厚厚的数学书塞回书包最底层，拉链拉上不再看它。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "程雨桐把草稿纸整理好放进了题集里，看起来竞赛题对她来说很轻松。",
+              "inner_thought": "人比人真的气死人，我连数学书都看不进去，她却做得那么顺手。",
+              "emotion": "anxious",
+              "action_type": "non_verbal",
+              "action_content": "重新把厚厚的数学书塞回书包最底层，拉链拉上不再看它。",
+              "action_target": null,
+              "urgency": 4,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "何家骏合上书后的动静有点大，看起来很浮躁。",
+              "inner_thought": "与其在那发呆，不如去做套题，或者干脆别占着公共座位。",
+              "emotion": "bored",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 4,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "he_jiajun",
+                "type": "non_verbal",
+                "content": "把书包提起来，背带勾在肩上，准备起身离开。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "程雨桐收拾好物理竞赛题，正准备离开图书馆。",
+              "inner_thought": "离上课还有点时间，算了，回去坐着吧，反正这儿我也学不进。",
+              "emotion": "anxious",
+              "action_type": "non_verbal",
+              "action_content": "把书包提起来，背带勾在肩上，准备起身离开。",
+              "action_target": null,
+              "urgency": 4,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": [
+            "cheng_yutong"
+          ]
+        },
+        {
+          "tick": 5,
+          "public": {
+            "speech": null,
+            "actions": [],
+            "environmental_event": null,
+            "exits": [
+              "he_jiajun"
+            ]
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "程雨桐收拾好东西准备起身了，动作很快。",
+              "inner_thought": "她要去教室了，我也该走了，留在这里挺压抑的。",
+              "emotion": "anxious",
+              "action_type": "exit",
+              "action_content": "默默起身，把书包往上提了提，低头绕过桌椅朝图书馆门口走去。",
+              "action_target": null,
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": [
+            "cheng_yutong"
+          ]
+        }
+      ],
+      "narrative": {
+        "key_moments": [
+          "何家骏从书包中取出数学课本。",
+          "程雨桐完成动量守恒方程的推导。",
+          "何家骏合上数学书并盯着课桌划痕。",
+          "程雨桐将草稿纸夹进物理竞赛题集。",
+          "何家骏将数学书放回书包并离开图书馆。"
+        ],
+        "fulfilled_intentions": [
+          "程雨桐:完成物理竞赛题目的推导",
+          "何家骏:结束数学课本的学习"
+        ],
+        "events_discussed": [],
+        "new_events": [
+          {
+            "text": "何家骏在图书馆学习数学后将课本收回书包并离开。",
+            "category": "学习活动",
+            "witnesses": [
+              "程雨桐"
+            ],
+            "spread_probability": 0.2,
+            "cite_ticks": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          },
+          {
+            "text": "程雨桐在图书馆完成物理竞赛题目的推导。",
+            "category": "学习活动",
+            "witnesses": [
+              "何家骏"
+            ],
+            "spread_probability": 0.1,
+            "cite_ticks": [
+              1,
+              2,
+              3
+            ]
+          }
+        ]
+      },
+      "reflections": {
+        "cheng_yutong": {
+          "emotion": "calm",
+          "relationship_changes": [
+            {
+              "to_agent": "何家骏",
+              "favorability": 0,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": false
+            }
+          ],
+          "memories": [
+            {
+              "text": "何家骏在图书馆里坐立难安，最后把数学书合上走了。",
+              "emotion": "neutral",
+              "importance": 3,
+              "people": [
+                "何家骏"
+              ],
+              "location": "图书馆",
+              "topics": [
+                "学业焦虑"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "515128",
+              "adjustment": 1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "完成力学进阶章节的全部推导与错题整理",
+              "status": "fulfilled",
+              "brief_reason": "在图书馆高效完成了动量守恒方程的最后推导并整理了草稿。"
+            },
+            {
+              "goal": "在熄灯后阅读最新章节",
+              "status": "pending",
+              "brief_reason": "当前处于课间，不涉及晚间阅读计划。"
+            }
+          ]
+        },
+        "he_jiajun": {
+          "emotion": "anxious",
+          "relationship_changes": [
+            {
+              "to_agent": "程雨桐",
+              "favorability": 0,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": false
+            }
+          ],
+          "memories": [
+            {
+              "text": "在图书馆看程雨桐写物理题，动作很快，我还是啥也不会。",
+              "emotion": "anxious",
+              "importance": 4,
+              "people": [
+                "程雨桐"
+              ],
+              "location": "图书馆",
+              "topics": [
+                "学业焦虑"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "0cb951",
+              "adjustment": 1
+            },
+            {
+              "concern_text": "524ac6",
+              "adjustment": 1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "在课间把数学课本前几章的基础定义翻一遍",
+              "status": "frustrated",
+              "brief_reason": "书拿出来看了但看不进去，最后还是塞回去了。"
+            },
+            {
+              "goal": "晚自习后和姜皓天去操场加练，顺便吃辣条",
+              "status": "pending",
+              "brief_reason": "现在还没到晚自习，姜皓天没在图书馆。"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

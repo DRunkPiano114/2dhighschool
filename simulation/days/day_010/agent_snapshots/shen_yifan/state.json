@@ -1,0 +1,144 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "姜皓天",
+        "goal": "尝试用更平和的态度提醒他遵守纪律，不再直接威胁记名字。",
+        "reason": "老是这样硬碰硬，宿舍气氛太压抑了，我想试试换个法子，免得他反弹得更厉害。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "f8f76e",
+        "origin_day": 9,
+        "pursued_days": 2
+      },
+      {
+        "target": "操场",
+        "goal": "去操场一个人跑两圈，把心里的烦躁压下去。",
+        "reason": "最近心里太乱了，跑出汗来脑子能清醒点，没那么烦躁。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "ce28db",
+        "origin_day": 10,
+        "pursued_days": 1
+      },
+      {
+        "target": "陆思远",
+        "goal": "找他聊聊物理题，缓和下之前的尴尬。",
+        "reason": "之前讨论物理时感觉还行，想通过这个机会修复一下关系，别搞得大家都躲着我。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "5fc846",
+        "origin_day": 9,
+        "pursued_days": 2
+      }
+    ],
+    "mood_forecast": "anxious",
+    "location_preferences": {
+      "morning_break": "走廊",
+      "lunch": "食堂",
+      "afternoon_break": "教室"
+    }
+  },
+  "day": 10,
+  "active_concerns": [
+    {
+      "id": "f8f76e",
+      "text": "在宿舍管理中，我的制止行为是否反而加剧了姜皓天的反叛情绪，导致宿舍氛围更加压抑？",
+      "source_event": "姜皓天在课堂上公开挑衅并带头起哄；22:00 宿舍夜聊；22:00 宿舍夜聊；宿舍夜聊冲突与姜皓天的挑衅；宿舍夜聊提醒熄灯与收手机；22:00 宿舍夜聊",
+      "source_scene": "上课",
+      "source_day": 1,
+      "emotion": "anxious",
+      "intensity": 10,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 9,
+      "reinforcement_count": 9,
+      "text_history": [
+        "宿舍内部的对抗情绪日益严重，担心这种僵局会彻底破坏宿舍关系，导致未来无法共处。",
+        "班长身份带来的管理压力与同学间的抵触情绪日益严重，担心这种强硬的管理方式会让自己在班级彻底孤立。",
+        "试图通过非强制手段提醒姜皓天，但对方的配合仍带有被动感，担心这种温和方式是否真的能长久维持班级纪律。"
+      ],
+      "id_history": [],
+      "last_bump_day": 10,
+      "bumps_today": 1
+    },
+    {
+      "id": "5fc846",
+      "text": "陆思远和林昭宇在物理题讨论上的默契对比我的被动，让我怀疑自己是否真的在班级中被孤立了。",
+      "source_event": "宿舍夜聊；陆思远在课堂上给林昭宇传纸条，且被我制止后态度敷衍。；12:00 午饭@食堂；食堂午饭时陆思远宁愿躲开也不愿和我多待。；食堂午饭时陆思远与林昭宇结伴离开",
+      "source_scene": "",
+      "source_day": 2,
+      "emotion": "frustrated",
+      "intensity": 7,
+      "related_people": [
+        "林昭宇",
+        "陆思远"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 10,
+      "reinforcement_count": 2,
+      "text_history": [
+        "陆思远和林昭宇在课堂上搞小动作，连陆思远现在也开始不听管教了。",
+        "林昭宇在午餐时拒绝参与学校活动并避开交流，宿舍关系的僵局似乎难以通过简单的沟通打破。",
+        "难道我真的错了吗，为什么连陆思远都躲着我？"
+      ],
+      "id_history": [],
+      "last_bump_day": 10,
+      "bumps_today": 2
+    },
+    {
+      "id": "ce28db",
+      "text": "连老师都觉得我管得太死，难道我真的错了吗？",
+      "source_event": "被林昭宇冷淡拒绝，感到完全被排斥在小圈子之外。；何老师在食堂当众指责我管理方式有问题",
+      "source_scene": "课间@教室",
+      "source_day": 5,
+      "emotion": "frustrated",
+      "intensity": 9,
+      "related_people": [
+        "自己"
+      ],
+      "positive": false,
+      "topic": "自我认同",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 7,
+      "reinforcement_count": 4,
+      "text_history": [
+        "班长当成这样，到底还有没有必要强撑下去？"
+      ],
+      "id_history": [],
+      "last_bump_day": 10,
+      "bumps_today": 1
+    },
+    {
+      "id": "7c77e8",
+      "text": "老师的批评让我怀疑自己的管理方式，我是否真的在用错误的方法追求所谓的公平？",
+      "source_event": "何老师在食堂约谈",
+      "source_scene": "",
+      "source_day": 7,
+      "emotion": "doubtful",
+      "intensity": 2,
+      "related_people": [
+        "何老师"
+      ],
+      "positive": false,
+      "topic": "自我认同",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 7,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 10,
+      "bumps_today": 1
+    }
+  ]
+}

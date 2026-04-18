@@ -1,0 +1,126 @@
+{
+  "emotion": "excited",
+  "energy": 85,
+  "academic_pressure": 15,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "数学课本",
+        "goal": "在课间把数学课本前几章的基础定义翻一遍",
+        "reason": "卷子一直塞包里也不是办法，总得把基础先补上，不然太慌了。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "0cb951",
+        "origin_day": 10,
+        "pursued_days": 1
+      },
+      {
+        "target": "姜皓天",
+        "goal": "晚自习后和姜皓天去操场加练，顺便吃辣条",
+        "reason": "答应过的事，能和姜皓天待一会儿挺开心的，希望能避开沈逸凡。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "7908df",
+        "origin_day": 10,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "neutral",
+    "location_preferences": {
+      "morning_break": "图书馆",
+      "lunch": "食堂",
+      "afternoon_break": "操场"
+    }
+  },
+  "day": 10,
+  "active_concerns": [
+    {
+      "id": "524ac6",
+      "text": "数学卷子没做完就草草收进书包，担心自己这种逃避状态会彻底跟不上教学进度。",
+      "source_event": "晚自习将未完成的卷子塞进书包侧兜；课间想看书但被琐事打断",
+      "source_scene": "",
+      "source_day": 8,
+      "emotion": "anxious",
+      "intensity": 6,
+      "related_people": [],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 8,
+      "reinforcement_count": 1,
+      "text_history": [
+        "数学课本前几章的基础定义一直没看，心里越来越慌，担心真的会跟不上进度。"
+      ],
+      "id_history": [
+        "d99fa4"
+      ],
+      "last_bump_day": 10,
+      "bumps_today": 1
+    },
+    {
+      "id": "0cb951",
+      "text": "课间想看数学课本基础定义却总被老师提醒或琐事打断，担心基础一直补不上。",
+      "source_event": "08:45 课间沈逸凡提醒准备上课",
+      "source_scene": "",
+      "source_day": 6,
+      "emotion": "anxious",
+      "intensity": 6,
+      "related_people": [
+        "沈逸凡"
+      ],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 9,
+      "last_new_info_day": 6,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 10,
+      "bumps_today": 2
+    },
+    {
+      "id": "7908df",
+      "text": "答应了姜皓天晚上加练并吃辣条，希望能顺利进行，不要被沈逸凡搅合。",
+      "source_event": "姜皓天邀请晚上去宿舍吃辣条；15:30 课间@操场",
+      "source_scene": "课间@操场",
+      "source_day": 7,
+      "emotion": "excited",
+      "intensity": 6,
+      "related_people": [
+        "姜皓天",
+        "沈逸凡"
+      ],
+      "positive": true,
+      "topic": "期待的事",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 7,
+      "reinforcement_count": 1,
+      "text_history": [
+        "晚上去姜皓天宿舍吃辣条，希望能别被沈逸凡搅合了"
+      ],
+      "id_history": [],
+      "last_bump_day": 10,
+      "bumps_today": 2
+    },
+    {
+      "id": "d230da",
+      "text": "虽然今天和姜皓天打球很开心，但数学基础定义还是没时间看，担心这种基础漏洞会一直拖累成绩。",
+      "source_event": "课间在图书馆试图看书但被琐事打断",
+      "source_scene": "",
+      "source_day": 10,
+      "emotion": "anxious",
+      "intensity": 5,
+      "related_people": [],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 10,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

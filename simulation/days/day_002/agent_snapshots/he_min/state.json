@@ -1,5 +1,5 @@
 {
-  "emotion": "calm",
+  "emotion": "anxious",
   "energy": 85,
   "academic_pressure": 35,
   "location": "教室",
@@ -7,28 +7,28 @@
     "intentions": [
       {
         "target": "林昭宇",
-        "goal": "课间找他聊聊，观察他的精神状态",
-        "reason": "这孩子最近绷得太紧，月考后看他红了眼眶，怕他心态崩了。",
+        "goal": "课后叫他到办公室，旁敲侧击问问最近睡眠和压力状况",
+        "reason": "看他上次月考后红了眼眶，怕他长期紧绷出问题，得找机会聊聊。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "7b3c91",
-        "origin_day": 1,
-        "pursued_days": 2
+        "satisfies_concern": "7b3c2a",
+        "origin_day": 2,
+        "pursued_days": 1
       },
       {
         "target": "何家骏",
-        "goal": "检查他的作业进度，了解家庭情况",
-        "reason": "他底子薄，家里没人管，必须得拉他一把，不能让他掉队。",
-        "fulfilled": true,
+        "goal": "检查上周古诗文默写，并具体指点学习方法",
+        "reason": "这孩子底子薄，得趁现在还有时间帮他把基础抓一抓，不能让他掉队。",
+        "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "4d2a8e",
-        "origin_day": 1,
-        "pursued_days": 2
+        "satisfies_concern": "f9e8d1",
+        "origin_day": 2,
+        "pursued_days": 1
       },
       {
-        "target": "自己",
-        "goal": "去学校门口买杯热咖啡",
-        "reason": "昨天没买成，今天课多，得靠咖啡提提神。",
+        "target": "女儿",
+        "goal": "下班路上顺路去商场买那个文具盲盒",
+        "reason": "答应好几天了，再不买小丫头该有意见了，买个小玩意儿哄哄。",
         "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
@@ -39,46 +39,49 @@
     "mood_forecast": "neutral",
     "location_preferences": {
       "morning_break": "教室",
-      "lunch": "教室",
+      "lunch": "食堂",
       "afternoon_break": "教室"
     }
   },
   "day": 2,
   "active_concerns": [
     {
-      "id": "fca093",
-      "text": "何家骏的学习态度和家庭支持缺失问题，需要通过后续的错题讲解进一步跟进。",
-      "source_event": "课间检查数学作业",
-      "source_scene": "",
+      "id": "97c316",
+      "text": "林昭宇上次月考后红了眼眶，担心他长期紧绷出问题，需要找机会进行心理疏导。",
+      "source_event": "听到苏念瑶提到想去报竞赛，其他人表现出恐慌和逃避；基于对学生日常状态的观察与长期关注",
+      "source_scene": "午饭@食堂",
       "source_day": 2,
-      "emotion": "concerned",
-      "intensity": 5,
+      "emotion": "anxious",
+      "intensity": 8,
       "related_people": [
-        "何家骏"
+        "苏念瑶",
+        "林昭宇"
       ],
       "positive": false,
       "topic": "学业焦虑",
       "last_reinforced_day": 2,
       "last_new_info_day": 2,
-      "reinforcement_count": 0,
-      "text_history": [],
+      "reinforcement_count": 2,
+      "text_history": [
+        "班里竞赛焦虑风气蔓延，得找机会敲打又不伤他们。"
+      ],
       "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
+      "last_bump_day": 2,
+      "bumps_today": 2
     },
     {
-      "id": "eeb8c6",
-      "text": "林昭宇近期的心理状态依然令人担忧，需要找机会进行谈话。",
-      "source_event": "日常观察",
+      "id": "9277d7",
+      "text": "答应给女儿买的文具盲盒还没买，需要下班路上顺路解决。",
+      "source_event": "个人生活计划",
       "source_scene": "",
       "source_day": 2,
-      "emotion": "worry",
-      "intensity": 6,
+      "emotion": "expectant",
+      "intensity": 3,
       "related_people": [
-        "林昭宇"
+        "女儿"
       ],
-      "positive": false,
-      "topic": "学业焦虑",
+      "positive": true,
+      "topic": "期待的事",
       "last_reinforced_day": 2,
       "last_new_info_day": 2,
       "reinforcement_count": 0,

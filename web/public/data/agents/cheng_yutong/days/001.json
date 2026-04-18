@@ -9,7 +9,7 @@
   "emotion_label": "平静",
   "energy_label": "精神还行",
   "pressure_label": "压力不小",
-  "featured_quote": "这道题其实只要把牛顿第二定律微分一下就出来了，有那么难吗？排名还没出，真想快点结束课间。",
+  "featured_quote": "这群人真吵，没时间把那三道力学题做完，下次考试又悬了。",
   "featured_scene": "08:45 · 课间",
   "relationships": [
     {
@@ -28,19 +28,19 @@
   "memories": [
     {
       "date": "Day 1",
-      "text": "舍友熄灯后还在吵闹，被迫打断了看书节奏。",
+      "text": "苏念瑶和方语晨在课间传纸条讨论八卦，吵得无法专注。",
       "importance": 4
     },
     {
       "date": "Day 1",
-      "text": "在图书馆帮助陆思远核对物理卷子，并提供了准确的解题步骤。",
-      "importance": 4
+      "text": "林昭宇和陆思远在课间讨论物理题，沈逸凡在旁边催促，吵得人没法专注。",
+      "importance": 3
     }
   ],
   "top_concern": null,
   "self_narrative": "",
   "caption_payload": {
-    "caption": "📚 程雨桐 · 第001天 档案\n\n标签：沉默第二名\n此刻心情：平静\n\n「这道题其实只要把牛顿第二定律微分一下就出来了，有那么难吗？排名还没出，真想快点结束课间。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "📚 程雨桐 · 第001天 档案\n\n标签：沉默第二名\n此刻心情：平静\n\n「这群人真吵，没时间把那三道力学题做完，下次考试又悬了。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

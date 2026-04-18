@@ -6,51 +6,51 @@
   "motif_emoji": "🌸",
   "motif_tag": "玻璃心诗人",
   "main_color": "#D4748B",
-  "emotion_label": "挫败",
+  "emotion_label": "焦虑",
   "energy_label": "精神还行",
   "pressure_label": "稍有压力",
-  "featured_quote": "他装什么装啊，刚才那书都快怼到脸上了，尴尬死了，我再也不想往他那边看了。",
-  "featured_scene": "08:45 · 课间",
+  "featured_quote": "受不了了，她们怎么还没完没了，心跳快得要窒息，一定要想办法让她们闭嘴。",
+  "featured_scene": "12:00 · 午饭",
   "relationships": [
     {
       "target_name": "方语晨",
-      "favorability": 22,
-      "trust": 19,
-      "label_text": "很亲近的朋友"
-    },
-    {
-      "target_name": "唐诗涵",
-      "favorability": 10,
-      "trust": 6,
+      "favorability": 14,
+      "trust": 15,
       "label_text": "还行，有些好感"
     },
     {
       "target_name": "程雨桐",
-      "favorability": 7,
+      "favorability": 13,
       "trust": 7,
-      "label_text": "普通同学"
+      "label_text": "还行，有些好感"
+    },
+    {
+      "target_name": "唐诗涵",
+      "favorability": 13,
+      "trust": 6,
+      "label_text": "还行，有些好感"
     }
   ],
   "memories": [
     {
-      "date": "Day 5",
-      "text": "方语晨和唐诗涵一直追问林昭宇的事，烦死了，程雨桐还冷着脸摔杯子。",
-      "importance": 6
+      "date": "Day 4",
+      "text": "方语晨在宿舍里非要逼问我和林昭宇的事，还拿手机备注LYU说事，真的尴尬死了。",
+      "importance": 8
     },
     {
       "date": "Day 5",
-      "text": "终于把那件丝绒裙子下单了，希望周末穿起来好看。",
-      "importance": 5
+      "text": "唐诗涵一直追问我林昭宇的事，真的想找个洞钻进去，还好雨桐在旁边解围。",
+      "importance": 6
     }
   ],
   "top_concern": {
-    "text": "被她们发现我在偷看林昭宇了，好尴尬，以后得更小心点。",
-    "intensity_label": "中等",
+    "text": "方语晨已经拆穿了我的手机备注，担心她会进一步追问或在班级里引起不必要的关注。",
+    "intensity_label": "较强",
     "positive": false
   },
-  "self_narrative": "班里那个话多的苏念瑶，其实总是半场抽离。方语晨说八卦时我配合着点头，心却留在林昭宇那儿。成绩不上不下，挺磨人的。最近总想路过他座位，又怕被看穿心思。藏在枕头下的日记，是我唯一的避风港。",
+  "self_narrative": "在班里属于话多但没存在感的那类，最近为了竞赛的事频繁找林昭宇，心跳总是乱得不行。数学错题本堆在那儿像座山，压得我喘不过气。方语晨那家伙老盯着我笑，真怕她把我的小心思全看穿了，EMO了。",
   "caption_payload": {
-    "caption": "🌸 苏念瑶 · 第005天 档案\n\n标签：玻璃心诗人\n此刻心情：挫败\n\n「他装什么装啊，刚才那书都快怼到脸上了，尴尬死了，我再也不想往他那边看了。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "🌸 苏念瑶 · 第005天 档案\n\n标签：玻璃心诗人\n此刻心情：焦虑\n\n「受不了了，她们怎么还没完没了，心跳快得要窒息，一定要想办法让她们闭嘴。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

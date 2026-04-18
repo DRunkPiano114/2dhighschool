@@ -1,0 +1,62 @@
+{
+  "agent_id": "cheng_yutong",
+  "name_cn": "程雨桐",
+  "day": 10,
+  "is_teacher": false,
+  "motif_emoji": "📚",
+  "motif_tag": "沉默第二名",
+  "main_color": "#E8A838",
+  "emotion_label": "平静",
+  "energy_label": "精神还行",
+  "pressure_label": "压力不小",
+  "featured_quote": "终于可以安稳看会儿修仙小说了，这几天压力太大了。",
+  "featured_scene": "22:00 · 宿舍夜聊",
+  "relationships": [
+    {
+      "target_name": "陆思远",
+      "favorability": 0,
+      "trust": 1,
+      "label_text": "普通同学"
+    },
+    {
+      "target_name": "沈逸凡",
+      "favorability": 0,
+      "trust": 0,
+      "label_text": "普通同学"
+    },
+    {
+      "target_name": "姜皓天",
+      "favorability": 0,
+      "trust": 0,
+      "label_text": "普通同学"
+    }
+  ],
+  "memories": [
+    {
+      "date": "Day 4",
+      "text": "舍友大半夜还在聊八卦，严重干扰休息。",
+      "importance": 5
+    },
+    {
+      "date": "Day 10",
+      "text": "早读课这三个人为了奶茶和八卦闹个不停，严重干扰专注力",
+      "importance": 4
+    }
+  ],
+  "top_concern": {
+    "text": "力学竞赛进度落后了十分钟，必须补上以维持年级前列的优势。",
+    "intensity_label": "中等",
+    "positive": false
+  },
+  "self_narrative": "年级前十是底线。苏念瑶总来打扰，解题逻辑太慢。竞赛题没推完，进度落后了。熄灯后的网文是唯一禁区，不能被察觉。父母的期待像空气，压得人喘不过气。我要第一，必须是。",
+  "caption_payload": {
+    "caption": "📚 程雨桐 · 第010天 档案\n\n标签：沉默第二名\n此刻心情：平静\n\n「终于可以安稳看会儿修仙小说了，这几天压力太大了。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "hashtags": [
+      "#SimCampus",
+      "#AI高中生",
+      "#青春日记",
+      "#人物志"
+    ],
+    "filename": "simcampus_程雨桐_档案_第010天.png"
+  }
+}

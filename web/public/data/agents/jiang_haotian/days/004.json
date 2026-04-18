@@ -9,48 +9,48 @@
   "emotion_label": "挫败",
   "energy_label": "精神还行",
   "pressure_label": "轻松",
-  "featured_quote": "这小子装睡吧，正好，趁沈逸凡没盯着，问问他以后到底咋想的。",
-  "featured_scene": "22:00 · 宿舍夜聊",
+  "featured_quote": "林昭宇个怂包跑什么，正好，没人碍事了，这小子不跟我说实话我就跟他没完。",
+  "featured_scene": "12:00 · 午饭",
   "relationships": [
     {
       "target_name": "林昭宇",
-      "favorability": 10,
+      "favorability": 11,
       "trust": 5,
       "label_text": "还行，有些好感"
     },
     {
-      "target_name": "陆思远",
-      "favorability": 4,
-      "trust": 5,
+      "target_name": "何家骏",
+      "favorability": 6,
+      "trust": 3,
       "label_text": "普通同学"
     },
     {
-      "target_name": "何家骏",
+      "target_name": "陆思远",
       "favorability": 4,
-      "trust": 3,
+      "trust": 4,
       "label_text": "普通同学"
     }
   ],
   "memories": [
     {
       "date": "Day 4",
-      "text": "在操场被沈逸凡当众要求收起手机，我用肩膀撞了他并威胁要抠出眼珠。",
+      "text": "晚自习在宿舍与沈逸凡因为玩手机发生激烈争吵，最终被迫关机。",
       "importance": 6
     },
     {
-      "date": "Day 1",
-      "text": "沈逸凡那死样子，整天就知道拿纪律压人，真把自己当盘菜了。",
+      "date": "Day 3",
+      "text": "在宿舍夜聊时试探陆思远关于原材料价格和生意情况，但被对方以物理任务繁重为由拒绝交流。",
       "importance": 6
     }
   ],
   "top_concern": {
-    "text": "家里工厂订单减少，想打听别人对未来就业的看法，但一直没找到合适的机会深入询问。",
-    "intensity_label": "中等",
+    "text": "爸妈最近总念叨工厂订单减少，心里总觉得不踏实，想找机会旁敲侧击问问情况。",
+    "intensity_label": "较强",
     "positive": false
   },
-  "self_narrative": "班里那个最吵的姜皓天就是我。每天笑嘻嘻，其实心里没底。爸妈厂子快撑不住了，我只能装傻。沈逸凡那家伙天天盯着我扣分，烦死。篮球场上我还能罩着何家骏，至少在那儿我说了算。混日子呗，走一步看一步。",
+  "self_narrative": "班里那个最吵的姜皓天就是我。每天笑嘻嘻，其实心里乱得一团糟。家里厂子订单少，只能装作若无其事。王者钻石，学校混子，只要还没毕业，我就能接着乐呵。沈逸凡那家伙又在盯着我，真烦。",
   "caption_payload": {
-    "caption": "⚽ 姜皓天 · 第004天 档案\n\n标签：运动健将\n此刻心情：挫败\n\n「这小子装睡吧，正好，趁沈逸凡没盯着，问问他以后到底咋想的。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "⚽ 姜皓天 · 第004天 档案\n\n标签：运动健将\n此刻心情：挫败\n\n「林昭宇个怂包跑什么，正好，没人碍事了，这小子不跟我说实话我就跟他没完。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

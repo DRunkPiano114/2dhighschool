@@ -6,63 +6,57 @@
   "daily_plan": {
     "intentions": [
       {
-        "target": "智学网",
-        "goal": "确认月考排名",
-        "reason": "排名迟迟未公布，这种不确定性极度干扰我的复习节奏，必须尽早确认以调整后续策略。",
+        "target": "物理竞赛题集",
+        "goal": "完成力学进阶章节的全部推导并整理错题",
+        "reason": "之前的进度卡在受力分析上，必须赶上预定计划以保持年级第一的竞争力。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "f5f334",
-        "origin_day": 5,
-        "pursued_days": 3
+        "satisfies_concern": "781baa",
+        "origin_day": 7,
+        "pursued_days": 1
       },
       {
-        "target": "物理笔记",
-        "goal": "整理错题逻辑",
-        "reason": "月考物理部分有丢分，必须梳理清楚逻辑漏洞，确保下次竞赛或考试不再犯错。",
-        "fulfilled": false,
-        "abandoned": false,
-        "satisfies_concern": null,
-        "origin_day": 6,
-        "pursued_days": 2
-      },
-      {
-        "target": "宿舍被窝",
-        "goal": "阅读《仙路独行》",
-        "reason": "白天被琐事和噪音包围，只有熄灯后这半小时能让我从压抑的精英人设中逃离，维持心理平衡。",
+        "target": "番茄小说",
+        "goal": "阅读《仙路独行》最新两章更新",
+        "reason": "这是我唯一能从高压学习中获得喘息的时刻，不能放弃。",
         "fulfilled": true,
         "abandoned": false,
-        "satisfies_concern": "f5f334",
-        "origin_day": 6,
-        "pursued_days": 2
+        "satisfies_concern": null,
+        "origin_day": 7,
+        "pursued_days": 1
       }
     ],
     "mood_forecast": "calm",
     "location_preferences": {
-      "morning_break": "教室",
+      "morning_break": "图书馆",
       "lunch": "教室",
-      "afternoon_break": "天台"
+      "afternoon_break": "教室"
     }
   },
   "day": 7,
   "active_concerns": [
     {
-      "id": "f5f334",
-      "text": "每晚熄灯后阅读《仙路独行》的私密时间被白天的琐事和晚上的宿舍喧闹挤压，难以获得心理逃避。",
-      "source_event": "22:00 宿舍夜聊",
+      "id": "06f3e5",
+      "text": "明日有测验，宿舍夜聊干扰了休息，必须确保睡眠质量以应对考试。",
+      "source_event": "宿舍夜聊",
       "source_scene": "",
-      "source_day": 5,
-      "emotion": "frustrated",
-      "intensity": 5,
-      "related_people": [],
+      "source_day": 7,
+      "emotion": "annoyed",
+      "intensity": 4,
+      "related_people": [
+        "苏念瑶",
+        "方语晨",
+        "唐诗涵"
+      ],
       "positive": false,
-      "topic": "兴趣爱好",
+      "topic": "学业焦虑",
       "last_reinforced_day": 7,
-      "last_new_info_day": 5,
+      "last_new_info_day": 7,
       "reinforcement_count": 0,
       "text_history": [],
       "id_history": [],
-      "last_bump_day": 7,
-      "bumps_today": 2
+      "last_bump_day": 0,
+      "bumps_today": 0
     }
   ]
 }

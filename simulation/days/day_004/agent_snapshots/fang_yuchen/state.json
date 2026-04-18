@@ -1,42 +1,42 @@
 {
-  "emotion": "frustrated",
+  "emotion": "curious",
   "energy": 85,
   "academic_pressure": 30,
   "location": "教室",
   "daily_plan": {
     "intentions": [
       {
-        "target": "苏念瑶",
-        "goal": "旁敲侧击问清楚沈逸凡周末去图书馆到底是不是去约会",
-        "reason": "心里的八卦之火烧得难受，必须找念瑶确认一下细节。",
+        "target": "陆思远",
+        "goal": "找陆思远打听班级最新的八卦情报",
+        "reason": "前两天都没堵到人，今天一定要把情报补回来，不然情报中心要失职了。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "756877",
-        "origin_day": 3,
-        "pursued_days": 2
+        "satisfies_concern": "8ddab8",
+        "origin_day": 2,
+        "pursued_days": 3
       },
       {
-        "target": "姜皓天",
-        "goal": "找机会再试探一下他手机里的秘密",
-        "reason": "那天他反应太奇怪了，这种谜语人行为真的让人抓心挠肝！",
+        "target": "苏念瑶",
+        "goal": "和念瑶复盘微短剧结局并试探她对林昭宇的态度",
+        "reason": "她最近太反常了，必须找机会套套话，顺便把剧看完。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "13a135",
+        "satisfies_concern": "e2cd81",
         "origin_day": 4,
         "pursued_days": 1
       },
       {
-        "target": null,
-        "goal": "偷偷刷一会儿微短剧",
-        "reason": "昨晚没看成，今天必须补上，不然感觉生活都没动力了。",
-        "fulfilled": true,
+        "target": "唐诗涵",
+        "goal": "和诗涵交换谷子信息并吐槽抽奖概率",
+        "reason": "好久没跟她好好聊谷子了，她的限定立牌我还没看够呢。",
+        "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": null,
-        "origin_day": 3,
-        "pursued_days": 2
+        "satisfies_concern": "8aa6eb",
+        "origin_day": 4,
+        "pursued_days": 1
       }
     ],
-    "mood_forecast": "frustrated",
+    "mood_forecast": "excited",
     "location_preferences": {
       "morning_break": "走廊",
       "lunch": "食堂",
@@ -46,57 +46,62 @@
   "day": 4,
   "active_concerns": [
     {
-      "id": "756877",
-      "text": "沈逸凡周末去图书馆到底是不是去约会的？好想知道！",
-      "source_event": "课间听到沈逸凡说周末去图书馆",
-      "source_scene": "课间@教室",
-      "source_day": 2,
-      "emotion": "curious",
-      "intensity": 5,
+      "id": "8aa6eb",
+      "text": "一定要找机会和诗涵好好吐槽那家店的抽奖概率，顺便看看她的限定立牌。",
+      "source_event": "食堂午饭时唐诗涵确认她收到了全套限定立牌。；宿舍夜聊被打断",
+      "source_scene": "午饭@食堂",
+      "source_day": 1,
+      "emotion": "excited",
+      "intensity": 6,
       "related_people": [
-        "沈逸凡"
+        "唐诗涵"
       ],
       "positive": true,
-      "topic": "恋爱",
-      "last_reinforced_day": 3,
-      "last_new_info_day": 2,
-      "reinforcement_count": 0,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 4,
-      "bumps_today": 2
-    },
-    {
-      "id": "13a135",
-      "text": "姜皓天手机里到底藏着什么秘密？当时他那个反应太奇怪了，一定要找机会再试探一下。",
-      "source_event": "15:30 课间@走廊",
-      "source_scene": "",
-      "source_day": 3,
-      "emotion": "curious",
-      "intensity": 4,
-      "related_people": [
-        "姜皓天"
-      ],
-      "positive": false,
-      "topic": "其他",
+      "topic": "兴趣爱好",
       "last_reinforced_day": 4,
       "last_new_info_day": 3,
       "reinforcement_count": 1,
-      "text_history": [],
+      "text_history": [
+        "诗涵的限定立牌真的超好看，好想赶紧去宿舍借来看看。"
+      ],
+      "id_history": [],
+      "last_bump_day": 4,
+      "bumps_today": 1
+    },
+    {
+      "id": "e2cd81",
+      "text": "苏念瑶对林昭宇的态度实在太反常了，她到底在隐瞒什么？",
+      "source_event": "食堂里提到林昭宇时苏念瑶的异常反应；食堂与宿舍的对话",
+      "source_scene": "午饭@食堂",
+      "source_day": 3,
+      "emotion": "curious",
+      "intensity": 9,
+      "related_people": [
+        "苏念瑶",
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "恋爱",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 3,
+      "reinforcement_count": 2,
+      "text_history": [
+        "念瑶是不是真的看上林昭宇了？她刚才反应好大。"
+      ],
       "id_history": [],
       "last_bump_day": 4,
       "bumps_today": 2
     },
     {
-      "id": "5cf0ef",
-      "text": "程雨桐在教室里对我的八卦提问表现得非常冷漠，甚至戴上耳机拒绝交流，这让我觉得有点没趣。",
-      "source_event": "15:30 课间教室对话",
+      "id": "802306",
+      "text": "苏念瑶对LYU这个备注的反应太奇怪了，我一定要搞清楚她到底在瞒着什么。",
+      "source_event": "22:00 宿舍夜聊",
       "source_scene": "",
       "source_day": 4,
-      "emotion": "bored",
-      "intensity": 3,
+      "emotion": "curious",
+      "intensity": 6,
       "related_people": [
-        "程雨桐"
+        "苏念瑶"
       ],
       "positive": false,
       "topic": "人际矛盾",

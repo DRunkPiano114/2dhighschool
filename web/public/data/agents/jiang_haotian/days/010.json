@@ -1,0 +1,62 @@
+{
+  "agent_id": "jiang_haotian",
+  "name_cn": "姜皓天",
+  "day": 10,
+  "is_teacher": false,
+  "motif_emoji": "⚽",
+  "motif_tag": "运动健将",
+  "main_color": "#E87B42",
+  "emotion_label": "挫败",
+  "energy_label": "精神还行",
+  "pressure_label": "轻松",
+  "featured_quote": "这小子装睡技术越来越烂了，老子今天必须撬开他的嘴问问厂子里的事。",
+  "featured_scene": "22:00 · 宿舍夜聊",
+  "relationships": [
+    {
+      "target_name": "何家骏",
+      "favorability": 33,
+      "trust": 16,
+      "label_text": "很亲近的朋友"
+    },
+    {
+      "target_name": "林昭宇",
+      "favorability": 11,
+      "trust": 5,
+      "label_text": "还行，有些好感"
+    },
+    {
+      "target_name": "方语晨",
+      "favorability": 2,
+      "trust": 0,
+      "label_text": "普通同学"
+    }
+  ],
+  "memories": [
+    {
+      "date": "Day 10",
+      "text": "陆思远这小子又装睡，工厂的事儿肯定有问题，烦死了。",
+      "importance": 8
+    },
+    {
+      "date": "Day 8",
+      "text": "大半夜的陆思远装死不理我，沈逸凡还在那儿在那儿叨叨，烦死了。",
+      "importance": 6
+    }
+  ],
+  "top_concern": {
+    "text": "陆思远在宿舍里始终避开关于工厂问题的沟通，那种刻意的回避让我对家里的状况感到更加不安。",
+    "intensity_label": "强烈",
+    "positive": false
+  },
+  "self_narrative": "又是和沈逸凡吵架的一天，真烦。陆思远这小子居然跟我装睡，肯定有事瞒着。家里工厂的事儿没个准信，心里像压着块石头。算了，晚点拉何家骏去球场干一场，先把这些破事抛到脑后，我还是那个让人开心的姜皓天。",
+  "caption_payload": {
+    "caption": "⚽ 姜皓天 · 第010天 档案\n\n标签：运动健将\n此刻心情：挫败\n\n「这小子装睡技术越来越烂了，老子今天必须撬开他的嘴问问厂子里的事。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "hashtags": [
+      "#SimCampus",
+      "#AI高中生",
+      "#青春日记",
+      "#人物志"
+    ],
+    "filename": "simcampus_姜皓天_档案_第010天.png"
+  }
+}

@@ -4,45 +4,46 @@
       "date": "Day 1",
       "day": 1,
       "people": [
-        "陆思远"
-      ],
-      "location": "教室",
-      "emotion": "calm",
-      "importance": 6,
-      "topics": [
-        "学业焦虑"
-      ],
-      "text": "物理大题卡住了，最后和陆思远约好晚自习一起研究，这种感觉稍微踏实点。",
-      "source_days": [
-        2,
-        4,
-        5,
-        6
-      ],
-      "text_history": [
-        "陆思远把草稿纸推给我看他的物理推导，还好有他一起，不然周围吵死了。",
-        "与陆思远在图书馆及宿舍多次讨论物理难题，这种学术上的深度交流让学习压力得到了一定程度的排解。",
-        "早读时陆思远偷偷把写好逻辑笔记的草稿纸推给我，他真的很懂我。"
-      ]
-    },
-    {
-      "date": "Day 1",
-      "day": 1,
-      "people": [
-        "唐诗涵"
+        "沈逸凡"
       ],
       "location": "教室",
       "emotion": "embarrassed",
-      "importance": 4,
+      "importance": 6,
       "topics": [
-        "人际矛盾"
+        "人际矛盾",
+        "学业焦虑"
       ],
-      "text": "唐诗涵来问题我没答上来，那个……那个……太尴尬了，她好像有点不高兴。",
+      "text": "沈逸凡在课上又当众盯着我问英语单词，搞得我很难受。",
       "source_days": [
-        2
+        1
       ],
       "text_history": [
-        "唐诗涵一直在旁边烦人，说话阴阳怪气的，搞得我物理题思路都断了。"
+        "沈逸凡当着大家的面催我弄英语卷子，感觉有点丢脸。"
+      ]
+    },
+    {
+      "date": "Day 2",
+      "day": 2,
+      "people": [
+        "陆思远"
+      ],
+      "location": "图书馆",
+      "emotion": "anxious",
+      "importance": 6,
+      "topics": [
+        "学业焦虑",
+        "人际矛盾"
+      ],
+      "text": "在图书馆为了语法点纠结半天，思远一直劝我休息，觉得自己挺笨的。",
+      "source_days": [
+        3,
+        2,
+        8
+      ],
+      "text_history": [
+        "和思远去图书馆路上聊了物理题，他不仅懂我那个简化方法，还帮我看了英语语法，心里稳多了。",
+        "陆思远答应待会儿去图书馆帮我看看英语阅读，心里稍微踏实了点。",
+        "思远帮我讲了生物代谢路径，还指点了我关于定语从句的那个死规则，心里稍微稳当了点。"
       ]
     },
     {
@@ -55,26 +56,9 @@
       "emotion": "calm",
       "importance": 6,
       "topics": [
-        "人际矛盾"
+        "兴趣爱好"
       ],
-      "text": "陆思远帮我解围后去图书馆门口等我，感觉还是他最懂我。",
-      "source_days": [],
-      "text_history": []
-    },
-    {
-      "date": "Day 3",
-      "day": 3,
-      "people": [
-        "沈逸凡",
-        "陆思远"
-      ],
-      "location": "食堂",
-      "emotion": "anxious",
-      "importance": 5,
-      "topics": [
-        "人际矛盾"
-      ],
-      "text": "沈逸凡在食堂当面说陆思远没主见，听得我心里难受。",
+      "text": "思远喊我赶紧走，他还是懂我的，带我去图书馆讲物理题。",
       "source_days": [],
       "text_history": []
     },
@@ -82,87 +66,83 @@
       "date": "Day 4",
       "day": 4,
       "people": [
-        "沈逸凡"
+        "陆思远"
       ],
       "location": "教室",
-      "emotion": "anxious",
-      "importance": 4,
+      "emotion": "touched",
+      "importance": 6,
       "topics": [
         "人际矛盾"
       ],
-      "text": "沈逸凡非要跟着去图书馆，心里烦得不行。",
-      "source_days": [],
-      "text_history": []
+      "text": "陆思远在沈逸凡盯着的时候，默默给我递了笔芯，还是他最懂我。",
+      "source_days": [
+        5,
+        4,
+        6
+      ],
+      "text_history": [
+        "陆思远帮我拧开冰红茶瓶盖递过来，他真的很懂我。",
+        "食堂吃饭时陆思远把他的排骨夹给我，还帮我挡姜皓天的追问。",
+        "早读时我没精神，思远帮我讲题还把校服盖我肩上，真的很照顾我。"
+      ]
+    },
+    {
+      "date": "Day 5",
+      "day": 5,
+      "people": [
+        "沈逸凡",
+        "陆思远"
+      ],
+      "location": "食堂",
+      "emotion": "frustrated",
+      "importance": 6,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "沈逸凡在食堂当众阴阳怪气，烦死了，还好思远跟我一起走了。",
+      "source_days": [
+        7,
+        8
+      ],
+      "text_history": [
+        "早读被沈逸凡盯着传纸条，心里慌得厉害，还好思远帮我挡了一下。",
+        "沈逸凡又来找茬，还好思远主动帮我分担了话题，不然真不知道怎么应付。"
+      ]
     },
     {
       "date": "Day 6",
       "day": 6,
       "people": [
-        "唐诗涵",
-        "程雨桐"
+        "何老师",
+        "沈逸凡"
       ],
-      "location": "图书馆",
-      "emotion": "embarrassed",
+      "location": "食堂",
+      "emotion": "touched",
       "importance": 6,
       "topics": [
-        "人际矛盾",
-        "学业焦虑"
-      ],
-      "text": "唐诗涵问我题，我没答出来，程雨桐还在旁边插嘴说我算错了，感觉好丢脸。",
-      "source_days": [],
-      "text_history": []
-    },
-    {
-      "date": "Day 7",
-      "day": 7,
-      "people": [
-        "陆思远"
-      ],
-      "location": "图书馆",
-      "emotion": "calm",
-      "importance": 6,
-      "topics": [
-        "学业焦虑",
         "人际矛盾"
       ],
-      "text": "陆思远在图书馆帮我讲解英语定语从句，并一起讨论物理题，这种被支持的感觉让我很安心。",
-      "source_days": [],
-      "text_history": []
-    },
-    {
-      "date": "Day 7",
-      "day": 7,
-      "people": [
-        "陆思远"
-      ],
-      "location": "教室",
-      "emotion": "calm",
-      "importance": 6,
-      "topics": [
-        "学业焦虑"
-      ],
-      "text": "陆思远教我怎么把复杂的长难句拆解开看，果然把从句括起来就没那么绕了。",
+      "text": "何老师在食堂帮我挡住了沈逸凡的催促，说我身体不舒服，心里挺暖的。",
       "source_days": [
-        8
+        7
       ],
       "text_history": [
-        "陆思远教我怎么拆解英语长难句，还说要把草稿纸给我看，心里稍微踏实了点。"
+        "何老师在食堂帮我挡住了沈逸凡的催促，还特意让我别急着去办公室，心里好受些了。"
       ]
     },
     {
-      "date": "Day 8",
-      "day": 8,
+      "date": "Day 9",
+      "day": 9,
       "people": [
-        "唐诗涵",
         "陆思远"
       ],
       "location": "图书馆",
-      "emotion": "embarrassed",
+      "emotion": "touched",
       "importance": 6,
       "topics": [
-        "人际矛盾"
+        "兴趣爱好"
       ],
-      "text": "唐诗涵一直问我在看什么，我紧张得话都说不利索，还好陆思远帮我挡了一下。",
+      "text": "思远在图书馆主动要听我的许嵩歌单，还夸歌好听，心里挺暖的。",
       "source_days": [],
       "text_history": []
     },
@@ -172,30 +152,47 @@
       "people": [
         "陆思远"
       ],
-      "location": "教室",
-      "emotion": "calm",
-      "importance": 5,
+      "location": "图书馆",
+      "emotion": "touched",
+      "importance": 6,
       "topics": [
-        "学业焦虑"
+        "人际交往",
+        "放松"
       ],
-      "text": "和陆思远约好晚自习去图书馆侧厅，他会帮我重新画那个物理受力分析图。",
+      "text": "在图书馆与陆思远共享耳机听音乐，感受到了难得的放松与陪伴。",
       "source_days": [],
       "text_history": []
     },
     {
-      "date": "Day 9",
-      "day": 9,
+      "date": "Day 10",
+      "day": 10,
       "people": [
-        "陆思远",
-        "姜皓天"
+        "何老师",
+        "陆思远"
       ],
-      "location": "食堂",
-      "emotion": "calm",
-      "importance": 5,
+      "location": "教室",
+      "emotion": "anxious",
+      "importance": 6,
       "topics": [
-        "人际矛盾"
+        "学业焦虑"
       ],
-      "text": "食堂人多又吵，姜皓天一直没完没了地问，陆思远帮我挡了一下，带我赶紧撤了。",
+      "text": "何老师突然叫我午休去办公室谈话，心跳得好快，幸好思远把笔记借给我了。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 10",
+      "day": 10,
+      "people": [
+        "陆思远"
+      ],
+      "location": "图书馆",
+      "emotion": "touched",
+      "importance": 6,
+      "topics": [
+        "学业焦虑"
+      ],
+      "text": "陆思远帮我理顺了物理受力分析的逻辑，还教了我怎么拆解定语从句的先行词，他真的超懂我。",
       "source_days": [],
       "text_history": []
     }

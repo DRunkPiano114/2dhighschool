@@ -9,48 +9,48 @@
   "emotion_label": "挫败",
   "energy_label": "精神还行",
   "pressure_label": "稍有压力",
-  "featured_quote": "对着他讲道理就是浪费时间，既然他这么喜欢球，那就让他练个够。",
-  "featured_scene": "15:30 · 课间",
+  "featured_quote": "这效率简直了，要是我是收银员绝对不会这么磨蹭。算了，赶紧付钱回教室，还要记考勤。",
+  "featured_scene": "08:45 · 课间",
   "relationships": [
     {
-      "target_name": "方语晨",
+      "target_name": "程雨桐",
+      "favorability": 1,
+      "trust": 0,
+      "label_text": "普通同学"
+    },
+    {
+      "target_name": "何家骏",
       "favorability": 0,
       "trust": 0,
       "label_text": "普通同学"
     },
     {
-      "target_name": "林昭宇",
-      "favorability": -1,
-      "trust": 5,
-      "label_text": "有点疏远"
-    },
-    {
-      "target_name": "陆思远",
-      "favorability": -6,
-      "trust": -1,
-      "label_text": "关系紧张"
+      "target_name": "方语晨",
+      "favorability": 0,
+      "trust": 0,
+      "label_text": "普通同学"
     }
   ],
   "memories": [
     {
-      "date": "Day 4",
-      "text": "姜皓天在操场当众挑衅，还用肩膀撞我，简直无法无天。",
+      "date": "Day 7",
+      "text": "在食堂被林昭宇当众无视，催他填表反而被何老师当面训斥，真让人下不来台。",
       "importance": 8
     },
     {
-      "date": "Day 8",
-      "text": "何家骏在眼皮子底下玩手机，简直不知悔改，这种人迟早要出事。",
-      "importance": 6
+      "date": "Day 7",
+      "text": "何老师在食堂当面指出我的管理方式有问题，这让我开始反思自己作为班长的执着是否真的适得其反。",
+      "importance": 8
     }
   ],
   "top_concern": {
-    "text": "在食堂对姜皓天的公开警告虽然维护了纪律，但这种强硬的对抗方式是否会引发更激烈的报复，让我感到不安。",
+    "text": "班长身份带来的管理压力与同学间的抵触情绪日益严重，担心这种强硬的管理方式会让自己在班级彻底孤立。",
     "intensity_label": "强烈",
     "positive": false
   },
-  "self_narrative": "班长当得像个笑话，姜皓天越来越横，管纪律反而成了众矢之的。方语晨她们看我的眼神也怪怪的。我只是想维持规矩，为什么大家都觉得我烦？明明是为了班级好，难道我真的错了吗？算了，不说了，先把明天考勤表弄完吧。",
+  "self_narrative": "班长当得像个笑话。管纪律被嫌烦，想沟通被冷落。姜皓天那副吊儿郎当的样子真让人火大，可我除了记名字还能干什么？宿舍里气氛冷得结冰，我这所谓的责任感，到底是在成全班级，还是在孤立自己？算了，不说了。",
   "caption_payload": {
-    "caption": "🔥 沈逸凡 · 第008天 档案\n\n标签：正义班长\n此刻心情：挫败\n\n「对着他讲道理就是浪费时间，既然他这么喜欢球，那就让他练个够。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "🔥 沈逸凡 · 第008天 档案\n\n标签：正义班长\n此刻心情：挫败\n\n「这效率简直了，要是我是收银员绝对不会这么磨蹭。算了，赶紧付钱回教室，还要记考勤。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

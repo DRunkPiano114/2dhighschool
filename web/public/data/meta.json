@@ -8,7 +8,8 @@
     "day_006",
     "day_007",
     "day_008",
-    "day_009"
+    "day_009",
+    "day_010"
   ],
   "agents": {
     "cheng_yutong": {
@@ -239,5 +240,5 @@
     }
   ],
   "current_date": "2025-09-01",
-  "next_exam_in_days": 21
+  "next_exam_in_days": 20
 }

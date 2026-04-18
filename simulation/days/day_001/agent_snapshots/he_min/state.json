@@ -7,28 +7,28 @@
     "intentions": [
       {
         "target": "林昭宇",
-        "goal": "课间找他聊聊，观察他的精神状态",
-        "reason": "看他上次月考后紧绷的样子，怕他压力过大出问题",
+        "goal": "课后把他叫到办公室，旁敲侧击问问最近睡眠情况",
+        "reason": "看他月考后眼睛又红了，怕他心理压力崩掉，得私下敲打一下让他别太紧绷",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "7b3c91",
+        "satisfies_concern": null,
         "origin_day": 1,
         "pursued_days": 1
       },
       {
         "target": "何家骏",
-        "goal": "检查他的作业进度，了解家庭情况",
-        "reason": "他底子薄又没人管，得在他彻底掉队前拉一把",
+        "goal": "检查他上周布置的古诗文默写，并给他指点一下学习方法",
+        "reason": "这孩子底子薄，再不管就彻底放弃语文了，得让他感觉到老师没把他当空气",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "4d2a8e",
+        "satisfies_concern": null,
         "origin_day": 1,
         "pursued_days": 1
       },
       {
         "target": null,
-        "goal": "去学校门口买杯热咖啡",
-        "reason": "早起改卷子太累了，需要提神",
+        "goal": "下班路上给女儿买个她念叨很久的文具盲盒",
+        "reason": "今天工作强度大，想靠哄女儿开心来平衡一下班主任的疲惫感",
         "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,

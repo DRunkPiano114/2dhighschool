@@ -1,34 +1,34 @@
 {
-  "emotion": "frustrated",
+  "emotion": "anxious",
   "energy": 85,
   "academic_pressure": 30,
   "location": "教室",
   "daily_plan": {
     "intentions": [
       {
-        "target": "笔记本",
-        "goal": "在午休时找个安静角落把那篇关于冬天的随笔写完",
-        "reason": "这篇随笔卡了几天了，总觉得写出来心里会顺畅点，不然写不出来真的EMO。",
+        "target": "唐诗涵",
+        "goal": "买两杯奶茶送给唐诗涵和方语晨，试图用八卦话题转移唐诗涵对手机备注的注意力",
+        "reason": "她一直盯着我手机，我得赶紧收买她，不然真的要社死了。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "354e18",
+        "satisfies_concern": "bdfb98",
+        "origin_day": 5,
+        "pursued_days": 3
+      },
+      {
+        "target": "程雨桐",
+        "goal": "厚着脸皮找程雨桐再请教一下物理竞赛题，争取能理清思路",
+        "reason": "物理题真的要命，再不弄懂这次考试肯定要挂，只能靠同桌救命了。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "ae7c08",
         "origin_day": 7,
         "pursued_days": 1
       },
       {
-        "target": "林昭宇",
-        "goal": "找机会看一眼他在做什么，但一定要装作只是刚好路过",
-        "reason": "虽然昨天看过了，但只要他在教室，我还是忍不住想确认他的状态，那种感觉很微妙。",
-        "fulfilled": false,
-        "abandoned": false,
-        "satisfies_concern": "ed11f7",
-        "origin_day": 7,
-        "pursued_days": 1
-      },
-      {
-        "target": "方语晨",
-        "goal": "拉着方语晨吐槽一下最近的数学课，顺便打听点八卦",
-        "reason": "最近压力大，找闺蜜聊聊能让我心情好点，而且听别人八卦能转移注意力。",
+        "target": null,
+        "goal": "去图书馆借一本散文集，让自己冷静一下",
+        "reason": "最近心总是静不下来，看点文字能让我稍微从这些烦心事里抽离出来。",
         "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
@@ -36,46 +36,23 @@
         "pursued_days": 1
       }
     ],
-    "mood_forecast": "calm",
+    "mood_forecast": "anxious",
     "location_preferences": {
-      "morning_break": "走廊",
+      "morning_break": "教室",
       "lunch": "食堂",
-      "afternoon_break": "天台"
+      "afternoon_break": "图书馆"
     }
   },
   "day": 7,
   "active_concerns": [
     {
-      "id": "6bad6e",
-      "text": "程雨桐是不是真的特别讨厌我，感觉连呼吸都让她烦。",
-      "source_event": "程雨桐在课堂上冷脸挪位置，动作很大。；宿舍里因为林昭宇的话题引发了程雨桐的强烈反感和冷暴力。",
-      "source_scene": "上课",
-      "source_day": 7,
-      "emotion": "anxious",
-      "intensity": 6,
-      "related_people": [
-        "程雨桐"
-      ],
-      "positive": false,
-      "topic": "人际矛盾",
-      "last_reinforced_day": 7,
-      "last_new_info_day": 7,
-      "reinforcement_count": 2,
-      "text_history": [
-        "程雨桐是不是对我有什么意见，搞得这么尴尬。"
-      ],
-      "id_history": [],
-      "last_bump_day": 7,
-      "bumps_today": 2
-    },
-    {
-      "id": "458934",
-      "text": "林昭宇在食堂用餐时被方语晨点破，担心自己的心思被旁人察觉。",
-      "source_event": "午饭时方语晨提到林昭宇",
+      "id": "bdfb98",
+      "text": "唐诗涵威胁要公开手机里关于林昭宇的备注，必须想办法转移她的注意力，否则秘密可能保不住。",
+      "source_event": "宿舍夜聊；食堂午餐时的对话；宿舍夜聊；宿舍夜聊及课间追问；宿舍夜聊",
       "source_scene": "",
-      "source_day": 7,
-      "emotion": "embarrassed",
-      "intensity": 4,
+      "source_day": 2,
+      "emotion": "frustrated",
+      "intensity": 10,
       "related_people": [
         "林昭宇",
         "方语晨"
@@ -83,24 +60,52 @@
       "positive": false,
       "topic": "恋爱",
       "last_reinforced_day": 7,
-      "last_new_info_day": 7,
+      "last_new_info_day": 6,
+      "reinforcement_count": 8,
+      "text_history": [
+        "方语晨已经察觉到我对林昭宇的关注，担心这种隐秘的情感被更多人发现或被林昭宇本人察觉。",
+        "方语晨已经拆穿了我的手机备注，担心她会进一步追问或在班级里引起不必要的关注。",
+        "方语晨和唐诗涵对林昭宇的关注度过高，担心自己对他的好感会被彻底看穿并公开化。"
+      ],
+      "id_history": [],
+      "last_bump_day": 7,
+      "bumps_today": 2
+    },
+    {
+      "id": "ae7c08",
+      "text": "物理竞赛题解法始终难以掌握，错题本积压过多，对即将到来的考试感到焦虑。",
+      "source_event": "全天学习过程",
+      "source_scene": "",
+      "source_day": 6,
+      "emotion": "anxious",
+      "intensity": 5,
+      "related_people": [
+        "程雨桐"
+      ],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 6,
+      "last_new_info_day": 6,
       "reinforcement_count": 0,
       "text_history": [],
       "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
+      "last_bump_day": 7,
+      "bumps_today": 1
     },
     {
-      "id": "4f5fdb",
-      "text": "随笔开头迟迟写不出，感到有些焦虑，希望能尽快完成以缓解情绪。",
-      "source_event": "课间发呆时想到随笔",
+      "id": "dbfd07",
+      "text": "唐诗涵执意要弄清手机备注LYU的含义，甚至扬言要去问林昭宇，必须想办法彻底堵住她的嘴。",
+      "source_event": "宿舍夜聊被逼问备注",
       "source_scene": "",
       "source_day": 7,
-      "emotion": "frustrated",
-      "intensity": 3,
-      "related_people": [],
+      "emotion": "焦虑",
+      "intensity": 6,
+      "related_people": [
+        "唐诗涵",
+        "林昭宇"
+      ],
       "positive": false,
-      "topic": "学业焦虑",
+      "topic": "人际矛盾",
       "last_reinforced_day": 7,
       "last_new_info_day": 7,
       "reinforcement_count": 0,

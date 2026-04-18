@@ -1,0 +1,27 @@
+{
+  "scene": {
+    "scene_index": 8,
+    "time": "15:30",
+    "name": "课间",
+    "location": "走廊",
+    "description": "下午课间休息",
+    "day": 5
+  },
+  "participant_names": {
+    "shen_yifan": "沈逸凡"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "shen_yifan"
+      ],
+      "is_solo": true,
+      "solo_reflection": {
+        "inner_thought": "姜皓天那家伙肯定又躲哪玩手机去了，烦。",
+        "emotion": "frustrated",
+        "activity": "我靠在走廊栏杆边，手里拿着刚从教室里带出来的数学卷子，盯着操场的方向看。"
+      }
+    }
+  ]
+}

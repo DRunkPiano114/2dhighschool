@@ -1,0 +1,1118 @@
+{
+  "scene": {
+    "scene_index": 3,
+    "time": "08:45",
+    "name": "课间",
+    "location": "教室",
+    "description": "上午第一个课间休息，同学们在教室里活动",
+    "day": 10
+  },
+  "participant_names": {
+    "fang_yuchen": "方语晨",
+    "lin_zhaoyu": "林昭宇",
+    "lu_siyuan": "陆思远",
+    "su_nianyao": "苏念瑶",
+    "he_min": "何老师"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "lin_zhaoyu",
+        "lu_siyuan",
+        "he_min"
+      ],
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": {
+              "agent": "he_min",
+              "target": "lin_zhaoyu",
+              "content": "林昭宇，你午休吃完饭到我办公室来一趟，我们聊两句。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "刚下课，教室里人比较少，陆思远就坐在旁边，何老师正在讲台附近整理教案。",
+              "inner_thought": "那个，定语从句还没搞明白，趁沈逸凡不在，赶紧问问陆思远。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "那个……那个，陆思远，刚才那个定语从句的先行词，你笔记带了吗？",
+              "action_target": "lu_siyuan",
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "he_min": {
+              "observation": "林昭宇在座位上整理书本，神情有些紧绷，坐在旁边的陆思远也在低头看书。",
+              "inner_thought": "这孩子看起来又在硬撑，午休一定要把他叫来聊聊。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "林昭宇，你午休吃完饭到我办公室来一趟，我们聊两句。",
+              "action_target": "lin_zhaoyu",
+              "urgency": 8,
+              "is_disruptive": true
+            },
+            "lu_siyuan": {
+              "observation": "何老师在附近，教室安静了不少，林昭宇正看着我等我提图书馆的事。",
+              "inner_thought": "何老师在这我不敢大声说话，想赶紧去图书馆避避人。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "刚才那个物理题……要不现在去图书馆看看？",
+              "action_target": "lin_zhaoyu",
+              "urgency": 7,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": {
+              "agent": "lin_zhaoyu",
+              "target": "lu_siyuan",
+              "content": "那个……那个，陆思远，刚才那个定语从句的先行词，你笔记带了吗？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_min": {
+              "observation": "林昭宇听到后动作顿了一下，神情比刚才更紧绷了些，陆思远则抬头看了他一眼。",
+              "inner_thought": "这孩子怕我谈话又要给他压力，得注意说话分寸。",
+              "emotion": "anxious",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 4,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": {
+              "agent": "lu_siyuan",
+              "target": "lin_zhaoyu",
+              "content": "刚才那个物理题……要不现在去图书馆看看？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "何老师就在附近，我得小声点，刚才问完思远他还没回我。",
+              "inner_thought": "希望何老师没听到，那个英语笔记真的救命，这周再搞不定又要被骂了。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "就那个……关系代词怎么选的，我一直搞混。",
+              "action_target": "lu_siyuan",
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "he_min": {
+              "observation": "林昭宇在询问完陆思远问题后，下意识地朝办公室方向瞥了一眼，神情非常紧张。",
+              "inner_thought": "这孩子怕我加码，得让他放轻松点，后面说谈话的时候语气要软。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "陆思远，笔记借他看看，互相交流是好事。林昭宇，别在那儿瞎紧张，就是简单聊聊最近的情况，没要把你吃了。",
+              "action_target": "lin_zhaoyu",
+              "urgency": 7,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": {
+              "agent": "lin_zhaoyu",
+              "target": "lu_siyuan",
+              "content": "就那个……关系代词怎么选的，我一直搞混。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lu_siyuan": {
+              "observation": "何老师刚交代完林昭宇，林昭宇还在问我笔记的事，我只想赶紧带他溜去图书馆。",
+              "inner_thought": "何老师在那看着，有点慌，赶紧把笔记给林昭宇吧，早点走人。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "笔记在这，你先看看吧，我们赶紧走？",
+              "action_target": "lin_zhaoyu",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 4,
+          "public": {
+            "speech": {
+              "agent": "lu_siyuan",
+              "target": "lin_zhaoyu",
+              "content": "笔记在这，你先看看吧，我们赶紧走？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "何老师还在讲台那边忙，我压低声音期待陆思远能带我去图书馆。",
+              "inner_thought": "何老师还没走，要是被他听见我英语这么差会不会觉得我偏科严重啊。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "嘘，小声点，何老师在那边。走吧，去图书馆避避风头？",
+              "action_target": "lu_siyuan",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 5,
+          "public": {
+            "speech": {
+              "agent": "he_min",
+              "target": "lin_zhaoyu",
+              "content": "陆思远，笔记借他看看，互相交流是好事。林昭宇，别在那儿瞎紧张，就是简单聊聊最近的情况，没要把你吃了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lu_siyuan": {
+              "observation": "我把笔记递给了林昭宇，何老师还在附近，我紧张得心跳很快。",
+              "inner_thought": "希望何老师没听到我们在说啥，只想快点溜出教室去图书馆。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "你看这一页，我先去把水杯收一下，门口等你。",
+              "action_target": "lin_zhaoyu",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 6,
+          "public": {
+            "speech": {
+              "agent": "lin_zhaoyu",
+              "target": "lu_siyuan",
+              "content": "嘘，小声点，何老师在那边。走吧，去图书馆避避风头？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_min": {
+              "observation": "林昭宇拿过笔记的手指还在发抖，看着他那副快要透不过气的样子，我心里堵得慌。",
+              "inner_thought": "这孩子压力大到连我这句玩笑话都听不出轻松了，得赶紧让他去喘口气。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "行了，你们赶紧去图书馆吧，别被我这儿的一句话吊着心，去吧。",
+              "action_target": "lin_zhaoyu",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 7,
+          "public": {
+            "speech": {
+              "agent": "lu_siyuan",
+              "target": "lin_zhaoyu",
+              "content": "你看这一页，我先去把水杯收一下，门口等你。"
+            },
+            "actions": [
+              {
+                "agent": "lin_zhaoyu",
+                "type": "non_verbal",
+                "content": "紧张地把那本英语笔记往怀里收了收，眼神躲闪着看向窗外。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "何老师向我走近了两步，显然把刚才的话听见了。",
+              "inner_thought": "完了，被抓包了，千万别让我现在就去办公室，我还没做好心理准备。",
+              "emotion": "anxious",
+              "action_type": "non_verbal",
+              "action_content": "紧张地把那本英语笔记往怀里收了收，眼神躲闪着看向窗外。",
+              "action_target": "he_min",
+              "urgency": 9,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 8,
+          "public": {
+            "speech": {
+              "agent": "he_min",
+              "target": "lin_zhaoyu",
+              "content": "行了，你们赶紧去图书馆吧，别被我这儿的一句话吊着心，去吧。"
+            },
+            "actions": [
+              {
+                "agent": "lin_zhaoyu",
+                "type": "non_verbal",
+                "content": "迅速将笔记塞进练习册夹好，低头假装在整理书包，快步向教室后门挪去。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "陆思远去收拾水杯了，何老师还在不远处，我抱着那本英语笔记心里七上八下的。",
+              "inner_thought": "希望何老师没注意到我，赶紧溜去图书馆才是正经事，太紧张了。",
+              "emotion": "anxious",
+              "action_type": "non_verbal",
+              "action_content": "迅速将笔记塞进练习册夹好，低头假装在整理书包，快步向教室后门挪去。",
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "lu_siyuan": {
+              "observation": "林昭宇现在的样子看起来特别紧张，把笔记护得紧紧的。",
+              "inner_thought": "他这状态肯定没法安心看笔记，得赶紧带他去图书馆缓口气。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "别担心，我先去门口接水，你慢慢看，一会儿就在图书馆老位置见。",
+              "action_target": "lin_zhaoyu",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 9,
+          "public": {
+            "speech": null,
+            "actions": [],
+            "environmental_event": null,
+            "exits": [
+              "lin_zhaoyu"
+            ]
+          },
+          "minds": {
+            "lin_zhaoyu": {
+              "observation": "何老师还没走远，我赶紧低头贴着课桌溜向后门。",
+              "inner_thought": "还好何老师没拦住我，赶紧撤，先去图书馆把笔记看懂。",
+              "emotion": "anxious",
+              "action_type": "exit",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "he_min": {
+              "observation": "林昭宇拿书包动作很快，背影都透着一股想逃离的局促。",
+              "inner_thought": "这孩子怕我怕成这样，看来午谈得先从闲聊切入，不能给压力。",
+              "emotion": "anxious",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 3,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 10,
+          "public": {
+            "speech": null,
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_min": {
+              "observation": "林昭宇匆忙离开教室，背影显得特别局促，甚至有些慌乱。",
+              "inner_thought": "这孩子被我盯得太紧了。午谈得换个策略，直接问成绩肯定会被吓跑，先聊聊别的吧。",
+              "emotion": "anxious",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 4,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": [
+            "lu_siyuan"
+          ]
+        },
+        {
+          "tick": 11,
+          "public": {
+            "speech": null,
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {},
+          "gated_agents": [
+            "he_min",
+            "lu_siyuan"
+          ]
+        }
+      ],
+      "narrative": {
+        "key_moments": [
+          "何老师要求林昭宇午休后前往办公室谈话。",
+          "林昭宇向陆思远询问英语定语从句笔记。",
+          "陆思远建议去图书馆讨论物理题并提供笔记。",
+          "何老师允许林昭宇和陆思远前往图书馆。",
+          "林昭宇整理书包并离开教室。"
+        ],
+        "fulfilled_intentions": [
+          "林昭宇:获取英语笔记",
+          "陆思远:前往图书馆",
+          "何老师:通知林昭宇谈话"
+        ],
+        "events_discussed": [],
+        "new_events": [
+          {
+            "text": "何老师要求林昭宇午休后去办公室谈话",
+            "category": "师生交流",
+            "witnesses": [
+              "林昭宇",
+              "陆思远"
+            ],
+            "spread_probability": 0.3,
+            "cite_ticks": [
+              1,
+              6,
+              9
+            ]
+          },
+          {
+            "text": "林昭宇与陆思远约定前往图书馆讨论学习问题",
+            "category": "学习交流",
+            "witnesses": [
+              "林昭宇",
+              "陆思远",
+              "何老师"
+            ],
+            "spread_probability": 0.2,
+            "cite_ticks": [
+              3,
+              5,
+              7,
+              9
+            ]
+          }
+        ]
+      },
+      "reflections": {
+        "lin_zhaoyu": {
+          "emotion": "anxious",
+          "relationship_changes": [
+            {
+              "to_agent": "陆思远",
+              "favorability": 2,
+              "trust": 2,
+              "understanding": 1,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "何老师",
+              "favorability": 1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "何老师突然叫我午休去办公室谈话，心跳得好快，幸好思远把笔记借给我了。",
+              "emotion": "anxious",
+              "importance": 6,
+              "people": [
+                "何老师",
+                "陆思远"
+              ],
+              "location": "教室",
+              "topics": [
+                "学业焦虑"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "c775a6",
+              "adjustment": 1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "请教定语从句的用法",
+              "status": "attempted",
+              "brief_reason": "陆思远把笔记塞给我了，虽然没细讲，但至少拿到了资料。"
+            },
+            {
+              "goal": "找机会戴上耳机听许嵩的新歌",
+              "status": "pending",
+              "brief_reason": "一直在讨论学业和应付老师，完全没机会。"
+            }
+          ]
+        },
+        "lu_siyuan": {
+          "emotion": "touched",
+          "relationship_changes": [
+            {
+              "to_agent": "林昭宇",
+              "favorability": 2,
+              "trust": 2,
+              "understanding": 1,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "何老师",
+              "favorability": 1,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "何老师特意安慰林昭宇别紧张，感觉老师其实挺关心他的。",
+              "emotion": "touched",
+              "importance": 4,
+              "people": [
+                "何老师",
+                "林昭宇"
+              ],
+              "location": "教室",
+              "topics": [
+                "学业焦虑"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "1eefd1",
+              "adjustment": -1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "删掉太具体的细节，把那篇草稿发出去",
+              "status": "pending",
+              "brief_reason": "课间一直在忙着帮林昭宇，没时间考虑公众号的事。"
+            },
+            {
+              "goal": "找一首节奏轻快的民谣听",
+              "status": "pending",
+              "brief_reason": "现在还在学校，不方便戴耳机听歌。"
+            }
+          ]
+        },
+        "he_min": {
+          "emotion": "anxious",
+          "relationship_changes": [
+            {
+              "to_agent": "林昭宇",
+              "favorability": 1,
+              "trust": 0,
+              "understanding": 2,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "陆思远",
+              "favorability": 1,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "林昭宇看到我后明显更紧张了，笔记都收得飞快，这孩子压力看来比我想的还大。",
+              "emotion": "anxious",
+              "importance": 6,
+              "people": [
+                "林昭宇"
+              ],
+              "location": "教室",
+              "topics": [
+                "学业焦虑"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "97c316",
+              "adjustment": 1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "找个时间把他叫到办公室，聊聊最近的状态，缓解他的紧绷感。",
+              "status": "frustrated",
+              "brief_reason": "我开口约了但他显然在避开我，最后还是让他们去图书馆了。"
+            },
+            {
+              "goal": "下班路上去商场买那个答应过她的文具盲盒。",
+              "status": "pending",
+              "brief_reason": "现在在教室，还没到下班时间。"
+            },
+            {
+              "goal": "中午去办公室附近的便利店买杯热咖啡提提神。",
+              "status": "pending",
+              "brief_reason": "课间处理琐事，还没来得及去。"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "group_index": 1,
+      "participants": [
+        "fang_yuchen",
+        "su_nianyao"
+      ],
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "刚才早读那纸条到底啥意思？除了奶茶，你就没别的要跟我说的了？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "苏念瑶在座位整理书包，教室里没几个人了。",
+              "inner_thought": "真的不想再拖了，把话说明白吧，不然我真的要疯了。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "刚才早读那纸条到底啥意思？除了奶茶，你就没别的要跟我说的了？",
+              "action_target": "su_nianyao",
+              "urgency": 9,
+              "is_disruptive": false
+            },
+            "su_nianyao": {
+              "observation": "方语晨坐在位子上没动，神情看起来还有点气呼呼的。",
+              "inner_thought": "她还在生气呢，这奶茶还能不能把她哄好啊。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "语晨，那个...奶茶单子我刚下好，等会儿就到了，别气啦？",
+              "action_target": "fang_yuchen",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": {
+              "agent": "su_nianyao",
+              "target": "fang_yuchen",
+              "content": "语晨，那个...奶茶单子我刚下好，等会儿就到了，别气啦？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "苏念瑶在整理书包，神色有点躲闪，看来还是不想提林昭宇的事。",
+              "inner_thought": "一直避着我有意思吗？真的是，难道我看起来那么好糊弄吗。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "念瑶，我们这么久的朋友了，你还要跟我玩这一套？LYU到底是谁，你跟我交个底会死啊？",
+              "action_target": "su_nianyao",
+              "urgency": 9,
+              "is_disruptive": true
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "念瑶，我们这么久的朋友了，你还要跟我玩这一套？LYU到底是谁，你跟我交个底会死啊？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "方语晨虽然没看我，但身体重心稍微往我这边偏了一点。",
+              "inner_thought": "有戏，她愿意听我说话就是好事，千万别在这时候把天聊死了。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "我知道瞒着你不对，但我现在心里也乱，等奶茶到了，我把那备注的事全告诉你，行吗？",
+              "action_target": "fang_yuchen",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": {
+              "agent": "su_nianyao",
+              "target": "fang_yuchen",
+              "content": "我知道瞒着你不对，但我现在心里也乱，等奶茶到了，我把那备注的事全告诉你，行吗？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "苏念瑶避开我的眼神，还在把奶茶的事挂在嘴边。",
+              "inner_thought": "真的是，除了奶茶就没词儿了吗？",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "行了行了，奶茶我喝还不行吗？你能不能别老是转移话题，我就这么不值得信任吗？",
+              "action_target": "su_nianyao",
+              "urgency": 9,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 4,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "行了行了，奶茶我喝还不行吗？你能不能别老是转移话题，我就这么不值得信任吗？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "方语晨虽然没直接松口，但原本绷着的脸稍微缓和了一点，没再像刚才那样咄咄逼人。",
+              "inner_thought": "还好没翻脸，再多撑一会儿，千万别让她觉得我在敷衍。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "真的，就等奶茶到了，我保证全交代，一点不藏着。",
+              "action_target": "fang_yuchen",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 5,
+          "public": {
+            "speech": {
+              "agent": "su_nianyao",
+              "target": "fang_yuchen",
+              "content": "真的，就等奶茶到了，我保证全交代，一点不藏着。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "苏念瑶终于松口说奶茶到了就告诉我真相，虽然感觉她还在磨蹭，但至少有个准话了。",
+              "inner_thought": "希望这次是真的，再骗我我就真的要生气了。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "那行吧，我就信你一次。说好了啊，奶茶到了你要是还打马虎眼，我就真不理你了。",
+              "action_target": "su_nianyao",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 6,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "那行吧，我就信你一次。说好了啊，奶茶到了你要是还打马虎眼，我就真不理你了。"
+            },
+            "actions": [
+              {
+                "agent": "su_nianyao",
+                "type": "non_verbal",
+                "content": "凑近方语晨身边，伸手轻轻拉了一下她的衣角，没说话。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "方语晨虽然还是板着脸，但没有再接着逼问LYU的事情了，只是看着窗外有点出神。",
+              "inner_thought": "她估计是在等我兑现承诺吧，心跳得好快，感觉秘密快关不住了。",
+              "emotion": "anxious",
+              "action_type": "non_verbal",
+              "action_content": "凑近方语晨身边，伸手轻轻拉了一下她的衣角，没说话。",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 7,
+          "public": {
+            "speech": {
+              "agent": "su_nianyao",
+              "target": "fang_yuchen",
+              "content": "等会儿奶茶到了，我先给你把那杯草莓拿铁拿出来，剩下的我再去分。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "苏念瑶拉我衣角的样子怪可怜的，看在这个份上先放过她。",
+              "inner_thought": "算了，看她那样估计也不想骗我，再逼她也没意义。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "行吧行吧，这次就放过你。奶茶要是再不好喝，我可真的要生气了。",
+              "action_target": "su_nianyao",
+              "urgency": 5,
+              "is_disruptive": false
+            },
+            "su_nianyao": {
+              "observation": "方语晨虽然没再逼问，但眼神时不时往门口瞟，明显是在等外卖。",
+              "inner_thought": "希望外卖员快点到，不然这么僵下去我真的要窒息了。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "等会儿奶茶到了，我先给你把那杯草莓拿铁拿出来，剩下的我再去分。",
+              "action_target": "fang_yuchen",
+              "urgency": 7,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 8,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "行吧行吧，这次就放过你。奶茶要是再不好喝，我可真的要生气了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "方语晨虽然没说话，但听我说完之后，整个人往我这边转了过来，神情也没那么僵了。",
+              "inner_thought": "还好没再追问了，再聊下去我真的要没词了，得赶紧把这篇翻过去。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "刚才物理那道题你写了没？我卡在受力分析那儿半天了，等会儿帮我瞅一眼？",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 9,
+          "public": {
+            "speech": {
+              "agent": "su_nianyao",
+              "target": "fang_yuchen",
+              "content": "刚才物理那道题你写了没？我卡在受力分析那儿半天了，等会儿帮我瞅一眼？"
+            },
+            "actions": [
+              {
+                "agent": "fang_yuchen",
+                "type": "non_verbal",
+                "content": "把桌上的谷子相册重新塞回抽屉深处，又抬头看了眼时钟。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "苏念瑶总算肯松口了，虽然我还没听到名字，但至少这关算是暂时熬过去了。",
+              "inner_thought": "希望这次她别又在关键时刻跑路，奶茶要是再不好喝，我可真的要生气了。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "把桌上的谷子相册重新塞回抽屉深处，又抬头看了眼时钟。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 10,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "行吧，拿来我看看，希望别是连受力分析都搞不定的那种基础题啊，不然我可要鄙视你了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "苏念瑶在跟我装傻谈物理题，又想用学习话题把我岔开。",
+              "inner_thought": "又来这招，真把我当傻子呢？看在奶茶份上先忍你一会。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "行吧，拿来我看看，希望别是连受力分析都搞不定的那种基础题啊，不然我可要鄙视你了。",
+              "action_target": "su_nianyao",
+              "urgency": 7,
+              "is_disruptive": false
+            },
+            "su_nianyao": {
+              "observation": "方语晨把相册收进去了，看样子是准备听我说话，但眼神里还带着点没消下去的防备。",
+              "inner_thought": "物理真的太难了，雨桐又不理我，只能指望语晨能不能看出点门道。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "就那道受力分析，我图都画崩了，你帮我看看，我那辅助线是不是画得跟乱麻一样？",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 11,
+          "public": {
+            "speech": {
+              "agent": "su_nianyao",
+              "target": "fang_yuchen",
+              "content": "就那道受力分析，我图都画崩了，你帮我看看，我那辅助线是不是画得跟乱麻一样？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "苏念瑶把物理练习册推过来，眼神还是有点闪躲。",
+              "inner_thought": "真会演，等奶茶到了我看你还能憋多久。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "行吧，我先看看，要是题太简单你可别怪我嘲笑你啊。",
+              "action_target": "su_nianyao",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        }
+      ],
+      "narrative": {
+        "key_moments": [
+          "方语晨询问苏念瑶关于早读纸条及LYU身份的问题。",
+          "苏念瑶承诺在奶茶送达后解释备注及LYU的相关事宜。",
+          "苏念瑶拉方语晨衣角。",
+          "方语晨将谷子相册放入抽屉。",
+          "苏念瑶请求方语晨协助分析物理受力分析题。"
+        ],
+        "fulfilled_intentions": [
+          "苏念瑶:向方语晨提出物理题求助",
+          "方语晨:同意查看苏念瑶的物理题"
+        ],
+        "events_discussed": [
+          "早读纸条事件",
+          "奶茶配送事件",
+          "LYU身份事件",
+          "物理受力分析题解答"
+        ],
+        "new_events": [
+          {
+            "text": "苏念瑶下单了奶茶，并承诺奶茶送达后向方语晨解释纸条备注及LYU身份。",
+            "category": "承诺/解释",
+            "witnesses": [
+              "方语晨",
+              "苏念瑶"
+            ],
+            "spread_probability": 0.2,
+            "cite_ticks": [
+              2,
+              4,
+              6,
+              7
+            ]
+          },
+          {
+            "text": "苏念瑶请求方语晨协助分析物理受力分析题。",
+            "category": "学业求助",
+            "witnesses": [
+              "方语晨",
+              "苏念瑶"
+            ],
+            "spread_probability": 0.1,
+            "cite_ticks": [
+              10,
+              12
+            ]
+          }
+        ]
+      },
+      "reflections": {
+        "fang_yuchen": {
+          "emotion": "calm",
+          "relationship_changes": [
+            {
+              "to_agent": "苏念瑶",
+              "favorability": 1,
+              "trust": 1,
+              "understanding": 2,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "念瑶答应奶茶到了就跟我坦白林昭宇的事，还主动找我问物理题，希望她这次别再打马虎眼。",
+              "emotion": "curious",
+              "importance": 5,
+              "people": [
+                "苏念瑶"
+              ],
+              "location": "教室",
+              "topics": [
+                "人际矛盾",
+                "恋爱"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "e2cd81",
+              "adjustment": -1
+            },
+            {
+              "concern_text": "802306",
+              "adjustment": -1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "找个没人的机会问问林昭宇的事，尽量软一点（想找苏念瑶）",
+              "status": "attempted",
+              "brief_reason": "我追问了她很多次，她终于答应奶茶到后向我坦白备注的事。"
+            },
+            {
+              "goal": "跟她讨论一下新收的立牌，缓和一下宿舍气氛（想找唐诗涵）",
+              "status": "pending",
+              "brief_reason": "唐诗涵不在场，且刚才一直忙着处理和念瑶的矛盾。"
+            }
+          ]
+        },
+        "su_nianyao": {
+          "emotion": "calm",
+          "relationship_changes": [
+            {
+              "to_agent": "方语晨",
+              "favorability": 2,
+              "trust": 1,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "语晨答应喝我请的奶茶了，虽然还是有点被嫌弃物理水平，但感觉她没那么生气了。",
+              "emotion": "calm",
+              "importance": 4,
+              "people": [
+                "方语晨"
+              ],
+              "location": "教室",
+              "topics": [
+                "人际矛盾",
+                "学业焦虑"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "780367",
+              "adjustment": -2
+            },
+            {
+              "concern_text": "ae7c08",
+              "adjustment": -1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "请她喝奶茶并诚恳道歉，试图修补关系",
+              "status": "fulfilled",
+              "brief_reason": "奶茶下单了，也和语晨说好等奶茶到就交代备注的事，关系缓和了。"
+            },
+            {
+              "goal": "向她请教那道物理竞赛题",
+              "status": "attempted",
+              "brief_reason": "开口向方语晨请教受力分析，她答应帮我看看。"
+            },
+            {
+              "goal": "去图书馆找本散文集看，躲开唐诗涵的视线",
+              "status": "pending",
+              "brief_reason": "现在在课间休息，且在和语晨沟通，没有机会去图书馆。"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

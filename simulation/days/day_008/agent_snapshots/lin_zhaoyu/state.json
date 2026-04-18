@@ -1,5 +1,5 @@
 {
-  "emotion": "frustrated",
+  "emotion": "anxious",
   "energy": 85,
   "academic_pressure": 50,
   "location": "教室",
@@ -7,88 +7,111 @@
     "intentions": [
       {
         "target": "陆思远",
-        "goal": "请教他如何利用碎片时间提升英语阅读速度，减少焦虑感。",
-        "reason": "英语成绩一直没起色，想听听成绩好的他有什么高效的办法，不然总担心拖后腿。",
+        "goal": "请教定语从句的长难句用法",
+        "reason": "英语成绩太拖后腿了，再不搞懂真的要完，思远讲得比较容易懂。",
         "fulfilled": true,
         "abandoned": false,
-        "satisfies_concern": "ed4070",
-        "origin_day": 8,
-        "pursued_days": 1
-      },
-      {
-        "target": "沈逸凡",
-        "goal": "尽快把寝室值日表的问题确认下来并排好。",
-        "reason": "不想再被他催了，这种琐事一直压着心底很烦，早点弄完能省心。",
-        "fulfilled": true,
-        "abandoned": false,
-        "satisfies_concern": "01fc36",
-        "origin_day": 8,
-        "pursued_days": 1
-      },
-      {
-        "target": "苏念瑶",
-        "goal": "找机会看一眼她是不是在看我。",
-        "reason": "这个念头一直都在，哪怕只是看一眼确认一下也好。",
-        "fulfilled": false,
-        "abandoned": false,
-        "satisfies_concern": "376b5c",
+        "satisfies_concern": "97d9b2",
         "origin_day": 7,
         "pursued_days": 2
+      },
+      {
+        "target": null,
+        "goal": "午休时戴耳机听许嵩的新歌",
+        "reason": "这几天压力太大了，想听听歌让自己缓一缓，不然脑子要炸了。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "870382",
+        "origin_day": 8,
+        "pursued_days": 1
       }
     ],
     "mood_forecast": "anxious",
     "location_preferences": {
       "morning_break": "教室",
-      "lunch": "食堂",
+      "lunch": "教室",
       "afternoon_break": "图书馆"
     }
   },
   "day": 8,
   "active_concerns": [
     {
-      "id": "3247a4",
-      "text": "宿舍环境太吵闹，姜皓天的行为让人无法静心休息，影响了晚上的状态。",
-      "source_event": "晚自习和宿舍夜聊期间姜皓天的干扰行为。",
+      "id": "97d9b2",
+      "text": "英语定语从句和长难句一直没弄懂，错题整理也拖着没做，担心成绩被英语拖后腿。",
+      "source_event": "图书馆自习时未能完全消化语法点",
       "source_scene": "",
-      "source_day": 4,
-      "emotion": "frustrated",
-      "intensity": 3,
+      "source_day": 6,
+      "emotion": "anxious",
+      "intensity": 1,
       "related_people": [
-        "姜皓天",
         "陆思远"
       ],
       "positive": false,
-      "topic": "人际矛盾",
+      "topic": "学业焦虑",
+      "last_reinforced_day": 7,
+      "last_new_info_day": 6,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 7,
+      "bumps_today": 2
+    },
+    {
+      "id": "64506b",
+      "text": "英语定语从句和长难句一直没弄懂，错题整理也拖着没做，担心成绩被英语拖后腿。",
+      "source_event": "复习过程中的受阻感",
+      "source_scene": "",
+      "source_day": 7,
+      "emotion": "anxious",
+      "intensity": 5,
+      "related_people": [],
+      "positive": false,
+      "topic": "学业焦虑",
       "last_reinforced_day": 8,
-      "last_new_info_day": 4,
-      "reinforcement_count": 3,
+      "last_new_info_day": 7,
+      "reinforcement_count": 2,
       "text_history": [],
       "id_history": [],
       "last_bump_day": 8,
-      "bumps_today": 1
+      "bumps_today": 2
     },
     {
-      "id": "376b5c",
-      "text": "今天在图书馆和晚自习都没能找到机会确认唐诗涵是否在关注我。",
-      "source_event": "日常校园生活；图书馆与晚自习期间",
+      "id": "870382",
+      "text": "想找机会戴上耳机听许嵩的新歌，但总是因为学习任务或环境干扰而无法实现。",
+      "source_event": "全天学习过程",
       "source_scene": "",
       "source_day": 7,
-      "emotion": "curious",
-      "intensity": 3,
-      "related_people": [
-        "唐诗涵"
-      ],
+      "emotion": "anxious",
+      "intensity": 4,
+      "related_people": [],
       "positive": true,
-      "topic": "恋爱",
-      "last_reinforced_day": 8,
-      "last_new_info_day": 8,
-      "reinforcement_count": 1,
-      "text_history": [
-        "想找机会确认唐诗涵是否在关注我，这个念头一直挥之不去。"
-      ],
+      "topic": "兴趣爱好",
+      "last_reinforced_day": 7,
+      "last_new_info_day": 7,
+      "reinforcement_count": 0,
+      "text_history": [],
       "id_history": [],
       "last_bump_day": 8,
       "bumps_today": 2
+    },
+    {
+      "id": "454621",
+      "text": "一直没能找到空闲时间戴上耳机听许嵩的新歌，紧绷的神经得不到缓解。",
+      "source_event": "全天学习任务繁重，缺乏个人放松时间",
+      "source_scene": "",
+      "source_day": 8,
+      "emotion": "anxious",
+      "intensity": 4,
+      "related_people": [],
+      "positive": false,
+      "topic": "兴趣爱好",
+      "last_reinforced_day": 8,
+      "last_new_info_day": 8,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
     }
   ]
 }

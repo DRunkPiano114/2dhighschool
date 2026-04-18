@@ -6,16 +6,16 @@
   "motif_emoji": "📚",
   "motif_tag": "沉默第二名",
   "main_color": "#E8A838",
-  "emotion_label": "平静",
+  "emotion_label": "挫败",
   "energy_label": "精神还行",
   "pressure_label": "压力不小",
-  "featured_quote": "离熄灯过了那么久还不停，真是够了，根本没法静心看小说。",
-  "featured_scene": "22:00 · 宿舍夜聊",
+  "featured_quote": "谢天谢地，这五分钟全速推进，应该能解完最后一小节。",
+  "featured_scene": "08:45 · 课间",
   "relationships": [
     {
       "target_name": "苏念瑶",
-      "favorability": 3,
-      "trust": 5,
+      "favorability": 2,
+      "trust": 4,
       "label_text": "普通同学"
     },
     {
@@ -25,32 +25,32 @@
       "label_text": "普通同学"
     },
     {
-      "target_name": "陆思远",
-      "favorability": 1,
-      "trust": 1,
+      "target_name": "林昭宇",
+      "favorability": 0,
+      "trust": 0,
       "label_text": "普通同学"
     }
   ],
   "memories": [
     {
-      "date": "Day 3",
-      "text": "熄灯后在被窝里偷偷阅读《仙路独行》，这是我保持完美形象背后的唯一叛逃。",
-      "importance": 6
+      "date": "Day 4",
+      "text": "舍友大半夜还在聊八卦，严重干扰休息。",
+      "importance": 5
     },
     {
-      "date": "Day 4",
-      "text": "方语晨在课间刷短剧的声音严重干扰了我的解题思路，不得不戴上耳机隔绝。",
+      "date": "Day 3",
+      "text": "舍友大晚上吵个不停，为了明天的测验不得不出声制止。",
       "importance": 4
     }
   ],
   "top_concern": {
-    "text": "月考排名尚未公布，对成绩的悬念导致持续的焦虑感。",
-    "intensity_label": "较强",
+    "text": "熄灯后没能阅读《仙路独行》的最新章节，错过了每日唯一的放松时间。",
+    "intensity_label": "中等",
     "positive": false
   },
-  "self_narrative": "开学了。教室很吵。苏念瑶又在说话。我没听，戴上耳机刷了三道物理题。排名还没出，焦虑感在胃里翻腾。只有熄灯后那半小时修仙文能看。我必须保持第一。除此之外，没什么好说的。",
+  "self_narrative": "开学了。作息表已重新排好。苏念瑶总是在耳边说话，效率降低。排名没变，还没到第一，不够。父母昨晚提到清北名额，又在预设我的路径。被窝里的《仙路独行》是唯一的出口。继续保持安静，维持秩序，不要出错。",
   "caption_payload": {
-    "caption": "📚 程雨桐 · 第004天 档案\n\n标签：沉默第二名\n此刻心情：平静\n\n「离熄灯过了那么久还不停，真是够了，根本没法静心看小说。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "📚 程雨桐 · 第004天 档案\n\n标签：沉默第二名\n此刻心情：挫败\n\n「谢天谢地，这五分钟全速推进，应该能解完最后一小节。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

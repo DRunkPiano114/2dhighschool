@@ -3,11 +3,13 @@
     "su_nianyao": {
       "target_name": "苏念瑶",
       "target_id": "su_nianyao",
-      "favorability": 23,
-      "trust": 17,
-      "understanding": 12,
+      "favorability": 24,
+      "trust": 16,
+      "understanding": 13,
       "label": "前后桌",
       "recent_interactions": [
+        "Day 1 ·课间@走廊",
+        "Day 1 +上课",
         "Day 1 +午饭@食堂",
         "Day 1 +宿舍夜聊"
       ],
@@ -16,36 +18,15 @@
     "tang_shihan": {
       "target_name": "唐诗涵",
       "target_id": "tang_shihan",
-      "favorability": 18,
-      "trust": 13,
-      "understanding": 13,
+      "favorability": 19,
+      "trust": 11,
+      "understanding": 11,
       "label": "室友",
       "recent_interactions": [
+        "Day 1 +上课",
         "Day 1 +午饭@食堂",
         "Day 1 +宿舍夜聊"
       ],
-      "days_since_interaction": 0
-    },
-    "shen_yifan": {
-      "target_name": "沈逸凡",
-      "target_id": "shen_yifan",
-      "favorability": -2,
-      "trust": 0,
-      "understanding": 1,
-      "label": "同学",
-      "recent_interactions": [
-        "Day 1 −课间@教室"
-      ],
-      "days_since_interaction": 0
-    },
-    "jiang_haotian": {
-      "target_name": "姜皓天",
-      "target_id": "jiang_haotian",
-      "favorability": 0,
-      "trust": 0,
-      "understanding": 0,
-      "label": "同学",
-      "recent_interactions": [],
       "days_since_interaction": 0
     },
     "cheng_yutong": {
@@ -53,10 +34,22 @@
       "target_id": "cheng_yutong",
       "favorability": -1,
       "trust": 0,
+      "understanding": 0,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 1 −上课"
+      ],
+      "days_since_interaction": 0
+    },
+    "jiang_haotian": {
+      "target_name": "姜皓天",
+      "target_id": "jiang_haotian",
+      "favorability": 1,
+      "trust": 0,
       "understanding": 1,
       "label": "同学",
       "recent_interactions": [
-        "Day 1 −宿舍夜聊"
+        "Day 1 +课间@教室"
       ],
       "days_since_interaction": 0
     }

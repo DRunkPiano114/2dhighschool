@@ -7,33 +7,33 @@
     "intentions": [
       {
         "target": "林昭宇",
-        "goal": "找个课间把他叫到办公室，观察状态并谈谈压力",
-        "reason": "这孩子最近状态实在让人放心不下，必须得找个机会聊聊，不能再拖了。",
+        "goal": "找个机会把他叫到办公室，不聊成绩，只聊聊最近睡得好不好",
+        "reason": "看他状态越来越紧绷，再不开口怕他身体吃不消，得找个轻松点的话题切入。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "eeb8c6",
+        "satisfies_concern": "97c316",
         "origin_day": 3,
         "pursued_days": 3
       },
       {
         "target": "何家骏",
-        "goal": "检查他的错题本，辅导薄弱环节",
-        "reason": "这孩子底子薄，得趁他还有点进步劲头的时候多推一把。",
+        "goal": "检查他的古诗文默写，并手把手教他一套背诵技巧",
+        "reason": "基础太差，不能让他彻底放弃语文，得趁早补救。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "fca093",
-        "origin_day": 3,
-        "pursued_days": 3
+        "satisfies_concern": "f9e8d1",
+        "origin_day": 4,
+        "pursued_days": 2
       },
       {
-        "target": null,
-        "goal": "去学校门口买杯热咖啡",
-        "reason": "这几天忙得头昏脑涨，再不喝口咖啡提提神，我这把老骨头真的要撑不住了。",
+        "target": "女儿",
+        "goal": "下班路上一定要去商场买那个文具盲盒",
+        "reason": "答应了孩子好几天，不能再失信了，不然回家没法交代。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": null,
-        "origin_day": 5,
-        "pursued_days": 1
+        "satisfies_concern": "3d8b6f",
+        "origin_day": 4,
+        "pursued_days": 2
       }
     ],
     "mood_forecast": "neutral",
@@ -46,20 +46,65 @@
   "day": 5,
   "active_concerns": [
     {
-      "id": "eeb8c6",
-      "text": "林昭宇近期的心理状态依然令人担忧，需要找机会进行谈话。",
-      "source_event": "日常观察",
-      "source_scene": "",
+      "id": "97c316",
+      "text": "林昭宇上次月考后红了眼眶，担心他长期紧绷出问题，需要找机会进行心理疏导。",
+      "source_event": "听到苏念瑶提到想去报竞赛，其他人表现出恐慌和逃避；基于对学生日常状态的观察与长期关注",
+      "source_scene": "午饭@食堂",
       "source_day": 2,
-      "emotion": "worry",
-      "intensity": 1,
+      "emotion": "anxious",
+      "intensity": 7,
       "related_people": [
+        "苏念瑶",
         "林昭宇"
       ],
       "positive": false,
       "topic": "学业焦虑",
-      "last_reinforced_day": 2,
+      "last_reinforced_day": 4,
       "last_new_info_day": 2,
+      "reinforcement_count": 0,
+      "text_history": [
+        "班里竞赛焦虑风气蔓延，得找机会敲打又不伤他们。"
+      ],
+      "id_history": [],
+      "last_bump_day": 4,
+      "bumps_today": 2
+    },
+    {
+      "id": "e7ad19",
+      "text": "林昭宇因作业量大导致睡眠不足，需进一步关注其身心状态并寻找合适契机进行疏导。",
+      "source_event": "课间走廊谈话",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "anxious",
+      "intensity": 5,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "健康",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 4,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "3d8b6f",
+      "text": "没能按承诺给女儿买文具盲盒，感到愧疚。",
+      "source_event": "下班前工作耽搁",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "guilty",
+      "intensity": 2,
+      "related_people": [
+        "女儿"
+      ],
+      "positive": false,
+      "topic": "家庭压力",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 4,
       "reinforcement_count": 0,
       "text_history": [],
       "id_history": [],

@@ -4,34 +4,41 @@
       "date": "Day 1",
       "day": 1,
       "people": [
-        "陆思远",
         "姜皓天"
       ],
-      "location": "图书馆",
-      "emotion": "bored",
-      "importance": 4,
+      "location": "教室",
+      "emotion": "calm",
+      "importance": 6,
       "topics": [
-        "人际矛盾",
-        "学业焦虑"
+        "兴趣爱好"
       ],
-      "text": "在图书馆看到陆思远在誊抄姜皓天的物理卷子，意识到自己和他们的圈子距离很远。",
-      "source_days": [],
-      "text_history": []
+      "text": "姜皓天问我打不打球，还比了个投篮动作。",
+      "source_days": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "text_history": [
+        "下午和姜皓天在操场打球，一起练习了防守和投篮。",
+        "和姜皓天打球配合得不错，最后还一起去买汽水，挺开心的。",
+        "和姜皓天在操场一对一单挑，他夸我有两下子，没觉得我菜。"
+      ]
     },
     {
       "date": "Day 1",
       "day": 1,
       "people": [
-        "林昭宇",
-        "唐诗涵"
+        "姜皓天"
       ],
       "location": "教室",
-      "emotion": "bored",
-      "importance": 3,
+      "emotion": "calm",
+      "importance": 4,
       "topics": [
-        "学业焦虑"
+        "人际矛盾"
       ],
-      "text": "林昭宇和唐诗涵为了物理题在那边磨叽，烦死了。",
+      "text": "姜皓天在课间对我做出了投篮手势，这是今天为数不多的互动时刻。",
       "source_days": [],
       "text_history": []
     },
@@ -42,162 +49,51 @@
         "姜皓天"
       ],
       "location": "食堂",
-      "emotion": "touched",
-      "importance": 6,
+      "emotion": "excited",
+      "importance": 5,
       "topics": [
-        "人际矛盾",
-        "期待的事"
-      ],
-      "text": "姜皓天在食堂主动叫我一起吃饭，还说下午带我练投篮。",
-      "source_days": [
-        4,
-        9
-      ],
-      "text_history": [
-        "姜皓天在食堂催我吃饭，还说下午打球别客气",
-        "姜皓天叫我去打球，还说别管那物理题了，他好像没觉得我烦。"
-      ]
-    },
-    {
-      "date": "Day 2",
-      "day": 2,
-      "people": [
-        "姜皓天",
-        "陆思远"
-      ],
-      "location": "食堂",
-      "emotion": "touched",
-      "importance": 6,
-      "topics": [
-        "人际矛盾",
+        "人际交往",
         "兴趣爱好"
       ],
-      "text": "姜皓天在食堂主动邀请我一起用餐，并约我下午去操场打球。",
-      "source_days": [],
-      "text_history": []
-    },
-    {
-      "date": "Day 3",
-      "day": 3,
-      "people": [
-        "沈逸凡"
-      ],
-      "location": "教室",
-      "emotion": "embarrassed",
-      "importance": 6,
-      "topics": [
-        "人际矛盾"
-      ],
-      "text": "沈逸凡当众说我动静太大，吵到他们了，脸好烫。",
-      "source_days": [],
-      "text_history": []
-    },
-    {
-      "date": "Day 3",
-      "day": 3,
-      "people": [
-        "何老师"
-      ],
-      "location": "食堂",
-      "emotion": "anxious",
-      "importance": 6,
-      "topics": [
-        "学业焦虑"
-      ],
-      "text": "何老师在食堂盯着我，非要我下午把错题本补好，躲都躲不掉。",
+      "text": "姜皓天在食堂主动和我约定下午在操场见面打球。",
       "source_days": [
-        7
+        3
       ],
       "text_history": [
-        "何老师在食堂盯着我，还要我吃完饭去教学楼入口找他，躲不掉。"
+        "在食堂和姜皓天约好下午一起打球，打完球后感觉状态不错，没有出丑。"
       ]
     },
     {
-      "date": "Day 4",
-      "day": 4,
-      "people": [
-        "姜皓天",
-        "沈逸凡"
-      ],
-      "location": "操场",
-      "emotion": "embarrassed",
-      "importance": 6,
-      "topics": [
-        "人际矛盾"
-      ],
-      "text": "姜皓天和沈逸凡在操场吵架，沈逸凡盯着我看，感觉很不好。",
-      "source_days": [],
-      "text_history": []
-    },
-    {
       "date": "Day 5",
       "day": 5,
       "people": [
-        "沈逸凡"
+        "姜皓天"
       ],
-      "location": "教室",
-      "emotion": "embarrassed",
+      "location": "食堂",
+      "emotion": "touched",
       "importance": 6,
       "topics": [
         "人际矛盾",
-        "学业焦虑"
+        "其他"
       ],
-      "text": "沈逸凡当众问我错题本进度，心里又烦又丢脸。",
+      "text": "姜皓天没嫌弃我的鞋，还说那是双好鞋，心里挺安稳的。",
       "source_days": [],
       "text_history": []
     },
     {
-      "date": "Day 5",
-      "day": 5,
+      "date": "Day 6",
+      "day": 6,
       "people": [
         "沈逸凡"
       ],
       "location": "教室",
-      "emotion": "embarrassed",
+      "emotion": "anxious",
       "importance": 6,
       "topics": [
         "学业焦虑",
         "人际矛盾"
       ],
-      "text": "沈逸凡又来催我订正，烦死了，盯着他那样子心里又堵又丢脸。",
-      "source_days": [],
-      "text_history": []
-    },
-    {
-      "date": "Day 6",
-      "day": 6,
-      "people": [
-        "姜皓天"
-      ],
-      "location": "教室",
-      "emotion": "excited",
-      "importance": 6,
-      "topics": [
-        "兴趣爱好",
-        "期待的事"
-      ],
-      "text": "姜皓天说晚上带我打王者，还说要带我躺赢。",
-      "source_days": [
-        8
-      ],
-      "text_history": [
-        "姜皓天说晚上带我打王者躺赢，还约我下午去操场打球。",
-        "姜皓天在晚自习时跟我约好晚上打游戏，还让我别看物理了。"
-      ]
-    },
-    {
-      "date": "Day 6",
-      "day": 6,
-      "people": [
-        "沈逸凡"
-      ],
-      "location": "操场",
-      "emotion": "embarrassed",
-      "importance": 6,
-      "topics": [
-        "人际矛盾"
-      ],
-      "text": "沈逸凡又在操场上说我，烦死了。",
+      "text": "沈逸凡又催我补作业，当着大家面真的很烦，躲在桌洞里都不行。",
       "source_days": [],
       "text_history": []
     },
@@ -205,34 +101,77 @@
       "date": "Day 7",
       "day": 7,
       "people": [
-        "姜皓天",
-        "何老师"
+        "姜皓天"
       ],
-      "location": "教室",
-      "emotion": "anxious",
+      "location": "操场",
+      "emotion": "excited",
       "importance": 6,
       "topics": [
-        "学业焦虑",
-        "人际矛盾"
+        "兴趣爱好"
       ],
-      "text": "因为担心物理错题本被老师发现抄袭，全天都处于焦虑中，拒绝了姜皓天的打球邀请，感觉自己越来越边缘化。",
+      "text": "和姜皓天打球配合得很顺，他说下次要给我挡拆，还约了晚上吃辣条",
+      "source_days": [
+        8,
+        9
+      ],
+      "text_history": [
+        "姜皓天故意把杯子弄掉，想找我说话，球场约好加练的事儿没变",
+        "姜皓天今天居然夸我球打得有意思，还带我空接，感觉挺爽的。"
+      ]
+    },
+    {
+      "date": "Day 7",
+      "day": 7,
+      "people": [
+        "姜皓天"
+      ],
+      "location": "操场",
+      "emotion": "excited",
+      "importance": 6,
+      "topics": [
+        "人际矛盾",
+        "兴趣爱好"
+      ],
+      "text": "姜皓天多次主动邀请我打球并约好晚上加练，这种被同学接纳的感觉让我心里记着。",
+      "source_days": [
+        8,
+        9
+      ],
+      "text_history": [
+        "姜皓天在晚自习后主动询问我的题目进度并提议一起活动，尽管拒绝了他，但心里还是记住了他的关心。",
+        "姜皓天主动邀请打球并手把手教我晃人动作，最后配合我完成了一次得分。"
+      ]
+    },
+    {
+      "date": "Day 10",
+      "day": 10,
+      "people": [
+        "姜皓天"
+      ],
+      "location": "食堂",
+      "emotion": "touched",
+      "importance": 6,
+      "topics": [
+        "人际矛盾",
+        "期待的事"
+      ],
+      "text": "姜皓天请我喝奶茶，还说食堂的饭太难吃，带我出来吃好的。",
       "source_days": [],
       "text_history": []
     },
     {
-      "date": "Day 9",
-      "day": 9,
+      "date": "Day 10",
+      "day": 10,
       "people": [
-        "方语晨",
-        "唐诗涵"
+        "姜皓天"
       ],
-      "location": "教室",
-      "emotion": "embarrassed",
+      "location": "操场",
+      "emotion": "excited",
       "importance": 6,
       "topics": [
-        "人际矛盾"
+        "兴趣爱好"
       ],
-      "text": "方语晨和唐诗涵盯着我的错题本看，被她们发现了，真的很烦。",
+      "text": "姜皓天教我转身上篮，还一直给我喂球，感觉没那么笨了",
       "source_days": [],
       "text_history": []
     }

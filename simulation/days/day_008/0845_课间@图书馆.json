@@ -8,19 +8,19 @@
     "day": 8
   },
   "participant_names": {
-    "su_nianyao": "苏念瑶"
+    "cheng_yutong": "程雨桐"
   },
   "groups": [
     {
       "group_index": 0,
       "participants": [
-        "su_nianyao"
+        "cheng_yutong"
       ],
       "is_solo": true,
       "solo_reflection": {
-        "inner_thought": "冬天写不出来的随笔，还没林昭宇的歌词带感。",
-        "emotion": "frustrated",
-        "activity": "我在图书馆角落坐着，盯着空白的笔记本发呆，手里转着水笔。"
+        "inner_thought": "物理进度慢了十分钟，清北的名额不能丢。",
+        "emotion": "calm",
+        "activity": "我在图书馆的方格本上快速推导力学竞赛题，并用百乐笔标注出关键步骤。"
       }
     }
   ]

@@ -6,17 +6,17 @@
   "motif_emoji": "🌫️",
   "motif_tag": "寡言少年",
   "main_color": "#7B8FA8",
-  "emotion_label": "尴尬",
+  "emotion_label": "兴奋",
   "energy_label": "精神还行",
   "pressure_label": "轻松",
-  "featured_quote": "他怎么老是催我，又不敢太大声说话，烦，要是被沈逸凡听到就完了。",
-  "featured_scene": "18:30 · 晚自习",
+  "featured_quote": "还要盯着我到什么时候，烦。趁他看表，我赶紧翻看一下书。",
+  "featured_scene": "08:45 · 课间",
   "relationships": [
     {
       "target_name": "姜皓天",
-      "favorability": 8,
-      "trust": 5,
-      "label_text": "还行，有些好感"
+      "favorability": 17,
+      "trust": 10,
+      "label_text": "关系不错"
     },
     {
       "target_name": "林昭宇",
@@ -25,7 +25,7 @@
       "label_text": "普通同学"
     },
     {
-      "target_name": "唐诗涵",
+      "target_name": "陆思远",
       "favorability": 0,
       "trust": 0,
       "label_text": "普通同学"
@@ -34,23 +34,23 @@
   "memories": [
     {
       "date": "Day 6",
-      "text": "姜皓天说晚上带我打王者，还说要带我躺赢。",
+      "text": "沈逸凡又催我补作业，当着大家面真的很烦，躲在桌洞里都不行。",
       "importance": 6
     },
     {
-      "date": "Day 6",
-      "text": "沈逸凡又在操场上说我，烦死了。",
+      "date": "Day 5",
+      "text": "姜皓天没嫌弃我的鞋，还说那是双好鞋，心里挺安稳的。",
       "importance": 6
     }
   ],
   "top_concern": {
-    "text": "物理错题本进度太慢，周五检查在即，担心在何老师面前丢脸。",
-    "intensity_label": "强烈",
+    "text": "数学课本的前几章基础定义一直没看，心里很担心跟不上进度。",
+    "intensity_label": "中等",
     "positive": false
   },
-  "self_narrative": "又是坐在角落的一天。姜皓天叫我打球，心里挺高兴的，但话到嘴边又咽下去了。错题本还没整好，何老师那关难过。想去开黑，又怕被嫌弃菜。那个……算了，先这样吧。",
+  "self_narrative": "又是坐在角落的一天。姜皓天叫我打球，我没拒绝。虽然没出丑，但心里还是发虚。数学书翻开又合上，那个……算了，反正也看不懂。想融入他们，可话到嘴边又咽下去了，怕被看穿我成绩垫底的事实，真烦。",
   "caption_payload": {
-    "caption": "🌫️ 何家骏 · 第006天 档案\n\n标签：寡言少年\n此刻心情：尴尬\n\n「他怎么老是催我，又不敢太大声说话，烦，要是被沈逸凡听到就完了。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "🌫️ 何家骏 · 第006天 档案\n\n标签：寡言少年\n此刻心情：兴奋\n\n「还要盯着我到什么时候，烦。趁他看表，我赶紧翻看一下书。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

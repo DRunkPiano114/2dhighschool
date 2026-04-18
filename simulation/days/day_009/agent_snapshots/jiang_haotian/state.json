@@ -7,38 +7,38 @@
     "intentions": [
       {
         "target": "陆思远",
-        "goal": "找个机会问问他毕业后打算干嘛",
-        "reason": "沈逸凡盯得太死，家里厂子那边没动静，心里越来越没底，得找兄弟探探口风。",
+        "goal": "找个陆思远没法装睡的机会，逼问他到底瞒着我什么工厂的事",
+        "reason": "这小子连着几天躲着我，我心里实在是没底，必须得问清楚。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "df3acc",
-        "origin_day": 5,
-        "pursued_days": 5
+        "satisfies_concern": "dcf8e8",
+        "origin_day": 7,
+        "pursued_days": 3
       },
       {
         "target": "何家骏",
-        "goal": "拉他去操场投几个三分球",
-        "reason": "这哥们最近也挺压抑的，带他动动，顺便我也能透透气。",
+        "goal": "拉他去操场打把球，出一身汗，爽一下",
+        "reason": "心情有点烦，打球能让我把那些乱七八糟的破事儿先扔到脑后。",
         "fulfilled": true,
         "abandoned": false,
-        "satisfies_concern": "907820",
-        "origin_day": 8,
-        "pursued_days": 2
+        "satisfies_concern": null,
+        "origin_day": 7,
+        "pursued_days": 3
       },
       {
-        "target": null,
-        "goal": "戴耳机听最新的说唱单曲",
-        "reason": "心情烦的时候听点燥的才爽，缓解下被管束的郁闷。",
-        "fulfilled": false,
+        "target": "沈逸凡",
+        "goal": "找机会逗他一下，看他那副死板样子就来气",
+        "reason": "看他不爽，逗他一下能让我心情好点，顺便发泄一下憋着的火。",
+        "fulfilled": true,
         "abandoned": false,
         "satisfies_concern": null,
-        "origin_day": 9,
-        "pursued_days": 1
+        "origin_day": 7,
+        "pursued_days": 3
       }
     ],
-    "mood_forecast": "neutral",
+    "mood_forecast": "frustrated",
     "location_preferences": {
-      "morning_break": "走廊",
+      "morning_break": "操场",
       "lunch": "食堂",
       "afternoon_break": "操场"
     }
@@ -46,51 +46,29 @@
   "day": 9,
   "active_concerns": [
     {
-      "id": "df3acc",
-      "text": "沈逸凡在宿舍盯得太死，导致一直没机会和陆思远聊聊毕业后的打算，心里对未来的方向感到更加迷茫。",
-      "source_event": "宿舍夜聊；全天被沈逸凡限制活动；全天被沈逸凡监控；22:00 宿舍夜聊；22:00 宿舍夜聊",
+      "id": "dcf8e8",
+      "text": "陆思远在宿舍里始终避开关于工厂问题的沟通，那种刻意的回避让我对家里的状况感到更加不安。",
+      "source_event": "宿舍夜聊；22:00 宿舍夜聊；宿舍夜聊；22:00 宿舍夜聊；22:00 宿舍夜聊；食堂排队与宿舍夜聊；22:00 宿舍夜聊",
       "source_scene": "",
-      "source_day": 4,
-      "emotion": "frustrated",
-      "intensity": 2,
+      "source_day": 3,
+      "emotion": "anxious",
+      "intensity": 10,
       "related_people": [
-        "陆思远",
-        "沈逸凡"
+        "陆思远"
       ],
       "positive": false,
-      "topic": "未来规划",
+      "topic": "家庭压力",
       "last_reinforced_day": 9,
       "last_new_info_day": 9,
       "reinforcement_count": 7,
       "text_history": [
-        "沈逸凡盯得太紧，完全没法和陆思远聊毕业后的打算，心里越来越没底。",
-        "沈逸凡在学校里管得太宽，导致我完全没机会和陆思远聊聊毕业后的出路，心里越来越没底。",
-        "沈逸凡在宿舍盯得太死，一直没机会找陆思远聊聊毕业后的出路，心里越来越没底。"
+        "陆思远在宿舍面对我的询问再次闭眼装睡，这种刻意的回避让我觉得家里工厂的情况可能比我预想的还要糟糕。",
+        "陆思远在宿舍再次回避关于工厂的问题，让我更加怀疑家里是不是出了什么瞒着我的大事。",
+        "陆思远在食堂和宿舍始终回避我关于工厂问题的询问，让我更加怀疑家里是不是出了瞒着我的大事。"
       ],
       "id_history": [],
       "last_bump_day": 9,
       "bumps_today": 2
-    },
-    {
-      "id": "e6cb52",
-      "text": "沈逸凡这小子真要告状？烦死了。",
-      "source_event": "沈逸凡威胁要向陈老师汇报我课间晃荡的事",
-      "source_scene": "课间@操场",
-      "source_day": 8,
-      "emotion": "anxious",
-      "intensity": 7,
-      "related_people": [
-        "沈逸凡"
-      ],
-      "positive": false,
-      "topic": "人际矛盾",
-      "last_reinforced_day": 9,
-      "last_new_info_day": 8,
-      "reinforcement_count": 1,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 9,
-      "bumps_today": 1
     }
   ]
 }

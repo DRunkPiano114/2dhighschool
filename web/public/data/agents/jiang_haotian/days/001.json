@@ -9,8 +9,8 @@
   "emotion_label": "挫败",
   "energy_label": "精神还行",
   "pressure_label": "轻松",
-  "featured_quote": "看他这道貌岸然的样子就火大，装什么呢，我就偏要看你破防。",
-  "featured_scene": "08:45 · 课间",
+  "featured_quote": "真没意思，这两人加起来都没半点人味儿，还是溜了去食堂找何家骏。",
+  "featured_scene": "12:00 · 午饭",
   "relationships": [
     {
       "target_name": "林昭宇",
@@ -34,19 +34,19 @@
   "memories": [
     {
       "date": "Day 1",
-      "text": "沈逸凡那死样子，整天就知道拿纪律压人，真把自己当盘菜了。",
+      "text": "沈逸凡这死班长又在宿舍盯着我不放，真烦人。",
       "importance": 6
     },
     {
       "date": "Day 1",
-      "text": "想跟陆思远正经聊聊未来，结果他一直装睡，真没劲。",
-      "importance": 4
+      "text": "何家骏这小子看起来没睡好，约了他下午打球，希望能让他开心点。",
+      "importance": 5
     }
   ],
   "top_concern": null,
   "self_narrative": "",
   "caption_payload": {
-    "caption": "⚽ 姜皓天 · 第001天 档案\n\n标签：运动健将\n此刻心情：挫败\n\n「看他这道貌岸然的样子就火大，装什么呢，我就偏要看你破防。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "⚽ 姜皓天 · 第001天 档案\n\n标签：运动健将\n此刻心情：挫败\n\n「真没意思，这两人加起来都没半点人味儿，还是溜了去食堂找何家骏。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

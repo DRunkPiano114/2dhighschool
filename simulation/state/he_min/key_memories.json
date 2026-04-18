@@ -4,38 +4,75 @@
       "date": "Day 2",
       "day": 2,
       "people": [
-        "何家骏"
+        "方语晨",
+        "唐诗涵",
+        "苏念瑶"
+      ],
+      "location": "食堂",
+      "emotion": "anxious",
+      "importance": 6,
+      "topics": [
+        "学业焦虑"
+      ],
+      "text": "在食堂听到学生议论竞赛压力，还提到怕被我发现私下讨论，这届孩子心理负担太重了。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 2",
+      "day": 2,
+      "people": [
+        "方语晨"
       ],
       "location": "教室",
-      "emotion": "touched",
+      "emotion": "anxious",
       "importance": 5,
       "topics": [
         "学业焦虑"
       ],
-      "text": "何家骏拿着乱糟糟的卷子，手都在抖，这孩子底子薄还没人管，看着真揪心。",
+      "text": "方语晨课间心思完全不在学习上，还在打听竞赛聚会，得盯紧点。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 4",
+      "day": 4,
+      "people": [
+        "林昭宇"
+      ],
+      "location": "走廊",
+      "emotion": "anxious",
+      "importance": 8,
+      "topics": [
+        "学业焦虑"
+      ],
+      "text": "林昭宇在走廊承认压力大，作业多，脸色确实很差。",
       "source_days": [
-        2,
-        3
+        4,
+        6,
+        7
       ],
       "text_history": [
-        "课间督促何家骏整理数学错题，并针对其家庭情况进行了简短询问。",
-        "何家骏吃饭时一直低着头，连看我一眼的勇气都没有，感觉这孩子压力太大了。",
-        "在食堂督促何家骏进食并核对错题本整理进度，感受到作为班主任对后进生必须持续投入精力的责任感。"
+        "在走廊与林昭宇谈话，确认其因学业压力导致睡眠严重不足，需要后续密切关注其心理状态。",
+        "在食堂观察到林昭宇紧绷的状态，意识到他可能已经到了心理承受的临界点。",
+        "林昭宇现在的状态太危险，必须尽快找机会和他聊聊，不能再被这些事搅乱了。"
       ]
     },
     {
-      "date": "Day 7",
-      "day": 7,
+      "date": "Day 6",
+      "day": 6,
       "people": [
-        "姜皓天"
+        "沈逸凡",
+        "林昭宇"
       ],
       "location": "食堂",
-      "emotion": "angry",
-      "importance": 5,
+      "emotion": "anxious",
+      "importance": 6,
       "topics": [
-        "人际矛盾"
+        "人际矛盾",
+        "学业焦虑"
       ],
-      "text": "姜皓天在食堂公然对我表现出抵触情绪，现在的孩子真是越来越难管。",
+      "text": "沈逸凡在食堂当众死盯着排查表催林昭宇，这孩子压力已经够大了，怎么就没点眼力见。",
       "source_days": [],
       "text_history": []
     },
@@ -43,16 +80,68 @@
       "date": "Day 7",
       "day": 7,
       "people": [
-        "何家骏",
-        "姜皓天"
+        "沈逸凡"
       ],
       "location": "食堂",
-      "emotion": "欣慰",
+      "emotion": "angry",
+      "importance": 6,
+      "topics": [
+        "人际矛盾"
+      ],
+      "text": "沈逸凡在食堂当众闹事，把勺子摔得震天响，真是越来越没规矩了。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 9",
+      "day": 9,
+      "people": [
+        "何家骏"
+      ],
+      "location": "办公室",
+      "emotion": "calm",
+      "importance": 4,
+      "topics": [
+        "学业焦虑"
+      ],
+      "text": "何家骏虽然平时成绩不稳，但只要盯紧点，那两句荀子还是能背出来的，没我想得那么糟糕。",
+      "source_days": [
+        9
+      ],
+      "text_history": [
+        "何家骏在办公室背诵了《劝学》片段，虽然成绩基础薄弱，但态度有所改善。"
+      ]
+    },
+    {
+      "date": "Day 10",
+      "day": 10,
+      "people": [
+        "林昭宇"
+      ],
+      "location": "教室",
+      "emotion": "anxious",
       "importance": 6,
       "topics": [
         "学业焦虑"
       ],
-      "text": "何家骏在食堂拒绝了姜皓天的练球邀请，主动选择整理错题本，表现出学习态度的转变。",
+      "text": "林昭宇看到我后明显更紧张了，笔记都收得飞快，这孩子压力看来比我想的还大。",
+      "source_days": [],
+      "text_history": []
+    },
+    {
+      "date": "Day 10",
+      "day": 10,
+      "people": [
+        "林昭宇",
+        "陆思远"
+      ],
+      "location": "教室",
+      "emotion": "anxious",
+      "importance": 6,
+      "topics": [
+        "学业焦虑"
+      ],
+      "text": "林昭宇在课间表现出明显的紧绷感，向陆思远寻求帮助并获准去图书馆学习。",
       "source_days": [],
       "text_history": []
     }

@@ -7,18 +7,8 @@
     "intentions": [
       {
         "target": "姜皓天",
-        "goal": "在课间休息时假装路过跟他打个招呼",
-        "reason": "想试着融入他们，但怕被嫌弃，还是先打个招呼看看反应。",
-        "fulfilled": false,
-        "abandoned": false,
-        "satisfies_concern": null,
-        "origin_day": 1,
-        "pursued_days": 1
-      },
-      {
-        "target": null,
-        "goal": "去图书馆找本讲物理基础的书看看",
-        "reason": "物理课完全听不懂太难受了，虽然不知道能不能看进去，但总得翻翻。",
+        "goal": "在课间打球时主动和姜皓天说句话",
+        "reason": "想试着融入大家，姜皓天人不错，没那么排斥我。",
         "fulfilled": true,
         "abandoned": false,
         "satisfies_concern": null,
@@ -27,8 +17,8 @@
       },
       {
         "target": null,
-        "goal": "中午去食堂买个最便宜的套餐，省点钱攒球鞋",
-        "reason": "现在的鞋底快磨平了，想攒钱买双新的。",
+        "goal": "偷偷把数学课本翻到前几章看基础定义",
+        "reason": "老是听不懂太难受了，想看看能不能自己补补。",
         "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
@@ -39,25 +29,46 @@
     "mood_forecast": "neutral",
     "location_preferences": {
       "morning_break": "教室",
-      "lunch": "食堂",
-      "afternoon_break": "图书馆"
+      "lunch": "操场",
+      "afternoon_break": "操场"
     }
   },
   "day": 1,
   "active_concerns": [
     {
-      "id": "a74ad1",
-      "text": "想找机会和姜皓天打个招呼试着融入，但又怕被嫌弃，最终还是没敢开口。",
-      "source_event": "课间在教室和食堂的观察",
-      "source_scene": "",
+      "id": "ceaa17",
+      "text": "下午打球姜皓天会不会叫我",
+      "source_event": "姜皓天对我比了个投篮手势",
+      "source_scene": "上课",
       "source_day": 1,
-      "emotion": "anxious",
+      "emotion": "curious",
       "intensity": 4,
       "related_people": [
         "姜皓天"
       ],
+      "positive": true,
+      "topic": "期待的事",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "699ed1",
+      "text": "因为课间被沈逸凡督促复习，没能抽出时间翻看数学课本的基础定义。",
+      "source_event": "15:30 课间@操场",
+      "source_scene": "",
+      "source_day": 1,
+      "emotion": "bored",
+      "intensity": 3,
+      "related_people": [
+        "沈逸凡"
+      ],
       "positive": false,
-      "topic": "人际矛盾",
+      "topic": "学业焦虑",
       "last_reinforced_day": 1,
       "last_new_info_day": 1,
       "reinforcement_count": 0,

@@ -1,0 +1,62 @@
+{
+  "agent_id": "lin_zhaoyu",
+  "name_cn": "林昭宇",
+  "day": 10,
+  "is_teacher": false,
+  "motif_emoji": "🌧️",
+  "motif_tag": "书呆子",
+  "main_color": "#4A7BC4",
+  "emotion_label": "平静",
+  "energy_label": "精神还行",
+  "pressure_label": "压力不小",
+  "featured_quote": "终于没人打扰了，物理题要是逻辑没搞清楚，下午去办公室肯定要被何老师问住的。",
+  "featured_scene": "12:00 · 午饭",
+  "relationships": [
+    {
+      "target_name": "陆思远",
+      "favorability": 75,
+      "trust": 70,
+      "label_text": "很亲近的朋友"
+    },
+    {
+      "target_name": "唐诗涵",
+      "favorability": 10,
+      "trust": 5,
+      "label_text": "还行，有些好感"
+    },
+    {
+      "target_name": "何老师",
+      "favorability": 5,
+      "trust": 3,
+      "label_text": "普通同学"
+    }
+  ],
+  "memories": [
+    {
+      "date": "Day 10",
+      "text": "何老师突然叫我午休去办公室谈话，心跳得好快，幸好思远把笔记借给我了。",
+      "importance": 6
+    },
+    {
+      "date": "Day 10",
+      "text": "陆思远帮我理顺了物理受力分析的逻辑，还教了我怎么拆解定语从句的先行词，他真的超懂我。",
+      "importance": 6
+    }
+  ],
+  "top_concern": {
+    "text": "担心英语定语从句一直弄不懂，怕下次考试成绩不好会被妈妈责备。",
+    "intensity_label": "中等",
+    "positive": false
+  },
+  "self_narrative": "在班里像个影子，除了思远，谁也不敢多说。英语作业又拖了，心里慌得很。怕妈打电话问成绩，怕那句‘钱都花你身上了’。周五那局王者，是我唯一的指望了。",
+  "caption_payload": {
+    "caption": "🌧️ 林昭宇 · 第010天 档案\n\n标签：书呆子\n此刻心情：平静\n\n「终于没人打扰了，物理题要是逻辑没搞清楚，下午去办公室肯定要被何老师问住的。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "hashtags": [
+      "#SimCampus",
+      "#AI高中生",
+      "#青春日记",
+      "#人物志"
+    ],
+    "filename": "simcampus_林昭宇_档案_第010天.png"
+  }
+}

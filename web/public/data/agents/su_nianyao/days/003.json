@@ -6,51 +6,51 @@
   "motif_emoji": "🌸",
   "motif_tag": "玻璃心诗人",
   "main_color": "#D4748B",
-  "emotion_label": "平静",
+  "emotion_label": "焦虑",
   "energy_label": "精神还行",
   "pressure_label": "稍有压力",
-  "featured_quote": "真够可以的，这都火烧眉毛了还光顾着聊别人的八卦，看来得我亲自盯着。",
+  "featured_quote": "她怎么还没完没了，再纠结下去真的会露出马脚的，简直想找个地洞钻进去。",
   "featured_scene": "12:00 · 午饭",
   "relationships": [
     {
       "target_name": "方语晨",
-      "favorability": 26,
-      "trust": 19,
-      "label_text": "很亲近的朋友"
+      "favorability": 17,
+      "trust": 16,
+      "label_text": "关系不错"
     },
     {
-      "target_name": "唐诗涵",
-      "favorability": 12,
+      "target_name": "程雨桐",
+      "favorability": 11,
       "trust": 6,
       "label_text": "还行，有些好感"
     },
     {
-      "target_name": "程雨桐",
-      "favorability": 7,
+      "target_name": "唐诗涵",
+      "favorability": 11,
       "trust": 5,
-      "label_text": "普通同学"
+      "label_text": "还行，有些好感"
     }
   ],
   "memories": [
     {
       "date": "Day 3",
-      "text": "方语晨一直追问沈逸凡那个猫头像的事，差点就瞒不住了，烦死了。",
-      "importance": 5
+      "text": "午饭时被方语晨直接询问是否对林昭宇有特殊关注，这种被看穿的感觉让我感到局促不安。",
+      "importance": 6
     },
     {
-      "date": "Day 2",
-      "text": "方语晨终于说了那个翻墙男生的八卦，竟然是沈逸凡，还拍了猫的照片，这也太甜了。",
-      "importance": 5
+      "date": "Day 1",
+      "text": "在食堂主动向林昭宇询问竞赛相关情况，这是近期最直接的一次互动。",
+      "importance": 6
     }
   ],
   "top_concern": {
-    "text": "周末和朋友们去玩恐怖本，希望能顺利通关并享受过程。",
+    "text": "林昭宇忙于竞赛的事实让我感到不安，担心这会影响我们之间的联系。",
     "intensity_label": "中等",
     "positive": false
   },
-  "self_narrative": "开学了，还是老样子。每天和方语晨凑一起八卦，其实大部分时间都在听。路过林昭宇座位时，心跳莫名漏一拍，赶紧装作看窗外。日记本又厚了几页，关于爸爸的，关于他的。这些秘密，藏得好累，又好安心。",
+  "self_narrative": "开学了，还是老样子。每天和方语晨碎嘴，路过林昭宇座位时心跳总是漏半拍，还得装作不在意。回家对着那本牛皮纸日记，写写停停。中文系的目标还没影，成绩不上不下，真的EMO了。希望能考上一本，逃离这种纠结的日常。",
   "caption_payload": {
-    "caption": "🌸 苏念瑶 · 第003天 档案\n\n标签：玻璃心诗人\n此刻心情：平静\n\n「真够可以的，这都火烧眉毛了还光顾着聊别人的八卦，看来得我亲自盯着。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "🌸 苏念瑶 · 第003天 档案\n\n标签：玻璃心诗人\n此刻心情：焦虑\n\n「她怎么还没完没了，再纠结下去真的会露出马脚的，简直想找个地洞钻进去。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

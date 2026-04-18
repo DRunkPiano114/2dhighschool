@@ -1,29 +1,39 @@
 {
-  "emotion": "bored",
+  "emotion": "calm",
   "energy": 85,
   "academic_pressure": 30,
   "location": "教室",
   "daily_plan": {
     "intentions": [
       {
-        "target": "公众号",
-        "goal": "给公众号草稿想个标题并检查排版，起码发出一篇",
-        "reason": "一直拖着也不是办法，想试着把心里的东西写出来，哪怕没人看。",
-        "fulfilled": false,
-        "abandoned": false,
-        "satisfies_concern": "3c5cd8",
-        "origin_day": 4,
-        "pursued_days": 1
-      },
-      {
         "target": "林昭宇",
-        "goal": "约林昭宇一起去图书馆自习",
-        "reason": "和他在一起最放松，也能静下心来学点东西。",
+        "goal": "观察林昭宇的状态并尝试聊聊学习压力",
+        "reason": "他最近压力很大，作为好朋友我想陪陪他，看看能不能分担一些。",
         "fulfilled": true,
         "abandoned": false,
-        "satisfies_concern": null,
-        "origin_day": 2,
-        "pursued_days": 3
+        "satisfies_concern": "1ca4c0",
+        "origin_day": 3,
+        "pursued_days": 2
+      },
+      {
+        "target": "姜皓天",
+        "goal": "如果姜皓天找我麻烦，保持温和态度避免冲突",
+        "reason": "昨天拒绝了他抄作业，怕他会针对我，只能先尽量避开或者好声好气地应对。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "2bbc0a",
+        "origin_day": 3,
+        "pursued_days": 2
+      },
+      {
+        "target": "微信公众号",
+        "goal": "再次打开草稿箱看看，但还是没准备好发布",
+        "reason": "心里真的很想发，但只要一想到同学看到后的反应，就觉得太尴尬了，今天还是先存着吧。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "fdac5c",
+        "origin_day": 3,
+        "pursued_days": 2
       }
     ],
     "mood_forecast": "calm",
@@ -36,9 +46,73 @@
   "day": 4,
   "active_concerns": [
     {
-      "id": "24ee3e",
-      "text": "公众号草稿箱里积攒了十几篇内容，总觉得写得不够好或者没人看，迟迟不敢发布。",
-      "source_event": "今天再次因为琐事打断，没能完成公众号内容的排版和发布。",
+      "id": "2bbc0a",
+      "text": "虽然今天拒绝了姜皓天，但担心他后续会因此对自己产生不满或在班里制造尴尬。",
+      "source_event": "课间帮姜皓天处理作业相关事宜；日常帮姜皓天抄作业；宿舍拒绝姜皓天抄作业请求",
+      "source_scene": "",
+      "source_day": 1,
+      "emotion": "烦躁",
+      "intensity": 1,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 3,
+      "reinforcement_count": 2,
+      "text_history": [
+        "总是帮姜皓天抄作业，感觉自己像个工具人，想委婉拒绝但又怕闹僵关系。",
+        "想委婉拒绝帮姜皓天抄作业，但又怕闹僵关系，这种工具人的感觉越来越重。"
+      ],
+      "id_history": [],
+      "last_bump_day": 4,
+      "bumps_today": 2
+    },
+    {
+      "id": "1ca4c0",
+      "text": "林昭宇好像压力也挺大的，要多陪陪他吗",
+      "source_event": "林昭宇在研究英语卷子错题时眉头紧锁，显得很焦虑",
+      "source_scene": "课间@教室",
+      "source_day": 1,
+      "emotion": "touched",
+      "intensity": 4,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": true,
+      "topic": "其他",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 4,
+      "bumps_today": 2
+    },
+    {
+      "id": "fdac5c",
+      "text": "想鼓起勇气发布公众号草稿，但始终担心被同学看到后引起尴尬的评价。",
+      "source_event": "个人写作计划",
+      "source_scene": "",
+      "source_day": 2,
+      "emotion": "忐忑",
+      "intensity": 1,
+      "related_people": [],
+      "positive": false,
+      "topic": "自我认同",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 2,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 3,
+      "bumps_today": 1
+    },
+    {
+      "id": "1eaa8a",
+      "text": "公众号草稿写好了却始终不敢发布，害怕被同学看到后引来尴尬的评价。",
+      "source_event": "全天内心纠结",
       "source_scene": "",
       "source_day": 4,
       "emotion": "anxious",
@@ -46,27 +120,6 @@
       "related_people": [],
       "positive": false,
       "topic": "自我认同",
-      "last_reinforced_day": 4,
-      "last_new_info_day": 4,
-      "reinforcement_count": 0,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
-    },
-    {
-      "id": "2510f4",
-      "text": "姜皓天在晚自习和宿舍的干扰行为让我感到无奈，但我选择了忍让。",
-      "source_event": "晚自习被踢凳子，宿舍被追问升学打算。",
-      "source_scene": "",
-      "source_day": 4,
-      "emotion": "bored",
-      "intensity": 4,
-      "related_people": [
-        "姜皓天"
-      ],
-      "positive": false,
-      "topic": "人际矛盾",
       "last_reinforced_day": 4,
       "last_new_info_day": 4,
       "reinforcement_count": 0,

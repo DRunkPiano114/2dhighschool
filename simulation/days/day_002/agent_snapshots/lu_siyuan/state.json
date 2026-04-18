@@ -1,14 +1,24 @@
 {
-  "emotion": "anxious",
+  "emotion": "calm",
   "energy": 85,
   "academic_pressure": 30,
   "location": "教室",
   "daily_plan": {
     "intentions": [
       {
-        "target": "公众号",
-        "goal": "尝试给公众号草稿加个标题，或者检查一下排版",
-        "reason": "老是想发又不敢发，总得先往前迈一小步吧，哪怕只是改个标题。",
+        "target": "姜皓天",
+        "goal": "尝试委婉地告诉他，作业自己写对考试更有帮助，希望能减少帮他抄作业的次数。",
+        "reason": "老是帮他抄作业真的太累了，感觉自己像个工具人，再这样下去真的要崩溃了。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 2,
+        "pursued_days": 1
+      },
+      {
+        "target": "微信公众号",
+        "goal": "再次打开那篇草稿，试着点击发布，想看看能不能鼓起勇气跨出这一步。",
+        "reason": "一直在草稿箱里存着也不是个事，总想知道如果发出来会怎么样，虽然还是很怕别人笑话。",
         "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
@@ -17,26 +27,16 @@
       },
       {
         "target": "林昭宇",
-        "goal": "约林昭宇一起去图书馆自习",
-        "reason": "只有在他旁边我才能稍微放松点，不想一个人待着胡思乱想。",
+        "goal": "和林昭宇一起去图书馆安安静静地刷会儿生物题，顺便聊聊最近的压力。",
+        "reason": "和他在一起最放松了，而且他最近好像也挺累的，陪陪他我也能开心点。",
         "fulfilled": true,
-        "abandoned": false,
-        "satisfies_concern": null,
-        "origin_day": 2,
-        "pursued_days": 1
-      },
-      {
-        "target": "姜皓天",
-        "goal": "在数学课前把上次借他的笔记要回来",
-        "reason": "虽然不好意思催，但下午数学课要用，只能硬着头皮去问问。",
-        "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
         "origin_day": 2,
         "pursued_days": 1
       }
     ],
-    "mood_forecast": "neutral",
+    "mood_forecast": "calm",
     "location_preferences": {
       "morning_break": "教室",
       "lunch": "食堂",
@@ -46,37 +46,83 @@
   "day": 2,
   "active_concerns": [
     {
-      "id": "e59812",
-      "text": "公众号草稿箱里写好的感悟，想发却始终不敢点击发布。",
-      "source_event": "独处时的自我反思",
-      "source_scene": "",
+      "id": "e18525",
+      "text": "林昭宇看起来压力好大，真想帮帮他，但又怕自己水平不够帮倒忙。",
+      "source_event": "林昭宇邀请周五晚上打王者荣耀；林昭宇在图书馆因为不会做题而责怪自己太笨",
+      "source_scene": "课间@图书馆",
       "source_day": 1,
-      "emotion": "anxious",
-      "intensity": 1,
-      "related_people": [],
-      "positive": false,
-      "topic": "自我认同",
-      "last_reinforced_day": 1,
-      "last_new_info_day": 1,
-      "reinforcement_count": 0,
-      "text_history": [],
+      "emotion": "excited",
+      "intensity": 3,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": true,
+      "topic": "期待的事",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 2,
+      "reinforcement_count": 1,
+      "text_history": [
+        "周末和林昭宇打游戏，得练好新英雄免得坑他。"
+      ],
       "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
+      "last_bump_day": 2,
+      "bumps_today": 1
     },
     {
-      "id": "36852a",
-      "text": "姜皓天始终没有归还数学笔记，导致数学学习受到影响，心里感到有些委屈和焦虑。",
-      "source_event": "22:00 宿舍夜聊",
+      "id": "2bbc0a",
+      "text": "想委婉拒绝帮姜皓天抄作业，但又怕闹僵关系，这种工具人的感觉越来越重。",
+      "source_event": "课间帮姜皓天处理作业相关事宜；日常帮姜皓天抄作业",
       "source_scene": "",
-      "source_day": 2,
-      "emotion": "anxious",
+      "source_day": 1,
+      "emotion": "烦躁",
       "intensity": 5,
       "related_people": [
         "姜皓天"
       ],
       "positive": false,
-      "topic": "学业焦虑",
+      "topic": "人际矛盾",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 2,
+      "reinforcement_count": 3,
+      "text_history": [
+        "总是帮姜皓天抄作业，感觉自己像个工具人，想委婉拒绝但又怕闹僵关系。"
+      ],
+      "id_history": [],
+      "last_bump_day": 2,
+      "bumps_today": 2
+    },
+    {
+      "id": "1ca4c0",
+      "text": "林昭宇好像压力也挺大的，要多陪陪他吗",
+      "source_event": "林昭宇在研究英语卷子错题时眉头紧锁，显得很焦虑",
+      "source_scene": "课间@教室",
+      "source_day": 1,
+      "emotion": "touched",
+      "intensity": 7,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": true,
+      "topic": "其他",
+      "last_reinforced_day": 2,
+      "last_new_info_day": 1,
+      "reinforcement_count": 3,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 2,
+      "bumps_today": 2
+    },
+    {
+      "id": "fdac5c",
+      "text": "想鼓起勇气发布公众号草稿，但始终担心被同学看到后引起尴尬的评价。",
+      "source_event": "个人写作计划",
+      "source_scene": "",
+      "source_day": 2,
+      "emotion": "忐忑",
+      "intensity": 4,
+      "related_people": [],
+      "positive": false,
+      "topic": "自我认同",
       "last_reinforced_day": 2,
       "last_new_info_day": 2,
       "reinforcement_count": 0,

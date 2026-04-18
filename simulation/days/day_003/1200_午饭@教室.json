@@ -1,6 +1,6 @@
 {
   "scene": {
-    "scene_index": 3,
+    "scene_index": 4,
     "time": "12:00",
     "name": "午饭",
     "location": "教室",
@@ -18,9 +18,9 @@
       ],
       "is_solo": true,
       "solo_reflection": {
-        "inner_thought": "排名到底出了没，再刷一次智学网。",
-        "emotion": "frustrated",
-        "activity": "打开平板电脑反复刷新智学网界面，查看月考成绩排名。"
+        "inner_thought": "还有三道力学题，赶紧做完，晚上就能看小说了。",
+        "emotion": "calm",
+        "activity": "我正在教室快速吃完午饭，随后翻开物理竞赛题集开始演算。"
       }
     }
   ]

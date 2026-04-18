@@ -61,144 +61,128 @@
     "想起小时候一家三口去南京路的时候"
   ],
   "state": {
-    "emotion": "anxious",
+    "emotion": "neutral",
     "energy": 85,
     "academic_pressure": 15,
     "location": "教室",
     "daily_plan": {
       "intentions": [
         {
-          "target": "物理错题本",
-          "goal": "再检查一遍错题本，把抄袭的步骤改得更像我自己的笔迹，别让何老师看出破绽。",
-          "reason": "周五就要交了，如果被当众揭穿太丢人，我得再稳一点。",
+          "target": "数学课本",
+          "goal": "在课间把数学课本前几章的基础定义翻一遍",
+          "reason": "卷子一直塞包里也不是办法，总得把基础先补上，不然太慌了。",
           "fulfilled": false,
           "abandoned": false,
-          "satisfies_concern": null,
-          "origin_day": 9,
+          "satisfies_concern": "0cb951",
+          "origin_day": 10,
           "pursued_days": 1
         },
         {
           "target": "姜皓天",
-          "goal": "晚上上线打王者时尽量别送人头，或者干脆选个辅助跟在他后面，别让他觉得我很菜。",
-          "reason": "他主动约我，我不想让他失望，也不想被嫌弃。",
-          "fulfilled": false,
+          "goal": "晚自习后和姜皓天去操场加练，顺便吃辣条",
+          "reason": "答应过的事，能和姜皓天待一会儿挺开心的，希望能避开沈逸凡。",
+          "fulfilled": true,
           "abandoned": false,
-          "satisfies_concern": null,
-          "origin_day": 9,
-          "pursued_days": 1
-        },
-        {
-          "target": "小卖部",
-          "goal": "去买瓶冰水，顺便在那靠着刷会儿手机，透透气。",
-          "reason": "最近心里太闷了，想找个地方一个人待一会儿，刷点短视频解压。",
-          "fulfilled": false,
-          "abandoned": false,
-          "satisfies_concern": null,
-          "origin_day": 9,
+          "satisfies_concern": "7908df",
+          "origin_day": 10,
           "pursued_days": 1
         }
       ],
-      "mood_forecast": "excited",
+      "mood_forecast": "neutral",
       "location_preferences": {
-        "morning_break": "教室",
-        "lunch": "教室",
-        "afternoon_break": "小卖部"
+        "morning_break": "图书馆",
+        "lunch": "食堂",
+        "afternoon_break": "操场"
       }
     },
-    "day": 9,
+    "day": 10,
     "active_concerns": [
       {
-        "id": "b577f9",
-        "text": "物理错题本抄袭痕迹太明显，需要修改笔迹以防周五被何老师当众揭穿。",
-        "source_event": "何老师要求周五整理错题本并去办公室讲解；下午课间何老师的谈话；午饭时何老师的监督与检查要求；晚自习对着错题本发呆；课间被沈逸凡询问错题进度；晚自习抄写物理参考答案；何老师要求饭后整理错题本及后续的自我推导过程；中午在教室偷偷比对错题本答案",
-        "source_scene": "课间@教室",
-        "source_day": 2,
+        "id": "524ac6",
+        "text": "数学卷子没做完就草草收进书包，担心自己这种逃避状态会彻底跟不上教学进度。",
+        "source_event": "晚自习将未完成的卷子塞进书包侧兜；课间想看书但被琐事打断",
+        "source_scene": "",
+        "source_day": 8,
         "emotion": "anxious",
-        "intensity": 2,
+        "intensity": 5,
+        "related_people": [],
+        "positive": false,
+        "topic": "学业焦虑",
+        "last_reinforced_day": 10,
+        "last_new_info_day": 8,
+        "reinforcement_count": 0,
+        "text_history": [
+          "数学课本前几章的基础定义一直没看，心里越来越慌，担心真的会跟不上进度。"
+        ],
+        "id_history": [
+          "d99fa4"
+        ],
+        "last_bump_day": 10,
+        "bumps_today": 1
+      },
+      {
+        "id": "0cb951",
+        "text": "课间想看数学课本基础定义却总被老师提醒或琐事打断，担心基础一直补不上。",
+        "source_event": "08:45 课间沈逸凡提醒准备上课",
+        "source_scene": "",
+        "source_day": 6,
+        "emotion": "anxious",
+        "intensity": 5,
         "related_people": [
-          "何老师",
-          "自己"
+          "沈逸凡"
         ],
         "positive": false,
         "topic": "学业焦虑",
         "last_reinforced_day": 9,
-        "last_new_info_day": 9,
-        "reinforcement_count": 2,
-        "text_history": [
-          "物理错题本进度太慢，周五检查在即，担心在何老师面前丢脸。",
-          "物理错题本抄了答案，周五检查时如果不小心被何老师发现，可能会非常尴尬。",
-          "物理错题本抄袭痕迹太明显，担心周五检查时被何老师当众揭穿。"
-        ],
-        "id_history": [],
-        "last_bump_day": 9,
-        "bumps_today": 2
-      },
-      {
-        "id": "516819",
-        "text": "晚上打王者千万别太菜被姜皓天嫌弃。",
-        "source_event": "姜皓天说晚上带我打王者，带我躺赢。",
-        "source_scene": "早读",
-        "source_day": 6,
-        "emotion": "anxious",
-        "intensity": 1,
-        "related_people": [
-          "姜皓天"
-        ],
-        "positive": false,
-        "topic": "兴趣爱好",
-        "last_reinforced_day": 6,
         "last_new_info_day": 6,
         "reinforcement_count": 0,
         "text_history": [],
         "id_history": [],
-        "last_bump_day": 6,
-        "bumps_today": 1
-      },
-      {
-        "id": "b8e5a5",
-        "text": "晚上打王者要是打得太菜，不知道姜皓天会不会不耐烦。",
-        "source_event": "姜皓天喊我晚上打王者，说带我飞；姜皓天提出晚上带我打王者躺赢。",
-        "source_scene": "午饭@食堂",
-        "source_day": 6,
-        "emotion": "anxious",
-        "intensity": 6,
-        "related_people": [
-          "姜皓天"
-        ],
-        "positive": false,
-        "topic": "人际矛盾",
-        "last_reinforced_day": 8,
-        "last_new_info_day": 8,
-        "reinforcement_count": 1,
-        "text_history": [
-          "晚上打王者要是打得太烂，姜皓天会不会觉得我很烦？"
-        ],
-        "id_history": [],
-        "last_bump_day": 8,
+        "last_bump_day": 10,
         "bumps_today": 2
       },
       {
-        "id": "6b7208",
-        "text": "晚上和姜皓天打王者荣耀，希望能表现好一点，不被他嫌弃。",
-        "source_event": "姜皓天邀请晚上组队打游戏；姜皓天今天主动和我互动",
-        "source_scene": "",
-        "source_day": 8,
+        "id": "7908df",
+        "text": "答应了姜皓天晚上加练并吃辣条，希望能顺利进行，不要被沈逸凡搅合。",
+        "source_event": "姜皓天邀请晚上去宿舍吃辣条；15:30 课间@操场",
+        "source_scene": "课间@操场",
+        "source_day": 7,
         "emotion": "excited",
-        "intensity": 6,
+        "intensity": 5,
         "related_people": [
-          "姜皓天"
+          "姜皓天",
+          "沈逸凡"
         ],
         "positive": true,
         "topic": "期待的事",
-        "last_reinforced_day": 9,
-        "last_new_info_day": 9,
-        "reinforcement_count": 1,
+        "last_reinforced_day": 10,
+        "last_new_info_day": 7,
+        "reinforcement_count": 0,
         "text_history": [
-          "晚上和姜皓天组队打王者，希望能表现好一点，不被嫌弃。"
+          "晚上去姜皓天宿舍吃辣条，希望能别被沈逸凡搅合了"
         ],
         "id_history": [],
-        "last_bump_day": 9,
+        "last_bump_day": 10,
         "bumps_today": 2
+      },
+      {
+        "id": "d230da",
+        "text": "虽然今天和姜皓天打球很开心，但数学基础定义还是没时间看，担心这种基础漏洞会一直拖累成绩。",
+        "source_event": "课间在图书馆试图看书但被琐事打断",
+        "source_scene": "",
+        "source_day": 10,
+        "emotion": "anxious",
+        "intensity": 3,
+        "related_people": [],
+        "positive": false,
+        "topic": "学业焦虑",
+        "last_reinforced_day": 10,
+        "last_new_info_day": 10,
+        "reinforcement_count": 0,
+        "text_history": [],
+        "id_history": [],
+        "last_bump_day": 0,
+        "bumps_today": 0
       }
     ]
   },
@@ -212,22 +196,51 @@
       "label": "同学",
       "recent_interactions": [
         "Day 1 −课间@教室",
-        "Day 1 ·课间@图书馆",
+        "Day 2 −课间@教室",
         "Day 3 ·课间@教室",
-        "Day 9 ·课间@教室"
+        "Day 5 ·课间@教室",
+        "Day 7 ·课间@教室",
+        "Day 8 ·课间@教室",
+        "Day 8 −课间@图书馆",
+        "Day 9 −课间@教室"
       ],
-      "days_since_interaction": 1
+      "days_since_interaction": 2
     },
-    "tang_shihan": {
-      "target_name": "唐诗涵",
-      "target_id": "tang_shihan",
+    "shen_yifan": {
+      "target_name": "沈逸凡",
+      "target_id": "shen_yifan",
       "favorability": 0,
       "trust": 0,
-      "understanding": 1,
+      "understanding": 3,
       "label": "同学",
       "recent_interactions": [
-        "Day 1 ·课间@教室",
-        "Day 9 −午饭@教室"
+        "Day 1 −课间@教室",
+        "Day 1 −课间@操场",
+        "Day 5 −课间@教室",
+        "Day 6 −早读",
+        "Day 6 −课间@教室",
+        "Day 8 −午饭@食堂"
+      ],
+      "days_since_interaction": 3
+    },
+    "jiang_haotian": {
+      "target_name": "姜皓天",
+      "target_id": "jiang_haotian",
+      "favorability": 47,
+      "trust": 28,
+      "understanding": 26,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 7 +午饭@食堂",
+        "Day 7 +课间@操场",
+        "Day 8 +上课",
+        "Day 8 +午饭@食堂",
+        "Day 8 +晚自习",
+        "Day 9 +午饭@食堂",
+        "Day 9 +课间@操场",
+        "Day 10 +早读",
+        "Day 10 +午饭@食堂",
+        "Day 10 +课间@操场"
       ],
       "days_since_interaction": 1
     },
@@ -236,35 +249,55 @@
       "target_id": "lu_siyuan",
       "favorability": 0,
       "trust": 0,
-      "understanding": 5,
+      "understanding": 4,
       "label": "同学",
       "recent_interactions": [
-        "Day 1 ·课间@图书馆",
-        "Day 2 ·午饭@食堂",
+        "Day 2 −课间@教室",
         "Day 3 ·课间@教室",
-        "Day 5 ·课间@图书馆",
-        "Day 9 ·课间@教室"
+        "Day 4 ·上课",
+        "Day 5 ·课间@教室",
+        "Day 8 ·课间@教室",
+        "Day 8 −课间@图书馆",
+        "Day 9 −课间@教室"
       ],
-      "days_since_interaction": 1
+      "days_since_interaction": 2
     },
-    "jiang_haotian": {
-      "target_name": "姜皓天",
-      "target_id": "jiang_haotian",
-      "favorability": 26,
-      "trust": 16,
-      "understanding": 17,
+    "tang_shihan": {
+      "target_name": "唐诗涵",
+      "target_id": "tang_shihan",
+      "favorability": 0,
+      "trust": 0,
+      "understanding": 2,
       "label": "同学",
       "recent_interactions": [
-        "Day 5 +早读",
-        "Day 5 +上课",
-        "Day 6 +早读",
-        "Day 6 +午饭@食堂",
-        "Day 6 +晚自习",
-        "Day 7 +午饭@食堂",
-        "Day 7 +上课",
-        "Day 8 +午饭@食堂",
-        "Day 8 +晚自习",
-        "Day 9 +上课"
+        "Day 3 ·课间@教室",
+        "Day 7 ·课间@教室"
+      ],
+      "days_since_interaction": 4
+    },
+    "su_nianyao": {
+      "target_name": "苏念瑶",
+      "target_id": "su_nianyao",
+      "favorability": 0,
+      "trust": 0,
+      "understanding": 2,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 3 ·课间@教室",
+        "Day 7 ·课间@教室"
+      ],
+      "days_since_interaction": 4
+    },
+    "cheng_yutong": {
+      "target_name": "程雨桐",
+      "target_id": "cheng_yutong",
+      "favorability": 0,
+      "trust": 0,
+      "understanding": 2,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 9 ·课间@教室",
+        "Day 10 ·课间@图书馆"
       ],
       "days_since_interaction": 1
     },
@@ -272,98 +305,57 @@
       "target_name": "何老师",
       "target_id": "he_min",
       "favorability": 0,
-      "trust": 0,
-      "understanding": 4,
+      "trust": 1,
+      "understanding": 2,
       "label": "老师",
       "recent_interactions": [
-        "Day 2 +课间@教室",
-        "Day 3 −午饭@食堂",
-        "Day 7 −午饭@食堂"
-      ],
-      "days_since_interaction": 3
-    },
-    "shen_yifan": {
-      "target_name": "沈逸凡",
-      "target_id": "shen_yifan",
-      "favorability": -9,
-      "trust": 0,
-      "understanding": 6,
-      "label": "同学",
-      "recent_interactions": [
-        "Day 3 −课间@教室",
-        "Day 3 −课间@操场",
-        "Day 4 −课间@操场",
-        "Day 5 −课间@教室",
-        "Day 5 −上课",
-        "Day 5 −午饭@教室",
-        "Day 6 −午饭@食堂",
-        "Day 6 −课间@操场",
-        "Day 6 −晚自习",
-        "Day 8 −课间@教室"
+        "Day 9 +午饭@食堂"
       ],
       "days_since_interaction": 2
-    },
-    "fang_yuchen": {
-      "target_name": "方语晨",
-      "target_id": "fang_yuchen",
-      "favorability": -1,
-      "trust": 0,
-      "understanding": 2,
-      "label": "同学",
-      "recent_interactions": [
-        "Day 7 −课间@教室",
-        "Day 9 −午饭@教室"
-      ],
-      "days_since_interaction": 1
-    },
-    "cheng_yutong": {
-      "target_name": "程雨桐",
-      "target_id": "cheng_yutong",
-      "favorability": 0,
-      "trust": 0,
-      "understanding": 1,
-      "label": "同学",
-      "recent_interactions": [
-        "Day 9 −课间@教室"
-      ],
-      "days_since_interaction": 1
     }
   },
-  "self_narrative": "在班里像个透明人。姜皓天好像想带我，但我总怕拖他后腿。错题本抄了答案，周五要是被老师抓包就完了。想玩游戏又怕被嫌弃。那个……算了，先这样吧。",
+  "self_narrative": "又是最后一排角落。数学卷子塞包里，还是看不懂。姜皓天今天又找我打球，肩膀搭上来的时候，心跳得有点快。想开口说点什么，最后还是说了句行。其实，我挺怕被他看出我成绩烂透了。那个……没事。",
   "key_memories": {
     "memories": [
       {
         "date": "Day 1",
         "day": 1,
         "people": [
-          "陆思远",
           "姜皓天"
         ],
-        "location": "图书馆",
-        "emotion": "bored",
-        "importance": 4,
+        "location": "教室",
+        "emotion": "calm",
+        "importance": 6,
         "topics": [
-          "人际矛盾",
-          "学业焦虑"
+          "兴趣爱好"
         ],
-        "text": "在图书馆看到陆思远在誊抄姜皓天的物理卷子，意识到自己和他们的圈子距离很远。",
-        "source_days": [],
-        "text_history": []
+        "text": "姜皓天问我打不打球，还比了个投篮动作。",
+        "source_days": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "text_history": [
+          "下午和姜皓天在操场打球，一起练习了防守和投篮。",
+          "和姜皓天打球配合得不错，最后还一起去买汽水，挺开心的。",
+          "和姜皓天在操场一对一单挑，他夸我有两下子，没觉得我菜。"
+        ]
       },
       {
         "date": "Day 1",
         "day": 1,
         "people": [
-          "林昭宇",
-          "唐诗涵"
+          "姜皓天"
         ],
         "location": "教室",
-        "emotion": "bored",
-        "importance": 3,
+        "emotion": "calm",
+        "importance": 4,
         "topics": [
-          "学业焦虑"
+          "人际矛盾"
         ],
-        "text": "林昭宇和唐诗涵为了物理题在那边磨叽，烦死了。",
+        "text": "姜皓天在课间对我做出了投篮手势，这是今天为数不多的互动时刻。",
         "source_days": [],
         "text_history": []
       },
@@ -374,162 +366,51 @@
           "姜皓天"
         ],
         "location": "食堂",
-        "emotion": "touched",
-        "importance": 6,
+        "emotion": "excited",
+        "importance": 5,
         "topics": [
-          "人际矛盾",
-          "期待的事"
-        ],
-        "text": "姜皓天在食堂主动叫我一起吃饭，还说下午带我练投篮。",
-        "source_days": [
-          4,
-          9
-        ],
-        "text_history": [
-          "姜皓天在食堂催我吃饭，还说下午打球别客气",
-          "姜皓天叫我去打球，还说别管那物理题了，他好像没觉得我烦。"
-        ]
-      },
-      {
-        "date": "Day 2",
-        "day": 2,
-        "people": [
-          "姜皓天",
-          "陆思远"
-        ],
-        "location": "食堂",
-        "emotion": "touched",
-        "importance": 6,
-        "topics": [
-          "人际矛盾",
+          "人际交往",
           "兴趣爱好"
         ],
-        "text": "姜皓天在食堂主动邀请我一起用餐，并约我下午去操场打球。",
-        "source_days": [],
-        "text_history": []
-      },
-      {
-        "date": "Day 3",
-        "day": 3,
-        "people": [
-          "沈逸凡"
-        ],
-        "location": "教室",
-        "emotion": "embarrassed",
-        "importance": 6,
-        "topics": [
-          "人际矛盾"
-        ],
-        "text": "沈逸凡当众说我动静太大，吵到他们了，脸好烫。",
-        "source_days": [],
-        "text_history": []
-      },
-      {
-        "date": "Day 3",
-        "day": 3,
-        "people": [
-          "何老师"
-        ],
-        "location": "食堂",
-        "emotion": "anxious",
-        "importance": 6,
-        "topics": [
-          "学业焦虑"
-        ],
-        "text": "何老师在食堂盯着我，非要我下午把错题本补好，躲都躲不掉。",
+        "text": "姜皓天在食堂主动和我约定下午在操场见面打球。",
         "source_days": [
-          7
+          3
         ],
         "text_history": [
-          "何老师在食堂盯着我，还要我吃完饭去教学楼入口找他，躲不掉。"
+          "在食堂和姜皓天约好下午一起打球，打完球后感觉状态不错，没有出丑。"
         ]
       },
       {
-        "date": "Day 4",
-        "day": 4,
-        "people": [
-          "姜皓天",
-          "沈逸凡"
-        ],
-        "location": "操场",
-        "emotion": "embarrassed",
-        "importance": 6,
-        "topics": [
-          "人际矛盾"
-        ],
-        "text": "姜皓天和沈逸凡在操场吵架，沈逸凡盯着我看，感觉很不好。",
-        "source_days": [],
-        "text_history": []
-      },
-      {
         "date": "Day 5",
         "day": 5,
         "people": [
-          "沈逸凡"
+          "姜皓天"
         ],
-        "location": "教室",
-        "emotion": "embarrassed",
+        "location": "食堂",
+        "emotion": "touched",
         "importance": 6,
         "topics": [
           "人际矛盾",
-          "学业焦虑"
+          "其他"
         ],
-        "text": "沈逸凡当众问我错题本进度，心里又烦又丢脸。",
+        "text": "姜皓天没嫌弃我的鞋，还说那是双好鞋，心里挺安稳的。",
         "source_days": [],
         "text_history": []
       },
       {
-        "date": "Day 5",
-        "day": 5,
+        "date": "Day 6",
+        "day": 6,
         "people": [
           "沈逸凡"
         ],
         "location": "教室",
-        "emotion": "embarrassed",
+        "emotion": "anxious",
         "importance": 6,
         "topics": [
           "学业焦虑",
           "人际矛盾"
         ],
-        "text": "沈逸凡又来催我订正，烦死了，盯着他那样子心里又堵又丢脸。",
-        "source_days": [],
-        "text_history": []
-      },
-      {
-        "date": "Day 6",
-        "day": 6,
-        "people": [
-          "姜皓天"
-        ],
-        "location": "教室",
-        "emotion": "excited",
-        "importance": 6,
-        "topics": [
-          "兴趣爱好",
-          "期待的事"
-        ],
-        "text": "姜皓天说晚上带我打王者，还说要带我躺赢。",
-        "source_days": [
-          8
-        ],
-        "text_history": [
-          "姜皓天说晚上带我打王者躺赢，还约我下午去操场打球。",
-          "姜皓天在晚自习时跟我约好晚上打游戏，还让我别看物理了。"
-        ]
-      },
-      {
-        "date": "Day 6",
-        "day": 6,
-        "people": [
-          "沈逸凡"
-        ],
-        "location": "操场",
-        "emotion": "embarrassed",
-        "importance": 6,
-        "topics": [
-          "人际矛盾"
-        ],
-        "text": "沈逸凡又在操场上说我，烦死了。",
+        "text": "沈逸凡又催我补作业，当着大家面真的很烦，躲在桌洞里都不行。",
         "source_days": [],
         "text_history": []
       },
@@ -537,34 +418,77 @@
         "date": "Day 7",
         "day": 7,
         "people": [
-          "姜皓天",
-          "何老师"
+          "姜皓天"
         ],
-        "location": "教室",
-        "emotion": "anxious",
+        "location": "操场",
+        "emotion": "excited",
         "importance": 6,
         "topics": [
-          "学业焦虑",
-          "人际矛盾"
+          "兴趣爱好"
         ],
-        "text": "因为担心物理错题本被老师发现抄袭，全天都处于焦虑中，拒绝了姜皓天的打球邀请，感觉自己越来越边缘化。",
+        "text": "和姜皓天打球配合得很顺，他说下次要给我挡拆，还约了晚上吃辣条",
+        "source_days": [
+          8,
+          9
+        ],
+        "text_history": [
+          "姜皓天故意把杯子弄掉，想找我说话，球场约好加练的事儿没变",
+          "姜皓天今天居然夸我球打得有意思，还带我空接，感觉挺爽的。"
+        ]
+      },
+      {
+        "date": "Day 7",
+        "day": 7,
+        "people": [
+          "姜皓天"
+        ],
+        "location": "操场",
+        "emotion": "excited",
+        "importance": 6,
+        "topics": [
+          "人际矛盾",
+          "兴趣爱好"
+        ],
+        "text": "姜皓天多次主动邀请我打球并约好晚上加练，这种被同学接纳的感觉让我心里记着。",
+        "source_days": [
+          8,
+          9
+        ],
+        "text_history": [
+          "姜皓天在晚自习后主动询问我的题目进度并提议一起活动，尽管拒绝了他，但心里还是记住了他的关心。",
+          "姜皓天主动邀请打球并手把手教我晃人动作，最后配合我完成了一次得分。"
+        ]
+      },
+      {
+        "date": "Day 10",
+        "day": 10,
+        "people": [
+          "姜皓天"
+        ],
+        "location": "食堂",
+        "emotion": "touched",
+        "importance": 6,
+        "topics": [
+          "人际矛盾",
+          "期待的事"
+        ],
+        "text": "姜皓天请我喝奶茶，还说食堂的饭太难吃，带我出来吃好的。",
         "source_days": [],
         "text_history": []
       },
       {
-        "date": "Day 9",
-        "day": 9,
+        "date": "Day 10",
+        "day": 10,
         "people": [
-          "方语晨",
-          "唐诗涵"
+          "姜皓天"
         ],
-        "location": "教室",
-        "emotion": "embarrassed",
+        "location": "操场",
+        "emotion": "excited",
         "importance": 6,
         "topics": [
-          "人际矛盾"
+          "兴趣爱好"
         ],
-        "text": "方语晨和唐诗涵盯着我的错题本看，被她们发现了，真的很烦。",
+        "text": "姜皓天教我转身上篮，还一直给我喂球，感觉没那么笨了",
         "source_days": [],
         "text_history": []
       }

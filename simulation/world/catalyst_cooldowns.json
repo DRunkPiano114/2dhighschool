@@ -7,13 +7,12 @@
   "isolation:{\"max_active_relationships\": 2}:shen_yifan": 1,
   "relationship_threshold:{\"favorability_gte\": 18}:fang_yuchen:tang_shihan": 2,
   "relationship_threshold:{\"favorability_gte\": 18}:lin_zhaoyu:lu_siyuan": 2,
-  "concern_stalled:{\"min_stale_days\": 4, \"require_related_people\": true, \"topic\": \"人际矛盾\"}:shen_yifan": 5,
-  "concern_stalled:{\"min_stale_days\": 5, \"require_empty_related_people\": true, \"topic\": \"学业焦虑\"}:cheng_yutong": 6,
-  "positive_concern_stalled:{\"min_stale_days\": 4, \"topic\": \"期待的事\"}:he_jiajun": 6,
-  "intention_stalled:{\"min_pursued_days\": 5}:he_jiajun": 7,
-  "concern_stalled:{\"min_stale_days\": 4, \"require_related_people\": true, \"topic\": \"人际矛盾\"}:lin_zhaoyu": 8,
-  "relationship_threshold:{\"favorability_gte\": 18}:he_jiajun:jiang_haotian": 8,
-  "intention_stalled:{\"min_pursued_days\": 5}:cheng_yutong": 9,
-  "intention_stalled:{\"min_pursued_days\": 5}:jiang_haotian": 9,
-  "intention_stalled:{\"min_pursued_days\": 5}:shen_yifan": 9
+  "relationship_threshold:{\"favorability_gte\": 18}:su_nianyao:tang_shihan": 5,
+  "intention_stalled:{\"min_pursued_days\": 5}:cheng_yutong": 5,
+  "relationship_threshold:{\"favorability_gte\": 18}:he_jiajun:jiang_haotian": 7,
+  "positive_concern_stalled:{\"min_stale_days\": 4, \"topic\": \"兴趣爱好\"}:fang_yuchen": 7,
+  "relationship_threshold:{\"favorability_gte\": 18}:cheng_yutong:su_nianyao": 8,
+  "intention_stalled:{\"min_pursued_days\": 5}:fang_yuchen": 8,
+  "intention_stalled:{\"min_pursued_days\": 5}:shen_yifan": 8,
+  "intention_stalled:{\"min_pursued_days\": 5}:tang_shihan": 9
 }

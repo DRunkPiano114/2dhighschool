@@ -6,124 +6,77 @@
   "daily_plan": {
     "intentions": [
       {
-        "target": "陆思远",
-        "goal": "找个机会问问他以后到底打算怎么办，看大家怎么想的",
-        "reason": "老是这么拖着也不是办法，得打听下大家对未来的打算，心里才有点底。",
-        "fulfilled": false,
+        "target": "何家骏",
+        "goal": "找何家骏聊聊，看他最近到底怎么了",
+        "reason": "这哥们最近不太对劲，看着让人心烦，得确认一下是不是出啥事了。",
+        "fulfilled": true,
         "abandoned": false,
-        "satisfies_concern": "9e32b7",
+        "satisfies_concern": "c091c6",
         "origin_day": 3,
         "pursued_days": 1
       },
       {
-        "target": "何家骏",
-        "goal": "拉他去球场投几个篮，让他别老闷在教室里",
-        "reason": "这哥们太闷了，带他动动，顺便晚上好带他开黑。",
+        "target": "陆思远",
+        "goal": "试探性问问陆思远关于工厂或者家里生意的情况",
+        "reason": "一直没找到机会开口，怕直接问家里会露馅，先找室友探探口风。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "8b8220",
+        "satisfies_concern": "8696a8",
         "origin_day": 3,
         "pursued_days": 1
       },
       {
         "target": "沈逸凡",
-        "goal": "故意在他面前晃悠，逗逗他",
-        "reason": "看他那副一本正经又拿我没办法的样子就想笑，解气。",
+        "goal": "在沈逸凡眼皮底下偷玩把游戏",
+        "reason": "看他不爽很久了，就是要在他面前晃悠，逗他生气特别有意思。",
         "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
-        "origin_day": 2,
-        "pursued_days": 2
+        "origin_day": 3,
+        "pursued_days": 1
       }
     ],
-    "mood_forecast": "frustrated",
+    "mood_forecast": "neutral",
     "location_preferences": {
       "morning_break": "操场",
       "lunch": "食堂",
-      "afternoon_break": "走廊"
+      "afternoon_break": "教室"
     }
   },
   "day": 3,
   "active_concerns": [
     {
-      "id": "9e32b7",
-      "text": "家里工厂订单减少，想打听别人对未来就业的看法，但一直没找到合适的机会深入询问。",
-      "source_event": "与陆思远关于毕业后打算的简短对话",
+      "id": "8696a8",
+      "text": "爸妈最近总念叨工厂订单减少，心里总觉得不踏实，想找机会旁敲侧击问问情况。",
+      "source_event": "日常焦虑",
       "source_scene": "",
-      "source_day": 1,
+      "source_day": 2,
       "emotion": "anxious",
-      "intensity": 5,
+      "intensity": 7,
+      "related_people": [],
+      "positive": false,
+      "topic": "家庭压力",
+      "last_reinforced_day": 3,
+      "last_new_info_day": 2,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 3,
+      "bumps_today": 2
+    },
+    {
+      "id": "dcf8e8",
+      "text": "陆思远对生意话题的避而不谈让我更加不安，不确定家里工厂的经营状况到底有多糟糕。",
+      "source_event": "宿舍夜聊",
+      "source_scene": "",
+      "source_day": 3,
+      "emotion": "anxious",
+      "intensity": 6,
       "related_people": [
         "陆思远"
       ],
       "positive": false,
       "topic": "家庭压力",
-      "last_reinforced_day": 2,
-      "last_new_info_day": 1,
-      "reinforcement_count": 0,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 3,
-      "bumps_today": 1
-    },
-    {
-      "id": "8b8220",
-      "text": "何家骏这小子平时闷声不响的，晚上带他开黑得让他玩得开心点，别让他光顾着紧张。",
-      "source_event": "食堂午饭时何家骏主动问晚上能不能一起开黑",
-      "source_scene": "午饭@食堂",
-      "source_day": 2,
-      "emotion": "excited",
-      "intensity": 2,
-      "related_people": [
-        "何家骏"
-      ],
-      "positive": true,
-      "topic": "期待的事",
-      "last_reinforced_day": 2,
-      "last_new_info_day": 2,
-      "reinforcement_count": 0,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
-    },
-    {
-      "id": "caf0ef",
-      "text": "想找机会问问陆思远他们对未来升学的打算，但被沈逸凡搅和了，关于未来的迷茫感还是没能排解。",
-      "source_event": "宿舍夜聊",
-      "source_scene": "",
-      "source_day": 2,
-      "emotion": "frustrated",
-      "intensity": 1,
-      "related_people": [
-        "陆思远",
-        "沈逸凡"
-      ],
-      "positive": false,
-      "topic": "未来规划",
-      "last_reinforced_day": 2,
-      "last_new_info_day": 2,
-      "reinforcement_count": 0,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
-    },
-    {
-      "id": "d85c7f",
-      "text": "沈逸凡管得越来越严，想找陆思远聊聊未来或者带何家骏打球的机会都被他搅和了，这种被处处限制的感觉很烦。",
-      "source_event": "食堂与宿舍的冲突",
-      "source_scene": "",
-      "source_day": 3,
-      "emotion": "frustrated",
-      "intensity": 4,
-      "related_people": [
-        "沈逸凡",
-        "陆思远",
-        "何家骏"
-      ],
-      "positive": false,
-      "topic": "人际矛盾",
       "last_reinforced_day": 3,
       "last_new_info_day": 3,
       "reinforcement_count": 0,

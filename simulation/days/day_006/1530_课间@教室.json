@@ -8,19 +8,642 @@
     "day": 6
   },
   "participant_names": {
-    "lin_zhaoyu": "林昭宇"
+    "fang_yuchen": "方语晨",
+    "shen_yifan": "沈逸凡",
+    "tang_shihan": "唐诗涵"
   },
   "groups": [
     {
       "group_index": 0,
       "participants": [
-        "lin_zhaoyu"
+        "fang_yuchen",
+        "tang_shihan",
+        "shen_yifan"
       ],
-      "is_solo": true,
-      "solo_reflection": {
-        "inner_thought": "英语阅读又要崩，许嵩的新歌还没听，烦。",
-        "emotion": "anxious",
-        "activity": "我盯着草稿纸上陆思远写的语法分析，又拿起笔在错题集上补了几个例句。"
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "诶你们刚才说姜皓天干嘛？他又整什么幺蛾子了？"
+            },
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "皱起眉，低头拿出下一节课的物理课本，开始检查桌面摆放。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "诗涵坐在旁边，沈逸凡在那儿神神秘秘的，不像是在聊正经事。",
+              "inner_thought": "沈逸凡这家伙最近总是神神叨叨的，刚才那眼神不太对。",
+              "emotion": "curious",
+              "action_type": "speak",
+              "action_content": "诶，沈逸凡，你刚才跟谁发消息呢？一脸严肃的样子，不是吧，又有什么瓜？",
+              "action_target": "shen_yifan",
+              "urgency": 6,
+              "is_disruptive": false
+            },
+            "shen_yifan": {
+              "observation": "方语晨和唐诗涵在聊天，班里气氛松散，没什么人准备下一节课。",
+              "inner_thought": "离上课还有几分钟，她们怎么还不复习？算了，管好自己吧。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "皱起眉，低头拿出下一节课的物理课本，开始检查桌面摆放。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "tang_shihan": {
+              "observation": "方语晨和沈逸凡在有一搭没一搭地说话，沈逸凡好像提到了姜皓天。",
+              "inner_thought": "姜皓天这人怎么又被提到了？语晨和沈逸凡到底在讲啥啊。",
+              "emotion": "curious",
+              "action_type": "speak",
+              "action_content": "诶你们刚才说姜皓天干嘛？他又整什么幺蛾子了？",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "shen_yifan",
+              "content": "诶，沈逸凡，你刚才跟谁发消息呢？一脸严肃的样子，不是吧，又有什么瓜？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "唐诗涵在谈论姜皓天，教室里还没人准备上课。",
+              "inner_thought": "一天到晚就知道八卦，这几分钟背单词不好吗？",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "还有三分钟上课，你要是有闲心不如把物理公式再过一遍。",
+              "action_target": "tang_shihan",
+              "urgency": 6,
+              "is_disruptive": false
+            },
+            "tang_shihan": {
+              "observation": "沈逸凡居然不理我，自顾自摆弄课本，气氛突然变得有点怪。",
+              "inner_thought": "这人怎么回事，又不是问他，摆张臭脸给谁看啊。",
+              "emotion": "curious",
+              "action_type": "speak",
+              "action_content": "沈逸凡你那是啥表情啊？我刚才没问你吧，这也能破防？",
+              "action_target": "shen_yifan",
+              "urgency": 7,
+              "is_disruptive": true
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": {
+              "agent": "shen_yifan",
+              "target": "tang_shihan",
+              "content": "还有三分钟上课，你要是有闲心不如把物理公式再过一遍。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "沈逸凡抬头看了我一眼，似乎不想理但我又想从他嘴里抠出点什么八卦。",
+              "inner_thought": "这家伙平时嘴严得很，看他这样子肯定有事，说不定和林昭宇有关。",
+              "emotion": "curious",
+              "action_type": "speak",
+              "action_content": "哎呀别藏着掖着了，分享一下呗，我这儿情报交换，绝对不亏。",
+              "action_target": "shen_yifan",
+              "urgency": 7,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "shen_yifan",
+              "content": "沈逸凡你那是啥表情啊？我刚才没问你吧，这也能破防？"
+            },
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "把课桌上摆放偏离中心的一本练习册往回挪了半厘米，视线钉在课本上，没抬头。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "唐诗涵被我堵了一句后没再接话，方语晨还在旁边看着，教室里还是有点吵。",
+              "inner_thought": "真是一刻都闲不住，复习功课有那么难吗？",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "把课桌上摆放偏离中心的一本练习册往回挪了半厘米，视线钉在课本上，没抬头。",
+              "action_target": null,
+              "urgency": 3,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 4,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "shen_yifan",
+              "content": "哎呀别藏着掖着了，分享一下呗，我这儿情报交换，绝对不亏。"
+            },
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "合上物理书，拿起红笔开始在错题本上划线，不再理会她们。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "唐诗涵还在看我，方语晨在一边没说话。",
+              "inner_thought": "一个个都这么闲，说了也不听，懒得解释了。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "合上物理书，拿起红笔开始在错题本上划线，不再理会她们。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "tang_shihan": {
+              "observation": "沈逸凡居然连课本都要挪个半厘米，强迫症也太离谱了。",
+              "inner_thought": "这人怎么这么古怪，懒得理他，真没劲。",
+              "emotion": "bored",
+              "action_type": "speak",
+              "action_content": "行吧，你牛，当我自讨没趣。",
+              "action_target": "shen_yifan",
+              "urgency": 3,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 5,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "shen_yifan",
+              "content": "行吧，你牛，当我自讨没趣。"
+            },
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "把书桌上的文具盒摆正，动作幅度稍微大了一点，以此暗示她们声音太吵。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "沈逸凡开始埋头补错题，彻底切断了交流通道。",
+              "inner_thought": "装什么装，补个错题就了不起了？肯定是刚才发消息心虚了。",
+              "emotion": "curious",
+              "action_type": "speak",
+              "action_content": "行吧，那祝你错题越改越少啊，学霸。",
+              "action_target": "shen_yifan",
+              "urgency": 4,
+              "is_disruptive": false
+            },
+            "shen_yifan": {
+              "observation": "方语晨和唐诗涵还在小声说话，完全不看课本。",
+              "inner_thought": "离上课还有一分钟呢，真就一点危机感都没有？",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "把书桌上的文具盒摆正，动作幅度稍微大了一点，以此暗示她们声音太吵。",
+              "action_target": null,
+              "urgency": 4,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 6,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "shen_yifan",
+              "content": "行吧，那祝你错题越改越少啊，学霸。"
+            },
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "深深吸了一口气，转过头去专心盯着黑板上方，不再给她们一个眼神，直接进入“屏蔽模式”。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "唐诗涵和方语晨虽然停止了追问，但依然在课桌边窃窃私语，完全没把上课前这点时间放在心上。",
+              "inner_thought": "与其在这说废话，不如多看一眼公式，真是不懂她们在想什么。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "深深吸了一口气，转过头去专心盯着黑板上方，不再给她们一个眼神，直接进入“屏蔽模式”。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "tang_shihan": {
+              "observation": "沈逸凡在死磕他的物理错题本，摆出一副生人勿近的样子。",
+              "inner_thought": "装什么清高，物理卷子都做不明白还摆谱，没意思。",
+              "emotion": "bored",
+              "action_type": "speak",
+              "action_content": "语晨，走啦，去走廊透透气，这儿空气太闷了。",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 7,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "语晨，走啦，去走廊透透气，这儿空气太闷了。"
+            },
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "将草稿纸对折再对折，压在物理课本下方。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "沈逸凡真的彻底进入学习状态了，完全不想理人。",
+              "inner_thought": "这男的真是，问个八卦而已，搞得像我欠他钱一样，真没劲。",
+              "emotion": "bored",
+              "action_type": "speak",
+              "action_content": "算了，诗涵，不看他了，看那书本都快被他盯出洞来了。",
+              "action_target": "tang_shihan",
+              "urgency": 4,
+              "is_disruptive": false
+            },
+            "shen_yifan": {
+              "observation": "方语晨和唐诗涵依然没把我的话当回事，还在继续自说自话。",
+              "inner_thought": "真够了，再吵下去这课没法听了，随她们去吧。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "将草稿纸对折再对折，压在物理课本下方。",
+              "action_target": null,
+              "urgency": 4,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 8,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "tang_shihan",
+              "content": "算了，诗涵，不看他了，看那书本都快被他盯出洞来了。"
+            },
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "把物理课本往前推了推，调整了一下坐姿，身体微微前倾开始阅读题目。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "唐诗涵和方语晨终于起身准备离开教室，教室环境稍微安静了一些。",
+              "inner_thought": "走得好，总算能清静几分钟看题目了。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "把物理课本往前推了推，调整了一下坐姿，身体微微前倾开始阅读题目。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "tang_shihan": {
+              "observation": "沈逸凡为了摆脱我们直接进入了全神贯注的状态，动作僵硬得不行。",
+              "inner_thought": "这人真是，跟木头一样，没救了。",
+              "emotion": "bored",
+              "action_type": "speak",
+              "action_content": "走吧，看着他我都替他累，物理题又不会因为你摆正练习册就变简单。",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 9,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "拿起黑色的中性笔，在草稿纸上果断地划下一道横线，开始专注计算。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": [
+              "fang_yuchen"
+            ]
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "沈逸凡真的把自己关进书堆里了，甚至连调整桌面上课本的动作都透着一股拒绝交流的劲儿。",
+              "inner_thought": "算了，这人彻底没救了，跟木头一样，没意思透了。",
+              "emotion": "bored",
+              "action_type": "exit",
+              "action_content": "走吧，去走廊逛逛，这里闷得慌。",
+              "action_target": "tang_shihan",
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "shen_yifan": {
+              "observation": "唐诗涵和方语晨终于走出了教室，周围的声音减弱了。",
+              "inner_thought": "世界终于清静了，这才是该有的样子，赶紧把这道题算出来。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "拿起黑色的中性笔，在草稿纸上果断地划下一道横线，开始专注计算。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 10,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "推了推鼻梁上的眼镜，将错题本向右平移三个指宽，腾出草稿纸空间写下一行算式。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": [
+              "tang_shihan"
+            ]
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "方语晨和唐诗涵终于走出了教室，周围环境回归安静。",
+              "inner_thought": "总算走了，这下能静下心把这道力学物理题做完。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "推了推鼻梁上的眼镜，将错题本向右平移三个指宽，腾出草稿纸空间写下一行算式。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "tang_shihan": {
+              "observation": "沈逸凡真的开始埋头狂算物理题了，这人简直就是个不折不扣的物理机器。",
+              "inner_thought": "算了，这人彻底没救了，还是出去透气比较重要。",
+              "emotion": "bored",
+              "action_type": "exit",
+              "action_content": "走吧走吧，看着他我都困了。",
+              "action_target": "fang_yuchen",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        }
+      ],
+      "narrative": {
+        "key_moments": [
+          "唐诗涵询问姜皓天的近况。",
+          "方语晨询问沈逸凡发送消息的对象。",
+          "沈逸凡建议唐诗涵复习物理公式。",
+          "沈逸凡在错题本上划线并整理桌面。",
+          "方语晨和唐诗涵离开教室前往走廊。",
+          "沈逸凡在草稿纸上进行物理计算。"
+        ],
+        "fulfilled_intentions": [
+          "沈逸凡:复习物理错题",
+          "方语晨:去走廊透气",
+          "唐诗涵:去走廊透气"
+        ],
+        "events_discussed": [
+          "姜皓天的近期动态"
+        ],
+        "new_events": [
+          {
+            "text": "姜皓天近期有异常举动",
+            "category": "八卦",
+            "witnesses": [
+              "唐诗涵",
+              "方语晨"
+            ],
+            "spread_probability": 0.6,
+            "cite_ticks": [
+              1
+            ]
+          }
+        ]
+      },
+      "reflections": {
+        "fang_yuchen": {
+          "emotion": "bored",
+          "relationship_changes": [
+            {
+              "to_agent": "沈逸凡",
+              "favorability": -2,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "唐诗涵",
+              "favorability": 1,
+              "trust": 1,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "沈逸凡这人真是绝了，问他点八卦跟要他命一样，只会盯着书看，真没劲。",
+              "emotion": "bored",
+              "importance": 3,
+              "people": [
+                "沈逸凡",
+                "唐诗涵"
+              ],
+              "location": "教室",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [],
+          "intention_outcomes": [
+            {
+              "goal": "找个机会旁敲侧击一下林昭宇，看看能不能从她嘴里套出那个LYU到底是哪路神仙（想找苏念瑶）",
+              "status": "pending",
+              "brief_reason": "苏念瑶不在场，没有机会套话。"
+            },
+            {
+              "goal": "课间去堵他，问问最近班里有没有什么新鲜八卦，缓解一下情报滞后的焦虑（想找陆思远）",
+              "status": "pending",
+              "brief_reason": "陆思远没在教室，没见到人。"
+            }
+          ]
+        },
+        "tang_shihan": {
+          "emotion": "bored",
+          "relationship_changes": [
+            {
+              "to_agent": "沈逸凡",
+              "favorability": -2,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "方语晨",
+              "favorability": 1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "沈逸凡这家伙又在那装模作样，看书看到眼珠子都要掉出来了，真没劲。",
+              "emotion": "bored",
+              "importance": 3,
+              "people": [
+                "沈逸凡"
+              ],
+              "location": "教室",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "f71be7",
+              "adjustment": 0
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "拉她去买奶茶，顺便套话问那个LYU备注是不是林昭宇",
+              "status": "pending",
+              "brief_reason": "苏念瑶没在场，没机会问。"
+            },
+            {
+              "goal": "假装请教物理题，顺便打听一下竞赛八卦",
+              "status": "missed_opportunity",
+              "brief_reason": "林昭宇不在场，沈逸凡又在发神经，没法打听。"
+            }
+          ]
+        },
+        "shen_yifan": {
+          "emotion": "frustrated",
+          "relationship_changes": [
+            {
+              "to_agent": "方语晨",
+              "favorability": -1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "唐诗涵",
+              "favorability": -1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "方语晨和唐诗涵在课间拿我开涮，还说看我盯书都看困了，真是有够无聊的。",
+              "emotion": "frustrated",
+              "importance": 3,
+              "people": [
+                "方语晨",
+                "唐诗涵"
+              ],
+              "location": "教室",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "ce28db",
+              "adjustment": 1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "找个机会私下提醒他，别在晚自习玩手机了",
+              "status": "pending",
+              "brief_reason": "姜皓天不在场，且刚才在和方语晨她们争执，没机会处理。"
+            },
+            {
+              "goal": "午饭时试着聊聊学校活动，缓和一下宿舍气氛",
+              "status": "pending",
+              "brief_reason": "林昭宇不在场，且刚才话题与宿舍关系无关。"
+            }
+          ]
+        }
       }
     }
   ]

@@ -1,6 +1,6 @@
 {
   "scene": {
-    "scene_index": 6,
+    "scene_index": 10,
     "time": "15:30",
     "name": "课间",
     "location": "小卖部",
@@ -8,19 +8,19 @@
     "day": 8
   },
   "participant_names": {
-    "he_jiajun": "何家骏"
+    "su_nianyao": "苏念瑶"
   },
   "groups": [
     {
       "group_index": 0,
       "participants": [
-        "he_jiajun"
+        "su_nianyao"
       ],
       "is_solo": true,
       "solo_reflection": {
-        "inner_thought": "希望晚上打游戏别太坑，姜皓天应该不介意吧。",
-        "emotion": "touched",
-        "activity": "在小卖部买了一瓶冰水，靠在墙边刷着手机里物流视频。"
+        "inner_thought": "唐诗涵那张嘴真烦，买完奶茶赶紧躲远点。",
+        "emotion": "frustrated",
+        "activity": "我在小卖部排队买奶茶，顺手看了眼手机屏幕上的歌单。"
       }
     }
   ]

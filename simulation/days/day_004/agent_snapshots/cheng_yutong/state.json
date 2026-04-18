@@ -1,63 +1,44 @@
 {
-  "emotion": "calm",
+  "emotion": "frustrated",
   "energy": 85,
   "academic_pressure": 50,
   "location": "教室",
   "daily_plan": {
     "intentions": [
       {
-        "target": "智学网",
-        "goal": "确认月考最终排名",
-        "reason": "月考排名迟迟未出，这种不确定性极大地干扰了我的学习规划节奏，必须尽快确认以调整后续策略。",
+        "target": null,
+        "goal": "在熄灯后看完《仙路独行》最新更新的章节",
+        "reason": "这是我唯一能从高压生活中逃离的途径，昨天没看成，今天必须补上。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "998933",
-        "origin_day": 3,
-        "pursued_days": 2
-      },
-      {
-        "target": null,
-        "goal": "阅读《仙路独行》最新更新章节",
-        "reason": "高强度的学习压力下，这是我目前维系心理平衡、逃避现实压力的唯一出口。",
-        "fulfilled": true,
-        "abandoned": false,
-        "satisfies_concern": null,
+        "satisfies_concern": "83a346",
         "origin_day": 4,
         "pursued_days": 1
+      },
+      {
+        "target": "物理竞赛题集",
+        "goal": "完成三道力学压轴题的深度推导",
+        "reason": "竞赛进度落后了，必须在下次考试前补上，以此缓解焦虑。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 1,
+        "pursued_days": 4
       }
     ],
-    "mood_forecast": "anxious",
+    "mood_forecast": "calm",
     "location_preferences": {
-      "morning_break": "图书馆",
+      "morning_break": "教室",
       "lunch": "教室",
-      "afternoon_break": "教室"
+      "afternoon_break": "图书馆"
     }
   },
   "day": 4,
   "active_concerns": [
     {
-      "id": "998933",
-      "text": "月考排名尚未公布，对成绩的悬念导致持续的焦虑感。",
-      "source_event": "午饭时演算物理题",
-      "source_scene": "",
-      "source_day": 1,
-      "emotion": "anxious",
-      "intensity": 9,
-      "related_people": [],
-      "positive": false,
-      "topic": "学业焦虑",
-      "last_reinforced_day": 4,
-      "last_new_info_day": 1,
-      "reinforcement_count": 3,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 4,
-      "bumps_today": 2
-    },
-    {
-      "id": "eb3d29",
-      "text": "月考排名迟迟未公布，这种不确定性导致复习计划的调整受阻。",
-      "source_event": "智学网后台持续刷新无结果",
+      "id": "781baa",
+      "text": "竞赛物理力学推导进度滞后，需要在下次考试前补上，以缓解对排名的焦虑。",
+      "source_event": "每日学习计划执行",
       "source_scene": "",
       "source_day": 4,
       "emotion": "anxious",
@@ -65,6 +46,25 @@
       "related_people": [],
       "positive": false,
       "topic": "学业焦虑",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 4,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "9e65a5",
+      "text": "熄灯后未能阅读《仙路独行》最新章节，错失了唯一的解压途径。",
+      "source_event": "宿舍夜聊干扰",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "frustrated",
+      "intensity": 5,
+      "related_people": [],
+      "positive": false,
+      "topic": "兴趣爱好",
       "last_reinforced_day": 4,
       "last_new_info_day": 4,
       "reinforcement_count": 0,

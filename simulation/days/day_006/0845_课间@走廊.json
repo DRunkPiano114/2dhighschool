@@ -8,48 +8,48 @@
     "day": 6
   },
   "participant_names": {
-    "jiang_haotian": "姜皓天",
-    "su_nianyao": "苏念瑶"
+    "fang_yuchen": "方语晨",
+    "tang_shihan": "唐诗涵"
   },
   "groups": [
     {
       "group_index": 0,
       "participants": [
-        "jiang_haotian",
-        "su_nianyao"
+        "fang_yuchen",
+        "tang_shihan"
       ],
       "ticks": [
         {
           "tick": 0,
           "public": {
             "speech": {
-              "agent": "jiang_haotian",
-              "target": "su_nianyao",
-              "content": "诶，苏念瑶，你这站着看风景呢？怎么不去抢奶茶啊，晚了可就没了。"
+              "agent": "fang_yuchen",
+              "target": "tang_shihan",
+              "content": "诗涵！我跟你说啊，那家店的抽奖概率简直离谱，我怀疑他家根本没放隐藏款！对了，你那个限定立牌带了没？借我看看呗。"
             },
             "actions": [],
             "environmental_event": null,
             "exits": []
           },
           "minds": {
-            "jiang_haotian": {
-              "observation": "苏念瑶在走廊窗边站着，看起来好像在发呆。",
-              "inner_thought": "这女的怎么又在这儿，看她那副样，也没什么好烦的，不像我这儿一堆烂摊子。",
-              "emotion": "bored",
+            "fang_yuchen": {
+              "observation": "走廊上大家都在三三两两地聊天，诗涵正好站在旁边。",
+              "inner_thought": "终于抓到机会了，那家店坑死我了，必须拉诗涵吐槽一下。",
+              "emotion": "excited",
               "action_type": "speak",
-              "action_content": "诶，苏念瑶，你这站着看风景呢？怎么不去抢奶茶啊，晚了可就没了。",
-              "action_target": "su_nianyao",
-              "urgency": 4,
+              "action_content": "诗涵！我跟你说啊，那家店的抽奖概率简直离谱，我怀疑他家根本没放隐藏款！对了，你那个限定立牌带了没？借我看看呗。",
+              "action_target": "tang_shihan",
+              "urgency": 8,
               "is_disruptive": false
             },
-            "su_nianyao": {
-              "observation": "姜皓天在那儿一脸烦躁地靠着窗框，估计又是被沈逸凡训了。",
-              "inner_thought": "烦死了，早读课都没清静过，我也想去图书馆补写随笔了。",
-              "emotion": "frustrated",
+            "tang_shihan": {
+              "observation": "方语晨正站在走廊边，看起来没什么事做。",
+              "inner_thought": "先找她聊聊那个剧，然后再找机会套话。",
+              "emotion": "curious",
               "action_type": "speak",
-              "action_content": "还没被沈逸凡念够啊？看你这苦瓜脸。",
-              "action_target": "jiang_haotian",
-              "urgency": 4,
+              "action_content": "语晨，那部剧你看到哪了？我觉得女主磨叽死了，笑死。",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
               "is_disruptive": false
             }
           },
@@ -59,23 +59,23 @@
           "tick": 1,
           "public": {
             "speech": {
-              "agent": "su_nianyao",
-              "target": "jiang_haotian",
-              "content": "还没被沈逸凡念够啊？看你这苦瓜脸。"
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "语晨，那部剧你看到哪了？我觉得女主磨叽死了，笑死。"
             },
             "actions": [],
             "environmental_event": null,
             "exits": []
           },
           "minds": {
-            "jiang_haotian": {
-              "observation": "苏念瑶在窗边站着，没怎么理我刚才的话，反而有点心不在焉。",
-              "inner_thought": "这表情，难道是在想什么秘密？算了，懒得管女生的心思。",
-              "emotion": "bored",
+            "fang_yuchen": {
+              "observation": "唐诗涵正在听我吐槽，似乎对立牌的事儿也有话想说。",
+              "inner_thought": "这牌子我馋好久了，一定要先拿到手看看细节！",
+              "emotion": "excited",
               "action_type": "speak",
-              "action_content": "啧，没劲。我就去操场投两个球了，回见。",
-              "action_target": "su_nianyao",
-              "urgency": 4,
+              "action_content": "快快快，拿出来给我开开眼！不是吧，你难道还要藏着掖着啊？",
+              "action_target": "tang_shihan",
+              "urgency": 8,
               "is_disruptive": false
             }
           },
@@ -85,23 +85,23 @@
           "tick": 2,
           "public": {
             "speech": {
-              "agent": "jiang_haotian",
-              "target": "su_nianyao",
-              "content": "啧，没劲。我就去操场投两个球了，回见。"
+              "agent": "fang_yuchen",
+              "target": "tang_shihan",
+              "content": "快快快，拿出来给我开开眼！不是吧，你难道还要藏着掖着啊？"
             },
             "actions": [],
             "environmental_event": null,
             "exits": []
           },
           "minds": {
-            "su_nianyao": {
-              "observation": "姜皓天撇了撇嘴，一副很不爽的样子，估计是懒得跟我计较。",
-              "inner_thought": "真没劲，想找语晨去厕所八卦了，姜皓天这人话真多。",
-              "emotion": "bored",
+            "tang_shihan": {
+              "observation": "方语晨还没回我关于剧的事，反而还在惦记我的立牌。",
+              "inner_thought": "这立牌她都看八百回了，肯定在避开话题，等下得找机会突击问念瑶的事。",
+              "emotion": "curious",
               "action_type": "speak",
-              "action_content": "行了，你不去算了，我找语晨去了。",
-              "action_target": "jiang_haotian",
-              "urgency": 4,
+              "action_content": "哎呀别管立牌了，那剧后面简直离谱，男主居然失忆了，编剧没活了吗？",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
               "is_disruptive": false
             }
           },
@@ -110,22 +110,232 @@
         {
           "tick": 3,
           "public": {
-            "speech": null,
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "哎呀别管立牌了，那剧后面简直离谱，男主居然失忆了，编剧没活了吗？"
+            },
             "actions": [],
             "environmental_event": null,
-            "exits": [
-              "jiang_haotian"
-            ]
+            "exits": []
           },
           "minds": {
-            "jiang_haotian": {
-              "observation": "苏念瑶在走廊窗边发呆，看起来没心思理人。",
-              "inner_thought": "真没意思，这女生还没那帮男生好玩，走人去操场投球。",
-              "emotion": "bored",
-              "action_type": "exit",
-              "action_content": null,
-              "action_target": null,
-              "urgency": 5,
+            "fang_yuchen": {
+              "observation": "诗涵好像在翻书包，看来是要把立牌拿出来了。",
+              "inner_thought": "快点快点，我都要等不及了，限定款到底长啥样啊！",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "别翻了，就在里层吧？赶紧赶紧，我手都痒了。",
+              "action_target": "tang_shihan",
+              "urgency": 9,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 4,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "tang_shihan",
+              "content": "别翻了，就在里层吧？赶紧赶紧，我手都痒了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "tang_shihan": {
+              "observation": "方语晨一直追着我要看立牌，一点都不关心我吐槽的剧情，她肯定有心事。",
+              "inner_thought": "这妮子反应不对，该不会是知道些什么关于LYU的事吧？",
+              "emotion": "curious",
+              "action_type": "speak",
+              "action_content": "你今天怎么回事啊，一直盯着我立牌看，是不是有什么话憋着没跟我说？",
+              "action_target": "fang_yuchen",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 5,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "你今天怎么回事啊，一直盯着我立牌看，是不是有什么话憋着没跟我说？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "唐诗涵终于从书包里层翻出了那个闪闪发亮的限定立牌，正递过来。",
+              "inner_thought": "终于到手了！这亚克力的质感，值了！",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "哇！真的绝了！这立绘细节也太好了吧，我真的会谢，抽奖那家店要是有一半这种水平多好！",
+              "action_target": "tang_shihan",
+              "urgency": 9,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 6,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "tang_shihan",
+              "content": "哇！真的绝了！这立绘细节也太好了吧，我真的会谢，抽奖那家店要是有一半这种水平多好！"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "tang_shihan": {
+              "observation": "方语晨眼神躲闪，还在不停翻我的包，完全不接我关于八卦的话题。",
+              "inner_thought": "绝对有猫腻，这人今天不对劲。",
+              "emotion": "curious",
+              "action_type": "speak",
+              "action_content": "行行行给你看，看把你急的，说吧，到底瞒着我啥？",
+              "action_target": "fang_yuchen",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 7,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "行行行给你看，看把你急的，说吧，到底瞒着我啥？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "唐诗涵把立牌递给我之后，正一脸探究地看着我，似乎在等我交代什么。",
+              "inner_thought": "她怎么这么敏锐，再问下去我就藏不住念瑶的事了，得赶紧岔开话题。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "对了，那剧真的离谱，之后真的没点甜的剧情吗？别让我失望啊。",
+              "action_target": "tang_shihan",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 8,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "tang_shihan",
+              "content": "对了，那剧真的离谱，之后真的没点甜的剧情吗？别让我失望啊。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "tang_shihan": {
+              "observation": "方语晨拿到立牌后虽然在笑，但眼神有点飘，还在刻意避开我刚才问的问题。",
+              "inner_thought": "她这表现绝对有鬼，是不是苏念瑶那有什么劲爆消息不敢告诉我？",
+              "emotion": "curious",
+              "action_type": "speak",
+              "action_content": "别装傻，你刚才心不在焉的。到底是不是念瑶和林昭宇那边有什么瓜？别想瞒我！",
+              "action_target": "fang_yuchen",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 9,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "别装傻，你刚才心不在焉的。到底是不是念瑶和林昭宇那边有什么瓜？别想瞒我！"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "唐诗涵还在追问我瞒着她的事，但我只想快点把话题绕开。",
+              "inner_thought": "她怎么还没完没了，念瑶那事儿现在也不能乱说啊。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "哎呀后面全是虐的，编剧简直有病，不聊这个了，快上课了吧？",
+              "action_target": "tang_shihan",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 10,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "tang_shihan",
+              "content": "哎呀后面全是虐的，编剧简直有病，不聊这个了，快上课了吧？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "tang_shihan": {
+              "observation": "方语晨眼神乱飘，明显是在刻意回避我对苏念瑶和林昭宇之间关系的追问。",
+              "inner_thought": "她居然还在装傻，看来这里面的瓜肯定比我想象的还要大。",
+              "emotion": "curious",
+              "action_type": "speak",
+              "action_content": "拉倒吧，你这表情我还能不了解？快说，是不是有什么劲爆的？不告诉我你就没好吃的了啊！",
+              "action_target": "fang_yuchen",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 11,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "拉倒吧，你这表情我还能不了解？快说，是不是有什么劲爆的？不告诉我你就没好吃的了啊！"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "诗涵好像不打算就这么放过我，正死死盯着我的眼睛，看来糊弄不过去了。",
+              "inner_thought": "好险，差点被她看出端倪，这人怎么洞察力这么强啊。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "哎呀，铃声马上响了，快回教室吧，数学题还没订正呢。",
+              "action_target": "tang_shihan",
+              "urgency": 8,
               "is_disruptive": false
             }
           },
@@ -134,122 +344,164 @@
       ],
       "narrative": {
         "key_moments": [
-          "姜皓天询问苏念瑶为何不去买奶茶。",
-          "苏念瑶提及沈逸凡对姜皓天的唠叨。",
-          "姜皓天表示要去操场投篮并离开。"
+          "方语晨向唐诗涵询问限定立牌并要求查看。",
+          "唐诗涵向方语晨询问电视剧剧情进度。",
+          "唐诗涵展示了限定立牌。",
+          "唐诗涵询问方语晨关于念瑶和林昭宇的消息。",
+          "方语晨以即将上课为由结束了关于电视剧剧情的讨论。"
         ],
         "fulfilled_intentions": [
-          "姜皓天:前往操场投篮"
+          "方语晨:查看唐诗涵的限定立牌",
+          "唐诗涵:获取关于念瑶和林昭宇的八卦信息"
         ],
-        "events_discussed": [],
+        "events_discussed": [
+          "某店的抽奖活动",
+          "某部电视剧的剧情走向",
+          "念瑶和林昭宇的相关传闻"
+        ],
         "new_events": [
           {
-            "text": "姜皓天前往操场投篮。",
-            "category": "个人行程",
+            "text": "某店抽奖活动中隐藏款获取概率极低",
+            "category": "八卦/消息",
             "witnesses": [
-              "苏念瑶"
+              "方语晨",
+              "唐诗涵"
             ],
-            "spread_probability": 0.3,
+            "spread_probability": 0.6,
             "cite_ticks": [
-              3,
-              4
+              1
+            ]
+          },
+          {
+            "text": "某电视剧男主失忆且后续剧情以虐心为主",
+            "category": "八卦/消息",
+            "witnesses": [
+              "方语晨",
+              "唐诗涵"
+            ],
+            "spread_probability": 0.4,
+            "cite_ticks": [
+              4,
+              11
+            ]
+          },
+          {
+            "text": "念瑶和林昭宇之间存在未公开的八卦消息",
+            "category": "八卦/消息",
+            "witnesses": [
+              "方语晨",
+              "唐诗涵"
+            ],
+            "spread_probability": 0.8,
+            "cite_ticks": [
+              10
             ]
           }
         ]
       },
       "reflections": {
-        "jiang_haotian": {
-          "emotion": "bored",
+        "fang_yuchen": {
+          "emotion": "excited",
           "relationship_changes": [
             {
-              "to_agent": "苏念瑶",
-              "favorability": 0,
-              "trust": 0,
+              "to_agent": "唐诗涵",
+              "favorability": 2,
+              "trust": 1,
               "understanding": 1,
               "direct_interaction": true
             }
           ],
           "memories": [
             {
-              "text": "苏念瑶这傻妞居然拿沈逸凡来调侃我，真没劲。",
-              "emotion": "bored",
-              "importance": 3,
+              "text": "终于借到了诗涵的那个限定立牌，细节真的绝了，果然还是实体谷子拿在手里最爽！",
+              "emotion": "excited",
+              "importance": 6,
               "people": [
-                "苏念瑶"
+                "唐诗涵"
               ],
               "location": "走廊",
               "topics": [
-                "人际矛盾"
+                "兴趣爱好"
               ]
             }
           ],
           "new_concerns": [],
           "concern_updates": [
             {
-              "concern_text": "df3acc",
+              "concern_text": "8aa6eb",
+              "adjustment": 5
+            },
+            {
+              "concern_text": "e2cd81",
               "adjustment": 1
             }
           ],
           "intention_outcomes": [
             {
-              "goal": "找陆思远聊毕业打算",
-              "status": "frustrated",
-              "brief_reason": "只碰到了苏念瑶，没见到陆思远，还被沈逸凡的名字扫了兴。"
+              "goal": "找个机会旁敲侧击一下林昭宇，看看能不能从她嘴里套出那个LYU到底是哪路神仙",
+              "status": "attempted",
+              "brief_reason": "在和诗涵闲聊时顺便提了念瑶和林昭宇的瓜，结果又被她绕过去了。"
             },
             {
-              "goal": "带何家骏打球",
+              "goal": "把那家店的抽奖概率吐槽一遍，顺便借她的限定立牌来看一眼",
+              "status": "fulfilled",
+              "brief_reason": "成功吐槽了抽奖概率，也如愿以偿地拿到了立牌欣赏。"
+            },
+            {
+              "goal": "课间去堵陆思远，问问最近班里有没有什么新鲜八卦",
               "status": "pending",
-              "brief_reason": "现在是课间，一会儿还没到体育课。"
-            },
-            {
-              "goal": "在沈逸凡面前找存在感",
-              "status": "missed_opportunity",
-              "brief_reason": "沈逸凡没在走廊，没法在他面前晃悠。"
+              "brief_reason": "一直在和诗涵聊天，没见到陆思远。"
             }
           ]
         },
-        "su_nianyao": {
-          "emotion": "calm",
+        "tang_shihan": {
+          "emotion": "curious",
           "relationship_changes": [
             {
-              "to_agent": "姜皓天",
-              "favorability": 0,
-              "trust": 0,
-              "understanding": 1,
+              "to_agent": "方语晨",
+              "favorability": 1,
+              "trust": 1,
+              "understanding": 2,
               "direct_interaction": true
             }
           ],
           "memories": [
             {
-              "text": "姜皓天在走廊问我怎么不去买奶茶，顺口提了沈逸凡",
-              "emotion": "neutral",
-              "importance": 3,
+              "text": "和语晨在走廊看我的限定立牌，她虽然一直在夸立牌，但我总觉得她还在瞒着我林昭宇和念瑶的瓜。",
+              "emotion": "curious",
+              "importance": 4,
               "people": [
-                "姜皓天"
+                "方语晨"
               ],
               "location": "走廊",
               "topics": [
-                "人际矛盾"
+                "人际矛盾",
+                "兴趣爱好"
               ]
             }
           ],
           "new_concerns": [],
-          "concern_updates": [],
+          "concern_updates": [
+            {
+              "concern_text": "f71be7",
+              "adjustment": 2
+            }
+          ],
           "intention_outcomes": [
             {
-              "goal": "在午休时写一段关于冬天的随笔",
-              "status": "pending",
-              "brief_reason": "现在是课间，还没到午休时间"
+              "goal": "拉她去买奶茶，顺便套话问那个LYU备注是不是林昭宇",
+              "status": "attempted",
+              "brief_reason": "一直在试图套话，被她用剧透和转话题打岔过去了。"
             },
             {
-              "goal": "假装去接水，路过他的座位确认他在干嘛",
+              "goal": "假装请教物理题，顺便打听一下竞赛八卦",
               "status": "pending",
-              "brief_reason": "刚才在走廊，还没机会去教室后排"
+              "brief_reason": "林昭宇不在场，没机会。"
             },
             {
-              "goal": "找方语晨吐槽一下最近的学习压力",
-              "status": "pending",
-              "brief_reason": "方语晨刚才不在附近"
+              "goal": "一起看昨天没看完的微短剧，吐槽下作业",
+              "status": "fulfilled",
+              "brief_reason": "和语晨一起疯狂吐槽了那部剧的剧情。"
             }
           ]
         }

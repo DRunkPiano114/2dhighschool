@@ -1,6 +1,6 @@
 {
   "scene": {
-    "scene_index": 8,
+    "scene_index": 6,
     "time": "15:30",
     "name": "课间",
     "location": "小卖部",
@@ -8,19 +8,19 @@
     "day": 9
   },
   "participant_names": {
-    "he_jiajun": "何家骏"
+    "fang_yuchen": "方语晨"
   },
   "groups": [
     {
       "group_index": 0,
       "participants": [
-        "he_jiajun"
+        "fang_yuchen"
       ],
       "is_solo": true,
       "solo_reflection": {
-        "inner_thought": "抄的步骤还得改改，别被看出笔迹不对。",
-        "emotion": "anxious",
-        "activity": "靠在小卖部旁边的墙上，一边喝冰水一边刷手机视频。"
+        "inner_thought": "念瑶到底怎么回事，烦死了，不想了，买瓶冰红茶降降火。",
+        "emotion": "frustrated",
+        "activity": "站在小卖部冰柜前，手里挑着饮料，顺便刷刷手机看看有没有新到的谷子。"
       }
     }
   ]

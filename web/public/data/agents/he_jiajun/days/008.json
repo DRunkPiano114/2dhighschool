@@ -6,17 +6,17 @@
   "motif_emoji": "🌫️",
   "motif_tag": "寡言少年",
   "main_color": "#7B8FA8",
-  "emotion_label": "感动",
+  "emotion_label": "焦虑",
   "energy_label": "精神还行",
   "pressure_label": "轻松",
-  "featured_quote": "还好没被发现，再补几个公式我就能装作是在认真订正了，千万别出岔子。",
-  "featured_scene": "08:45 · 课间",
+  "featured_quote": "离他们远点好，省得被问到，还是回教室或者去操场算了。",
+  "featured_scene": "15:30 · 课间",
   "relationships": [
     {
       "target_name": "姜皓天",
-      "favorability": 17,
-      "trust": 10,
-      "label_text": "关系不错"
+      "favorability": 30,
+      "trust": 19,
+      "label_text": "很亲近的朋友"
     },
     {
       "target_name": "林昭宇",
@@ -25,7 +25,7 @@
       "label_text": "普通同学"
     },
     {
-      "target_name": "唐诗涵",
+      "target_name": "陆思远",
       "favorability": 0,
       "trust": 0,
       "label_text": "普通同学"
@@ -34,23 +34,23 @@
   "memories": [
     {
       "date": "Day 7",
-      "text": "因为担心物理错题本被老师发现抄袭，全天都处于焦虑中，拒绝了姜皓天的打球邀请，感觉自己越来越边缘化。",
+      "text": "和姜皓天打球配合得很顺，他说下次要给我挡拆，还约了晚上吃辣条",
       "importance": 6
     },
     {
-      "date": "Day 6",
-      "text": "姜皓天说晚上带我打王者，还说要带我躺赢。",
+      "date": "Day 7",
+      "text": "姜皓天多次主动邀请我打球并约好晚上加练，这种被同学接纳的感觉让我心里记着。",
       "importance": 6
     }
   ],
   "top_concern": {
-    "text": "物理错题本抄袭痕迹太明显，担心周五检查时被何老师当众揭穿。",
-    "intensity_label": "强烈",
+    "text": "课间想看数学课本基础定义却总被老师提醒或琐事打断，担心基础一直补不上。",
+    "intensity_label": "中等",
     "positive": false
   },
-  "self_narrative": "在班里像个透明人。姜皓天好像想带我，但我总怕拖他后腿。错题本抄了答案，周五要是被老师抓包就完了。想玩游戏又怕被嫌弃。那个……算了，先这样吧。",
+  "self_narrative": "又是最后一排。数学书翻开又合上，看不进去。姜皓天投篮的时候，其实挺羡慕的。和他打球算是我唯一能透气的时候。成绩还是垫底，爸又上夜班去了。那个……算了，没什么好说的。",
   "caption_payload": {
-    "caption": "🌫️ 何家骏 · 第008天 档案\n\n标签：寡言少年\n此刻心情：感动\n\n「还好没被发现，再补几个公式我就能装作是在认真订正了，千万别出岔子。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "🌫️ 何家骏 · 第008天 档案\n\n标签：寡言少年\n此刻心情：焦虑\n\n「离他们远点好，省得被问到，还是回教室或者去操场算了。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

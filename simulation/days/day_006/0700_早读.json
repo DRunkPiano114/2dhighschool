@@ -22,758 +22,17 @@
     {
       "group_index": 0,
       "participants": [
-        "fang_yuchen",
-        "tang_shihan",
-        "su_nianyao",
-        "cheng_yutong"
-      ],
-      "ticks": [
-        {
-          "tick": 0,
-          "public": {
-            "speech": {
-              "agent": "su_nianyao",
-              "target": "fang_yuchen",
-              "content": "语晨，周末那本子攻略你看了没？"
-            },
-            "actions": [
-              {
-                "agent": "cheng_yutong",
-                "type": "non_verbal",
-                "content": "从书包侧袋抽出降噪耳机戴上，继续整理物理错题。"
-              },
-              {
-                "agent": "fang_yuchen",
-                "type": "non_verbal",
-                "content": "压低声音，用手肘轻轻碰了一下念瑶的胳膊，示意她看一眼刚才走过来的同学。"
-              }
-            ],
-            "environmental_event": null,
-            "exits": []
-          },
-          "minds": {
-            "su_nianyao": {
-              "observation": "有人哈欠连天地走进教室，早读声又响了一点。",
-              "inner_thought": "困死了，这课文读得我像在念经。",
-              "emotion": "bored",
-              "action_type": "speak",
-              "action_content": "语晨，周末那本子攻略你看了没？",
-              "action_target": "fang_yuchen",
-              "urgency": 5,
-              "is_disruptive": false
-            },
-            "tang_shihan": {
-              "observation": "有人哈欠连天地进了教室，看着睡眼惺忪的。",
-              "inner_thought": "困死了，早读干嘛非要读课文啊。",
-              "emotion": "bored",
-              "action_type": "speak",
-              "action_content": "困死，昨晚又熬夜了？",
-              "action_target": "fang_yuchen",
-              "urgency": 4,
-              "is_disruptive": false
-            },
-            "cheng_yutong": {
-              "observation": "方语晨走进来时打了个很响的哈欠，神情显得很疲惫。",
-              "inner_thought": "早读时间还不专心，这排名到底什么时候出。",
-              "emotion": "anxious",
-              "action_type": "non_verbal",
-              "action_content": "从书包侧袋抽出降噪耳机戴上，继续整理物理错题。",
-              "action_target": null,
-              "urgency": 2,
-              "is_disruptive": false
-            },
-            "fang_yuchen": {
-              "observation": "有人打着哈欠走进来，估计昨晚又熬夜刷剧了。",
-              "inner_thought": "早读还敢这么困，心是真的大，还没到下课呢。",
-              "emotion": "neutral",
-              "action_type": "non_verbal",
-              "action_content": "压低声音，用手肘轻轻碰了一下念瑶的胳膊，示意她看一眼刚才走过来的同学。",
-              "action_target": "su_nianyao",
-              "urgency": 3,
-              "is_disruptive": false
-            }
-          },
-          "gated_agents": []
-        },
-        {
-          "tick": 1,
-          "public": {
-            "speech": {
-              "agent": "fang_yuchen",
-              "target": "su_nianyao",
-              "content": "还没，急什么呀，昨晚看剧太晚了。诶，你老实交代，沈逸凡那个背景图到底怎么回事？"
-            },
-            "actions": [
-              {
-                "agent": "cheng_yutong",
-                "type": "non_verbal",
-                "content": "将音量调至最大，完全隔绝外界声音，低头专注演算物理题。"
-              }
-            ],
-            "environmental_event": null,
-            "exits": []
-          },
-          "minds": {
-            "su_nianyao": {
-              "observation": "顺着语晨的视线看过去，原来是林昭宇刚走进教室，还把书包往桌上一扔。",
-              "inner_thought": "心跳好像漏了一拍，他今天头发有点乱，居然还有点好看。",
-              "emotion": "curious",
-              "action_type": "speak",
-              "action_content": "看什么呢？沈逸凡还是谁？",
-              "action_target": "fang_yuchen",
-              "urgency": 6,
-              "is_disruptive": false
-            },
-            "cheng_yutong": {
-              "observation": "方语晨和苏念瑶在早读课上交头接耳，干扰了原本该朗读课文的纪律。",
-              "inner_thought": "又在聊那些没用的剧本杀，早读课这么重要的时间居然浪费在这种事情上，心浮气躁。",
-              "emotion": "anxious",
-              "action_type": "non_verbal",
-              "action_content": "将音量调至最大，完全隔绝外界声音，低头专注演算物理题。",
-              "action_target": null,
-              "urgency": 8,
-              "is_disruptive": false
-            },
-            "fang_yuchen": {
-              "observation": "念瑶在和我说话，程雨桐那家伙又戴上耳机在那儿假模假样地装努力。",
-              "inner_thought": "攻略这种东西早晚看就行了，念瑶怎么这么急，肯定是因为心虚。",
-              "emotion": "curious",
-              "action_type": "speak",
-              "action_content": "还没，急什么呀，昨晚看剧太晚了。诶，你老实交代，沈逸凡那个背景图到底怎么回事？",
-              "action_target": "su_nianyao",
-              "urgency": 8,
-              "is_disruptive": false
-            }
-          },
-          "gated_agents": []
-        },
-        {
-          "tick": 2,
-          "public": {
-            "speech": {
-              "agent": "su_nianyao",
-              "target": "fang_yuchen",
-              "content": "看什么呢？沈逸凡还是谁？"
-            },
-            "actions": [
-              {
-                "agent": "cheng_yutong",
-                "type": "non_verbal",
-                "content": "冷淡地将物理错题本向她们的方向挪动了一点，制造出细微的碰撞声以示提醒。"
-              }
-            ],
-            "environmental_event": null,
-            "exits": []
-          },
-          "minds": {
-            "cheng_yutong": {
-              "observation": "方语晨和苏念瑶依然在低声讨论与学习无关的话题，完全无视了早读课的纪律。",
-              "inner_thought": "离排名公布还差这最后一点时间，她们难道一点都不急吗？",
-              "emotion": "anxious",
-              "action_type": "non_verbal",
-              "action_content": "冷淡地将物理错题本向她们的方向挪动了一点，制造出细微的碰撞声以示提醒。",
-              "action_target": "su_nianyao",
-              "urgency": 4,
-              "is_disruptive": false
-            },
-            "fang_yuchen": {
-              "observation": "念瑶在那避重就轻，程雨桐戴着耳机在那儿装模作样，真是越看越烦。",
-              "inner_thought": "这妮子肯定瞒着我，非得找机会撬开她嘴不可。",
-              "emotion": "frustrated",
-              "action_type": "speak",
-              "action_content": "别跟我扯那只猫的事，我可是听诗涵说了，那照片是你拍的吧？",
-              "action_target": "su_nianyao",
-              "urgency": 8,
-              "is_disruptive": false
-            }
-          },
-          "gated_agents": []
-        },
-        {
-          "tick": 3,
-          "public": {
-            "speech": {
-              "agent": "fang_yuchen",
-              "target": "su_nianyao",
-              "content": "别跟我扯那只猫的事，我可是听诗涵说了，那照片是你拍的吧？"
-            },
-            "actions": [
-              {
-                "agent": "su_nianyao",
-                "type": "non_verbal",
-                "content": "默默把身子坐直，翻开课文开始跟着大家读，眼神却时不时飘向林昭宇的方向。"
-              }
-            ],
-            "environmental_event": null,
-            "exits": []
-          },
-          "minds": {
-            "su_nianyao": {
-              "observation": "程雨桐好像有点不耐烦了，把错题本往我们的方向推了推。",
-              "inner_thought": "啧，雨桐生气了，还是别讲了，早读要紧。",
-              "emotion": "frustrated",
-              "action_type": "non_verbal",
-              "action_content": "默默把身子坐直，翻开课文开始跟着大家读，眼神却时不时飘向林昭宇的方向。",
-              "action_target": null,
-              "urgency": 4,
-              "is_disruptive": false
-            },
-            "cheng_yutong": {
-              "observation": "苏念瑶和方语晨无视早读纪律继续讨论闲杂话题，完全打断了我的演算思路。",
-              "inner_thought": "早读课这么吵，脑子里的逻辑全断了，真是烦透了。",
-              "emotion": "frustrated",
-              "action_type": "speak",
-              "action_content": "早读课，能不能安静点？",
-              "action_target": "fang_yuchen",
-              "urgency": 8,
-              "is_disruptive": true
-            }
-          },
-          "gated_agents": []
-        },
-        {
-          "tick": 4,
-          "public": {
-            "speech": {
-              "agent": "su_nianyao",
-              "target": "fang_yuchen",
-              "content": "轻点，雨桐要发火了，下课再说。"
-            },
-            "actions": [
-              {
-                "agent": "fang_yuchen",
-                "type": "non_verbal",
-                "content": "故意把课本重重地合上，发出啪的一声，然后冷哼了一声。"
-              }
-            ],
-            "environmental_event": "【动作】方语晨: 故意把课本重重地合上，发出啪的一声，然后冷哼了一声。",
-            "exits": []
-          },
-          "minds": {
-            "su_nianyao": {
-              "observation": "方语晨还在追问照片的事，程雨桐的错题本又往我这边挪了挪。",
-              "inner_thought": "烦死了，语晨怎么这么八卦，雨桐又在无声抗议了。",
-              "emotion": "frustrated",
-              "action_type": "speak",
-              "action_content": "轻点，雨桐要发火了，下课再说。",
-              "action_target": "fang_yuchen",
-              "urgency": 8,
-              "is_disruptive": false
-            },
-            "fang_yuchen": {
-              "observation": "苏念瑶在早读时故意回避我的问题，还一直盯着林昭宇看。",
-              "inner_thought": "装得挺像，我看你这心都飞到林昭宇那儿去了，迟早把你秘密挖出来。",
-              "emotion": "frustrated",
-              "action_type": "non_verbal",
-              "action_content": "故意把课本重重地合上，发出啪的一声，然后冷哼了一声。",
-              "action_target": "su_nianyao",
-              "urgency": 6,
-              "is_disruptive": true
-            }
-          },
-          "gated_agents": []
-        },
-        {
-          "tick": 5,
-          "public": {
-            "speech": {
-              "agent": "cheng_yutong",
-              "target": "fang_yuchen",
-              "content": "早读课，能不能安静点？"
-            },
-            "actions": [
-              {
-                "agent": "su_nianyao",
-                "type": "non_verbal",
-                "content": "瞪了方语晨一眼，然后把书立起来挡住脸，假装盯着课本深呼吸。"
-              },
-              {
-                "agent": "fang_yuchen",
-                "type": "non_verbal",
-                "content": "瞪了苏念瑶一眼，掏出手机飞快在课桌底下给唐诗涵发了条QQ消息：“这人今天怎么回事，神神秘秘的，下课一起去厕所？”"
-              }
-            ],
-            "environmental_event": null,
-            "exits": []
-          },
-          "minds": {
-            "su_nianyao": {
-              "observation": "方语晨又闹出声响，程雨桐的背影僵硬了一下。",
-              "inner_thought": "再吵下去物理课代表真要炸了，林昭宇往这边看了没？",
-              "emotion": "frustrated",
-              "action_type": "non_verbal",
-              "action_content": "瞪了方语晨一眼，然后把书立起来挡住脸，假装盯着课本深呼吸。",
-              "action_target": "fang_yuchen",
-              "urgency": 6,
-              "is_disruptive": false
-            },
-            "tang_shihan": {
-              "observation": "方语晨和苏念瑶好像闹别扭了，还动静挺大地合上书。",
-              "inner_thought": "她们俩怎么怪怪的，刚才在聊什么沈逸凡的猫吗？",
-              "emotion": "curious",
-              "action_type": "speak",
-              "action_content": "你们俩干嘛呀，早读呢，别被老班抓了。",
-              "action_target": "fang_yuchen",
-              "urgency": 6,
-              "is_disruptive": false
-            },
-            "fang_yuchen": {
-              "observation": "苏念瑶在早读课上一直心不在焉往林昭宇那边看，还让我别闹。",
-              "inner_thought": "真的绝了，这两人绝对有猫腻，看我下课怎么盯着她。",
-              "emotion": "frustrated",
-              "action_type": "non_verbal",
-              "action_content": "瞪了苏念瑶一眼，掏出手机飞快在课桌底下给唐诗涵发了条QQ消息：“这人今天怎么回事，神神秘秘的，下课一起去厕所？”",
-              "action_target": "tang_shihan",
-              "urgency": 8,
-              "is_disruptive": false
-            }
-          },
-          "gated_agents": []
-        },
-        {
-          "tick": 6,
-          "public": {
-            "speech": {
-              "agent": "tang_shihan",
-              "target": "fang_yuchen",
-              "content": "你们俩干嘛呀，早读呢，别被老班抓了。"
-            },
-            "actions": [
-              {
-                "agent": "su_nianyao",
-                "type": "non_verbal",
-                "content": "默默翻开英语书，用力在重点单词下画了一条黑线，不再理会方语晨的眼神暗示。"
-              },
-              {
-                "agent": "cheng_yutong",
-                "type": "non_verbal",
-                "content": "将刚才挪动的错题本重新摆正，目光重新锁定在物理公式上，不再理会旁人。"
-              }
-            ],
-            "environmental_event": null,
-            "exits": []
-          },
-          "minds": {
-            "su_nianyao": {
-              "observation": "方语晨在桌下鬼鬼祟祟摸手机，程雨桐的背影紧绷着，教室里读书声又响起来了。",
-              "inner_thought": "烦死了，早读课能不能消停点，我只想安安静静背会儿单词。",
-              "emotion": "frustrated",
-              "action_type": "non_verbal",
-              "action_content": "默默翻开英语书，用力在重点单词下画了一条黑线，不再理会方语晨的眼神暗示。",
-              "action_target": null,
-              "urgency": 4,
-              "is_disruptive": false
-            },
-            "cheng_yutong": {
-              "observation": "方语晨依旧在桌下摆弄手机，完全没有反思刚才的干扰行为。",
-              "inner_thought": "与其跟这些人浪费口舌，不如趁排名没出再过一遍受力分析的逻辑。",
-              "emotion": "frustrated",
-              "action_type": "non_verbal",
-              "action_content": "将刚才挪动的错题本重新摆正，目光重新锁定在物理公式上，不再理会旁人。",
-              "action_target": null,
-              "urgency": 2,
-              "is_disruptive": false
-            },
-            "fang_yuchen": {
-              "observation": "苏念瑶还在躲闪，程雨桐戴着耳机像个冰块一样隔绝世界，早读气氛很闷。",
-              "inner_thought": "真没劲，一个个都跟地下党似的，等下课看我怎么盘问念瑶。",
-              "emotion": "frustrated",
-              "action_type": "observe",
-              "action_content": null,
-              "action_target": null,
-              "urgency": 2,
-              "is_disruptive": false
-            }
-          },
-          "gated_agents": []
-        },
-        {
-          "tick": 7,
-          "public": {
-            "speech": null,
-            "actions": [
-              {
-                "agent": "su_nianyao",
-                "type": "non_verbal",
-                "content": "叹了口气，把书本又往上挪了挪，彻底挡住了视线。"
-              },
-              {
-                "agent": "tang_shihan",
-                "type": "non_verbal",
-                "content": "用笔戳了戳方语晨的后背，然后指了指自己的手机，示意下课再聊。"
-              },
-              {
-                "agent": "cheng_yutong",
-                "type": "non_verbal",
-                "content": "将百乐笔的笔尖死死压在书页上，发出极其细微但尖锐的摩擦声，随后强迫视线聚焦在错题的受力分析图上。"
-              },
-              {
-                "agent": "fang_yuchen",
-                "type": "non_verbal",
-                "content": "把课本立得高高的挡住脸，趴在桌子上开始戳笔盖，发出轻微的哒哒声。"
-              }
-            ],
-            "environmental_event": null,
-            "exits": []
-          },
-          "minds": {
-            "su_nianyao": {
-              "observation": "方语晨和唐诗涵都在低头弄手机，程雨桐还在死磕那道物理压轴题，大家都各忙各的。",
-              "inner_thought": "真烦，没一个省心的，单词都背不进去了。",
-              "emotion": "frustrated",
-              "action_type": "non_verbal",
-              "action_content": "叹了口气，把书本又往上挪了挪，彻底挡住了视线。",
-              "action_target": null,
-              "urgency": 2,
-              "is_disruptive": false
-            },
-            "tang_shihan": {
-              "observation": "方语晨和苏念瑶闹得挺僵的，苏念瑶甚至开始刻意避开所有人的眼神交流。",
-              "inner_thought": "她们俩到底在搞什么鬼啊，连早读都不装了？肯定有秘密瞒着我。",
-              "emotion": "curious",
-              "action_type": "non_verbal",
-              "action_content": "用笔戳了戳方语晨的后背，然后指了指自己的手机，示意下课再聊。",
-              "action_target": "fang_yuchen",
-              "urgency": 6,
-              "is_disruptive": false
-            },
-            "cheng_yutong": {
-              "observation": "唐诗涵试图制止方语晨，而整间教室的早读气氛依然浮躁。",
-              "inner_thought": "与其盯着她们浪费时间，不如彻底屏蔽外界，先把这道错题的辅助线补全。",
-              "emotion": "frustrated",
-              "action_type": "non_verbal",
-              "action_content": "将百乐笔的笔尖死死压在书页上，发出极其细微但尖锐的摩擦声，随后强迫视线聚焦在错题的受力分析图上。",
-              "action_target": null,
-              "urgency": 8,
-              "is_disruptive": false
-            },
-            "fang_yuchen": {
-              "observation": "苏念瑶一副不想理人的样子，唐诗涵也在担心被抓，早读课气氛真是压抑到极点。",
-              "inner_thought": "一个个都跟我藏着掖着的，行，下课再跟你们算账。",
-              "emotion": "frustrated",
-              "action_type": "non_verbal",
-              "action_content": "把课本立得高高的挡住脸，趴在桌子上开始戳笔盖，发出轻微的哒哒声。",
-              "action_target": null,
-              "urgency": 4,
-              "is_disruptive": false
-            }
-          },
-          "gated_agents": []
-        }
-      ],
-      "narrative": {
-        "key_moments": [
-          "苏念瑶询问方语晨是否看了攻略。",
-          "程雨桐戴上降噪耳机整理物理错题。",
-          "方语晨询问苏念瑶关于沈逸凡背景图的情况。",
-          "程雨桐移动错题本发出碰撞声。",
-          "方语晨合上课本发出响声。",
-          "程雨桐要求方语晨在早读课保持安静。",
-          "方语晨给唐诗涵发送QQ消息。",
-          "唐诗涵提醒方语晨和苏念瑶注意早读纪律。"
-        ],
-        "fulfilled_intentions": [
-          "程雨桐:整理物理错题",
-          "苏念瑶:早读",
-          "方语晨:与唐诗涵沟通"
-        ],
-        "events_discussed": [
-          "周末攻略",
-          "沈逸凡背景图",
-          "照片拍摄者"
-        ],
-        "new_events": [
-          {
-            "text": "方语晨询问苏念瑶关于沈逸凡背景图的来源。",
-            "category": "八卦",
-            "witnesses": [
-              "苏念瑶",
-              "程雨桐"
-            ],
-            "spread_probability": 0.6,
-            "cite_ticks": [
-              2
-            ]
-          },
-          {
-            "text": "方语晨向苏念瑶提及唐诗涵称照片由苏念瑶拍摄。",
-            "category": "八卦",
-            "witnesses": [
-              "苏念瑶",
-              "程雨桐"
-            ],
-            "spread_probability": 0.7,
-            "cite_ticks": [
-              4
-            ]
-          },
-          {
-            "text": "方语晨邀请唐诗涵下课去厕所。",
-            "category": "社交",
-            "witnesses": [
-              "苏念瑶",
-              "程雨桐",
-              "唐诗涵"
-            ],
-            "spread_probability": 0.4,
-            "cite_ticks": [
-              6
-            ]
-          }
-        ]
-      },
-      "reflections": {
-        "fang_yuchen": {
-          "emotion": "frustrated",
-          "relationship_changes": [
-            {
-              "to_agent": "苏念瑶",
-              "favorability": -2,
-              "trust": -1,
-              "understanding": 1,
-              "direct_interaction": true
-            },
-            {
-              "to_agent": "程雨桐",
-              "favorability": -3,
-              "trust": 0,
-              "understanding": 0,
-              "direct_interaction": true
-            },
-            {
-              "to_agent": "唐诗涵",
-              "favorability": 1,
-              "trust": 1,
-              "understanding": 0,
-              "direct_interaction": true
-            }
-          ],
-          "memories": [
-            {
-              "text": "早读课想问念瑶八卦，结果她一直躲着我还要挡住林昭宇，程雨桐那个死样子真是让人火大。",
-              "emotion": "frustrated",
-              "importance": 6,
-              "people": [
-                "苏念瑶",
-                "程雨桐"
-              ],
-              "location": "教室",
-              "topics": [
-                "人际矛盾"
-              ]
-            }
-          ],
-          "new_concerns": [],
-          "concern_updates": [
-            {
-              "concern_text": "c727f6",
-              "adjustment": -1
-            }
-          ],
-          "intention_outcomes": [
-            {
-              "goal": "假装借作业看，顺势瞄一眼他的手机屏幕或桌面通知",
-              "status": "missed_opportunity",
-              "brief_reason": "早读课一直被程雨桐盯着，根本没机会找姜皓天。"
-            },
-            {
-              "goal": "在午饭时跟念瑶旁敲侧击一下沈逸凡周末的动向",
-              "status": "frustrated",
-              "brief_reason": "念瑶一直在躲闪关于沈逸凡的话题，甚至还盯着林昭宇看，完全问不出什么。"
-            },
-            {
-              "goal": "确认周末剧本杀的丝绒裙装备，顺便刷刷最近的短剧",
-              "status": "attempted",
-              "brief_reason": "和诗涵确认了下课再聊，稍微缓解了一点焦虑。"
-            }
-          ]
-        },
-        "tang_shihan": {
-          "emotion": "frustrated",
-          "relationship_changes": [
-            {
-              "to_agent": "方语晨",
-              "favorability": 1,
-              "trust": 0,
-              "understanding": 0,
-              "direct_interaction": true
-            },
-            {
-              "to_agent": "苏念瑶",
-              "favorability": -2,
-              "trust": -1,
-              "understanding": 0,
-              "direct_interaction": false
-            }
-          ],
-          "memories": [
-            {
-              "text": "早读课上方语晨和苏念瑶吵架，气氛很僵，还非要下课拉我去厕所说悄悄话。",
-              "emotion": "frustrated",
-              "importance": 4,
-              "people": [
-                "方语晨",
-                "苏念瑶"
-              ],
-              "location": "教室",
-              "topics": [
-                "人际矛盾"
-              ]
-            }
-          ],
-          "new_concerns": [],
-          "concern_updates": [
-            {
-              "concern_text": "450fb6",
-              "adjustment": 2
-            }
-          ],
-          "intention_outcomes": [
-            {
-              "goal": "找个机会假装借文具顺便问林昭宇物理题",
-              "status": "missed_opportunity",
-              "brief_reason": "早读课太紧张，林昭宇那边也没动静，根本没机会开口。"
-            },
-            {
-              "goal": "在午饭时套话，搞清楚苏念瑶瞒着什么",
-              "status": "pending",
-              "brief_reason": "还没到午饭时间，但早上她俩闹别扭的样子更奇怪了。"
-            },
-            {
-              "goal": "给蛋仔买新娃衣并拍照片发小红书",
-              "status": "pending",
-              "brief_reason": "早读课还没结束，没空弄这些。"
-            }
-          ]
-        },
-        "su_nianyao": {
-          "emotion": "frustrated",
-          "relationship_changes": [
-            {
-              "to_agent": "方语晨",
-              "favorability": -2,
-              "trust": 0,
-              "understanding": 1,
-              "direct_interaction": true
-            },
-            {
-              "to_agent": "程雨桐",
-              "favorability": 0,
-              "trust": 0,
-              "understanding": 1,
-              "direct_interaction": true
-            }
-          ],
-          "memories": [
-            {
-              "text": "早读课被方语晨缠着问沈逸凡的事，雨桐烦得戴上耳机还弄出响声，乱死了。",
-              "emotion": "frustrated",
-              "importance": 4,
-              "people": [
-                "方语晨",
-                "程雨桐"
-              ],
-              "location": "教室",
-              "topics": [
-                "人际矛盾"
-              ]
-            }
-          ],
-          "new_concerns": [],
-          "concern_updates": [
-            {
-              "concern_text": "354e18",
-              "adjustment": -1
-            },
-            {
-              "concern_text": "ed11f7",
-              "adjustment": -1
-            }
-          ],
-          "intention_outcomes": [
-            {
-              "goal": "在午休时写一段关于冬天的随笔",
-              "status": "pending",
-              "brief_reason": "现在是早读，还没到午休时间。"
-            },
-            {
-              "goal": "假装去接水，路过他的座位确认他在干嘛",
-              "status": "missed_opportunity",
-              "brief_reason": "早读课老班盯得严，没法随便走动。"
-            },
-            {
-              "goal": "找方语晨吐槽一下最近的学习压力",
-              "status": "frustrated",
-              "brief_reason": "她一直在问八卦，根本没法好好说话。"
-            }
-          ]
-        },
-        "cheng_yutong": {
-          "emotion": "frustrated",
-          "relationship_changes": [
-            {
-              "to_agent": "方语晨",
-              "favorability": -2,
-              "trust": -1,
-              "understanding": 1,
-              "direct_interaction": true
-            },
-            {
-              "to_agent": "苏念瑶",
-              "favorability": 0,
-              "trust": 0,
-              "understanding": 0,
-              "direct_interaction": true
-            }
-          ],
-          "memories": [
-            {
-              "text": "早读被方语晨和唐诗涵的闲聊打断，还要处理她们发出的噪音，严重影响了物理错题的演算效率。",
-              "emotion": "frustrated",
-              "importance": 6,
-              "people": [
-                "方语晨",
-                "唐诗涵"
-              ],
-              "location": "教室",
-              "topics": [
-                "学业焦虑",
-                "人际矛盾"
-              ]
-            }
-          ],
-          "new_concerns": [],
-          "concern_updates": [
-            {
-              "concern_text": "eb3d29",
-              "adjustment": 2
-            }
-          ],
-          "intention_outcomes": [
-            {
-              "goal": "整理错题逻辑",
-              "status": "frustrated",
-              "brief_reason": "被周围的闲聊和噪声反复打断，无法保持深度思考。"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "group_index": 1,
-      "participants": [
         "lin_zhaoyu",
-        "lu_siyuan",
-        "shen_yifan"
+        "lu_siyuan"
       ],
       "ticks": [
         {
           "tick": 0,
           "public": {
             "speech": {
-              "agent": "lin_zhaoyu",
-              "target": "lu_siyuan",
-              "content": "思远，早啊。那个……等下早读结束，你能不能帮我看下英语阅读理解的逻辑？我总是抓不住重点。"
+              "agent": "lu_siyuan",
+              "target": "lin_zhaoyu",
+              "content": "昨晚睡得怎么样？看你好像挺累的。"
             },
             "actions": [],
             "environmental_event": null,
@@ -781,33 +40,23 @@
           },
           "minds": {
             "lin_zhaoyu": {
-              "observation": "陆思远刚坐下，看起来还没完全清醒，正在揉眼睛。",
-              "inner_thought": "英语阅读逻辑还是没搞懂，想找个机会问问他。",
-              "emotion": "calm",
+              "observation": "陆思远在认真背单词，早读课的气氛还没完全起来。",
+              "inner_thought": "英语卷子还没改完，心里七上八下的，还是想问问他。",
+              "emotion": "anxious",
               "action_type": "speak",
-              "action_content": "思远，早啊。那个……等下早读结束，你能不能帮我看下英语阅读理解的逻辑？我总是抓不住重点。",
+              "action_content": "那个……陆思远，昨天那张卷子最后一道语法，你再帮我看一下好吗？",
               "action_target": "lu_siyuan",
               "urgency": 6,
               "is_disruptive": false
             },
-            "shen_yifan": {
-              "observation": "林昭宇打着哈欠进教室，看样子昨晚没休息好。",
-              "inner_thought": "这小子又熬夜？得提醒他注意作息，不然今天效率肯定低。",
-              "emotion": "neutral",
+            "lu_siyuan": {
+              "observation": "林昭宇坐在旁边，手里拿着课本在小声读，但看起来有点没精神。",
+              "inner_thought": "他昨晚没睡好吗？想问问，又怕太啰嗦惹他烦。",
+              "emotion": "anxious",
               "action_type": "speak",
-              "action_content": "昨晚干嘛去了？你应该早点睡的，不然早读效率低。",
+              "action_content": "昨晚睡得怎么样？看你好像挺累的。",
               "action_target": "lin_zhaoyu",
               "urgency": 6,
-              "is_disruptive": false
-            },
-            "lu_siyuan": {
-              "observation": "有人哈欠连天地走进教室，早读声还是嗡嗡的。",
-              "inner_thought": "这人困成这样，等下要是被老班抓到就麻烦了。",
-              "emotion": "calm",
-              "action_type": "speak",
-              "action_content": "早啊，昨晚又熬夜了？",
-              "action_target": "lin_zhaoyu",
-              "urgency": 4,
               "is_disruptive": false
             }
           },
@@ -817,29 +66,23 @@
           "tick": 1,
           "public": {
             "speech": {
-              "agent": "lu_siyuan",
-              "target": "lin_zhaoyu",
-              "content": "早啊，昨晚又熬夜了？"
+              "agent": "lin_zhaoyu",
+              "target": "lu_siyuan",
+              "content": "那个……陆思远，昨天那张卷子最后一道语法，你再帮我看一下好吗？"
             },
-            "actions": [
-              {
-                "agent": "lin_zhaoyu",
-                "type": "non_verbal",
-                "content": "从书包里拿出英语课本，把刚才那篇做错的阅读真题往他的课桌方向推了推。"
-              }
-            ],
+            "actions": [],
             "environmental_event": null,
             "exits": []
           },
           "minds": {
-            "lin_zhaoyu": {
-              "observation": "陆思远揉了揉眼睛，看向我，还没来得及开口回复。",
-              "inner_thought": "他还没醒透，不知道会不会嫌我烦，但我英语真的太差了。",
+            "lu_siyuan": {
+              "observation": "林昭宇放下了课本，眼神有些疲惫地看向我，看起来还没彻底清醒。",
+              "inner_thought": "他脸色好差，是不是昨晚又背那些题背太晚了？",
               "emotion": "anxious",
-              "action_type": "non_verbal",
-              "action_content": "从书包里拿出英语课本，把刚才那篇做错的阅读真题往他的课桌方向推了推。",
-              "action_target": "lu_siyuan",
-              "urgency": 6,
+              "action_type": "speak",
+              "action_content": "是不是晚上没睡够？脸色有点差。",
+              "action_target": "lin_zhaoyu",
+              "urgency": 7,
               "is_disruptive": false
             }
           },
@@ -849,9 +92,9 @@
           "tick": 2,
           "public": {
             "speech": {
-              "agent": "shen_yifan",
+              "agent": "lu_siyuan",
               "target": "lin_zhaoyu",
-              "content": "昨晚干嘛去了？你应该早点睡的，不然早读效率低。"
+              "content": "是不是晚上没睡够？脸色有点差。"
             },
             "actions": [],
             "environmental_event": null,
@@ -859,23 +102,13 @@
           },
           "minds": {
             "lin_zhaoyu": {
-              "observation": "陆思远接过我的试卷，眉头微微皱了一下，似乎在看题目。",
-              "inner_thought": "他会不会觉得这些题太基础了？好紧张，千万别让他觉得我很笨。",
+              "observation": "陆思远停下了背诵，转过身来看我的卷子。",
+              "inner_thought": "英语这块真的太难了，能不能别再拖了，赶紧弄完。",
               "emotion": "anxious",
               "action_type": "speak",
-              "action_content": "就……那个……我总是在这种转折词后面判断错作者的意思，你教我怎么拆句子吧。",
+              "action_content": "那个……就这个连词，我总觉得这里应该用定语从句，但又对不上，你看看。",
               "action_target": "lu_siyuan",
               "urgency": 8,
-              "is_disruptive": false
-            },
-            "lu_siyuan": {
-              "observation": "林昭宇困得眼睛都快睁不开了，把阅读题推过来的时候手还在抖。",
-              "inner_thought": "他昨晚到底几点睡的，这黑眼圈，算了，先帮他看题吧。",
-              "emotion": "calm",
-              "action_type": "speak",
-              "action_content": "行，我教你，不过你先拿笔把这几个关联词圈出来，看能不能顺着捋下去。",
-              "action_target": "lin_zhaoyu",
-              "urgency": 6,
               "is_disruptive": false
             }
           },
@@ -887,21 +120,21 @@
             "speech": {
               "agent": "lin_zhaoyu",
               "target": "lu_siyuan",
-              "content": "就……那个……我总是在这种转折词后面判断错作者的意思，你教我怎么拆句子吧。"
+              "content": "那个……就这个连词，我总觉得这里应该用定语从句，但又对不上，你看看。"
             },
             "actions": [],
             "environmental_event": null,
             "exits": []
           },
           "minds": {
-            "shen_yifan": {
-              "observation": "林昭宇在和陆思远讨论英语题目，没怎么搭理我。",
-              "inner_thought": "又在讨论题目，算了，早读还是先盯着他们别开小差。",
-              "emotion": "calm",
-              "action_type": "observe",
-              "action_content": null,
-              "action_target": null,
-              "urgency": 3,
+            "lu_siyuan": {
+              "observation": "林昭宇一边揉着太阳穴一边把卷子递过来，看起来真的很疲惫。",
+              "inner_thought": "他怎么这么拼啊，身体要紧啊，算了，先把题帮他看了吧。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "行，给我吧，我看看。你先稍微休息一会儿，别硬撑。",
+              "action_target": "lin_zhaoyu",
+              "urgency": 8,
               "is_disruptive": false
             }
           },
@@ -913,37 +146,21 @@
             "speech": {
               "agent": "lu_siyuan",
               "target": "lin_zhaoyu",
-              "content": "行，我教你，不过你先拿笔把这几个关联词圈出来，看能不能顺着捋下去。"
+              "content": "行，给我吧，我看看。你先稍微休息一会儿，别硬撑。"
             },
-            "actions": [
-              {
-                "agent": "lin_zhaoyu",
-                "type": "non_verbal",
-                "content": "默默低下头，假装认真朗读课文，眼神不自觉地往陆思远那边瞟。"
-              }
-            ],
+            "actions": [],
             "environmental_event": null,
             "exits": []
           },
           "minds": {
             "lin_zhaoyu": {
-              "observation": "陆思远低头在看那道阅读题，旁边的沈逸凡正看着我，觉得有点坐立难安。",
-              "inner_thought": "沈逸凡干嘛一直盯着我看，搞得我更紧张了，希望思远能快点看出点门道。",
+              "observation": "陆思远接过我的卷子，正低头帮我指着那道语法题的逻辑。",
+              "inner_thought": "他这么认真，我一定要把这个点搞懂，不想再拖了。",
               "emotion": "anxious",
-              "action_type": "non_verbal",
-              "action_content": "默默低下头，假装认真朗读课文，眼神不自觉地往陆思远那边瞟。",
+              "action_type": "speak",
+              "action_content": "就是这儿，前面那个空格，那个……我觉得应该用which，但后面又缺个主语，是不是我语法框架寄了？",
               "action_target": "lu_siyuan",
-              "urgency": 4,
-              "is_disruptive": false
-            },
-            "shen_yifan": {
-              "observation": "林昭宇在向陆思远请教英语技巧，两人正专注于题目。",
-              "inner_thought": "确实挺用功的，这时候提醒他作息反而打断思路，算了。",
-              "emotion": "calm",
-              "action_type": "observe",
-              "action_content": null,
-              "action_target": null,
-              "urgency": 2,
+              "urgency": 8,
               "is_disruptive": false
             }
           },
@@ -953,54 +170,23 @@
           "tick": 5,
           "public": {
             "speech": {
-              "agent": "shen_yifan",
-              "target": "lin_zhaoyu",
-              "content": "早读时间你应该多朗读，语法课后看效率更高。"
+              "agent": "lin_zhaoyu",
+              "target": "lu_siyuan",
+              "content": "就是这儿，前面那个空格，那个……我觉得应该用which，但后面又缺个主语，是不是我语法框架寄了？"
             },
-            "actions": [
-              {
-                "agent": "lin_zhaoyu",
-                "type": "non_verbal",
-                "content": "快速用笔在试卷上圈出几个转折词，动作幅度很小，尽量不引起沈逸凡注意。"
-              },
-              {
-                "agent": "lu_siyuan",
-                "type": "non_verbal",
-                "content": "压低声音在草稿纸上写下几个关联词，连着题目一起推向林昭宇的方向。"
-              }
-            ],
+            "actions": [],
             "environmental_event": null,
             "exits": []
           },
           "minds": {
-            "lin_zhaoyu": {
-              "observation": "陆思远在看我的阅读题，沈逸凡还在那边时不时看我一眼。",
-              "inner_thought": "他俩怎么都不读课文，沈逸凡盯着我搞得我浑身不自在。",
-              "emotion": "anxious",
-              "action_type": "non_verbal",
-              "action_content": "快速用笔在试卷上圈出几个转折词，动作幅度很小，尽量不引起沈逸凡注意。",
-              "action_target": "lu_siyuan",
-              "urgency": 6,
-              "is_disruptive": false
-            },
-            "shen_yifan": {
-              "observation": "林昭宇在早读的时候还在研究英语语法，没在背课文。",
-              "inner_thought": "早读就是要开口背书，抓着语法不放效率能高到哪里去。",
-              "emotion": "calm",
-              "action_type": "speak",
-              "action_content": "早读时间你应该多朗读，语法课后看效率更高。",
-              "action_target": "lin_zhaoyu",
-              "urgency": 4,
-              "is_disruptive": false
-            },
             "lu_siyuan": {
-              "observation": "林昭宇在装作读课文，但其实一直盯着我这边，沈逸凡倒是还在看着他俩的互动。",
-              "inner_thought": "他装得太假了，被沈逸凡盯着应该挺尴尬的吧，算了别管了。",
-              "emotion": "calm",
-              "action_type": "non_verbal",
-              "action_content": "压低声音在草稿纸上写下几个关联词，连着题目一起推向林昭宇的方向。",
+              "observation": "我接过卷子仔细看了一眼，林昭宇正靠在桌边闭目养神，眉头还是微微蹙着的。",
+              "inner_thought": "他真的很累，哪怕是早读也要这么赶进度吗？算了，我帮他看仔细点。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "你先眯会儿，这题我帮你看着，弄明白了再叫你。",
               "action_target": "lin_zhaoyu",
-              "urgency": 5,
+              "urgency": 6,
               "is_disruptive": false
             }
           },
@@ -1009,51 +195,24 @@
         {
           "tick": 6,
           "public": {
-            "speech": null,
-            "actions": [
-              {
-                "agent": "lin_zhaoyu",
-                "type": "non_verbal",
-                "content": "迅速把陆思远的草稿纸压在课本下面，假装在看书，眼神死死盯着纸上的笔记。"
-              },
-              {
-                "agent": "lu_siyuan",
-                "type": "non_verbal",
-                "content": "拿起英语书大声读了起来，以此掩饰尴尬。"
-              }
-            ],
+            "speech": {
+              "agent": "lu_siyuan",
+              "target": "lin_zhaoyu",
+              "content": "你先眯会儿，这题我帮你看着，弄明白了再叫你。"
+            },
+            "actions": [],
             "environmental_event": null,
             "exits": []
           },
           "minds": {
             "lin_zhaoyu": {
-              "observation": "陆思远把解题思路递了过来，沈逸凡还在旁边盯着，感觉很难受。",
-              "inner_thought": "沈逸凡老盯着看什么啊，烦死了，赶紧看完思远写的逻辑。",
+              "observation": "陆思远低头盯着卷子，眉头微微皱了一下，似乎在分析刚才我问的那个句子。",
+              "inner_thought": "希望他能看出来，我的语法真的快崩溃了，英语要是再卡住就完了。",
               "emotion": "anxious",
-              "action_type": "non_verbal",
-              "action_content": "迅速把陆思远的草稿纸压在课本下面，假装在看书，眼神死死盯着纸上的笔记。",
-              "action_target": "lu_siyuan",
-              "urgency": 6,
-              "is_disruptive": false
-            },
-            "shen_yifan": {
-              "observation": "林昭宇在陆思远的帮助下还在研究试卷，完全没在朗读课文。",
-              "inner_thought": "又在搞这些小动作，算了，随他们去吧，反正也快早读结束了。",
-              "emotion": "calm",
               "action_type": "observe",
               "action_content": null,
               "action_target": null,
-              "urgency": 2,
-              "is_disruptive": false
-            },
-            "lu_siyuan": {
-              "observation": "沈逸凡在看林昭宇，林昭宇也在看我，场面有点尴尬。",
-              "inner_thought": "气氛太怪了，还是别出声了，赶紧读两遍书避开视线吧。",
-              "emotion": "calm",
-              "action_type": "non_verbal",
-              "action_content": "拿起英语书大声读了起来，以此掩饰尴尬。",
-              "action_target": null,
-              "urgency": 2,
+              "urgency": 8,
               "is_disruptive": false
             }
           },
@@ -1067,12 +226,12 @@
               {
                 "agent": "lin_zhaoyu",
                 "type": "non_verbal",
-                "content": "微微低头，用手撑着额头，借着手掌遮挡，避开沈逸凡的目光，专心研究草稿纸上的逻辑线条。"
+                "content": "默默趴在桌子上，把头偏向桌角，尽量不干扰他思考，但眼神还是不自觉往卷子上瞟。"
               },
               {
                 "agent": "lu_siyuan",
                 "type": "non_verbal",
-                "content": "假装看书，微微用手肘碰了下林昭宇的课桌，示意他别被发现了"
+                "content": "把林昭宇的校服外套轻轻往他肩头拉了拉"
               }
             ],
             "environmental_event": null,
@@ -1080,33 +239,23 @@
           },
           "minds": {
             "lin_zhaoyu": {
-              "observation": "沈逸凡还没走开，还在盯着我们看，陆思远已经开始大声朗读课文了。",
-              "inner_thought": "沈逸凡怎么还不回头？烦死了，陆思远肯定也觉得他很碍事。",
-              "emotion": "frustrated",
+              "observation": "陆思远低着头认真看卷子，我有点不好意思再催他。",
+              "inner_thought": "他为了我连书都不背了，真愧疚。希望能快点弄完。",
+              "emotion": "touched",
               "action_type": "non_verbal",
-              "action_content": "微微低头，用手撑着额头，借着手掌遮挡，避开沈逸凡的目光，专心研究草稿纸上的逻辑线条。",
+              "action_content": "默默趴在桌子上，把头偏向桌角，尽量不干扰他思考，但眼神还是不自觉往卷子上瞟。",
               "action_target": "lu_siyuan",
-              "urgency": 4,
-              "is_disruptive": false
-            },
-            "shen_yifan": {
-              "observation": "林昭宇为了看题目笔记，强行在早读课上假装读书，动作很不自然。",
-              "inner_thought": "这俩人怎么还没完没了，早读课不开口，考试怎么过？算了，盯太紧他们更反感，先这样吧。",
-              "emotion": "calm",
-              "action_type": "observe",
-              "action_content": null,
-              "action_target": null,
               "urgency": 2,
               "is_disruptive": false
             },
             "lu_siyuan": {
-              "observation": "沈逸凡在看我们这边，林昭宇也在偷看笔记，早读课的气氛有点压抑。",
-              "inner_thought": "沈逸凡盯着看好烦啊，能不能别管我们，快点读完吧。",
-              "emotion": "bored",
+              "observation": "林昭宇闭着眼睛靠在那，眉头还是皱着的，呼吸声挺轻的。",
+              "inner_thought": "他平时绷得太紧了。这题我帮他盯着，让他多睡那几分钟吧。",
+              "emotion": "touched",
               "action_type": "non_verbal",
-              "action_content": "假装看书，微微用手肘碰了下林昭宇的课桌，示意他别被发现了",
+              "action_content": "把林昭宇的校服外套轻轻往他肩头拉了拉",
               "action_target": "lin_zhaoyu",
-              "urgency": 3,
+              "urgency": 6,
               "is_disruptive": false
             }
           },
@@ -1115,80 +264,72 @@
       ],
       "narrative": {
         "key_moments": [
-          "林昭宇请求陆思远辅导英语阅读理解逻辑。",
-          "林昭宇将英语试卷推向陆思远。",
-          "沈逸凡建议林昭宇早读时间进行朗读。",
-          "陆思远在草稿纸上写下关联词并推给林昭宇。",
-          "林昭宇将草稿纸压在课本下阅读。",
-          "陆思远用手肘触碰林昭宇的课桌。"
+          "林昭宇向陆思远请教语法卷子最后一道题。",
+          "陆思远接过卷子查看题目。",
+          "林昭宇趴在桌子上休息。",
+          "陆思远将校服外套拉至林昭宇肩头。"
         ],
         "fulfilled_intentions": [
-          "林昭宇:获得英语阅读逻辑辅导",
-          "陆思远:向林昭宇提供英语逻辑辅导"
+          "林昭宇:请教语法题目",
+          "陆思远:协助解答题目"
         ],
         "events_discussed": [
-          "英语阅读理解题目分析"
+          "语法卷子最后一道题"
         ],
         "new_events": [
           {
-            "text": "陆思远同意辅导林昭宇英语阅读理解逻辑",
-            "category": "学业辅导",
+            "text": "林昭宇向陆思远请教语法卷子最后一道题的连词用法。",
+            "category": "学术讨论",
             "witnesses": [
               "林昭宇",
-              "陆思远",
-              "沈逸凡"
-            ],
-            "spread_probability": 0.3,
-            "cite_ticks": [
-              1,
-              5
-            ]
-          },
-          {
-            "text": "陆思远在草稿纸上写下英语关联词并交给林昭宇",
-            "category": "学业辅导",
-            "witnesses": [
-              "林昭宇",
-              "陆思远",
-              "沈逸凡"
+              "陆思远"
             ],
             "spread_probability": 0.2,
             "cite_ticks": [
-              6,
-              7
+              2,
+              4,
+              6
+            ]
+          },
+          {
+            "text": "陆思远为林昭宇查看语法题并为其披上外套。",
+            "category": "日常互动",
+            "witnesses": [
+              "林昭宇",
+              "陆思远"
+            ],
+            "spread_probability": 0.1,
+            "cite_ticks": [
+              5,
+              7,
+              8
             ]
           }
         ]
       },
       "reflections": {
         "lin_zhaoyu": {
-          "emotion": "calm",
+          "emotion": "touched",
           "relationship_changes": [
             {
               "to_agent": "陆思远",
-              "favorability": 2,
-              "trust": 2,
+              "favorability": 3,
+              "trust": 3,
               "understanding": 2,
-              "direct_interaction": true
-            },
-            {
-              "to_agent": "沈逸凡",
-              "favorability": -1,
-              "trust": 0,
-              "understanding": 0,
               "direct_interaction": true
             }
           ],
           "memories": [
             {
-              "text": "早读时陆思远偷偷把写好逻辑笔记的草稿纸推给我，他真的很懂我。",
-              "emotion": "calm",
+              "text": "早读时我没精神，思远帮我讲题还把校服盖我肩上，真的很照顾我。",
+              "emotion": "touched",
               "importance": 6,
               "people": [
                 "陆思远"
               ],
               "location": "教室",
               "topics": [
+                "人际矛盾",
                 "学业焦虑"
               ]
             }
@@ -1196,45 +337,44 @@
           "new_concerns": [],
           "concern_updates": [
             {
-              "concern_text": "ed4070",
-              "adjustment": 2
-            },
-            {
-              "concern_text": "f6d323",
-              "adjustment": 2
+              "concern_text": "2358e7",
+              "adjustment": -1
             }
           ],
           "intention_outcomes": [
             {
-              "goal": "请教英语阅读理解的逻辑，搞懂长难句怎么拆",
+              "goal": "把那套英语卷子的错题整理完",
               "status": "attempted",
-              "brief_reason": "陆思远已经在教我怎么圈关联词拆句子了，感觉有点头绪了。"
+              "brief_reason": "找陆思远请教了语法难点，虽然还没全弄完，但有人帮我梳理逻辑了。"
+            },
+            {
+              "goal": "找机会戴耳机听许嵩的新歌",
+              "status": "pending",
+              "brief_reason": "早读时间要在教室里，没机会戴耳机。"
+            },
+            {
+              "goal": "确认周五晚上开黑的时间",
+              "status": "pending",
+              "brief_reason": "还没来得及提，全在讲英语语法了。"
             }
           ]
         },
         "lu_siyuan": {
-          "emotion": "calm",
+          "emotion": "touched",
           "relationship_changes": [
             {
               "to_agent": "林昭宇",
               "favorability": 2,
-              "trust": 2,
+              "trust": 1,
               "understanding": 2,
-              "direct_interaction": true
-            },
-            {
-              "to_agent": "沈逸凡",
-              "favorability": -1,
-              "trust": 0,
-              "understanding": 0,
               "direct_interaction": true
             }
           ],
           "memories": [
             {
-              "text": "早读时偷偷帮林昭宇讲解英语阅读逻辑，那种像地下接头一样的感觉挺刺激的。",
-              "emotion": "calm",
-              "importance": 4,
+              "text": "林昭宇虽然很累，还是想把语法题搞懂，我帮他拉了拉外套。",
+              "emotion": "touched",
+              "importance": 5,
               "people": [
                 "林昭宇"
               ],
@@ -1247,121 +387,95 @@
           "new_concerns": [],
           "concern_updates": [
             {
-              "concern_text": "b6f36e",
-              "adjustment": -1
-            }
-          ],
-          "intention_outcomes": [
-            {
-              "goal": "尝试删减掉一些冗长的句子，把那篇关于校园琐事的文章发布出去",
-              "status": "pending",
-              "brief_reason": "早读都在处理英语题，没时间看草稿。"
-            },
-            {
-              "goal": "约林昭宇一起去图书馆自习",
-              "status": "fulfilled",
-              "brief_reason": "刚才帮他讲题的时候已经默契达成共识了。"
-            },
-            {
-              "goal": "在晚自习尽量找借口避开他的干扰",
-              "status": "pending",
-              "brief_reason": "现在还没到晚自习，还没发生。"
-            }
-          ]
-        },
-        "shen_yifan": {
-          "emotion": "frustrated",
-          "relationship_changes": [
-            {
-              "to_agent": "林昭宇",
-              "favorability": -1,
-              "trust": 0,
-              "understanding": 1,
-              "direct_interaction": true
-            },
-            {
-              "to_agent": "陆思远",
-              "favorability": -1,
-              "trust": 0,
-              "understanding": 0,
-              "direct_interaction": true
-            }
-          ],
-          "memories": [
-            {
-              "text": "早读课林昭宇居然在和陆思远搞小动作传纸条，完全没把纪律当回事。",
-              "emotion": "frustrated",
-              "importance": 4,
-              "people": [
-                "林昭宇",
-                "陆思远"
-              ],
-              "location": "教室",
-              "topics": [
-                "人际矛盾"
-              ]
-            }
-          ],
-          "new_concerns": [],
-          "concern_updates": [
-            {
-              "concern_text": "dc9947",
+              "concern_text": "ba986b",
               "adjustment": 1
             }
           ],
           "intention_outcomes": [
             {
-              "goal": "语气放软一点，聊聊宿舍卫生的事（想找林昭宇）",
-              "status": "frustrated",
-              "brief_reason": "我本来想提醒他早读，结果他又在搞小动作，话没说好反而更僵了。"
+              "goal": "在课间询问林昭宇昨晚休息得怎么样，表达关心",
+              "status": "fulfilled",
+              "brief_reason": "跟他聊了睡得怎么样，还顺手帮他拉了拉外套。"
+            },
+            {
+              "goal": "重新阅读草稿，尝试修改其中的措辞",
+              "status": "pending",
+              "brief_reason": "一直在教室早读，没时间看手机。"
+            },
+            {
+              "goal": "在班里遇到时保持礼貌点头，避免眼神冲突",
+              "status": "pending",
+              "brief_reason": "沈逸凡没出现。"
             }
           ]
         }
       }
     },
     {
-      "group_index": 2,
+      "group_index": 1,
       "participants": [
-        "he_jiajun",
-        "jiang_haotian"
+        "fang_yuchen",
+        "tang_shihan",
+        "su_nianyao",
+        "cheng_yutong"
       ],
       "ticks": [
         {
           "tick": 0,
           "public": {
             "speech": {
-              "agent": "jiang_haotian",
-              "target": "he_jiajun",
-              "content": "喂，家骏，昨晚通宵修仙啦？看着像个僵尸一样。"
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "念瑶，你物理作业还没搞定啊？要不要我帮你挡着点？对了，还没问你呢，到底什么时候带我去见识下那个LYU啊？备注那么神秘。"
             },
             "actions": [
               {
-                "agent": "he_jiajun",
+                "agent": "cheng_yutong",
                 "type": "non_verbal",
-                "content": "低头翻开物理练习册，盯着题目发呆。"
+                "content": "从书包里拿出物理竞赛题集，戴上降噪耳机，翻开上一次没写完的页面。"
               }
             ],
             "environmental_event": null,
             "exits": []
           },
           "minds": {
-            "jiang_haotian": {
-              "observation": "何家骏背着书包进教室，看着一脸没睡醒的样子，感觉这小子昨晚肯定又在刷题。",
-              "inner_thought": "这哥们看着真累，待会下课拉他去操场透透气。",
-              "emotion": "frustrated",
+            "fang_yuchen": {
+              "observation": "苏念瑶在座位上翻找物理作业，神色有点焦急。",
+              "inner_thought": "这丫头又要补作业，正好趁这机会问问LYU的事。",
+              "emotion": "curious",
               "action_type": "speak",
-              "action_content": "喂，家骏，昨晚通宵修仙啦？看着像个僵尸一样。",
-              "action_target": "he_jiajun",
-              "urgency": 6,
+              "action_content": "念瑶，你物理作业还没搞定啊？要不要我帮你挡着点？对了，还没问你呢，到底什么时候带我去见识下那个LYU啊？备注那么神秘。",
+              "action_target": "su_nianyao",
+              "urgency": 8,
               "is_disruptive": false
             },
-            "he_jiajun": {
-              "observation": "姜皓天坐在前面也在早读，看起来没怎么注意周围。",
-              "inner_thought": "物理作业还没写完，晚上还要问他打游戏的事情吗，好烦。",
+            "su_nianyao": {
+              "observation": "方语晨正在翻看桌上的资料，似乎准备开始早读，唐诗涵也在整理书包。",
+              "inner_thought": "得找机会把她注意力引开，不然等下早读完她又要拿那备注说事。",
               "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "哎，你昨天算的那个抽奖概率，最后真的一点戏都没？",
+              "action_target": "fang_yuchen",
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "班里晨读声音很乱，苏念瑶一直在翻书，进度看起来很慢。",
+              "inner_thought": "离力学推导完成还差四页，得抓紧了。",
+              "emotion": "calm",
               "action_type": "non_verbal",
-              "action_content": "低头翻开物理练习册，盯着题目发呆。",
+              "action_content": "从书包里拿出物理竞赛题集，戴上降噪耳机，翻开上一次没写完的页面。",
               "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "tang_shihan": {
+              "observation": "苏念瑶在早读时一直低着头看书，没怎么开口念，而且手机刚才好像震了一下。",
+              "inner_thought": "肯定又是LYU的消息，这两人大清早就在秀恩爱吗？",
+              "emotion": "curious",
+              "action_type": "speak",
+              "action_content": "念瑶，你手机刚才响了，不看一眼？",
+              "action_target": "su_nianyao",
               "urgency": 8,
               "is_disruptive": false
             }
@@ -1372,33 +486,39 @@
           "tick": 1,
           "public": {
             "speech": {
-              "agent": "he_jiajun",
-              "target": "jiang_haotian",
-              "content": "没，昨晚写题……太慢了。"
+              "agent": "su_nianyao",
+              "target": "fang_yuchen",
+              "content": "哎，你昨天算的那个抽奖概率，最后真的一点戏都没？"
             },
-            "actions": [],
+            "actions": [
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "调整了一下降噪耳机的佩戴位置，确保物理公式的阅读不被杂音干扰。"
+              }
+            ],
             "environmental_event": null,
             "exits": []
           },
           "minds": {
-            "jiang_haotian": {
-              "observation": "何家骏对我的调侃没啥反应，还在死磕那道物理题。",
-              "inner_thought": "这小子魔怔了？物理有那么好玩吗？真没劲。",
-              "emotion": "frustrated",
+            "fang_yuchen": {
+              "observation": "念瑶在补物理作业，诗涵坐在旁边没说话，程雨桐在戴着耳机刷题。",
+              "inner_thought": "这念瑶怎么还不理我？装傻呢吧，手机藏得那么紧。",
+              "emotion": "curious",
               "action_type": "speak",
-              "action_content": "别看了，大早上的脑子能转动吗？赶紧把那破书合上，下课带你练两把去。",
-              "action_target": "he_jiajun",
-              "urgency": 6,
-              "is_disruptive": true
+              "action_content": "念瑶？别理那破物理了，小卖部新品奶茶去不去？",
+              "action_target": "su_nianyao",
+              "urgency": 8,
+              "is_disruptive": false
             },
-            "he_jiajun": {
-              "observation": "姜皓天在和我开玩笑，但我现在只想搞定物理作业。",
-              "inner_thought": "好烦，这题怎么写啊，根本看不懂。",
-              "emotion": "anxious",
-              "action_type": "speak",
-              "action_content": "没，昨晚写题……太慢了。",
-              "action_target": "jiang_haotian",
-              "urgency": 4,
+            "cheng_yutong": {
+              "observation": "方语晨和苏念瑶在早读课间谈论八卦，影响到了周围的环境。",
+              "inner_thought": "LYU是林昭宇吧，这种名字缩写都能拿来八卦，时间真多。",
+              "emotion": "bored",
+              "action_type": "non_verbal",
+              "action_content": "调整了一下降噪耳机的佩戴位置，确保物理公式的阅读不被杂音干扰。",
+              "action_target": null,
+              "urgency": 2,
               "is_disruptive": false
             }
           },
@@ -1408,29 +528,39 @@
           "tick": 2,
           "public": {
             "speech": {
-              "agent": "jiang_haotian",
-              "target": "he_jiajun",
-              "content": "别看了，大早上的脑子能转动吗？赶紧把那破书合上，下课带你练两把去。"
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "念瑶？别理那破物理了，小卖部新品奶茶去不去？"
             },
             "actions": [
               {
-                "agent": "he_jiajun",
+                "agent": "cheng_yutong",
                 "type": "non_verbal",
-                "content": "把物理练习册往外推了推，眉头皱着继续盯着题目。"
+                "content": "用P-500在方格本上快速勾勒受力分析图，手腕没停。"
               }
             ],
             "environmental_event": null,
             "exits": []
           },
           "minds": {
-            "he_jiajun": {
-              "observation": "姜皓天还在看手机，周五要交错题本的压力让我心里很堵。",
-              "inner_thought": "物理题好难，问他打游戏的事会不会被嫌水平太菜？",
+            "su_nianyao": {
+              "observation": "方语晨正在听我问概率的事，眼睛却还在往我手机那边瞟。",
+              "inner_thought": "千万别接上刚才的话题，再扯点别的把她绕晕。",
               "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "就那家店，我跟你说，老板那套路深得很，纯属骗人的。",
+              "action_target": "fang_yuchen",
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "方语晨和苏念瑶在早读时持续闲聊，完全忽视了老师布置的朗读任务。",
+              "inner_thought": "离考试只剩没几天了，她们居然还在聊抽奖，脑子怎么长的。",
+              "emotion": "bored",
               "action_type": "non_verbal",
-              "action_content": "把物理练习册往外推了推，眉头皱着继续盯着题目。",
+              "action_content": "用P-500在方格本上快速勾勒受力分析图，手腕没停。",
               "action_target": null,
-              "urgency": 4,
+              "urgency": 2,
               "is_disruptive": false
             }
           },
@@ -1440,39 +570,39 @@
           "tick": 3,
           "public": {
             "speech": {
-              "agent": "he_jiajun",
-              "target": "jiang_haotian",
-              "content": "行。"
+              "agent": "tang_shihan",
+              "target": "su_nianyao",
+              "content": "念瑶，你手机刚才响了，不看一眼？"
             },
             "actions": [
               {
-                "agent": "jiang_haotian",
+                "agent": "cheng_yutong",
                 "type": "non_verbal",
-                "content": "用力拍了下何家骏的肩膀，然后无奈地嗤笑一声，自己靠在椅背上看天花板。"
+                "content": "将草稿本翻过新的一页，书写力度加重，笔尖在方格纸上发出细微的沙沙声。"
               }
             ],
-            "environmental_event": "【动作】姜皓天: 用力拍了下何家骏的肩膀，然后无奈地嗤笑一声，自己靠在椅背上看天花板。",
+            "environmental_event": null,
             "exits": []
           },
           "minds": {
-            "jiang_haotian": {
-              "observation": "何家骏这哥们跟物理题杠上了，完全听不进去我的话。",
-              "inner_thought": "这书呆子，早晚学废了，得找机会把他拉出来。",
-              "emotion": "frustrated",
-              "action_type": "non_verbal",
-              "action_content": "用力拍了下何家骏的肩膀，然后无奈地嗤笑一声，自己靠在椅背上看天花板。",
-              "action_target": "he_jiajun",
-              "urgency": 4,
-              "is_disruptive": true
-            },
-            "he_jiajun": {
-              "observation": "姜皓天还在等我的回应，手里拿着手机没放下。",
-              "inner_thought": "物理题实在写不动，算了，答应他打球总比坐着发呆强。",
-              "emotion": "anxious",
+            "fang_yuchen": {
+              "observation": "念瑶一心扑在作业上，程雨桐也在在那儿疯狂刷题，教室里安静得要命。",
+              "inner_thought": "啧，一个两个都这么卷，真没意思，还是奶茶比较香。",
+              "emotion": "bored",
               "action_type": "speak",
-              "action_content": "行。",
-              "action_target": "jiang_haotian",
-              "urgency": 5,
+              "action_content": "行吧，你慢慢算那破题，我先去了啊，等下帮你带一杯？",
+              "action_target": "su_nianyao",
+              "urgency": 4,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "方语晨和苏念瑶在早读课上完全放弃了朗读，转而讨论去买奶茶的事。",
+              "inner_thought": "离考试这么近还去买奶茶，她们真是一点危机感都没有。",
+              "emotion": "bored",
+              "action_type": "non_verbal",
+              "action_content": "将草稿本翻过新的一页，书写力度加重，笔尖在方格纸上发出细微的沙沙声。",
+              "action_target": null,
+              "urgency": 2,
               "is_disruptive": false
             }
           },
@@ -1482,33 +612,39 @@
           "tick": 4,
           "public": {
             "speech": {
-              "agent": "jiang_haotian",
-              "target": "he_jiajun",
-              "content": "行什么行，到时候别下课铃一响又缩回去，说话算话啊兄弟。"
+              "agent": "su_nianyao",
+              "target": "fang_yuchen",
+              "content": "就那家店，我跟你说，老板那套路深得很，纯属骗人的。"
             },
-            "actions": [],
+            "actions": [
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "面无表情地将耳机线缠紧，加大物理推导的计算力度，笔尖由于用力过大划破了草稿纸。"
+              }
+            ],
             "environmental_event": null,
             "exits": []
           },
           "minds": {
-            "jiang_haotian": {
-              "observation": "何家骏这家伙总算答应了，虽然看着还是心不在焉的。",
-              "inner_thought": "这小子只要答应了就跑不掉，下课必须把他从课本里拽出来。",
-              "emotion": "calm",
-              "action_type": "speak",
-              "action_content": "行什么行，到时候别下课铃一响又缩回去，说话算话啊兄弟。",
-              "action_target": "he_jiajun",
-              "urgency": 6,
+            "cheng_yutong": {
+              "observation": "苏念瑶在唐诗涵的提醒下还是没看手机，早读课的嘈杂声越来越明显。",
+              "inner_thought": "离考试只剩没几天了，这些人怎么还不闭嘴。",
+              "emotion": "bored",
+              "action_type": "non_verbal",
+              "action_content": "面无表情地将耳机线缠紧，加大物理推导的计算力度，笔尖由于用力过大划破了草稿纸。",
+              "action_target": null,
+              "urgency": 2,
               "is_disruptive": false
             },
-            "he_jiajun": {
-              "observation": "姜皓天终于没再看手机了，正靠在椅背上等着我呢。",
-              "inner_thought": "物理题反正也写不出来，晚上……问问他玩什么吧。",
-              "emotion": "anxious",
+            "tang_shihan": {
+              "observation": "苏念瑶在听到手机响动后眼神明显闪烁了一下，却故意把手机往课本下面压了压。",
+              "inner_thought": "绝对有鬼，这反应跟做贼心虚似的，LYU肯定就是林昭宇。",
+              "emotion": "curious",
               "action_type": "speak",
-              "action_content": "晚上……王者打吗？",
-              "action_target": "jiang_haotian",
-              "urgency": 6,
+              "action_content": "哎哟，藏什么呢？该不会是某人的专属消息吧？",
+              "action_target": "su_nianyao",
+              "urgency": 8,
               "is_disruptive": false
             }
           },
@@ -1518,9 +654,503 @@
           "tick": 5,
           "public": {
             "speech": {
-              "agent": "he_jiajun",
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "行吧，你慢慢算那破题，我先去了啊，等下帮你带一杯？"
+            },
+            "actions": [
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "从文具盒里取出一块透明胶带，将刚才划破的草稿纸背面仔细粘好，继续低头计算。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "程雨桐笔尖划破纸的声音很刺耳，而方语晨还在盯着我手机，似乎没被我的概率话题完全岔开。",
+              "inner_thought": "雨桐这是怎么了，怎么突然这么用力？别再看我手机了啊，心虚死了。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "那什么，昨晚那道物理题你搞懂没？我感觉我也卡住了，那个图我怎么画都不对。",
+              "action_target": "cheng_yutong",
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "这几个人一直在讨论些无关紧要的抽奖和八卦，完全没在状态。",
+              "inner_thought": "真吵，纸都划破了，影响推导进度，烦死了。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "从文具盒里取出一块透明胶带，将刚才划破的草稿纸背面仔细粘好，继续低头计算。",
+              "action_target": null,
+              "urgency": 4,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 6,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "su_nianyao",
+              "content": "哎哟，藏什么呢？该不会是某人的专属消息吧？"
+            },
+            "actions": [
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "将降噪耳机往耳朵里用力按了按，完全屏蔽外界声音，重新沉浸在物理题中。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": [
+              "fang_yuchen"
+            ]
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "程雨桐为了补个题都这么拼，连纸都戳破了，念瑶还在那纠结奶茶套路。",
+              "inner_thought": "这几个人真的没劲，还是去小卖部透透气吧。",
+              "emotion": "bored",
+              "action_type": "exit",
+              "action_content": "站起身整理了一下书包肩带，对着苏念瑶挥了挥手机示意。",
+              "action_target": "su_nianyao",
+              "urgency": 5,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "方语晨终于要离开座位去买奶茶了，教室里的闲聊声可能会减少。",
+              "inner_thought": "终于走了，清静点好让我补上进度。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "将降噪耳机往耳朵里用力按了按，完全屏蔽外界声音，重新沉浸在物理题中。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 7,
+          "public": {
+            "speech": {
+              "agent": "su_nianyao",
+              "target": "cheng_yutong",
+              "content": "那什么，昨晚那道物理题你搞懂没？我感觉我也卡住了，那个图我怎么画都不对。"
+            },
+            "actions": [
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "将草稿本移向左侧，利用身体遮挡视线，全神贯注投入题目的受力分析。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "cheng_yutong": {
+              "observation": "方语晨离开座位，教室环境清静了一些，唐诗涵仍在试图纠缠苏念瑶。",
+              "inner_thought": "终于安静了，那道动量守恒题再推不出来，今天计划又要泡汤。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "将草稿本移向左侧，利用身体遮挡视线，全神贯注投入题目的受力分析。",
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "tang_shihan": {
+              "observation": "方语晨走了，苏念瑶还在那磨磨唧唧处理手机，感觉她心虚到底了。",
+              "inner_thought": "啧，这就跑了？苏念瑶这反应不对劲，肯定是在瞒着什么大事。",
+              "emotion": "curious",
+              "action_type": "speak",
+              "action_content": "搞得那么紧张，到底是谁啊？还不让我看一眼？",
+              "action_target": "su_nianyao",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        }
+      ],
+      "narrative": {
+        "key_moments": [
+          "方语晨询问苏念瑶物理作业进度并提出去小卖部。",
+          "程雨桐在早读期间持续进行物理竞赛题计算。",
+          "唐诗涵提醒苏念瑶手机响了。",
+          "方语晨离开教室前往小卖部。",
+          "苏念瑶向程雨桐询问物理题解法。"
+        ],
+        "fulfilled_intentions": [
+          "方语晨:前往小卖部购买奶茶",
+          "程雨桐:完成物理竞赛题计算"
+        ],
+        "events_discussed": [
+          "物理作业进度",
+          "抽奖概率计算",
+          "小卖部新品奶茶",
+          "苏念瑶手机消息",
+          "物理竞赛题受力分析"
+        ],
+        "new_events": [
+          {
+            "text": "方语晨邀请苏念瑶去小卖部购买新品奶茶",
+            "category": "社交邀请",
+            "witnesses": [
+              "方语晨",
+              "苏念瑶",
+              "程雨桐"
+            ],
+            "spread_probability": 0.3,
+            "cite_ticks": [
+              3,
+              6
+            ]
+          },
+          {
+            "text": "苏念瑶手机收到消息",
+            "category": "个人信息",
+            "witnesses": [
+              "唐诗涵",
+              "苏念瑶"
+            ],
+            "spread_probability": 0.6,
+            "cite_ticks": [
+              4,
+              7
+            ]
+          }
+        ]
+      },
+      "reflections": {
+        "fang_yuchen": {
+          "emotion": "curious",
+          "relationship_changes": [
+            {
+              "to_agent": "苏念瑶",
+              "favorability": 1,
+              "trust": 0,
+              "understanding": 2,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "唐诗涵",
+              "favorability": 1,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "念瑶手机响了，诗涵还故意起哄，她那副心虚的样子肯定有鬼。",
+              "emotion": "curious",
+              "importance": 6,
+              "people": [
+                "苏念瑶",
+                "唐诗涵"
+              ],
+              "location": "教室",
+              "topics": [
+                "恋爱"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "e2cd81",
+              "adjustment": 1
+            },
+            {
+              "concern_text": "802306",
+              "adjustment": 1
+            },
+            {
+              "concern_text": "8aa6eb",
+              "adjustment": 1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "找个机会旁敲侧击一下林昭宇，看看能不能从她嘴里套出那个LYU到底是哪路神仙",
+              "status": "attempted",
+              "brief_reason": "我直接问了她关于LYU备注的事，但她又在顾左右而言他。"
+            },
+            {
+              "goal": "把那家店的抽奖概率吐槽一遍，顺便借她的限定立牌来看一眼",
+              "status": "attempted",
+              "brief_reason": "我和诗涵聊了店里的抽奖套路，但还没来得及看立牌。"
+            },
+            {
+              "goal": "课间去堵陆思远，问问最近班里有没有什么新鲜八卦",
+              "status": "pending",
+              "brief_reason": "陆思远没在现场，根本没机会问。"
+            }
+          ]
+        },
+        "tang_shihan": {
+          "emotion": "curious",
+          "relationship_changes": [
+            {
+              "to_agent": "苏念瑶",
+              "favorability": 1,
+              "trust": 0,
+              "understanding": 2,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "方语晨",
+              "favorability": 1,
+              "trust": 1,
+              "understanding": 0,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "程雨桐",
+              "favorability": 0,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": false
+            }
+          ],
+          "memories": [
+            {
+              "text": "念瑶手机响了死活不看，方语晨去买奶茶了，我感觉她俩肯定有秘密瞒着我。",
+              "emotion": "curious",
+              "importance": 5,
+              "people": [
+                "苏念瑶",
+                "方语晨"
+              ],
+              "location": "教室",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "f71be7",
+              "adjustment": 2
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "拉她去买奶茶，顺便套话问那个LYU备注是不是林昭宇",
+              "status": "attempted",
+              "brief_reason": "我一直盯着她手机试图套话，她完全不接茬，还转头去问程雨桐物理题了。"
+            },
+            {
+              "goal": "假装请教物理题，顺便打听一下竞赛八卦",
+              "status": "pending",
+              "brief_reason": "林昭宇人都不在，根本没机会问。"
+            },
+            {
+              "goal": "一起看昨天没看完的微短剧，吐槽下作业",
+              "status": "missed_opportunity",
+              "brief_reason": "大家都在搞物理题，气氛太严肃了，我没好意思拿手机出来。"
+            }
+          ]
+        },
+        "su_nianyao": {
+          "emotion": "anxious",
+          "relationship_changes": [
+            {
+              "to_agent": "方语晨",
+              "favorability": -1,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "程雨桐",
+              "favorability": 1,
+              "trust": 2,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "方语晨一直在追问我手机备注的事，感觉快要藏不住了，幸好雨桐在旁边一直写题没搭理她。",
+              "emotion": "embarrassed",
+              "importance": 6,
+              "people": [
+                "方语晨",
+                "程雨桐"
+              ],
+              "location": "教室",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "bdfb98",
+              "adjustment": 1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "整理数学错题本",
+              "status": "pending",
+              "brief_reason": "早读时间一直被方语晨拉着说话，根本没法静下心来弄错题。"
+            },
+            {
+              "goal": "转移方语晨对林昭宇备注的注意力",
+              "status": "attempted",
+              "brief_reason": "我强行把话题扯到小卖部奶茶的套路上，但她好像还没死心。"
+            },
+            {
+              "goal": "写一段小说更新",
+              "status": "pending",
+              "brief_reason": "周围一直有人，没有合适的时机打开手机文档写东西。"
+            }
+          ]
+        },
+        "cheng_yutong": {
+          "emotion": "bored",
+          "relationship_changes": [
+            {
+              "to_agent": "苏念瑶",
+              "favorability": -1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "方语晨",
+              "favorability": -1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": false
+            },
+            {
+              "to_agent": "唐诗涵",
+              "favorability": -1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": false
+            }
+          ],
+          "memories": [
+            {
+              "text": "早读课苏念瑶一直在旁边说废话，物理竞赛题没法安心写。",
+              "emotion": "bored",
+              "importance": 4,
+              "people": [
+                "苏念瑶"
+              ],
+              "location": "教室",
+              "topics": [
+                "学业焦虑"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "781baa",
+              "adjustment": 1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "完成剩余的力学推导并整理错题",
+              "status": "frustrated",
+              "brief_reason": "苏念瑶在早读课一直试图闲聊，严重干扰了我的受力分析推导。"
+            },
+            {
+              "goal": "阅读《仙路独行》最新更新章节",
+              "status": "pending",
+              "brief_reason": "当前为早读时间，不具备阅读条件。"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "group_index": 2,
+      "participants": [
+        "he_jiajun",
+        "jiang_haotian",
+        "shen_yifan"
+      ],
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": {
+              "agent": "shen_yifan",
               "target": "jiang_haotian",
-              "content": "晚上……王者打吗？"
+              "content": "姜皓天，书拿起来读，别浪费早读时间。"
+            },
+            "actions": [
+              {
+                "agent": "jiang_haotian",
+                "type": "non_verbal",
+                "content": "把校服袖子用力往上撸到肩膀，然后把重心往后一靠，椅子发出了刺耳的声响。"
+              },
+              {
+                "agent": "he_jiajun",
+                "type": "non_verbal",
+                "content": "把数学课本藏在语文书下面，偷偷翻到目录那里。"
+              }
+            ],
+            "environmental_event": "【动作】姜皓天: 把校服袖子用力往上撸到肩膀，然后把重心往后一靠，椅子发出了刺耳的声响。",
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "沈逸凡正站在讲台附近维持纪律，而何家骏坐在位子上愁眉苦脸地盯着课本。",
+              "inner_thought": "这班长一大早就一脸欠揍，等会儿下课得找何家骏去操场透透气。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "把校服袖子用力往上撸到肩膀，然后把重心往后一靠，椅子发出了刺耳的声响。",
+              "action_target": "shen_yifan",
+              "urgency": 4,
+              "is_disruptive": true
+            },
+            "shen_yifan": {
+              "observation": "姜皓天坐在位子上发呆，手里转着根笔，完全没有在读课文的意思。",
+              "inner_thought": "又要在那混日子了，非得搞得大家都不开心吗。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "姜皓天，书拿起来读，别浪费早读时间。",
+              "action_target": "jiang_haotian",
+              "urgency": 8,
+              "is_disruptive": true
+            },
+            "he_jiajun": {
+              "observation": "姜皓天坐在前面翻书，早读课大家都读得很大声。",
+              "inner_thought": "要不要问他下午打球啊，还是算了，等课间。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "把数学课本藏在语文书下面，偷偷翻到目录那里。",
+              "action_target": null,
+              "urgency": 4,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "shen_yifan",
+              "content": "沈班长，读得嗓子都冒烟了，就不能歇会儿？"
             },
             "actions": [],
             "environmental_event": null,
@@ -1528,8 +1158,28 @@
           },
           "minds": {
             "jiang_haotian": {
-              "observation": "何家骏虽然嘴上答应了，但视线还是死死盯着那本物理练习册，看来还没从题目里拔出来。",
-              "inner_thought": "真服了这小子，真是个书呆子，早读课还没读够吗？",
+              "observation": "沈逸凡在讲台那盯着大家，何家骏藏着课本一副心事重重的样子。",
+              "inner_thought": "这老沈眼睛跟个探照灯一样，烦死了。何家骏那小子肯定又在琢磨数学题，待会儿得拉他去运动下。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "沈班长，读得嗓子都冒烟了，就不能歇会儿？",
+              "action_target": "shen_yifan",
+              "urgency": 6,
+              "is_disruptive": true
+            },
+            "shen_yifan": {
+              "observation": "姜皓天还在那儿晃椅子，何家骏的数学书露出了马脚。",
+              "inner_thought": "这俩人真是够了，早读课这么读下去能考上大学才怪。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "何家骏，课本拿出来放桌上，别整些没用的。",
+              "action_target": "he_jiajun",
+              "urgency": 8,
+              "is_disruptive": true
+            },
+            "he_jiajun": {
+              "observation": "姜皓天动静闹得挺大，沈逸凡在管他。",
+              "inner_thought": "他脾气还是这么大，早读课这么吵，等会儿会不会被老师盯上。",
               "emotion": "calm",
               "action_type": "observe",
               "action_content": null,
@@ -1541,12 +1191,12 @@
           "gated_agents": []
         },
         {
-          "tick": 6,
+          "tick": 2,
           "public": {
             "speech": {
-              "agent": "jiang_haotian",
+              "agent": "shen_yifan",
               "target": "he_jiajun",
-              "content": "行啊，晚上我拉你，带你躺赢，别再盯着那分都不一定能拿到的题了。"
+              "content": "何家骏，课本拿出来放桌上，别整些没用的。"
             },
             "actions": [],
             "environmental_event": null,
@@ -1554,23 +1204,195 @@
           },
           "minds": {
             "jiang_haotian": {
-              "observation": "何家骏这小子居然主动提要开黑，看样子是真的被题虐惨了。",
-              "inner_thought": "太阳从西边出来了，看来这兄弟终于想通了，这波必须带飞他。",
-              "emotion": "happy",
+              "observation": "沈逸凡正盯着我，而何家骏在偷偷摸摸看数学题，看着就让人心烦。",
+              "inner_thought": "沈逸凡管天管地，何家骏这呆子早读还在看数学，服了。",
+              "emotion": "frustrated",
               "action_type": "speak",
-              "action_content": "行啊，晚上我拉你，带你躺赢，别再盯着那分都不一定能拿到的题了。",
+              "action_content": "何家骏，等下球场见，别盯着那破数学看了，看得头都大了。",
               "action_target": "he_jiajun",
-              "urgency": 7,
-              "is_disruptive": false
+              "urgency": 6,
+              "is_disruptive": true
             },
             "he_jiajun": {
-              "observation": "姜皓天转过头看着我，好像在等我接着说下去。",
-              "inner_thought": "希望他别觉得我菜，要是被嫌弃了就尴尬了。",
+              "observation": "姜皓天正在和沈逸凡顶嘴，他看起来完全不想读课文。",
+              "inner_thought": "他胆子真大，老师要是从后门探头，他肯定要倒霉。",
+              "emotion": "calm",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": {
+              "agent": "shen_yifan",
+              "target": "jiang_haotian",
+              "content": "姜皓天，下课跟我来趟走廊，有些话该摊开说了。"
+            },
+            "actions": [
+              {
+                "agent": "he_jiajun",
+                "type": "non_verbal",
+                "content": "把数学课本从语文书下抽出来，规规矩矩地平摊在桌面上。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "何家骏被我点名后畏畏缩缩地把数学书摆了上来，姜皓天还在那儿晃椅子挑衅。",
+              "inner_thought": "真是一群麻烦精，管理这班人比做压轴题累多了。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "姜皓天，下课跟我来趟走廊，有些话该摊开说了。",
+              "action_target": "jiang_haotian",
+              "urgency": 9,
+              "is_disruptive": true
+            },
+            "he_jiajun": {
+              "observation": "沈逸凡在盯着我，我把数学书藏得有点明显了。",
+              "inner_thought": "被发现了，烦死了，干嘛总盯着我一个人。",
+              "emotion": "embarrassed",
+              "action_type": "non_verbal",
+              "action_content": "把数学课本从语文书下抽出来，规规矩矩地平摊在桌面上。",
+              "action_target": "shen_yifan",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 4,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "he_jiajun",
+              "content": "何家骏，等下球场见，别盯着那破数学看了，看得头都大了。"
+            },
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "瞪了一眼姜皓天，转过身重重地把课本翻过一页，发出一声响声。"
+              }
+            ],
+            "environmental_event": "【动作】沈逸凡: 瞪了一眼姜皓天，转过身重重地把课本翻过一页，发出一声响声。",
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "姜皓天还在那儿晃椅子，何家骏坐得规规矩矩的，但我心里那股火压得有点难受。",
+              "inner_thought": "真烦，下课非得把这事说清楚，不能再这样下去了。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "瞪了一眼姜皓天，转过身重重地把课本翻过一页，发出一声响声。",
+              "action_target": "jiang_haotian",
+              "urgency": 8,
+              "is_disruptive": true
+            },
+            "he_jiajun": {
+              "observation": "沈逸凡在找姜皓天的麻烦，教室里气氛有点紧绷。",
+              "inner_thought": "希望沈逸凡别扯上我，姜皓天等会儿没事吧，下午还能打球吗？",
+              "emotion": "anxious",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 3,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 5,
+          "public": {
+            "speech": {
+              "agent": "shen_yifan",
+              "target": "jiang_haotian",
+              "content": "下课别想溜，有些话没说完之前你哪儿都不许去。"
+            },
+            "actions": [
+              {
+                "agent": "jiang_haotian",
+                "type": "non_verbal",
+                "content": "双脚在桌子底下踢了一下沈逸凡的椅子腿，然后若无其事地吹了个口哨。"
+              }
+            ],
+            "environmental_event": "【动作】姜皓天: 双脚在桌子底下踢了一下沈逸凡的椅子腿，然后若无其事地吹了个口哨。",
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "沈逸凡在课本上闹出这么大动静，摆明了是针对刚才的话。",
+              "inner_thought": "装模作样给谁看呢，这班长简直有病，下课看我怎么消遣他。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "双脚在桌子底下踢了一下沈逸凡的椅子腿，然后若无其事地吹了个口哨。",
+              "action_target": "shen_yifan",
+              "urgency": 8,
+              "is_disruptive": true
+            },
+            "shen_yifan": {
+              "observation": "姜皓天还在怂恿何家骏不去学习，简直是在动摇班级的学习风气。",
+              "inner_thought": "这人怎么就这么难管，等会儿下课他要是敢跑，我就直接找老师。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "下课别想溜，有些话没说完之前你哪儿都不许去。",
+              "action_target": "jiang_haotian",
+              "urgency": 9,
+              "is_disruptive": true
+            },
+            "he_jiajun": {
+              "observation": "姜皓天被打球的事干扰了，沈逸凡看起来很不高兴。",
+              "inner_thought": "他俩火药味这么重，姜皓天下午还记得打球吗？",
               "emotion": "anxious",
               "action_type": "speak",
-              "action_content": "就……那个，练练手。",
+              "action_content": "行。",
               "action_target": "jiang_haotian",
               "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 6,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "shen_yifan",
+              "content": "沈班长，早读还没结束呢，你这翻书声比朗读声都响，影响到别人了呀。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "沈逸凡又在装腔作势，何家骏则像个木头一样在那紧张兮兮地读书。",
+              "inner_thought": "真当自己是教导主任了，下课非得让他吃个瘪不可。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "沈班长，早读还没结束呢，你这翻书声比朗读声都响，影响到别人了呀。",
+              "action_target": "shen_yifan",
+              "urgency": 8,
+              "is_disruptive": true
+            },
+            "shen_yifan": {
+              "observation": "姜皓天还在那儿装模作样，完全没把纪律当回事。",
+              "inner_thought": "再忍他最后几分钟，下课看他能玩出什么名堂。",
+              "emotion": "frustrated",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 8,
               "is_disruptive": false
             }
           },
@@ -1580,24 +1402,40 @@
           "tick": 7,
           "public": {
             "speech": {
-              "agent": "he_jiajun",
+              "agent": "shen_yifan",
               "target": "jiang_haotian",
-              "content": "就……那个，练练手。"
+              "content": "姜皓天，读书声大是为了提神，你管好你自己的纪律就行了，不用操心我。"
             },
-            "actions": [],
-            "environmental_event": null,
+            "actions": [
+              {
+                "agent": "jiang_haotian",
+                "type": "non_verbal",
+                "content": "故意把校服拉链拉开又猛地合上，发出长长的一声拉链声。"
+              }
+            ],
+            "environmental_event": "【动作】姜皓天: 故意把校服拉链拉开又猛地合上，发出长长的一声拉链声。",
             "exits": []
           },
           "minds": {
             "jiang_haotian": {
-              "observation": "何家骏终于不再盯着练习册了，整个人看起来松了一口气。",
-              "inner_thought": "这小子总算开窍了，晚上带他狠狠杀几把。",
-              "emotion": "happy",
+              "observation": "沈逸凡被我怼了之后脸都绿了，何家骏在旁边低着头当透明人。",
+              "inner_thought": "老沈这脸色真好看，烦死他，让他一直盯着我。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "故意把校服拉链拉开又猛地合上，发出长长的一声拉链声。",
+              "action_target": "shen_yifan",
+              "urgency": 6,
+              "is_disruptive": true
+            },
+            "shen_yifan": {
+              "observation": "姜皓天还在那儿阴阳怪气，完全没意识到自己是在浪费时间。",
+              "inner_thought": "他这副死样子真让人火大，反正下课就能把人揪住了。",
+              "emotion": "frustrated",
               "action_type": "speak",
-              "action_content": "晚上搞个法师，我带飞你，记得上线啊。",
-              "action_target": "he_jiajun",
-              "urgency": 5,
-              "is_disruptive": false
+              "action_content": "姜皓天，读书声大是为了提神，你管好你自己的纪律就行了，不用操心我。",
+              "action_target": "jiang_haotian",
+              "urgency": 8,
+              "is_disruptive": true
             }
           },
           "gated_agents": []
@@ -1605,144 +1443,220 @@
       ],
       "narrative": {
         "key_moments": [
-          "何家骏在早读期间翻开物理练习册并盯着题目看。",
-          "姜皓天邀请何家骏下课后进行练习。",
-          "何家骏同意了姜皓天的邀请。",
-          "何家骏询问姜皓天晚上是否进行王者荣耀游戏。",
-          "姜皓天确认晚上会邀请何家骏进行游戏。"
+          "沈逸凡要求姜皓天朗读课文。",
+          "何家骏将数学课本藏在语文书下，后将其平摊在桌面上。",
+          "沈逸凡要求姜皓天下课后去走廊谈话。",
+          "姜皓天邀请何家骏下课去球场。",
+          "姜皓天踢了沈逸凡的椅子腿并吹口哨。",
+          "姜皓天拉动校服拉链发出声响。"
         ],
         "fulfilled_intentions": [
-          "姜皓天:邀请何家骏下课后进行活动",
-          "姜皓天:邀请何家骏晚上进行游戏"
+          "沈逸凡:监督姜皓天早读",
+          "沈逸凡:要求姜皓天下课谈话",
+          "何家骏:在早读期间阅读数学课本",
+          "姜皓天:邀请何家骏下课打球"
         ],
         "events_discussed": [],
         "new_events": [
           {
-            "text": "姜皓天邀请何家骏下课后进行练习。",
-            "category": "社交活动",
+            "text": "沈逸凡要求姜皓天下课去走廊谈话",
+            "category": "纪律管理",
             "witnesses": [
-              "何家骏",
-              "姜皓天"
+              "何家骏"
             ],
-            "spread_probability": 0.2,
+            "spread_probability": 0.3,
             "cite_ticks": [
-              3,
-              4,
-              5
+              4
             ]
           },
           {
-            "text": "何家骏与姜皓天约定晚上进行王者荣耀游戏。",
+            "text": "姜皓天邀请何家骏下课去球场",
             "category": "社交活动",
             "witnesses": [
-              "何家骏",
-              "姜皓天"
+              "沈逸凡"
             ],
-            "spread_probability": 0.2,
+            "spread_probability": 0.4,
             "cite_ticks": [
-              6,
-              7,
-              8
+              5
             ]
           }
         ]
       },
       "reflections": {
         "he_jiajun": {
-          "emotion": "excited",
+          "emotion": "anxious",
           "relationship_changes": [
             {
               "to_agent": "姜皓天",
-              "favorability": 3,
-              "trust": 2,
-              "understanding": 2,
+              "favorability": 1,
+              "trust": 1,
+              "understanding": 1,
               "direct_interaction": true
-            }
-          ],
-          "memories": [
-            {
-              "text": "姜皓天说晚上带我打王者，还说要带我躺赢。",
-              "emotion": "excited",
-              "importance": 6,
-              "people": [
-                "姜皓天"
-              ],
-              "location": "教室",
-              "topics": [
-                "兴趣爱好",
-                "期待的事"
-              ]
-            }
-          ],
-          "new_concerns": [
-            {
-              "text": "晚上打王者千万别太菜被姜皓天嫌弃。",
-              "source_event": "姜皓天说晚上带我打王者，带我躺赢。",
-              "emotion": "anxious",
-              "intensity": 6,
-              "related_people": [
-                "姜皓天"
-              ],
-              "positive": false,
-              "topic": "兴趣爱好"
-            }
-          ],
-          "concern_updates": [
-            {
-              "concern_text": "c8a7d3",
-              "adjustment": 5
-            }
-          ],
-          "intention_outcomes": [
-            {
-              "goal": "在午休前把物理错题本剩下的几道题写完",
-              "status": "frustrated",
-              "brief_reason": "被姜皓天拉着说话，心乱了，物理题还是没写进去。"
             },
             {
-              "goal": "找机会确认晚上能不能一起打游戏",
-              "status": "fulfilled",
-              "brief_reason": "已经和姜皓天约好了，晚上一起打王者。"
-            }
-          ]
-        },
-        "jiang_haotian": {
-          "emotion": "happy",
-          "relationship_changes": [
-            {
-              "to_agent": "何家骏",
-              "favorability": 2,
-              "trust": 1,
+              "to_agent": "沈逸凡",
+              "favorability": -1,
+              "trust": 0,
               "understanding": 1,
               "direct_interaction": true
             }
           ],
           "memories": [
             {
-              "text": "大早上看何家骏在那啃物理题，脸都皱成苦瓜了，还是带他打个游戏放松下吧。",
-              "emotion": "happy",
-              "importance": 4,
+              "text": "姜皓天叫我别看数学了，和他去打球，沈逸凡在旁边盯着我们。",
+              "emotion": "anxious",
+              "importance": 5,
               "people": [
-                "何家骏"
+                "姜皓天",
+                "沈逸凡"
               ],
               "location": "教室",
               "topics": [
-                "兴趣爱好"
+                "人际矛盾",
+                "学业焦虑"
               ]
             }
           ],
           "new_concerns": [],
           "concern_updates": [
             {
-              "concern_text": "df3acc",
-              "adjustment": -1
+              "concern_text": "493977",
+              "adjustment": 1
+            },
+            {
+              "concern_text": "223e0f",
+              "adjustment": 1
             }
           ],
           "intention_outcomes": [
             {
-              "goal": "带他去操场投几个三分球，顺便带他上分",
+              "goal": "在课间没人注意的时候把数学课本翻到前几章看基础定义",
+              "status": "frustrated",
+              "brief_reason": "被姜皓天打断，沈逸凡又一直在旁边，没法静下心看书。"
+            },
+            {
+              "goal": "看下午体育课能不能找机会再跟他一起打球",
+              "status": "fulfilled",
+              "brief_reason": "姜皓天主动约我下午球场见。"
+            },
+            {
+              "goal": "刷会短视频放松一下",
+              "status": "pending",
+              "brief_reason": "早读课一直有人说话，没机会掏手机。"
+            }
+          ]
+        },
+        "jiang_haotian": {
+          "emotion": "frustrated",
+          "relationship_changes": [
+            {
+              "to_agent": "沈逸凡",
+              "favorability": -2,
+              "trust": -1,
+              "understanding": 0,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "何家骏",
+              "favorability": 1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "大清早沈逸凡这死班长又来找茬，烦得要死，搞得我心情全无。",
+              "emotion": "frustrated",
+              "importance": 5,
+              "people": [
+                "沈逸凡"
+              ],
+              "location": "教室",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "dcf8e8",
+              "adjustment": 0
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "在午饭时通过开玩笑的方式套出家里工厂最近的情况（想找陆思远）",
+              "status": "pending",
+              "brief_reason": "陆思远不在场，没法问。"
+            },
+            {
+              "goal": "在晚自习找机会在沈逸凡眼皮子底下看一眼手机",
+              "status": "pending",
+              "brief_reason": "现在是早读，沈逸凡盯着呢，没机会。"
+            },
+            {
+              "goal": "拉他（何家骏）去操场打几个球",
               "status": "attempted",
-              "brief_reason": "约好了下课练球和晚上开黑，这哥们儿总算答应了。"
+              "brief_reason": "已经在早读的时候跟何家骏说了下课去球场，这小子应该听进去了。"
+            }
+          ]
+        },
+        "shen_yifan": {
+          "emotion": "frustrated",
+          "relationship_changes": [
+            {
+              "to_agent": "姜皓天",
+              "favorability": -2,
+              "trust": -2,
+              "understanding": 1,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "何家骏",
+              "favorability": 0,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "姜皓天在早读时一直挑衅，还故意弄出拉链声，完全不把纪律当回事。",
+              "emotion": "frustrated",
+              "importance": 6,
+              "people": [
+                "姜皓天"
+              ],
+              "location": "教室",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "f8f76e",
+              "adjustment": 2
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "找个机会私下提醒他，别在晚自习玩手机了",
+              "status": "attempted",
+              "brief_reason": "在早读课间明确叫他下课跟我去走廊摊牌，但他一直顾左右而言他。"
+            },
+            {
+              "goal": "午饭时试着聊聊学校活动，缓和一下宿舍气氛",
+              "status": "pending",
+              "brief_reason": "现在是早读时间，林昭宇不在场，没有谈话机会。"
+            },
+            {
+              "goal": "晨跑完去小卖部买瓶冰水",
+              "status": "fulfilled",
+              "brief_reason": "早读前已经买好了。"
             }
           ]
         }

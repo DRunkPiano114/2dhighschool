@@ -1,0 +1,27 @@
+{
+  "scene": {
+    "scene_index": 2,
+    "time": "08:45",
+    "name": "课间",
+    "location": "操场",
+    "description": "上午第一个课间休息，同学们在教室里活动",
+    "day": 8
+  },
+  "participant_names": {
+    "jiang_haotian": "姜皓天"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "jiang_haotian"
+      ],
+      "is_solo": true,
+      "solo_reflection": {
+        "inner_thought": "陆思远那小子到底在瞒什么，烦死了。",
+        "emotion": "frustrated",
+        "activity": "站在操场跑道边上，大力拍着手里的篮球，盯着远处的球场发呆。"
+      }
+    }
+  ]
+}

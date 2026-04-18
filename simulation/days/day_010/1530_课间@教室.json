@@ -1,0 +1,434 @@
+{
+  "scene": {
+    "scene_index": 9,
+    "time": "15:30",
+    "name": "课间",
+    "location": "教室",
+    "description": "下午课间休息",
+    "day": 10
+  },
+  "participant_names": {
+    "fang_yuchen": "方语晨",
+    "shen_yifan": "沈逸凡"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "fang_yuchen",
+        "shen_yifan"
+      ],
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "shen_yifan",
+              "content": "沈逸凡，你看到苏念瑶了吗？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "沈逸凡在座位上整理书本，苏念瑶还没回来，教室里乱糟糟的。",
+              "inner_thought": "这奶茶怎么还没送来，念瑶不是说一下课就给我解释吗？",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "沈逸凡，你看到苏念瑶了吗？",
+              "action_target": "shen_yifan",
+              "urgency": 6,
+              "is_disruptive": false
+            },
+            "shen_yifan": {
+              "observation": "方语晨在那边摆弄着什么立牌，周围人还在聊奶茶的事。",
+              "inner_thought": "都在聊这些没用的，题目做了没就这么闲？算了，管好自己吧。",
+              "emotion": "frustrated",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": {
+              "agent": "shen_yifan",
+              "target": "fang_yuchen",
+              "content": "刚才好像看到她去图书馆了，你应该去那边找找。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "沈逸凡在整理书，苏念瑶还没回教室，奶茶也没影儿。",
+              "inner_thought": "到底跑哪去了，躲着我吗？烦死人了。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "算了，当我没问，这人跑得够快的。",
+              "action_target": "shen_yifan",
+              "urgency": 5,
+              "is_disruptive": false
+            },
+            "shen_yifan": {
+              "observation": "方语晨在那边摆弄立牌，还在找苏念瑶。",
+              "inner_thought": "一天到晚不是奶茶就是立牌，心思根本不在学习上。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "刚才好像看到她去图书馆了，你应该去那边找找。",
+              "action_target": "fang_yuchen",
+              "urgency": 4,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "shen_yifan",
+              "content": "算了，当我没问，这人跑得够快的。"
+            },
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "低头盯着错题本，不再看她。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "方语晨还在摆弄那块立牌，对学习进度毫无自觉。",
+              "inner_thought": "一天到晚折腾这些，离211还差十万八千里呢。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "低头盯着错题本，不再看她。",
+              "action_target": "fang_yuchen",
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "fang_yuchen",
+                "type": "non_verbal",
+                "content": "趴回桌子上，把头偏向窗户那边闭目养神。"
+              },
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "重重地合上错题本，发出响亮的一声，然后转过身去整理课桌右上方的参考资料。"
+              }
+            ],
+            "environmental_event": "【动作】沈逸凡: 重重地合上错题本，发出响亮的一声，然后转过身去整理课桌右上方的参考资料。",
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "沈逸凡在专心钻研物理错题，完全不想搭理我的样子。",
+              "inner_thought": "真没劲，一个个都神神秘秘的，我也去补个觉算了。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "趴回桌子上，把头偏向窗户那边闭目养神。",
+              "action_target": null,
+              "urgency": 3,
+              "is_disruptive": false
+            },
+            "shen_yifan": {
+              "observation": "方语晨还没走，还在我旁边嘀咕苏念瑶的事。",
+              "inner_thought": "真啰嗦，能不能安静点让我把这题算完？",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "重重地合上错题本，发出响亮的一声，然后转过身去整理课桌右上方的参考资料。",
+              "action_target": null,
+              "urgency": 4,
+              "is_disruptive": true
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 4,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "拿起黑色的中性笔，开始一笔一画地在草稿纸上推演刚才没弄懂的受力分析过程。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "沈逸凡整理资料的动静挺大，感觉他心情也不太好。",
+              "inner_thought": "一个个脾气都这么大，我是欠你们的吗？烦死了。",
+              "emotion": "frustrated",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "shen_yifan": {
+              "observation": "方语晨趴在桌子上休息，周围终于安静了下来。",
+              "inner_thought": "这下总算能清静一会儿了，我也得抓紧时间再看两眼公式。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "拿起黑色的中性笔，开始一笔一画地在草稿纸上推演刚才没弄懂的受力分析过程。",
+              "action_target": null,
+              "urgency": 4,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 5,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "将草稿纸对折了一下，压在错题本下方，继续专注地推算物理题。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "方语晨趴在课桌上闭目养神，教室里终于安静下来了。",
+              "inner_thought": "世界总算清静了，这受力分析还没算完，得赶紧把这一页补齐。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "将草稿纸对折了一下，压在错题本下方，继续专注地推算物理题。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": [
+            "fang_yuchen"
+          ]
+        },
+        {
+          "tick": 6,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "重新翻开错题本，用红笔在刚才算错的地方打了一个小叉。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "方语晨趴在桌子上还在闭目养神，教室里终于没人没完没了地闲聊了。",
+              "inner_thought": "还好没声音了，再算错我就真得去办公室找老师重学受力分析了。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "重新翻开错题本，用红笔在刚才算错的地方打了一个小叉。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": [
+            "fang_yuchen"
+          ]
+        },
+        {
+          "tick": 7,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "皱着眉，用红笔在草稿纸上圈出了那个反复出错的受力分析点，并用力在旁边写下一行计算步骤。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "方语晨还在课桌上趴着，但我手里的物理题还是卡在了关键步骤上。",
+              "inner_thought": "这受力分析怎么又出错了，是不是哪里的摩擦系数没看对？烦死了。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "皱着眉，用红笔在草稿纸上圈出了那个反复出错的受力分析点，并用力在旁边写下一行计算步骤。",
+              "action_target": null,
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": [
+            "fang_yuchen"
+          ]
+        }
+      ],
+      "narrative": {
+        "key_moments": [
+          "方语晨询问沈逸凡苏念瑶的去向。",
+          "沈逸凡告知方语晨苏念瑶可能在图书馆。",
+          "沈逸凡合上错题本并整理课桌资料。",
+          "方语晨趴在桌子上闭目养神。",
+          "沈逸凡在草稿纸上推演物理受力分析过程。",
+          "沈逸凡在错题本上标记错误并重新计算。"
+        ],
+        "fulfilled_intentions": [
+          "方语晨:询问苏念瑶的下落",
+          "沈逸凡:完成物理错题的推演与订正"
+        ],
+        "events_discussed": [],
+        "new_events": [
+          {
+            "text": "苏念瑶前往图书馆",
+            "category": "行踪信息",
+            "witnesses": [
+              "方语晨",
+              "沈逸凡"
+            ],
+            "spread_probability": 0.3,
+            "cite_ticks": [
+              2
+            ]
+          }
+        ]
+      },
+      "reflections": {
+        "fang_yuchen": {
+          "emotion": "bored",
+          "relationship_changes": [
+            {
+              "to_agent": "沈逸凡",
+              "favorability": -1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "苏念瑶",
+              "favorability": 0,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": false
+            }
+          ],
+          "memories": [
+            {
+              "text": "问沈逸凡念瑶在哪，他叫我去图书馆找，结果人根本不在，白跑一趟。",
+              "emotion": "bored",
+              "importance": 3,
+              "people": [
+                "沈逸凡",
+                "苏念瑶"
+              ],
+              "location": "教室",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "e2cd81",
+              "adjustment": -1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "找个没人的机会问问林昭宇的事，尽量软一点（想找苏念瑶）",
+              "status": "missed_opportunity",
+              "brief_reason": "苏念瑶不在教室，没机会问。"
+            },
+            {
+              "goal": "跟她讨论一下新收的立牌，缓和一下宿舍气氛（想找唐诗涵）",
+              "status": "pending",
+              "brief_reason": "唐诗涵不在场，没机会聊。"
+            }
+          ]
+        },
+        "shen_yifan": {
+          "emotion": "frustrated",
+          "relationship_changes": [
+            {
+              "to_agent": "方语晨",
+              "favorability": 0,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "方语晨问我苏念瑶在哪，我告诉她去图书馆了，结果她抱怨人跑得快，搞得我心烦。",
+              "emotion": "frustrated",
+              "importance": 3,
+              "people": [
+                "方语晨"
+              ],
+              "location": "教室",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "ce28db",
+              "adjustment": -1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "尝试用更平和的态度提醒他遵守纪律，不再直接威胁记名字。",
+              "status": "pending",
+              "brief_reason": "姜皓天不在场，没机会交流。"
+            },
+            {
+              "goal": "去操场一个人跑两圈，把心里的烦躁压下去。",
+              "status": "pending",
+              "brief_reason": "还在上课间，下午还要上课，没法去跑。"
+            },
+            {
+              "goal": "找他聊聊物理题，缓和下之前的尴尬。",
+              "status": "pending",
+              "brief_reason": "陆思远不在，没法去聊。"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

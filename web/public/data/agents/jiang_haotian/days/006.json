@@ -9,48 +9,48 @@
   "emotion_label": "挫败",
   "energy_label": "精神还行",
   "pressure_label": "轻松",
-  "featured_quote": "这几个人搞得跟地下党接头似的，看着就让人火大，要不直接把沈逸凡书桌踢一脚算了。",
-  "featured_scene": "14:00 · 上课",
+  "featured_quote": "这老沈眼睛跟个探照灯一样，烦死了。何家骏那小子肯定又在琢磨数学题，待会儿得拉他去运动下。",
+  "featured_scene": "07:00 · 早读",
   "relationships": [
     {
-      "target_name": "林昭宇",
-      "favorability": 10,
-      "trust": 5,
-      "label_text": "还行，有些好感"
-    },
-    {
       "target_name": "何家骏",
-      "favorability": 10,
+      "favorability": 12,
+      "trust": 6,
+      "label_text": "还行，有些好感"
+    },
+    {
+      "target_name": "林昭宇",
+      "favorability": 11,
       "trust": 5,
       "label_text": "还行，有些好感"
     },
     {
-      "target_name": "陆思远",
+      "target_name": "方语晨",
       "favorability": 2,
-      "trust": 6,
+      "trust": 0,
       "label_text": "普通同学"
     }
   ],
   "memories": [
     {
       "date": "Day 6",
-      "text": "熄灯了还被沈逸凡盯着管，这日子简直没法过，烦死了。",
+      "text": "陆思远跑得飞快，一问家里生意就装傻，肯定有猫腻。",
       "importance": 6
     },
     {
-      "date": "Day 4",
-      "text": "在操场被沈逸凡当众要求收起手机，我用肩膀撞了他并威胁要抠出眼珠。",
+      "date": "Day 5",
+      "text": "问了陆思远家里的生意，这小子居然装睡躲着我，肯定有鬼。",
       "importance": 6
     }
   ],
   "top_concern": {
-    "text": "沈逸凡盯得太紧，完全没法和陆思远聊毕业后的打算，心里越来越没底。",
-    "intensity_label": "中等",
+    "text": "陆思远对家里工厂经营状况的刻意回避，让我更加担心家里是不是真的出了大问题。",
+    "intensity_label": "较强",
     "positive": false
   },
-  "self_narrative": "班里那个最吵的姜皓天就是我。天天哈哈大笑，其实心里虚得很。家里工厂那点破事，爸妈愁得不行，我却只能装作没事，继续带何家骏上分。沈逸凡那家伙管得太宽，烦死人。想找陆思远聊聊未来又总被搅和，这种日子真是一眼望不到头。",
+  "self_narrative": "班里的开心果，还得是我。天天逗陆思远、拍林昭宇肩膀，日子看着挺乐呵。其实心里慌得不行，爸妈工厂那边没动静，问也问不出个所以然。沈逸凡那死脑筋又盯着我，烦。要是真没学上，难道真要去厂里打螺丝？还是得找机会多打球，王者多Carry几把，不想那些糟心事了。",
   "caption_payload": {
-    "caption": "⚽ 姜皓天 · 第006天 档案\n\n标签：运动健将\n此刻心情：挫败\n\n「这几个人搞得跟地下党接头似的，看着就让人火大，要不直接把沈逸凡书桌踢一脚算了。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "⚽ 姜皓天 · 第006天 档案\n\n标签：运动健将\n此刻心情：挫败\n\n「这老沈眼睛跟个探照灯一样，烦死了。何家骏那小子肯定又在琢磨数学题，待会儿得拉他去运动下。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

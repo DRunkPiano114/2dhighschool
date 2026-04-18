@@ -1,0 +1,27 @@
+{
+  "scene": {
+    "scene_index": 2,
+    "time": "08:45",
+    "name": "课间",
+    "location": "天台",
+    "description": "上午第一个课间休息，同学们在教室里活动",
+    "day": 10
+  },
+  "participant_names": {
+    "jiang_haotian": "姜皓天"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "jiang_haotian"
+      ],
+      "is_solo": true,
+      "solo_reflection": {
+        "inner_thought": "刚出的新歌带感，陆思远那怂货，真烦人。",
+        "emotion": "excited",
+        "activity": "靠在天台围栏边听手机里的说唱，一边跟着节奏抖腿。"
+      }
+    }
+  ]
+}

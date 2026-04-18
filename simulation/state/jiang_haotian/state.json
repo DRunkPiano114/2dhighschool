@@ -7,64 +7,68 @@
     "intentions": [
       {
         "target": "陆思远",
-        "goal": "找个机会问问他毕业后打算干嘛",
-        "reason": "沈逸凡盯得太死，家里厂子那边没动静，心里越来越没底，得找兄弟探探口风。",
+        "goal": "在寝室里找机会单刀直入问清楚工厂的事，不能让他再装睡了",
+        "reason": "这事儿悬在心里太烦了，不问清楚晚上觉都睡不好",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "df3acc",
-        "origin_day": 5,
-        "pursued_days": 5
+        "satisfies_concern": "dcf8e8",
+        "origin_day": 7,
+        "pursued_days": 4
       },
       {
         "target": "何家骏",
-        "goal": "拉他去操场投几个三分球",
-        "reason": "这哥们最近也挺压抑的，带他动动，顺便我也能透透气。",
+        "goal": "拉他去操场打球，顺便让他练习一下昨天的投篮动作",
+        "reason": "打球能让我心情好点，而且看这哥们进步挺有成就感的",
         "fulfilled": true,
         "abandoned": false,
-        "satisfies_concern": "907820",
-        "origin_day": 8,
-        "pursued_days": 2
+        "satisfies_concern": null,
+        "origin_day": 10,
+        "pursued_days": 1
       },
       {
-        "target": null,
-        "goal": "戴耳机听最新的说唱单曲",
-        "reason": "心情烦的时候听点燥的才爽，缓解下被管束的郁闷。",
+        "target": "沈逸凡",
+        "goal": "在晚自习前故意把练习册放歪一点，看他那副想管又不知道怎么开口的样子",
+        "reason": "这几天心情闷，逗逗这死板班长找点乐子",
         "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
-        "origin_day": 9,
+        "origin_day": 10,
         "pursued_days": 1
       }
     ],
-    "mood_forecast": "neutral",
+    "mood_forecast": "anxious",
     "location_preferences": {
-      "morning_break": "走廊",
+      "morning_break": "天台",
       "lunch": "食堂",
       "afternoon_break": "操场"
     }
   },
-  "day": 9,
+  "day": 10,
   "active_concerns": [
     {
-      "id": "e6cb52",
-      "text": "沈逸凡这小子真要告状？烦死了。",
-      "source_event": "沈逸凡威胁要向陈老师汇报我课间晃荡的事",
-      "source_scene": "课间@操场",
-      "source_day": 8,
+      "id": "dcf8e8",
+      "text": "陆思远对家里工厂问题的回避态度，以及沈逸凡在宿舍对谈话的强行打断，让我对家里的事更加心神不宁。",
+      "source_event": "宿舍夜聊；22:00 宿舍夜聊；宿舍夜聊；22:00 宿舍夜聊；22:00 宿舍夜聊；食堂排队与宿舍夜聊；22:00 宿舍夜聊；22:00 宿舍夜聊",
+      "source_scene": "",
+      "source_day": 3,
       "emotion": "anxious",
-      "intensity": 6,
+      "intensity": 9,
       "related_people": [
-        "沈逸凡"
+        "陆思远"
       ],
       "positive": false,
-      "topic": "人际矛盾",
-      "last_reinforced_day": 9,
-      "last_new_info_day": 8,
-      "reinforcement_count": 0,
-      "text_history": [],
+      "topic": "家庭压力",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 10,
+      "reinforcement_count": 7,
+      "text_history": [
+        "陆思远在宿舍再次回避关于工厂的问题，让我更加怀疑家里是不是出了什么瞒着我的大事。",
+        "陆思远在食堂和宿舍始终回避我关于工厂问题的询问，让我更加怀疑家里是不是出了瞒着我的大事。",
+        "陆思远在宿舍里始终避开关于工厂问题的沟通，那种刻意的回避让我对家里的状况感到更加不安。"
+      ],
       "id_history": [],
-      "last_bump_day": 9,
-      "bumps_today": 1
+      "last_bump_day": 10,
+      "bumps_today": 2
     }
   ]
 }

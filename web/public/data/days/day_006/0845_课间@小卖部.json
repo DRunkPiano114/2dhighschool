@@ -1,0 +1,27 @@
+{
+  "scene": {
+    "scene_index": 1,
+    "time": "08:45",
+    "name": "课间",
+    "location": "小卖部",
+    "description": "上午第一个课间休息，同学们在教室里活动",
+    "day": 6
+  },
+  "participant_names": {
+    "lin_zhaoyu": "林昭宇"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "lin_zhaoyu"
+      ],
+      "is_solo": true,
+      "solo_reflection": {
+        "inner_thought": "好想听听新歌，耳机还在书包里藏着。",
+        "emotion": "touched",
+        "activity": "站在小卖部的角落里，手里攥着还没开封的牛奶，耳机线在口袋里缠成了团。"
+      }
+    }
+  ]
+}

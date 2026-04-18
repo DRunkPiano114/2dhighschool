@@ -1,0 +1,116 @@
+{
+  "emotion": "anxious",
+  "energy": 85,
+  "academic_pressure": 35,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "林昭宇",
+        "goal": "找个时间把他叫到办公室，聊聊最近的状态，缓解他的紧绷感。",
+        "reason": "这孩子最近状态实在让人揪心，不能再拖了，得确认他心理防线没崩。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "97c316",
+        "origin_day": 9,
+        "pursued_days": 2
+      },
+      {
+        "target": "女儿",
+        "goal": "下班路上去商场买那个答应过她的文具盲盒。",
+        "reason": "连续失约好几次了，答应孩子的事，怎么也得做到，不然太愧疚了。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "51ddc7",
+        "origin_day": 10,
+        "pursued_days": 1
+      },
+      {
+        "target": null,
+        "goal": "中午去办公室附近的便利店买杯热咖啡提提神。",
+        "reason": "下午还有两节课要上，得保持精力，不能在学生面前露怯。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 10,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "calm",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "教室"
+    }
+  },
+  "day": 10,
+  "active_concerns": [
+    {
+      "id": "97c316",
+      "text": "林昭宇在食堂表现出的紧绷感加重，需要尽快找时间进行一次深入的心理沟通。",
+      "source_event": "听到苏念瑶提到想去报竞赛，其他人表现出恐慌和逃避；基于对学生日常状态的观察与长期关注；食堂午餐时林昭宇的状态",
+      "source_scene": "午饭@食堂",
+      "source_day": 2,
+      "emotion": "anxious",
+      "intensity": 7,
+      "related_people": [
+        "苏念瑶",
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 6,
+      "reinforcement_count": 1,
+      "text_history": [
+        "班里竞赛焦虑风气蔓延，得找机会敲打又不伤他们。",
+        "林昭宇上次月考后红了眼眶，担心他长期紧绷出问题，需要找机会进行心理疏导。"
+      ],
+      "id_history": [],
+      "last_bump_day": 10,
+      "bumps_today": 2
+    },
+    {
+      "id": "51ddc7",
+      "text": "答应女儿的文具盲盒今天又没买到，作为母亲感到愧疚。",
+      "source_event": "下班未去商场购买文具盲盒",
+      "source_scene": "",
+      "source_day": 9,
+      "emotion": "guilt",
+      "intensity": 2,
+      "related_people": [
+        "女儿"
+      ],
+      "positive": false,
+      "topic": "其他",
+      "last_reinforced_day": 9,
+      "last_new_info_day": 9,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "fe0fa0",
+      "text": "答应女儿的文具盲盒今天又没买到，作为母亲感到愧疚。",
+      "source_event": "下班路过商场时因琐事耽搁未能购买",
+      "source_scene": "",
+      "source_day": 10,
+      "emotion": "guilty",
+      "intensity": 4,
+      "related_people": [
+        "女儿"
+      ],
+      "positive": false,
+      "topic": "家庭压力",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 10,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

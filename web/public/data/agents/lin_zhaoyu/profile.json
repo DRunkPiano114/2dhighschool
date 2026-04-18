@@ -69,68 +69,75 @@
     "daily_plan": {
       "intentions": [
         {
-          "target": "苏念瑶",
-          "goal": "找机会看一眼苏念瑶是在看我还是在看别处",
-          "reason": "这事儿一直挂在心上，总觉得有点在意，虽然很怂不敢直接对视，但还是想确认一下。",
-          "fulfilled": false,
-          "abandoned": false,
-          "satisfies_concern": "376b5c",
-          "origin_day": 7,
-          "pursued_days": 3
-        },
-        {
           "target": "陆思远",
-          "goal": "想问问陆思远能不能在晚自习帮我挡一下姜皓天的噪音",
-          "reason": "姜皓天太吵了，影响我复习，陆思远比较好说话，想看看他有没有什么办法。",
+          "goal": "请教定语从句的用法，把这个语法坑填掉",
+          "reason": "定语从句一直搞不懂，再拖下去下次考试英语又要拉跨，妈肯定又要唠叨了。",
           "fulfilled": true,
           "abandoned": false,
-          "satisfies_concern": "3247a4",
-          "origin_day": 9,
+          "satisfies_concern": null,
+          "origin_day": 10,
           "pursued_days": 1
         },
         {
           "target": null,
-          "goal": "去图书馆安安静静刷会数学题",
-          "reason": "只有在图书馆做题的时候才觉得踏实，不想被打扰。",
-          "fulfilled": true,
+          "goal": "找机会戴上耳机，安安静静听一整首许嵩的新歌",
+          "reason": "最近脑子里全是物理题，感觉快炸了，听首歌能稍微喘口气。",
+          "fulfilled": false,
           "abandoned": false,
           "satisfies_concern": null,
-          "origin_day": 9,
+          "origin_day": 10,
           "pursued_days": 1
         }
       ],
-      "mood_forecast": "frustrated",
+      "mood_forecast": "anxious",
       "location_preferences": {
         "morning_break": "教室",
         "lunch": "食堂",
         "afternoon_break": "图书馆"
       }
     },
-    "day": 9,
+    "day": 10,
     "active_concerns": [
       {
-        "id": "376b5c",
-        "text": "今天在图书馆和教室依然没能确认唐诗涵是否在关注我，这种不确定感让我有些在意。",
-        "source_event": "日常校园生活；图书馆与晚自习期间；课间与唐诗涵的借橡皮互动",
+        "id": "c775a6",
+        "text": "担心英语定语从句一直弄不懂，怕下次考试成绩不好会被妈妈责备。",
+        "source_event": "宿舍夜聊时被姜皓天打断，未能完成语法讲解",
         "source_scene": "",
-        "source_day": 7,
-        "emotion": "curious",
-        "intensity": 1,
+        "source_day": 9,
+        "emotion": "anxious",
+        "intensity": 3,
         "related_people": [
-          "唐诗涵"
+          "陆思远",
+          "母亲"
         ],
-        "positive": true,
-        "topic": "恋爱",
-        "last_reinforced_day": 9,
+        "positive": false,
+        "topic": "学业焦虑",
+        "last_reinforced_day": 10,
         "last_new_info_day": 9,
         "reinforcement_count": 1,
-        "text_history": [
-          "想找机会确认唐诗涵是否在关注我，这个念头一直挥之不去。",
-          "今天在图书馆和晚自习都没能找到机会确认唐诗涵是否在关注我。"
-        ],
+        "text_history": [],
         "id_history": [],
-        "last_bump_day": 9,
+        "last_bump_day": 10,
         "bumps_today": 2
+      },
+      {
+        "id": "e291a9",
+        "text": "一直没能抽出时间戴上耳机安安静静地听一首许嵩的新歌。",
+        "source_event": "全天学习任务繁重",
+        "source_scene": "",
+        "source_day": 10,
+        "emotion": "wistful",
+        "intensity": 1,
+        "related_people": [],
+        "positive": true,
+        "topic": "兴趣爱好",
+        "last_reinforced_day": 10,
+        "last_new_info_day": 10,
+        "reinforcement_count": 0,
+        "text_history": [],
+        "id_history": [],
+        "last_bump_day": 0,
+        "bumps_today": 0
       }
     ]
   },
@@ -138,120 +145,96 @@
     "tang_shihan": {
       "target_name": "唐诗涵",
       "target_id": "tang_shihan",
-      "favorability": 6,
+      "favorability": 10,
       "trust": 5,
-      "understanding": 15,
+      "understanding": 13,
       "label": "同桌",
       "recent_interactions": [
-        "Day 1 −课间@教室",
-        "Day 2 −课间@教室",
-        "Day 6 −课间@图书馆",
-        "Day 8 −课间@图书馆",
-        "Day 9 +课间@教室"
+        "Day 1 ·课间@教室",
+        "Day 2 +课间@教室",
+        "Day 3 +课间@教室",
+        "Day 7 −课间@教室",
+        "Day 8 −午饭@教室"
       ],
-      "days_since_interaction": 1
+      "days_since_interaction": 3
     },
     "jiang_haotian": {
       "target_name": "姜皓天",
       "target_id": "jiang_haotian",
-      "favorability": -6,
+      "favorability": 0,
       "trust": 0,
-      "understanding": 16,
+      "understanding": 15,
       "label": "前后桌",
       "recent_interactions": [
+        "Day 2 −宿舍夜聊",
+        "Day 3 ·宿舍夜聊",
+        "Day 4 −午饭@食堂",
         "Day 4 −宿舍夜聊",
-        "Day 5 −上课",
         "Day 5 −宿舍夜聊",
-        "Day 6 −午饭@食堂",
-        "Day 6 −上课",
         "Day 6 −宿舍夜聊",
         "Day 7 −宿舍夜聊",
-        "Day 8 −宿舍夜聊",
-        "Day 9 −午饭@食堂",
-        "Day 9 −宿舍夜聊"
+        "Day 8 ·宿舍夜聊",
+        "Day 9 −宿舍夜聊",
+        "Day 10 −宿舍夜聊"
       ],
       "days_since_interaction": 1
     },
     "lu_siyuan": {
       "target_name": "陆思远",
       "target_id": "lu_siyuan",
-      "favorability": 76,
-      "trust": 72,
-      "understanding": 52,
+      "favorability": 84,
+      "trust": 79,
+      "understanding": 56,
       "label": "室友",
       "recent_interactions": [
-        "Day 8 +课间@教室",
-        "Day 8 +午饭@食堂",
-        "Day 8 +课间@图书馆",
         "Day 8 +晚自习",
         "Day 8 +宿舍夜聊",
         "Day 9 +课间@教室",
-        "Day 9 +上课",
-        "Day 9 +午饭@食堂",
         "Day 9 +课间@图书馆",
-        "Day 9 +宿舍夜聊"
+        "Day 9 +宿舍夜聊",
+        "Day 10 +早读",
+        "Day 10 +课间@教室",
+        "Day 10 +午饭@食堂",
+        "Day 10 +课间@图书馆",
+        "Day 10 +宿舍夜聊"
       ],
       "days_since_interaction": 1
     },
     "shen_yifan": {
       "target_name": "沈逸凡",
       "target_id": "shen_yifan",
-      "favorability": 0,
-      "trust": 4,
-      "understanding": 20,
+      "favorability": -10,
+      "trust": 0,
+      "understanding": 18,
       "label": "室友",
       "recent_interactions": [
-        "Day 6 +晚自习",
-        "Day 7 −课间@教室",
+        "Day 5 −宿舍夜聊",
+        "Day 6 −午饭@食堂",
+        "Day 6 −宿舍夜聊",
+        "Day 7 −早读",
         "Day 7 −午饭@食堂",
-        "Day 7 −上课",
         "Day 7 −宿舍夜聊",
-        "Day 8 −课间@教室",
-        "Day 8 −午饭@食堂",
-        "Day 8 −晚自习",
+        "Day 8 −上课",
         "Day 8 −宿舍夜聊",
-        "Day 9 −上课"
+        "Day 10 −早读",
+        "Day 10 −午饭@食堂"
       ],
       "days_since_interaction": 1
     },
-    "cheng_yutong": {
-      "target_name": "程雨桐",
-      "target_id": "cheng_yutong",
-      "favorability": 0,
-      "trust": 0,
-      "understanding": 2,
-      "label": "同学",
+    "he_min": {
+      "target_name": "何老师",
+      "target_id": "he_min",
+      "favorability": 6,
+      "trust": 3,
+      "understanding": 4,
+      "label": "老师",
       "recent_interactions": [
-        "Day 1 −课间@图书馆",
-        "Day 6 −课间@图书馆",
-        "Day 9 ·课间@图书馆"
+        "Day 4 +课间@教室",
+        "Day 6 +午饭@食堂",
+        "Day 7 +午饭@食堂",
+        "Day 10 +课间@教室"
       ],
       "days_since_interaction": 1
-    },
-    "he_jiajun": {
-      "target_name": "何家骏",
-      "target_id": "he_jiajun",
-      "favorability": 0,
-      "trust": 0,
-      "understanding": 2,
-      "label": "同学",
-      "recent_interactions": [
-        "Day 3 −课间@教室",
-        "Day 5 ·午饭@教室"
-      ],
-      "days_since_interaction": 5
-    },
-    "su_nianyao": {
-      "target_name": "苏念瑶",
-      "target_id": "su_nianyao",
-      "favorability": 0,
-      "trust": 0,
-      "understanding": 1,
-      "label": "同学",
-      "recent_interactions": [
-        "Day 4 ·课间@图书馆"
-      ],
-      "days_since_interaction": 6
     },
     "fang_yuchen": {
       "target_name": "方语晨",
@@ -261,57 +244,71 @@
       "understanding": 0,
       "label": "同学",
       "recent_interactions": [
-        "Day 5 −课间@教室"
+        "Day 8 −午饭@教室"
       ],
-      "days_since_interaction": 5
+      "days_since_interaction": 3
+    },
+    "cheng_yutong": {
+      "target_name": "程雨桐",
+      "target_id": "cheng_yutong",
+      "favorability": 0,
+      "trust": 0,
+      "understanding": 0,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 8 ·午饭@教室",
+        "Day 9 ·课间@教室"
+      ],
+      "days_since_interaction": 2
     }
   },
-  "self_narrative": "在班里像个影子，除了陆思远，别人都不认识我。英语还是烂，怕被妈念叨死。物理题好不容易搞懂了，可宿舍太吵，心静不下来。挺累的，只想考上985，让家里别那么苦。",
+  "self_narrative": "在班里就是个隐形人，除了陆思远，基本不跟人说话。最近太累了，脑子像塞满物理公式。英语还是搞不定，怕下次考试退步，妈的电话又要打过来了。想听听歌，但总没空，感觉喘不过气。",
   "key_memories": {
     "memories": [
       {
         "date": "Day 1",
         "day": 1,
         "people": [
-          "陆思远"
-        ],
-        "location": "教室",
-        "emotion": "calm",
-        "importance": 6,
-        "topics": [
-          "学业焦虑"
-        ],
-        "text": "物理大题卡住了，最后和陆思远约好晚自习一起研究，这种感觉稍微踏实点。",
-        "source_days": [
-          2,
-          4,
-          5,
-          6
-        ],
-        "text_history": [
-          "陆思远把草稿纸推给我看他的物理推导，还好有他一起，不然周围吵死了。",
-          "与陆思远在图书馆及宿舍多次讨论物理难题，这种学术上的深度交流让学习压力得到了一定程度的排解。",
-          "早读时陆思远偷偷把写好逻辑笔记的草稿纸推给我，他真的很懂我。"
-        ]
-      },
-      {
-        "date": "Day 1",
-        "day": 1,
-        "people": [
-          "唐诗涵"
+          "沈逸凡"
         ],
         "location": "教室",
         "emotion": "embarrassed",
-        "importance": 4,
+        "importance": 6,
         "topics": [
-          "人际矛盾"
+          "人际矛盾",
+          "学业焦虑"
         ],
-        "text": "唐诗涵来问题我没答上来，那个……那个……太尴尬了，她好像有点不高兴。",
+        "text": "沈逸凡在课上又当众盯着我问英语单词，搞得我很难受。",
         "source_days": [
-          2
+          1
         ],
         "text_history": [
-          "唐诗涵一直在旁边烦人，说话阴阳怪气的，搞得我物理题思路都断了。"
+          "沈逸凡当着大家的面催我弄英语卷子，感觉有点丢脸。"
+        ]
+      },
+      {
+        "date": "Day 2",
+        "day": 2,
+        "people": [
+          "陆思远"
+        ],
+        "location": "图书馆",
+        "emotion": "anxious",
+        "importance": 6,
+        "topics": [
+          "学业焦虑",
+          "人际矛盾"
+        ],
+        "text": "在图书馆为了语法点纠结半天，思远一直劝我休息，觉得自己挺笨的。",
+        "source_days": [
+          3,
+          2,
+          8
+        ],
+        "text_history": [
+          "和思远去图书馆路上聊了物理题，他不仅懂我那个简化方法，还帮我看了英语语法，心里稳多了。",
+          "陆思远答应待会儿去图书馆帮我看看英语阅读，心里稍微踏实了点。",
+          "思远帮我讲了生物代谢路径，还指点了我关于定语从句的那个死规则，心里稍微稳当了点。"
         ]
       },
       {
@@ -324,26 +321,9 @@
         "emotion": "calm",
         "importance": 6,
         "topics": [
-          "人际矛盾"
+          "兴趣爱好"
         ],
-        "text": "陆思远帮我解围后去图书馆门口等我，感觉还是他最懂我。",
-        "source_days": [],
-        "text_history": []
-      },
-      {
-        "date": "Day 3",
-        "day": 3,
-        "people": [
-          "沈逸凡",
-          "陆思远"
-        ],
-        "location": "食堂",
-        "emotion": "anxious",
-        "importance": 5,
-        "topics": [
-          "人际矛盾"
-        ],
-        "text": "沈逸凡在食堂当面说陆思远没主见，听得我心里难受。",
+        "text": "思远喊我赶紧走，他还是懂我的，带我去图书馆讲物理题。",
         "source_days": [],
         "text_history": []
       },
@@ -351,87 +331,83 @@
         "date": "Day 4",
         "day": 4,
         "people": [
-          "沈逸凡"
+          "陆思远"
         ],
         "location": "教室",
-        "emotion": "anxious",
-        "importance": 4,
+        "emotion": "touched",
+        "importance": 6,
         "topics": [
           "人际矛盾"
         ],
-        "text": "沈逸凡非要跟着去图书馆，心里烦得不行。",
-        "source_days": [],
-        "text_history": []
+        "text": "陆思远在沈逸凡盯着的时候，默默给我递了笔芯，还是他最懂我。",
+        "source_days": [
+          5,
+          4,
+          6
+        ],
+        "text_history": [
+          "陆思远帮我拧开冰红茶瓶盖递过来，他真的很懂我。",
+          "食堂吃饭时陆思远把他的排骨夹给我，还帮我挡姜皓天的追问。",
+          "早读时我没精神，思远帮我讲题还把校服盖我肩上，真的很照顾我。"
+        ]
+      },
+      {
+        "date": "Day 5",
+        "day": 5,
+        "people": [
+          "沈逸凡",
+          "陆思远"
+        ],
+        "location": "食堂",
+        "emotion": "frustrated",
+        "importance": 6,
+        "topics": [
+          "人际矛盾"
+        ],
+        "text": "沈逸凡在食堂当众阴阳怪气，烦死了，还好思远跟我一起走了。",
+        "source_days": [
+          7,
+          8
+        ],
+        "text_history": [
+          "早读被沈逸凡盯着传纸条，心里慌得厉害，还好思远帮我挡了一下。",
+          "沈逸凡又来找茬，还好思远主动帮我分担了话题，不然真不知道怎么应付。"
+        ]
       },
       {
         "date": "Day 6",
         "day": 6,
         "people": [
-          "唐诗涵",
-          "程雨桐"
+          "何老师",
+          "沈逸凡"
         ],
-        "location": "图书馆",
-        "emotion": "embarrassed",
+        "location": "食堂",
+        "emotion": "touched",
         "importance": 6,
         "topics": [
-          "人际矛盾",
-          "学业焦虑"
-        ],
-        "text": "唐诗涵问我题，我没答出来，程雨桐还在旁边插嘴说我算错了，感觉好丢脸。",
-        "source_days": [],
-        "text_history": []
-      },
-      {
-        "date": "Day 7",
-        "day": 7,
-        "people": [
-          "陆思远"
-        ],
-        "location": "图书馆",
-        "emotion": "calm",
-        "importance": 6,
-        "topics": [
-          "学业焦虑",
           "人际矛盾"
         ],
-        "text": "陆思远在图书馆帮我讲解英语定语从句，并一起讨论物理题，这种被支持的感觉让我很安心。",
-        "source_days": [],
-        "text_history": []
-      },
-      {
-        "date": "Day 7",
-        "day": 7,
-        "people": [
-          "陆思远"
-        ],
-        "location": "教室",
-        "emotion": "calm",
-        "importance": 6,
-        "topics": [
-          "学业焦虑"
-        ],
-        "text": "陆思远教我怎么把复杂的长难句拆解开看，果然把从句括起来就没那么绕了。",
+        "text": "何老师在食堂帮我挡住了沈逸凡的催促，说我身体不舒服，心里挺暖的。",
         "source_days": [
-          8
+          7
         ],
         "text_history": [
-          "陆思远教我怎么拆解英语长难句，还说要把草稿纸给我看，心里稍微踏实了点。"
+          "何老师在食堂帮我挡住了沈逸凡的催促，还特意让我别急着去办公室，心里好受些了。"
         ]
       },
       {
-        "date": "Day 8",
-        "day": 8,
+        "date": "Day 9",
+        "day": 9,
         "people": [
-          "唐诗涵",
           "陆思远"
         ],
         "location": "图书馆",
-        "emotion": "embarrassed",
+        "emotion": "touched",
         "importance": 6,
         "topics": [
-          "人际矛盾"
+          "兴趣爱好"
         ],
-        "text": "唐诗涵一直问我在看什么，我紧张得话都说不利索，还好陆思远帮我挡了一下。",
+        "text": "思远在图书馆主动要听我的许嵩歌单，还夸歌好听，心里挺暖的。",
         "source_days": [],
         "text_history": []
       },
@@ -441,30 +417,47 @@
         "people": [
           "陆思远"
         ],
-        "location": "教室",
-        "emotion": "calm",
-        "importance": 5,
+        "location": "图书馆",
+        "emotion": "touched",
+        "importance": 6,
         "topics": [
-          "学业焦虑"
+          "人际交往",
+          "放松"
         ],
-        "text": "和陆思远约好晚自习去图书馆侧厅，他会帮我重新画那个物理受力分析图。",
+        "text": "在图书馆与陆思远共享耳机听音乐，感受到了难得的放松与陪伴。",
         "source_days": [],
         "text_history": []
       },
       {
-        "date": "Day 9",
-        "day": 9,
+        "date": "Day 10",
+        "day": 10,
         "people": [
-          "陆思远",
-          "姜皓天"
+          "何老师",
+          "陆思远"
         ],
-        "location": "食堂",
-        "emotion": "calm",
-        "importance": 5,
+        "location": "教室",
+        "emotion": "anxious",
+        "importance": 6,
         "topics": [
-          "人际矛盾"
+          "学业焦虑"
         ],
-        "text": "食堂人多又吵，姜皓天一直没完没了地问，陆思远帮我挡了一下，带我赶紧撤了。",
+        "text": "何老师突然叫我午休去办公室谈话，心跳得好快，幸好思远把笔记借给我了。",
+        "source_days": [],
+        "text_history": []
+      },
+      {
+        "date": "Day 10",
+        "day": 10,
+        "people": [
+          "陆思远"
+        ],
+        "location": "图书馆",
+        "emotion": "touched",
+        "importance": 6,
+        "topics": [
+          "学业焦虑"
+        ],
+        "text": "陆思远帮我理顺了物理受力分析的逻辑，还教了我怎么拆解定语从句的先行词，他真的超懂我。",
         "source_days": [],
         "text_history": []
       }

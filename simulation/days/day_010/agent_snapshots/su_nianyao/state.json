@@ -1,0 +1,144 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "方语晨",
+        "goal": "请她喝奶茶并诚恳道歉，试图修补关系",
+        "reason": "语晨真的生气了，我不想失去这个闺蜜，希望通过奶茶破冰",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 10,
+        "pursued_days": 1
+      },
+      {
+        "target": "程雨桐",
+        "goal": "向她请教那道物理竞赛题",
+        "reason": "再拖下去物理真的要崩了，程雨桐虽然话少但物理确实强，希望能借此缓和一下之前的尴尬",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 10,
+        "pursued_days": 1
+      },
+      {
+        "target": null,
+        "goal": "去图书馆找本散文集看，躲开唐诗涵的视线",
+        "reason": "心情太乱了，需要一个安静的地方躲一会儿，顺便思考怎么应对唐诗涵的追问",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 10,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "anxious",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 10,
+  "active_concerns": [
+    {
+      "id": "bdfb98",
+      "text": "唐诗涵在宿舍直指手机备注LYU的含义，这种秘密即将被公开的恐惧感让我整晚难以入眠。",
+      "source_event": "宿舍夜聊；食堂午餐时的对话；宿舍夜聊；宿舍夜聊及课间追问；宿舍夜聊；宿舍夜聊",
+      "source_scene": "",
+      "source_day": 2,
+      "emotion": "frustrated",
+      "intensity": 9,
+      "related_people": [
+        "林昭宇",
+        "方语晨"
+      ],
+      "positive": false,
+      "topic": "恋爱",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 8,
+      "reinforcement_count": 9,
+      "text_history": [
+        "方语晨已经拆穿了我的手机备注，担心她会进一步追问或在班级里引起不必要的关注。",
+        "方语晨和唐诗涵对林昭宇的关注度过高，担心自己对他的好感会被彻底看穿并公开化。",
+        "唐诗涵威胁要公开手机里关于林昭宇的备注，必须想办法转移她的注意力，否则秘密可能保不住。"
+      ],
+      "id_history": [],
+      "last_bump_day": 10,
+      "bumps_today": 1
+    },
+    {
+      "id": "ae7c08",
+      "text": "物理竞赛题始终无法突破，错题本积压严重，担心考试会彻底搞砸。",
+      "source_event": "全天学习过程；晚自习",
+      "source_scene": "",
+      "source_day": 6,
+      "emotion": "anxious",
+      "intensity": 4,
+      "related_people": [
+        "程雨桐"
+      ],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 8,
+      "reinforcement_count": 3,
+      "text_history": [
+        "物理竞赛题解法始终难以掌握，错题本积压过多，对即将到来的考试感到焦虑。"
+      ],
+      "id_history": [],
+      "last_bump_day": 10,
+      "bumps_today": 2
+    },
+    {
+      "id": "dbfd07",
+      "text": "关于手机备注LYU的含义，方语晨步步紧逼，明天必须给出交代，担心秘密彻底泄露。",
+      "source_event": "宿舍夜聊被逼问备注；宿舍夜聊；宿舍夜聊方语晨的再次追问",
+      "source_scene": "",
+      "source_day": 7,
+      "emotion": "焦虑",
+      "intensity": 7,
+      "related_people": [
+        "唐诗涵",
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 10,
+      "reinforcement_count": 4,
+      "text_history": [
+        "唐诗涵执意要弄清手机备注LYU的含义，甚至扬言要去问林昭宇，必须想办法彻底堵住她的嘴。",
+        "方语晨要求我明天必须向唐诗涵交代奶茶和LYU的事情，这让我感到极大的压力，担心秘密彻底守不住。"
+      ],
+      "id_history": [],
+      "last_bump_day": 10,
+      "bumps_today": 2
+    },
+    {
+      "id": "780367",
+      "text": "语晨好像真的生气了，奶茶买给她她还会理我吗？",
+      "source_event": "方语晨在教室里因为买奶茶的事闹别扭，说要喝凉水。",
+      "source_scene": "上课",
+      "source_day": 8,
+      "emotion": "anxious",
+      "intensity": 2,
+      "related_people": [
+        "方语晨"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 8,
+      "reinforcement_count": 2,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 10,
+      "bumps_today": 2
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "scene": {
-    "scene_index": 8,
+    "scene_index": 13,
     "time": "15:30",
     "name": "课间",
     "location": "走廊",
@@ -8,20 +8,1093 @@
     "day": 8
   },
   "participant_names": {
-    "fang_yuchen": "方语晨"
+    "fang_yuchen": "方语晨",
+    "tang_shihan": "唐诗涵"
   },
   "groups": [
     {
       "group_index": 0,
       "participants": [
-        "fang_yuchen"
+        "fang_yuchen",
+        "tang_shihan"
       ],
-      "is_solo": true,
-      "solo_reflection": {
-        "inner_thought": "姜皓天那家伙，奶茶钱到底转我没啊，磨磨蹭蹭的。",
-        "emotion": "curious",
-        "activity": "靠在走廊栏杆上刷手机，查看刚才群里的聊天记录。"
-      }
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "tang_shihan",
+              "content": "诗涵，你上次说的那款限定立牌我刚好在闲鱼搜到了，你要不要看看那个卖家靠不靠谱？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "唐诗涵一个人在那儿靠着窗，正好可以过去跟她聊聊谷子的事，顺便缓解昨晚的尴尬。",
+              "inner_thought": "气氛太僵了，还是先拿谷子当台阶，把昨晚那茬翻篇吧。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "诗涵，你上次说的那款限定立牌我刚好在闲鱼搜到了，你要不要看看那个卖家靠不靠谱？",
+              "action_target": "tang_shihan",
+              "urgency": 7,
+              "is_disruptive": false
+            },
+            "tang_shihan": {
+              "observation": "方语晨站在走廊窗边，看起来心事重重的样子。",
+              "inner_thought": "她怎么又这副表情，到底有什么瞒着我，烦死了。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "哎，你刚刚看什么呢？那个短剧我还没追完，到底好看吗？",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "哎，你刚刚看什么呢？那个短剧我还没追完，到底好看吗？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "唐诗涵听我提到闲鱼立牌，表情稍微松动了一点，没刚才那么紧绷了。",
+              "inner_thought": "还好没甩脸色，看来谷子还是管用的，先把昨晚那点别扭糊弄过去再说。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "链接我发你QQ了，你帮我把把关，那卖家评价看着还行，就是怕是盗图的。",
+              "action_target": "tang_shihan",
+              "urgency": 7,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "tang_shihan",
+              "content": "链接我发你QQ了，你帮我把把关，那卖家评价看着还行，就是怕是盗图的。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "tang_shihan": {
+              "observation": "方语晨在和我聊闲鱼卖家，但我更想知道她刚才到底在看什么短剧。",
+              "inner_thought": "这立牌又不急，她刚才看我手机时的表情到底在遮什么，肯定有鬼。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "立牌先放一边啦，快给我看看你刷的那个剧，是不是又虐女主了？",
+              "action_target": "fang_yuchen",
+              "urgency": 7,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "立牌先放一边啦，快给我看看你刷的那个剧，是不是又虐女主了？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "唐诗涵拿起手机看了一眼QQ消息，神情比刚才轻松了许多，看来谷子的话题成功缓和了气氛。",
+              "inner_thought": "还好没翻车，先避开念瑶那个雷，把气氛稳住。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "那家店如果你觉得不行就跟我说，反正我还没下单呢。",
+              "action_target": "tang_shihan",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 4,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "tang_shihan",
+              "content": "那家店如果你觉得不行就跟我说，反正我还没下单呢。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "tang_shihan": {
+              "observation": "方语晨虽然在回我话，但眼神还是有点飘，好像不太想聊剧。",
+              "inner_thought": "她怎么回事，一直躲躲闪闪，到底是不是有什么事瞒着我？",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "你手机给我看看嘛，到底什么剧让你这么神神秘秘的？",
+              "action_target": "fang_yuchen",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 5,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "你手机给我看看嘛，到底什么剧让你这么神神秘秘的？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "唐诗涵正低头认真看着手机里的短剧预告，似乎对情节很投入。",
+              "inner_thought": "这剧确实挺抓马，先跟她聊会儿剧，把关系彻底拉回来。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "你快看后面，那男主简直离谱，为了白月光要把女主送走，真的假的！",
+              "action_target": "tang_shihan",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 6,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "tang_shihan",
+              "content": "你快看后面，那男主简直离谱，为了白月光要把女主送走，真的假的！"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "tang_shihan": {
+              "observation": "方语晨一直回避手机屏幕的内容，这让我更加怀疑她有事情瞒着我。",
+              "inner_thought": "到底有什么见不得人的，难道是关于LYU的？越是藏着我越想看。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "神神秘秘的，该不会是在和谁偷偷聊天吧？立牌的事儿先放放，你这手机我必须要瞅一眼。",
+              "action_target": "fang_yuchen",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 7,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "神神秘秘的，该不会是在和谁偷偷聊天吧？立牌的事儿先放放，你这手机我必须要瞅一眼。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "唐诗涵被手机里的剧情逗笑了，刚才那种因为念瑶而产生的尴尬感彻底没了。",
+              "inner_thought": "还好没吵起来，这种抓马剧情果然是拉近关系的利器，这下稳了。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "但这还没完呢，后面还有更离谱的，男女主居然还要在雨中对峙，真的太老套了。",
+              "action_target": "tang_shihan",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 8,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "tang_shihan",
+              "content": "但这还没完呢，后面还有更离谱的，男女主居然还要在雨中对峙，真的太老套了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "tang_shihan": {
+              "observation": "方语晨一直遮遮掩掩不给我看手机，表情明显在躲闪。",
+              "inner_thought": "搞什么啊，不就是看个剧吗，至于这么防着我吗？肯定有猫腻。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "切，搞得这么神秘，不给看就不给看呗，谁稀罕啊。",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 9,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "切，搞得这么神秘，不给看就不给看呗，谁稀罕啊。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "唐诗涵看剧看得很入神，我们俩昨晚的那种尴尬气氛确实算是过去了。",
+              "inner_thought": "还好没吵，先把念瑶的事放放，这种时候还是追剧快乐。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "哎，后面还有更降智的翻白眼剧情，我发链接给你，晚点一起吐槽。",
+              "action_target": "tang_shihan",
+              "urgency": 4,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 10,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "tang_shihan",
+              "content": "哎，后面还有更降智的翻白眼剧情，我发链接给你，晚点一起吐槽。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "tang_shihan": {
+              "observation": "方语晨一直避开手机屏幕，显然不想让我看她到底在和谁聊或者看什么。",
+              "inner_thought": "真烦，她到底在瞒什么，难道真是LYU的事？",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "行吧，我还要去问林昭宇物理题呢，奶茶钱记得微信转我。",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 11,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "行吧，我还要去问林昭宇物理题呢，奶茶钱记得微信转我。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "唐诗涵看我发过去的链接笑得停不下来，看来她已经完全忘了昨晚宿舍那种尴尬气氛了。",
+              "inner_thought": "还好没吵，先把念瑶的事搁一搁，这剧真下饭。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "怎么样，够离谱吧？我就说这女主脑子离家出走了。",
+              "action_target": "tang_shihan",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        }
+      ],
+      "narrative": {
+        "key_moments": [
+          "方语晨向唐诗涵询问闲鱼限定立牌卖家是否靠谱。",
+          "唐诗涵询问方语晨正在观看的短剧内容。",
+          "方语晨通过QQ向唐诗涵发送了闲鱼商品链接。",
+          "方语晨向唐诗涵描述短剧剧情。",
+          "唐诗涵表示要去询问林昭宇物理题并要求方语晨转账奶茶钱。"
+        ],
+        "fulfilled_intentions": [
+          "方语晨:向唐诗涵确认闲鱼卖家信誉",
+          "方语晨:分享短剧剧情",
+          "唐诗涵:向林昭宇请教物理题"
+        ],
+        "events_discussed": [
+          "闲鱼限定立牌购买事宜",
+          "短剧剧情讨论",
+          "物理题请教",
+          "奶茶钱转账"
+        ],
+        "new_events": [
+          {
+            "text": "方语晨在闲鱼发现一款限定立牌，并向唐诗涵征求卖家可靠性意见。",
+            "category": "购物咨询",
+            "witnesses": [
+              "方语晨",
+              "唐诗涵"
+            ],
+            "spread_probability": 0.3,
+            "cite_ticks": [
+              1,
+              3,
+              5
+            ]
+          },
+          {
+            "text": "方语晨向唐诗涵分享短剧剧情并邀请其后续共同吐槽。",
+            "category": "娱乐分享",
+            "witnesses": [
+              "方语晨",
+              "唐诗涵"
+            ],
+            "spread_probability": 0.4,
+            "cite_ticks": [
+              7,
+              9,
+              11
+            ]
+          },
+          {
+            "text": "唐诗涵计划向林昭宇请教物理题。",
+            "category": "学业安排",
+            "witnesses": [
+              "方语晨",
+              "唐诗涵"
+            ],
+            "spread_probability": 0.2,
+            "cite_ticks": [
+              12
+            ]
+          }
+        ]
+      },
+      "reflections": {
+        "fang_yuchen": {
+          "emotion": "bored",
+          "relationship_changes": [
+            {
+              "to_agent": "唐诗涵",
+              "favorability": 1,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "和诗涵吐槽短剧剧情，后面那男主简直太离谱了。",
+              "emotion": "bored",
+              "importance": 3,
+              "people": [
+                "唐诗涵"
+              ],
+              "location": "走廊",
+              "topics": [
+                "兴趣爱好"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [],
+          "intention_outcomes": [
+            {
+              "goal": "想办法在课间把苏念瑶约出来，试探一下她最近到底瞒着什么，尤其是那个LYU的备注。",
+              "status": "pending",
+              "brief_reason": "苏念瑶没在场，一直在和诗涵聊天。"
+            },
+            {
+              "goal": "和唐诗涵交换一下最近新到的谷子，缓和一下宿舍里因为昨晚逼问秘密而闹僵的气氛。",
+              "status": "attempted",
+              "brief_reason": "我想跟她聊立牌，结果她一直想看我手机里的短剧，没聊成谷子。"
+            }
+          ]
+        },
+        "tang_shihan": {
+          "emotion": "bored",
+          "relationship_changes": [
+            {
+              "to_agent": "方语晨",
+              "favorability": 1,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "和方语晨在走廊疯狂吐槽那个离谱的甜宠剧，剧情烂到家了。",
+              "emotion": "bored",
+              "importance": 3,
+              "people": [
+                "方语晨"
+              ],
+              "location": "走廊",
+              "topics": [
+                "兴趣爱好"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [],
+          "intention_outcomes": [
+            {
+              "goal": "拉她去买奶茶，顺便最后一次套话问LYU是不是林昭宇（想找苏念瑶）",
+              "status": "pending",
+              "brief_reason": "苏念瑶根本没在现场，完全没机会提。"
+            },
+            {
+              "goal": "假装请教物理题，顺便侧面打听下他最近有没有什么八卦（想找林昭宇）",
+              "status": "pending",
+              "brief_reason": "林昭宇不在场，这节课后打算再去问。"
+            },
+            {
+              "goal": "找她一起吐槽今天的数学作业，顺便看下新出的甜宠剧（想找方语晨）",
+              "status": "fulfilled",
+              "brief_reason": "和方语晨吐槽了半天电视剧，这剧确实离谱。"
+            }
+          ]
+        }
+      },
+      "share_tick_layouts": [
+        {
+          "day": 8,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "诗涵，你上次说的那款限定立牌我刚好在闲鱼搜到了，你要不要看看那个卖家靠不靠谱？"
+            },
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "thought",
+              "text": "她怎么又这副表情，到底有什么瞒着我，烦死了。"
+            }
+          ],
+          "featured_quote": "气氛太僵了，还是先拿谷子当台阶，把昨晚那茬翻篇吧。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 0
+        },
+        {
+          "day": 8,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "speech",
+              "text": "哎，你刚刚看什么呢？那个短剧我还没追完，到底好看吗？"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "还好没甩脸色，看来谷子还是管用的，先把昨晚那点别扭糊弄过去再说。"
+            }
+          ],
+          "featured_quote": "还好没甩脸色，看来谷子还是管用的，先把昨晚那点别扭糊弄过去再说。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 1
+        },
+        {
+          "day": 8,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "链接我发你QQ了，你帮我把把关，那卖家评价看着还行，就是怕是盗图的。"
+            },
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "thought",
+              "text": "这立牌又不急，她刚才看我手机时的表情到底在遮什么，肯定有鬼。"
+            }
+          ],
+          "featured_quote": "这立牌又不急，她刚才看我手机时的表情到底在遮什么，肯定有鬼。",
+          "featured_speaker_name": "唐诗涵",
+          "tick_index": 2
+        },
+        {
+          "day": 8,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "speech",
+              "text": "立牌先放一边啦，快给我看看你刷的那个剧，是不是又虐女主了？"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "还好没翻车，先避开念瑶那个雷，把气氛稳住。"
+            }
+          ],
+          "featured_quote": "还好没翻车，先避开念瑶那个雷，把气氛稳住。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 3
+        },
+        {
+          "day": 8,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "那家店如果你觉得不行就跟我说，反正我还没下单呢。"
+            },
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "thought",
+              "text": "她怎么回事，一直躲躲闪闪，到底是不是有什么事瞒着我？"
+            }
+          ],
+          "featured_quote": "她怎么回事，一直躲躲闪闪，到底是不是有什么事瞒着我？",
+          "featured_speaker_name": "唐诗涵",
+          "tick_index": 4
+        },
+        {
+          "day": 8,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "speech",
+              "text": "你手机给我看看嘛，到底什么剧让你这么神神秘秘的？"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "这剧确实挺抓马，先跟她聊会儿剧，把关系彻底拉回来。"
+            }
+          ],
+          "featured_quote": "这剧确实挺抓马，先跟她聊会儿剧，把关系彻底拉回来。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 5
+        },
+        {
+          "day": 8,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "你快看后面，那男主简直离谱，为了白月光要把女主送走，真的假的！"
+            },
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "thought",
+              "text": "到底有什么见不得人的，难道是关于LYU的？越是藏着我越想看。"
+            }
+          ],
+          "featured_quote": "到底有什么见不得人的，难道是关于LYU的？越是藏着我越想看。",
+          "featured_speaker_name": "唐诗涵",
+          "tick_index": 6
+        },
+        {
+          "day": 8,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "speech",
+              "text": "神神秘秘的，该不会是在和谁偷偷聊天吧？立牌的事儿先放放，你这手机我必须要瞅一眼。"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "还好没吵起来，这种抓马剧情果然是拉近关系的利器，这下稳了。"
+            }
+          ],
+          "featured_quote": "还好没吵起来，这种抓马剧情果然是拉近关系的利器，这下稳了。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 7
+        },
+        {
+          "day": 8,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "但这还没完呢，后面还有更离谱的，男女主居然还要在雨中对峙，真的太老套了。"
+            },
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "thought",
+              "text": "搞什么啊，不就是看个剧吗，至于这么防着我吗？肯定有猫腻。"
+            }
+          ],
+          "featured_quote": "搞什么啊，不就是看个剧吗，至于这么防着我吗？肯定有猫腻。",
+          "featured_speaker_name": "唐诗涵",
+          "tick_index": 8
+        },
+        {
+          "day": 8,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "speech",
+              "text": "切，搞得这么神秘，不给看就不给看呗，谁稀罕啊。"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "还好没吵，先把念瑶的事放放，这种时候还是追剧快乐。"
+            }
+          ],
+          "featured_quote": "还好没吵，先把念瑶的事放放，这种时候还是追剧快乐。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 9
+        },
+        {
+          "day": 8,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "哎，后面还有更降智的翻白眼剧情，我发链接给你，晚点一起吐槽。"
+            },
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "thought",
+              "text": "真烦，她到底在瞒什么，难道真是LYU的事？"
+            }
+          ],
+          "featured_quote": "真烦，她到底在瞒什么，难道真是LYU的事？",
+          "featured_speaker_name": "唐诗涵",
+          "tick_index": 10
+        },
+        {
+          "day": 8,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "speech",
+              "text": "行吧，我还要去问林昭宇物理题呢，奶茶钱记得微信转我。"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "还好没吵，先把念瑶的事搁一搁，这剧真下饭。"
+            }
+          ],
+          "featured_quote": "还好没吵，先把念瑶的事搁一搁，这剧真下饭。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 11
+        }
+      ],
+      "share_tick_captions": [
+        {
+          "caption": "第008天 · 课间 · 走廊 ☀️\n\n「方语晨」气氛太僵了，还是先拿谷子当台阶，把昨晚那茬翻篇吧。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第008天_课间@走廊_t01.png",
+          "group_index": 0,
+          "tick_index": 0
+        },
+        {
+          "caption": "第008天 · 课间 · 走廊 🌿\n\n「方语晨」还好没甩脸色，看来谷子还是管用的，先把昨晚那点别扭糊弄过去再说。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第008天_课间@走廊_t02.png",
+          "group_index": 0,
+          "tick_index": 1
+        },
+        {
+          "caption": "第008天 · 课间 · 走廊 ☀️\n\n「唐诗涵」这立牌又不急，她刚才看我手机时的表情到底在遮什么，肯定有鬼。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第008天_课间@走廊_t03.png",
+          "group_index": 0,
+          "tick_index": 2
+        },
+        {
+          "caption": "第008天 · 课间 · 走廊 🌿\n\n「方语晨」还好没翻车，先避开念瑶那个雷，把气氛稳住。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第008天_课间@走廊_t04.png",
+          "group_index": 0,
+          "tick_index": 3
+        },
+        {
+          "caption": "第008天 · 课间 · 走廊 ☀️\n\n「唐诗涵」她怎么回事，一直躲躲闪闪，到底是不是有什么事瞒着我？\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第008天_课间@走廊_t05.png",
+          "group_index": 0,
+          "tick_index": 4
+        },
+        {
+          "caption": "第008天 · 课间 · 走廊 🌿\n\n「方语晨」这剧确实挺抓马，先跟她聊会儿剧，把关系彻底拉回来。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第008天_课间@走廊_t06.png",
+          "group_index": 0,
+          "tick_index": 5
+        },
+        {
+          "caption": "第008天 · 课间 · 走廊 ☀️\n\n「唐诗涵」到底有什么见不得人的，难道是关于LYU的？越是藏着我越想看。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第008天_课间@走廊_t07.png",
+          "group_index": 0,
+          "tick_index": 6
+        },
+        {
+          "caption": "第008天 · 课间 · 走廊 🌿\n\n「方语晨」还好没吵起来，这种抓马剧情果然是拉近关系的利器，这下稳了。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第008天_课间@走廊_t08.png",
+          "group_index": 0,
+          "tick_index": 7
+        },
+        {
+          "caption": "第008天 · 课间 · 走廊 ☀️\n\n「唐诗涵」搞什么啊，不就是看个剧吗，至于这么防着我吗？肯定有猫腻。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第008天_课间@走廊_t09.png",
+          "group_index": 0,
+          "tick_index": 8
+        },
+        {
+          "caption": "第008天 · 课间 · 走廊 🌿\n\n「方语晨」还好没吵，先把念瑶的事放放，这种时候还是追剧快乐。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第008天_课间@走廊_t10.png",
+          "group_index": 0,
+          "tick_index": 9
+        },
+        {
+          "caption": "第008天 · 课间 · 走廊 ☀️\n\n「唐诗涵」真烦，她到底在瞒什么，难道真是LYU的事？\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第008天_课间@走廊_t11.png",
+          "group_index": 0,
+          "tick_index": 10
+        },
+        {
+          "caption": "第008天 · 课间 · 走廊 🌿\n\n「方语晨」还好没吵，先把念瑶的事搁一搁，这剧真下饭。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第008天_课间@走廊_t12.png",
+          "group_index": 0,
+          "tick_index": 11
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,62 @@
+{
+  "agent_id": "he_jiajun",
+  "name_cn": "何家骏",
+  "day": 10,
+  "is_teacher": false,
+  "motif_emoji": "🌫️",
+  "motif_tag": "寡言少年",
+  "main_color": "#7B8FA8",
+  "emotion_label": "兴奋",
+  "energy_label": "精神还行",
+  "pressure_label": "轻松",
+  "featured_quote": "他今天胃口好像也不大好，晚上加练会不会没力气。那个动作我想让他再教我一遍。",
+  "featured_scene": "12:00 · 午饭",
+  "relationships": [
+    {
+      "target_name": "姜皓天",
+      "favorability": 40,
+      "trust": 23,
+      "label_text": "很亲近的朋友"
+    },
+    {
+      "target_name": "沈逸凡",
+      "favorability": 0,
+      "trust": 0,
+      "label_text": "普通同学"
+    },
+    {
+      "target_name": "唐诗涵",
+      "favorability": 0,
+      "trust": 0,
+      "label_text": "普通同学"
+    }
+  ],
+  "memories": [
+    {
+      "date": "Day 10",
+      "text": "姜皓天请我喝奶茶，还说食堂的饭太难吃，带我出来吃好的。",
+      "importance": 6
+    },
+    {
+      "date": "Day 10",
+      "text": "姜皓天教我转身上篮，还一直给我喂球，感觉没那么笨了",
+      "importance": 6
+    }
+  ],
+  "top_concern": {
+    "text": "答应了姜皓天晚上加练并吃辣条，希望能顺利进行，不要被沈逸凡搅合。",
+    "intensity_label": "较强",
+    "positive": true
+  },
+  "self_narrative": "又是最后一排。数学书翻开又合上，看不进去。姜皓天投篮的时候，其实挺羡慕的。和他打球算是我唯一能透气的时候。成绩还是垫底，爸又上夜班去了。那个……算了，没什么好说的。",
+  "caption_payload": {
+    "caption": "🌫️ 何家骏 · 第010天 档案\n\n标签：寡言少年\n此刻心情：兴奋\n\n「他今天胃口好像也不大好，晚上加练会不会没力气。那个动作我想让他再教我一遍。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "hashtags": [
+      "#SimCampus",
+      "#AI高中生",
+      "#青春日记",
+      "#人物志"
+    ],
+    "filename": "simcampus_何家骏_档案_第010天.png"
+  }
+}

@@ -6,67 +6,105 @@
   "daily_plan": {
     "intentions": [
       {
-        "target": "智学网后台",
-        "goal": "确认月考排名",
-        "reason": "排名迟迟不公布，复习节奏受干扰，必须拿到数据才能调整物理复习计划。",
+        "target": "物理竞赛题集",
+        "goal": "完成力学进阶章节的全部推导与错题整理",
+        "reason": "竞赛进度落后了十分钟，必须补上以维持优势。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "ae385e",
-        "origin_day": 5,
-        "pursued_days": 5
+        "satisfies_concern": "515128",
+        "origin_day": 8,
+        "pursued_days": 2
       },
       {
-        "target": "物理错题本",
-        "goal": "完成逻辑闭环整理",
-        "reason": "月考后的知识漏洞必须在下次考试前修补，这是保持领先的必要手段。",
+        "target": "睡眠",
+        "goal": "确保早于熄灯后半小时入睡",
+        "reason": "明天的测验需要充足的精力，不能再被宿舍杂音干扰。",
         "fulfilled": true,
         "abandoned": false,
-        "satisfies_concern": null,
-        "origin_day": 9,
-        "pursued_days": 1
+        "satisfies_concern": "06f3e5",
+        "origin_day": 8,
+        "pursued_days": 2
       },
       {
-        "target": "被窝",
-        "goal": "阅读《仙路独行》",
-        "reason": "需要从高强度的学习和宿舍噪音中抽离，通过阅读缓解心理压力。",
-        "fulfilled": true,
+        "target": "小说网站",
+        "goal": "阅读《仙路独行》最新章节",
+        "reason": "这是维持心理平衡的必要逃避，需要放松以应对压力。",
+        "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": null,
-        "origin_day": 5,
-        "pursued_days": 5
+        "satisfies_concern": "b24dbc",
+        "origin_day": 8,
+        "pursued_days": 2
       }
     ],
     "mood_forecast": "calm",
     "location_preferences": {
       "morning_break": "教室",
-      "lunch": "操场",
+      "lunch": "教室",
       "afternoon_break": "图书馆"
     }
   },
   "day": 9,
   "active_concerns": [
     {
-      "id": "ae385e",
-      "text": "月考排名迟迟未发布，无法根据结果评估物理学科的逻辑漏洞，导致复习节奏被打乱。",
-      "source_event": "课间反复刷新智学网界面；日常复习与月考等待",
+      "id": "515128",
+      "text": "力学竞赛进度落后了十分钟，必须补上以维持年级前列的优势。",
+      "source_event": "课间图书馆推导力学题",
       "source_scene": "",
       "source_day": 8,
-      "emotion": "frustrated",
+      "emotion": "anxious",
       "intensity": 6,
       "related_people": [],
       "positive": false,
       "topic": "学业焦虑",
       "last_reinforced_day": 9,
       "last_new_info_day": 8,
-      "reinforcement_count": 2,
-      "text_history": [
-        "月考排名迟迟未公布，无法根据具体丢分点调整物理复习逻辑。"
-      ],
-      "id_history": [
-        "1bc21a"
-      ],
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
       "last_bump_day": 9,
       "bumps_today": 2
+    },
+    {
+      "id": "b24dbc",
+      "text": "每晚熄灯后阅读《仙路独行》的习惯不能被任何人发现，这是维持心理平衡的必要逃避。",
+      "source_event": "每日熄灯后的被窝阅读",
+      "source_scene": "",
+      "source_day": 8,
+      "emotion": "calm",
+      "intensity": 3,
+      "related_people": [],
+      "positive": true,
+      "topic": "兴趣爱好",
+      "last_reinforced_day": 8,
+      "last_new_info_day": 8,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "d5063f",
+      "text": "今晚因为宿舍夜聊没能看成《仙路独行》，心里有些不踏实。",
+      "source_event": "22:00 宿舍夜聊",
+      "source_scene": "",
+      "source_day": 9,
+      "emotion": "anxious",
+      "intensity": 4,
+      "related_people": [
+        "苏念瑶",
+        "唐诗涵",
+        "方语晨"
+      ],
+      "positive": false,
+      "topic": "兴趣爱好",
+      "last_reinforced_day": 9,
+      "last_new_info_day": 9,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
     }
   ]
 }

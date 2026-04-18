@@ -9,48 +9,44 @@
   "emotion_label": "平静",
   "energy_label": "精神还行",
   "pressure_label": "压力不小",
-  "featured_quote": "公式解出来了，但排名还没出，这焦虑感真碍事，想看仙路独行了。",
-  "featured_scene": "15:30 · 课间",
+  "featured_quote": "离看完全部更新还差几百字，这声音太干扰思绪了。",
+  "featured_scene": "22:00 · 宿舍夜聊",
   "relationships": [
     {
       "target_name": "苏念瑶",
-      "favorability": 4,
-      "trust": 5,
+      "favorability": 3,
+      "trust": 4,
       "label_text": "普通同学"
     },
     {
       "target_name": "唐诗涵",
-      "favorability": 4,
+      "favorability": 3,
       "trust": 5,
       "label_text": "普通同学"
     },
     {
-      "target_name": "陆思远",
-      "favorability": 1,
-      "trust": 1,
+      "target_name": "林昭宇",
+      "favorability": 0,
+      "trust": 0,
       "label_text": "普通同学"
     }
   ],
   "memories": [
     {
-      "date": "Day 1",
-      "text": "舍友熄灯后还在吵闹，被迫打断了看书节奏。",
+      "date": "Day 2",
+      "text": "在图书馆与苏念瑶交流数学纠错本并指出辅助线作法，随后戴上降噪耳机继续物理推演。",
       "importance": 4
     },
     {
       "date": "Day 1",
-      "text": "在图书馆帮助陆思远核对物理卷子，并提供了准确的解题步骤。",
+      "text": "苏念瑶和方语晨在课间传纸条讨论八卦，吵得无法专注。",
       "importance": 4
     }
   ],
-  "top_concern": {
-    "text": "月考排名尚未公布，对成绩的悬念导致持续的焦虑感。",
-    "intensity_label": "中等",
-    "positive": false
-  },
-  "self_narrative": "开学了。教室很吵。苏念瑶又在说话。我没听，戴上耳机刷了三道物理题。排名还没出，焦虑感在胃里翻腾。只有熄灯后那半小时修仙文能看。我必须保持第一。除此之外，没什么好说的。",
+  "top_concern": null,
+  "self_narrative": "开学了。作息表已重新排好。苏念瑶总是在耳边说话，效率降低。排名没变，还没到第一，不够。父母昨晚提到清北名额，又在预设我的路径。被窝里的《仙路独行》是唯一的出口。继续保持安静，维持秩序，不要出错。",
   "caption_payload": {
-    "caption": "📚 程雨桐 · 第002天 档案\n\n标签：沉默第二名\n此刻心情：平静\n\n「公式解出来了，但排名还没出，这焦虑感真碍事，想看仙路独行了。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "📚 程雨桐 · 第002天 档案\n\n标签：沉默第二名\n此刻心情：平静\n\n「离看完全部更新还差几百字，这声音太干扰思绪了。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

@@ -6,22 +6,22 @@
   "motif_emoji": "☀️",
   "motif_tag": "小太阳",
   "main_color": "#B06AB3",
-  "emotion_label": "挫败",
+  "emotion_label": "好奇",
   "energy_label": "精神还行",
   "pressure_label": "稍有压力",
-  "featured_quote": "这丫头绝对有猫腻，看一眼林昭宇又躲着我，沈逸凡的事儿她肯定还没跟我说实话！",
-  "featured_scene": "07:00 · 早读",
+  "featured_quote": "念瑶装得再像也瞒不过我，林昭宇的名字就是她的死穴，等吃完饭回宿舍我有的是办法让她招供。",
+  "featured_scene": "12:00 · 午饭",
   "relationships": [
     {
       "target_name": "唐诗涵",
-      "favorability": 28,
-      "trust": 20,
+      "favorability": 27,
+      "trust": 16,
       "label_text": "很亲近的朋友"
     },
     {
       "target_name": "苏念瑶",
-      "favorability": 27,
-      "trust": 22,
+      "favorability": 26,
+      "trust": 19,
       "label_text": "很亲近的朋友"
     },
     {
@@ -34,23 +34,23 @@
   "memories": [
     {
       "date": "Day 5",
-      "text": "晚上想跟念瑶聊沈逸凡的猫，结果她一直敷衍我，气死人。",
+      "text": "终于从诗涵那里拿到了限定款立牌，虽然念瑶还是死活不肯交代LYU的事，但立牌到手了心情好多了。",
       "importance": 6
     },
     {
       "date": "Day 4",
-      "text": "苏念瑶晚自习一直盯着林昭宇看，还躲着程雨桐，肯定有什么事瞒着我。",
+      "text": "苏念瑶耳朵红了还在硬装，肯定有情况，林昭宇这事儿绝对没那么简单。",
       "importance": 6
     }
   ],
   "top_concern": {
-    "text": "沈逸凡周末去图书馆到底是不是去约会的？好想知道！",
-    "intensity_label": "中等",
-    "positive": true
+    "text": "苏念瑶对林昭宇的态度实在太反常了，她到底在隐瞒什么？",
+    "intensity_label": "强烈",
+    "positive": false
   },
-  "self_narrative": "不是吧！我这几天忙得飞起，又是盯沈逸凡的八卦，又是拼限定谷子。课间笔记是一点没看，全用来和念瑶、诗涵聊天了。虽然嘴上说史政地好背，但看着成绩单，心里还是有点虚。其实大家都觉得我肤浅，可谁知道班里那些秘密我全门儿清呢？这种感觉，真的绝了。",
+  "self_narrative": "又是情报失灵的一天，烦！念瑶对林昭宇那事儿遮遮掩掩的，看着真急人。手机被诗涵没收了，谷子也没来得及交流。我这班级情报中心的核心地位，难道要动摇了吗？不过没关系，明天再找陆思远补回来，反正八卦永远不会缺席。",
   "caption_payload": {
-    "caption": "☀️ 方语晨 · 第005天 档案\n\n标签：小太阳\n此刻心情：挫败\n\n「这丫头绝对有猫腻，看一眼林昭宇又躲着我，沈逸凡的事儿她肯定还没跟我说实话！」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "☀️ 方语晨 · 第005天 档案\n\n标签：小太阳\n此刻心情：好奇\n\n「念瑶装得再像也瞒不过我，林昭宇的名字就是她的死穴，等吃完饭回宿舍我有的是办法让她招供。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

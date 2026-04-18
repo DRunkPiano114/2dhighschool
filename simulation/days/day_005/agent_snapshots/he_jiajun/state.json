@@ -1,98 +1,79 @@
 {
-  "emotion": "anxious",
+  "emotion": "happy",
   "energy": 85,
   "academic_pressure": 15,
   "location": "教室",
   "daily_plan": {
     "intentions": [
       {
-        "target": "物理错题本",
-        "goal": "在午休前把物理错题本剩下的几道题写完",
-        "reason": "周五就要交给何老师了，再拖下去肯定会出丑，不想被老师当众批评。",
+        "target": "数学课本",
+        "goal": "在课间没人注意的时候，把数学课本翻到前几章看基础定义",
+        "reason": "已经拖了三天了，心里一直记挂着，再不看感觉真的要彻底放弃了。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "b577f9",
-        "origin_day": 3,
-        "pursued_days": 3
+        "satisfies_concern": "0f8e36",
+        "origin_day": 5,
+        "pursued_days": 1
       },
       {
         "target": "姜皓天",
-        "goal": "找机会问问他晚上打不打游戏",
-        "reason": "想和大家一起玩，但又怕自己技术太菜被嫌弃，想先探探口风。",
+        "goal": "看下午体育课能不能再跟他一起打球",
+        "reason": "和他打球的时候感觉比较放松，而且他没嫌弃我，想再找机会和他多待一会儿。",
         "fulfilled": true,
         "abandoned": false,
-        "satisfies_concern": "c8a7d3",
-        "origin_day": 3,
-        "pursued_days": 3
-      },
-      {
-        "target": "图书馆",
-        "goal": "去图书馆靠窗的位置坐一会儿",
-        "reason": "教室里太吵了，想找个没人的地方安静待会儿，透透气。",
-        "fulfilled": true,
-        "abandoned": false,
-        "satisfies_concern": null,
-        "origin_day": 5,
-        "pursued_days": 1
+        "satisfies_concern": "c258b2",
+        "origin_day": 4,
+        "pursued_days": 2
       }
     ],
-    "mood_forecast": "anxious",
+    "mood_forecast": "calm",
     "location_preferences": {
       "morning_break": "教室",
-      "lunch": "教室",
-      "afternoon_break": "图书馆"
+      "lunch": "食堂",
+      "afternoon_break": "操场"
     }
   },
   "day": 5,
   "active_concerns": [
     {
-      "id": "c8a7d3",
-      "text": "确认加入姜皓天晚上的游戏活动，希望能顺利融入。",
-      "source_event": "姜皓天约下午练投篮；中午食堂的对话",
+      "id": "493977",
+      "text": "和姜皓天打球不能丢脸，得表现好点",
+      "source_event": "姜皓天拉我去操场打球",
       "source_scene": "午饭@食堂",
-      "source_day": 2,
-      "emotion": "excited",
-      "intensity": 5,
+      "source_day": 5,
+      "emotion": "anxious",
+      "intensity": 4,
       "related_people": [
         "姜皓天"
       ],
-      "positive": true,
-      "topic": "期待的事",
+      "positive": false,
+      "topic": "其他",
       "last_reinforced_day": 5,
-      "last_new_info_day": 2,
-      "reinforcement_count": 1,
-      "text_history": [
-        "下午体育课练投篮，希望别出丑。"
-      ],
+      "last_new_info_day": 5,
+      "reinforcement_count": 0,
+      "text_history": [],
       "id_history": [],
-      "last_bump_day": 5,
-      "bumps_today": 2
+      "last_bump_day": 0,
+      "bumps_today": 0
     },
     {
-      "id": "b577f9",
-      "text": "物理错题本进度太慢，周五检查在即，担心在何老师面前丢脸。",
-      "source_event": "何老师要求周五整理错题本并去办公室讲解；下午课间何老师的谈话；午饭时何老师的监督与检查要求；晚自习对着错题本发呆；课间被沈逸凡询问错题进度",
-      "source_scene": "课间@教室",
-      "source_day": 2,
+      "id": "223e0f",
+      "text": "数学课本的前几章基础定义一直没看，心里很担心跟不上进度。",
+      "source_event": "课间自习时段",
+      "source_scene": "",
+      "source_day": 5,
       "emotion": "anxious",
-      "intensity": 9,
-      "related_people": [
-        "何老师",
-        "自己"
-      ],
+      "intensity": 6,
+      "related_people": [],
       "positive": false,
       "topic": "学业焦虑",
       "last_reinforced_day": 5,
       "last_new_info_day": 5,
-      "reinforcement_count": 3,
-      "text_history": [
-        "何老师要求周五前整理好错题本并去办公室讲解，担心自己无法应付。",
-        "错题本整理进度缓慢，担心周五向何老师讲解时表现太差。",
-        "物理错题本整理进度太慢，周五就要检查了，担心在何老师面前丢脸。"
-      ],
+      "reinforcement_count": 0,
+      "text_history": [],
       "id_history": [],
-      "last_bump_day": 5,
-      "bumps_today": 2
+      "last_bump_day": 0,
+      "bumps_today": 0
     }
   ]
 }

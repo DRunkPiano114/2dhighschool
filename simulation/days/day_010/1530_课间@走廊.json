@@ -1,0 +1,27 @@
+{
+  "scene": {
+    "scene_index": 10,
+    "time": "15:30",
+    "name": "课间",
+    "location": "走廊",
+    "description": "下午课间休息",
+    "day": 10
+  },
+  "participant_names": {
+    "tang_shihan": "唐诗涵"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "tang_shihan"
+      ],
+      "is_solo": true,
+      "solo_reflection": {
+        "inner_thought": "苏念瑶到底藏了什么，LYU真是林昭宇吗？烦死了。",
+        "emotion": "frustrated",
+        "activity": "靠在走廊栏杆上百无聊赖地刷着手机，手指不停地划过短剧页面。"
+      }
+    }
+  ]
+}

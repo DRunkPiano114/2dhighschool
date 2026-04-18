@@ -1,6 +1,6 @@
 {
   "scene": {
-    "scene_index": 9,
+    "scene_index": 7,
     "time": "15:30",
     "name": "课间",
     "location": "操场",
@@ -8,19 +8,499 @@
     "day": 7
   },
   "participant_names": {
-    "shen_yifan": "沈逸凡"
+    "he_jiajun": "何家骏",
+    "jiang_haotian": "姜皓天"
   },
   "groups": [
     {
       "group_index": 0,
       "participants": [
-        "shen_yifan"
+        "he_jiajun",
+        "jiang_haotian"
       ],
-      "is_solo": true,
-      "solo_reflection": {
-        "inner_thought": "姜皓天那家伙，真想直接找他把事说明白。",
-        "emotion": "frustrated",
-        "activity": "沿着操场跑道快走，平复心情。"
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "he_jiajun",
+              "content": "家骏，刚才那个三分帅啊，晚上加练吗？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "何家骏还在那边发呆，我走过去拍了拍他的肩膀。",
+              "inner_thought": "打完球心情好多了，这小子球技倒是没退步。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "家骏，刚才那个三分帅啊，晚上加练吗？",
+              "action_target": "he_jiajun",
+              "urgency": 6,
+              "is_disruptive": false
+            },
+            "he_jiajun": {
+              "observation": "姜皓天在旁边练球，操场边上还有几个别班的在晃荡。",
+              "inner_thought": "希望待会别打得太烂，要是被他嫌弃就尴尬了。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "那个……练得怎么样了？",
+              "action_target": "jiang_haotian",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": {
+              "agent": "he_jiajun",
+              "target": "jiang_haotian",
+              "content": "那个……练得怎么样了？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "何家骏还在回味刚才那个球，正拿袖子擦着脸上的汗。",
+              "inner_thought": "这小子平时闷声不响的，球场上还挺来劲，多带带他正好我也能爽一把。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "晚上别走啊，我宿舍还有包辣条，打完球正好垫垫，别又被沈逸凡那货截胡了。",
+              "action_target": "he_jiajun",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "he_jiajun",
+              "content": "晚上别走啊，我宿舍还有包辣条，打完球正好垫垫，别又被沈逸凡那货截胡了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "姜皓天在擦汗，看来刚才打得挺激烈的。",
+              "inner_thought": "他打球一直这么猛，我待会要是掉链子怎么办。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "行。",
+              "action_target": "jiang_haotian",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": {
+              "agent": "he_jiajun",
+              "target": "jiang_haotian",
+              "content": "行。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "何家骏还在那儿琢磨刚才的球，脸上还有点没退去的兴奋劲儿。",
+              "inner_thought": "这小子平时看着蔫，打球时候眼睛倒挺亮的，还是带他玩比较有意思。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "哎，我说，你刚才那个切入的时机绝了，下次再搞一个，我给你挡拆，保准C。",
+              "action_target": "he_jiajun",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 4,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "he_jiajun",
+              "content": "哎，我说，你刚才那个切入的时机绝了，下次再搞一个，我给你挡拆，保准C。"
+            },
+            "actions": [
+              {
+                "agent": "he_jiajun",
+                "type": "non_verbal",
+                "content": "默默接过姜皓天扔过来的球，放在手里掂了掂。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "姜皓天还在运球，手腕动作很灵活，我下意识盯着他的球看。",
+              "inner_thought": "希望晚上打球时我别拖他后腿，那包辣条看来是他留给我的。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "默默接过姜皓天扔过来的球，放在手里掂了掂。",
+              "action_target": "jiang_haotian",
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 5,
+          "public": {
+            "speech": {
+              "agent": "he_jiajun",
+              "target": "jiang_haotian",
+              "content": "挡拆……好，听你的。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "何家骏正拿着球在那儿掂，眼神看起来比平时有光，看来刚才确实爽到了。",
+              "inner_thought": "这小子打球确实有点东西，要是当初没选理科估计能走体育。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "行了别掂了，再来一把？趁这会儿还没上课，再虐他们几个。",
+              "action_target": "he_jiajun",
+              "urgency": 7,
+              "is_disruptive": false
+            },
+            "he_jiajun": {
+              "observation": "姜皓天在鼓励我，还提到了晚上的加练和辣条。",
+              "inner_thought": "他居然还记得辣条，打球配合也没嫌弃我，挺好的。",
+              "emotion": "touched",
+              "action_type": "speak",
+              "action_content": "挡拆……好，听你的。",
+              "action_target": "jiang_haotian",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 6,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "he_jiajun",
+              "content": "行了别掂了，再来一把？趁这会儿还没上课，再虐他们几个。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "姜皓天还在调整呼吸，刚才那个对抗练习让他出了不少汗。",
+              "inner_thought": "他打球真的很拼，要是能学到他一半的技术就好了。",
+              "emotion": "touched",
+              "action_type": "speak",
+              "action_content": "刚才那球……挺爽的。",
+              "action_target": "jiang_haotian",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 7,
+          "public": {
+            "speech": {
+              "agent": "he_jiajun",
+              "target": "jiang_haotian",
+              "content": "刚才那球……挺爽的。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "何家骏拿把球掂得还挺专注，看来是完全进入打球的状态了。",
+              "inner_thought": "这小子平时闷得要死，打球倒挺爽，我也得燥起来。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "快点，别磨叽了，咱俩一组，把那几个菜鸟虐爆！",
+              "action_target": "he_jiajun",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 8,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "he_jiajun",
+              "content": "快点，别磨叽了，咱俩一组，把那几个菜鸟虐爆！"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "姜皓天还在喘气，笑着看我，周围的其他学生准备回教室了。",
+              "inner_thought": "他打球真的很厉害，要是也能像他一样随便就把题目做出来就好了。",
+              "emotion": "touched",
+              "action_type": "speak",
+              "action_content": "走吧，要上课了。",
+              "action_target": "jiang_haotian",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 9,
+          "public": {
+            "speech": {
+              "agent": "he_jiajun",
+              "target": "jiang_haotian",
+              "content": "走吧，要上课了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "何家骏终于不再盯着球发呆了，开始跟着我的节奏动起来。",
+              "inner_thought": "这小子终于回魂了，赶紧再进一个球，把那几个装模作样的全都干掉。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "家骏，接球，直接突进去，别管他们防什么，跟着我跑就行！",
+              "action_target": "he_jiajun",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 10,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "he_jiajun",
+              "content": "家骏，接球，直接突进去，别管他们防什么，跟着我跑就行！"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "he_jiajun": {
+              "observation": "姜皓天收起球准备回教学楼，周围的同学都在往楼里走。",
+              "inner_thought": "还好没打太烂，晚上还有辣条，得赶紧回去，不然上课又听不懂了。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "别忘了那包辣条。",
+              "action_target": "jiang_haotian",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 11,
+          "public": {
+            "speech": {
+              "agent": "he_jiajun",
+              "target": "jiang_haotian",
+              "content": "别忘了那包辣条。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "何家骏跟着我跑位，眼里那种劲儿头比之前更足了。",
+              "inner_thought": "这哥们行啊，看来还是得带他多打打，心情明显好多了。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "就这么跑，诶对了，球给我！",
+              "action_target": "he_jiajun",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        }
+      ],
+      "narrative": {
+        "key_moments": [
+          "姜皓天邀请何家骏晚上加练篮球并分享辣条。",
+          "何家骏同意晚上加练。",
+          "姜皓天提议在课前继续打球。",
+          "何家骏接过姜皓天扔过来的篮球。",
+          "两人决定继续进行篮球对抗。"
+        ],
+        "fulfilled_intentions": [
+          "姜皓天:邀请何家骏晚上加练",
+          "何家骏:确认晚上加练安排"
+        ],
+        "events_discussed": [],
+        "new_events": [
+          {
+            "text": "姜皓天邀请何家骏晚上加练篮球并分享辣条",
+            "category": "社交/活动安排",
+            "witnesses": [
+              "何家骏",
+              "姜皓天"
+            ],
+            "spread_probability": 0.3,
+            "cite_ticks": [
+              1,
+              3,
+              4
+            ]
+          },
+          {
+            "text": "姜皓天与何家骏约定在课间继续进行篮球对抗",
+            "category": "体育活动",
+            "witnesses": [
+              "何家骏",
+              "姜皓天"
+            ],
+            "spread_probability": 0.2,
+            "cite_ticks": [
+              7,
+              9,
+              10
+            ]
+          }
+        ]
+      },
+      "reflections": {
+        "he_jiajun": {
+          "emotion": "excited",
+          "relationship_changes": [
+            {
+              "to_agent": "姜皓天",
+              "favorability": 3,
+              "trust": 2,
+              "understanding": 2,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "和姜皓天打球配合得很顺，他说下次要给我挡拆，还约了晚上吃辣条",
+              "emotion": "excited",
+              "importance": 6,
+              "people": [
+                "姜皓天"
+              ],
+              "location": "操场",
+              "topics": [
+                "兴趣爱好"
+              ]
+            }
+          ],
+          "new_concerns": [
+            {
+              "text": "晚上去姜皓天宿舍吃辣条，希望能别被沈逸凡搅合了",
+              "source_event": "姜皓天邀请晚上去宿舍吃辣条",
+              "emotion": "excited",
+              "intensity": 5,
+              "related_people": [
+                "姜皓天",
+                "沈逸凡"
+              ],
+              "positive": true,
+              "topic": "期待的事"
+            }
+          ],
+          "concern_updates": [
+            {
+              "concern_text": "223e0f",
+              "adjustment": -1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "在课间把数学课本翻到前几章看基础定义",
+              "status": "missed_opportunity",
+              "brief_reason": "整节课间都在和姜皓天打球，没机会看书"
+            }
+          ]
+        },
+        "jiang_haotian": {
+          "emotion": "excited",
+          "relationship_changes": [
+            {
+              "to_agent": "何家骏",
+              "favorability": 3,
+              "trust": 2,
+              "understanding": 2,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "和家骏打球配合真顺手，这小子突进去的时机越来越溜了。",
+              "emotion": "excited",
+              "importance": 5,
+              "people": [
+                "何家骏"
+              ],
+              "location": "操场",
+              "topics": [
+                "兴趣爱好"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "dcf8e8",
+              "adjustment": -1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "在午饭时假装随意地套话，问清楚他到底在瞒我什么工厂的事",
+              "status": "pending",
+              "brief_reason": "陆思远不在场，没机会问。"
+            },
+            {
+              "goal": "拉他去操场打把球，出一身汗把烦心事都忘了",
+              "status": "fulfilled",
+              "brief_reason": "和何家骏在操场打了球，打得很爽，确实把那些破事暂时忘掉了。"
+            }
+          ]
+        }
       }
     }
   ]

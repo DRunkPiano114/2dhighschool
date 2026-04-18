@@ -1,0 +1,99 @@
+{
+  "emotion": "calm",
+  "energy": 85,
+  "academic_pressure": 50,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "陆思远",
+        "goal": "请教定语从句的用法，把这个语法坑填掉",
+        "reason": "定语从句一直搞不懂，再拖下去下次考试英语又要拉跨，妈肯定又要唠叨了。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 10,
+        "pursued_days": 1
+      },
+      {
+        "target": null,
+        "goal": "找机会戴上耳机，安安静静听一整首许嵩的新歌",
+        "reason": "最近脑子里全是物理题，感觉快炸了，听首歌能稍微喘口气。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 10,
+        "pursued_days": 1
+      }
+    ],
+    "mood_forecast": "anxious",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "图书馆"
+    }
+  },
+  "day": 10,
+  "active_concerns": [
+    {
+      "id": "870382",
+      "text": "想找机会戴上耳机听许嵩的新歌，但总是因为学习任务或环境干扰而无法实现。",
+      "source_event": "全天学习过程",
+      "source_scene": "",
+      "source_day": 7,
+      "emotion": "anxious",
+      "intensity": 1,
+      "related_people": [],
+      "positive": true,
+      "topic": "兴趣爱好",
+      "last_reinforced_day": 9,
+      "last_new_info_day": 7,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 9,
+      "bumps_today": 1
+    },
+    {
+      "id": "c775a6",
+      "text": "担心英语定语从句一直弄不懂，怕下次考试成绩不好会被妈妈责备。",
+      "source_event": "宿舍夜聊时被姜皓天打断，未能完成语法讲解",
+      "source_scene": "",
+      "source_day": 9,
+      "emotion": "anxious",
+      "intensity": 5,
+      "related_people": [
+        "陆思远",
+        "母亲"
+      ],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 9,
+      "reinforcement_count": 2,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 10,
+      "bumps_today": 2
+    },
+    {
+      "id": "e291a9",
+      "text": "一直没能抽出时间戴上耳机安安静静地听一首许嵩的新歌。",
+      "source_event": "全天学习任务繁重",
+      "source_scene": "",
+      "source_day": 10,
+      "emotion": "wistful",
+      "intensity": 3,
+      "related_people": [],
+      "positive": true,
+      "topic": "兴趣爱好",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 10,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
+}

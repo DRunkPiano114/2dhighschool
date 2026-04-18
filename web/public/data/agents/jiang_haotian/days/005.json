@@ -9,48 +9,48 @@
   "emotion_label": "挫败",
   "energy_label": "精神还行",
   "pressure_label": "轻松",
-  "featured_quote": "一天到晚就会这一套，真觉得自己是教导主任了，烦得要死。",
-  "featured_scene": "15:30 · 课间",
+  "featured_quote": "这女的怎么这么八卦，沈逸凡那种书呆子有什么好聊的，快闪人。",
+  "featured_scene": "08:45 · 课间",
   "relationships": [
     {
       "target_name": "林昭宇",
-      "favorability": 10,
+      "favorability": 11,
       "trust": 5,
       "label_text": "还行，有些好感"
     },
     {
       "target_name": "何家骏",
-      "favorability": 7,
-      "trust": 5,
-      "label_text": "普通同学"
+      "favorability": 8,
+      "trust": 4,
+      "label_text": "还行，有些好感"
     },
     {
       "target_name": "陆思远",
-      "favorability": 4,
-      "trust": 6,
+      "favorability": 2,
+      "trust": 2,
       "label_text": "普通同学"
     }
   ],
   "memories": [
     {
-      "date": "Day 4",
-      "text": "在操场被沈逸凡当众要求收起手机，我用肩膀撞了他并威胁要抠出眼珠。",
+      "date": "Day 5",
+      "text": "问了陆思远家里的生意，这小子居然装睡躲着我，肯定有鬼。",
       "importance": 6
     },
     {
-      "date": "Day 1",
-      "text": "沈逸凡那死样子，整天就知道拿纪律压人，真把自己当盘菜了。",
+      "date": "Day 4",
+      "text": "晚自习在宿舍与沈逸凡因为玩手机发生激烈争吵，最终被迫关机。",
       "importance": 6
     }
   ],
   "top_concern": {
-    "text": "想找陆思远聊聊毕业后的打算，但沈逸凡总是盯着不放，完全找不到机会。",
+    "text": "爸妈最近总念叨工厂订单减少，心里总觉得不踏实，想找机会旁敲侧击问问情况。",
     "intensity_label": "中等",
     "positive": false
   },
-  "self_narrative": "班里那个最吵的姜皓天就是我。天天哈哈大笑，其实心里虚得很。家里工厂那点破事，爸妈愁得不行，我却只能装作没事，继续带何家骏上分。沈逸凡那家伙管得太宽，烦死人。想找陆思远聊聊未来又总被搅和，这种日子真是一眼望不到头。",
+  "self_narrative": "班里的开心果，还得是我。天天逗陆思远、拍林昭宇肩膀，日子看着挺乐呵。其实心里慌得不行，爸妈工厂那边没动静，问也问不出个所以然。沈逸凡那死脑筋又盯着我，烦。要是真没学上，难道真要去厂里打螺丝？还是得找机会多打球，王者多Carry几把，不想那些糟心事了。",
   "caption_payload": {
-    "caption": "⚽ 姜皓天 · 第005天 档案\n\n标签：运动健将\n此刻心情：挫败\n\n「一天到晚就会这一套，真觉得自己是教导主任了，烦得要死。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "⚽ 姜皓天 · 第005天 档案\n\n标签：运动健将\n此刻心情：挫败\n\n「这女的怎么这么八卦，沈逸凡那种书呆子有什么好聊的，快闪人。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

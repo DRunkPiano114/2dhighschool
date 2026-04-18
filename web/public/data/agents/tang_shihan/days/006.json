@@ -9,48 +9,48 @@
   "emotion_label": "挫败",
   "energy_label": "精神还行",
   "pressure_label": "稍有压力",
-  "featured_quote": "离谱，她们什么时候这么熟了？真的是烦死了，没一个说实话的。",
-  "featured_scene": "18:30 · 晚自习",
+  "featured_quote": "她这表现绝对有鬼，是不是苏念瑶那有什么劲爆消息不敢告诉我？",
+  "featured_scene": "08:45 · 课间",
   "relationships": [
     {
       "target_name": "方语晨",
-      "favorability": 32,
+      "favorability": 29,
       "trust": 19,
       "label_text": "很亲近的朋友"
     },
     {
       "target_name": "苏念瑶",
-      "favorability": 15,
-      "trust": 6,
-      "label_text": "关系不错"
+      "favorability": 23,
+      "trust": 11,
+      "label_text": "很亲近的朋友"
     },
     {
-      "target_name": "陆思远",
-      "favorability": 1,
-      "trust": 0,
+      "target_name": "程雨桐",
+      "favorability": 3,
+      "trust": 5,
       "label_text": "普通同学"
     }
   ],
   "memories": [
     {
-      "date": "Day 5",
-      "text": "苏念瑶在聊八卦时居然往林昭宇那边看，肯定有情况！",
+      "date": "Day 3",
+      "text": "苏念瑶被问到林昭宇时脸红了，看来她真有点情况",
       "importance": 7
     },
     {
       "date": "Day 6",
-      "text": "方语晨和苏念瑶当着我的面传纸条，还在上课搞小动作，明显有事瞒着我。",
+      "text": "在宿舍夜聊时直接向苏念瑶摊牌询问LYU的身份，并试图用公开备注作为要挟，但被对方无视。",
       "importance": 6
     }
   ],
   "top_concern": {
-    "text": "苏念瑶和方语晨之间到底在瞒着我什么秘密？这种被排除在小圈子之外的感觉很不舒服。",
-    "intensity_label": "中等",
+    "text": "苏念瑶手机备注LYU到底是不是林昭宇？她为什么反应这么大？",
+    "intensity_label": "较强",
     "positive": false
   },
-  "self_narrative": "今天又是忙忙碌碌的一天。在班里我就是那个停不下来的社交达人，虽然作业收得头大，但和朋友们八卦真的好快乐！就是林昭宇那块木头，到底烦不烦我啊？想问他物理题又怂了，纠结死。周末一定要去买奶茶和娃衣，谁也别拦着我！",
+  "self_narrative": "在班里就是个社交中心，天天忙着传话、磕瓜、换谷子，简直停不下来。最近老琢磨林昭宇和苏念瑶的事，那瓜到底熟了没？虽然试卷没写完有点慌，但一刷表白墙就全忘了。我是不是太爱凑热闹了？笑死，根本停不下来。",
   "caption_payload": {
-    "caption": "🌿 唐诗涵 · 第006天 档案\n\n标签：大大咧咧学委\n此刻心情：挫败\n\n「离谱，她们什么时候这么熟了？真的是烦死了，没一个说实话的。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "🌿 唐诗涵 · 第006天 档案\n\n标签：大大咧咧学委\n此刻心情：挫败\n\n「她这表现绝对有鬼，是不是苏念瑶那有什么劲爆消息不敢告诉我？」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

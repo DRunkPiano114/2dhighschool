@@ -1,0 +1,1698 @@
+{
+  "scene": {
+    "scene_index": 8,
+    "time": "15:30",
+    "name": "课间",
+    "location": "教室",
+    "description": "下午课间休息",
+    "day": 7
+  },
+  "participant_names": {
+    "cheng_yutong": "程雨桐",
+    "fang_yuchen": "方语晨",
+    "lu_siyuan": "陆思远",
+    "shen_yifan": "沈逸凡",
+    "tang_shihan": "唐诗涵"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "fang_yuchen",
+        "tang_shihan",
+        "lu_siyuan",
+        "cheng_yutong",
+        "shen_yifan"
+      ],
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "tang_shihan",
+              "content": "诶，诗涵，昨天那事儿你还没跟我细说呢，真的瞒着我啊？"
+            },
+            "actions": [
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "戴上降噪耳机，低头在方格本上继续推导电磁学公式。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "陆思远和唐诗涵就在附近，大家都在休息或者做自己的事情，教室里很安静。",
+              "inner_thought": "好烦，念瑶又不理我。既然诗涵在，看看能不能从她那儿撬点料出来。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "诶，诗涵，昨天那事儿你还没跟我细说呢，真的瞒着我啊？",
+              "action_target": "tang_shihan",
+              "urgency": 7,
+              "is_disruptive": false
+            },
+            "lu_siyuan": {
+              "observation": "沈逸凡正坐在座位上，教室里的气氛因为姜皓天和之前的不快显得有点闷。",
+              "inner_thought": "要不要上去打个招呼？算了，看他那表情，还是别去触霉头了。",
+              "emotion": "anxious",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "tang_shihan": {
+              "observation": "方语晨在那边刷手机，表情还挺认真的，不知道是不是又刷到了什么甜宠剧。",
+              "inner_thought": "好烦啊，苏念瑶那个备注LYU到底是不是林昭宇，搞得我心神不宁的。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "语晨，你看啥呢？给我瞅瞅，最近有没有那种甜死人的剧？",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            },
+            "shen_yifan": {
+              "observation": "陆思远坐在座位上，一副若无其事的样子，好像刚刚什么都没发生过。",
+              "inner_thought": "又要装傻？算了，反正说了他也不听，心累。",
+              "emotion": "frustrated",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "方语晨和唐诗涵在谈论文具，陆思远还在琢磨刚才的物理题。",
+              "inner_thought": "离下一节课还有几分钟，得抓紧时间把电磁感应那部分公式推完。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "戴上降噪耳机，低头在方格本上继续推导电磁学公式。",
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "语晨，你看啥呢？给我瞅瞅，最近有没有那种甜死人的剧？"
+            },
+            "actions": [
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "将草稿纸翻页，用百乐P-500在方格内补全电磁感应的电动势表达式。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "cheng_yutong": {
+              "observation": "方语晨和唐诗涵在谈论私事，周围环境吵闹。",
+              "inner_thought": "与其听她们浪费时间聊八卦，不如再推两行式子。",
+              "emotion": "bored",
+              "action_type": "non_verbal",
+              "action_content": "将草稿纸翻页，用百乐P-500在方格内补全电磁感应的电动势表达式。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "fang_yuchen": {
+              "observation": "程雨桐戴着耳机在那儿埋头苦算，完全不理人，诗涵也一副不想多说的样子。",
+              "inner_thought": "这一个个都怎么了，搞得好像我是什么外人一样，气死我了。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "行吧，你们都不理我，我自己刷视频总行了吧。",
+              "action_target": "tang_shihan",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": [
+            "lu_siyuan",
+            "shen_yifan"
+          ]
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "tang_shihan",
+              "content": "行吧，你们都不理我，我自己刷视频总行了吧。"
+            },
+            "actions": [
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "将降噪耳机的位置调紧了一点，继续整理电磁学笔记。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "cheng_yutong": {
+              "observation": "方语晨和唐诗涵在课间闲聊八卦，声音有些干扰到了我的思路。",
+              "inner_thought": "又在聊剧，有这时间多刷两道题不好吗。",
+              "emotion": "bored",
+              "action_type": "non_verbal",
+              "action_content": "将降噪耳机的位置调紧了一点，继续整理电磁学笔记。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "tang_shihan": {
+              "observation": "方语晨低头看手机，完全没理会我刚才问的剧，而程雨桐在那儿疯狂刷题，教室里安静得让我有点心慌。",
+              "inner_thought": "这两人一个比一个闷，那个LYU的备注到底啥情况，难道只能再找机会去堵苏念瑶了？",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "你到底在看啥呀，剧名发我看看，我也想看。",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": [
+            "lu_siyuan",
+            "shen_yifan"
+          ]
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "你到底在看啥呀，剧名发我看看，我也想看。"
+            },
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "皱了皱眉，把桌面上稍微歪斜的一摞试卷重新对齐，用力压了压边缘。"
+              },
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "用方格本压住耳机线，继续专注地推导电磁感应的电动势表达式。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "方语晨和唐诗涵在聊剧，程雨桐在戴着耳机刷题，剩下的人各忙各的。",
+              "inner_thought": "一个个都这么闲，作业写完了吗就在这儿讨论电视剧。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "皱了皱眉，把桌面上稍微歪斜的一摞试卷重新对齐，用力压了压边缘。",
+              "action_target": null,
+              "urgency": 4,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "方语晨和唐诗涵的闲聊声虽不至于大喊大叫，但细碎的语调仍不断钻进耳膜。",
+              "inner_thought": "离上课还有两分钟，这点时间够把下一节的预习笔记理完了，别被她们带跑偏。",
+              "emotion": "bored",
+              "action_type": "non_verbal",
+              "action_content": "用方格本压住耳机线，继续专注地推导电磁感应的电动势表达式。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "fang_yuchen": {
+              "observation": "陆思远就在隔两排的地方坐着，诗涵也不搭理我，教室里安静得让人心慌。",
+              "inner_thought": "一个个装什么死啊，陆思远那儿没准有瓜，去问问他。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "陆思远，班里最近有啥好玩的事没？别藏着掖着啊，分享分享。",
+              "action_target": "lu_siyuan",
+              "urgency": 7,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": [
+            "lu_siyuan"
+          ]
+        },
+        {
+          "tick": 4,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "lu_siyuan",
+              "content": "陆思远，班里最近有啥好玩的事没？别藏着掖着啊，分享分享。"
+            },
+            "actions": [
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "将降噪耳机摘下，利落地扣回笔袋，从包里拿出下节课的课本。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "唐诗涵和方语晨还在闲聊电视剧，程雨桐一个人戴着耳机沉浸在物理题里，教室里乱七八糟的。",
+              "inner_thought": "离上课还有几分钟，他们倒是真的闲得住，真是没压力。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "离上课没几分钟了，你们作业都补完了吗？别到时候又要找人抄。",
+              "action_target": "tang_shihan",
+              "urgency": 6,
+              "is_disruptive": true
+            },
+            "cheng_yutong": {
+              "observation": "唐诗涵还在追着方语晨问剧名，声音有点变大了。",
+              "inner_thought": "离上课还剩几十秒，这两人还没完没了了。",
+              "emotion": "bored",
+              "action_type": "non_verbal",
+              "action_content": "将降噪耳机摘下，利落地扣回笔袋，从包里拿出下节课的课本。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "lu_siyuan": {
+              "observation": "沈逸凡在整理试卷，动作看起来有点用力，教室里的气氛还是那样压抑。",
+              "inner_thought": "想找机会打招呼，但看他那样子，还是算了，别自讨没趣。",
+              "emotion": "anxious",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "tang_shihan": {
+              "observation": "方语晨在那自顾自看手机，程雨桐和沈逸凡都在忙自己的事，没一个人搭理我，教室里气氛闷得要命。",
+              "inner_thought": "真没劲，一个个都跟苦行僧似的，搞得我像个没人理的边缘人。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "哎呀语晨，你倒是理理我呀，到底看的啥，分享一下嘛。",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 5,
+          "public": {
+            "speech": {
+              "agent": "lu_siyuan",
+              "target": "fang_yuchen",
+              "content": "没啥，我不怎么关注这些，大家都忙着复习呢。"
+            },
+            "actions": [
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "将英语课本翻到目录页，用直尺在边缘压出一道平整的折痕。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "cheng_yutong": {
+              "observation": "方语晨在那儿缠着陆思远打听班级八卦，声音吵得人心烦。",
+              "inner_thought": "无聊，有打听闲事的时间，不如复习一下动量定理。",
+              "emotion": "bored",
+              "action_type": "non_verbal",
+              "action_content": "将英语课本翻到目录页，用直尺在边缘压出一道平整的折痕。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "fang_yuchen": {
+              "observation": "程雨桐终于摘掉耳机开始收拾书本了，陆思远还没开口回答我。",
+              "inner_thought": "陆思远这家伙到底知不知道点什么，别又是敷衍我。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "喂，你倒是给个反应啊，平时不是挺消息灵通的吗？",
+              "action_target": "lu_siyuan",
+              "urgency": 6,
+              "is_disruptive": false
+            },
+            "lu_siyuan": {
+              "observation": "方语晨在问我八卦，沈逸凡在旁边整理试卷，气氛有点紧张。",
+              "inner_thought": "千万别往沈逸凡那边扯，只想赶紧应付过去，好累啊。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "没啥，我不怎么关注这些，大家都忙着复习呢。",
+              "action_target": "fang_yuchen",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 6,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "lu_siyuan",
+              "content": "喂，你倒是给个反应啊，平时不是挺消息灵通的吗？"
+            },
+            "actions": [
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "面无表情地将直尺收入笔袋，从课本下抽出笔记本，在扉页写下新的日期计划。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "cheng_yutong": {
+              "observation": "陆思远结束了与方语晨的对话，周围暂时恢复了些许复习的节奏。",
+              "inner_thought": "与其把精力花在这些没意义的八卦上，不如早点把下一章电磁学的框架列出来。",
+              "emotion": "bored",
+              "action_type": "non_verbal",
+              "action_content": "面无表情地将直尺收入笔袋，从课本下抽出笔记本，在扉页写下新的日期计划。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "lu_siyuan": {
+              "observation": "沈逸凡在整理试卷，方语晨正等着我的回应，气氛很紧绷。",
+              "inner_thought": "沈逸凡在看我吗？好怕他突然发火，还是别惹事了。",
+              "emotion": "anxious",
+              "action_type": "speak",
+              "action_content": "呃，我去接个水，先走了。",
+              "action_target": "fang_yuchen",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 7,
+          "public": {
+            "speech": {
+              "agent": "lu_siyuan",
+              "target": "fang_yuchen",
+              "content": "呃，我去接个水，先走了。"
+            },
+            "actions": [
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "将笔记本推到桌角，拿起笔袋里的一支蓝笔，快速在纸上标记出下周的复习重点。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "cheng_yutong": {
+              "observation": "方语晨还在缠着陆思远打听八卦，声音尖锐且毫无意义。",
+              "inner_thought": "离上课还有一分钟，她们还在吵，真耽误人思考。",
+              "emotion": "bored",
+              "action_type": "non_verbal",
+              "action_content": "将笔记本推到桌角，拿起笔袋里的一支蓝笔，快速在纸上标记出下周的复习重点。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "fang_yuchen": {
+              "observation": "陆思远完全不想理我，程雨桐也在那一板一眼地写计划，教室里气氛闷得要死。",
+              "inner_thought": "一个个都端着，烦死了，看来今天从陆思远这儿也挖不出什么猛料。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "行吧行吧，算你狠，不聊就不聊。",
+              "action_target": "lu_siyuan",
+              "urgency": 4,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 8,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "调整了一下坐姿，从笔袋里抽出那支常用的百乐 P-500，在方格本上继续推导受力方程。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": [
+              "lu_siyuan"
+            ]
+          },
+          "minds": {
+            "cheng_yutong": {
+              "observation": "陆思远终于离开了，教室里那种没意义的闲聊声总算小下去了。",
+              "inner_thought": "终于清静了，离上课还有一分钟，正好把这个物理模型再过一遍。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "调整了一下坐姿，从笔袋里抽出那支常用的百乐 P-500，在方格本上继续推导受力方程。",
+              "action_target": null,
+              "urgency": 3,
+              "is_disruptive": false
+            },
+            "lu_siyuan": {
+              "observation": "方语晨还在追问八卦，沈逸凡坐在不远的地方，氛围让我觉得很压抑。",
+              "inner_thought": "好想逃走，但这借口也太烂了，沈逸凡肯定觉得我很奇怪。算了，不管了。",
+              "emotion": "anxious",
+              "action_type": "exit",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 9,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "哎，这教室里闷得我快长毛了，语晨你到底看啥呢？借我看看。"
+            },
+            "actions": [
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "戴上降噪耳机，将音量调至最大遮蔽环境音。"
+              },
+              {
+                "agent": "fang_yuchen",
+                "type": "non_verbal",
+                "content": "百无聊赖地趴在桌上，掏出手机给唐诗涵发了一条QQ消息：‘这课间也太无聊了吧，晚上回宿舍聊会？’，疯狂敲击屏幕。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "陆思远借故离开，方语晨还在不死心地追问，程雨桐则完全沉浸在自己的物理题里。",
+              "inner_thought": "一个个都这么散漫，离上课没几分钟了，心怎么就收不回来。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "还有几分钟上课了，你们先把课本准备好，别到处瞎晃。",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": true
+            },
+            "cheng_yutong": {
+              "observation": "方语晨和唐诗涵还在磨蹭，陆思远走后她们的声音又响了起来。",
+              "inner_thought": "离上课不到一分钟，她们还不准备收心吗？",
+              "emotion": "bored",
+              "action_type": "non_verbal",
+              "action_content": "戴上降噪耳机，将音量调至最大遮蔽环境音。",
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "fang_yuchen": {
+              "observation": "陆思远借口去接水溜了，程雨桐还在那死磕物理题，教室里安静得让人心烦。",
+              "inner_thought": "一个个都跟我躲猫猫呢，真是够了，无聊透顶。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "百无聊赖地趴在桌上，掏出手机给唐诗涵发了一条QQ消息：‘这课间也太无聊了吧，晚上回宿舍聊会？’，疯狂敲击屏幕。",
+              "action_target": "tang_shihan",
+              "urgency": 4,
+              "is_disruptive": false
+            },
+            "tang_shihan": {
+              "observation": "陆思远落荒而逃，方语晨还在那盯着手机，整个班级除了写题的声音几乎没人说话。",
+              "inner_thought": "一个个都闷葫芦一样，真没劲，去找语晨吐槽算了。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "哎，这教室里闷得我快长毛了，语晨你到底看啥呢？借我看看。",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 10,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "tang_shihan",
+              "content": "没看啥，就一无聊的短剧，没劲死了。晚上再说吧。"
+            },
+            "actions": [
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "将方格本上推导出的电磁感应公式用红笔圈注，动作幅度极小，没有发出任何声音。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "陆思远借口溜了，唐诗涵还在问我在看什么，但这课间实在太无聊了，大家都在装模作样。",
+              "inner_thought": "一个个都这么高冷，真是够了，晚上回宿舍再好好审审诗涵。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "没看啥，就一无聊的短剧，没劲死了。晚上再说吧。",
+              "action_target": "tang_shihan",
+              "urgency": 5,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "方语晨和唐诗涵在课间还在用手机频繁交流，完全没有进入学习状态。",
+              "inner_thought": "离预备铃还有几十秒，还在玩手机，这种自制力怎么考985。",
+              "emotion": "bored",
+              "action_type": "non_verbal",
+              "action_content": "将方格本上推导出的电磁感应公式用红笔圈注，动作幅度极小，没有发出任何声音。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "tang_shihan": {
+              "observation": "方语晨发了条消息给我，还在那边疯狂敲屏幕等我互动。",
+              "inner_thought": "这丫头神秘兮兮的，搞得我也想看一眼手机了，肯定又在吐槽谁。",
+              "emotion": "bored",
+              "action_type": "speak",
+              "action_content": "晚上回宿舍再说！你手机里到底藏了什么宝贝，这么入迷啊？",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 11,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "fang_yuchen",
+              "content": "晚上回宿舍再说！你手机里到底藏了什么宝贝，这么入迷啊？"
+            },
+            "actions": [
+              {
+                "agent": "fang_yuchen",
+                "type": "non_verbal",
+                "content": "翻了个白眼，把手机扔到课桌里，索性趴在桌上补觉。"
+              },
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "将草稿纸对折，放入文件夹最上方，随后拿起笔袋收拾桌面。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "陆思远虽然溜了，但唐诗涵还在，程雨桐戴着耳机像个没感情的刷题机器，教室里氛围闷得让人窒息。",
+              "inner_thought": "一个个都这么装，真的是够了，回宿舍我非得好好问问诗涵不可。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "翻了个白眼，把手机扔到课桌里，索性趴在桌上补觉。",
+              "action_target": null,
+              "urgency": 3,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "方语晨和唐诗涵终于停止了交谈，但依然在玩手机。",
+              "inner_thought": "离预备铃还有几十秒，还在玩手机，这种自制力怎么考985。",
+              "emotion": "bored",
+              "action_type": "non_verbal",
+              "action_content": "将草稿纸对折，放入文件夹最上方，随后拿起笔袋收拾桌面。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        }
+      ],
+      "narrative": {
+        "key_moments": [
+          "方语晨询问唐诗涵关于昨天的事情。",
+          "程雨桐在课间持续进行电磁学公式推导和复习准备。",
+          "沈逸凡整理桌面上的试卷。",
+          "方语晨向陆思远询问班级动态，陆思远表示不关注并离开教室。",
+          "方语晨通过QQ向唐诗涵发送消息，提议晚上回宿舍聊天。",
+          "方语晨将手机放入课桌并趴在桌上休息。"
+        ],
+        "fulfilled_intentions": [
+          "程雨桐:整理电磁学笔记及复习重点",
+          "沈逸凡:整理桌面试卷",
+          "方语晨:与唐诗涵约定晚上回宿舍聊天"
+        ],
+        "events_discussed": [],
+        "new_events": [
+          {
+            "text": "方语晨提议晚上回宿舍聊天",
+            "category": "社交约定",
+            "witnesses": [
+              "方语晨",
+              "唐诗涵"
+            ],
+            "spread_probability": 0.2,
+            "cite_ticks": [
+              10,
+              11,
+              12
+            ]
+          }
+        ]
+      },
+      "reflections": {
+        "fang_yuchen": {
+          "emotion": "bored",
+          "relationship_changes": [
+            {
+              "to_agent": "陆思远",
+              "favorability": -1,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "唐诗涵",
+              "favorability": 1,
+              "trust": 1,
+              "understanding": 0,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "课间想找陆思远打听八卦，结果这人装傻充愣，没劲。",
+              "emotion": "bored",
+              "importance": 3,
+              "people": [
+                "陆思远"
+              ],
+              "location": "教室",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "e2cd81",
+              "adjustment": -1
+            },
+            {
+              "concern_text": "802306",
+              "adjustment": -1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "在课间休息时找机会和她单独待会儿，看能不能套出LYU的真相。",
+              "status": "pending",
+              "brief_reason": "苏念瑶根本没在教室，没机会。"
+            },
+            {
+              "goal": "和她交换一下最近收到的谷子，顺便聊聊昨天宿舍里的矛盾。",
+              "status": "attempted",
+              "brief_reason": "试着问了诗涵，但她只想聊剧，没机会细聊。"
+            },
+            {
+              "goal": "课间去堵他，问问班里最近有没有什么劲爆的八卦。",
+              "status": "fulfilled",
+              "brief_reason": "找陆思远问了，但他什么都不肯说。"
+            }
+          ]
+        },
+        "tang_shihan": {
+          "emotion": "bored",
+          "relationship_changes": [
+            {
+              "to_agent": "方语晨",
+              "favorability": 1,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "陆思远",
+              "favorability": -1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "方语晨在那儿神神秘秘看短剧也不分享，陆思远问他啥也不说，这课间真的无聊透了。",
+              "emotion": "bored",
+              "importance": 3,
+              "people": [
+                "方语晨",
+                "陆思远"
+              ],
+              "location": "教室",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "f71be7",
+              "adjustment": 0
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "拉苏念瑶去买奶茶并套话问LYU备注",
+              "status": "pending",
+              "brief_reason": "苏念瑶在对话中根本没出现，没机会开口。"
+            },
+            {
+              "goal": "假装请教物理题并打听竞赛八卦",
+              "status": "pending",
+              "brief_reason": "林昭宇不在场，且刚才课间大家都在各忙各的。"
+            },
+            {
+              "goal": "一起看新出的甜宠剧并吐槽作业",
+              "status": "attempted",
+              "brief_reason": "我一直缠着语晨问她在看什么，结果她敷衍我还要晚上再说。"
+            }
+          ]
+        },
+        "lu_siyuan": {
+          "emotion": "anxious",
+          "relationship_changes": [
+            {
+              "to_agent": "方语晨",
+              "favorability": -1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "沈逸凡",
+              "favorability": -1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": false
+            }
+          ],
+          "memories": [
+            {
+              "text": "方语晨一直追问班里的八卦，感觉好烦，只能借口接水溜了。",
+              "emotion": "anxious",
+              "importance": 4,
+              "people": [
+                "方语晨"
+              ],
+              "location": "教室",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "a28825",
+              "adjustment": 1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "尝试给公众号草稿增加一点匿名性，再看一眼要不要发",
+              "status": "pending",
+              "brief_reason": "课间一直被方语晨缠着问八卦，根本没机会思考草稿的事。"
+            },
+            {
+              "goal": "在过道碰到时自然地打个招呼，别显得太僵硬",
+              "status": "missed_opportunity",
+              "brief_reason": "看到沈逸凡在压试卷，心里发毛，赶紧找借口离开了教室。"
+            }
+          ]
+        },
+        "cheng_yutong": {
+          "emotion": "bored",
+          "relationship_changes": [
+            {
+              "to_agent": "方语晨",
+              "favorability": -1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": false
+            },
+            {
+              "to_agent": "唐诗涵",
+              "favorability": 0,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": false
+            },
+            {
+              "to_agent": "陆思远",
+              "favorability": 0,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "方语晨和唐诗涵一直在课间吵着看视频，完全没法专心推导公式。",
+              "emotion": "bored",
+              "importance": 4,
+              "people": [
+                "方语晨",
+                "唐诗涵"
+              ],
+              "location": "教室",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [],
+          "intention_outcomes": [
+            {
+              "goal": "完成力学进阶章节的全部推导并整理错题",
+              "status": "attempted",
+              "brief_reason": "一直在课间戴耳机推导公式，但被周围的杂音干扰，进度依然不够快。"
+            },
+            {
+              "goal": "阅读《仙路独行》最新两章更新",
+              "status": "pending",
+              "brief_reason": "现在是课间，周围环境太吵，且不是阅读网文的时机。"
+            }
+          ]
+        },
+        "shen_yifan": {
+          "emotion": "frustrated",
+          "relationship_changes": [
+            {
+              "to_agent": "陆思远",
+              "favorability": -2,
+              "trust": -1,
+              "understanding": 0,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "陆思远在方语晨问起班级动态时，敷衍说忙着复习然后直接溜了，明显在躲我。",
+              "emotion": "frustrated",
+              "importance": 5,
+              "people": [
+                "陆思远",
+                "方语晨"
+              ],
+              "location": "教室",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "5fc846",
+              "adjustment": 1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "在晚自习前找个机会私下提醒他，别玩手机了",
+              "status": "pending",
+              "brief_reason": "姜皓天今天根本没出现在教室这个场景里。"
+            },
+            {
+              "goal": "午饭时试着聊聊学校活动，缓和一下宿舍气氛",
+              "status": "pending",
+              "brief_reason": "林昭宇不在场，没有任何沟通契机。"
+            }
+          ]
+        }
+      },
+      "share_tick_layouts": [
+        {
+          "day": 7,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "教室",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "name_cn": "程雨桐",
+              "motif_emoji": "📚",
+              "motif_tag": "沉默第二名"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "诶，诗涵，昨天那事儿你还没跟我细说呢，真的瞒着我啊？"
+            },
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "thought",
+              "text": "好烦啊，苏念瑶那个备注LYU到底是不是林昭宇，搞得我心神不宁的。"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "display_name": "程雨桐",
+              "kind": "thought",
+              "text": "离下一节课还有几分钟，得抓紧时间把电磁感应那部分公式推完。"
+            }
+          ],
+          "featured_quote": "离下一节课还有几分钟，得抓紧时间把电磁感应那部分公式推完。",
+          "featured_speaker_name": "程雨桐",
+          "tick_index": 0
+        },
+        {
+          "day": 7,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "教室",
+          "portraits": [
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "name_cn": "程雨桐",
+              "motif_emoji": "📚",
+              "motif_tag": "沉默第二名"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "speech",
+              "text": "语晨，你看啥呢？给我瞅瞅，最近有没有那种甜死人的剧？"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "这一个个都怎么了，搞得好像我是什么外人一样，气死我了。"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "display_name": "程雨桐",
+              "kind": "thought",
+              "text": "与其听她们浪费时间聊八卦，不如再推两行式子。"
+            }
+          ],
+          "featured_quote": "这一个个都怎么了，搞得好像我是什么外人一样，气死我了。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 1
+        },
+        {
+          "day": 7,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "教室",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "name_cn": "程雨桐",
+              "motif_emoji": "📚",
+              "motif_tag": "沉默第二名"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "行吧，你们都不理我，我自己刷视频总行了吧。"
+            },
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "thought",
+              "text": "这两人一个比一个闷，那个LYU的备注到底啥情况，难道只能再找机会去堵苏念瑶了？"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "display_name": "程雨桐",
+              "kind": "thought",
+              "text": "又在聊剧，有这时间多刷两道题不好吗。"
+            }
+          ],
+          "featured_quote": "这两人一个比一个闷，那个LYU的备注到底啥情况，难道只能再找机会去堵苏念瑶了？",
+          "featured_speaker_name": "唐诗涵",
+          "tick_index": 2
+        },
+        {
+          "day": 7,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "教室",
+          "portraits": [
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "shen_yifan",
+              "name_cn": "沈逸凡",
+              "motif_emoji": "🔥",
+              "motif_tag": "正义班长"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "speech",
+              "text": "你到底在看啥呀，剧名发我看看，我也想看。"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "一个个装什么死啊，陆思远那儿没准有瓜，去问问他。"
+            },
+            {
+              "agent_id": "shen_yifan",
+              "display_name": "沈逸凡",
+              "kind": "thought",
+              "text": "一个个都这么闲，作业写完了吗就在这儿讨论电视剧。"
+            }
+          ],
+          "featured_quote": "一个个装什么死啊，陆思远那儿没准有瓜，去问问他。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 3
+        },
+        {
+          "day": 7,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "教室",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "lu_siyuan",
+              "name_cn": "陆思远",
+              "motif_emoji": "🌱",
+              "motif_tag": "好好先生"
+            },
+            {
+              "agent_id": "shen_yifan",
+              "name_cn": "沈逸凡",
+              "motif_emoji": "🔥",
+              "motif_tag": "正义班长"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "陆思远，班里最近有啥好玩的事没？别藏着掖着啊，分享分享。"
+            },
+            {
+              "agent_id": "lu_siyuan",
+              "display_name": "陆思远",
+              "kind": "thought",
+              "text": "想找机会打招呼，但看他那样子，还是算了，别自讨没趣。"
+            },
+            {
+              "agent_id": "shen_yifan",
+              "display_name": "沈逸凡",
+              "kind": "thought",
+              "text": "离上课还有几分钟，他们倒是真的闲得住，真是没压力。"
+            }
+          ],
+          "featured_quote": "真没劲，一个个都跟苦行僧似的，搞得我像个没人理的边缘人。",
+          "featured_speaker_name": "唐诗涵",
+          "tick_index": 4
+        },
+        {
+          "day": 7,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "教室",
+          "portraits": [
+            {
+              "agent_id": "lu_siyuan",
+              "name_cn": "陆思远",
+              "motif_emoji": "🌱",
+              "motif_tag": "好好先生"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "name_cn": "程雨桐",
+              "motif_emoji": "📚",
+              "motif_tag": "沉默第二名"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "lu_siyuan",
+              "display_name": "陆思远",
+              "kind": "speech",
+              "text": "没啥，我不怎么关注这些，大家都忙着复习呢。"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "陆思远这家伙到底知不知道点什么，别又是敷衍我。"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "display_name": "程雨桐",
+              "kind": "thought",
+              "text": "无聊，有打听闲事的时间，不如复习一下动量定理。"
+            }
+          ],
+          "featured_quote": "陆思远这家伙到底知不知道点什么，别又是敷衍我。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 5
+        },
+        {
+          "day": 7,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "教室",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "lu_siyuan",
+              "name_cn": "陆思远",
+              "motif_emoji": "🌱",
+              "motif_tag": "好好先生"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "name_cn": "程雨桐",
+              "motif_emoji": "📚",
+              "motif_tag": "沉默第二名"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "喂，你倒是给个反应啊，平时不是挺消息灵通的吗？"
+            },
+            {
+              "agent_id": "lu_siyuan",
+              "display_name": "陆思远",
+              "kind": "thought",
+              "text": "沈逸凡在看我吗？好怕他突然发火，还是别惹事了。"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "display_name": "程雨桐",
+              "kind": "thought",
+              "text": "与其把精力花在这些没意义的八卦上，不如早点把下一章电磁学的框架列出来。"
+            }
+          ],
+          "featured_quote": "沈逸凡在看我吗？好怕他突然发火，还是别惹事了。",
+          "featured_speaker_name": "陆思远",
+          "tick_index": 6
+        },
+        {
+          "day": 7,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "教室",
+          "portraits": [
+            {
+              "agent_id": "lu_siyuan",
+              "name_cn": "陆思远",
+              "motif_emoji": "🌱",
+              "motif_tag": "好好先生"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "name_cn": "程雨桐",
+              "motif_emoji": "📚",
+              "motif_tag": "沉默第二名"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "lu_siyuan",
+              "display_name": "陆思远",
+              "kind": "speech",
+              "text": "呃，我去接个水，先走了。"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "一个个都端着，烦死了，看来今天从陆思远这儿也挖不出什么猛料。"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "display_name": "程雨桐",
+              "kind": "thought",
+              "text": "离上课还有一分钟，她们还在吵，真耽误人思考。"
+            }
+          ],
+          "featured_quote": "一个个都端着，烦死了，看来今天从陆思远这儿也挖不出什么猛料。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 7
+        },
+        {
+          "day": 7,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "教室",
+          "portraits": [
+            {
+              "agent_id": "lu_siyuan",
+              "name_cn": "陆思远",
+              "motif_emoji": "🌱",
+              "motif_tag": "好好先生"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "name_cn": "程雨桐",
+              "motif_emoji": "📚",
+              "motif_tag": "沉默第二名"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "lu_siyuan",
+              "display_name": "陆思远",
+              "kind": "thought",
+              "text": "好想逃走，但这借口也太烂了，沈逸凡肯定觉得我很奇怪。算了，不管了。"
+            }
+          ],
+          "featured_quote": "好想逃走，但这借口也太烂了，沈逸凡肯定觉得我很奇怪。算了，不管了。",
+          "featured_speaker_name": "陆思远",
+          "tick_index": 8
+        },
+        {
+          "day": 7,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "教室",
+          "portraits": [
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "name_cn": "程雨桐",
+              "motif_emoji": "📚",
+              "motif_tag": "沉默第二名"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "speech",
+              "text": "哎，这教室里闷得我快长毛了，语晨你到底看啥呢？借我看看。"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "一个个都跟我躲猫猫呢，真是够了，无聊透顶。"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "display_name": "程雨桐",
+              "kind": "thought",
+              "text": "离上课不到一分钟，她们还不准备收心吗？"
+            }
+          ],
+          "featured_quote": "离上课不到一分钟，她们还不准备收心吗？",
+          "featured_speaker_name": "程雨桐",
+          "tick_index": 9
+        },
+        {
+          "day": 7,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "教室",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "name_cn": "程雨桐",
+              "motif_emoji": "📚",
+              "motif_tag": "沉默第二名"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "没看啥，就一无聊的短剧，没劲死了。晚上再说吧。"
+            },
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "thought",
+              "text": "这丫头神秘兮兮的，搞得我也想看一眼手机了，肯定又在吐槽谁。"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "display_name": "程雨桐",
+              "kind": "thought",
+              "text": "离预备铃还有几十秒，还在玩手机，这种自制力怎么考985。"
+            }
+          ],
+          "featured_quote": "这丫头神秘兮兮的，搞得我也想看一眼手机了，肯定又在吐槽谁。",
+          "featured_speaker_name": "唐诗涵",
+          "tick_index": 10
+        },
+        {
+          "day": 7,
+          "time": "15:30",
+          "scene_name": "课间",
+          "location": "教室",
+          "portraits": [
+            {
+              "agent_id": "tang_shihan",
+              "name_cn": "唐诗涵",
+              "motif_emoji": "🌿",
+              "motif_tag": "大大咧咧学委"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "name_cn": "程雨桐",
+              "motif_emoji": "📚",
+              "motif_tag": "沉默第二名"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "tang_shihan",
+              "display_name": "唐诗涵",
+              "kind": "speech",
+              "text": "晚上回宿舍再说！你手机里到底藏了什么宝贝，这么入迷啊？"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "一个个都这么装，真的是够了，回宿舍我非得好好问问诗涵不可。"
+            },
+            {
+              "agent_id": "cheng_yutong",
+              "display_name": "程雨桐",
+              "kind": "thought",
+              "text": "离预备铃还有几十秒，还在玩手机，这种自制力怎么考985。"
+            }
+          ],
+          "featured_quote": "一个个都这么装，真的是够了，回宿舍我非得好好问问诗涵不可。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 11
+        }
+      ],
+      "share_tick_captions": [
+        {
+          "caption": "第007天 · 课间 · 教室 ☀️\n\n「程雨桐」离下一节课还有几分钟，得抓紧时间把电磁感应那部分公式推完。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#教室日常",
+            "#课间"
+          ],
+          "filename": "simcampus_第007天_课间@教室_t01.png",
+          "group_index": 0,
+          "tick_index": 0
+        },
+        {
+          "caption": "第007天 · 课间 · 教室 🌿\n\n「方语晨」这一个个都怎么了，搞得好像我是什么外人一样，气死我了。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#教室日常",
+            "#课间"
+          ],
+          "filename": "simcampus_第007天_课间@教室_t02.png",
+          "group_index": 0,
+          "tick_index": 1
+        },
+        {
+          "caption": "第007天 · 课间 · 教室 ☀️\n\n「唐诗涵」这两人一个比一个闷，那个LYU的备注到底啥情况，难道只能再找机会去堵苏念瑶了？\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#教室日常",
+            "#课间"
+          ],
+          "filename": "simcampus_第007天_课间@教室_t03.png",
+          "group_index": 0,
+          "tick_index": 2
+        },
+        {
+          "caption": "第007天 · 课间 · 教室 🌿\n\n「方语晨」一个个装什么死啊，陆思远那儿没准有瓜，去问问他。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#教室日常",
+            "#课间"
+          ],
+          "filename": "simcampus_第007天_课间@教室_t04.png",
+          "group_index": 0,
+          "tick_index": 3
+        },
+        {
+          "caption": "第007天 · 课间 · 教室 ☀️\n\n「唐诗涵」真没劲，一个个都跟苦行僧似的，搞得我像个没人理的边缘人。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#教室日常",
+            "#课间"
+          ],
+          "filename": "simcampus_第007天_课间@教室_t05.png",
+          "group_index": 0,
+          "tick_index": 4
+        },
+        {
+          "caption": "第007天 · 课间 · 教室 🌱\n\n「方语晨」陆思远这家伙到底知不知道点什么，别又是敷衍我。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#教室日常",
+            "#课间"
+          ],
+          "filename": "simcampus_第007天_课间@教室_t06.png",
+          "group_index": 0,
+          "tick_index": 5
+        },
+        {
+          "caption": "第007天 · 课间 · 教室 ☀️\n\n「陆思远」沈逸凡在看我吗？好怕他突然发火，还是别惹事了。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#教室日常",
+            "#课间"
+          ],
+          "filename": "simcampus_第007天_课间@教室_t07.png",
+          "group_index": 0,
+          "tick_index": 6
+        },
+        {
+          "caption": "第007天 · 课间 · 教室 🌱\n\n「方语晨」一个个都端着，烦死了，看来今天从陆思远这儿也挖不出什么猛料。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#教室日常",
+            "#课间"
+          ],
+          "filename": "simcampus_第007天_课间@教室_t08.png",
+          "group_index": 0,
+          "tick_index": 7
+        },
+        {
+          "caption": "第007天 · 课间 · 教室 🌱\n\n「陆思远」好想逃走，但这借口也太烂了，沈逸凡肯定觉得我很奇怪。算了，不管了。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#教室日常",
+            "#课间"
+          ],
+          "filename": "simcampus_第007天_课间@教室_t09.png",
+          "group_index": 0,
+          "tick_index": 8
+        },
+        {
+          "caption": "第007天 · 课间 · 教室 🌿\n\n「程雨桐」离上课不到一分钟，她们还不准备收心吗？\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#教室日常",
+            "#课间"
+          ],
+          "filename": "simcampus_第007天_课间@教室_t10.png",
+          "group_index": 0,
+          "tick_index": 9
+        },
+        {
+          "caption": "第007天 · 课间 · 教室 ☀️\n\n「唐诗涵」这丫头神秘兮兮的，搞得我也想看一眼手机了，肯定又在吐槽谁。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#教室日常",
+            "#课间"
+          ],
+          "filename": "simcampus_第007天_课间@教室_t11.png",
+          "group_index": 0,
+          "tick_index": 10
+        },
+        {
+          "caption": "第007天 · 课间 · 教室 🌿\n\n「方语晨」一个个都这么装，真的是够了，回宿舍我非得好好问问诗涵不可。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#教室日常",
+            "#课间"
+          ],
+          "filename": "simcampus_第007天_课间@教室_t12.png",
+          "group_index": 0,
+          "tick_index": 11
+        }
+      ]
+    }
+  ]
+}

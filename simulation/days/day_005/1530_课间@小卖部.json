@@ -1,6 +1,6 @@
 {
   "scene": {
-    "scene_index": 11,
+    "scene_index": 5,
     "time": "15:30",
     "name": "课间",
     "location": "小卖部",
@@ -18,9 +18,9 @@
       ],
       "is_solo": true,
       "solo_reflection": {
-        "inner_thought": "刚那把太爽了，下次还要找他带我。林昭宇到底什么情况啊。",
-        "emotion": "excited",
-        "activity": "站在小卖部货架前，一边刷着王者荣耀战绩，一边挑饮料。"
+        "inner_thought": "林昭宇到底什么情况，苏念瑶又在藏什么，烦死了。",
+        "emotion": "curious",
+        "activity": "我在排队买奶茶，顺手掏出手机刷表白墙。"
       }
     }
   ]

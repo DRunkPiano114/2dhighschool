@@ -6,66 +6,89 @@
   "daily_plan": {
     "intentions": [
       {
-        "target": "林昭宇",
-        "goal": "假装借文具顺便问他物理题，看看他什么反应",
-        "reason": "老是看他和苏念瑶在那边神神秘秘的，我心里毛毛的，得找机会探探口风。",
+        "target": "苏念瑶",
+        "goal": "拉她去买奶茶，顺便套话问那个LYU备注是不是林昭宇",
+        "reason": "这破事儿像猫挠一样，不搞清楚我真的难受死了，必须得找机会让她松口。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "450fb6",
-        "origin_day": 7,
-        "pursued_days": 1
+        "satisfies_concern": "f71be7",
+        "origin_day": 5,
+        "pursued_days": 3
       },
       {
-        "target": "蛋仔",
-        "goal": "给蛋仔买新娃衣并拍照片发小红书",
-        "reason": "这几天烦心事太多了，买点可爱的回回血，不然我要疯了。",
+        "target": "林昭宇",
+        "goal": "假装请教物理题，顺便打听一下竞赛八卦",
+        "reason": "虽然物理听不懂，但借这个机会看看他到底跟苏念瑶有没有交集，总比干坐着强。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "7d6132",
+        "origin_day": 6,
+        "pursued_days": 2
+      },
+      {
+        "target": "方语晨",
+        "goal": "一起看新出的甜宠剧，吐槽一下今天的作业",
+        "reason": "最近心累，和闺蜜刷剧吐槽能让我心情好点，毕竟我还是需要社交充电的。",
         "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
         "origin_day": 7,
         "pursued_days": 1
-      },
-      {
-        "target": "方语晨",
-        "goal": "午饭时套话，搞清楚她和苏念瑶到底瞒着什么",
-        "reason": "昨天看她们俩那样子，感觉完全被排挤了，必须问清楚，不然以后怎么一起玩。",
-        "fulfilled": false,
-        "abandoned": false,
-        "satisfies_concern": "450fb6",
-        "origin_day": 7,
-        "pursued_days": 1
       }
     ],
-    "mood_forecast": "anxious",
+    "mood_forecast": "frustrated",
     "location_preferences": {
       "morning_break": "教室",
       "lunch": "食堂",
-      "afternoon_break": "走廊"
+      "afternoon_break": "教室"
     }
   },
   "day": 7,
   "active_concerns": [
     {
-      "id": "450fb6",
-      "text": "方语晨和苏念瑶在宿舍里谈论周末恐怖本，却对我隐瞒了关于林昭宇的相关互动，这种被排挤感让我非常在意。",
-      "source_event": "苏念瑶在课堂上买裙子并对我和方语晨的询问表现得极其冷淡。；22:00 宿舍夜聊；晚自习苏念瑶路过林昭宇座位时的侧头举动；22:00 宿舍夜聊",
-      "source_scene": "上课",
-      "source_day": 5,
+      "id": "e8d6ea",
+      "text": "苏念瑶对LYU备注的极力掩饰让我怀疑她和林昭宇之间有秘密，必须找机会彻底弄清楚。",
+      "source_event": "午饭和宿舍夜聊；午饭时苏念瑶指向姜皓天所在方向；22:00 宿舍夜聊；宿舍夜聊时关于LYU备注的争执",
+      "source_scene": "",
+      "source_day": 3,
       "emotion": "curious",
-      "intensity": 7,
+      "intensity": 3,
       "related_people": [
-        "苏念瑶"
+        "苏念瑶",
+        "林昭宇"
       ],
       "positive": false,
       "topic": "人际矛盾",
       "last_reinforced_day": 7,
       "last_new_info_day": 7,
-      "reinforcement_count": 3,
+      "reinforcement_count": 4,
       "text_history": [
-        "苏念瑶到底在瞒着我们什么秘密？",
-        "苏念瑶和方语晨之间到底在瞒着我什么秘密？这种被排除在小圈子之外的感觉很不舒服。",
-        "苏念瑶和林昭宇之间似乎有我不知道的互动，这让我非常在意。"
+        "苏念瑶在提到林昭宇时表现出的回避态度很反常，她到底在隐瞒什么？",
+        "苏念瑶在食堂提到姜皓天并转移话题，她和姜皓天之间是否有我不知道的关联？",
+        "苏念瑶对LYU备注的极力掩饰和回避，让我非常确定她们之间有瞒着我的秘密。"
       ],
+      "id_history": [],
+      "last_bump_day": 7,
+      "bumps_today": 2
+    },
+    {
+      "id": "f71be7",
+      "text": "苏念瑶手机备注LYU到底是不是林昭宇？她为什么反应这么大？",
+      "source_event": "宿舍夜聊",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "curious",
+      "intensity": 9,
+      "related_people": [
+        "苏念瑶",
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "恋爱",
+      "last_reinforced_day": 7,
+      "last_new_info_day": 4,
+      "reinforcement_count": 1,
+      "text_history": [],
       "id_history": [],
       "last_bump_day": 7,
       "bumps_today": 2

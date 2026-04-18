@@ -8,19 +8,600 @@
     "day": 9
   },
   "participant_names": {
-    "shen_yifan": "沈逸凡"
+    "jiang_haotian": "姜皓天",
+    "shen_yifan": "沈逸凡",
+    "su_nianyao": "苏念瑶"
   },
   "groups": [
     {
       "group_index": 0,
       "participants": [
-        "shen_yifan"
+        "jiang_haotian",
+        "shen_yifan",
+        "su_nianyao"
       ],
-      "is_solo": true,
-      "solo_reflection": {
-        "inner_thought": "姜皓天那家伙肯定又躲哪玩手机呢，真烦。",
-        "emotion": "frustrated",
-        "activity": "我在操场边沿着跑道走，顺便检查一下周围有没有迟到的同学。"
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "shen_yifan",
+              "content": "哟，沈大班长，不去检查纪律跑这儿晒太阳？怎么，今天没作业扣分了？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "沈逸凡正站在操场边上，面无表情的样子看得我火大。",
+              "inner_thought": "这死板班长又在装模作样，欠他债一样，逗他一下看看。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "哟，沈大班长，不去检查纪律跑这儿晒太阳？怎么，今天没作业扣分了？",
+              "action_target": "shen_yifan",
+              "urgency": 7,
+              "is_disruptive": true
+            },
+            "su_nianyao": {
+              "observation": "沈逸凡在看竞赛题，姜皓天在热身，阳光确实有点太晃眼了。",
+              "inner_thought": "好烦啊，物理题还是没头绪，唐诗涵那个炸弹又随时会爆。",
+              "emotion": "anxious",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "shen_yifan": {
+              "observation": "姜皓天在操场边晃悠，看起来还没打算回教室。",
+              "inner_thought": "老是盯着他也不是个事，算了，试着正常说两句。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "姜皓天，待会儿第一节课别迟到了。",
+              "action_target": "jiang_haotian",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": {
+              "agent": "shen_yifan",
+              "target": "jiang_haotian",
+              "content": "姜皓天，待会儿第一节课别迟到了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "沈逸凡被我说了之后皱了皱眉，还是那副死样子，边上的苏念瑶也在看我们。",
+              "inner_thought": "这小子脸皮真厚，逗他一点反应都没有吗？真没意思。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "啧，没话说了？班长大人真忙啊，是不是正盘算着怎么把我的名字写进那本小册子里呢？",
+              "action_target": "shen_yifan",
+              "urgency": 7,
+              "is_disruptive": true
+            }
+          },
+          "gated_agents": [
+            "su_nianyao"
+          ]
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "shen_yifan",
+              "content": "啧，没话说了？班长大人真忙啊，是不是正盘算着怎么把我的名字写进那本小册子里呢？"
+            },
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "转过身，大步向教学楼走去，不再看他。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "姜皓天撇了撇嘴，一副完全没把我的提醒当回事的样子。",
+              "inner_thought": "算了，好心当成驴肝肺，多说一句都显得我多管闲事。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "转过身，大步向教学楼走去，不再看他。",
+              "action_target": "jiang_haotian",
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": [
+            "su_nianyao"
+          ]
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "shen_yifan",
+              "content": "哎，心虚了？别跑啊，班长大人！"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "沈逸凡这家伙居然转头就走，连话都不回，摆出一副懒得理我的样子。",
+              "inner_thought": "真把自己当回事，这死样子看着真想往他背上拍一掌。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "哎，心虚了？别跑啊，班长大人！",
+              "action_target": "shen_yifan",
+              "urgency": 7,
+              "is_disruptive": true
+            },
+            "shen_yifan": {
+              "observation": "姜皓天还在那儿阴阳怪气，但我现在真没心情跟他再吵了。",
+              "inner_thought": "何老师说得对，我这管理确实僵硬，跟他多说一个字都烦。",
+              "emotion": "frustrated",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": [
+            "su_nianyao"
+          ]
+        },
+        {
+          "tick": 4,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "jiang_haotian",
+                "type": "non_verbal",
+                "content": "切了一声，把手里的篮球往地上一砸，发出一声闷响。"
+              }
+            ],
+            "environmental_event": "【动作】姜皓天: 切了一声，把手里的篮球往地上一砸，发出一声闷响。",
+            "exits": [
+              "shen_yifan"
+            ]
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "沈逸凡居然直接无视我走了，留我一个人在这儿挺没劲的。",
+              "inner_thought": "真装，搞得好像我很稀罕跟他说话一样，烦死了。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "切了一声，把手里的篮球往地上一砸，发出一声闷响。",
+              "action_target": "shen_yifan",
+              "urgency": 4,
+              "is_disruptive": true
+            },
+            "su_nianyao": {
+              "observation": "姜皓天还在那儿追着沈逸凡起哄，沈逸凡根本没回头。",
+              "inner_thought": "这两人真幼稚，沈逸凡也是，让他这么损，还不带理的。",
+              "emotion": "anxious",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "shen_yifan": {
+              "observation": "姜皓天还在后面没完没了地喊，周围同学投来了异样的目光。",
+              "inner_thought": "真烦，和他计较显得我像个疯子，闭嘴赶紧走。",
+              "emotion": "frustrated",
+              "action_type": "exit",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 5,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "shen_yifan",
+              "content": "切，拽什么拽，以后有你好看的。"
+            },
+            "actions": [
+              {
+                "agent": "su_nianyao",
+                "type": "non_verbal",
+                "content": "低头翻开错题本，用笔尖焦躁地戳着纸面。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "沈逸凡居然连头都不回，直接把我当空气走了。",
+              "inner_thought": "这小子越装越像样了，真以为自己了不起啊，看着就来气。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "切，拽什么拽，以后有你好看的。",
+              "action_target": "shen_yifan",
+              "urgency": 4,
+              "is_disruptive": false
+            },
+            "su_nianyao": {
+              "observation": "姜皓天还在那儿碎碎念，但沈逸凡已经走远了，操场上又变回了那种阳光直晒下的烦闷感。",
+              "inner_thought": "真吵。这两人闹够了没，烦死了，物理题还没头绪呢。",
+              "emotion": "anxious",
+              "action_type": "non_verbal",
+              "action_content": "低头翻开错题本，用笔尖焦躁地戳着纸面。",
+              "action_target": null,
+              "urgency": 4,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 6,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "su_nianyao",
+              "content": "喂，苏念瑶，你这本子都要被戳穿了，有啥想不开的跟哥们说说？"
+            },
+            "actions": [
+              {
+                "agent": "su_nianyao",
+                "type": "non_verbal",
+                "content": "叹了口气，收起错题本，起身准备回教室。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "沈逸凡没理我走了，苏念瑶在那儿一个人不停地戳本子，看起来挺心烦的。",
+              "inner_thought": "沈逸凡这臭脸看得我难受，那女生戳得我心头更烦了。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "喂，苏念瑶，你这本子都要被戳穿了，有啥想不开的跟哥们说说？",
+              "action_target": "su_nianyao",
+              "urgency": 5,
+              "is_disruptive": false
+            },
+            "su_nianyao": {
+              "observation": "姜皓天还在那儿碎碎念，沈逸凡已经回教学楼了，操场这儿安静下来了。",
+              "inner_thought": "这两人闹够了没，烦死，物理题一点思路都没，好想快点回教室找程雨桐。",
+              "emotion": "anxious",
+              "action_type": "non_verbal",
+              "action_content": "叹了口气，收起错题本，起身准备回教室。",
+              "action_target": null,
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 7,
+          "public": {
+            "speech": {
+              "agent": "su_nianyao",
+              "target": "jiang_haotian",
+              "content": "没心情跟你开玩笑，别挡路。"
+            },
+            "actions": [
+              {
+                "agent": "jiang_haotian",
+                "type": "non_verbal",
+                "content": "耸了耸肩，捡起地上的篮球，百无聊赖地原地拍了两下，转身往操场中心走去。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "苏念瑶没搭理我直接拿着本子走了，留我一个人在这儿尴尬。",
+              "inner_thought": "一个个都什么毛病，拽得跟二五八万似的，无聊透了。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "耸了耸肩，捡起地上的篮球，百无聊赖地原地拍了两下，转身往操场中心走去。",
+              "action_target": null,
+              "urgency": 4,
+              "is_disruptive": false
+            },
+            "su_nianyao": {
+              "observation": "姜皓天还在那儿没完没了地起哄，烦得我头都要炸了。",
+              "inner_thought": "这人怎么这么烦，还没完没了了，我只想赶紧回教室找雨桐补物理。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "没心情跟你开玩笑，别挡路。",
+              "action_target": "jiang_haotian",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 8,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "jiang_haotian",
+                "type": "non_verbal",
+                "content": "用力运球做了一个胯下变向，然后直接朝篮球场方向快步跑去。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": [
+              "su_nianyao"
+            ]
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "苏念瑶没搭理我直接走了，沈逸凡也走远了，操场上就剩我一个人拍球。",
+              "inner_thought": "真没劲，一个个都跟欠钱似的。找个人打球算了。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "用力运球做了一个胯下变向，然后直接朝篮球场方向快步跑去。",
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "su_nianyao": {
+              "observation": "姜皓天终于拎着篮球走了，操场里那股聒噪的气息稍微散了一些。",
+              "inner_thought": "终于清静了，快点回教室吧，再耽误下去物理题更搞不定了。",
+              "emotion": "frustrated",
+              "action_type": "exit",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        }
+      ],
+      "narrative": {
+        "key_moments": [
+          "姜皓天在操场与沈逸凡对话，询问其纪律检查工作。",
+          "沈逸凡提醒姜皓天第一节课不要迟到。",
+          "沈逸凡转身离开操场前往教学楼。",
+          "姜皓天将篮球砸向地面。",
+          "苏念瑶在操场翻看错题本并用笔尖戳纸面。",
+          "姜皓天与苏念瑶对话，随后苏念瑶收起错题本离开。",
+          "姜皓天在操场进行运球动作后前往篮球场。"
+        ],
+        "fulfilled_intentions": [
+          "沈逸凡:前往教学楼",
+          "苏念瑶:返回教室"
+        ],
+        "events_discussed": [],
+        "new_events": [
+          {
+            "text": "沈逸凡提醒姜皓天第一节课不要迟到",
+            "category": "提醒",
+            "witnesses": [
+              "姜皓天",
+              "沈逸凡"
+            ],
+            "spread_probability": 0.2,
+            "cite_ticks": [
+              2
+            ]
+          },
+          {
+            "text": "姜皓天将篮球砸向地面",
+            "category": "动作",
+            "witnesses": [
+              "姜皓天"
+            ],
+            "spread_probability": 0.1,
+            "cite_ticks": [
+              5
+            ]
+          },
+          {
+            "text": "苏念瑶用笔尖戳错题本纸面",
+            "category": "动作",
+            "witnesses": [
+              "苏念瑶",
+              "姜皓天"
+            ],
+            "spread_probability": 0.1,
+            "cite_ticks": [
+              6,
+              7
+            ]
+          }
+        ]
+      },
+      "reflections": {
+        "jiang_haotian": {
+          "emotion": "frustrated",
+          "relationship_changes": [
+            {
+              "to_agent": "沈逸凡",
+              "favorability": -2,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "苏念瑶",
+              "favorability": 0,
+              "trust": 0,
+              "understanding": -1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "沈逸凡那死样子，又在那儿装正经，真想给他一拳。",
+              "emotion": "frustrated",
+              "importance": 4,
+              "people": [
+                "沈逸凡"
+              ],
+              "location": "操场",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "dcf8e8",
+              "adjustment": 0
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "找个陆思远没法装睡的机会，逼问他到底瞒着我什么工厂的事",
+              "status": "pending",
+              "brief_reason": "陆思远根本没在场。"
+            },
+            {
+              "goal": "拉他去操场打把球，出一身汗，爽一下（想找何家骏）",
+              "status": "pending",
+              "brief_reason": "何家骏没在场，现在正往球场走。"
+            },
+            {
+              "goal": "找机会逗他一下，看他那副死板样子就来气（想找沈逸凡）",
+              "status": "fulfilled",
+              "brief_reason": "上去挑衅了沈逸凡，虽然他没理我，但看他那副拽样就够烦的。"
+            }
+          ]
+        },
+        "shen_yifan": {
+          "emotion": "frustrated",
+          "relationship_changes": [
+            {
+              "to_agent": "姜皓天",
+              "favorability": -2,
+              "trust": -1,
+              "understanding": 0,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "姜皓天在操场公然挑衅，还拿篮球砸地，真是一点规矩都没有。",
+              "emotion": "frustrated",
+              "importance": 5,
+              "people": [
+                "姜皓天"
+              ],
+              "location": "操场",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "f8f76e",
+              "adjustment": 1
+            },
+            {
+              "concern_text": "ce28db",
+              "adjustment": 1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "尝试用更平和的态度提醒他遵守纪律，不再直接威胁记名字",
+              "status": "attempted",
+              "brief_reason": "我提醒他上课别迟到，但他立刻开始嘲讽我，平和沟通根本行不通。"
+            },
+            {
+              "goal": "去操场一个人跑两圈，把心里的烦躁压下去",
+              "status": "frustrated",
+              "brief_reason": "本来想安静跑圈，被姜皓天搅和了，现在更烦了。"
+            },
+            {
+              "goal": "找他聊聊物理题，缓和下之前的尴尬（指陆思远）",
+              "status": "pending",
+              "brief_reason": "陆思远根本没在场，想找也找不到。"
+            }
+          ]
+        },
+        "su_nianyao": {
+          "emotion": "bored",
+          "relationship_changes": [
+            {
+              "to_agent": "姜皓天",
+              "favorability": -1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "沈逸凡",
+              "favorability": 0,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": false
+            }
+          ],
+          "memories": [
+            {
+              "text": "姜皓天在课间拍球找茬，莫名其妙被他烦了一通",
+              "emotion": "bored",
+              "importance": 3,
+              "people": [
+                "姜皓天"
+              ],
+              "location": "操场",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [],
+          "intention_outcomes": [
+            {
+              "goal": "买两杯奶茶缓和关系并试探唐诗涵的态度（想找方语晨）",
+              "status": "pending",
+              "brief_reason": "方语晨没在操场，没机会找她。"
+            },
+            {
+              "goal": "硬着头皮请教物理竞赛题（想找程雨桐）",
+              "status": "pending",
+              "brief_reason": "程雨桐没在操场，没机会问。"
+            },
+            {
+              "goal": "去图书馆借本散文集",
+              "status": "pending",
+              "brief_reason": "现在是课间，还在操场。"
+            }
+          ]
+        }
       }
     }
   ]

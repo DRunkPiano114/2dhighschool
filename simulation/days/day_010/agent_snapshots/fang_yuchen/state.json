@@ -1,0 +1,99 @@
+{
+  "emotion": "frustrated",
+  "energy": 85,
+  "academic_pressure": 30,
+  "location": "教室",
+  "daily_plan": {
+    "intentions": [
+      {
+        "target": "苏念瑶",
+        "goal": "找个没人的机会问问林昭宇的事，尽量软一点",
+        "reason": "老是这样拖着也不是办法，闺蜜之间不该有这种隔阂，今天必须试着聊开。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "e2cd81",
+        "origin_day": 4,
+        "pursued_days": 7
+      },
+      {
+        "target": null,
+        "goal": "去小卖部买点零食和新出的饮料",
+        "reason": "昨天没买成，今天早上一定要去，心情不好得靠零食补回来。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 10,
+        "pursued_days": 1
+      },
+      {
+        "target": "唐诗涵",
+        "goal": "跟她讨论一下新收的立牌，缓和一下宿舍气氛",
+        "reason": "昨晚气氛太僵了，得靠共同爱好把大家拉回正常频道。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "802306",
+        "origin_day": 7,
+        "pursued_days": 4
+      }
+    ],
+    "mood_forecast": "anxious",
+    "location_preferences": {
+      "morning_break": "教室",
+      "lunch": "食堂",
+      "afternoon_break": "教室"
+    }
+  },
+  "day": 10,
+  "active_concerns": [
+    {
+      "id": "e2cd81",
+      "text": "苏念瑶在食堂提到林昭宇相关话题时表现得非常不自然，她到底在瞒着什么？",
+      "source_event": "食堂里提到林昭宇时苏念瑶的异常反应；食堂与宿舍的对话；12:00 午饭@食堂",
+      "source_scene": "午饭@食堂",
+      "source_day": 3,
+      "emotion": "curious",
+      "intensity": 5,
+      "related_people": [
+        "苏念瑶",
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "恋爱",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 5,
+      "reinforcement_count": 3,
+      "text_history": [
+        "念瑶是不是真的看上林昭宇了？她刚才反应好大。",
+        "苏念瑶对林昭宇的态度实在太反常了，她到底在隐瞒什么？"
+      ],
+      "id_history": [],
+      "last_bump_day": 10,
+      "bumps_today": 2
+    },
+    {
+      "id": "802306",
+      "text": "苏念瑶对林昭宇的隐瞒态度，让我怀疑我们之间是否存在无法跨越的隔阂。",
+      "source_event": "22:00 宿舍夜聊；22:00 宿舍夜聊；22:00 宿舍夜聊；22:00 宿舍夜聊；宿舍夜聊；苏念瑶承诺下午奶茶送达后解释LYU备注；全天多次关于林昭宇话题的沟通失败",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "curious",
+      "intensity": 6,
+      "related_people": [
+        "苏念瑶"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 10,
+      "last_new_info_day": 10,
+      "reinforcement_count": 6,
+      "text_history": [
+        "苏念瑶在宿舍面对唐诗涵的质问时表现出的极度回避，让我怀疑我们之间的信任是否已经彻底破裂。",
+        "苏念瑶到底在隐瞒什么？她对林昭宇身份的遮掩让我们的关系变得异常紧绷，这种不信任感让我非常不安。",
+        "下午奶茶到了她真会说吗？别又是拖延战术。"
+      ],
+      "id_history": [],
+      "last_bump_day": 10,
+      "bumps_today": 2
+    }
+  ]
+}

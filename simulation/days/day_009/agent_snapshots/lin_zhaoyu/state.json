@@ -6,29 +6,29 @@
   "daily_plan": {
     "intentions": [
       {
-        "target": "苏念瑶",
-        "goal": "找机会看一眼苏念瑶是在看我还是在看别处",
-        "reason": "这事儿一直挂在心上，总觉得有点在意，虽然很怂不敢直接对视，但还是想确认一下。",
+        "target": "陆思远",
+        "goal": "请教之前没弄懂的定语从句用法",
+        "reason": "英语成绩太差了，再不弄懂真的会拖后腿，怕妈又打电话问。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "376b5c",
-        "origin_day": 7,
-        "pursued_days": 3
-      },
-      {
-        "target": "陆思远",
-        "goal": "想问问陆思远能不能在晚自习帮我挡一下姜皓天的噪音",
-        "reason": "姜皓天太吵了，影响我复习，陆思远比较好说话，想看看他有没有什么办法。",
-        "fulfilled": true,
-        "abandoned": false,
-        "satisfies_concern": "3247a4",
+        "satisfies_concern": "64506b",
         "origin_day": 9,
         "pursued_days": 1
       },
       {
         "target": null,
-        "goal": "去图书馆安安静静刷会数学题",
-        "reason": "只有在图书馆做题的时候才觉得踏实，不想被打扰。",
+        "goal": "午休时戴耳机听许嵩的新歌",
+        "reason": "连着两天没听到了，心里一直惦记着，想放松一下紧绷的神经。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "454621",
+        "origin_day": 8,
+        "pursued_days": 2
+      },
+      {
+        "target": "陆思远",
+        "goal": "确认周五晚上能不能一起开局王者",
+        "reason": "这周太累了，这是我唯一的放松指望，想提前定下来。",
         "fulfilled": true,
         "abandoned": false,
         "satisfies_concern": null,
@@ -36,38 +36,55 @@
         "pursued_days": 1
       }
     ],
-    "mood_forecast": "frustrated",
+    "mood_forecast": "anxious",
     "location_preferences": {
       "morning_break": "教室",
-      "lunch": "食堂",
+      "lunch": "教室",
       "afternoon_break": "图书馆"
     }
   },
   "day": 9,
   "active_concerns": [
     {
-      "id": "376b5c",
-      "text": "今天在图书馆和教室依然没能确认唐诗涵是否在关注我，这种不确定感让我有些在意。",
-      "source_event": "日常校园生活；图书馆与晚自习期间；课间与唐诗涵的借橡皮互动",
+      "id": "870382",
+      "text": "想找机会戴上耳机听许嵩的新歌，但总是因为学习任务或环境干扰而无法实现。",
+      "source_event": "全天学习过程",
       "source_scene": "",
       "source_day": 7,
-      "emotion": "curious",
+      "emotion": "anxious",
       "intensity": 3,
-      "related_people": [
-        "唐诗涵"
-      ],
+      "related_people": [],
       "positive": true,
-      "topic": "恋爱",
+      "topic": "兴趣爱好",
       "last_reinforced_day": 9,
-      "last_new_info_day": 9,
-      "reinforcement_count": 2,
-      "text_history": [
-        "想找机会确认唐诗涵是否在关注我，这个念头一直挥之不去。",
-        "今天在图书馆和晚自习都没能找到机会确认唐诗涵是否在关注我。"
-      ],
+      "last_new_info_day": 7,
+      "reinforcement_count": 1,
+      "text_history": [],
       "id_history": [],
       "last_bump_day": 9,
-      "bumps_today": 2
+      "bumps_today": 1
+    },
+    {
+      "id": "c775a6",
+      "text": "担心英语定语从句一直弄不懂，怕下次考试成绩不好会被妈妈责备。",
+      "source_event": "宿舍夜聊时被姜皓天打断，未能完成语法讲解",
+      "source_scene": "",
+      "source_day": 9,
+      "emotion": "anxious",
+      "intensity": 6,
+      "related_people": [
+        "陆思远",
+        "母亲"
+      ],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 9,
+      "last_new_info_day": 9,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
     }
   ]
 }

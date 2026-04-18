@@ -1,6 +1,6 @@
 {
   "scene": {
-    "scene_index": 6,
+    "scene_index": 8,
     "time": "15:30",
     "name": "课间",
     "location": "小卖部",
@@ -18,9 +18,9 @@
       ],
       "is_solo": true,
       "solo_reflection": {
-        "inner_thought": "刚那把王者赢了真的爽，林昭宇要是能一起玩就好了。",
-        "emotion": "excited",
-        "activity": "站在小卖部货架前，手里拿着刚买的冰红茶，低头盯着手机屏幕回味刚才的对局。"
+        "inner_thought": "刚那把辅助挺给力，下次拉他一起，先买瓶奶茶回教室。",
+        "emotion": "happy",
+        "activity": "在小卖部排队买奶茶，顺便盯着手机屏幕看刚才的比赛结算页面。"
       }
     }
   ]

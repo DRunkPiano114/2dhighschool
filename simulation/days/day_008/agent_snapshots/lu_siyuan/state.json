@@ -6,19 +6,29 @@
   "daily_plan": {
     "intentions": [
       {
-        "target": "公众号",
-        "goal": "删掉太矫情的部分，试着发布那篇关于人际压力的文章",
-        "reason": "老是写了又删，心里总觉得不踏实，想看看发出去会怎么样。",
+        "target": "微信公众号",
+        "goal": "修改公众号草稿，把个人细节删得更多一点，争取今天发出去",
+        "reason": "老是憋着这些话在草稿箱里，感觉自己都要闷坏了，想试着表达一下。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "4c1d08",
+        "satisfies_concern": "63226b",
+        "origin_day": 8,
+        "pursued_days": 1
+      },
+      {
+        "target": "沈逸凡",
+        "goal": "在走廊碰到时主动点个头或者打个招呼",
+        "reason": "一直躲着也不是办法，看他平时那个样子，总觉得我不理他他反而会更看我不顺眼。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "a28825",
         "origin_day": 8,
         "pursued_days": 1
       },
       {
         "target": "林昭宇",
-        "goal": "约林昭宇下午去图书馆讨论生物难题",
-        "reason": "和他待在一起讨论问题最放松，不想一个人待着。",
+        "goal": "约林昭宇下午课间去图书馆复习生物",
+        "reason": "生物课有些点还没弄透，而且和林昭宇待在一起比较有安全感。",
         "fulfilled": true,
         "abandoned": false,
         "satisfies_concern": null,
@@ -26,7 +36,7 @@
         "pursued_days": 1
       }
     ],
-    "mood_forecast": "calm",
+    "mood_forecast": "anxious",
     "location_preferences": {
       "morning_break": "教室",
       "lunch": "食堂",
@@ -36,32 +46,59 @@
   "day": 8,
   "active_concerns": [
     {
-      "id": "4c1d08",
-      "text": "公众号里关于被利用感的感悟写了又删，始终不敢发布，担心被别人看到后引起不必要的麻烦。",
-      "source_event": "15:30 课间图书馆删除草稿",
-      "source_scene": "",
-      "source_day": 7,
+      "id": "a28825",
+      "text": "沈逸凡真的太凶了，以后在班里抬头不见低头见，要怎么办啊。",
+      "source_event": "沈逸凡在食堂当众赶人；食堂沈逸凡当众催表并摔勺子",
+      "source_scene": "午饭@食堂",
+      "source_day": 5,
       "emotion": "anxious",
-      "intensity": 5,
-      "related_people": [],
+      "intensity": 2,
+      "related_people": [
+        "沈逸凡"
+      ],
       "positive": false,
-      "topic": "自我认同",
+      "topic": "人际矛盾",
       "last_reinforced_day": 8,
       "last_new_info_day": 7,
-      "reinforcement_count": 1,
-      "text_history": [],
+      "reinforcement_count": 0,
+      "text_history": [
+        "沈逸凡好像真的很讨厌我们，以后在班里会不会更尴尬？"
+      ],
       "id_history": [],
       "last_bump_day": 8,
       "bumps_today": 2
     },
     {
-      "id": "b17425",
-      "text": "公众号里关于被利用感的感悟写了又删，始终不敢发布，担心被别人看到后引起不必要的麻烦。",
-      "source_event": "全天多次产生想发布文章的念头但最终放弃",
+      "id": "1eefd1",
+      "text": "姜皓天在宿舍反复询问我家中工厂的业务情况，感觉他在刻意打探，让人很不舒服。",
+      "source_event": "姜皓天在宿舍夜聊时反复追问家里工厂的情况；22:00 宿舍夜聊",
+      "source_scene": "宿舍夜聊",
+      "source_day": 7,
+      "emotion": "anxious",
+      "intensity": 8,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 8,
+      "last_new_info_day": 7,
+      "reinforcement_count": 1,
+      "text_history": [
+        "姜皓天到底想干嘛，总盯着我家里的事问，好烦。"
+      ],
+      "id_history": [],
+      "last_bump_day": 8,
+      "bumps_today": 2
+    },
+    {
+      "id": "d50fe5",
+      "text": "公众号草稿写好了却又一次没发出去，感觉心里的话一直积压着，有些闷。",
+      "source_event": "深夜反思",
       "source_scene": "",
       "source_day": 8,
       "emotion": "anxious",
-      "intensity": 5,
+      "intensity": 4,
       "related_people": [],
       "positive": false,
       "topic": "自我认同",

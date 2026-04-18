@@ -1,37 +1,37 @@
 {
-  "emotion": "frustrated",
+  "emotion": "calm",
   "energy": 85,
   "academic_pressure": 35,
   "location": "教室",
   "daily_plan": {
     "intentions": [
       {
-        "target": "林昭宇",
-        "goal": "去图书馆和林昭宇一起自习",
-        "reason": "最近复习物理压力太大，想和林昭宇待在一起，感觉会安心一些。",
-        "fulfilled": true,
-        "abandoned": false,
-        "satisfies_concern": null,
-        "origin_day": 1,
-        "pursued_days": 1
-      },
-      {
-        "target": "公众号",
-        "goal": "把草稿箱里的一篇感悟稍微改改，但还是不敢发",
-        "reason": "写出来心里会舒服点，虽然没人看，但算是一种情绪宣泄。",
+        "target": "姜皓天",
+        "goal": "尝试委婉地跟他说作业还是自己写比较好",
+        "reason": "老是帮他抄作业感觉自己像个工具人，心里挺烦的，但又怕直接拒绝闹僵",
         "fulfilled": false,
         "abandoned": false,
+        "satisfies_concern": "7b2e91",
+        "origin_day": 1,
+        "pursued_days": 1
+      },
+      {
+        "target": "林昭宇",
+        "goal": "下午去图书馆和他一起安安静静自习",
+        "reason": "最近有点累，和他在一块儿待着能让我放松下来",
+        "fulfilled": true,
+        "abandoned": false,
         "satisfies_concern": null,
         "origin_day": 1,
         "pursued_days": 1
       },
       {
-        "target": "姜皓天",
-        "goal": "帮姜皓天把物理作业抄完",
-        "reason": "他又要我帮忙，我不太敢拒绝，怕拒绝了之后班里气氛尴尬。",
-        "fulfilled": true,
+        "target": "微信公众号",
+        "goal": "把草稿箱里那篇感悟读一遍，还是没勇气发",
+        "reason": "我还没准备好面对别人的评价，怕写的东西被同学看到会尴尬",
+        "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": null,
+        "satisfies_concern": "4c8d32",
         "origin_day": 1,
         "pursued_days": 1
       }
@@ -46,18 +46,39 @@
   "day": 1,
   "active_concerns": [
     {
-      "id": "c1797a",
-      "text": "晚上去图书馆能帮林昭宇把题弄懂吗？",
-      "source_event": "林昭宇问我电磁感应的题",
+      "id": "1ca4c0",
+      "text": "林昭宇好像压力也挺大的，要多陪陪他吗",
+      "source_event": "林昭宇在研究英语卷子错题时眉头紧锁，显得很焦虑",
       "source_scene": "课间@教室",
       "source_day": 1,
-      "emotion": "anxious",
-      "intensity": 2,
+      "emotion": "touched",
+      "intensity": 6,
       "related_people": [
         "林昭宇"
       ],
-      "positive": false,
-      "topic": "学业焦虑",
+      "positive": true,
+      "topic": "其他",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 2,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 1,
+      "bumps_today": 2
+    },
+    {
+      "id": "e18525",
+      "text": "周末和林昭宇打游戏，得练好新英雄免得坑他。",
+      "source_event": "林昭宇邀请周五晚上打王者荣耀",
+      "source_scene": "课间@图书馆",
+      "source_day": 1,
+      "emotion": "excited",
+      "intensity": 4,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": true,
+      "topic": "期待的事",
       "last_reinforced_day": 1,
       "last_new_info_day": 1,
       "reinforcement_count": 0,
@@ -67,12 +88,33 @@
       "bumps_today": 0
     },
     {
-      "id": "e59812",
-      "text": "公众号草稿箱里写好的感悟，想发却始终不敢点击发布。",
-      "source_event": "独处时的自我反思",
+      "id": "2bbc0a",
+      "text": "总是帮姜皓天抄作业，感觉自己像个工具人，想委婉拒绝但又怕闹僵关系。",
+      "source_event": "课间帮姜皓天处理作业相关事宜",
       "source_scene": "",
       "source_day": 1,
-      "emotion": "anxious",
+      "emotion": "烦躁",
+      "intensity": 5,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "439528",
+      "text": "公众号草稿箱里的感悟还是不敢发布，担心被同学看到后引起尴尬的评价。",
+      "source_event": "独处时思考公众号内容",
+      "source_scene": "",
+      "source_day": 1,
+      "emotion": "忧虑",
       "intensity": 4,
       "related_people": [],
       "positive": false,

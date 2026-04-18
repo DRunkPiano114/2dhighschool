@@ -1,133 +1,115 @@
 {
-  "emotion": "excited",
+  "emotion": "anxious",
   "energy": 85,
   "academic_pressure": 15,
   "location": "教室",
   "daily_plan": {
     "intentions": [
       {
-        "target": "物理错题本",
-        "goal": "在错题本上补几个基础步骤，把抄袭痕迹改得自然点",
-        "reason": "周五就要检查了，如果被何老师当众揭穿太丢脸，我得先糊弄过去。",
-        "fulfilled": true,
+        "target": "数学课本",
+        "goal": "在课间把数学课本翻到前几章看基础定义",
+        "reason": "数学基础太差了，再不看真的要完蛋，心里慌得不行。",
+        "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "b577f9",
-        "origin_day": 3,
-        "pursued_days": 6
+        "satisfies_concern": null,
+        "origin_day": 6,
+        "pursued_days": 3
       },
       {
         "target": "姜皓天",
-        "goal": "晚上上线打王者时尽量稳住，别送人头",
-        "reason": "怕打得太烂被嫌弃，想稍微表现好一点。",
-        "fulfilled": false,
-        "abandoned": false,
-        "satisfies_concern": "b8e5a5",
-        "origin_day": 7,
-        "pursued_days": 2
-      },
-      {
-        "target": "小卖部",
-        "goal": "去买瓶冰水，顺便刷会儿手机视频",
-        "reason": "最近物理作业压得喘不过气，想找个地方透口气，刷刷视频解闷。",
-        "fulfilled": false,
+        "goal": "晚上和姜皓天加练打球",
+        "reason": "只有打球的时候才觉得没那么闷，想去放松一下。",
+        "fulfilled": true,
         "abandoned": false,
         "satisfies_concern": null,
         "origin_day": 8,
         "pursued_days": 1
       }
     ],
-    "mood_forecast": "anxious",
+    "mood_forecast": "excited",
     "location_preferences": {
       "morning_break": "教室",
       "lunch": "食堂",
-      "afternoon_break": "小卖部"
+      "afternoon_break": "图书馆"
     }
   },
   "day": 8,
   "active_concerns": [
     {
-      "id": "b577f9",
-      "text": "物理错题本抄袭痕迹太明显，担心周五检查时被何老师当众揭穿。",
-      "source_event": "何老师要求周五整理错题本并去办公室讲解；下午课间何老师的谈话；午饭时何老师的监督与检查要求；晚自习对着错题本发呆；课间被沈逸凡询问错题进度；晚自习抄写物理参考答案；何老师要求饭后整理错题本及后续的自我推导过程",
-      "source_scene": "课间@教室",
-      "source_day": 2,
+      "id": "223e0f",
+      "text": "数学课本的前几章基础定义一直没看，心里很担心跟不上进度。",
+      "source_event": "课间自习时段",
+      "source_scene": "",
+      "source_day": 5,
       "emotion": "anxious",
       "intensity": 5,
+      "related_people": [],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 8,
+      "last_new_info_day": 5,
+      "reinforcement_count": 2,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 8,
+      "bumps_today": 2
+    },
+    {
+      "id": "0cb951",
+      "text": "课间想看数学课本基础定义却总被老师提醒或琐事打断，担心基础一直补不上。",
+      "source_event": "08:45 课间沈逸凡提醒准备上课",
+      "source_scene": "",
+      "source_day": 6,
+      "emotion": "anxious",
+      "intensity": 6,
       "related_people": [
-        "何老师",
-        "自己"
+        "沈逸凡"
       ],
       "positive": false,
       "topic": "学业焦虑",
       "last_reinforced_day": 8,
-      "last_new_info_day": 7,
-      "reinforcement_count": 1,
-      "text_history": [
-        "物理错题本整理进度太慢，周五就要检查了，担心在何老师面前丢脸。",
-        "物理错题本进度太慢，周五检查在即，担心在何老师面前丢脸。",
-        "物理错题本抄了答案，周五检查时如果不小心被何老师发现，可能会非常尴尬。"
-      ],
-      "id_history": [],
-      "last_bump_day": 8,
-      "bumps_today": 1
-    },
-    {
-      "id": "516819",
-      "text": "晚上打王者千万别太菜被姜皓天嫌弃。",
-      "source_event": "姜皓天说晚上带我打王者，带我躺赢。",
-      "source_scene": "早读",
-      "source_day": 6,
-      "emotion": "anxious",
-      "intensity": 5,
-      "related_people": [
-        "姜皓天"
-      ],
-      "positive": false,
-      "topic": "兴趣爱好",
-      "last_reinforced_day": 6,
       "last_new_info_day": 6,
-      "reinforcement_count": 0,
+      "reinforcement_count": 2,
       "text_history": [],
       "id_history": [],
-      "last_bump_day": 6,
-      "bumps_today": 1
+      "last_bump_day": 8,
+      "bumps_today": 2
     },
     {
-      "id": "b8e5a5",
-      "text": "晚上打王者要是打得太菜，不知道姜皓天会不会不耐烦。",
-      "source_event": "姜皓天喊我晚上打王者，说带我飞；姜皓天提出晚上带我打王者躺赢。",
-      "source_scene": "午饭@食堂",
-      "source_day": 6,
-      "emotion": "anxious",
-      "intensity": 9,
+      "id": "7908df",
+      "text": "答应了姜皓天晚上加练并吃辣条，希望能顺利进行，不要被沈逸凡搅合。",
+      "source_event": "姜皓天邀请晚上去宿舍吃辣条；15:30 课间@操场",
+      "source_scene": "课间@操场",
+      "source_day": 7,
+      "emotion": "excited",
+      "intensity": 7,
       "related_people": [
-        "姜皓天"
+        "姜皓天",
+        "沈逸凡"
       ],
-      "positive": false,
-      "topic": "人际矛盾",
+      "positive": true,
+      "topic": "期待的事",
       "last_reinforced_day": 8,
-      "last_new_info_day": 8,
-      "reinforcement_count": 3,
+      "last_new_info_day": 7,
+      "reinforcement_count": 2,
       "text_history": [
-        "晚上打王者要是打得太烂，姜皓天会不会觉得我很烦？"
+        "晚上去姜皓天宿舍吃辣条，希望能别被沈逸凡搅合了"
       ],
       "id_history": [],
       "last_bump_day": 8,
       "bumps_today": 2
     },
     {
-      "id": "6b7208",
-      "text": "晚上和姜皓天组队打王者，希望能表现好一点，不被嫌弃。",
-      "source_event": "姜皓天邀请晚上组队打游戏",
+      "id": "524ac6",
+      "text": "数学卷子没做完就草草收进书包，担心自己这种逃避状态会彻底跟不上教学进度。",
+      "source_event": "晚自习将未完成的卷子塞进书包侧兜",
       "source_scene": "",
       "source_day": 8,
-      "emotion": "excited",
+      "emotion": "anxious",
       "intensity": 6,
-      "related_people": [
-        "姜皓天"
-      ],
-      "positive": true,
-      "topic": "期待的事",
+      "related_people": [],
+      "positive": false,
+      "topic": "学业焦虑",
       "last_reinforced_day": 8,
       "last_new_info_day": 8,
       "reinforcement_count": 0,

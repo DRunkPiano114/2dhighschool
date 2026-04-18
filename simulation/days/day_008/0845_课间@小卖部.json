@@ -1,0 +1,487 @@
+{
+  "scene": {
+    "scene_index": 1,
+    "time": "08:45",
+    "name": "课间",
+    "location": "小卖部",
+    "description": "上午第一个课间休息，同学们在教室里活动",
+    "day": 8
+  },
+  "participant_names": {
+    "shen_yifan": "沈逸凡",
+    "tang_shihan": "唐诗涵"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "shen_yifan",
+        "tang_shihan"
+      ],
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": {
+              "agent": "shen_yifan",
+              "target": "tang_shihan",
+              "content": "借过一下，买瓶水。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "小卖部挤满了抢零食的学生，唐诗涵也在旁边挑东西。",
+              "inner_thought": "水还没买到，真烦。算了，先买完快回教室。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "借过一下，买瓶水。",
+              "action_target": "tang_shihan",
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "tang_shihan": {
+              "observation": "沈逸凡在货架前挑面包，动作慢吞吞的。",
+              "inner_thought": "这人怎么磨蹭半天，我急着去问苏念瑶八卦呢。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "沈逸凡，你还没挑好啊？磨磨叽叽的，后头人都排队了。",
+              "action_target": "shen_yifan",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "shen_yifan",
+              "content": "沈逸凡，你还没挑好啊？磨磨叽叽的，后头人都排队了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "唐诗涵听到我的话后往旁边挪了挪，但也只是挪了一小步。",
+              "inner_thought": "挡道了，动作能不能利索点，还要抢冰水呢。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "谢谢，麻烦了。",
+              "action_target": "tang_shihan",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": {
+              "agent": "shen_yifan",
+              "target": "tang_shihan",
+              "content": "谢谢，麻烦了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "tang_shihan": {
+              "observation": "沈逸凡在货架前愣住，还没决定买哪种面包。",
+              "inner_thought": "真服了，这人选个面包能选到地老天荒，耽误我正事。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "搞快点啊，再晚点上课铃都要响了，沈同学。",
+              "action_target": "shen_yifan",
+              "urgency": 7,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "shen_yifan",
+              "content": "搞快点啊，再晚点上课铃都要响了，沈同学。"
+            },
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "绕开唐诗涵，大步走向冷柜取出一瓶冰红茶，不去理会排队的人群直接走向收银台。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "唐诗涵还在小卖部挑东西，没怎么让开位子，我还没拿到冰水。",
+              "inner_thought": "动作这么慢，买个饮料也要磨蹭半天吗？算了，我不跟她计较。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "绕开唐诗涵，大步走向冷柜取出一瓶冰红茶，不去理会排队的人群直接走向收银台。",
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 4,
+          "public": {
+            "speech": {
+              "agent": "shen_yifan",
+              "target": "tang_shihan",
+              "content": "动作能不能再快点，都要上课了。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "排队的人投来不满的视线，收银台那边还在忙，我刚拿到的冰红茶手心凉飕飕的。",
+              "inner_thought": "都要上课了还这么慢，这收银效率能不能提高点。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "动作能不能再快点，都要上课了。",
+              "action_target": "tang_shihan",
+              "urgency": 6,
+              "is_disruptive": true
+            },
+            "tang_shihan": {
+              "observation": "沈逸凡拿了冰红茶直接去结账，完全没把后面排队的人当回事。",
+              "inner_thought": "离谱，真把自己当大少爷了，拽什么拽。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "切，拽什么拽，真以为谁都得让着你啊。",
+              "action_target": "shen_yifan",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 5,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "shen_yifan",
+              "content": "切，拽什么拽，真以为谁都得让着你啊。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "收银员终于扫完了码，前面的人陆续散开，我也快轮到了。",
+              "inner_thought": "这效率简直了，要是我是收银员绝对不会这么磨蹭。算了，赶紧付钱回教室，还要记考勤。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "手机给我，快点，后面还压着一堆人呢。",
+              "action_target": "tang_shihan",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 6,
+          "public": {
+            "speech": {
+              "agent": "shen_yifan",
+              "target": "tang_shihan",
+              "content": "手机给我，快点，后面还压着一堆人呢。"
+            },
+            "actions": [
+              {
+                "agent": "tang_shihan",
+                "type": "non_verbal",
+                "content": "翻了个大白眼，转身往教室方向走。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "tang_shihan": {
+              "observation": "沈逸凡结完账头也不回地走了，完全没把我当回事。",
+              "inner_thought": "这人有病吧，拽得要死，赶紧走吧，看着就烦。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "翻了个大白眼，转身往教室方向走。",
+              "action_target": "shen_yifan",
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 7,
+          "public": {
+            "speech": {
+              "agent": "tang_shihan",
+              "target": "shen_yifan",
+              "content": "你有病吧，不会让让啊？自己催你自己去吧。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "唐诗涵直接把手机一收就走了，甚至没付钱，态度特别嚣张。",
+              "inner_thought": "这什么态度啊？没教养，等会上课迟到记她名字。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "莫名其妙，真没素质。",
+              "action_target": "tang_shihan",
+              "urgency": 8,
+              "is_disruptive": true
+            },
+            "tang_shihan": {
+              "observation": "沈逸凡居然还在催我，搞得好像我是那个挡路的人一样。",
+              "inner_thought": "这人有毛病吧，倒打一耙，真是离谱到家了。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "你有病吧，不会让让啊？自己催你自己去吧。",
+              "action_target": "shen_yifan",
+              "urgency": 8,
+              "is_disruptive": true
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 8,
+          "public": {
+            "speech": {
+              "agent": "shen_yifan",
+              "target": "tang_shihan",
+              "content": "莫名其妙，真没素质。"
+            },
+            "actions": [
+              {
+                "agent": "tang_shihan",
+                "type": "non_verbal",
+                "content": "对着他的背影不屑地撇了撇嘴，加快脚步直接往教室走去，不再回头看他。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "tang_shihan": {
+              "observation": "沈逸凡居然还不依不饶，明明是他自己动作慢，还敢在那理直气壮地找茬。",
+              "inner_thought": "这人有病吧，真是倒霉透了，大早上遇到这种奇葩，懒得理他。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "对着他的背影不屑地撇了撇嘴，加快脚步直接往教室走去，不再回头看他。",
+              "action_target": "shen_yifan",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 9,
+          "public": {
+            "speech": null,
+            "actions": [],
+            "environmental_event": null,
+            "exits": [
+              "shen_yifan",
+              "tang_shihan"
+            ]
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "唐诗涵走远了，收银台那边还在忙，周围学生都在看我。",
+              "inner_thought": "这什么人啊，明明是她没礼貌。算了，懒得理她，回教室。",
+              "emotion": "frustrated",
+              "action_type": "exit",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "tang_shihan": {
+              "observation": "沈逸凡居然骂我没素质，真是离谱到家了。",
+              "inner_thought": "这人脑子瓦特了吧？算了，不跟他废话，浪费我时间。",
+              "emotion": "frustrated",
+              "action_type": "exit",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        }
+      ],
+      "narrative": {
+        "key_moments": [
+          "沈逸凡在小卖部要求唐诗涵借过。",
+          "唐诗涵催促沈逸凡加快购买速度。",
+          "沈逸凡绕开唐诗涵从冷柜取出冰红茶并前往收银台。",
+          "沈逸凡要求唐诗涵归还手机。",
+          "唐诗涵转身离开小卖部前往教室。",
+          "沈逸凡离开小卖部。"
+        ],
+        "fulfilled_intentions": [
+          "沈逸凡:购买冰红茶",
+          "沈逸凡:离开小卖部",
+          "唐诗涵:离开小卖部"
+        ],
+        "events_discussed": [],
+        "new_events": [
+          {
+            "text": "沈逸凡在小卖部购买冰红茶",
+            "category": "日常行为",
+            "witnesses": [
+              "沈逸凡",
+              "唐诗涵"
+            ],
+            "spread_probability": 0.2,
+            "cite_ticks": [
+              4
+            ]
+          },
+          {
+            "text": "沈逸凡与唐诗涵在小卖部发生言语争执",
+            "category": "社交冲突",
+            "witnesses": [
+              "沈逸凡",
+              "唐诗涵"
+            ],
+            "spread_probability": 0.4,
+            "cite_ticks": [
+              2,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ]
+          }
+        ]
+      },
+      "reflections": {
+        "shen_yifan": {
+          "emotion": "frustrated",
+          "relationship_changes": [
+            {
+              "to_agent": "唐诗涵",
+              "favorability": -2,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "在小卖部催唐诗涵快点，结果被她反呛，这人真不讲道理。",
+              "emotion": "frustrated",
+              "importance": 4,
+              "people": [
+                "唐诗涵"
+              ],
+              "location": "小卖部",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "f8f76e",
+              "adjustment": 1
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "尝试用更平和的方式提醒姜皓天遵守纪律，不直接记名字",
+              "status": "pending",
+              "brief_reason": "姜皓天不在场。"
+            },
+            {
+              "goal": "在午饭时不去强求参与活动，而是简单询问他最近学习压力大不大",
+              "status": "pending",
+              "brief_reason": "林昭宇不在场。"
+            },
+            {
+              "goal": "去小卖部买瓶冰水",
+              "status": "fulfilled",
+              "brief_reason": "已经买到了。"
+            }
+          ]
+        },
+        "tang_shihan": {
+          "emotion": "frustrated",
+          "relationship_changes": [
+            {
+              "to_agent": "沈逸凡",
+              "favorability": -3,
+              "trust": -2,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "在小卖部排队被沈逸凡催，态度差得要死，真离谱。",
+              "emotion": "frustrated",
+              "importance": 4,
+              "people": [
+                "沈逸凡"
+              ],
+              "location": "小卖部",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [],
+          "intention_outcomes": [
+            {
+              "goal": "拉她去买奶茶，顺便最后一次套话问LYU是不是林昭宇",
+              "status": "pending",
+              "brief_reason": "苏念瑶不在场。"
+            },
+            {
+              "goal": "假装请教物理题，顺便侧面打听下他最近有没有什么八卦",
+              "status": "pending",
+              "brief_reason": "场景内没有找林昭宇的契机。"
+            },
+            {
+              "goal": "找她一起吐槽今天的数学作业，顺便看下新出的甜宠剧",
+              "status": "pending",
+              "brief_reason": "方语晨不在场。"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

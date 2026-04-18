@@ -1,58 +1,118 @@
 {
-  "emotion": "calm",
+  "emotion": "anxious",
   "energy": 85,
   "academic_pressure": 30,
   "location": "教室",
   "daily_plan": {
     "intentions": [
       {
-        "target": "公众号",
-        "goal": "删减掉文章里那些太矫情的句子，尝试发布出去",
-        "reason": "老是放在草稿箱也不是个事，总得迈出这一步，不然心里一直挂着不舒服。",
+        "target": "微信公众号",
+        "goal": "尝试给公众号草稿增加一点匿名性，再看一眼要不要发",
+        "reason": "写了很久了，一直放在草稿箱也不是事，想看看能不能改得委婉点以免被认出。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "b6f36e",
+        "satisfies_concern": "63226b",
         "origin_day": 6,
         "pursued_days": 2
       },
       {
         "target": "林昭宇",
-        "goal": "约林昭宇下午去图书馆自习",
-        "reason": "和他在一起学习比较能静下心，而且不用应付姜皓天那些乱七八糟的干扰。",
+        "goal": "约林昭宇一起去图书馆自习",
+        "reason": "只有和他在一块的时候我才觉得心里踏实点，也能顺便避开班里那些有的没的。",
         "fulfilled": true,
         "abandoned": false,
         "satisfies_concern": null,
+        "origin_day": 7,
+        "pursued_days": 1
+      },
+      {
+        "target": "沈逸凡",
+        "goal": "在过道碰到时自然地打个招呼，别显得太僵硬",
+        "reason": "总觉得躲着他也不是办法，还是尽量表现得礼貌一点，省得大家以后见面尴尬。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "a8825",
         "origin_day": 7,
         "pursued_days": 1
       }
     ],
     "mood_forecast": "neutral",
     "location_preferences": {
-      "morning_break": "教室",
+      "morning_break": "图书馆",
       "lunch": "食堂",
-      "afternoon_break": "图书馆"
+      "afternoon_break": "教室"
     }
   },
   "day": 7,
   "active_concerns": [
     {
-      "id": "4c1d08",
-      "text": "公众号里关于被利用感的感悟写了又删，始终不敢发布，担心被别人看到后引起不必要的麻烦。",
-      "source_event": "15:30 课间图书馆删除草稿",
-      "source_scene": "",
-      "source_day": 7,
+      "id": "a28825",
+      "text": "沈逸凡真的太凶了，以后在班里抬头不见低头见，要怎么办啊。",
+      "source_event": "沈逸凡在食堂当众赶人；食堂沈逸凡当众催表并摔勺子",
+      "source_scene": "午饭@食堂",
+      "source_day": 5,
       "emotion": "anxious",
-      "intensity": 6,
+      "intensity": 5,
+      "related_people": [
+        "沈逸凡"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 7,
+      "last_new_info_day": 7,
+      "reinforcement_count": 2,
+      "text_history": [
+        "沈逸凡好像真的很讨厌我们，以后在班里会不会更尴尬？"
+      ],
+      "id_history": [],
+      "last_bump_day": 7,
+      "bumps_today": 2
+    },
+    {
+      "id": "63226b",
+      "text": "公众号草稿写好了却始终不敢发布，害怕被同学看到后引来尴尬的评价。",
+      "source_event": "个人写作过程；深夜修改公众号草稿",
+      "source_scene": "",
+      "source_day": 5,
+      "emotion": "anxious",
+      "intensity": 2,
       "related_people": [],
       "positive": false,
       "topic": "自我认同",
+      "last_reinforced_day": 5,
+      "last_new_info_day": 5,
+      "reinforcement_count": 0,
+      "text_history": [
+        "公众号草稿虽然修改了文字，但还是不敢发布，担心被同学看到后引来尴尬的评价。"
+      ],
+      "id_history": [
+        "241b1a"
+      ],
+      "last_bump_day": 6,
+      "bumps_today": 1
+    },
+    {
+      "id": "1eefd1",
+      "text": "姜皓天在宿舍反复询问我家中工厂的业务情况，感觉他在刻意打探，让人很不舒服。",
+      "source_event": "姜皓天在宿舍夜聊时反复追问家里工厂的情况；22:00 宿舍夜聊",
+      "source_scene": "宿舍夜聊",
+      "source_day": 7,
+      "emotion": "anxious",
+      "intensity": 7,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
       "last_reinforced_day": 7,
       "last_new_info_day": 7,
-      "reinforcement_count": 0,
-      "text_history": [],
+      "reinforcement_count": 1,
+      "text_history": [
+        "姜皓天到底想干嘛，总盯着我家里的事问，好烦。"
+      ],
       "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
+      "last_bump_day": 7,
+      "bumps_today": 1
     }
   ]
 }

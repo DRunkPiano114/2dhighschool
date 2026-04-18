@@ -6,51 +6,51 @@
   "motif_emoji": "🌿",
   "motif_tag": "大大咧咧学委",
   "main_color": "#4AC4A8",
-  "emotion_label": "挫败",
+  "emotion_label": "好奇",
   "energy_label": "精神还行",
   "pressure_label": "稍有压力",
-  "featured_quote": "这两人肯定有猫腻，沈逸凡的猫到底和念瑶有什么关系，我要确认一下。",
-  "featured_scene": "22:00 · 宿舍夜聊",
+  "featured_quote": "这两人一个比一个闷，刚才提到的LYU到底是不是林昭宇啊，真是急死我了。",
+  "featured_scene": "08:45 · 课间",
   "relationships": [
     {
       "target_name": "方语晨",
       "favorability": 26,
-      "trust": 17,
+      "trust": 16,
       "label_text": "很亲近的朋友"
     },
     {
       "target_name": "苏念瑶",
-      "favorability": 16,
-      "trust": 6,
+      "favorability": 18,
+      "trust": 8,
       "label_text": "关系不错"
     },
     {
       "target_name": "程雨桐",
-      "favorability": 0,
+      "favorability": 3,
       "trust": 5,
       "label_text": "普通同学"
     }
   ],
   "memories": [
     {
-      "date": "Day 5",
-      "text": "苏念瑶在聊八卦时居然往林昭宇那边看，肯定有情况！",
+      "date": "Day 3",
+      "text": "苏念瑶被问到林昭宇时脸红了，看来她真有点情况",
       "importance": 7
     },
     {
-      "date": "Day 4",
-      "text": "想找林昭宇问物理题，结果他敷衍我，还和沈逸凡陆思远聊图书馆的事。",
-      "importance": 5
+      "date": "Day 5",
+      "text": "苏念瑶耳朵红得离谱，还在死鸭子嘴硬不肯承认LYU就是林昭宇，肯定有鬼。",
+      "importance": 6
     }
   ],
   "top_concern": {
-    "text": "一定要找个机会在图书馆或者自习时再次试探林昭宇，看看他到底是真的忙还是在委婉拒绝我。",
+    "text": "苏念瑶手机备注LYU到底是不是林昭宇？她为什么反应这么大？",
     "intensity_label": "中等",
     "positive": false
   },
-  "self_narrative": "今天又是忙忙碌碌的一天。在班里我就是那个停不下来的社交达人，虽然作业收得头大，但和朋友们八卦真的好快乐！就是林昭宇那块木头，到底烦不烦我啊？想问他物理题又怂了，纠结死。周末一定要去买奶茶和娃衣，谁也别拦着我！",
+  "self_narrative": "在班里就是个社交中心，天天忙着传话、磕瓜、换谷子，简直停不下来。最近老琢磨林昭宇和苏念瑶的事，那瓜到底熟了没？虽然试卷没写完有点慌，但一刷表白墙就全忘了。我是不是太爱凑热闹了？笑死，根本停不下来。",
   "caption_payload": {
-    "caption": "🌿 唐诗涵 · 第005天 档案\n\n标签：大大咧咧学委\n此刻心情：挫败\n\n「这两人肯定有猫腻，沈逸凡的猫到底和念瑶有什么关系，我要确认一下。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "🌿 唐诗涵 · 第005天 档案\n\n标签：大大咧咧学委\n此刻心情：好奇\n\n「这两人一个比一个闷，刚才提到的LYU到底是不是林昭宇啊，真是急死我了。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

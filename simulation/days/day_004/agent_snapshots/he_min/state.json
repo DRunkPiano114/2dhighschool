@@ -1,5 +1,5 @@
 {
-  "emotion": "neutral",
+  "emotion": "anxious",
   "energy": 85,
   "academic_pressure": 35,
   "location": "教室",
@@ -7,36 +7,36 @@
     "intentions": [
       {
         "target": "林昭宇",
-        "goal": "找个课间把他叫到办公室，观察状态并谈谈压力",
-        "reason": "他最近状态不对，红眼眶的样子实在让人放心不下，必须得找机会聊聊。",
+        "goal": "找个机会把他叫到办公室，不聊成绩，只聊聊最近睡得好不好",
+        "reason": "他上次月考后红了眼眶，我担心他心理压力太大，得找机会疏导一下。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "eeb8c6",
+        "satisfies_concern": "97c316",
         "origin_day": 3,
         "pursued_days": 2
       },
       {
         "target": "何家骏",
-        "goal": "检查他的错题本，辅导薄弱环节",
-        "reason": "这孩子底子薄，不盯着点儿他自己根本理不清楚，得趁热打铁。",
+        "goal": "检查他的古诗文默写，并手把手教他一套背诵技巧",
+        "reason": "这孩子底子差但不是没救，得盯着他点，不然就彻底掉队了。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "fca093",
-        "origin_day": 3,
-        "pursued_days": 2
+        "satisfies_concern": "f9e8d1",
+        "origin_day": 4,
+        "pursued_days": 1
       },
       {
-        "target": "自己",
-        "goal": "去学校门口买杯热咖啡",
-        "reason": "连续两天没喝上，今天实在太累了，得犒劳一下自己，才有精神应付这堆琐事。",
+        "target": "女儿",
+        "goal": "下班路上一定要去商场买那个文具盲盒",
+        "reason": "昨天答应女儿的，不能老是说话不算话，做妈妈的得靠谱点。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": null,
-        "origin_day": 2,
-        "pursued_days": 3
+        "satisfies_concern": "9277d7",
+        "origin_day": 4,
+        "pursued_days": 1
       }
     ],
-    "mood_forecast": "neutral",
+    "mood_forecast": "anxious",
     "location_preferences": {
       "morning_break": "教室",
       "lunch": "食堂",
@@ -46,41 +46,65 @@
   "day": 4,
   "active_concerns": [
     {
-      "id": "fca093",
-      "text": "何家骏的学习态度和家庭支持缺失问题，需要通过后续的错题讲解进一步跟进。",
-      "source_event": "课间检查数学作业",
-      "source_scene": "",
+      "id": "97c316",
+      "text": "林昭宇上次月考后红了眼眶，担心他长期紧绷出问题，需要找机会进行心理疏导。",
+      "source_event": "听到苏念瑶提到想去报竞赛，其他人表现出恐慌和逃避；基于对学生日常状态的观察与长期关注",
+      "source_scene": "午饭@食堂",
       "source_day": 2,
-      "emotion": "concerned",
-      "intensity": 2,
+      "emotion": "anxious",
+      "intensity": 8,
       "related_people": [
-        "何家骏"
-      ],
-      "positive": false,
-      "topic": "学业焦虑",
-      "last_reinforced_day": 3,
-      "last_new_info_day": 2,
-      "reinforcement_count": 0,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 3,
-      "bumps_today": 1
-    },
-    {
-      "id": "eeb8c6",
-      "text": "林昭宇近期的心理状态依然令人担忧，需要找机会进行谈话。",
-      "source_event": "日常观察",
-      "source_scene": "",
-      "source_day": 2,
-      "emotion": "worry",
-      "intensity": 3,
-      "related_people": [
+        "苏念瑶",
         "林昭宇"
       ],
       "positive": false,
       "topic": "学业焦虑",
-      "last_reinforced_day": 2,
+      "last_reinforced_day": 4,
       "last_new_info_day": 2,
+      "reinforcement_count": 1,
+      "text_history": [
+        "班里竞赛焦虑风气蔓延，得找机会敲打又不伤他们。"
+      ],
+      "id_history": [],
+      "last_bump_day": 4,
+      "bumps_today": 2
+    },
+    {
+      "id": "e7ad19",
+      "text": "林昭宇因作业量大导致睡眠不足，需进一步关注其身心状态并寻找合适契机进行疏导。",
+      "source_event": "课间走廊谈话",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "anxious",
+      "intensity": 6,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "健康",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 4,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "3d8b6f",
+      "text": "没能按承诺给女儿买文具盲盒，感到愧疚。",
+      "source_event": "下班前工作耽搁",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "guilty",
+      "intensity": 4,
+      "related_people": [
+        "女儿"
+      ],
+      "positive": false,
+      "topic": "家庭压力",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 4,
       "reinforcement_count": 0,
       "text_history": [],
       "id_history": [],

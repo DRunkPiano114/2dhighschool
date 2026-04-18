@@ -1,37 +1,37 @@
 {
-  "emotion": "calm",
+  "emotion": "excited",
   "energy": 85,
   "academic_pressure": 30,
   "location": "教室",
   "daily_plan": {
     "intentions": [
       {
-        "target": "苏念瑶",
-        "goal": "旁敲侧击打听那两人是不是在谈恋爱",
-        "reason": "作为表白墙运营者，这瓜吃不到后续简直睡不着觉，得找念瑶一起分析下证据链。",
-        "fulfilled": true,
+        "target": "陆思远",
+        "goal": "找陆思远打听班级最新的八卦情报",
+        "reason": "感觉最近错过了好多大瓜，作为情报中心不能掉队，而且上次没找成，今天必须问到。",
+        "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "e800c7",
-        "origin_day": 2,
-        "pursued_days": 1
-      },
-      {
-        "target": "史政地课本",
-        "goal": "翻翻史政地笔记，稍微看两眼求个心安",
-        "reason": "虽然理科不行，但二本线还是得保住的，总不能真的一点都不看吧。",
-        "fulfilled": true,
-        "abandoned": false,
-        "satisfies_concern": null,
+        "satisfies_concern": "8ddab8",
         "origin_day": 2,
         "pursued_days": 1
       },
       {
         "target": "唐诗涵",
-        "goal": "和诗涵敲定周末恐怖本的行程",
-        "reason": "最近学习压力有点大，得找点刺激的活动放松一下，顺便看看有没有新谷子可以炫耀。",
+        "goal": "去宿舍看一眼诗涵的新限定立牌",
+        "reason": "那个立牌真的超好看，不亲眼看看我心痒痒。",
         "fulfilled": true,
         "abandoned": false,
-        "satisfies_concern": "5a53fd",
+        "satisfies_concern": "8aa6eb",
+        "origin_day": 2,
+        "pursued_days": 1
+      },
+      {
+        "target": "苏念瑶",
+        "goal": "和念瑶一起刷最新的微短剧剧情",
+        "reason": "看剧能让我放松，还能跟闺蜜吐槽，超开心。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
         "origin_day": 2,
         "pursued_days": 1
       }
@@ -46,69 +46,48 @@
   "day": 2,
   "active_concerns": [
     {
-      "id": "e800c7",
-      "text": "那两人到底是不是在谈恋爱啊，好想快点挖出后续！",
-      "source_event": "聊到翻围墙买手办的同学和高一女生",
+      "id": "8aa6eb",
+      "text": "诗涵的限定立牌真的超好看，好想赶紧去宿舍借来看看。",
+      "source_event": "食堂午饭时唐诗涵确认她收到了全套限定立牌。",
       "source_scene": "午饭@食堂",
       "source_day": 1,
-      "emotion": "curious",
-      "intensity": 3,
-      "related_people": [
-        "隔壁班同学"
-      ],
-      "positive": true,
-      "topic": "恋爱",
-      "last_reinforced_day": 2,
-      "last_new_info_day": 1,
-      "reinforcement_count": 1,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 2,
-      "bumps_today": 2
-    },
-    {
-      "id": "5a53fd",
-      "text": "周末的恐怖本《深渊录》一定要找个够恐怖的NPC，还要和诗涵商量好分工。",
-      "source_event": "宿舍夜聊时约好一起去玩恐怖本；食堂讨论恐怖本及宿舍夜聊攻略",
-      "source_scene": "宿舍夜聊",
-      "source_day": 1,
       "emotion": "excited",
-      "intensity": 2,
+      "intensity": 6,
       "related_people": [
         "唐诗涵"
       ],
       "positive": true,
-      "topic": "期待的事",
+      "topic": "兴趣爱好",
       "last_reinforced_day": 2,
-      "last_new_info_day": 2,
-      "reinforcement_count": 2,
-      "text_history": [
-        "周末和诗涵去玩恐怖本，一定要找个够恐怖的才行！"
-      ],
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
       "id_history": [],
       "last_bump_day": 2,
       "bumps_today": 2
     },
     {
-      "id": "756877",
-      "text": "沈逸凡周末去图书馆到底是不是去约会的？好想知道！",
-      "source_event": "课间听到沈逸凡说周末去图书馆",
-      "source_scene": "课间@教室",
-      "source_day": 2,
+      "id": "8ddab8",
+      "text": "没能找陆思远打听班级最新的八卦情报，感觉错过了很多大瓜，作为情报中心不能掉队。",
+      "source_event": "全天社交活动；15:30 课间询问苏念瑶关于陆思远的情况",
+      "source_scene": "",
+      "source_day": 1,
       "emotion": "curious",
-      "intensity": 6,
+      "intensity": 3,
       "related_people": [
-        "沈逸凡"
+        "陆思远"
       ],
       "positive": true,
-      "topic": "恋爱",
+      "topic": "其他",
       "last_reinforced_day": 2,
       "last_new_info_day": 2,
-      "reinforcement_count": 0,
-      "text_history": [],
+      "reinforcement_count": 1,
+      "text_history": [
+        "一定要找机会向陆思远打听班级里的最新八卦，感觉错过了很多情报。"
+      ],
       "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
+      "last_bump_day": 2,
+      "bumps_today": 2
     }
   ]
 }

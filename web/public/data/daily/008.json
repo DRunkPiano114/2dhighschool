@@ -1,76 +1,77 @@
 {
   "day": 8,
   "headline": {
-    "scene_time": "15:30",
+    "scene_time": "08:45",
     "scene_name": "课间",
-    "scene_location": "图书馆",
-    "scene_file": "1530_课间@图书馆.json",
+    "scene_location": "小卖部",
+    "scene_file": "0845_课间@小卖部.json",
     "group_index": 0,
-    "tick_index": 11,
-    "speaker_id": "lin_zhaoyu",
-    "speaker_name": "林昭宇",
-    "speech": "就……那个……真的没什么，就是这题太难了，我心态崩了。",
-    "thought_id": "cheng_yutong",
-    "thought_name": "程雨桐",
-    "thought": "内能单位写错还要遮遮掩掩，简直是在浪费时间，这题明明一眼就能看出破绽。",
+    "tick_index": 5,
+    "speaker_id": "tang_shihan",
+    "speaker_name": "唐诗涵",
+    "speech": "切，拽什么拽，真以为谁都得让着你啊。",
+    "thought_id": "shen_yifan",
+    "thought_name": "沈逸凡",
+    "thought": "这效率简直了，要是我是收银员绝对不会这么磨蹭。算了，赶紧付钱回教室，还要记考勤。",
     "urgency": 8
   },
   "secondaries": [
     {
-      "scene_time": "22:00",
-      "scene_name": "宿舍夜聊",
-      "scene_location": "宿舍",
-      "scene_file": "2200_宿舍夜聊.json",
+      "scene_time": "12:00",
+      "scene_name": "午饭",
+      "scene_location": "教室",
+      "scene_file": "1200_午饭@教室.json",
+      "group_index": 0,
+      "tick_index": 6,
+      "speaker_id": "su_nianyao",
+      "speaker_name": "苏念瑶",
+      "speech": "行行行，知道了，我这就走，诗涵你先去小卖部等我，我马上来。",
+      "thought_id": "su_nianyao",
+      "thought_name": "苏念瑶",
+      "thought": "好烦，一定要把这尊大佛送去喝奶茶堵住嘴，物理题的事又要拖到晚自习了。",
+      "urgency": 9
+    },
+    {
+      "scene_time": "18:30",
+      "scene_name": "晚自习",
+      "scene_location": "教室",
+      "scene_file": "1830_晚自习.json",
       "group_index": 1,
       "tick_index": 6,
       "speaker_id": "su_nianyao",
       "speaker_name": "苏念瑶",
-      "speech": "别提了，那是被盯得心里发毛，赶紧睡吧。",
-      "thought_id": "fang_yuchen",
-      "thought_name": "方语晨",
-      "thought": "搞什么啊，我还没说林昭宇呢她就这副样子，肯定心里有鬼，必须撬开她的嘴。",
-      "urgency": 8
-    },
-    {
-      "scene_time": "08:45",
-      "scene_name": "课间",
-      "scene_location": "教室",
-      "scene_file": "0845_课间@教室.json",
-      "group_index": 1,
-      "tick_index": 9,
-      "speaker_id": "fang_yuchen",
-      "speaker_name": "方语晨",
-      "speech": "有些人啊，草稿纸都画满了一页还是做不出题，真是白费力气。",
+      "speech": "就昨天说的奶茶，我订好了，放学给你们拿过去，行了吧？",
       "thought_id": "cheng_yutong",
       "thought_name": "程雨桐",
-      "thought": "终于走了。受力分析的逻辑闭环了，剩下的时间正好去智学网刷新一下排名。",
-      "urgency": 8
+      "thought": "终于要走了，趁现在赶紧进入下一章节的推导，必须在熄灯前把这题写完。",
+      "urgency": 9
     },
     {
-      "scene_time": "12:00",
-      "scene_name": "午饭",
-      "scene_location": "食堂",
-      "scene_file": "1200_午饭@食堂.json",
-      "group_index": 0,
+      "scene_time": "10:30",
+      "scene_name": "上课",
+      "scene_location": "教室",
+      "scene_file": "1030_上课.json",
+      "group_index": 1,
       "tick_index": 5,
-      "speaker_id": "shen_yifan",
-      "speaker_name": "沈逸凡",
-      "speech": "刚才那是为你好，别觉得我管得严，守规矩大家都方便。",
-      "thought_id": "lin_zhaoyu",
-      "thought_name": "林昭宇",
-      "thought": "好烦，沈逸凡怎么一直盯着我，还是先别问英语的事了，别让他觉得我也多事。",
-      "urgency": 7
+      "speaker_id": "tang_shihan",
+      "speaker_name": "唐诗涵",
+      "speech": "念瑶，你物理什么时候这么好学了？刚才那题我也不会，要不一起问问老师？",
+      "thought_id": "su_nianyao",
+      "thought_name": "苏念瑶",
+      "thought": "算了，这题怎么也听不进去，再问下去雨桐估计要把我赶出座位了。",
+      "urgency": 9
     }
   ],
   "mood_map": [
     {
       "agent_id": "fang_yuchen",
       "agent_name": "方语晨",
-      "dominant_emotion": "curious",
+      "dominant_emotion": "frustrated",
       "emotion_counts": {
-        "frustrated": 9,
-        "curious": 19,
-        "bored": 3
+        "frustrated": 30,
+        "curious": 1,
+        "calm": 6,
+        "bored": 1
       },
       "main_color": "#B06AB3",
       "motif_emoji": "☀️"
@@ -80,10 +81,9 @@
       "agent_name": "苏念瑶",
       "dominant_emotion": "frustrated",
       "emotion_counts": {
-        "frustrated": 17,
-        "embarrassed": 1,
-        "bored": 4,
-        "anxious": 3
+        "anxious": 10,
+        "frustrated": 24,
+        "calm": 3
       },
       "main_color": "#D4748B",
       "motif_emoji": "🌸"
@@ -93,8 +93,9 @@
       "agent_name": "唐诗涵",
       "dominant_emotion": "frustrated",
       "emotion_counts": {
-        "curious": 5,
-        "frustrated": 31
+        "frustrated": 40,
+        "bored": 1,
+        "curious": 2
       },
       "main_color": "#4AC4A8",
       "motif_emoji": "🌿"
@@ -102,10 +103,11 @@
     {
       "agent_id": "cheng_yutong",
       "agent_name": "程雨桐",
-      "dominant_emotion": "frustrated",
+      "dominant_emotion": "bored",
       "emotion_counts": {
-        "frustrated": 19,
-        "calm": 12
+        "bored": 21,
+        "frustrated": 11,
+        "calm": 15
       },
       "main_color": "#E8A838",
       "motif_emoji": "📚"
@@ -115,11 +117,9 @@
       "agent_name": "林昭宇",
       "dominant_emotion": "anxious",
       "emotion_counts": {
-        "anxious": 19,
-        "calm": 17,
-        "touched": 5,
-        "embarrassed": 3,
-        "frustrated": 5
+        "anxious": 25,
+        "calm": 20,
+        "frustrated": 3
       },
       "main_color": "#4A7BC4",
       "motif_emoji": "🌧️"
@@ -129,8 +129,9 @@
       "agent_name": "陆思远",
       "dominant_emotion": "anxious",
       "emotion_counts": {
-        "calm": 9,
-        "anxious": 31
+        "anxious": 29,
+        "embarrassed": 1,
+        "calm": 24
       },
       "main_color": "#5BAA5B",
       "motif_emoji": "🌱"
@@ -140,8 +141,8 @@
       "agent_name": "沈逸凡",
       "dominant_emotion": "frustrated",
       "emotion_counts": {
+        "frustrated": 55,
         "neutral": 2,
-        "frustrated": 43,
         "calm": 1
       },
       "main_color": "#C4524A",
@@ -152,12 +153,8 @@
       "agent_name": "姜皓天",
       "dominant_emotion": "frustrated",
       "emotion_counts": {
-        "frustrated": 11,
-        "happy": 6,
-        "excited": 2,
-        "proud": 1,
-        "bored": 6,
-        "calm": 2
+        "frustrated": 25,
+        "bored": 17
       },
       "main_color": "#E87B42",
       "motif_emoji": "⚽"
@@ -167,10 +164,10 @@
       "agent_name": "何家骏",
       "dominant_emotion": "anxious",
       "emotion_counts": {
-        "anxious": 20,
-        "embarrassed": 1,
-        "touched": 6,
-        "calm": 3
+        "anxious": 28,
+        "bored": 7,
+        "excited": 6,
+        "calm": 5
       },
       "main_color": "#7B8FA8",
       "motif_emoji": "🌫️"
@@ -181,16 +178,16 @@
     "a_name": "林昭宇",
     "b_id": "lu_siyuan",
     "b_name": "陆思远",
-    "favorability_delta": 17,
-    "trust_delta": 17,
-    "understanding_delta": 12
+    "favorability_delta": 15,
+    "trust_delta": 12,
+    "understanding_delta": 8
   },
   "golden_quote": {
-    "agent_id": "fang_yuchen",
-    "agent_name": "方语晨",
-    "text": "搞什么啊，我还没说林昭宇呢她就这副样子，肯定心里有鬼，必须撬开她的嘴。",
-    "scene_time": "22:00",
-    "scene_name": "宿舍夜聊"
+    "agent_id": "tang_shihan",
+    "agent_name": "唐诗涵",
+    "text": "一个个都什么毛病，既然这样我也不伺候了，看我不找机会把林昭宇堵住问个明白。",
+    "scene_time": "12:00",
+    "scene_name": "午饭"
   },
   "scene_thumbs": [
     {
@@ -199,7 +196,26 @@
       "location": "图书馆",
       "file": "0845_课间@图书馆.json",
       "participants": [
-        "su_nianyao"
+        "cheng_yutong"
+      ]
+    },
+    {
+      "time": "08:45",
+      "name": "课间",
+      "location": "小卖部",
+      "file": "0845_课间@小卖部.json",
+      "participants": [
+        "shen_yifan",
+        "tang_shihan"
+      ]
+    },
+    {
+      "time": "08:45",
+      "name": "课间",
+      "location": "操场",
+      "file": "0845_课间@操场.json",
+      "participants": [
+        "jiang_haotian"
       ]
     },
     {
@@ -208,13 +224,9 @@
       "location": "教室",
       "file": "0845_课间@教室.json",
       "participants": [
-        "cheng_yutong",
-        "fang_yuchen",
         "he_jiajun",
         "lin_zhaoyu",
-        "lu_siyuan",
-        "shen_yifan",
-        "tang_shihan"
+        "lu_siyuan"
       ]
     },
     {
@@ -223,7 +235,25 @@
       "location": "走廊",
       "file": "0845_课间@走廊.json",
       "participants": [
-        "jiang_haotian"
+        "fang_yuchen",
+        "su_nianyao"
+      ]
+    },
+    {
+      "time": "10:30",
+      "name": "上课",
+      "location": "教室",
+      "file": "1030_上课.json",
+      "participants": [
+        "cheng_yutong",
+        "fang_yuchen",
+        "he_jiajun",
+        "jiang_haotian",
+        "lin_zhaoyu",
+        "lu_siyuan",
+        "shen_yifan",
+        "su_nianyao",
+        "tang_shihan"
       ]
     },
     {
@@ -232,7 +262,11 @@
       "location": "教室",
       "file": "1200_午饭@教室.json",
       "participants": [
-        "cheng_yutong"
+        "cheng_yutong",
+        "fang_yuchen",
+        "lin_zhaoyu",
+        "su_nianyao",
+        "tang_shihan"
       ]
     },
     {
@@ -241,6 +275,19 @@
       "location": "食堂",
       "file": "1200_午饭@食堂.json",
       "participants": [
+        "he_jiajun",
+        "jiang_haotian",
+        "lu_siyuan",
+        "shen_yifan"
+      ]
+    },
+    {
+      "time": "14:00",
+      "name": "上课",
+      "location": "教室",
+      "file": "1400_上课.json",
+      "participants": [
+        "cheng_yutong",
         "fang_yuchen",
         "he_jiajun",
         "jiang_haotian",
@@ -257,10 +304,9 @@
       "location": "图书馆",
       "file": "1530_课间@图书馆.json",
       "participants": [
-        "cheng_yutong",
+        "he_jiajun",
         "lin_zhaoyu",
-        "lu_siyuan",
-        "tang_shihan"
+        "lu_siyuan"
       ]
     },
     {
@@ -269,7 +315,7 @@
       "location": "小卖部",
       "file": "1530_课间@小卖部.json",
       "participants": [
-        "he_jiajun"
+        "su_nianyao"
       ]
     },
     {
@@ -278,9 +324,17 @@
       "location": "操场",
       "file": "1530_课间@操场.json",
       "participants": [
-        "jiang_haotian",
-        "shen_yifan",
-        "su_nianyao"
+        "jiang_haotian"
+      ]
+    },
+    {
+      "time": "15:30",
+      "name": "课间",
+      "location": "教室",
+      "file": "1530_课间@教室.json",
+      "participants": [
+        "cheng_yutong",
+        "shen_yifan"
       ]
     },
     {
@@ -289,7 +343,8 @@
       "location": "走廊",
       "file": "1530_课间@走廊.json",
       "participants": [
-        "fang_yuchen"
+        "fang_yuchen",
+        "tang_shihan"
       ]
     },
     {
@@ -327,11 +382,11 @@
     }
   ],
   "top_event": {
-    "text": "苏念瑶在食堂长时间注视某人",
-    "category": "八卦",
-    "scene_file": "2200_宿舍夜聊.json",
-    "scene_time": "22:00",
-    "scene_name": "宿舍夜聊",
+    "text": "方语晨向唐诗涵提及关于LYU的事情，并表示对大家瞒着她感到不满。",
+    "category": "社交八卦",
+    "scene_file": "1200_午饭@教室.json",
+    "scene_time": "12:00",
+    "scene_name": "午饭",
     "witnesses": [
       {
         "agent_id": "fang_yuchen",
@@ -376,36 +431,36 @@
         "agent_name": "何老师"
       }
     ],
-    "pull_quote": "这反应绝对有情况！我就说她看林昭宇的时候不对劲。",
+    "pull_quote": "真的烦死了，一个个都瞒着我，念瑶这下又溜了，我是不是真的多余啊？",
     "pull_quote_agent_id": "fang_yuchen",
     "pull_quote_agent_name": "方语晨",
-    "group_index": 1,
-    "tick_index": 2
+    "group_index": 0,
+    "tick_index": 11
   },
   "contrast": {
     "kind": "mismatch",
     "payload": {
-      "a_id": "fang_yuchen",
-      "a_name": "方语晨",
-      "a_thought": "诗涵这八卦雷达太灵了，还没来得及消化念瑶刚才那眼儿呢。",
-      "a_emotion": "curious",
-      "b_id": "su_nianyao",
-      "b_name": "苏念瑶",
-      "b_thought": "气氛好尴尬，感觉再聊下去雨桐又要冷脸了，算了，少惹她。",
-      "b_emotion": "anxious",
-      "fav_a_to_b": -1,
-      "fav_b_to_a": 1
+      "a_id": "su_nianyao",
+      "a_name": "苏念瑶",
+      "a_thought": "雨桐完全不理我，奶茶局赶紧定下来，希望诗涵喝了奶茶就别再提LYU的事了。",
+      "a_emotion": "frustrated",
+      "b_id": "cheng_yutong",
+      "b_name": "程雨桐",
+      "b_thought": "好不容易安静了，必须抓紧时间把刚才被断开的受力平衡方程补完。",
+      "b_emotion": "calm",
+      "fav_a_to_b": 0,
+      "fav_b_to_a": -2
     },
-    "scene_time": "18:30",
-    "scene_name": "晚自习",
-    "scene_file": "1830_晚自习.json",
-    "group_index": 1,
-    "tick_index": 1
+    "scene_time": "12:00",
+    "scene_name": "午饭",
+    "scene_file": "1200_午饭@教室.json",
+    "group_index": 0,
+    "tick_index": 3
   },
   "concern_spotlight": {
     "agent_id": "shen_yifan",
     "agent_name": "沈逸凡",
-    "text": "为什么我说的话他们听不进去，反而觉得我在找麻烦？",
+    "text": "难道我真的错了吗，为什么连陆思远都躲着我？",
     "topic": "人际矛盾",
     "intensity": 6,
     "reinforcement_count": 0,
@@ -414,7 +469,7 @@
     "reinforced_today": true
   },
   "caption_payload": {
-    "caption": "📰 第008天 班级日报\n\n今日头条 · 「程雨桐」内能单位写错还要遮遮掩掩，简直是在浪费时间，这题明明一眼就能看出破绽。\n今日 CP：林昭宇 × 陆思远\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "📰 第008天 班级日报\n\n今日头条 · 「沈逸凡」这效率简直了，要是我是收银员绝对不会这么磨蹭。算了，赶紧付钱回教室，还要记考勤。\n今日 CP：林昭宇 × 陆思远\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

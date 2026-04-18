@@ -1,98 +1,48 @@
 {
-  "emotion": "anxious",
+  "emotion": "calm",
   "energy": 85,
   "academic_pressure": 15,
   "location": "教室",
   "daily_plan": {
     "intentions": [
       {
-        "target": "何老师",
-        "goal": "完成错题本整理并鼓起勇气请教",
-        "reason": "周五就要检查了，再拖下去在老师面前更丢脸，得硬着头皮做。",
+        "target": null,
+        "goal": "在课间没人注意的时候，把数学课本翻到前几章看基础定义",
+        "reason": "老是看不懂，总得找机会补一补，不然一直垫底太丢人了。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "b577f9",
-        "origin_day": 3,
-        "pursued_days": 2
+        "satisfies_concern": "0f8e36",
+        "origin_day": 2,
+        "pursued_days": 3
       },
       {
         "target": "姜皓天",
-        "goal": "找机会问问能不能一起打游戏",
-        "reason": "昨天的机会错过了，今天想试试能不能开口，希望能有个一起玩的伙伴。",
-        "fulfilled": false,
+        "goal": "看看下午体育课能不能再跟他一起打球",
+        "reason": "和他打球挺开心的，而且他也没嫌弃我球技烂。",
+        "fulfilled": true,
         "abandoned": false,
-        "satisfies_concern": "c8a7d3",
-        "origin_day": 3,
-        "pursued_days": 2
+        "satisfies_concern": "c258b2",
+        "origin_day": 4,
+        "pursued_days": 1
       },
       {
         "target": null,
-        "goal": "去图书馆靠窗的位置坐一会儿",
-        "reason": "心情有点烦，想找个安静的地方刷会儿手机，换换脑子。",
-        "fulfilled": false,
+        "goal": "中午去操场边看别人打球，刷会儿短视频",
+        "reason": "想放松一下，教室里太闷了，看点搞笑的视频心情会好点。",
+        "fulfilled": true,
         "abandoned": false,
         "satisfies_concern": null,
         "origin_day": 4,
         "pursued_days": 1
       }
     ],
-    "mood_forecast": "anxious",
+    "mood_forecast": "happy",
     "location_preferences": {
-      "morning_break": "图书馆",
-      "lunch": "食堂",
+      "morning_break": "教室",
+      "lunch": "操场",
       "afternoon_break": "操场"
     }
   },
   "day": 4,
-  "active_concerns": [
-    {
-      "id": "c8a7d3",
-      "text": "确认加入姜皓天晚上的游戏活动，希望能顺利融入。",
-      "source_event": "姜皓天约下午练投篮；中午食堂的对话",
-      "source_scene": "午饭@食堂",
-      "source_day": 2,
-      "emotion": "excited",
-      "intensity": 6,
-      "related_people": [
-        "姜皓天"
-      ],
-      "positive": true,
-      "topic": "期待的事",
-      "last_reinforced_day": 4,
-      "last_new_info_day": 2,
-      "reinforcement_count": 1,
-      "text_history": [
-        "下午体育课练投篮，希望别出丑。"
-      ],
-      "id_history": [],
-      "last_bump_day": 4,
-      "bumps_today": 2
-    },
-    {
-      "id": "b577f9",
-      "text": "物理错题本整理进度太慢，周五就要检查了，担心在何老师面前丢脸。",
-      "source_event": "何老师要求周五整理错题本并去办公室讲解；下午课间何老师的谈话；午饭时何老师的监督与检查要求；晚自习对着错题本发呆",
-      "source_scene": "课间@教室",
-      "source_day": 2,
-      "emotion": "anxious",
-      "intensity": 8,
-      "related_people": [
-        "何老师",
-        "自己"
-      ],
-      "positive": false,
-      "topic": "学业焦虑",
-      "last_reinforced_day": 4,
-      "last_new_info_day": 4,
-      "reinforcement_count": 2,
-      "text_history": [
-        "周五要把错题本给何老师看，要是还是什么都不会怎么办。",
-        "何老师要求周五前整理好错题本并去办公室讲解，担心自己无法应付。",
-        "错题本整理进度缓慢，担心周五向何老师讲解时表现太差。"
-      ],
-      "id_history": [],
-      "last_bump_day": 4,
-      "bumps_today": 1
-    }
-  ]
+  "active_concerns": []
 }

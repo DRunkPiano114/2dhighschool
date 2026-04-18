@@ -3,41 +3,76 @@
     "lin_zhaoyu": {
       "target_name": "林昭宇",
       "target_id": "lin_zhaoyu",
-      "favorability": -1,
-      "trust": 5,
-      "understanding": 27,
+      "favorability": -6,
+      "trust": -5,
+      "understanding": 21,
       "label": "室友",
       "recent_interactions": [
-        "Day 5 ·宿舍夜聊",
-        "Day 6 −早读",
+        "Day 4 ·上课",
+        "Day 4 +课间@图书馆",
+        "Day 4 −宿舍夜聊",
+        "Day 5 −课间@教室",
+        "Day 5 −午饭@食堂",
+        "Day 5 −宿舍夜聊",
         "Day 6 −午饭@食堂",
-        "Day 6 −上课",
-        "Day 6 +晚自习",
         "Day 6 −宿舍夜聊",
-        "Day 7 −课间@教室",
-        "Day 7 −午饭@食堂",
-        "Day 7 −上课",
-        "Day 7 −宿舍夜聊"
+        "Day 7 −早读",
+        "Day 7 −午饭@食堂"
       ],
       "days_since_interaction": 0
     },
     "jiang_haotian": {
       "target_name": "姜皓天",
       "target_id": "jiang_haotian",
-      "favorability": -31,
-      "trust": -30,
-      "understanding": 29,
+      "favorability": -27,
+      "trust": -14,
+      "understanding": 21,
       "label": "室友",
       "recent_interactions": [
-        "Day 4 −课间@操场",
-        "Day 4 −晚自习",
+        "Day 3 −午饭@食堂",
+        "Day 3 −课间@教室",
+        "Day 3 −宿舍夜聊",
+        "Day 4 −上课",
         "Day 4 −宿舍夜聊",
-        "Day 5 −上课",
-        "Day 5 −课间@操场",
         "Day 5 −宿舍夜聊",
-        "Day 6 −午饭@食堂",
-        "Day 6 −上课",
+        "Day 6 −早读",
         "Day 6 −宿舍夜聊",
+        "Day 7 −课间@走廊",
+        "Day 7 −宿舍夜聊"
+      ],
+      "days_since_interaction": 0
+    },
+    "he_jiajun": {
+      "target_name": "何家骏",
+      "target_id": "he_jiajun",
+      "favorability": 0,
+      "trust": 0,
+      "understanding": 1,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 1 −课间@操场",
+        "Day 3 −午饭@食堂",
+        "Day 6 −课间@教室"
+      ],
+      "days_since_interaction": 1
+    },
+    "lu_siyuan": {
+      "target_name": "陆思远",
+      "target_id": "lu_siyuan",
+      "favorability": -5,
+      "trust": -4,
+      "understanding": 4,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 3 ·宿舍夜聊",
+        "Day 4 −上课",
+        "Day 4 +课间@图书馆",
+        "Day 4 −宿舍夜聊",
+        "Day 5 −课间@教室",
+        "Day 5 −午饭@食堂",
+        "Day 5 −宿舍夜聊",
+        "Day 7 −早读",
+        "Day 7 −课间@教室",
         "Day 7 −宿舍夜聊"
       ],
       "days_since_interaction": 0
@@ -47,57 +82,63 @@
       "target_id": "fang_yuchen",
       "favorability": 0,
       "trust": 0,
+      "understanding": 0,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 2 −课间@走廊",
+        "Day 6 −课间@教室"
+      ],
+      "days_since_interaction": 1
+    },
+    "su_nianyao": {
+      "target_name": "苏念瑶",
+      "target_id": "su_nianyao",
+      "favorability": 0,
+      "trust": 0,
+      "understanding": 1,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 2 ·课间@走廊",
+        "Day 6 −课间@教室"
+      ],
+      "days_since_interaction": 1
+    },
+    "cheng_yutong": {
+      "target_name": "程雨桐",
+      "target_id": "cheng_yutong",
+      "favorability": 1,
+      "trust": 0,
+      "understanding": 1,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 4 +午饭@教室"
+      ],
+      "days_since_interaction": 3
+    },
+    "he_min": {
+      "target_name": "何老师",
+      "target_id": "he_min",
+      "favorability": -1,
+      "trust": 0,
       "understanding": 2,
-      "label": "同学",
+      "label": "老师",
       "recent_interactions": [
-        "Day 1 −课间@教室",
-        "Day 2 ·课间@教室",
-        "Day 5 −午饭@教室",
-        "Day 6 −课间@操场"
-      ],
-      "days_since_interaction": 1
-    },
-    "he_jiajun": {
-      "target_name": "何家骏",
-      "target_id": "he_jiajun",
-      "favorability": -7,
-      "trust": -2,
-      "understanding": 11,
-      "label": "同学",
-      "recent_interactions": [
-        "Day 2 ·午饭@食堂",
-        "Day 2 −课间@教室",
-        "Day 3 −课间@教室",
-        "Day 3 −课间@操场",
-        "Day 4 −课间@操场",
-        "Day 5 −课间@教室",
-        "Day 5 −上课",
-        "Day 5 −午饭@教室",
         "Day 6 −午饭@食堂",
-        "Day 6 −课间@操场"
-      ],
-      "days_since_interaction": 1
-    },
-    "lu_siyuan": {
-      "target_name": "陆思远",
-      "target_id": "lu_siyuan",
-      "favorability": -6,
-      "trust": -1,
-      "understanding": 11,
-      "label": "同学",
-      "recent_interactions": [
-        "Day 4 −宿舍夜聊",
-        "Day 5 +早读",
-        "Day 6 −早读",
-        "Day 6 ·午饭@食堂",
-        "Day 6 −上课",
-        "Day 6 +晚自习",
-        "Day 6 −宿舍夜聊",
-        "Day 7 −午饭@食堂",
-        "Day 7 −上课",
-        "Day 7 −宿舍夜聊"
+        "Day 7 −午饭@食堂"
       ],
       "days_since_interaction": 0
+    },
+    "tang_shihan": {
+      "target_name": "唐诗涵",
+      "target_id": "tang_shihan",
+      "favorability": 0,
+      "trust": 0,
+      "understanding": 0,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 6 −课间@教室"
+      ],
+      "days_since_interaction": 1
     }
   }
 }

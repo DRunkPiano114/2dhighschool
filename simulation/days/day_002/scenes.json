@@ -9,15 +9,7 @@
       {
         "group_index": 0,
         "participants": [
-          "jiang_haotian",
-          "shen_yifan"
-        ],
-        "is_solo": false
-      },
-      {
-        "group_index": 1,
-        "participants": [
-          "he_jiajun"
+          "jiang_haotian"
         ],
         "is_solo": true
       }
@@ -36,7 +28,8 @@
           "lin_zhaoyu",
           "lu_siyuan",
           "tang_shihan",
-          "cheng_yutong"
+          "cheng_yutong",
+          "he_jiajun"
         ],
         "is_solo": false
       }
@@ -53,7 +46,8 @@
         "group_index": 0,
         "participants": [
           "fang_yuchen",
-          "su_nianyao"
+          "su_nianyao",
+          "shen_yifan"
         ],
         "is_solo": false
       }
@@ -69,10 +63,9 @@
       {
         "group_index": 0,
         "participants": [
-          "cheng_yutong",
-          "lin_zhaoyu"
+          "cheng_yutong"
         ],
-        "is_solo": false
+        "is_solo": true
       }
     ]
   },
@@ -88,17 +81,19 @@
         "participants": [
           "fang_yuchen",
           "tang_shihan",
-          "su_nianyao"
+          "su_nianyao",
+          "he_min"
         ],
         "is_solo": false
       },
       {
         "group_index": 1,
         "participants": [
-          "jiang_haotian",
+          "lin_zhaoyu",
+          "shen_yifan",
           "lu_siyuan",
-          "he_jiajun",
-          "shen_yifan"
+          "jiang_haotian",
+          "he_jiajun"
         ],
         "is_solo": false
       }
@@ -149,18 +144,15 @@
     "scene_index": 7,
     "time": "15:30",
     "name": "课间",
-    "location": "教室",
-    "file": "1530_课间@教室.json",
+    "location": "操场",
+    "file": "1530_课间@操场.json",
     "groups": [
       {
         "group_index": 0,
         "participants": [
-          "he_jiajun",
-          "he_min",
-          "fang_yuchen",
-          "shen_yifan"
+          "he_jiajun"
         ],
-        "is_solo": false
+        "is_solo": true
       }
     ]
   },
@@ -168,15 +160,24 @@
     "scene_index": 8,
     "time": "15:30",
     "name": "课间",
-    "location": "走廊",
-    "file": "1530_课间@走廊.json",
+    "location": "教室",
+    "file": "1530_课间@教室.json",
     "groups": [
       {
         "group_index": 0,
         "participants": [
-          "jiang_haotian"
+          "jiang_haotian",
+          "shen_yifan"
         ],
-        "is_solo": true
+        "is_solo": false
+      },
+      {
+        "group_index": 1,
+        "participants": [
+          "fang_yuchen",
+          "he_min"
+        ],
+        "is_solo": false
       }
     ]
   },

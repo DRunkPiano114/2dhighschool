@@ -1,0 +1,40 @@
+{
+  "scene": {
+    "scene_index": 4,
+    "time": "12:00",
+    "name": "午饭",
+    "location": "操场",
+    "description": "午饭时间，同学们结伴去食堂吃饭",
+    "day": 4
+  },
+  "participant_names": {
+    "he_jiajun": "何家骏",
+    "su_nianyao": "苏念瑶"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "he_jiajun"
+      ],
+      "is_solo": true,
+      "solo_reflection": {
+        "inner_thought": "下午要和姜皓天打球，别打太差就行。",
+        "emotion": "excited",
+        "activity": "坐在操场边看手机，一边啃食堂的面包。"
+      }
+    },
+    {
+      "group_index": 1,
+      "participants": [
+        "su_nianyao"
+      ],
+      "is_solo": true,
+      "solo_reflection": {
+        "inner_thought": "好想更新小说啊，读者催得好急，数学作业真烦人。",
+        "emotion": "embarrassed",
+        "activity": "坐在操场边看手机，用手指快速刷着LOFTER的评论区。"
+      }
+    }
+  ]
+}

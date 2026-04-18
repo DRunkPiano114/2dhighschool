@@ -1,5 +1,5 @@
 {
-  "emotion": "frustrated",
+  "emotion": "curious",
   "energy": 85,
   "academic_pressure": 30,
   "location": "教室",
@@ -7,128 +7,112 @@
     "intentions": [
       {
         "target": "苏念瑶",
-        "goal": "旁敲侧击问清楚沈逸凡周末去图书馆到底是不是去约会",
-        "reason": "这事儿抓心挠肝好几天了，不搞清楚我上课都要走神。",
+        "goal": "在午饭时不动声色地试探她对林昭宇的态度，或者套出LYU的含义",
+        "reason": "念瑶瞒着我的事太让我抓心挠肝了，必须得搞清楚。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "756877",
-        "origin_day": 3,
-        "pursued_days": 3
-      },
-      {
-        "target": "姜皓天",
-        "goal": "找机会再试探一下他手机里的秘密",
-        "reason": "他那天那种反应太奇怪了，肯定藏着什么大瓜，我一定要挖出来。",
-        "fulfilled": false,
-        "abandoned": false,
-        "satisfies_concern": "13a135",
+        "satisfies_concern": "e2cd81",
         "origin_day": 4,
         "pursued_days": 2
       },
       {
-        "target": null,
-        "goal": "刷会儿最近超火的微短剧",
-        "reason": "最近学习压力有点大，刷剧能让我心情好点，毕竟生活已经够累了。",
+        "target": "唐诗涵",
+        "goal": "去宿舍找她交换谷子信息，顺便吐槽那该死的抽奖概率",
+        "reason": "好几天没跟诗涵交流谷子了，再不吐槽我就要憋坏了。",
         "fulfilled": true,
         "abandoned": false,
-        "satisfies_concern": null,
+        "satisfies_concern": "8aa6eb",
+        "origin_day": 4,
+        "pursued_days": 2
+      },
+      {
+        "target": "陆思远",
+        "goal": "课间拦住他问问最近班里有没有什么新鲜八卦",
+        "reason": "情报中心连着几天没产出了，再不找他补点料，这地位都要不保了。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "8ddab8",
         "origin_day": 5,
         "pursued_days": 1
       }
     ],
-    "mood_forecast": "frustrated",
+    "mood_forecast": "curious",
     "location_preferences": {
-      "morning_break": "教室",
-      "lunch": "教室",
+      "morning_break": "走廊",
+      "lunch": "食堂",
       "afternoon_break": "教室"
     }
   },
   "day": 5,
   "active_concerns": [
     {
-      "id": "13a135",
-      "text": "姜皓天手机里到底藏着什么秘密？当时他那个反应太奇怪了，一定要找机会再试探一下。",
-      "source_event": "15:30 课间@走廊",
-      "source_scene": "",
-      "source_day": 3,
-      "emotion": "curious",
-      "intensity": 4,
+      "id": "8aa6eb",
+      "text": "一定要找机会和诗涵好好吐槽那家店的抽奖概率，顺便看看她的限定立牌。",
+      "source_event": "食堂午饭时唐诗涵确认她收到了全套限定立牌。；宿舍夜聊被打断",
+      "source_scene": "午饭@食堂",
+      "source_day": 1,
+      "emotion": "excited",
+      "intensity": 5,
       "related_people": [
-        "姜皓天"
+        "唐诗涵"
       ],
-      "positive": false,
-      "topic": "其他",
-      "last_reinforced_day": 4,
+      "positive": true,
+      "topic": "兴趣爱好",
+      "last_reinforced_day": 5,
       "last_new_info_day": 3,
-      "reinforcement_count": 0,
-      "text_history": [],
+      "reinforcement_count": 1,
+      "text_history": [
+        "诗涵的限定立牌真的超好看，好想赶紧去宿舍借来看看。"
+      ],
       "id_history": [],
       "last_bump_day": 5,
       "bumps_today": 2
     },
     {
-      "id": "5cf0ef",
-      "text": "程雨桐在教室里对我的八卦提问表现得非常冷漠，甚至戴上耳机拒绝交流，这让我觉得有点没趣。",
-      "source_event": "15:30 课间教室对话",
+      "id": "e2cd81",
+      "text": "苏念瑶在食堂提到林昭宇相关话题时表现得非常不自然，她到底在瞒着什么？",
+      "source_event": "食堂里提到林昭宇时苏念瑶的异常反应；食堂与宿舍的对话；12:00 午饭@食堂",
+      "source_scene": "午饭@食堂",
+      "source_day": 3,
+      "emotion": "curious",
+      "intensity": 10,
+      "related_people": [
+        "苏念瑶",
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "恋爱",
+      "last_reinforced_day": 5,
+      "last_new_info_day": 5,
+      "reinforcement_count": 3,
+      "text_history": [
+        "念瑶是不是真的看上林昭宇了？她刚才反应好大。",
+        "苏念瑶对林昭宇的态度实在太反常了，她到底在隐瞒什么？"
+      ],
+      "id_history": [],
+      "last_bump_day": 5,
+      "bumps_today": 2
+    },
+    {
+      "id": "802306",
+      "text": "苏念瑶对LYU这个备注的反应太奇怪了，我一定要搞清楚她到底在瞒着什么。",
+      "source_event": "22:00 宿舍夜聊",
       "source_scene": "",
       "source_day": 4,
-      "emotion": "bored",
-      "intensity": 1,
+      "emotion": "curious",
+      "intensity": 7,
       "related_people": [
-        "程雨桐"
+        "苏念瑶"
       ],
       "positive": false,
       "topic": "人际矛盾",
-      "last_reinforced_day": 4,
+      "last_reinforced_day": 5,
       "last_new_info_day": 4,
-      "reinforcement_count": 0,
+      "reinforcement_count": 1,
       "text_history": [],
       "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
-    },
-    {
-      "id": "2eaff3",
-      "text": "周末恐怖本一定要穿那套丝绒裙，绝对不能输给别人！",
-      "source_event": "和唐诗涵讨论奶茶时提到了周末活动",
-      "source_scene": "课间@教室",
-      "source_day": 5,
-      "emotion": "excited",
-      "intensity": 6,
-      "related_people": [
-        "唐诗涵",
-        "苏念瑶"
-      ],
-      "positive": true,
-      "topic": "期待的事",
-      "last_reinforced_day": 5,
-      "last_new_info_day": 5,
-      "reinforcement_count": 0,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
-    },
-    {
-      "id": "c727f6",
-      "text": "沈逸凡的猫猫背景图到底是什么意思？他手机里藏的秘密还没挖出来，总觉得他有什么大瓜。",
-      "source_event": "宿舍夜聊提到沈逸凡的背景图",
-      "source_scene": "",
-      "source_day": 5,
-      "emotion": "curious",
-      "intensity": 5,
-      "related_people": [
-        "沈逸凡"
-      ],
-      "positive": false,
-      "topic": "其他",
-      "last_reinforced_day": 5,
-      "last_new_info_day": 5,
-      "reinforcement_count": 0,
-      "text_history": [],
-      "id_history": [],
-      "last_bump_day": 0,
-      "bumps_today": 0
+      "last_bump_day": 5,
+      "bumps_today": 2
     }
   ]
 }

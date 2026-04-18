@@ -1,6 +1,6 @@
 {
   "scene": {
-    "scene_index": 0,
+    "scene_index": 1,
     "time": "08:45",
     "name": "课间",
     "location": "操场",
@@ -18,9 +18,9 @@
       ],
       "is_solo": true,
       "solo_reflection": {
-        "inner_thought": "这天气打球正正好，何家骏那怂包待会儿会出来吗？",
-        "emotion": "frustrated",
-        "activity": "靠在操场边的栏杆上，手里有一搭没一搭地转着篮球，眼睛盯着教学楼的方向。"
+        "inner_thought": "何家骏这小子跑哪去了，也不说一声。",
+        "emotion": "curious",
+        "activity": "拍着手里的篮球，站在操场边环顾四周，寻找何家骏的身影。"
       }
     }
   ]

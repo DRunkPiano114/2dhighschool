@@ -1,0 +1,27 @@
+{
+  "scene": {
+    "scene_index": 4,
+    "time": "12:00",
+    "name": "午饭",
+    "location": "操场",
+    "description": "午饭时间，同学们结伴去食堂吃饭",
+    "day": 1
+  },
+  "participant_names": {
+    "he_jiajun": "何家骏"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "he_jiajun"
+      ],
+      "is_solo": true,
+      "solo_reflection": {
+        "inner_thought": "老照片里的南京路，那时候真好啊。",
+        "emotion": "calm",
+        "activity": "坐在操场边看手机里以前的照片，没胃口吃午饭。"
+      }
+    }
+  ]
+}

@@ -9,24 +9,24 @@
   "emotion_label": "挫败",
   "energy_label": "精神还行",
   "pressure_label": "稍有压力",
-  "featured_quote": "这魂都没了，这秘密肯定保不住，趁这会儿没外人，快点炸她出来。",
-  "featured_scene": "12:00 · 午饭",
+  "featured_quote": "念瑶今天死活不开口，真是急死我了，晚上非得从她嘴里撬出点什么。",
+  "featured_scene": "22:00 · 宿舍夜聊",
   "relationships": [
     {
       "target_name": "唐诗涵",
-      "favorability": 31,
+      "favorability": 34,
       "trust": 22,
       "label_text": "很亲近的朋友"
     },
     {
       "target_name": "苏念瑶",
-      "favorability": 15,
-      "trust": 19,
-      "label_text": "关系不错"
+      "favorability": 30,
+      "trust": 20,
+      "label_text": "很亲近的朋友"
     },
     {
-      "target_name": "姜皓天",
-      "favorability": 1,
+      "target_name": "程雨桐",
+      "favorability": 0,
       "trust": 0,
       "label_text": "普通同学"
     }
@@ -34,23 +34,23 @@
   "memories": [
     {
       "date": "Day 7",
-      "text": "食堂里念瑶看林昭宇的眼神简直拉丝了，肯定有情况！",
-      "importance": 6
+      "text": "苏念瑶在宿舍面对唐诗涵关于LYU备注的直接逼问时，依然选择拒绝解释，这让我感到极度的不信任和被排挤。",
+      "importance": 8
     },
     {
-      "date": "Day 5",
-      "text": "晚上想跟念瑶聊沈逸凡的猫，结果她一直敷衍我，气死人。",
+      "date": "Day 7",
+      "text": "念瑶手抖得厉害，还在装傻写纸条求教物理，肯定有大秘密瞒着我。",
       "importance": 6
     }
   ],
   "top_concern": {
-    "text": "周末恐怖本一定要穿那套丝绒裙，绝对不能输给别人！",
-    "intensity_label": "中等",
-    "positive": true
+    "text": "苏念瑶在食堂提到林昭宇相关话题时表现得非常不自然，她到底在瞒着什么？",
+    "intensity_label": "强烈",
+    "positive": false
   },
-  "self_narrative": "不是吧！我这几天忙得飞起，又是盯沈逸凡的八卦，又是拼限定谷子。课间笔记是一点没看，全用来和念瑶、诗涵聊天了。虽然嘴上说史政地好背，但看着成绩单，心里还是有点虚。其实大家都觉得我肤浅，可谁知道班里那些秘密我全门儿清呢？这种感觉，真的绝了。",
+  "self_narrative": "又是情报失灵的一天，烦！念瑶对林昭宇那事儿遮遮掩掩的，看着真急人。手机被诗涵没收了，谷子也没来得及交流。我这班级情报中心的核心地位，难道要动摇了吗？不过没关系，明天再找陆思远补回来，反正八卦永远不会缺席。",
   "caption_payload": {
-    "caption": "☀️ 方语晨 · 第007天 档案\n\n标签：小太阳\n此刻心情：挫败\n\n「这魂都没了，这秘密肯定保不住，趁这会儿没外人，快点炸她出来。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "☀️ 方语晨 · 第007天 档案\n\n标签：小太阳\n此刻心情：挫败\n\n「念瑶今天死活不开口，真是急死我了，晚上非得从她嘴里撬出点什么。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

@@ -1,0 +1,27 @@
+{
+  "scene": {
+    "scene_index": 5,
+    "time": "12:00",
+    "name": "午饭",
+    "location": "教室",
+    "description": "午饭时间，同学们结伴去食堂吃饭",
+    "day": 10
+  },
+  "participant_names": {
+    "cheng_yutong": "程雨桐"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "cheng_yutong"
+      ],
+      "is_solo": true,
+      "solo_reflection": {
+        "inner_thought": "离熄灯还有九小时。进度落后十分钟，得补回来。",
+        "emotion": "calm",
+        "activity": "整理物理竞赛的草稿纸，并继续推导剩下的方程。"
+      }
+    }
+  ]
+}

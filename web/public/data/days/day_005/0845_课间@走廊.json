@@ -1,6 +1,6 @@
 {
   "scene": {
-    "scene_index": 4,
+    "scene_index": 1,
     "time": "08:45",
     "name": "课间",
     "location": "走廊",
@@ -8,20 +8,692 @@
     "day": 5
   },
   "participant_names": {
+    "fang_yuchen": "方语晨",
     "jiang_haotian": "姜皓天"
   },
   "groups": [
     {
       "group_index": 0,
       "participants": [
+        "fang_yuchen",
         "jiang_haotian"
       ],
-      "is_solo": true,
-      "solo_reflection": {
-        "inner_thought": "老何今天投篮手感行啊，晚上叫他上线带他飞一把。",
-        "emotion": "bored",
-        "activity": "靠在走廊栏杆上，百无聊赖地看着楼下操场的学生发呆。"
-      }
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "jiang_haotian",
+              "content": "诶，姜皓天，最近沈逸凡没找你麻烦吧？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "方语晨站在走廊边上，看起来挺闲的。",
+              "inner_thought": "无聊死了，找人吹吹水，顺便看看何家骏在不在操场。",
+              "emotion": "bored",
+              "action_type": "speak",
+              "action_content": "诶方语晨，这节课下课怎么不去小卖部？",
+              "action_target": "fang_yuchen",
+              "urgency": 4,
+              "is_disruptive": false
+            },
+            "fang_yuchen": {
+              "observation": "姜皓天站在走廊边上，好像在看楼下操场。",
+              "inner_thought": "姜皓天这家伙最近总被沈逸凡盯着，不去打听打听他有没有什么劲爆的把柄。",
+              "emotion": "curious",
+              "action_type": "speak",
+              "action_content": "诶，姜皓天，最近沈逸凡没找你麻烦吧？",
+              "action_target": "jiang_haotian",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "fang_yuchen",
+              "content": "诶方语晨，这节课下课怎么不去小卖部？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "姜皓天转过头看向我，脸色看起来有点无奈。",
+              "inner_thought": "他这表情肯定有戏，快点，我要听劲爆的。",
+              "emotion": "curious",
+              "action_type": "speak",
+              "action_content": "看你这脸，不会昨天又被揪住讲道理了吧？",
+              "action_target": "jiang_haotian",
+              "urgency": 7,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "jiang_haotian",
+              "content": "看你这脸，不会昨天又被揪住讲道理了吧？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "方语晨站在走廊上看着我，没接小卖部的话茬，又提了一嘴沈逸凡。",
+              "inner_thought": "这女的怎么老提沈逸凡，烦死了，我想去操场找何家骏。",
+              "emotion": "bored",
+              "action_type": "speak",
+              "action_content": "别提那家伙，晦气。我操场走一圈，你去不去？",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "fang_yuchen",
+              "content": "别提那家伙，晦气。我操场走一圈，你去不去？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "姜皓天一脸苦涩地叹了口气，看来是被我说中了，沈逸凡肯定又找他谈话了。",
+              "inner_thought": "哈哈，果然有料，看他那倒霉样，憋死我了快说啊！",
+              "emotion": "curious",
+              "action_type": "speak",
+              "action_content": "快讲讲，沈逸凡到底又怎么念你了啊？是不是又因为你上自习玩手机？",
+              "action_target": "jiang_haotian",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 4,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "jiang_haotian",
+              "content": "快讲讲，沈逸凡到底又怎么念你了啊？是不是又因为你上自习玩手机？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "方语晨站在那盯着我，估计想听我多说点关于沈逸凡的八卦。",
+              "inner_thought": "这女的怎么这么八卦，沈逸凡那种书呆子有什么好聊的。",
+              "emotion": "bored",
+              "action_type": "speak",
+              "action_content": "没兴趣，走了，去练两球。",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 5,
+          "public": {
+            "speech": {
+              "agent": "jiang_haotian",
+              "target": "fang_yuchen",
+              "content": "没兴趣，走了，去练两球。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "姜皓天一脸嫌弃地提到沈逸凡，看来还没说完，我得趁热打铁问出细节。",
+              "inner_thought": "快说啊，沈逸凡肯定又出什么损招了，这种八卦不能错过。",
+              "emotion": "curious",
+              "action_type": "speak",
+              "action_content": "哎呀别卖关子了，沈逸凡到底威胁你什么了？快跟我分享下！",
+              "action_target": "jiang_haotian",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 6,
+          "public": {
+            "speech": null,
+            "actions": [],
+            "environmental_event": null,
+            "exits": [
+              "jiang_haotian"
+            ]
+          },
+          "minds": {
+            "jiang_haotian": {
+              "observation": "方语晨一直追着问沈逸凡的事情，我觉得特别没意思。",
+              "inner_thought": "这女的怎么这么八卦，沈逸凡那种书呆子有什么好聊的，快闪人。",
+              "emotion": "bored",
+              "action_type": "exit",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        }
+      ],
+      "narrative": {
+        "key_moments": [
+          "方语晨询问姜皓天关于沈逸凡的情况",
+          "姜皓天询问方语晨是否去小卖部",
+          "方语晨询问姜皓天是否被沈逸凡训斥",
+          "姜皓天拒绝讨论沈逸凡并提议去操场练球",
+          "姜皓天离开走廊"
+        ],
+        "fulfilled_intentions": [
+          "姜皓天:离开走廊前往操场练球"
+        ],
+        "events_discussed": [],
+        "new_events": [
+          {
+            "text": "姜皓天在操场练球",
+            "category": "活动",
+            "witnesses": [
+              "方语晨",
+              "姜皓天"
+            ],
+            "spread_probability": 0.3,
+            "cite_ticks": [
+              6,
+              7
+            ]
+          },
+          {
+            "text": "姜皓天被沈逸凡训斥",
+            "category": "冲突",
+            "witnesses": [
+              "方语晨",
+              "姜皓天"
+            ],
+            "spread_probability": 0.6,
+            "cite_ticks": [
+              1,
+              3,
+              4,
+              5
+            ]
+          }
+        ]
+      },
+      "reflections": {
+        "fang_yuchen": {
+          "emotion": "bored",
+          "relationship_changes": [
+            {
+              "to_agent": "姜皓天",
+              "favorability": 0,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "姜皓天这人真没劲，问他沈逸凡那点破事儿，他居然半句都不肯多说就跑去打球了。",
+              "emotion": "bored",
+              "importance": 3,
+              "people": [
+                "姜皓天"
+              ],
+              "location": "走廊",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [],
+          "intention_outcomes": [
+            {
+              "goal": "在午饭时不动声色地试探她对林昭宇的态度，或者套出LYU的含义（想找苏念瑶）",
+              "status": "pending",
+              "brief_reason": "苏念瑶没在现场。"
+            },
+            {
+              "goal": "去宿舍找她交换谷子信息，顺便吐槽那该死的抽奖概率（想找唐诗涵）",
+              "status": "pending",
+              "brief_reason": "唐诗涵没在现场。"
+            },
+            {
+              "goal": "课间拦住他问问最近班里有没有什么新鲜八卦（想找陆思远）",
+              "status": "pending",
+              "brief_reason": "陆思远没在现场。"
+            }
+          ]
+        },
+        "jiang_haotian": {
+          "emotion": "bored",
+          "relationship_changes": [
+            {
+              "to_agent": "方语晨",
+              "favorability": 1,
+              "trust": 0,
+              "understanding": 0,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "方语晨又在那儿八卦沈逸凡，真烦，赶紧去球场练两球算了。",
+              "emotion": "bored",
+              "importance": 3,
+              "people": [
+                "方语晨",
+                "沈逸凡"
+              ],
+              "location": "走廊",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [],
+          "intention_outcomes": [
+            {
+              "goal": "找机会侧面打听下他爸妈最近有没有提过我家工厂的事",
+              "status": "pending",
+              "brief_reason": "方语晨不是陆思远，没法打听。"
+            },
+            {
+              "goal": "晚自习在他眼皮底下偷玩把游戏",
+              "status": "pending",
+              "brief_reason": "现在是课间，不在晚自习。"
+            },
+            {
+              "goal": "拉他去操场投几个三分球",
+              "status": "pending",
+              "brief_reason": "在操场的是何家骏，方语晨跟我聊不到一起。"
+            }
+          ]
+        }
+      },
+      "share_tick_layouts": [
+        {
+          "day": 5,
+          "time": "08:45",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "jiang_haotian",
+              "name_cn": "姜皓天",
+              "motif_emoji": "⚽",
+              "motif_tag": "运动健将"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "诶，姜皓天，最近沈逸凡没找你麻烦吧？"
+            },
+            {
+              "agent_id": "jiang_haotian",
+              "display_name": "姜皓天",
+              "kind": "thought",
+              "text": "无聊死了，找人吹吹水，顺便看看何家骏在不在操场。"
+            }
+          ],
+          "featured_quote": "姜皓天这家伙最近总被沈逸凡盯着，不去打听打听他有没有什么劲爆的把柄。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 0
+        },
+        {
+          "day": 5,
+          "time": "08:45",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "jiang_haotian",
+              "name_cn": "姜皓天",
+              "motif_emoji": "⚽",
+              "motif_tag": "运动健将"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "jiang_haotian",
+              "display_name": "姜皓天",
+              "kind": "speech",
+              "text": "诶方语晨，这节课下课怎么不去小卖部？"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "他这表情肯定有戏，快点，我要听劲爆的。"
+            }
+          ],
+          "featured_quote": "他这表情肯定有戏，快点，我要听劲爆的。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 1
+        },
+        {
+          "day": 5,
+          "time": "08:45",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "jiang_haotian",
+              "name_cn": "姜皓天",
+              "motif_emoji": "⚽",
+              "motif_tag": "运动健将"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "看你这脸，不会昨天又被揪住讲道理了吧？"
+            },
+            {
+              "agent_id": "jiang_haotian",
+              "display_name": "姜皓天",
+              "kind": "thought",
+              "text": "这女的怎么老提沈逸凡，烦死了，我想去操场找何家骏。"
+            }
+          ],
+          "featured_quote": "这女的怎么老提沈逸凡，烦死了，我想去操场找何家骏。",
+          "featured_speaker_name": "姜皓天",
+          "tick_index": 2
+        },
+        {
+          "day": 5,
+          "time": "08:45",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "jiang_haotian",
+              "name_cn": "姜皓天",
+              "motif_emoji": "⚽",
+              "motif_tag": "运动健将"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "jiang_haotian",
+              "display_name": "姜皓天",
+              "kind": "speech",
+              "text": "别提那家伙，晦气。我操场走一圈，你去不去？"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "哈哈，果然有料，看他那倒霉样，憋死我了快说啊！"
+            }
+          ],
+          "featured_quote": "哈哈，果然有料，看他那倒霉样，憋死我了快说啊！",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 3
+        },
+        {
+          "day": 5,
+          "time": "08:45",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "jiang_haotian",
+              "name_cn": "姜皓天",
+              "motif_emoji": "⚽",
+              "motif_tag": "运动健将"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "快讲讲，沈逸凡到底又怎么念你了啊？是不是又因为你上自习玩手机？"
+            },
+            {
+              "agent_id": "jiang_haotian",
+              "display_name": "姜皓天",
+              "kind": "thought",
+              "text": "这女的怎么这么八卦，沈逸凡那种书呆子有什么好聊的。"
+            }
+          ],
+          "featured_quote": "这女的怎么这么八卦，沈逸凡那种书呆子有什么好聊的。",
+          "featured_speaker_name": "姜皓天",
+          "tick_index": 4
+        },
+        {
+          "day": 5,
+          "time": "08:45",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "jiang_haotian",
+              "name_cn": "姜皓天",
+              "motif_emoji": "⚽",
+              "motif_tag": "运动健将"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "jiang_haotian",
+              "display_name": "姜皓天",
+              "kind": "speech",
+              "text": "没兴趣，走了，去练两球。"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "快说啊，沈逸凡肯定又出什么损招了，这种八卦不能错过。"
+            }
+          ],
+          "featured_quote": "快说啊，沈逸凡肯定又出什么损招了，这种八卦不能错过。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 5
+        },
+        {
+          "day": 5,
+          "time": "08:45",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "jiang_haotian",
+              "name_cn": "姜皓天",
+              "motif_emoji": "⚽",
+              "motif_tag": "运动健将"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "jiang_haotian",
+              "display_name": "姜皓天",
+              "kind": "thought",
+              "text": "这女的怎么这么八卦，沈逸凡那种书呆子有什么好聊的，快闪人。"
+            }
+          ],
+          "featured_quote": "这女的怎么这么八卦，沈逸凡那种书呆子有什么好聊的，快闪人。",
+          "featured_speaker_name": "姜皓天",
+          "tick_index": 6
+        }
+      ],
+      "share_tick_captions": [
+        {
+          "caption": "第005天 · 课间 · 走廊 ☀️\n\n「方语晨」姜皓天这家伙最近总被沈逸凡盯着，不去打听打听他有没有什么劲爆的把柄。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第005天_课间@走廊_t01.png",
+          "group_index": 0,
+          "tick_index": 0
+        },
+        {
+          "caption": "第005天 · 课间 · 走廊 ⚽\n\n「方语晨」他这表情肯定有戏，快点，我要听劲爆的。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第005天_课间@走廊_t02.png",
+          "group_index": 0,
+          "tick_index": 1
+        },
+        {
+          "caption": "第005天 · 课间 · 走廊 ☀️\n\n「姜皓天」这女的怎么老提沈逸凡，烦死了，我想去操场找何家骏。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第005天_课间@走廊_t03.png",
+          "group_index": 0,
+          "tick_index": 2
+        },
+        {
+          "caption": "第005天 · 课间 · 走廊 ⚽\n\n「方语晨」哈哈，果然有料，看他那倒霉样，憋死我了快说啊！\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第005天_课间@走廊_t04.png",
+          "group_index": 0,
+          "tick_index": 3
+        },
+        {
+          "caption": "第005天 · 课间 · 走廊 ☀️\n\n「姜皓天」这女的怎么这么八卦，沈逸凡那种书呆子有什么好聊的。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第005天_课间@走廊_t05.png",
+          "group_index": 0,
+          "tick_index": 4
+        },
+        {
+          "caption": "第005天 · 课间 · 走廊 ⚽\n\n「方语晨」快说啊，沈逸凡肯定又出什么损招了，这种八卦不能错过。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第005天_课间@走廊_t06.png",
+          "group_index": 0,
+          "tick_index": 5
+        },
+        {
+          "caption": "第005天 · 课间 · 走廊 ⚽\n\n「姜皓天」这女的怎么这么八卦，沈逸凡那种书呆子有什么好聊的，快闪人。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第005天_课间@走廊_t07.png",
+          "group_index": 0,
+          "tick_index": 6
+        }
+      ]
     }
   ]
 }

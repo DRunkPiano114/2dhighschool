@@ -6,37 +6,37 @@
   "daily_plan": {
     "intentions": [
       {
-        "target": "英语作业",
-        "goal": "把英语阅读理解的错题订正好",
-        "reason": "英语成绩太差了，再不追上来肯定要拖后腿，怕妈又打电话来念叨。",
-        "fulfilled": false,
-        "abandoned": false,
-        "satisfies_concern": "7b2c9e",
-        "origin_day": 1,
-        "pursued_days": 1
-      },
-      {
         "target": "陆思远",
-        "goal": "找机会问问他物理竞赛题的思路",
-        "reason": "想弄懂题目，但又怕直接问会被发现我偷偷用AI查过，还是旁敲侧击比较好。",
+        "goal": "找陆思远聊聊昨天的物理竞赛题，确认一下解题思路",
+        "reason": "靠自己查AI总觉得心虚，想看看陆思远怎么做，顺便缓解一下负罪感",
         "fulfilled": true,
         "abandoned": false,
-        "satisfies_concern": "f4a1d8",
+        "satisfies_concern": "9b2c4d",
         "origin_day": 1,
         "pursued_days": 1
       },
       {
         "target": null,
-        "goal": "去图书馆背会儿单词",
-        "reason": "教室里太吵了，想找个安静点的地方待着，顺便避开那些不想理的社交。",
+        "goal": "把那套英语卷子的错题整理一下",
+        "reason": "英语一直拖后腿，怕下次月考又被妈骂，得硬着头皮啃一啃",
         "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "f1e8a2",
+        "origin_day": 1,
+        "pursued_days": 1
+      },
+      {
+        "target": "陆思远",
+        "goal": "课间去图书馆自习时，问问他周五晚上有没有空开黑",
+        "reason": "最近压力太大了，需要那一个小时放松一下，不然真的要闷坏了",
+        "fulfilled": true,
         "abandoned": false,
         "satisfies_concern": null,
         "origin_day": 1,
         "pursued_days": 1
       }
     ],
-    "mood_forecast": "neutral",
+    "mood_forecast": "anxious",
     "location_preferences": {
       "morning_break": "教室",
       "lunch": "食堂",
@@ -46,9 +46,51 @@
   "day": 1,
   "active_concerns": [
     {
-      "id": "9b432b",
-      "text": "英语阅读理解错题未订正，担心成绩拖后腿导致母亲再次施压。",
-      "source_event": "全天学习计划未完成",
+      "id": "991b64",
+      "text": "沈逸凡刚才说话的态度，难道他觉得我很笨吗？",
+      "source_event": "沈逸凡当众催促英语卷子订正",
+      "source_scene": "课间@教室",
+      "source_day": 1,
+      "emotion": "anxious",
+      "intensity": 5,
+      "related_people": [
+        "沈逸凡"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 1,
+      "bumps_today": 2
+    },
+    {
+      "id": "44316c",
+      "text": "周五晚上的王者局，希望能赢一把放松一下",
+      "source_event": "陆思远提到了周五打游戏的事",
+      "source_scene": "课间@图书馆",
+      "source_day": 1,
+      "emotion": "excited",
+      "intensity": 4,
+      "related_people": [
+        "陆思远"
+      ],
+      "positive": true,
+      "topic": "期待的事",
+      "last_reinforced_day": 1,
+      "last_new_info_day": 1,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "f53193",
+      "text": "英语错题整理一直拖着没做，担心下次月考成绩不理想会被母亲责备。",
+      "source_event": "全天学习过程",
       "source_scene": "",
       "source_day": 1,
       "emotion": "anxious",

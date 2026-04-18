@@ -1,6 +1,6 @@
 {
   "scene": {
-    "scene_index": 3,
+    "scene_index": 5,
     "time": "12:00",
     "name": "午饭",
     "location": "教室",
@@ -8,19 +8,367 @@
     "day": 4
   },
   "participant_names": {
-    "cheng_yutong": "程雨桐"
+    "cheng_yutong": "程雨桐",
+    "shen_yifan": "沈逸凡"
   },
   "groups": [
     {
       "group_index": 0,
       "participants": [
-        "cheng_yutong"
+        "cheng_yutong",
+        "shen_yifan"
       ],
-      "is_solo": true,
-      "solo_reflection": {
-        "inner_thought": "排名还没出，这道压轴题的辅助线思路还需要再优化。",
-        "emotion": "anxious",
-        "activity": "我在草稿纸上反复演算物理压轴题，同时盯着手机界面核对智学网的后台更新。"
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": {
+              "agent": "shen_yifan",
+              "target": "cheng_yutong",
+              "content": "你怎么不去食堂？等下排队人又要多了。"
+            },
+            "actions": [
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "戴上降噪耳机，将竞赛题集翻开至折角页。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "程雨桐还在教室，大部分同学都已经去食堂吃饭了。",
+              "inner_thought": "又要管纪律又要处理人际，真累，话到了嘴边又不知道怎么开口。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "你怎么不去食堂？等下排队人又要多了。",
+              "action_target": "cheng_yutong",
+              "urgency": 5,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "沈逸凡还没走，坐在后排正准备从桌肚里拿饭盒。",
+              "inner_thought": "好安静，终于能静下心推导力学压轴题了。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "戴上降噪耳机，将竞赛题集翻开至折角页。",
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "叹了口气，把饭盒从书包里拿出来，准备就在座位上快速吃掉。"
+              },
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "没有回应，继续用笔尖在草稿纸上勾画复杂的模型图。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "程雨桐戴上降噪耳机开始做竞赛题，完全不想被打扰。",
+              "inner_thought": "算了，这人比我还刻苦，我还是别去烦她了。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "叹了口气，把饭盒从书包里拿出来，准备就在座位上快速吃掉。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "沈逸凡在拿饭盒，还没离开教室。",
+              "inner_thought": "别再说话了，这道题的受力分析还没想通。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "没有回应，继续用笔尖在草稿纸上勾画复杂的模型图。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "打开饭盒盖子，用筷子拨动米饭，发出细微的摩擦声，随后默默加快进食速度。"
+              },
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "将草稿纸上的受力平衡方程圈出来，继续推导下一行的变量代换。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "程雨桐完全沉浸在竞赛题里，连午饭都不吃，教室里安静得只能听到笔尖划纸的声音。",
+              "inner_thought": "算了，反正大家都这么拼，我抓紧啃完饭盒去刷那套压轴题算了。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "打开饭盒盖子，用筷子拨动米饭，发出细微的摩擦声，随后默默加快进食速度。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "沈逸凡在座位上开始吃午饭，筷子碰撞饭盒的声音很轻。",
+              "inner_thought": "只要他不和我搭话，吃饭就吃饭吧，别打断思路就行。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "将草稿纸上的受力平衡方程圈出来，继续推导下一行的变量代换。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "将饭盒盖子重新盖紧，抽出几张纸巾擦了擦嘴，准备开始刷数学模拟题。"
+              },
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "在草稿纸边缘快速写下数值，笔尖在纸张上划出沙沙声。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "程雨桐连午饭都没吃，竞赛题的推导步骤越来越密了。",
+              "inner_thought": "大家都拼成这样，我还有什么资格在这抱怨，赶紧吃完做题吧。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "将饭盒盖子重新盖紧，抽出几张纸巾擦了擦嘴，准备开始刷数学模拟题。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "沈逸凡在快速进食，饭盒碰撞的声音很轻。",
+              "inner_thought": "好在这题的变量代换终于要解出来了，抓紧时间。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "在草稿纸边缘快速写下数值，笔尖在纸张上划出沙沙声。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 4,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "从书包里拿出数学题册，抽出黑色的中性笔，在草稿纸上工整地写下标号。"
+              },
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "将刚才推导出来的数值工整地誊写进方格本中。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "程雨桐连午饭都没吃，竞赛题的推导步骤越来越密了。",
+              "inner_thought": "大家都拼成这样，我还有什么资格在这抱怨，赶紧把模拟题做完。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "从书包里拿出数学题册，抽出黑色的中性笔，在草稿纸上工整地写下标号。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "沈逸凡在刷数学模拟题，教室里除了沙沙的笔声，没有其他干扰。",
+              "inner_thought": "还好没吵，这道题的最后一步逻辑总算通了。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "将刚才推导出来的数值工整地誊写进方格本中。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        }
+      ],
+      "narrative": {
+        "key_moments": [
+          "沈逸凡询问程雨桐为何不去食堂。",
+          "程雨桐戴上降噪耳机并开始做竞赛题。",
+          "沈逸凡在座位上进食。",
+          "沈逸凡和程雨桐在各自座位上进行数学练习。"
+        ],
+        "fulfilled_intentions": [
+          "沈逸凡:在教室吃午饭",
+          "程雨桐:完成竞赛题集推导",
+          "沈逸凡:完成数学模拟题练习"
+        ],
+        "events_discussed": [],
+        "new_events": [
+          {
+            "text": "沈逸凡在教室座位上吃午饭",
+            "category": "日常行为",
+            "witnesses": [
+              "程雨桐"
+            ],
+            "spread_probability": 0.2,
+            "cite_ticks": [
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "text": "程雨桐在教室进行竞赛题推导",
+            "category": "学习行为",
+            "witnesses": [
+              "沈逸凡"
+            ],
+            "spread_probability": 0.1,
+            "cite_ticks": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ]
+      },
+      "reflections": {
+        "cheng_yutong": {
+          "emotion": "calm",
+          "relationship_changes": [
+            {
+              "to_agent": "沈逸凡",
+              "favorability": 0,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": false
+            }
+          ],
+          "memories": [
+            {
+              "text": "沈逸凡在教室里吃午饭，虽然有些吵，但至少没来烦我。",
+              "emotion": "calm",
+              "importance": 3,
+              "people": [
+                "沈逸凡"
+              ],
+              "location": "教室",
+              "topics": [
+                "其他"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [
+            {
+              "concern_text": "83a346",
+              "adjustment": 0
+            }
+          ],
+          "intention_outcomes": [
+            {
+              "goal": "在熄灯后看完《仙路独行》最新更新的章节",
+              "status": "pending",
+              "brief_reason": "现在是午饭时间，与该意图无关。"
+            },
+            {
+              "goal": "完成三道力学压轴题的深度推导",
+              "status": "attempted",
+              "brief_reason": "在教室利用午饭时间完成了部分受力平衡方程的推导和变量代换。"
+            }
+          ]
+        },
+        "shen_yifan": {
+          "emotion": "calm",
+          "relationship_changes": [
+            {
+              "to_agent": "程雨桐",
+              "favorability": 1,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "程雨桐午饭时间也在教室里刷竞赛题，一句话都没说。",
+              "emotion": "calm",
+              "importance": 3,
+              "people": [
+                "程雨桐"
+              ],
+              "location": "教室",
+              "topics": [
+                "学习"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [],
+          "intention_outcomes": [
+            {
+              "goal": "找个机会私下提醒姜皓天，别在晚自习玩手机了",
+              "status": "pending",
+              "brief_reason": "姜皓天不在场，没机会接触。"
+            },
+            {
+              "goal": "午饭时跟林昭宇聊聊学校活动，缓和一下气氛",
+              "status": "pending",
+              "brief_reason": "林昭宇不在场，没机会接触。"
+            },
+            {
+              "goal": "完成一套数学压轴题模拟",
+              "status": "fulfilled",
+              "brief_reason": "午饭时间在教室里已经开始刷题了。"
+            }
+          ]
+        }
       }
     }
   ]

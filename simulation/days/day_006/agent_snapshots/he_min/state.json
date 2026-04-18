@@ -1,5 +1,5 @@
 {
-  "emotion": "neutral",
+  "emotion": "anxious",
   "energy": 85,
   "academic_pressure": 35,
   "location": "教室",
@@ -7,36 +7,36 @@
     "intentions": [
       {
         "target": "林昭宇",
-        "goal": "找个课间把他叫到办公室，观察状态并谈谈压力",
-        "reason": "这孩子最近红了眼眶，我不能再拖了，得确认他心理没出大问题。",
+        "goal": "找个时间把他叫到办公室，不谈分数，只关心他最近的睡眠质量和状态",
+        "reason": "这孩子最近太紧绷了，红眼眶的样子让我一直放不下，必须找机会疏导一下。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "eeb8c6",
+        "satisfies_concern": "97c316",
         "origin_day": 3,
         "pursued_days": 4
       },
       {
         "target": "何家骏",
-        "goal": "检查他的错题本，辅导薄弱环节",
-        "reason": "他底子薄，不盯着不行，这几天进步了，得趁热打铁。",
+        "goal": "检查他的古诗文默写，手把手教他背诵技巧",
+        "reason": "这孩子基础不差但没人管，不能看他这么荒废下去，必须得盯紧点。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "fca093",
-        "origin_day": 3,
-        "pursued_days": 4
+        "satisfies_concern": "f9e8d1",
+        "origin_day": 6,
+        "pursued_days": 1
       },
       {
-        "target": "学校门口咖啡店",
-        "goal": "去学校门口买杯热咖啡",
-        "reason": "这几天忙得头晕，喝杯咖啡提提神，让自己状态好点。",
+        "target": "女儿",
+        "goal": "下班路上一定要去商场买那个文具盲盒",
+        "reason": "答应了女儿好几天了，再不买回去她该失望了，得补上。",
         "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
-        "origin_day": 6,
-        "pursued_days": 1
+        "origin_day": 4,
+        "pursued_days": 3
       }
     ],
-    "mood_forecast": "neutral",
+    "mood_forecast": "anxious",
     "location_preferences": {
       "morning_break": "教室",
       "lunch": "食堂",
@@ -44,5 +44,73 @@
     }
   },
   "day": 6,
-  "active_concerns": []
+  "active_concerns": [
+    {
+      "id": "97c316",
+      "text": "林昭宇在食堂表现出的紧绷感加重，需要尽快找时间进行一次深入的心理沟通。",
+      "source_event": "听到苏念瑶提到想去报竞赛，其他人表现出恐慌和逃避；基于对学生日常状态的观察与长期关注；食堂午餐时林昭宇的状态",
+      "source_scene": "午饭@食堂",
+      "source_day": 2,
+      "emotion": "anxious",
+      "intensity": 8,
+      "related_people": [
+        "苏念瑶",
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "学业焦虑",
+      "last_reinforced_day": 6,
+      "last_new_info_day": 6,
+      "reinforcement_count": 2,
+      "text_history": [
+        "班里竞赛焦虑风气蔓延，得找机会敲打又不伤他们。",
+        "林昭宇上次月考后红了眼眶，担心他长期紧绷出问题，需要找机会进行心理疏导。"
+      ],
+      "id_history": [],
+      "last_bump_day": 6,
+      "bumps_today": 2
+    },
+    {
+      "id": "e7ad19",
+      "text": "林昭宇因作业量大导致睡眠不足，需进一步关注其身心状态并寻找合适契机进行疏导。",
+      "source_event": "课间走廊谈话",
+      "source_scene": "",
+      "source_day": 4,
+      "emotion": "anxious",
+      "intensity": 4,
+      "related_people": [
+        "林昭宇"
+      ],
+      "positive": false,
+      "topic": "健康",
+      "last_reinforced_day": 6,
+      "last_new_info_day": 4,
+      "reinforcement_count": 1,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 6,
+      "bumps_today": 1
+    },
+    {
+      "id": "bed814",
+      "text": "答应女儿的文具盲盒还没买，下班必须补上，不能让她失望。",
+      "source_event": "今日未完成的任务",
+      "source_scene": "",
+      "source_day": 6,
+      "emotion": "愧疚",
+      "intensity": 4,
+      "related_people": [
+        "女儿"
+      ],
+      "positive": false,
+      "topic": "期待的事",
+      "last_reinforced_day": 6,
+      "last_new_info_day": 6,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    }
+  ]
 }

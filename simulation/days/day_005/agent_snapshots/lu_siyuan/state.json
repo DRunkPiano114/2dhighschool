@@ -6,27 +6,37 @@
   "daily_plan": {
     "intentions": [
       {
-        "target": "公众号",
-        "goal": "给积攒的草稿起个标题，尝试删减字数后发布一篇",
-        "reason": "老是存着也不行，总得迈出第一步，不然心里一直惦记着。",
+        "target": "林昭宇",
+        "goal": "在课间休息时主动询问林昭宇的学习状态，提供情感支持",
+        "reason": "看他最近压力挺大的，想陪陪他，分担一下他的焦虑",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "1ca4c0",
+        "origin_day": 3,
+        "pursued_days": 3
+      },
+      {
+        "target": "微信公众号",
+        "goal": "再次打开草稿箱修改文章，但还是决定暂不发布",
+        "reason": "还没做好被同学看到的心理准备，怕尴尬，觉得自己写得不够好",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "24ee3e",
+        "satisfies_concern": "1eaa8a",
         "origin_day": 5,
         "pursued_days": 1
       },
       {
-        "target": "林昭宇",
-        "goal": "约林昭宇下午去图书馆安静地自习",
-        "reason": "最近有点累，和他待在一起能让我稍微放松一点，也能避开姜皓天。",
+        "target": "姜皓天",
+        "goal": "若姜皓天再次提出过分要求，保持温和态度委婉拒绝",
+        "reason": "不想再当大冤种被随意指使，但又害怕直接冲突导致关系僵化",
         "fulfilled": true,
         "abandoned": false,
-        "satisfies_concern": null,
+        "satisfies_concern": "2bbc0a",
         "origin_day": 5,
         "pursued_days": 1
       }
     ],
-    "mood_forecast": "neutral",
+    "mood_forecast": "calm",
     "location_preferences": {
       "morning_break": "教室",
       "lunch": "食堂",
@@ -36,13 +46,13 @@
   "day": 5,
   "active_concerns": [
     {
-      "id": "24ee3e",
-      "text": "公众号草稿箱里积攒了十几篇内容，总觉得写得不够好或者没人看，迟迟不敢发布。",
-      "source_event": "今天再次因为琐事打断，没能完成公众号内容的排版和发布。",
+      "id": "1eaa8a",
+      "text": "公众号草稿写好了却始终不敢发布，害怕被同学看到后引来尴尬的评价。",
+      "source_event": "全天内心纠结",
       "source_scene": "",
       "source_day": 4,
       "emotion": "anxious",
-      "intensity": 1,
+      "intensity": 2,
       "related_people": [],
       "positive": false,
       "topic": "自我认同",
@@ -51,34 +61,55 @@
       "reinforcement_count": 0,
       "text_history": [],
       "id_history": [],
-      "last_bump_day": 5,
-      "bumps_today": 2
+      "last_bump_day": 0,
+      "bumps_today": 0
     },
     {
-      "id": "2510f4",
-      "text": "姜皓天在晚自习和宿舍的干扰行为让我感到无奈，但我选择了忍让。",
-      "source_event": "晚自习被踢凳子，宿舍被追问升学打算。",
-      "source_scene": "",
-      "source_day": 4,
-      "emotion": "bored",
+      "id": "ba986b",
+      "text": "林昭宇主动约我打王者，不知道他心情是不是好点了？",
+      "source_event": "林昭宇在图书馆课间主动提出带我玩游戏",
+      "source_scene": "课间@图书馆",
+      "source_day": 5,
+      "emotion": "touched",
       "intensity": 4,
       "related_people": [
-        "姜皓天"
+        "林昭宇"
+      ],
+      "positive": true,
+      "topic": "期待的事",
+      "last_reinforced_day": 5,
+      "last_new_info_day": 5,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 0,
+      "bumps_today": 0
+    },
+    {
+      "id": "a28825",
+      "text": "沈逸凡好像真的很讨厌我们，以后在班里会不会更尴尬？",
+      "source_event": "沈逸凡在食堂当众赶人",
+      "source_scene": "午饭@食堂",
+      "source_day": 5,
+      "emotion": "anxious",
+      "intensity": 7,
+      "related_people": [
+        "沈逸凡"
       ],
       "positive": false,
       "topic": "人际矛盾",
       "last_reinforced_day": 5,
-      "last_new_info_day": 4,
-      "reinforcement_count": 2,
+      "last_new_info_day": 5,
+      "reinforcement_count": 1,
       "text_history": [],
       "id_history": [],
       "last_bump_day": 5,
-      "bumps_today": 2
+      "bumps_today": 1
     },
     {
-      "id": "b6f36e",
-      "text": "公众号草稿箱里积攒的文章一直没有发布，总觉得还没准备好，但又很想迈出第一步。",
-      "source_event": "全天复习间隙",
+      "id": "63226b",
+      "text": "公众号草稿写好了却始终不敢发布，害怕被同学看到后引来尴尬的评价。",
+      "source_event": "个人写作过程",
       "source_scene": "",
       "source_day": 5,
       "emotion": "anxious",

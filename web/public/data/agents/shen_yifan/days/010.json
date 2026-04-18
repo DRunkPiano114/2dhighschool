@@ -1,0 +1,62 @@
+{
+  "agent_id": "shen_yifan",
+  "name_cn": "沈逸凡",
+  "day": 10,
+  "is_teacher": false,
+  "motif_emoji": "🔥",
+  "motif_tag": "正义班长",
+  "main_color": "#C4524A",
+  "emotion_label": "挫败",
+  "energy_label": "精神还行",
+  "pressure_label": "稍有压力",
+  "featured_quote": "搞得像我欠他们钱一样，走就走，谁稀罕留在这儿。",
+  "featured_scene": "12:00 · 午饭",
+  "relationships": [
+    {
+      "target_name": "何家骏",
+      "favorability": 0,
+      "trust": 0,
+      "label_text": "普通同学"
+    },
+    {
+      "target_name": "方语晨",
+      "favorability": 0,
+      "trust": 0,
+      "label_text": "普通同学"
+    },
+    {
+      "target_name": "苏念瑶",
+      "favorability": 0,
+      "trust": 0,
+      "label_text": "普通同学"
+    }
+  ],
+  "memories": [
+    {
+      "date": "Day 7",
+      "text": "在食堂被林昭宇当众无视，催他填表反而被何老师当面训斥，真让人下不来台。",
+      "importance": 8
+    },
+    {
+      "date": "Day 7",
+      "text": "何老师在食堂当面指出我的管理方式有问题，这让我开始反思自己作为班长的执着是否真的适得其反。",
+      "importance": 8
+    }
+  ],
+  "top_concern": {
+    "text": "在宿舍管理中，我的制止行为是否反而加剧了姜皓天的反叛情绪，导致宿舍氛围更加压抑？",
+    "intensity_label": "强烈",
+    "positive": false
+  },
+  "self_narrative": "班长当得像个笑话。管纪律被嫌烦，想沟通被冷落。姜皓天那副吊儿郎当的样子真让人火大，可我除了记名字还能干什么？宿舍里气氛冷得结冰，我这所谓的责任感，到底是在成全班级，还是在孤立自己？算了，不说了。",
+  "caption_payload": {
+    "caption": "🔥 沈逸凡 · 第010天 档案\n\n标签：正义班长\n此刻心情：挫败\n\n「搞得像我欠他们钱一样，走就走，谁稀罕留在这儿。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "hashtags": [
+      "#SimCampus",
+      "#AI高中生",
+      "#青春日记",
+      "#人物志"
+    ],
+    "filename": "simcampus_沈逸凡_档案_第010天.png"
+  }
+}

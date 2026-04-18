@@ -67,66 +67,52 @@
     "daily_plan": {
       "intentions": [
         {
-          "target": "智学网后台",
-          "goal": "确认月考排名",
-          "reason": "排名迟迟不公布，复习节奏受干扰，必须拿到数据才能调整物理复习计划。",
-          "fulfilled": false,
-          "abandoned": false,
-          "satisfies_concern": "ae385e",
-          "origin_day": 5,
-          "pursued_days": 5
-        },
-        {
-          "target": "物理错题本",
-          "goal": "完成逻辑闭环整理",
-          "reason": "月考后的知识漏洞必须在下次考试前修补，这是保持领先的必要手段。",
+          "target": "物理竞赛题集",
+          "goal": "完成力学进阶章节的全部推导与错题整理",
+          "reason": "竞赛进度落后了十分钟，必须补上以维持前列优势。",
           "fulfilled": true,
           "abandoned": false,
-          "satisfies_concern": null,
-          "origin_day": 9,
-          "pursued_days": 1
+          "satisfies_concern": "515128",
+          "origin_day": 8,
+          "pursued_days": 3
         },
         {
-          "target": "被窝",
-          "goal": "阅读《仙路独行》",
-          "reason": "需要从高强度的学习和宿舍噪音中抽离，通过阅读缓解心理压力。",
+          "target": "仙路独行",
+          "goal": "在熄灯后阅读最新章节",
+          "reason": "昨晚没看成，心里空落落的，需要解压。",
           "fulfilled": true,
           "abandoned": false,
-          "satisfies_concern": null,
-          "origin_day": 5,
-          "pursued_days": 5
+          "satisfies_concern": "b24dbc",
+          "origin_day": 8,
+          "pursued_days": 3
         }
       ],
       "mood_forecast": "calm",
       "location_preferences": {
-        "morning_break": "教室",
-        "lunch": "操场",
+        "morning_break": "图书馆",
+        "lunch": "教室",
         "afternoon_break": "图书馆"
       }
     },
-    "day": 9,
+    "day": 10,
     "active_concerns": [
       {
-        "id": "ae385e",
-        "text": "月考排名迟迟未发布，无法根据结果评估物理学科的逻辑漏洞，导致复习节奏被打乱。",
-        "source_event": "课间反复刷新智学网界面；日常复习与月考等待",
+        "id": "515128",
+        "text": "力学竞赛进度落后了十分钟，必须补上以维持年级前列的优势。",
+        "source_event": "课间图书馆推导力学题",
         "source_scene": "",
         "source_day": 8,
-        "emotion": "frustrated",
-        "intensity": 5,
+        "emotion": "anxious",
+        "intensity": 2,
         "related_people": [],
         "positive": false,
         "topic": "学业焦虑",
-        "last_reinforced_day": 9,
+        "last_reinforced_day": 10,
         "last_new_info_day": 8,
-        "reinforcement_count": 1,
-        "text_history": [
-          "月考排名迟迟未公布，无法根据具体丢分点调整物理复习逻辑。"
-        ],
-        "id_history": [
-          "1bc21a"
-        ],
-        "last_bump_day": 9,
+        "reinforcement_count": 0,
+        "text_history": [],
+        "id_history": [],
+        "last_bump_day": 10,
         "bumps_today": 2
       }
     ]
@@ -135,42 +121,42 @@
     "su_nianyao": {
       "target_name": "苏念瑶",
       "target_id": "su_nianyao",
-      "favorability": -1,
-      "trust": 4,
-      "understanding": 20,
+      "favorability": -15,
+      "trust": 3,
+      "understanding": 24,
       "label": "同桌",
       "recent_interactions": [
-        "Day 5 −宿舍夜聊",
-        "Day 6 −上课",
-        "Day 6 −晚自习",
-        "Day 7 −上课",
-        "Day 7 ·宿舍夜聊",
+        "Day 7 −宿舍夜聊",
+        "Day 8 −上课",
+        "Day 8 −午饭@教室",
         "Day 8 −晚自习",
-        "Day 8 +宿舍夜聊",
-        "Day 9 ·上课",
-        "Day 9 −午饭@操场",
-        "Day 9 ·宿舍夜聊"
+        "Day 8 −宿舍夜聊",
+        "Day 9 −课间@图书馆",
+        "Day 9 −宿舍夜聊",
+        "Day 10 −早读",
+        "Day 10 −课间@图书馆",
+        "Day 10 −宿舍夜聊"
       ],
       "days_since_interaction": 1
     },
     "tang_shihan": {
       "target_name": "唐诗涵",
       "target_id": "tang_shihan",
-      "favorability": -9,
+      "favorability": -6,
       "trust": 5,
-      "understanding": 13,
+      "understanding": 12,
       "label": "室友",
       "recent_interactions": [
-        "Day 7 −课间@教室",
-        "Day 7 −上课",
+        "Day 5 −宿舍夜聊",
+        "Day 6 −早读",
+        "Day 6 −宿舍夜聊",
         "Day 7 −宿舍夜聊",
-        "Day 8 −课间@教室",
-        "Day 8 −课间@图书馆",
+        "Day 8 −上课",
+        "Day 8 −午饭@教室",
         "Day 8 −晚自习",
         "Day 8 −宿舍夜聊",
-        "Day 9 −课间@教室",
-        "Day 9 −上课",
-        "Day 9 −宿舍夜聊"
+        "Day 9 −宿舍夜聊",
+        "Day 10 −早读"
       ],
       "days_since_interaction": 1
     },
@@ -178,53 +164,64 @@
       "target_name": "林昭宇",
       "target_id": "lin_zhaoyu",
       "favorability": 0,
-      "trust": 1,
-      "understanding": 5,
+      "trust": 0,
+      "understanding": 2,
       "label": "同学",
       "recent_interactions": [
-        "Day 1 −课间@教室",
-        "Day 1 −课间@图书馆",
+        "Day 1 ·课间@教室",
         "Day 2 −课间@教室",
-        "Day 6 ·课间@图书馆",
-        "Day 8 ·课间@图书馆",
-        "Day 9 −课间@教室",
-        "Day 9 +课间@图书馆"
+        "Day 9 −课间@教室"
       ],
-      "days_since_interaction": 1
+      "days_since_interaction": 2
     },
     "lu_siyuan": {
       "target_name": "陆思远",
       "target_id": "lu_siyuan",
       "favorability": 0,
-      "trust": 0,
-      "understanding": 4,
+      "trust": 1,
+      "understanding": 3,
       "label": "同学",
       "recent_interactions": [
-        "Day 1 +课间@图书馆",
-        "Day 2 ·课间@教室",
-        "Day 8 ·课间@图书馆",
-        "Day 9 ·课间@图书馆"
+        "Day 1 ·课间@教室",
+        "Day 2 −课间@教室",
+        "Day 7 +课间@图书馆",
+        "Day 9 −课间@教室"
       ],
-      "days_since_interaction": 1
+      "days_since_interaction": 2
+    },
+    "shen_yifan": {
+      "target_name": "沈逸凡",
+      "target_id": "shen_yifan",
+      "favorability": 0,
+      "trust": 0,
+      "understanding": 3,
+      "label": "同学",
+      "recent_interactions": [
+        "Day 1 −课间@教室",
+        "Day 1 −午饭@教室",
+        "Day 4 ·午饭@教室",
+        "Day 8 −课间@教室"
+      ],
+      "days_since_interaction": 3
     },
     "fang_yuchen": {
       "target_name": "方语晨",
       "target_id": "fang_yuchen",
-      "favorability": -21,
+      "favorability": -11,
       "trust": 0,
-      "understanding": 5,
+      "understanding": 3,
       "label": "同学",
       "recent_interactions": [
-        "Day 6 −晚自习",
         "Day 6 −宿舍夜聊",
+        "Day 7 −早读",
         "Day 7 −课间@教室",
-        "Day 7 −上课",
         "Day 7 −宿舍夜聊",
-        "Day 8 −课间@教室",
+        "Day 8 −上课",
+        "Day 8 −午饭@教室",
         "Day 8 −晚自习",
         "Day 8 −宿舍夜聊",
-        "Day 9 −上课",
-        "Day 9 −宿舍夜聊"
+        "Day 9 −宿舍夜聊",
+        "Day 10 −早读"
       ],
       "days_since_interaction": 1
     },
@@ -236,9 +233,9 @@
       "understanding": 1,
       "label": "同学",
       "recent_interactions": [
-        "Day 5 ·午饭@操场"
+        "Day 1 ·午饭@教室"
       ],
-      "days_since_interaction": 5
+      "days_since_interaction": 10
     },
     "he_jiajun": {
       "target_name": "何家骏",
@@ -248,24 +245,12 @@
       "understanding": 1,
       "label": "同学",
       "recent_interactions": [
-        "Day 5 ·课间@图书馆"
+        "Day 10 ·课间@图书馆"
       ],
-      "days_since_interaction": 4
-    },
-    "shen_yifan": {
-      "target_name": "沈逸凡",
-      "target_id": "shen_yifan",
-      "favorability": 0,
-      "trust": 0,
-      "understanding": 1,
-      "label": "同学",
-      "recent_interactions": [
-        "Day 6 −课间@操场"
-      ],
-      "days_since_interaction": 4
+      "days_since_interaction": 1
     }
   },
-  "self_narrative": "班里的隐形人。月考排名还没出，节奏被打乱。整天被噪音包围，效率极低。只有熄灯后那半小时，看《仙路独行》才能喘口气。排名不出的每一秒，都在消耗我的意志。",
+  "self_narrative": "班里那个不爱说话的机器。竞赛进度慢了十分钟，这很糟糕。苏念瑶总在旁边晃，干扰专注力。爸妈的视线像监控，没法喘息。昨晚没看成《仙路独行》，心里空落落的。还得保持第一，这是唯一的底线。",
   "key_memories": {
     "memories": [
       {
@@ -273,33 +258,54 @@
         "day": 1,
         "people": [
           "苏念瑶",
-          "方语晨",
-          "唐诗涵"
+          "方语晨"
         ],
-        "location": "宿舍",
+        "location": "教室",
         "emotion": "bored",
         "importance": 4,
         "topics": [
-          "其他"
+          "人际矛盾"
         ],
-        "text": "舍友熄灯后还在吵闹，被迫打断了看书节奏。",
-        "source_days": [],
-        "text_history": []
+        "text": "苏念瑶和方语晨在课间传纸条讨论八卦，吵得无法专注。",
+        "source_days": [
+          4
+        ],
+        "text_history": [
+          "苏念瑶和方语晨课间讨论林昭宇，吵得压轴题推导一直被打断。"
+        ]
       },
       {
         "date": "Day 1",
         "day": 1,
         "people": [
-          "陆思远"
+          "林昭宇",
+          "陆思远",
+          "沈逸凡"
+        ],
+        "location": "教室",
+        "emotion": "bored",
+        "importance": 3,
+        "topics": [
+          "学业焦虑"
+        ],
+        "text": "林昭宇和陆思远在课间讨论物理题，沈逸凡在旁边催促，吵得人没法专注。",
+        "source_days": [],
+        "text_history": []
+      },
+      {
+        "date": "Day 2",
+        "day": 2,
+        "people": [
+          "苏念瑶"
         ],
         "location": "图书馆",
-        "emotion": "anxious",
+        "emotion": "calm",
         "importance": 4,
         "topics": [
           "学业",
-          "物理"
+          "人际"
         ],
-        "text": "在图书馆帮助陆思远核对物理卷子，并提供了准确的解题步骤。",
+        "text": "在图书馆与苏念瑶交流数学纠错本并指出辅助线作法，随后戴上降噪耳机继续物理推演。",
         "source_days": [],
         "text_history": []
       },
@@ -316,101 +322,81 @@
         "topics": [
           "学业焦虑"
         ],
-        "text": "林昭宇和陆思远在讨论物理受力分析，其实那个投影点画法确实有问题。",
+        "text": "林昭宇和陆思远在课间为了英语阅读和物理题反复讨论，效率很低。",
         "source_days": [],
         "text_history": []
-      },
-      {
-        "date": "Day 2",
-        "day": 2,
-        "people": [
-          "苏念瑶"
-        ],
-        "location": "图书馆",
-        "emotion": "neutral",
-        "importance": 3,
-        "topics": [
-          "其他"
-        ],
-        "text": "苏念瑶在写关于深秋的小说，还递了糖，但我没要。",
-        "source_days": [],
-        "text_history": []
-      },
-      {
-        "date": "Day 3",
-        "day": 3,
-        "people": [],
-        "location": "宿舍",
-        "emotion": "calm",
-        "importance": 6,
-        "topics": [
-          "兴趣爱好",
-          "自我认同"
-        ],
-        "text": "熄灯后在被窝里偷偷阅读《仙路独行》，这是我保持完美形象背后的唯一叛逃。",
-        "source_days": [
-          4,
-          6
-        ],
-        "text_history": [
-          "熄灯后在被窝里阅读修仙网文，作为应对高压学习环境的逃避方式。",
-          "熄灯后在被窝里阅读《仙路独行》的半小时，是维持心理平衡的唯一出口。"
-        ]
       },
       {
         "date": "Day 3",
         "day": 3,
         "people": [
           "方语晨",
-          "唐诗涵"
+          "苏念瑶"
         ],
-        "location": "教室",
+        "location": "宿舍",
         "emotion": "bored",
         "importance": 4,
         "topics": [
           "人际矛盾"
         ],
-        "text": "方语晨和唐诗涵在课间高声讨论奶茶拼单和立牌，完全干扰了我的思维节奏。",
-        "source_days": [
-          5,
-          7
-        ],
-        "text_history": [
-          "方语晨和唐诗涵在早读课上一直传纸条、翻书，严重干扰了我的物理演算。",
-          "课间方语晨和唐诗涵为了衣服颜色争吵，极其幼稚且吵闹，干扰了我的物理演算。",
-          "方语晨和唐诗涵在课间一直吵闹，完全没法静下心算物理题。"
-        ]
+        "text": "舍友大晚上吵个不停，为了明天的测验不得不出声制止。",
+        "source_days": [],
+        "text_history": []
       },
       {
-        "date": "Day 4",
-        "day": 4,
+        "date": "Day 3",
+        "day": 3,
         "people": [
           "方语晨"
         ],
         "location": "教室",
         "emotion": "bored",
-        "importance": 4,
+        "importance": 3,
         "topics": [
           "人际矛盾"
         ],
-        "text": "方语晨在课间刷短剧的声音严重干扰了我的解题思路，不得不戴上耳机隔绝。",
+        "text": "方语晨在课间一直试图闲聊，最后甚至用外套蒙头，这种社交方式很低效。",
         "source_days": [],
         "text_history": []
+      },
+      {
+        "date": "Day 4",
+        "day": 4,
+        "people": [
+          "苏念瑶",
+          "方语晨",
+          "唐诗涵"
+        ],
+        "location": "宿舍",
+        "emotion": "bored",
+        "importance": 5,
+        "topics": [
+          "人际矛盾"
+        ],
+        "text": "舍友大半夜还在聊八卦，严重干扰休息。",
+        "source_days": [
+          5,
+          9
+        ],
+        "text_history": [
+          "舍友们在熄灯后为了八卦不停争吵，严重干扰了阅读时间。",
+          "宿舍里又在聊无意义的八卦，幸好及时戴上耳机。"
+        ]
       },
       {
         "date": "Day 5",
         "day": 5,
         "people": [
-          "方语晨",
-          "苏念瑶"
+          "苏念瑶",
+          "林昭宇"
         ],
-        "location": "教室",
+        "location": "图书馆",
         "emotion": "bored",
         "importance": 4,
         "topics": [
           "人际矛盾"
         ],
-        "text": "课间方语晨和苏念瑶传纸条又买东西，吵得完全没法思考。",
+        "text": "苏念瑶在图书馆一直试图通过书页缝隙观察林昭宇，打断了我的物理推演。",
         "source_days": [],
         "text_history": []
       },
@@ -418,35 +404,54 @@
         "date": "Day 6",
         "day": 6,
         "people": [
+          "苏念瑶"
+        ],
+        "location": "教室",
+        "emotion": "bored",
+        "importance": 4,
+        "topics": [
+          "学业焦虑"
+        ],
+        "text": "早读课苏念瑶一直在旁边说废话，物理竞赛题没法安心写。",
+        "source_days": [
+          7,
+          8
+        ],
+        "text_history": [
+          "早读课苏念瑶又在旁边搞小动作，最后还塞了张纸条过来，严重干扰我的复习节奏。",
+          "苏念瑶在课堂上一直干扰做题，还要问我那种基础的求导问题，浪费时间。"
+        ]
+      },
+      {
+        "date": "Day 6",
+        "day": 6,
+        "people": [
+          "苏念瑶"
+        ],
+        "location": "教室",
+        "emotion": "bored",
+        "importance": 4,
+        "topics": [
+          "人际矛盾"
+        ],
+        "text": "苏念瑶在课间一直试图干扰我做题，最后甚至把纸戳破了。",
+        "source_days": [],
+        "text_history": []
+      },
+      {
+        "date": "Day 7",
+        "day": 7,
+        "people": [
           "方语晨",
           "唐诗涵"
         ],
         "location": "教室",
-        "emotion": "frustrated",
-        "importance": 6,
+        "emotion": "bored",
+        "importance": 4,
         "topics": [
-          "学业焦虑",
           "人际矛盾"
         ],
-        "text": "早读被方语晨和唐诗涵的闲聊打断，还要处理她们发出的噪音，严重影响了物理错题的演算效率。",
-        "source_days": [
-          9
-        ],
-        "text_history": [
-          "课间方语晨和唐诗涵的吵闹声完全打断了物理错题的演算逻辑。"
-        ]
-      },
-      {
-        "date": "Day 8",
-        "day": 8,
-        "people": [],
-        "location": "教室",
-        "emotion": "frustrated",
-        "importance": 6,
-        "topics": [
-          "学业焦虑"
-        ],
-        "text": "月考排名迟迟未出，导致学习计划无法推进，内心产生明显的挫败感。",
+        "text": "方语晨和唐诗涵一直在课间吵着看视频，完全没法专心推导公式。",
         "source_days": [],
         "text_history": []
       },
@@ -454,16 +459,18 @@
         "date": "Day 8",
         "day": 8,
         "people": [
+          "苏念瑶",
+          "唐诗涵",
           "方语晨"
         ],
         "location": "教室",
-        "emotion": "frustrated",
-        "importance": 5,
+        "emotion": "bored",
+        "importance": 4,
         "topics": [
-          "人际矛盾",
-          "学业焦虑"
+          "学业焦虑",
+          "人际矛盾"
         ],
-        "text": "方语晨在课间大声嘲讽我的学习效率，真是吵得让人头疼。",
+        "text": "苏念瑶她们一直在旁边吵着买奶茶，严重干扰了力学方程的边界条件推导。",
         "source_days": [],
         "text_history": []
       },
@@ -472,16 +479,49 @@
         "day": 9,
         "people": [
           "林昭宇",
+          "陆思远"
+        ],
+        "location": "教室",
+        "emotion": "bored",
+        "importance": 3,
+        "topics": [
+          "人际矛盾"
+        ],
+        "text": "林昭宇和陆思远在课间讨论王者和定语从句，吵得没法做题。",
+        "source_days": [],
+        "text_history": []
+      },
+      {
+        "date": "Day 10",
+        "day": 10,
+        "people": [
+          "苏念瑶",
+          "方语晨",
           "唐诗涵"
         ],
         "location": "教室",
-        "emotion": "frustrated",
+        "emotion": "bored",
         "importance": 4,
         "topics": [
-          "学业焦虑",
           "人际矛盾"
         ],
-        "text": "课间林昭宇和唐诗涵为了橡皮和物理题吵闹，严重干扰了我的配平练习。",
+        "text": "早读课这三个人为了奶茶和八卦闹个不停，严重干扰专注力",
+        "source_days": [],
+        "text_history": []
+      },
+      {
+        "date": "Day 10",
+        "day": 10,
+        "people": [
+          "苏念瑶"
+        ],
+        "location": "图书馆",
+        "emotion": "bored",
+        "importance": 4,
+        "topics": [
+          "人际矛盾"
+        ],
+        "text": "苏念瑶在图书馆打断我推导，最后折了日记页离开。",
         "source_days": [],
         "text_history": []
       }

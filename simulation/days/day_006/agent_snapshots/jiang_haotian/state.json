@@ -7,64 +7,82 @@
     "intentions": [
       {
         "target": "陆思远",
-        "goal": "在午休时找机会问问他毕业后打算去哪混，看能不能探出点靠谱的路子",
-        "reason": "沈逸凡盯得太紧，心里没底，得找个兄弟聊聊以后的出路，不然总觉得心慌。",
+        "goal": "在午饭时通过开玩笑的方式套出家里工厂最近的情况",
+        "reason": "陆思远爸妈和我爸妈有业务往来，他肯定知道内幕，但我今天还得先试探一下他心情好不好，免得又被他敷衍。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "df3acc",
-        "origin_day": 5,
-        "pursued_days": 2
-      },
-      {
-        "target": "何家骏",
-        "goal": "带他去操场投几个三分球，顺便带他上分",
-        "reason": "看他每天死读书怪可怜的，带他动动，顺便自己也能放松一下，何家骏这哥们挺不容易的。",
-        "fulfilled": false,
-        "abandoned": false,
-        "satisfies_concern": null,
-        "origin_day": 5,
-        "pursued_days": 2
+        "satisfies_concern": "dcf8e8",
+        "origin_day": 4,
+        "pursued_days": 3
       },
       {
         "target": "沈逸凡",
-        "goal": "故意在他面前哼新出的说唱，看他那种想管又管不了的表情",
-        "reason": "这小子天天管这管那，烦死人，逗逗他看他吃瘪我就爽。",
+        "goal": "在晚自习找机会在沈逸凡眼皮子底下看一眼手机",
+        "reason": "他越盯着我越难受，我就非要在他眼皮底下玩，看看他能拿我怎么样，顺便缓解下心里的烦躁。",
         "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
-        "origin_day": 5,
-        "pursued_days": 2
+        "origin_day": 6,
+        "pursued_days": 1
+      },
+      {
+        "target": "何家骏",
+        "goal": "拉他去操场打几个球",
+        "reason": "心情有点烦，打球出一身汗比什么都强，而且何家骏那小子球技还行。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": null,
+        "origin_day": 6,
+        "pursued_days": 1
       }
     ],
-    "mood_forecast": "frustrated",
+    "mood_forecast": "anxious",
     "location_preferences": {
-      "morning_break": "走廊",
+      "morning_break": "操场",
       "lunch": "食堂",
-      "afternoon_break": "走廊"
+      "afternoon_break": "操场"
     }
   },
   "day": 6,
   "active_concerns": [
     {
-      "id": "df3acc",
-      "text": "沈逸凡在学校里管得太宽，导致我完全没机会和陆思远聊聊毕业后的出路，心里越来越没底。",
-      "source_event": "宿舍夜聊；全天被沈逸凡限制活动；全天被沈逸凡监控",
+      "id": "8696a8",
+      "text": "爸妈最近总念叨工厂订单减少，心里总觉得不踏实，想找机会旁敲侧击问问情况。",
+      "source_event": "日常焦虑",
       "source_scene": "",
-      "source_day": 4,
-      "emotion": "frustrated",
-      "intensity": 4,
+      "source_day": 2,
+      "emotion": "anxious",
+      "intensity": 3,
+      "related_people": [],
+      "positive": false,
+      "topic": "家庭压力",
+      "last_reinforced_day": 3,
+      "last_new_info_day": 2,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 3,
+      "bumps_today": 2
+    },
+    {
+      "id": "dcf8e8",
+      "text": "陆思远在宿舍面对我的询问再次闭眼装睡，这种刻意的回避让我觉得家里工厂的情况可能比我预想的还要糟糕。",
+      "source_event": "宿舍夜聊；22:00 宿舍夜聊；宿舍夜聊；22:00 宿舍夜聊",
+      "source_scene": "",
+      "source_day": 3,
+      "emotion": "anxious",
+      "intensity": 8,
       "related_people": [
-        "陆思远",
-        "沈逸凡"
+        "陆思远"
       ],
       "positive": false,
-      "topic": "未来规划",
+      "topic": "家庭压力",
       "last_reinforced_day": 6,
       "last_new_info_day": 6,
       "reinforcement_count": 4,
       "text_history": [
-        "想找陆思远聊聊毕业后的打算，但沈逸凡总是盯着不放，完全找不到机会。",
-        "沈逸凡盯得太紧，完全没法和陆思远聊毕业后的打算，心里越来越没底。"
+        "陆思远对生意话题的避而不谈让我更加不安，不确定家里工厂的经营状况到底有多糟糕。",
+        "陆思远对家里工厂经营状况的刻意回避，让我更加担心家里是不是真的出了大问题。"
       ],
       "id_history": [],
       "last_bump_day": 6,

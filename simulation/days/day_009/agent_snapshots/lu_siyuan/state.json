@@ -1,42 +1,42 @@
 {
-  "emotion": "calm",
+  "emotion": "anxious",
   "energy": 85,
   "academic_pressure": 30,
   "location": "教室",
   "daily_plan": {
     "intentions": [
       {
-        "target": "公众号",
-        "goal": "精简掉那些过于矫情的自我剖析，试着把文章发出去",
-        "reason": "老是写了又删，总觉得心里堵得慌，想看看发出去会不会好受点",
+        "target": "微信公众号",
+        "goal": "删减掉所有可能被同学认出的细节，尝试发布那篇草稿",
+        "reason": "老是憋在心里太闷了，想看看能不能鼓起勇气发出去。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": "4c1d08",
-        "origin_day": 8,
-        "pursued_days": 2
+        "satisfies_concern": "d50fe5",
+        "origin_day": 9,
+        "pursued_days": 1
       },
       {
         "target": "林昭宇",
-        "goal": "和他在图书馆安静地待一会儿，讨论一下生物难题",
-        "reason": "最近心累，只有跟他待着的时候才觉得能喘口气",
+        "goal": "约林昭宇午饭后去图书馆安静待一会儿",
+        "reason": "最近姜皓天老盯着我问家里生意的事，躲在图书馆清静点。",
+        "fulfilled": true,
+        "abandoned": false,
+        "satisfies_concern": "1eefd1",
+        "origin_day": 9,
+        "pursued_days": 1
+      },
+      {
+        "target": null,
+        "goal": "在网易云音乐上找一首新的民谣听",
+        "reason": "需要一点音乐来缓解下焦虑，让自己心情平复些。",
         "fulfilled": true,
         "abandoned": false,
         "satisfies_concern": null,
         "origin_day": 9,
         "pursued_days": 1
-      },
-      {
-        "target": "姜皓天",
-        "goal": "如果他又要我帮忙，我想试着委婉地推脱掉",
-        "reason": "一直帮忙真的太累了，虽然怕得罪他，但总得有个限度",
-        "fulfilled": true,
-        "abandoned": false,
-        "satisfies_concern": "b17425",
-        "origin_day": 9,
-        "pursued_days": 1
       }
     ],
-    "mood_forecast": "neutral",
+    "mood_forecast": "anxious",
     "location_preferences": {
       "morning_break": "教室",
       "lunch": "食堂",
@@ -44,5 +44,49 @@
     }
   },
   "day": 9,
-  "active_concerns": []
+  "active_concerns": [
+    {
+      "id": "1eefd1",
+      "text": "姜皓天在宿舍不停地制造动静和干扰，让我感到非常不安和烦躁。",
+      "source_event": "姜皓天在宿舍夜聊时反复追问家里工厂的情况；22:00 宿舍夜聊；22:00 宿舍夜聊",
+      "source_scene": "宿舍夜聊",
+      "source_day": 7,
+      "emotion": "anxious",
+      "intensity": 6,
+      "related_people": [
+        "姜皓天"
+      ],
+      "positive": false,
+      "topic": "人际矛盾",
+      "last_reinforced_day": 9,
+      "last_new_info_day": 9,
+      "reinforcement_count": 3,
+      "text_history": [
+        "姜皓天到底想干嘛，总盯着我家里的事问，好烦。",
+        "姜皓天在宿舍反复询问我家中工厂的业务情况，感觉他在刻意打探，让人很不舒服。"
+      ],
+      "id_history": [],
+      "last_bump_day": 9,
+      "bumps_today": 2
+    },
+    {
+      "id": "d50fe5",
+      "text": "公众号草稿写好了却又一次没发出去，感觉心里的话一直积压着，有些闷。",
+      "source_event": "深夜反思",
+      "source_scene": "",
+      "source_day": 8,
+      "emotion": "anxious",
+      "intensity": 2,
+      "related_people": [],
+      "positive": false,
+      "topic": "自我认同",
+      "last_reinforced_day": 8,
+      "last_new_info_day": 8,
+      "reinforcement_count": 0,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 9,
+      "bumps_today": 1
+    }
+  ]
 }

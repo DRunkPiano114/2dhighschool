@@ -1,0 +1,27 @@
+{
+  "scene": {
+    "scene_index": 7,
+    "time": "15:30",
+    "name": "课间",
+    "location": "操场",
+    "description": "下午课间休息",
+    "day": 2
+  },
+  "participant_names": {
+    "he_jiajun": "何家骏"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "he_jiajun"
+      ],
+      "is_solo": true,
+      "solo_reflection": {
+        "inner_thought": "姜皓天怎么还没来，这视频笑死我了。",
+        "emotion": "excited",
+        "activity": "我靠在操场围栏边，拿着手机刷短视频。"
+      }
+    }
+  ]
+}

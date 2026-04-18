@@ -1,0 +1,195 @@
+{
+  "scene": {
+    "scene_index": 0,
+    "time": "08:45",
+    "name": "课间",
+    "location": "图书馆",
+    "description": "上午第一个课间休息，同学们在教室里活动",
+    "day": 3
+  },
+  "participant_names": {
+    "cheng_yutong": "程雨桐",
+    "shen_yifan": "沈逸凡"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "cheng_yutong",
+        "shen_yifan"
+      ],
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "从书包里拿出黑色中性笔，规整地摆在桌角，开始翻开那本数学模拟题。"
+              },
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "默默戴上降噪耳机，继续低头在方格本上推演物理公式。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "程雨桐也在图书馆，看起来正专注在书本里。",
+              "inner_thought": "都在埋头苦学，我是不是也该抓紧把那套压轴题先刷了。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "从书包里拿出黑色中性笔，规整地摆在桌角，开始翻开那本数学模拟题。",
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "沈逸凡在图书馆走廊对面徘徊，手里拿着一本物理练习册，似乎在找座位。",
+              "inner_thought": "别过来，我只想把这三道力学题推完。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "默默戴上降噪耳机，继续低头在方格本上推演物理公式。",
+              "action_target": null,
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "埋头在草稿纸上演算，笔尖沙沙作响。"
+              },
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "调整了一下降噪耳机的佩戴角度，继续专注演算力学压轴题。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "程雨桐戴着耳机在刷物理题，图书馆里特别安静。",
+              "inner_thought": "大家都这么拼，我更不能松懈了，数学压轴题必须拿下。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "埋头在草稿纸上演算，笔尖沙沙作响。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "沈逸凡在邻座开始刷数学题，笔尖摩擦纸张的声音很轻。",
+              "inner_thought": "还好，他没过来搭话，进度不能断。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "调整了一下降噪耳机的佩戴角度，继续专注演算力学压轴题。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "皱起眉头，重新在草稿纸上画辅助线。"
+              },
+              {
+                "agent": "cheng_yutong",
+                "type": "non_verbal",
+                "content": "在方格本上用红笔批注了一处逻辑跳步，继续推演力学方程。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "程雨桐戴着耳机在刷物理题，图书馆里安静得只能听见笔尖摩擦纸张的声音。",
+              "inner_thought": "这道压轴题思路卡住了，还得再理一下逻辑。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "皱起眉头，重新在草稿纸上画辅助线。",
+              "action_target": null,
+              "urgency": 3,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "沈逸凡在演算数学，呼吸频率挺平稳。",
+              "inner_thought": "只要他不说话，这里的环境就很有利于我的推演。",
+              "emotion": "calm",
+              "action_type": "non_verbal",
+              "action_content": "在方格本上用红笔批注了一处逻辑跳步，继续推演力学方程。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "用力合上草稿本，抬头喝了一口水，强迫自己冷静下来。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "程雨桐在推物理方程时逻辑很清晰，没被这一题卡住。",
+              "inner_thought": "她这解题速度也太快了吧，我这道题还没理顺，心烦。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "用力合上草稿本，抬头喝了一口水，强迫自己冷静下来。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            },
+            "cheng_yutong": {
+              "observation": "沈逸凡在做那道几何题时辅助线加法逻辑有误。",
+              "inner_thought": "他辅助线画错方向了，那个圆的切线性质根本用不上，不过管他呢，抓紧推完我的题。",
+              "emotion": "calm",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        }
+      ],
+      "narrative": null,
+      "reflections": {},
+      "trivial": true
+    }
+  ]
+}

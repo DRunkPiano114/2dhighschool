@@ -9,13 +9,13 @@
   "emotion_label": "平静",
   "energy_label": "精神还行",
   "pressure_label": "稍有压力",
-  "featured_quote": "算了，今天图书馆也不适合学习，回教室吧，这地方太压抑了。",
-  "featured_scene": "15:30 · 课间",
+  "featured_quote": "沈逸凡找他干嘛啊，他现在压力够大了，哎，我还是先把水给他吧。",
+  "featured_scene": "08:45 · 课间",
   "relationships": [
     {
       "target_name": "林昭宇",
-      "favorability": 32,
-      "trust": 24,
+      "favorability": 46,
+      "trust": 33,
       "label_text": "很亲近的朋友"
     },
     {
@@ -33,24 +33,24 @@
   ],
   "memories": [
     {
-      "date": "Day 3",
-      "text": "终于从姜皓天那里拿回了数学笔记，虽然他说话还是那么难听，但笔记总算回来了。",
-      "importance": 5
+      "date": "Day 5",
+      "text": "沈逸凡在食堂当众赶我们走，觉得很丢脸，也不想再跟他多说话了。",
+      "importance": 6
     },
     {
-      "date": "Day 2",
-      "text": "姜皓天在熄灯后还追问我的未来规划，搞得沈逸凡很不高兴。",
-      "importance": 5
+      "date": "Day 4",
+      "text": "何老师把林昭宇叫走谈心了，看他压力那么大，我有点担心。",
+      "importance": 6
     }
   ],
   "top_concern": {
-    "text": "公众号草稿箱里积攒了十几篇内容，总觉得写得不够好或者没人看，迟迟不敢发布。",
+    "text": "林昭宇好像压力也挺大的，要多陪陪他吗",
     "intensity_label": "中等",
-    "positive": false
+    "positive": true
   },
-  "self_narrative": "又是帮姜皓天忙的一天。我像个只会点头的工具人，心里的草稿箱又积灰了。想写点什么，话到嘴边又咽回去，算了，反正没人看。林昭宇是我唯一的出口，和他待着才觉得舒服点。",
+  "self_narrative": "在班里就是个随叫随到的好人，心里觉得憋屈又不敢说。今天总算拒绝了姜皓天，心跳得好快，生怕他变脸。林昭宇最近压力很大，我能帮他分担点吗？公众号那篇东西，还是算了，发出去太尴尬了。",
   "caption_payload": {
-    "caption": "🌱 陆思远 · 第005天 档案\n\n标签：好好先生\n此刻心情：平静\n\n「算了，今天图书馆也不适合学习，回教室吧，这地方太压抑了。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+    "caption": "🌱 陆思远 · 第005天 档案\n\n标签：好好先生\n此刻心情：平静\n\n「沈逸凡找他干嘛啊，他现在压力够大了，哎，我还是先把水给他吧。」\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
     "hashtags": [
       "#SimCampus",
       "#AI高中生",

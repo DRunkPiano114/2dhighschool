@@ -1,5 +1,5 @@
 {
-  "emotion": "frustrated",
+  "emotion": "curious",
   "energy": 85,
   "academic_pressure": 30,
   "location": "教室",
@@ -7,28 +7,28 @@
     "intentions": [
       {
         "target": "林昭宇",
-        "goal": "假装借笔，顺便问物理题试探他态度",
-        "reason": "老是纠结他烦不烦我，还是得找个机会试一下，总不能一直这么怂。",
+        "goal": "假装请教物理题，顺便套话问问竞赛的事",
+        "reason": "老是吊着我的胃口，不弄清楚我真的心痒难耐，必须得找机会开口。",
         "fulfilled": false,
         "abandoned": false,
-        "satisfies_concern": null,
+        "satisfies_concern": "7d6132",
+        "origin_day": 5,
+        "pursued_days": 1
+      },
+      {
+        "target": "苏念瑶",
+        "goal": "拉她去食堂买奶茶，趁机问问那个LYU备注到底是不是林昭宇",
+        "reason": "她那天蒙着被子太反常了，我一定要确认一下我磕的CP是不是真的。",
+        "fulfilled": false,
+        "abandoned": false,
+        "satisfies_concern": "f71be7",
         "origin_day": 5,
         "pursued_days": 1
       },
       {
         "target": "方语晨",
-        "goal": "拉她去小卖部买限定奶茶并八卦",
-        "reason": "好久没喝那家奶茶了，心情不好就得靠奶茶回血，顺便找人聊聊天。",
-        "fulfilled": true,
-        "abandoned": false,
-        "satisfies_concern": null,
-        "origin_day": 5,
-        "pursued_days": 1
-      },
-      {
-        "target": null,
-        "goal": "给蛋仔买新娃衣并拍照片发小红书",
-        "reason": "最近太累了，想搞点可爱的给自己开心一下，小红书没更新粉丝要跑了。",
+        "goal": "拉她一起看昨天没看完的微短剧，顺便吐槽一下作业",
+        "reason": "昨天没看成，今天一定要补上！正好放松一下心情，顺便交流下八卦。",
         "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
@@ -36,7 +36,7 @@
         "pursued_days": 1
       }
     ],
-    "mood_forecast": "bored",
+    "mood_forecast": "curious",
     "location_preferences": {
       "morning_break": "教室",
       "lunch": "食堂",
@@ -46,72 +46,70 @@
   "day": 5,
   "active_concerns": [
     {
-      "id": "04e80d",
-      "text": "一定要找个机会在图书馆或者自习时再次试探林昭宇，看看他到底是真的忙还是在委婉拒绝我。",
-      "source_event": "林昭宇连续两次推脱我的物理题求助；课间询问物理题未果；15:30 课间在小卖部排队时对林昭宇态度的纠结；课间借笔被推迟",
-      "source_scene": "课间@教室",
-      "source_day": 1,
-      "emotion": "anxious",
-      "intensity": 3,
+      "id": "7d6132",
+      "text": "林昭宇搞竞赛到底有什么我不知道的瓜？",
+      "source_event": "苏念瑶和方语晨在宿舍里避开我讨论林昭宇的竞赛进度",
+      "source_scene": "宿舍夜聊",
+      "source_day": 2,
+      "emotion": "curious",
+      "intensity": 2,
       "related_people": [
+        "林昭宇",
+        "苏念瑶",
+        "方语晨"
+      ],
+      "positive": false,
+      "topic": "其他",
+      "last_reinforced_day": 4,
+      "last_new_info_day": 2,
+      "reinforcement_count": 2,
+      "text_history": [],
+      "id_history": [],
+      "last_bump_day": 4,
+      "bumps_today": 2
+    },
+    {
+      "id": "e8d6ea",
+      "text": "苏念瑶在食堂提到姜皓天并转移话题，她和姜皓天之间是否有我不知道的关联？",
+      "source_event": "午饭和宿舍夜聊；午饭时苏念瑶指向姜皓天所在方向",
+      "source_scene": "",
+      "source_day": 3,
+      "emotion": "curious",
+      "intensity": 4,
+      "related_people": [
+        "苏念瑶",
         "林昭宇"
       ],
       "positive": false,
       "topic": "人际矛盾",
       "last_reinforced_day": 5,
-      "last_new_info_day": 4,
-      "reinforcement_count": 2,
+      "last_new_info_day": 5,
+      "reinforcement_count": 3,
       "text_history": [
-        "林昭宇是不是烦我了，以后还是别老去打扰他吧。",
-        "想找机会问林昭宇物理题来确认他是否反感我，但因为怕被无视而退缩了。",
-        "一定要找个机会假装借文具顺便问林昭宇一道物理题，直接试探一下他到底烦不烦我，不能再拖了。"
-      ],
-      "id_history": [],
-      "last_bump_day": 5,
-      "bumps_today": 1
-    },
-    {
-      "id": "6434ad",
-      "text": "周末一定要去买那家限定奶茶，还要拉上朋友一起去，这可是社交货币。",
-      "source_event": "和方语晨商量去买限定奶茶；午饭时提到奶茶",
-      "source_scene": "午饭@食堂",
-      "source_day": 2,
-      "emotion": "excited",
-      "intensity": 3,
-      "related_people": [
-        "方语晨"
-      ],
-      "positive": true,
-      "topic": "期待的事",
-      "last_reinforced_day": 5,
-      "last_new_info_day": 4,
-      "reinforcement_count": 2,
-      "text_history": [
-        "这周末一定要去把那家店的限定款奶茶抢到手，不能空手而归！"
+        "苏念瑶在提到林昭宇时表现出的回避态度很反常，她到底在隐瞒什么？"
       ],
       "id_history": [],
       "last_bump_day": 5,
       "bumps_today": 2
     },
     {
-      "id": "450fb6",
-      "text": "苏念瑶和方语晨之间到底在瞒着我什么秘密？这种被排除在小圈子之外的感觉很不舒服。",
-      "source_event": "苏念瑶在课堂上买裙子并对我和方语晨的询问表现得极其冷淡。；22:00 宿舍夜聊",
-      "source_scene": "上课",
-      "source_day": 5,
+      "id": "f71be7",
+      "text": "苏念瑶手机备注LYU到底是不是林昭宇？她为什么反应这么大？",
+      "source_event": "宿舍夜聊",
+      "source_scene": "",
+      "source_day": 4,
       "emotion": "curious",
-      "intensity": 6,
+      "intensity": 7,
       "related_people": [
-        "苏念瑶"
+        "苏念瑶",
+        "林昭宇"
       ],
       "positive": false,
-      "topic": "人际矛盾",
+      "topic": "恋爱",
       "last_reinforced_day": 5,
-      "last_new_info_day": 5,
-      "reinforcement_count": 2,
-      "text_history": [
-        "苏念瑶到底在瞒着我们什么秘密？"
-      ],
+      "last_new_info_day": 4,
+      "reinforcement_count": 1,
+      "text_history": [],
       "id_history": [],
       "last_bump_day": 5,
       "bumps_today": 2

@@ -8,20 +8,946 @@
     "day": 1
   },
   "participant_names": {
-    "fang_yuchen": "方语晨"
+    "fang_yuchen": "方语晨",
+    "su_nianyao": "苏念瑶"
   },
   "groups": [
     {
       "group_index": 0,
       "participants": [
-        "fang_yuchen"
+        "fang_yuchen",
+        "su_nianyao"
       ],
-      "is_solo": true,
-      "solo_reflection": {
-        "inner_thought": "苏念瑶怎么还没来，憋死我了，昨天的瓜还没讲呢。",
-        "emotion": "excited",
-        "activity": "靠在走廊栏杆上刷手机，时不时抬头往教室门口张望。"
-      }
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "诶念瑶，你看窗边那俩人，是不是有点眼熟？不是吧，他们怎么凑这么近？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "走廊窗口边有两个人在窃窃私语，看起来神神秘秘的。",
+              "inner_thought": "啧，那是谁啊，看着不像我们班的，一会儿得找念瑶去打探下。",
+              "emotion": "curious",
+              "action_type": "speak",
+              "action_content": "诶念瑶，你看窗边那俩人，是不是有点眼熟？不是吧，他们怎么凑这么近？",
+              "action_target": "su_nianyao",
+              "urgency": 7,
+              "is_disruptive": false
+            },
+            "su_nianyao": {
+              "observation": "走廊窗户边的人聊得挺起劲，方语晨正靠在一旁看热闹。",
+              "inner_thought": "这数学题越看越头大，先找方语晨聊两句回回血。",
+              "emotion": "curious",
+              "action_type": "speak",
+              "action_content": "哎，你看到林昭宇没？刚才好像看他往走廊那边去了，他最近在忙竞赛啊？",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": {
+              "agent": "su_nianyao",
+              "target": "fang_yuchen",
+              "content": "哎，你看到林昭宇没？刚才好像看他往走廊那边去了，他最近在忙竞赛啊？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "苏念瑶顺着我的目光看过去，好像也没认出那两个人是谁。",
+              "inner_thought": "这俩人鬼鬼祟祟的，肯定有猫腻，先拉着念瑶复盘下昨晚的剧开心一下。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "哎呀别管那俩人了，我跟你说昨晚那集简直绝了，男主竟然要把女主锁起来！你看了没？",
+              "action_target": "su_nianyao",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "哎呀别管那俩人了，我跟你说昨晚那集简直绝了，男主竟然要把女主锁起来！你看了没？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "方语晨并没有接我的话茬，反而还在关注那两个窗边的同学。",
+              "inner_thought": "她怎么不理我？还是说她也觉得林昭宇的事很无聊？",
+              "emotion": "curious",
+              "action_type": "speak",
+              "action_content": "你怎么不理我啊？问你呢，他到底最近在不在准备竞赛？",
+              "action_target": "fang_yuchen",
+              "urgency": 6,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 3,
+          "public": {
+            "speech": {
+              "agent": "su_nianyao",
+              "target": "fang_yuchen",
+              "content": "你怎么不理我啊？问你呢，他到底最近在不在准备竞赛？"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "苏念瑶在听我说昨晚的剧情，眼神好像有点没跟上。",
+              "inner_thought": "这集这么绝她竟然没看？不行，我得赶紧给她安利一下。",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "没看？不是吧！你昨晚干嘛去了？快快快，趁现在还有两分钟，我跟你说那个反转真的原地起飞！",
+              "action_target": "su_nianyao",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 4,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "没看？不是吧！你昨晚干嘛去了？快快快，趁现在还有两分钟，我跟你说那个反转真的原地起飞！"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "方语晨还在兴致勃勃地讲八卦，完全没听进刚才我问林昭宇的话。",
+              "inner_thought": "真服了，她怎么满脑子都是电视剧，我都快急死了。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "行行行，你说，他到底参不参加竞赛？这事儿对我数学这块儿挺重要的，我也想看看能不能报上。",
+              "action_target": "fang_yuchen",
+              "urgency": 7,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 5,
+          "public": {
+            "speech": {
+              "agent": "su_nianyao",
+              "target": "fang_yuchen",
+              "content": "行行行，你说，他到底参不参加竞赛？这事儿对我数学这块儿挺重要的，我也想看看能不能报上。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "苏念瑶还在关心林昭宇，但我只想分享刚才那集短剧的精彩反转。",
+              "inner_thought": "林昭宇有什么好八卦的，哪有霸道总裁锁人刺激啊！",
+              "emotion": "excited",
+              "action_type": "speak",
+              "action_content": "哎呀别问他了，他那竞赛每天不都那样吗？听我说，那男主直接把门反锁，拿着钥匙在女主面前晃！就问你带不带劲！",
+              "action_target": "su_nianyao",
+              "urgency": 8,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 6,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "哎呀别问他了，他那竞赛每天不都那样吗？听我说，那男主直接把门反锁，拿着钥匙在女主面前晃！就问你带不带劲！"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "方语晨还在兴致高昂地剧透剧情，完全没把林昭宇的信息放在心上。",
+              "inner_thought": "算了，反正她这种八卦脑袋也问不出什么名堂，烦死了。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "行行行，你先说，听完你剧透我还要去整理那堆烂数学题呢。",
+              "action_target": "fang_yuchen",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 7,
+          "public": {
+            "speech": {
+              "agent": "su_nianyao",
+              "target": "fang_yuchen",
+              "content": "行行行，你先说，听完你剧透我还要去整理那堆烂数学题呢。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "苏念瑶看起来对竞赛的事比较执着，完全没被我的剧情安利打动。",
+              "inner_thought": "真扫兴，她怎么满脑子都是竞赛，算了下次再细说吧。",
+              "emotion": "bored",
+              "action_type": "speak",
+              "action_content": "行吧行吧，你真没劲。那等下课你自己去问他吧，我先去趟厕所。",
+              "action_target": "su_nianyao",
+              "urgency": 5,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 8,
+          "public": {
+            "speech": {
+              "agent": "fang_yuchen",
+              "target": "su_nianyao",
+              "content": "行吧行吧，你真没劲。那等下课你自己去问他吧，我先去趟厕所。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "su_nianyao": {
+              "observation": "方语晨像没听见我后面那句，还在兴奋地描述电视剧里的桥段。",
+              "inner_thought": "这剧有那么好看吗，反锁门有什么好激动的。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "行行行，你快讲，讲完我要去死磕那些函数了，头都要炸了。",
+              "action_target": "fang_yuchen",
+              "urgency": 7,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 9,
+          "public": {
+            "speech": null,
+            "actions": [],
+            "environmental_event": null,
+            "exits": [
+              "fang_yuchen"
+            ]
+          },
+          "minds": {
+            "fang_yuchen": {
+              "observation": "苏念瑶还在为数学竞赛的事纠结，看来确实对短剧没什么兴趣。",
+              "inner_thought": "真没劲，又是数学题又是竞赛的，头都要大了。",
+              "emotion": "bored",
+              "action_type": "exit",
+              "action_content": "那我先撤了，厕所见。",
+              "action_target": "su_nianyao",
+              "urgency": 3,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        }
+      ],
+      "narrative": {
+        "key_moments": [
+          "方语晨询问苏念瑶关于窗边两人的身份。",
+          "苏念瑶询问方语晨关于林昭宇是否在准备竞赛的信息。",
+          "方语晨向苏念瑶讲述电视剧剧情。",
+          "苏念瑶表示询问林昭宇竞赛情况是为了自己的数学学习。",
+          "方语晨建议苏念瑶下课后直接询问林昭宇。",
+          "方语晨离开走廊前往厕所。"
+        ],
+        "fulfilled_intentions": [
+          "方语晨:向苏念瑶讲述电视剧剧情",
+          "苏念瑶:向方语晨询问林昭宇的竞赛准备情况"
+        ],
+        "events_discussed": [
+          "林昭宇的竞赛准备情况",
+          "电视剧剧情"
+        ],
+        "new_events": [
+          {
+            "text": "林昭宇近期在准备竞赛",
+            "category": "学校生活",
+            "witnesses": [
+              "方语晨",
+              "苏念瑶"
+            ],
+            "spread_probability": 0.6,
+            "cite_ticks": [
+              2,
+              4,
+              6,
+              7
+            ]
+          },
+          {
+            "text": "电视剧男主角将女主角锁在房间内",
+            "category": "娱乐",
+            "witnesses": [
+              "方语晨",
+              "苏念瑶"
+            ],
+            "spread_probability": 0.3,
+            "cite_ticks": [
+              3,
+              5,
+              7
+            ]
+          }
+        ]
+      },
+      "reflections": {
+        "fang_yuchen": {
+          "emotion": "bored",
+          "relationship_changes": [
+            {
+              "to_agent": "苏念瑶",
+              "favorability": 0,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "念瑶一直问林昭宇竞赛的事，明明我想说的是短剧，真没劲。",
+              "emotion": "bored",
+              "importance": 3,
+              "people": [
+                "苏念瑶",
+                "林昭宇"
+              ],
+              "location": "走廊",
+              "topics": [
+                "人际矛盾",
+                "兴趣爱好"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [],
+          "intention_outcomes": [
+            {
+              "goal": "拉着念瑶一起复盘昨晚看的微短剧最新剧情",
+              "status": "frustrated",
+              "brief_reason": "我想跟她讨论剧情，她老是岔开话题问林昭宇的事。"
+            },
+            {
+              "goal": "和唐诗涵交换最新的谷子立牌",
+              "status": "pending",
+              "brief_reason": "唐诗涵不在场。"
+            },
+            {
+              "goal": "找陆思远打听一下关于最近传得沸沸扬扬的班级秘密",
+              "status": "pending",
+              "brief_reason": "没见到陆思远。"
+            }
+          ]
+        },
+        "su_nianyao": {
+          "emotion": "frustrated",
+          "relationship_changes": [
+            {
+              "to_agent": "方语晨",
+              "favorability": 0,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            },
+            {
+              "to_agent": "林昭宇",
+              "favorability": 1,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": false
+            }
+          ],
+          "memories": [
+            {
+              "text": "方语晨一直在聊剧里的男主，完全没听我问林昭宇竞赛的事",
+              "emotion": "frustrated",
+              "importance": 4,
+              "people": [
+                "方语晨"
+              ],
+              "location": "走廊",
+              "topics": [
+                "人际矛盾"
+              ]
+            }
+          ],
+          "new_concerns": [
+            {
+              "text": "林昭宇到底在不在准备竞赛，这关系到我的数学",
+              "source_event": "想问方语晨关于林昭宇竞赛的事却被无视",
+              "emotion": "anxious",
+              "intensity": 4,
+              "related_people": [
+                "林昭宇"
+              ],
+              "positive": false,
+              "topic": "学业焦虑"
+            }
+          ],
+          "concern_updates": [],
+          "intention_outcomes": [
+            {
+              "goal": "和方语晨打听林昭宇最近在忙什么",
+              "status": "frustrated",
+              "brief_reason": "方语晨一直沉迷聊剧，完全打断了我的询问"
+            },
+            {
+              "goal": "写一段新的小说章节并发布",
+              "status": "pending",
+              "brief_reason": "走廊课间不方便写小说"
+            },
+            {
+              "goal": "把数学错题本整理一遍",
+              "status": "pending",
+              "brief_reason": "课间时间不够，还没开始整理"
+            }
+          ]
+        }
+      },
+      "share_tick_layouts": [
+        {
+          "day": 1,
+          "time": "08:45",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "su_nianyao",
+              "name_cn": "苏念瑶",
+              "motif_emoji": "🌸",
+              "motif_tag": "玻璃心诗人"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "诶念瑶，你看窗边那俩人，是不是有点眼熟？不是吧，他们怎么凑这么近？"
+            },
+            {
+              "agent_id": "su_nianyao",
+              "display_name": "苏念瑶",
+              "kind": "thought",
+              "text": "这数学题越看越头大，先找方语晨聊两句回回血。"
+            }
+          ],
+          "featured_quote": "啧，那是谁啊，看着不像我们班的，一会儿得找念瑶去打探下。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 0
+        },
+        {
+          "day": 1,
+          "time": "08:45",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "su_nianyao",
+              "name_cn": "苏念瑶",
+              "motif_emoji": "🌸",
+              "motif_tag": "玻璃心诗人"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "su_nianyao",
+              "display_name": "苏念瑶",
+              "kind": "speech",
+              "text": "哎，你看到林昭宇没？刚才好像看他往走廊那边去了，他最近在忙竞赛啊？"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "这俩人鬼鬼祟祟的，肯定有猫腻，先拉着念瑶复盘下昨晚的剧开心一下。"
+            }
+          ],
+          "featured_quote": "这俩人鬼鬼祟祟的，肯定有猫腻，先拉着念瑶复盘下昨晚的剧开心一下。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 1
+        },
+        {
+          "day": 1,
+          "time": "08:45",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "su_nianyao",
+              "name_cn": "苏念瑶",
+              "motif_emoji": "🌸",
+              "motif_tag": "玻璃心诗人"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "哎呀别管那俩人了，我跟你说昨晚那集简直绝了，男主竟然要把女主锁起来！你看了没？"
+            },
+            {
+              "agent_id": "su_nianyao",
+              "display_name": "苏念瑶",
+              "kind": "thought",
+              "text": "她怎么不理我？还是说她也觉得林昭宇的事很无聊？"
+            }
+          ],
+          "featured_quote": "她怎么不理我？还是说她也觉得林昭宇的事很无聊？",
+          "featured_speaker_name": "苏念瑶",
+          "tick_index": 2
+        },
+        {
+          "day": 1,
+          "time": "08:45",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "su_nianyao",
+              "name_cn": "苏念瑶",
+              "motif_emoji": "🌸",
+              "motif_tag": "玻璃心诗人"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "su_nianyao",
+              "display_name": "苏念瑶",
+              "kind": "speech",
+              "text": "你怎么不理我啊？问你呢，他到底最近在不在准备竞赛？"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "这集这么绝她竟然没看？不行，我得赶紧给她安利一下。"
+            }
+          ],
+          "featured_quote": "这集这么绝她竟然没看？不行，我得赶紧给她安利一下。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 3
+        },
+        {
+          "day": 1,
+          "time": "08:45",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "su_nianyao",
+              "name_cn": "苏念瑶",
+              "motif_emoji": "🌸",
+              "motif_tag": "玻璃心诗人"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "没看？不是吧！你昨晚干嘛去了？快快快，趁现在还有两分钟，我跟你说那个反转真的原地起飞！"
+            },
+            {
+              "agent_id": "su_nianyao",
+              "display_name": "苏念瑶",
+              "kind": "thought",
+              "text": "真服了，她怎么满脑子都是电视剧，我都快急死了。"
+            }
+          ],
+          "featured_quote": "真服了，她怎么满脑子都是电视剧，我都快急死了。",
+          "featured_speaker_name": "苏念瑶",
+          "tick_index": 4
+        },
+        {
+          "day": 1,
+          "time": "08:45",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "su_nianyao",
+              "name_cn": "苏念瑶",
+              "motif_emoji": "🌸",
+              "motif_tag": "玻璃心诗人"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "su_nianyao",
+              "display_name": "苏念瑶",
+              "kind": "speech",
+              "text": "行行行，你说，他到底参不参加竞赛？这事儿对我数学这块儿挺重要的，我也想看看能不能报上。"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "林昭宇有什么好八卦的，哪有霸道总裁锁人刺激啊！"
+            }
+          ],
+          "featured_quote": "林昭宇有什么好八卦的，哪有霸道总裁锁人刺激啊！",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 5
+        },
+        {
+          "day": 1,
+          "time": "08:45",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "su_nianyao",
+              "name_cn": "苏念瑶",
+              "motif_emoji": "🌸",
+              "motif_tag": "玻璃心诗人"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "哎呀别问他了，他那竞赛每天不都那样吗？听我说，那男主直接把门反锁，拿着钥匙在女主面前晃！就问你带不带劲！"
+            },
+            {
+              "agent_id": "su_nianyao",
+              "display_name": "苏念瑶",
+              "kind": "thought",
+              "text": "算了，反正她这种八卦脑袋也问不出什么名堂，烦死了。"
+            }
+          ],
+          "featured_quote": "算了，反正她这种八卦脑袋也问不出什么名堂，烦死了。",
+          "featured_speaker_name": "苏念瑶",
+          "tick_index": 6
+        },
+        {
+          "day": 1,
+          "time": "08:45",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "su_nianyao",
+              "name_cn": "苏念瑶",
+              "motif_emoji": "🌸",
+              "motif_tag": "玻璃心诗人"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "su_nianyao",
+              "display_name": "苏念瑶",
+              "kind": "speech",
+              "text": "行行行，你先说，听完你剧透我还要去整理那堆烂数学题呢。"
+            },
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "真扫兴，她怎么满脑子都是竞赛，算了下次再细说吧。"
+            }
+          ],
+          "featured_quote": "真扫兴，她怎么满脑子都是竞赛，算了下次再细说吧。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 7
+        },
+        {
+          "day": 1,
+          "time": "08:45",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "su_nianyao",
+              "name_cn": "苏念瑶",
+              "motif_emoji": "🌸",
+              "motif_tag": "玻璃心诗人"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "speech",
+              "text": "行吧行吧，你真没劲。那等下课你自己去问他吧，我先去趟厕所。"
+            },
+            {
+              "agent_id": "su_nianyao",
+              "display_name": "苏念瑶",
+              "kind": "thought",
+              "text": "这剧有那么好看吗，反锁门有什么好激动的。"
+            }
+          ],
+          "featured_quote": "这剧有那么好看吗，反锁门有什么好激动的。",
+          "featured_speaker_name": "苏念瑶",
+          "tick_index": 8
+        },
+        {
+          "day": 1,
+          "time": "08:45",
+          "scene_name": "课间",
+          "location": "走廊",
+          "portraits": [
+            {
+              "agent_id": "fang_yuchen",
+              "name_cn": "方语晨",
+              "motif_emoji": "☀️",
+              "motif_tag": "小太阳"
+            },
+            {
+              "agent_id": "su_nianyao",
+              "name_cn": "苏念瑶",
+              "motif_emoji": "🌸",
+              "motif_tag": "玻璃心诗人"
+            }
+          ],
+          "bubbles": [
+            {
+              "agent_id": "fang_yuchen",
+              "display_name": "方语晨",
+              "kind": "thought",
+              "text": "真没劲，又是数学题又是竞赛的，头都要大了。"
+            }
+          ],
+          "featured_quote": "真没劲，又是数学题又是竞赛的，头都要大了。",
+          "featured_speaker_name": "方语晨",
+          "tick_index": 9
+        }
+      ],
+      "share_tick_captions": [
+        {
+          "caption": "第001天 · 课间 · 走廊 ☀️\n\n「方语晨」啧，那是谁啊，看着不像我们班的，一会儿得找念瑶去打探下。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第001天_课间@走廊_t01.png",
+          "group_index": 0,
+          "tick_index": 0
+        },
+        {
+          "caption": "第001天 · 课间 · 走廊 🌸\n\n「方语晨」这俩人鬼鬼祟祟的，肯定有猫腻，先拉着念瑶复盘下昨晚的剧开心一下。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第001天_课间@走廊_t02.png",
+          "group_index": 0,
+          "tick_index": 1
+        },
+        {
+          "caption": "第001天 · 课间 · 走廊 ☀️\n\n「苏念瑶」她怎么不理我？还是说她也觉得林昭宇的事很无聊？\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第001天_课间@走廊_t03.png",
+          "group_index": 0,
+          "tick_index": 2
+        },
+        {
+          "caption": "第001天 · 课间 · 走廊 🌸\n\n「方语晨」这集这么绝她竟然没看？不行，我得赶紧给她安利一下。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第001天_课间@走廊_t04.png",
+          "group_index": 0,
+          "tick_index": 3
+        },
+        {
+          "caption": "第001天 · 课间 · 走廊 ☀️\n\n「苏念瑶」真服了，她怎么满脑子都是电视剧，我都快急死了。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第001天_课间@走廊_t05.png",
+          "group_index": 0,
+          "tick_index": 4
+        },
+        {
+          "caption": "第001天 · 课间 · 走廊 🌸\n\n「方语晨」林昭宇有什么好八卦的，哪有霸道总裁锁人刺激啊！\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第001天_课间@走廊_t06.png",
+          "group_index": 0,
+          "tick_index": 5
+        },
+        {
+          "caption": "第001天 · 课间 · 走廊 ☀️\n\n「苏念瑶」算了，反正她这种八卦脑袋也问不出什么名堂，烦死了。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第001天_课间@走廊_t07.png",
+          "group_index": 0,
+          "tick_index": 6
+        },
+        {
+          "caption": "第001天 · 课间 · 走廊 🌸\n\n「方语晨」真扫兴，她怎么满脑子都是竞赛，算了下次再细说吧。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第001天_课间@走廊_t08.png",
+          "group_index": 0,
+          "tick_index": 7
+        },
+        {
+          "caption": "第001天 · 课间 · 走廊 ☀️\n\n「苏念瑶」这剧有那么好看吗，反锁门有什么好激动的。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第001天_课间@走廊_t09.png",
+          "group_index": 0,
+          "tick_index": 8
+        },
+        {
+          "caption": "第001天 · 课间 · 走廊 ☀️\n\n「方语晨」真没劲，又是数学题又是竞赛的，头都要大了。\n\nSimCampus · AI 校园模拟器 · 每天都在上演",
+          "hashtags": [
+            "#SimCampus",
+            "#AI高中生",
+            "#青春日记",
+            "#走廊",
+            "#课间"
+          ],
+          "filename": "simcampus_第001天_课间@走廊_t10.png",
+          "group_index": 0,
+          "tick_index": 9
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,252 @@
+{
+  "scene": {
+    "scene_index": 9,
+    "time": "15:30",
+    "name": "课间",
+    "location": "操场",
+    "description": "下午课间休息",
+    "day": 1
+  },
+  "participant_names": {
+    "he_jiajun": "何家骏",
+    "shen_yifan": "沈逸凡"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "he_jiajun",
+        "shen_yifan"
+      ],
+      "ticks": [
+        {
+          "tick": 0,
+          "public": {
+            "speech": {
+              "agent": "shen_yifan",
+              "target": "he_jiajun",
+              "content": "太阳这么大，你再跑下去一会进教室肯定要打瞌睡，你应该趁课间多看一眼错题。"
+            },
+            "actions": [],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "何家骏在太阳底下满头大汗地跑，刚才那一球又没进。",
+              "inner_thought": "打球又不能考大学，还不赶紧回教室背题。",
+              "emotion": "frustrated",
+              "action_type": "speak",
+              "action_content": "太阳这么大，你再跑下去一会进教室肯定要打瞌睡，你应该趁课间多看一眼错题。",
+              "action_target": "he_jiajun",
+              "urgency": 6,
+              "is_disruptive": false
+            },
+            "he_jiajun": {
+              "observation": "沈逸凡在看操场打球，离我还有点距离。",
+              "inner_thought": "他怎么也在这，有点尴尬，别看我别看我。",
+              "emotion": "calm",
+              "action_type": "observe",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 1,
+          "public": {
+            "speech": {
+              "agent": "he_jiajun",
+              "target": "shen_yifan",
+              "content": "那个……我知道了。"
+            },
+            "actions": [
+              {
+                "agent": "shen_yifan",
+                "type": "non_verbal",
+                "content": "皱起眉头，转过身往教学楼的方向走去，不再看他。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": []
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "何家骏擦了把汗，看了我一眼，好像不太乐意听我讲这些。",
+              "inner_thought": "他这表情真烦，我好心提醒他，算了不说了。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "皱起眉头，转过身往教学楼的方向走去，不再看他。",
+              "action_target": "he_jiajun",
+              "urgency": 4,
+              "is_disruptive": false
+            },
+            "he_jiajun": {
+              "observation": "沈逸凡在跟我说话，他好像挺关注我有没有做错题。",
+              "inner_thought": "他怎么管我这么多，烦人，又听不懂看也白看。",
+              "emotion": "calm",
+              "action_type": "speak",
+              "action_content": "那个……我知道了。",
+              "action_target": "shen_yifan",
+              "urgency": 4,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        },
+        {
+          "tick": 2,
+          "public": {
+            "speech": null,
+            "actions": [
+              {
+                "agent": "he_jiajun",
+                "type": "non_verbal",
+                "content": "默默地把脚往里缩了缩，看着鞋帮上的灰。"
+              }
+            ],
+            "environmental_event": null,
+            "exits": [
+              "shen_yifan"
+            ]
+          },
+          "minds": {
+            "shen_yifan": {
+              "observation": "何家骏还在原地没动，那一脸尴尬的样子让他显得更傻了。",
+              "inner_thought": "真啰嗦，我管他干什么，他爱怎么样就怎么样吧。",
+              "emotion": "frustrated",
+              "action_type": "exit",
+              "action_content": null,
+              "action_target": null,
+              "urgency": 5,
+              "is_disruptive": false
+            },
+            "he_jiajun": {
+              "observation": "沈逸凡走远了，留我在操场边上。",
+              "inner_thought": "他装什么好人，真是莫名其妙，烦死了。",
+              "emotion": "frustrated",
+              "action_type": "non_verbal",
+              "action_content": "默默地把脚往里缩了缩，看着鞋帮上的灰。",
+              "action_target": null,
+              "urgency": 2,
+              "is_disruptive": false
+            }
+          },
+          "gated_agents": []
+        }
+      ],
+      "narrative": {
+        "key_moments": [
+          "沈逸凡建议何家骏在课间复习错题。",
+          "何家骏回应沈逸凡。",
+          "沈逸凡转身向教学楼走去。",
+          "何家骏低头观察鞋帮上的灰尘。",
+          "沈逸凡离开操场。"
+        ],
+        "fulfilled_intentions": [
+          "沈逸凡:劝说何家骏复习错题"
+        ],
+        "events_discussed": [],
+        "new_events": [
+          {
+            "text": "沈逸凡建议何家骏在课间复习错题以避免上课打瞌睡",
+            "category": "建议",
+            "witnesses": [
+              "何家骏",
+              "沈逸凡"
+            ],
+            "spread_probability": 0.2,
+            "cite_ticks": [
+              1
+            ]
+          }
+        ]
+      },
+      "reflections": {
+        "he_jiajun": {
+          "emotion": "bored",
+          "relationship_changes": [
+            {
+              "to_agent": "沈逸凡",
+              "favorability": -1,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "沈逸凡又来催我写错题，讲道理的样子真烦。",
+              "emotion": "bored",
+              "importance": 3,
+              "people": [
+                "沈逸凡"
+              ],
+              "location": "操场",
+              "topics": [
+                "学业焦虑"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [],
+          "intention_outcomes": [
+            {
+              "goal": "偷偷把数学课本翻到前几章看基础定义",
+              "status": "pending",
+              "brief_reason": "一直在操场，没机会看书。"
+            }
+          ]
+        },
+        "shen_yifan": {
+          "emotion": "frustrated",
+          "relationship_changes": [
+            {
+              "to_agent": "何家骏",
+              "favorability": -1,
+              "trust": 0,
+              "understanding": 1,
+              "direct_interaction": true
+            }
+          ],
+          "memories": [
+            {
+              "text": "何家骏课间在操场虚度光阴，提醒他抓紧时间学习，他那副样子看着就来气。",
+              "emotion": "frustrated",
+              "importance": 4,
+              "people": [
+                "何家骏"
+              ],
+              "location": "操场",
+              "topics": [
+                "学业焦虑"
+              ]
+            }
+          ],
+          "new_concerns": [],
+          "concern_updates": [],
+          "intention_outcomes": [
+            {
+              "goal": "找个机会私下提醒他收敛点，别再晚自习玩手机了",
+              "status": "pending",
+              "brief_reason": "姜皓天不在场，没机会处理这个心病。"
+            },
+            {
+              "goal": "完成一套数学压轴题模拟",
+              "status": "pending",
+              "brief_reason": "还在课间，还没到做题的时间。"
+            },
+            {
+              "goal": "在午饭时随口聊聊学校最近的活动，缓和一下宿舍气氛",
+              "status": "pending",
+              "brief_reason": "现在是课间，且对话对象是何家骏，不是林昭宇。"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

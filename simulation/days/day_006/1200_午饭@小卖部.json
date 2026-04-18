@@ -1,0 +1,27 @@
+{
+  "scene": {
+    "scene_index": 5,
+    "time": "12:00",
+    "name": "午饭",
+    "location": "小卖部",
+    "description": "午饭时间，同学们结伴去食堂吃饭",
+    "day": 6
+  },
+  "participant_names": {
+    "tang_shihan": "唐诗涵"
+  },
+  "groups": [
+    {
+      "group_index": 0,
+      "participants": [
+        "tang_shihan"
+      ],
+      "is_solo": true,
+      "solo_reflection": {
+        "inner_thought": "林昭宇到底什么情况，苏念瑶那个LYU肯定有猫腻。",
+        "emotion": "curious",
+        "activity": "我在小卖部冰柜前一边挑奶茶，一边飞快地刷着表白墙。"
+      }
+    }
+  ]
+}

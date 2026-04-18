@@ -6,63 +6,53 @@
   "daily_plan": {
     "intentions": [
       {
-        "target": "智学网",
-        "goal": "确认月考最终排名",
-        "reason": "排名悬念持续影响我的状态，必须确认结果才能进行下一步规划。",
-        "fulfilled": false,
-        "abandoned": false,
-        "satisfies_concern": null,
-        "origin_day": 3,
-        "pursued_days": 1
-      },
-      {
         "target": "物理竞赛题集",
-        "goal": "完成两道电磁学压轴题",
-        "reason": "通过高强度的逻辑推演来缓解对排名的焦虑，这是我最有效的心理调节方式。",
+        "goal": "完成三道力学压轴题的深度推导",
+        "reason": "年级排名尚未达到第一，必须通过高难度题训练巩固物化生优势。",
         "fulfilled": true,
         "abandoned": false,
-        "satisfies_concern": null,
-        "origin_day": 3,
-        "pursued_days": 1
+        "satisfies_concern": "7b3a91",
+        "origin_day": 1,
+        "pursued_days": 3
       },
       {
-        "target": null,
-        "goal": "熄灯后阅读《仙路独行》最新章节",
-        "reason": "这是我唯一能逃避现实压力的出口，需要保持这种隐秘的放松。",
-        "fulfilled": true,
+        "target": "修仙网文",
+        "goal": "熄灯后阅读《仙路独行》最新更新章节",
+        "reason": "这是维持心理平衡的唯一出口，需要短暂逃避现实压力。",
+        "fulfilled": false,
         "abandoned": false,
         "satisfies_concern": null,
         "origin_day": 3,
         "pursued_days": 1
       }
     ],
-    "mood_forecast": "anxious",
+    "mood_forecast": "calm",
     "location_preferences": {
-      "morning_break": "教室",
+      "morning_break": "图书馆",
       "lunch": "教室",
-      "afternoon_break": "图书馆"
+      "afternoon_break": "教室"
     }
   },
   "day": 3,
   "active_concerns": [
     {
-      "id": "998933",
-      "text": "月考排名尚未公布，对成绩的悬念导致持续的焦虑感。",
-      "source_event": "午饭时演算物理题",
+      "id": "83a346",
+      "text": "熄灯后没能阅读《仙路独行》的最新章节，错过了每日唯一的放松时间。",
+      "source_event": "宿舍夜聊结束较晚",
       "source_scene": "",
-      "source_day": 1,
-      "emotion": "anxious",
-      "intensity": 8,
+      "source_day": 3,
+      "emotion": "frustrated",
+      "intensity": 4,
       "related_people": [],
       "positive": false,
-      "topic": "学业焦虑",
+      "topic": "兴趣爱好",
       "last_reinforced_day": 3,
-      "last_new_info_day": 1,
-      "reinforcement_count": 3,
+      "last_new_info_day": 3,
+      "reinforcement_count": 0,
       "text_history": [],
       "id_history": [],
-      "last_bump_day": 3,
-      "bumps_today": 2
+      "last_bump_day": 0,
+      "bumps_today": 0
     }
   ]
 }
