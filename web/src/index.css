@@ -226,7 +226,7 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 14px 20px 8px;
+  padding: 10px 16px 6px;
   overflow: hidden;
   min-height: 0;
 }
@@ -238,9 +238,9 @@ body {
 
 .group-pills {
   display: flex;
-  gap: 8px;
-  padding: 4px 0 12px;
-  margin-bottom: 8px;
+  gap: 6px;
+  padding: 3px 0 8px;
+  margin-bottom: 6px;
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
@@ -260,13 +260,13 @@ body {
 .group-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 7px 14px;
+  gap: 7px;
+  padding: 5px 11px;
   background: #ede0c5;
   border: 1px solid #d8cdb5;
-  border-radius: 18px;
+  border-radius: 16px;
   font-family: 'Noto Serif SC', serif;
-  font-size: 13px;
+  font-size: 11.5px;
   color: #6b6356;
   cursor: pointer;
   transition: background 150ms ease, border-color 150ms ease, color 150ms ease,
@@ -301,12 +301,12 @@ body {
   font-weight: 600;
   letter-spacing: 0.08em;
   color: inherit;
-  font-size: 12.5px;
+  font-size: 11px;
   opacity: 0.9;
 }
 .group-pill-names {
   font-family: 'LXGW WenKai', serif;
-  font-size: 15px;
+  font-size: 13.5px;
   color: inherit;
   white-space: nowrap;
 }
@@ -314,17 +314,17 @@ body {
 /* Dense pills (≥4 participants) trade size for fit — small font is acceptable,
    truncated names are not. Kicks in via the .group-pill-dense modifier. */
 .group-pill-dense {
-  padding: 6px 12px;
-  gap: 7px;
-}
-.group-pill-dense .group-pill-names { font-size: 13px; }
-.group-pill-dense .group-pill-prefix { font-size: 11.5px; }
-.group-pill-xdense {
-  padding: 5px 11px;
+  padding: 5px 10px;
   gap: 6px;
 }
-.group-pill-xdense .group-pill-names { font-size: 12px; }
-.group-pill-xdense .group-pill-prefix { font-size: 11px; }
+.group-pill-dense .group-pill-names { font-size: 12px; }
+.group-pill-dense .group-pill-prefix { font-size: 10.5px; }
+.group-pill-xdense {
+  padding: 4px 9px;
+  gap: 5px;
+}
+.group-pill-xdense .group-pill-names { font-size: 11px; }
+.group-pill-xdense .group-pill-prefix { font-size: 10px; }
 
 /* ---- Fixed-position adaptive grid ----
    Each participant owns a stable cell that doesn't move per tick.
@@ -333,7 +333,7 @@ body {
 .grid-cards {
   flex: 1;
   display: grid;
-  gap: 8px;
+  gap: 6px;
   padding: 2px;
   overflow: hidden;
   min-height: 0;
@@ -413,8 +413,8 @@ body {
 .char-card-horizontal {
   display: flex;
   align-items: stretch;
-  gap: 10px;
-  padding: 8px 12px;
+  gap: 8px;
+  padding: 6px 10px;
 }
 .char-card-horizontal > .avatar {
   align-self: flex-start;
@@ -430,7 +430,7 @@ body {
 .char-card-horizontal .char-card-head {
   display: flex;
   align-items: baseline;
-  gap: 10px;
+  gap: 8px;
   flex-shrink: 0;
 }
 
@@ -438,19 +438,19 @@ body {
 .char-card-vertical {
   display: flex;
   flex-direction: column;
-  padding: 6px 10px 4px;
-  gap: 4px;
+  padding: 5px 8px 3px;
+  gap: 3px;
 }
 .char-card-vertical .char-card-head {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex-shrink: 0;
 }
 .char-card-vertical .char-card-meta {
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
   min-width: 0;
 }
@@ -458,7 +458,7 @@ body {
 .char-card-name {
   font-family: 'LXGW WenKai', serif;
   font-weight: 500;
-  font-size: 18.5px;
+  font-size: 15.5px;
   color: #2a2620;
   background: none;
   border: none;
@@ -470,7 +470,7 @@ body {
 
 .char-card-emotion {
   font-family: 'Noto Serif SC', serif;
-  font-size: 13px;
+  font-size: 11.5px;
   color: #8a7a5e;
   letter-spacing: 0.1em;
   white-space: nowrap;
@@ -479,12 +479,12 @@ body {
 .char-card-speak-label {
   margin-left: auto;
   font-family: 'Noto Serif SC', serif;
-  font-size: 13.5px;
+  font-size: 11.5px;
   color: #8a5e1c;
   background: #faecc4;
   border: 1px solid #d4a853;
-  padding: 1px 10px;
-  border-radius: 12px;
+  padding: 1px 8px;
+  border-radius: 10px;
   letter-spacing: 0.1em;
   flex-shrink: 0;
 }
@@ -495,14 +495,14 @@ body {
   flex: 1;
   min-height: 0;
   font-family: 'LXGW WenKai', serif;
-  line-height: 1.65;
+  line-height: 1.55;
   display: flex;
   flex-direction: column;
   gap: 2px;
   overflow-y: auto;
-  padding-bottom: 10px;
-  mask-image: linear-gradient(to bottom, #000 calc(100% - 14px), transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 14px), transparent 100%);
+  padding-bottom: 8px;
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 12px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 12px), transparent 100%);
   scrollbar-width: thin;
   scrollbar-color: #c4b894 transparent;
 }
@@ -511,18 +511,18 @@ body {
 .char-card-body::-webkit-scrollbar-track { background: transparent; }
 
 .char-card-speech {
-  font-size: 18px;
+  font-size: 15px;
   color: #2a2620;
 }
 /* Thought bubble — soft lavender container. Meant to feel like a visible
    instance of "thinking" rather than just italicized text. */
 .char-card-thought {
-  font-size: 16px;
+  font-size: 13.5px;
   color: #5e6b8a;
   font-style: italic;
   background: #f0ecf5;
   border-left: 3px solid #b8a8c8;
-  padding: 6px 11px;
+  padding: 5px 9px;
   border-radius: 0 4px 4px 0;
 }
 /* Footer = "内部 + 物理层" zone pinned to the card bottom. Holds the thought
@@ -533,24 +533,24 @@ body {
 .char-card-footer {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
   flex-shrink: 0;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 .char-card-footer-sep {
-  padding-top: 8px;
+  padding-top: 6px;
   border-top: 1px solid #e8dcc8;
 }
 
 .char-card-action-line {
   font-family: 'LXGW WenKai', serif;
-  font-size: 15px;
+  font-size: 12.5px;
   color: #7a5e30;
   font-style: italic;
-  line-height: 1.5;
+  line-height: 1.45;
 }
 .char-card-action-dot {
-  margin-right: 6px;
+  margin-right: 5px;
   color: #c9a868;
   font-style: normal;
   display: inline-block;
@@ -562,12 +562,12 @@ body {
 .char-card-tag {
   display: inline-block;
   vertical-align: 1px;
-  margin-right: 8px;
+  margin-right: 6px;
   font-family: 'Noto Serif SC', serif;
   font-style: normal;
-  font-size: 13px;
-  padding: 0 8px;
-  border-radius: 10px;
+  font-size: 11.5px;
+  padding: 0 7px;
+  border-radius: 9px;
   letter-spacing: 0.1em;
   line-height: 1.7;
   flex-shrink: 0;
@@ -579,7 +579,7 @@ body {
 }
 
 .grid-cards-n3 .char-card-body {
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
 /* Font-size tiers by grid density. Defaults are tuned for the densest case
@@ -590,77 +590,77 @@ body {
 .grid-cards-n1 .char-card-name,
 .grid-cards-n2 .char-card-name,
 .grid-cards-n3 .char-card-name {
-  font-size: 23px;
+  font-size: 19px;
 }
 .grid-cards-n1 .char-card-emotion,
 .grid-cards-n2 .char-card-emotion,
 .grid-cards-n3 .char-card-emotion {
-  font-size: 15px;
+  font-size: 13px;
 }
 .grid-cards-n1 .char-card-speak-label,
 .grid-cards-n2 .char-card-speak-label,
 .grid-cards-n3 .char-card-speak-label {
-  font-size: 15.5px;
+  font-size: 13px;
 }
 .grid-cards-n1 .char-card-speech,
 .grid-cards-n2 .char-card-speech,
 .grid-cards-n3 .char-card-speech {
-  font-size: 22px;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 1.55;
 }
 .grid-cards-n1 .char-card-thought,
 .grid-cards-n2 .char-card-thought,
 .grid-cards-n3 .char-card-thought {
-  font-size: 19px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.5;
 }
 .grid-cards-n1 .char-card-action-line,
 .grid-cards-n2 .char-card-action-line,
 .grid-cards-n3 .char-card-action-line {
-  font-size: 17px;
+  font-size: 14.5px;
 }
 .grid-cards-n1 .char-card-tag,
 .grid-cards-n2 .char-card-tag,
 .grid-cards-n3 .char-card-tag {
-  font-size: 14.5px;
+  font-size: 12.5px;
 }
 
 .grid-cards-n4 .char-card-name,
 .grid-cards-n6 .char-card-name {
-  font-size: 20.5px;
+  font-size: 17px;
 }
 .grid-cards-n4 .char-card-emotion,
 .grid-cards-n6 .char-card-emotion {
-  font-size: 14px;
+  font-size: 12.5px;
 }
 .grid-cards-n4 .char-card-speak-label,
 .grid-cards-n6 .char-card-speak-label {
-  font-size: 14.5px;
+  font-size: 12.5px;
 }
 .grid-cards-n4 .char-card-speech,
 .grid-cards-n6 .char-card-speech {
-  font-size: 20px;
-  line-height: 1.7;
+  font-size: 16.5px;
+  line-height: 1.55;
 }
 .grid-cards-n4 .char-card-thought,
 .grid-cards-n6 .char-card-thought {
-  font-size: 17px;
+  font-size: 14.5px;
 }
 .grid-cards-n4 .char-card-action-line,
 .grid-cards-n6 .char-card-action-line {
-  font-size: 16px;
+  font-size: 13.5px;
 }
 .grid-cards-n4 .char-card-tag,
 .grid-cards-n6 .char-card-tag {
-  font-size: 14px;
+  font-size: 12.5px;
 }
 
 /* ---- Avatar (pixel sprite — matches the tilemap character art) ---- */
 
 .avatar {
   position: relative;
-  width: 32px;
-  height: 64px;
+  width: 28px;
+  height: 56px;
   flex-shrink: 0;
   display: flex;
   align-items: flex-end;
@@ -685,14 +685,14 @@ body {
 /* Compact avatar sizing for the vertical card layout (n ≥ 4) — keeps the
    head row short so body/footer have room to breathe in a 2×3 / 3×3 grid. */
 .char-card-vertical .avatar {
-  width: 24px;
-  height: 48px;
+  width: 22px;
+  height: 44px;
 }
 
 /* The compact n=3 grid keeps the horizontal card but tightens sprite size. */
 .grid-cards-n3 .avatar {
-  width: 28px;
-  height: 56px;
+  width: 24px;
+  height: 48px;
 }
 
 /* ---- Tick nav ---- */
@@ -701,10 +701,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
-  padding: 8px 0 4px;
+  gap: 12px;
+  padding: 6px 0 3px;
   font-family: 'Noto Serif SC', serif;
-  font-size: 12px;
+  font-size: 11px;
   color: #6b6356;
   flex-shrink: 0;
 }
@@ -712,7 +712,7 @@ body {
   background: none;
   border: 1px solid #d8cdb5;
   border-radius: 4px;
-  padding: 3px 12px;
+  padding: 2px 10px;
   color: #6b6356;
   cursor: pointer;
   font-family: inherit;
@@ -855,24 +855,24 @@ body {
 
 .share-dock {
   flex-shrink: 0;
-  padding: 10px 4px 6px;
-  margin-top: 6px;
+  padding: 7px 3px 4px;
+  margin-top: 4px;
   border-top: 1px dashed #d8cdb5;
 }
 
 .share-dock-label {
   text-align: center;
   font-family: 'Noto Serif SC', serif;
-  font-size: 11.5px;
+  font-size: 10.5px;
   letter-spacing: 0.14em;
   color: #8a7f6a;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 
 .share-buttons {
   position: relative;
   display: flex;
-  gap: 12px;
+  gap: 10px;
   justify-content: center;
   flex-shrink: 0;
 }
@@ -880,17 +880,17 @@ body {
 .share-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 22px;
-  border-radius: 22px;
+  gap: 7px;
+  padding: 7px 18px;
+  border-radius: 18px;
   font-family: 'Noto Serif SC', serif;
-  font-size: 14px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.08em;
   cursor: pointer;
   transition: transform 150ms ease, background 150ms ease, border-color 150ms ease,
               color 150ms ease, box-shadow 150ms ease;
-  min-width: 132px;
+  min-width: 116px;
   justify-content: center;
 }
 .share-btn:hover:not(:disabled) {
@@ -984,7 +984,7 @@ body {
 .daily-root {
   height: 100vh;
   width: 100vw;
-  padding: 14px 24px 12px;
+  padding: 10px 18px 8px;
   background:
     linear-gradient(to bottom, #f5efe0, #ebe2c8 160px, #ebe2c8);
   color: #3a3530;
@@ -1007,14 +1007,14 @@ body {
   min-height: 0;
   display: grid;
   grid-template-columns: 1.05fr 1fr;
-  gap: 18px;
-  padding-top: 10px;
+  gap: 12px;
+  padding-top: 6px;
   overflow: hidden;
 }
 .daily-col {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   min-height: 0;
   overflow: hidden;
 }
@@ -1054,11 +1054,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0 12px;
+  padding: 6px 0 8px;
   border-bottom: 1px solid #d8cdb5;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   flex-shrink: 0;
-  gap: 16px;
+  gap: 14px;
 }
 .daily-nav-left {
   display: flex;
@@ -1082,11 +1082,11 @@ body {
   flex: 1 1 0;
 }
 .daily-nav-btn {
-  font-size: 18px;
+  font-size: 15px;
   color: #8a5e1c;
   text-decoration: none;
-  padding: 7px 16px;
-  border-radius: 14px;
+  padding: 5px 12px;
+  border-radius: 12px;
   transition: background 150ms ease;
 }
 .daily-nav-btn:hover:not(.daily-nav-btn-disabled) {
@@ -1100,16 +1100,16 @@ body {
 .daily-hero-seal {
   background: #b0281c;
   color: #fff8e8;
-  padding: 6px 14px;
+  padding: 4px 10px;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.08em;
   flex-shrink: 0;
   align-self: center;
 }
 .daily-hero-title {
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 700;
   margin: 0;
   letter-spacing: 0.15em;
@@ -1118,7 +1118,7 @@ body {
 }
 .daily-hero-subtitle {
   color: #8a7f6a;
-  font-size: 15px;
+  font-size: 13px;
   letter-spacing: 0.06em;
   white-space: nowrap;
   overflow: hidden;
@@ -1137,13 +1137,13 @@ body {
   display: none;
 }
 .daily-nav-right .share-btn {
-  padding: 8px 18px;
+  padding: 6px 14px;
   min-width: 0;
-  font-size: 14px;
+  font-size: 12.5px;
 }
 
 .daily-section {
-  padding: 10px 12px;
+  padding: 7px 10px;
   background: rgba(255, 248, 228, 0.55);
   border: 1px solid #e0d5b9;
   border-radius: 8px;
@@ -1152,25 +1152,25 @@ body {
   flex-direction: column;
 }
 .daily-section-title {
-  font-size: 15.5px;
+  font-size: 13.5px;
   font-weight: 700;
-  margin: 0 0 6px;
+  margin: 0 0 4px;
   color: #2a2520;
   letter-spacing: 0.12em;
   flex-shrink: 0;
 }
 
 .daily-headline-meta {
-  font-size: 13px;
+  font-size: 11.5px;
   color: #8a7f6a;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   letter-spacing: 0.04em;
 }
 .daily-speech,
 .daily-thought {
-  margin: 4px 0;
-  line-height: 1.55;
-  font-size: 15.5px;
+  margin: 3px 0;
+  line-height: 1.5;
+  font-size: 13.5px;
 }
 .daily-speech-speaker {
   color: #8a5e1c;
@@ -1187,15 +1187,15 @@ body {
 .daily-thought-label {
   color: #a095b8;
   margin-right: 4px;
-  font-size: 13px;
+  font-size: 11.5px;
 }
 .daily-headline-link {
-  margin-top: 6px;
+  margin-top: 4px;
   text-align: right;
 }
 .daily-headline-link a {
   color: #8a5e1c;
-  font-size: 13px;
+  font-size: 11.5px;
   text-decoration: none;
   border-bottom: 1px solid currentColor;
 }
@@ -1207,18 +1207,18 @@ body {
   background: #ede5d0;
   border-left: 3px solid #d4a853;
   margin: 0;
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-radius: 0 6px 6px 0;
 }
 .daily-quote-text {
   display: block;
-  font-size: 15.5px;
-  line-height: 1.55;
+  font-size: 13.5px;
+  line-height: 1.5;
   color: #2a2520;
 }
 .daily-quote-footer {
-  margin-top: 4px;
-  font-size: 12.5px;
+  margin-top: 3px;
+  font-size: 11px;
   color: #8a7f6a;
   font-style: normal;
 }
@@ -1229,11 +1229,11 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 3px;
 }
 .daily-secondary-link {
   display: block;
-  padding: 6px 10px;
+  padding: 5px 8px;
   background: #efe7d0;
   border-radius: 6px;
   text-decoration: none;
@@ -1245,16 +1245,16 @@ body {
 }
 .daily-secondary-meta {
   display: block;
-  font-size: 12.5px;
+  font-size: 11px;
   color: #8a7f6a;
   margin-bottom: 2px;
   letter-spacing: 0.04em;
 }
 .daily-secondary-body {
   display: block;
-  font-size: 14px;
+  font-size: 12.5px;
   color: #3a3530;
-  line-height: 1.45;
+  line-height: 1.4;
 }
 
 .mood-grid {
@@ -1263,7 +1263,7 @@ body {
   margin: 0;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 6px 8px;
+  gap: 4px 6px;
 }
 @media (max-width: 640px) {
   .mood-grid { grid-template-columns: repeat(3, 1fr); }
@@ -1280,11 +1280,11 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 2px;
   text-align: center;
   text-decoration: none;
   color: inherit;
-  padding: 6px 4px;
+  padding: 4px 3px;
   aspect-ratio: 1 / 1;
   background: #fbf3dd;
   border: 1px solid #e0d5b9;
@@ -1297,8 +1297,8 @@ body {
   transform: translateY(-1px);
 }
 .mood-sprite {
-  width: 40px;
-  height: 72px;
+  width: 32px;
+  height: 58px;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   object-fit: contain;
@@ -1306,12 +1306,12 @@ body {
   flex-shrink: 0;
 }
 .mood-name {
-  font-size: 15.5px;
+  font-size: 13.5px;
   color: #2a2520;
   font-weight: 600;
 }
 .mood-emotion {
-  font-size: 13px;
+  font-size: 11.5px;
   color: #8a7f6a;
 }
 
@@ -1319,23 +1319,23 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 4px;
+  gap: 10px;
+  margin-bottom: 2px;
 }
 .cp-name {
-  font-size: 17.5px;
+  font-size: 15px;
   font-weight: 700;
   color: #2a2520;
 }
 .cp-heart {
   color: #b0281c;
-  font-size: 20px;
+  font-size: 17px;
 }
 .cp-deltas {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  font-size: 13px;
+  gap: 10px;
+  font-size: 11.5px;
   color: #8a7f6a;
   letter-spacing: 0.04em;
 }
@@ -1345,16 +1345,16 @@ body {
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 6px;
   overflow-y: auto;
   min-height: 0;
 }
 .scene-strip-link {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
+  gap: 8px;
+  padding: 6px 10px;
   background: #efe7d0;
   border-radius: 10px;
   text-decoration: none;
@@ -1365,7 +1365,7 @@ body {
   background: #e5d9ba;
 }
 .scene-strip-icon {
-  font-size: 30px;
+  font-size: 22px;
 }
 .scene-strip-meta {
   display: flex;
@@ -1374,12 +1374,12 @@ body {
   min-width: 0;
 }
 .scene-strip-time {
-  font-size: 15px;
+  font-size: 12.5px;
   color: #8a7f6a;
   letter-spacing: 0.06em;
 }
 .scene-strip-name {
-  font-size: 17px;
+  font-size: 14px;
   color: #2a2520;
   font-weight: 600;
   white-space: nowrap;
@@ -1387,7 +1387,7 @@ body {
   text-overflow: ellipsis;
 }
 .scene-strip-loc {
-  font-size: 15px;
+  font-size: 12.5px;
   color: #8a7f6a;
 }
 
@@ -1773,20 +1773,20 @@ body {
 
 /* --- Daily report: 今日头条 (new) ---------------------------------------- */
 .daily-topevent {
-  gap: 8px;
+  gap: 5px;
 }
 .daily-topevent-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 .daily-topevent-category {
   display: inline-block;
-  padding: 2px 8px;
+  padding: 2px 7px;
   border-radius: 999px;
-  font-size: 12.5px;
+  font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.08em;
   background: #efe2c3;
@@ -1814,20 +1814,20 @@ body {
   border-color: #8f8dbe;
 }
 .daily-topevent-meta {
-  font-size: 12.5px;
+  font-size: 11.5px;
   color: #8a7f6a;
   letter-spacing: 0.04em;
 }
 .daily-topevent-text {
   margin: 2px 0;
-  font-size: 17.5px;
-  line-height: 1.55;
+  font-size: 15px;
+  line-height: 1.5;
   font-weight: 700;
   color: #2a2520;
 }
 .daily-topevent-quote {
   margin: 2px 0;
-  padding: 6px 10px;
+  padding: 5px 8px;
   border-left: 3px solid #c9a66b;
   background: #fbf3df;
   border-radius: 0 6px 6px 0;
@@ -1836,40 +1836,40 @@ body {
 }
 .daily-topevent-quote-text {
   display: block;
-  font-size: 14.5px;
-  line-height: 1.5;
+  font-size: 12.5px;
+  line-height: 1.45;
 }
 .daily-topevent-quote-footer {
   margin-top: 2px;
-  font-size: 12.5px;
+  font-size: 11px;
   color: #8a7f6a;
   font-style: normal;
 }
 .daily-topevent-witnesses {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-top: 4px;
+  gap: 4px;
+  margin-top: 2px;
 }
 .daily-topevent-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 .daily-topevent-row-label {
-  font-size: 12.5px;
+  font-size: 11px;
   letter-spacing: 0.1em;
   color: #8a7f6a;
   flex-shrink: 0;
-  min-width: 56px;
+  min-width: 48px;
 }
 .daily-topevent-faces {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 4px;
+  gap: 3px;
   flex-wrap: wrap;
 }
 .daily-topevent-face {
@@ -1877,17 +1877,17 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 0;
-  width: 36px;
+  width: 30px;
 }
 .daily-topevent-face img {
-  width: 28px;
-  height: 48px;
+  width: 22px;
+  height: 38px;
   image-rendering: pixelated;
   object-fit: contain;
   object-position: center top;
 }
 .daily-topevent-face-name {
-  font-size: 11.5px;
+  font-size: 10.5px;
   color: #6a5f4a;
   white-space: nowrap;
 }
@@ -1901,13 +1901,13 @@ body {
 
 /* --- Daily report: 今日对照 (new) ---------------------------------------- */
 .daily-contrast {
-  gap: 6px;
+  gap: 4px;
 }
 .daily-contrast-tag {
   display: inline-block;
   align-self: flex-start;
-  padding: 2px 8px;
-  font-size: 12.5px;
+  padding: 2px 7px;
+  font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.12em;
   color: #fff;
@@ -1922,7 +1922,7 @@ body {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 @media (max-width: 640px) {
   .daily-contrast-mismatch {
@@ -1933,8 +1933,8 @@ body {
 .daily-contrast-side {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 8px 10px;
+  gap: 3px;
+  padding: 5px 8px;
   border-radius: 8px;
   background: #f5ecd3;
   border: 1px solid #d7c799;
@@ -1942,38 +1942,38 @@ body {
 .daily-contrast-side-head {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 .daily-contrast-sprite {
-  width: 24px;
-  height: 40px;
+  width: 20px;
+  height: 34px;
   image-rendering: pixelated;
   object-fit: contain;
   object-position: center top;
   flex-shrink: 0;
 }
 .daily-contrast-sprite--big {
-  width: 32px;
-  height: 54px;
+  width: 26px;
+  height: 44px;
 }
 .daily-contrast-side-name {
   font-weight: 700;
   color: #2a2520;
-  font-size: 14.5px;
+  font-size: 13px;
 }
 .daily-contrast-side-emotion {
-  font-size: 12.5px;
+  font-size: 11px;
   color: #6a5f4a;
   background: #efe2c3;
-  padding: 1px 6px;
+  padding: 1px 5px;
   border-radius: 999px;
 }
 .daily-contrast-side-fav {
-  font-size: 12.5px;
+  font-size: 11px;
   color: #6a5f4a;
 }
 .daily-contrast-favbadge {
-  padding: 1px 6px;
+  padding: 1px 5px;
   border-radius: 999px;
   margin-left: 4px;
   font-weight: 700;
@@ -1982,13 +1982,13 @@ body {
 .daily-contrast-favbadge--neg { background: #f2d3ce; color: #8f2a12; }
 .daily-contrast-side-thought {
   margin: 0;
-  font-size: 14.5px;
-  line-height: 1.55;
+  font-size: 12.5px;
+  line-height: 1.45;
   color: #3a3530;
   font-style: italic;
 }
 .daily-contrast-mismatch-divider {
-  font-size: 18px;
+  font-size: 15px;
   color: #a08860;
   text-align: center;
 }
@@ -1996,8 +1996,8 @@ body {
 .daily-contrast-failed {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 8px 10px;
+  gap: 3px;
+  padding: 5px 8px;
   background: #faeedc;
   border: 1px solid #d9b886;
   border-radius: 8px;
@@ -2005,19 +2005,19 @@ body {
 .daily-contrast-failed-row {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 .daily-contrast-failed-name {
   font-weight: 700;
   color: #2a2520;
-  font-size: 14.5px;
+  font-size: 13px;
 }
 .daily-contrast-failed-arrow {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   flex-wrap: wrap;
-  font-size: 14.5px;
+  font-size: 13px;
 }
 .daily-contrast-failed-goal {
   color: #2a2520;
@@ -2027,7 +2027,7 @@ body {
   font-weight: 700;
 }
 .daily-contrast-failed-status {
-  padding: 1px 8px;
+  padding: 1px 7px;
   border-radius: 999px;
   background: #f2d3ce;
   color: #8f2a12;
@@ -2039,16 +2039,16 @@ body {
 }
 .daily-contrast-failed-reason {
   margin: 0;
-  font-size: 14px;
+  font-size: 12.5px;
   color: #5a5145;
-  line-height: 1.55;
+  line-height: 1.45;
 }
 
 .daily-contrast-silent {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 12px;
-  padding: 8px 10px;
+  gap: 10px;
+  padding: 5px 8px;
   background: #eaeff2;
   border: 1px solid #9db4c5;
   border-radius: 8px;
@@ -2062,11 +2062,11 @@ body {
 }
 .daily-contrast-silent-name {
   font-weight: 700;
-  font-size: 14.5px;
+  font-size: 13px;
   color: #2a2520;
 }
 .daily-contrast-silent-subtitle {
-  font-size: 11.5px;
+  font-size: 10.5px;
   color: #6a5f4a;
   letter-spacing: 0.06em;
 }
@@ -2076,42 +2076,42 @@ body {
   margin: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 4px;
 }
 .daily-contrast-silent-accuser {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0;
-  padding: 2px 4px;
+  padding: 2px 3px;
   background: #fff;
   border: 1px solid #c2cfd9;
   border-radius: 6px;
-  min-width: 44px;
+  min-width: 38px;
 }
 .daily-contrast-silent-accuser-name {
-  font-size: 12.5px;
+  font-size: 11px;
   color: #3a3530;
 }
 .daily-contrast-silent-fav {
-  font-size: 12.5px;
+  font-size: 11px;
   font-weight: 700;
   color: #8f2a12;
 }
 .daily-contrast-footer {
   display: flex;
   justify-content: space-between;
-  gap: 8px;
+  gap: 6px;
   align-items: center;
-  margin-top: 4px;
+  margin-top: 3px;
 }
 .daily-contrast-meta {
-  font-size: 12.5px;
+  font-size: 11px;
   color: #8a7f6a;
 }
 .daily-contrast-link {
   color: #8a5e1c;
-  font-size: 13px;
+  font-size: 11.5px;
   text-decoration: none;
   border-bottom: 1px solid currentColor;
 }
@@ -2119,16 +2119,16 @@ body {
 
 /* --- Daily report: 心事聚光 (new) ---------------------------------------- */
 .daily-concern {
-  gap: 6px;
+  gap: 4px;
 }
 .daily-concern-head {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   align-items: flex-start;
 }
 .daily-concern-sprite {
-  width: 32px;
-  height: 54px;
+  width: 26px;
+  height: 44px;
   image-rendering: pixelated;
   object-fit: contain;
   object-position: center top;
@@ -2137,36 +2137,36 @@ body {
 .daily-concern-head-main {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
   flex: 1;
 }
 .daily-concern-name-row {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   flex-wrap: wrap;
 }
 .daily-concern-name {
   font-weight: 700;
-  font-size: 15px;
+  font-size: 13.5px;
   color: #2a2520;
 }
 .daily-concern-topic {
   display: inline-block;
-  padding: 1px 8px;
-  font-size: 12.5px;
+  padding: 1px 7px;
+  font-size: 11.5px;
   color: #fff;
   border-radius: 999px;
   letter-spacing: 0.08em;
 }
 .daily-concern-badges {
   display: flex;
-  gap: 4px;
+  gap: 3px;
   flex-wrap: wrap;
 }
 .daily-concern-badge {
-  font-size: 12px;
-  padding: 1px 6px;
+  font-size: 10.5px;
+  padding: 1px 5px;
   border-radius: 999px;
   background: #efe2c3;
   color: #6a4c16;
@@ -2179,18 +2179,18 @@ body {
   border-color: #d67595;
 }
 .daily-concern-text {
-  margin: 4px 0;
-  font-size: 15.5px;
-  line-height: 1.55;
+  margin: 3px 0;
+  font-size: 13.5px;
+  line-height: 1.45;
   color: #3a3530;
 }
 .daily-concern-intensity {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 .daily-concern-intensity-label {
-  font-size: 12.5px;
+  font-size: 11.5px;
   color: #8a7f6a;
   letter-spacing: 0.06em;
 }
@@ -2199,8 +2199,8 @@ body {
   gap: 2px;
 }
 .daily-concern-intensity-cell {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 2px;
   background: #e0d5b9;
 }
@@ -2208,7 +2208,7 @@ body {
   background: #c25a8a;
 }
 .daily-concern-intensity-value {
-  font-size: 12.5px;
+  font-size: 11px;
   color: #6a5f4a;
   margin-left: auto;
 }
